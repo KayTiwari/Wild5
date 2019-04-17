@@ -1,0 +1,3 @@
+rootProject.name = 'wild5'
+
+include ':app'
