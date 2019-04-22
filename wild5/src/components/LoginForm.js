@@ -29,16 +29,15 @@ class LoginForm extends Component {
 
     renderButton() {
         if (this.state.loading) {
-            // return <Spinner size='small' />
-            return <Button>Hi</Button>
+            return <Spinner size='small' />
         } else
         return (
-            <Button>
+            <Button onPress={this.onButtonPress.bind(this)}>
                     Login
             </Button>
         )
     }
-    // onPress={this.onButtonPress.bind(this)
+    
 
     onLoginSuccess() {
         this.setState({
@@ -85,6 +84,12 @@ class LoginForm extends Component {
 
             <CardSection>
                 {this.renderButton()}
+            </CardSection>
+
+            <CardSection>
+                <Button>
+                    Register
+                </Button>
             </CardSection>
         </Card>
         )
