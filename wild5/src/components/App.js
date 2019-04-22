@@ -13,9 +13,7 @@ class App extends Component{
         return (
             <View>
                 <Header text='Wild5'/>
-                <CardSection>
-                    <LoginForm />
-                </CardSection>
+                <LoginForm />
             </View>
         )
     }
