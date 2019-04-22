@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import { Text } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner } from './common';
 import firebase from 'firebase'
+import {withAuthProvider} from '../context/authcontext';
+import RegisterModal from './RegisterModal';
+
 
 class LoginForm extends Component {
 
@@ -9,8 +12,21 @@ class LoginForm extends Component {
         email: '',
         password: '',
         error: '',
-        loading: false
+        loading: false,
+        success: '',
+        modal: false
     } 
+
+    componentWillMount(){
+        firebase.initializeApp({
+            apiKey: "AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o",
+            authDomain: "wild5-5ca8b.firebaseapp.com",
+            databaseURL: "https://wild5-5ca8b.firebaseio.com",
+            projectId: "wild5-5ca8b",
+            storageBucket: "wild5-5ca8b.appspot.com",
+            messagingSenderId: "714885268112"
+          })
+    }
 
     onButtonPress() {
         const { email, password } = this.state
@@ -27,25 +43,44 @@ class LoginForm extends Component {
                 });
     };
 
+    OnRegisterPress(){
+        // const { email, password } = this.state;
+        // firebase.auth().createUserWithEmailAndPassword(email, password)
+        // .then(() => {
+        //     this.onLoginSuccess();
+        // })
+        // .catch(() => {
+        //     this.onLoginFail();
+        // })
+        if (this.state.modal === false){
+        this.setState({
+            modal: true
+        })
+        } else {
+            this.setState({
+                modal: false
+            })
+        }
+    }
+
     renderButton() {
         if (this.state.loading) {
-            // return <Spinner size='small' />
-            return <Button>Hi</Button>
+            return <Spinner size='small' />
         } else
         return (
-            <Button>
+            <Button onPress={this.onButtonPress.bind(this)}>
                     Login
             </Button>
         )
     }
-    // onPress={this.onButtonPress.bind(this)
 
     onLoginSuccess() {
         this.setState({
             error: '',
             loading: false,
             email: '',
-            password: ''
+            password: '',
+            success: 'Login Successful!'
         })
     }
 
@@ -59,6 +94,7 @@ class LoginForm extends Component {
     render(){
         return (
         <Card>
+            {this.state.modal ? <RegisterModal /> : null}
             <CardSection>
                 <Input
                 placeholder='user@email.com'
@@ -82,9 +118,20 @@ class LoginForm extends Component {
             <Text style={styles.errorTextStyle}>
                 {this.state.error}
             </Text>
+            <Text style={styles.successTextStyle}>
+                {this.state.success}
+            </Text>
 
             <CardSection>
                 {this.renderButton()}
+            </CardSection>
+
+            <CardSection>
+
+                <Button onPress={this.OnRegisterPress.bind(this)}>
+                <Button>
+                    Register
+                </Button>
             </CardSection>
         </Card>
         )
@@ -95,7 +142,12 @@ const styles = {
         fontSize: 20,
         alignSelf: 'center',
         color: '#F00'
+    },
+    successTextStyle: {
+        fontSize: 20,
+        alignSelf: 'center',
+        color: '#BADA55'
     }
 }
 
-export default LoginForm
+export default withAuthProvider(LoginForm);
