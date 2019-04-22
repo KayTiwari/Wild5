@@ -4,14 +4,17 @@ import Router from './Router'
 import { Header, Card, CardSection, Button, Input, Spinner } from './components/common';
 import LoginForm from './components/LoginForm';
 import AuthProvider from './context/authcontext';
+import GlobalProvider from './context/context';
 
 class App extends Component{
 
     render(){
         return (
+            <GlobalProvider>
             <AuthProvider>
               <Router/>
             </AuthProvider>
+            </GlobalProvider>
         )
     }
 }

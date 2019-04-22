@@ -14,7 +14,6 @@ class LoginForm extends Component {
         password: '',
         error: '',
         loading: false,
-        success: '',
         modal: false
     } 
 
@@ -78,10 +77,7 @@ class LoginForm extends Component {
     onLoginSuccess() {
         this.setState({
             error: '',
-            loading: false,
-            email: '',
-            password: '',
-            success: 'Login Successful!'
+            loading: false
         })
         Actions.landing();
     }
@@ -96,7 +92,7 @@ class LoginForm extends Component {
     render(){
         return (
         <Card>
-            {this.state.modal ? <RegisterModal /> : null}
+            {this.state.modal ? <RegisterModal visible={true}/> : null}
             <CardSection>
                 <Input
                 placeholder='user@email.com'
@@ -119,9 +115,6 @@ class LoginForm extends Component {
 
             <Text style={styles.errorTextStyle}>
                 {this.state.error}
-            </Text>
-            <Text style={styles.successTextStyle}>
-                {this.state.success}
             </Text>
 
             <CardSection>

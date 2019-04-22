@@ -1,17 +1,17 @@
 import React, { Fragment, Component } from "react";
 import { View, StyleSheet, Text, ScrollView } from "react-native";
-import ModButton from "./common/ModButton"
+import {ModButton, Input, CardSection, Button } from "./common/"
+import {withProvider} from '../context/context'
 
 import Modal from "react-native-modal";
 
 class RegisterModal extends Component {
   state = {
-    visible: false
+    visible: this.props.visible
   };
 
-  openModal = () => this.setState({ visible: true });
   closeModal = () => this.setState({ visible: false });
-
+  
   render() {
     return (
       <Fragment>
@@ -19,44 +19,55 @@ class RegisterModal extends Component {
           isVisible={this.state.visible}
           backdropOpacity={0.1}
           onSwipe={this.closeModal}
-          // swipeDirection={"left"} <-- We can't specify swipeDirection since we want to scroll inside the modal
           onBackdropPress={this.closeModal}
         >
           <View style={styles.modalContainer}>
             <ScrollView>
               <Text style={styles.description}>
                 {[
-                  "This is a scrollable modal from the 'react-native-modal' library.\n\n",
-                  "You can't swipe this modal away, because it clashes with the scroll of the scrollView.\n\n",
-                  "So if you want to scroll inside the modal, you can't specify swipeDirection.\n\n",
-                  "However, you can scroll inside the modal to check the content.\n\n",
-                  "There are basically 2 ways to close this modal:\n",
-                  " - Click on the backdrop.\n",
-                  " - Click on the button at the bottom of the scrollView.\n\n",
-                  "To provide a better UX, you can put a X at the top right corner of this modal, ",
-                  "so that the user doesn't have to scroll all the way."
+                  "Hello, Welcome to the Wild5 Wellness App.\nBefore we start, there's some questions we'd like you to answer"
                 ]}
               </Text>
+
+              <CardSection>
+                <Input
+                placeholder='Email Address'
+                label='Desired Email'
+                value={this.state.email}
+                onChangeText={email => this.setState({ email })}
+                
+                />
+            </CardSection>
+
+            <CardSection>
+            <Input
+                placeholder='Enter new password'
+                label='Password'
+                value={this.state.password}
+                onChangeText={password => this.setState({ password })}
+                secureTextEntry
+                ><Button>O</Button></Input>
+            </CardSection>
+
               <ModButton
                 color="#00D774"
+                label="Sure"
+                onPress={this.closeModal}
+              />
+              <ModButton
+                color="#333"
                 label="Close Modal"
                 onPress={this.closeModal}
               />
             </ScrollView>
           </View>
         </Modal>
-
-        <ModButton
-          color="#00D774"
-          label="Scrollable Modal"
-          onPress={this.openModal}
-        />
       </Fragment>
     );
   }
 }
 
-export default RegisterModal;
+export default withProvider(RegisterModal);
 
 const styles = StyleSheet.create({
   modalContainer: {
