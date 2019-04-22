@@ -3,6 +3,7 @@ import { Text } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner } from './common';
 import firebase from 'firebase'
 import {withAuthProvider} from '../context/authcontext';
+import { Actions } from 'react-native-router-flux';
 import RegisterModal from './RegisterModal';
 
 
@@ -62,7 +63,7 @@ class LoginForm extends Component {
             })
         }
     }
-
+ 
     renderButton() {
         if (this.state.loading) {
             return <Spinner size='small' />
@@ -82,6 +83,7 @@ class LoginForm extends Component {
             password: '',
             success: 'Login Successful!'
         })
+        Actions.landing();
     }
 
     onLoginFail() {
@@ -129,10 +131,10 @@ class LoginForm extends Component {
             <CardSection>
 
                 <Button onPress={this.OnRegisterPress.bind(this)}>
-                <Button>
                     Register
                 </Button>
             </CardSection>
+
         </Card>
         )
     }
