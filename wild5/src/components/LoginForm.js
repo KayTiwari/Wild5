@@ -52,9 +52,15 @@ class LoginForm extends Component {
         // .catch(() => {
         //     this.onLoginFail();
         // })
+        if (this.state.modal === false){
         this.setState({
             modal: true
         })
+        } else {
+            this.setState({
+                modal: false
+            })
+        }
     }
 
     renderButton() {
