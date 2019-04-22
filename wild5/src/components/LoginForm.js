@@ -2,6 +2,16 @@ import React, {Component} from 'react';
 import { Text } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner } from './common';
 import firebase from 'firebase'
+import {withAuthProvider} from '../context/authcontext';
+
+const config = {
+    apiKey: `${process.env.REACT_APP_F}`,
+    authDomain: "wild5-5ca8b.firebaseapp.com",
+    databaseURL: "https://wild5-5ca8b.firebaseio.com",
+    projectId: "wild5-5ca8b",
+    storageBucket: "wild5-5ca8b.appspot.com",
+    messagingSenderId: "714885268112"
+  }
 
 class LoginForm extends Component {
 
@@ -11,6 +21,10 @@ class LoginForm extends Component {
         error: '',
         loading: false
     } 
+
+    componentWillMount(){
+        firebase.initializeApp({config})
+    }
 
     onButtonPress() {
         const { email, password } = this.state
@@ -27,18 +41,27 @@ class LoginForm extends Component {
                 });
     };
 
+    OnRegisterPress(){
+        const { email, password } = this.state;
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(() => {
+            this.onLoginSuccess();
+        })
+        .catch(() => {
+            this.onLoginFail();
+        })
+    }
+
     renderButton() {
         if (this.state.loading) {
-            // return <Spinner size='small' />
-            return <Button>Hi</Button>
+            return <Spinner size='small' />
         } else
         return (
-            <Button>
+            <Button onPress={this.onButtonPress.bind(this)}>
                     Login
             </Button>
         )
     }
-    // onPress={this.onButtonPress.bind(this)
 
     onLoginSuccess() {
         this.setState({
@@ -86,6 +109,12 @@ class LoginForm extends Component {
             <CardSection>
                 {this.renderButton()}
             </CardSection>
+
+            <CardSection>
+                <Button onPress={this.OnRegisterPress.bind(this)}>
+                    Register
+                </Button>
+            </CardSection>
         </Card>
         )
     }
@@ -98,4 +127,4 @@ const styles = {
     }
 }
 
-export default LoginForm
+export default withAuthProvider(LoginForm);
