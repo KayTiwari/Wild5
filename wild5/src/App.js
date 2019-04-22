@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { View, Text } from 'react-native'
+import Router from './Router'
 import { Header, Card, CardSection, Button, Input, Spinner } from './components/common';
 import LoginForm from './components/LoginForm';
 import LoginForm from './components/LoginForm';
@@ -11,8 +12,7 @@ class App extends Component{
         return (
             <AuthProvider>
             <View>
-                <Header text='Wild5'/>
-                <LoginForm />
+              <Router/>
             </View>
             </AuthProvider>
         )
