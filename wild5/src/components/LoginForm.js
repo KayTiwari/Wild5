@@ -127,7 +127,9 @@ class LoginForm extends Component {
             </CardSection>
 
             <CardSection>
+
                 <Button onPress={this.OnRegisterPress.bind(this)}>
+                <Button>
                     Register
                 </Button>
             </CardSection>
