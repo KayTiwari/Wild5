@@ -13,12 +13,12 @@ const Routercomponent = () => {
     <Router>
    <Scene key="root">
         <Scene key="loginform" component={LoginForm} title="Login" initial />
-        <Scene key="landing" component={Landing} />
-          <Scene key="account" component={Account}/>
-          <Scene key="edroadmap" component={EducationWellnessRoadMap}/>
-          <Scene key="kickstart" component={KickStart30}/>
-          <Scene key="learnmore" component={LearnMore}/>
-          <Scene key="quests" component={Quests}/>
+        <Scene key="landing" component={Landing} title='landingpage'/>
+          <Scene key="account" component={Account} title='accountpage'/>
+          <Scene key="edroadmap" component={EducationWellnessRoadMap} title='wellnessroadmap'/>
+          <Scene key="kickstart" component={KickStart30} title='kickstart30'/>
+          <Scene key="learnmore" component={LearnMore} title='learnmorepage'/>
+          <Scene key="quests" component={Quests} title='questpage'/>
     </Scene>
 
     </Router>
