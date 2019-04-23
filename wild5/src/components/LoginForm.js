@@ -44,14 +44,6 @@ class LoginForm extends Component {
     };
 
     OnRegisterPress(){
-        // const { email, password } = this.state;
-        // firebase.auth().createUserWithEmailAndPassword(email, password)
-        // .then(() => {
-        //     this.onLoginSuccess();
-        // })
-        // .catch(() => {
-        //     this.onLoginFail();
-        // })
         if (this.state.modal === false){
         this.setState({
             modal: true
