@@ -8,19 +8,19 @@ class Landing extends Component {
       <View style={styles.container}>
 
       <View style={styles.textCont}>
-      <TouchableOpacity onPress={}>
+      <TouchableOpacity onPress={() => Actions.account()}>
       <Text style={styles.text}>Account</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={}>
+      <TouchableOpacity onPress={() => Actions.edroadmap()}>
       <Text style={styles.text}>Education</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={}>
+      <TouchableOpacity onPress={() => Actions.kickstart()}>
       <Text style={styles.text}>Kickstart30</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={}>
+      <TouchableOpacity onPress={() => Actions.learnmore()}>
       <Text style={styles.text}>Quests</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={}>
+      <TouchableOpacity onPress={() => Actions.quests()}>
       <Text style={styles.text}>Devices</Text>
       </TouchableOpacity>
       </View>
