@@ -8,12 +8,19 @@
   },
   "dependencies": {
     "firebase": "^5.10.0",
+    "proptypes": "^1.1.0",
     "react": "16.8.3",
     "react-native": "0.59.4",
+<<<<<<< Updated upstream
 
     "react-native-router-flux": "^4.0.6"
 
     "react-native-modal": "^9.0.0"
+=======
+    "react-native-button": "^2.3.0",
+    "react-native-modal": "^9.0.0",
+    "react-native-router-flux": "^4.0.6"
+>>>>>>> Stashed changes
   },
   "devDependencies": {
     "@babel/core": "7.4.3",
