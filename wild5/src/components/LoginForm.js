@@ -5,6 +5,7 @@ import firebase from 'firebase'
 import {withAuthProvider} from '../context/authcontext';
 import { Actions } from 'react-native-router-flux';
 import RegisterModal from './RegisterModal';
+import ForgotPassModal from './ForgotPassModal';
 
 
 class LoginForm extends Component {
@@ -14,7 +15,8 @@ class LoginForm extends Component {
         password: '',
         error: '',
         loading: false,
-        modal: false
+        forgot: false,
+        modal: false,
     } 
 
     componentWillMount(){
@@ -54,6 +56,18 @@ class LoginForm extends Component {
             })
         }
     }
+
+    OnForgotPress(){
+        if (this.state.forgot === false){
+            this.setState({
+                forgot: true
+            })
+            } else {
+                this.setState({
+                forgot: false
+                })
+            }
+    }
  
     renderButton() {
         if (this.state.loading) {
@@ -85,6 +99,7 @@ class LoginForm extends Component {
         return (
         <Card>
             {this.state.modal ? <RegisterModal visible={true}/> : null}
+            {this.state.forgot ? <ForgotPassModal visible={true}/> : null}
             <CardSection>
                 <Input
                 placeholder='user@email.com'
@@ -119,6 +134,7 @@ class LoginForm extends Component {
                     Register
                 </Button>
             </CardSection>
+            <Text onPress={this.OnForgotPress.bind(this)} style={{color: 'blue', alignSelf: 'center', marginTop: 10}}>Forgot your password?</Text>
 
         </Card>
         )
