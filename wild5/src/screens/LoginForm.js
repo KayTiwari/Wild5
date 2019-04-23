@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import { Text } from 'react-native';
-import { Button, Card, CardSection, Input, Spinner } from './common';
+import { Button, Card, CardSection, Input, Spinner } from '../components/common';
 import firebase from 'firebase'
 import {withAuthProvider} from '../context/authcontext';
-import RegisterModal from './RegisterModal';
+import { Actions } from 'react-native-router-flux';
+import RegisterModal from '../components/RegisterModal';
+import ForgotPassModal from '../components/ForgotPassModal';
 
 
 class LoginForm extends Component {
@@ -13,8 +15,8 @@ class LoginForm extends Component {
         password: '',
         error: '',
         loading: false,
-        success: '',
-        modal: false
+        forgot: false,
+        modal: false,
     } 
 
     componentWillMount(){
@@ -44,14 +46,6 @@ class LoginForm extends Component {
     };
 
     OnRegisterPress(){
-        // const { email, password } = this.state;
-        // firebase.auth().createUserWithEmailAndPassword(email, password)
-        // .then(() => {
-        //     this.onLoginSuccess();
-        // })
-        // .catch(() => {
-        //     this.onLoginFail();
-        // })
         if (this.state.modal === false){
         this.setState({
             modal: true
@@ -63,6 +57,18 @@ class LoginForm extends Component {
         }
     }
 
+    OnForgotPress(){
+        if (this.state.forgot === false){
+            this.setState({
+                forgot: true
+            })
+            } else {
+                this.setState({
+                forgot: false
+                })
+            }
+    }
+ 
     renderButton() {
         if (this.state.loading) {
             return <Spinner size='small' />
@@ -77,11 +83,9 @@ class LoginForm extends Component {
     onLoginSuccess() {
         this.setState({
             error: '',
-            loading: false,
-            email: '',
-            password: '',
-            success: 'Login Successful!'
+            loading: false
         })
+        Actions.landing();
     }
 
     onLoginFail() {
@@ -94,7 +98,8 @@ class LoginForm extends Component {
     render(){
         return (
         <Card>
-            {this.state.modal ? <RegisterModal /> : null}
+            {this.state.modal ? <RegisterModal visible={true}/> : null}
+            {this.state.forgot ? <ForgotPassModal visible={true}/> : null}
             <CardSection>
                 <Input
                 placeholder='user@email.com'
@@ -118,9 +123,6 @@ class LoginForm extends Component {
             <Text style={styles.errorTextStyle}>
                 {this.state.error}
             </Text>
-            <Text style={styles.successTextStyle}>
-                {this.state.success}
-            </Text>
 
             <CardSection>
                 {this.renderButton()}
@@ -129,10 +131,11 @@ class LoginForm extends Component {
             <CardSection>
 
                 <Button onPress={this.OnRegisterPress.bind(this)}>
-                <Button>
                     Register
                 </Button>
             </CardSection>
+            <Text onPress={this.OnForgotPress.bind(this)} style={{color: 'blue', alignSelf: 'center', marginTop: 10}}>Forgot your password?</Text>
+
         </Card>
         )
     }

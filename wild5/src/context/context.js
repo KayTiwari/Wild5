@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 const { Consumer, Provider } = React.createContext();
 
 export default class GlobalProvider extends Component {

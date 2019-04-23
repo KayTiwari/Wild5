@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet, Text } from "react-native";
 
-const Button = ({ color, onPress, label }) => (
+const ModButton = ({ color, onPress, label }) => (
   <TouchableOpacity
     onPress={onPress}
     style={[styles.button, { backgroundColor: color }]}
@@ -10,19 +10,20 @@ const Button = ({ color, onPress, label }) => (
   </TouchableOpacity>
 );
 
-export default Button;
+export { ModButton };
 
 const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     borderRadius: 4,
     margin: 12,
+    marginLeft: 25,
     width: "80%"
   },
   buttonLabel: {
     color: "white",
     fontSize: 20,
     fontWeight: "500",
-    padding: 12
+    padding: 15
   }
 });

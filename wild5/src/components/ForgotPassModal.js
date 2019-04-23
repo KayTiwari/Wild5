@@ -1,43 +1,43 @@
 import React, { Fragment, Component } from "react";
 import { View, StyleSheet, Text, ScrollView } from "react-native";
-import {ModButton, Input, CardSection, Button } from "./common/"
+import {ModButton, Input, CardSection, Button } from "./common"
 import {withProvider} from '../context/context'
 import { Actions } from 'react-native-router-flux';
 import firebase from 'firebase';
 
 import Modal from "react-native-modal";
 
-class RegisterModal extends Component {
+class ForgotPassModal extends Component {
   state = {
     visible: this.props.visible,
     error: '',
+    success: '',
     email: '',
-    password: ''
   };
-
-  registerUser = () => {
-    const { email, password } = this.state;
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-                .then(() => {
-                    this.onRegisterSuccess();
-                })
-                .catch(() => {
-                    this.onRegisterFail();
-                });
+  forgotPassword = () => {
+    const {email} = this.state;
+    firebase.auth().sendPasswordResetEmail(email)
+      .then(() => {
+        this.setState({
+          success: 'Please check your email',
+          error: ''
+        })
+      }).catch(() => {
+        this.setState({
+          error: 'Something went wrong',
+          success: ''
+        })
+      })
   }
 
-  onRegisterSuccess = () => {
-    this.setState({
-      visible: false
-    })
-    Actions.landing();
-  }
 
-  onRegisterFail = () => {
-    this.setState({
-      error: 'Something went wrong'
-    })
-  }
+  // onForgotsuccess = () => {
+    
+  // }
+
+  // onForgotFail = () => {
+    
+  // }
 
   closeModal = () => this.setState({ visible: false });
   
@@ -54,36 +54,27 @@ class RegisterModal extends Component {
             <ScrollView>
               <Text style={styles.description}>
                 {[
-                  "Hello, Welcome to the Wild5 Wellness App.\n"
+                  "Please Enter Your Account Email\n"
                 ]}
               </Text>
 
               <CardSection>
                 <Input
                 placeholder='Email Address'
-                label='Desired Email'
+                label='Email Address'
                 value={this.state.email}
                 onChangeText={email => this.setState({ email })}
                 
                 />
             </CardSection>
 
-            <CardSection>
-              <Input
-                placeholder='Enter new password'
-                label='Password'
-                value={this.state.password}
-                onChangeText={password => this.setState({ password })}
-                secureTextEntry>
-              </Input>
-            </CardSection>
-
             <Text style={{color: '#F00'}}>{this.state.error}</Text>
+            <Text style={{color: '#BADA55'}}>{this.state.success}</Text>
 
               <ModButton
-                color="#00D774"
+                color="#4BA4E8"
                 label="Submit"
-                onPress={this.registerUser}
+                onPress={this.forgotPassword}
               />
               <ModButton
                 color="#333"
@@ -98,7 +89,7 @@ class RegisterModal extends Component {
   }
 }
 
-export default withProvider(RegisterModal);
+export default withProvider(ForgotPassModal);
 
 const styles = StyleSheet.create({
   modalContainer: {
