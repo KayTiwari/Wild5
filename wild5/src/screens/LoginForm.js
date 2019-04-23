@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { Text } from 'react-native';
-import { Button, Card, CardSection, Input, Spinner } from './common';
+import { Button, Card, CardSection, Input, Spinner } from '../components/common';
 import firebase from 'firebase'
 import {withAuthProvider} from '../context/authcontext';
 import { Actions } from 'react-native-router-flux';
-import RegisterModal from './RegisterModal';
-import ForgotPassModal from './ForgotPassModal';
+import RegisterModal from '../components/RegisterModal';
+import ForgotPassModal from '../components/ForgotPassModal';
 
 
 class LoginForm extends Component {
