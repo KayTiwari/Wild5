@@ -8,7 +8,13 @@ class EducationWellnessRoadMap extends Component {
 
   state = {
     completed: 0,
-    counter: 0
+    counter: 2
+  }
+  componentDidMount(){
+    let count = this.state.counter;
+    this.setState({
+      completed: count*6.5
+    })
   }
 
   render() {
@@ -25,17 +31,27 @@ class EducationWellnessRoadMap extends Component {
                Exercise I 
               </ExerciseButton>
             
-              <Text style={{left: '25%', marginTop: 10}}>
+              {this.state.counter >= 1 ? <View><Text style={{left: '25%', marginTop:-20, fontSize: 50, color: 'gold'}}>
                 .
               </Text>
             
-              <Text style={{left: '25%', marginTop: 10}}>
+              <Text style={{left: '25%', marginTop:-20, fontSize: 50, color: 'gold'}}>
                 .
               </Text>
             
-              <Text style={{left: '25%', marginTop: 10}}>
+              <Text style={{left: '25%', marginTop:-20, fontSize: 50, color: 'gold'}}>
+                .
+              </Text></View> : <View><Text style={{left: '25%', marginTop:-20, fontSize: 50}}>
                 .
               </Text>
+            
+              <Text style={{left: '25%', marginTop:-20, fontSize: 50}}>
+                .
+              </Text>
+            
+              <Text style={{left: '25%', marginTop:-20, fontSize: 50}}>
+                .
+              </Text></View>}
 
             
               {this.state.counter >= 1 ? <MindfulnessButton marginRight={'25%'} marginLeft={'25%'}>
@@ -45,33 +61,43 @@ class EducationWellnessRoadMap extends Component {
               </MindfulnessButton>}
 
             
-              <Text style={{alignSelf: 'center', marginTop: 10}}>
+              { this.state.counter >= 2 ? <View><Text style={{alignSelf: 'center', marginTop:-20, fontSize: 50, color: 'gold'}}>
                 .
               </Text>
             
-              <Text style={{alignSelf: 'center', marginTop: 10}}>
+              <Text style={{alignSelf: 'center', marginTop:-20, fontSize: 50, color: 'gold'}}>
                 .
               </Text>
             
-              <Text style={{alignSelf: 'center', marginTop: 10}}>
+              <Text style={{alignSelf: 'center', marginTop:-20, fontSize: 50, color: 'gold'}}>
+                .
+              </Text></View> : <View><Text style={{alignSelf: 'center', marginTop:-20, fontSize: 50}}>
                 .
               </Text>
+            
+              <Text style={{alignSelf: 'center', marginTop:-20, fontSize: 50}}>
+                .
+              </Text>
+            
+              <Text style={{alignSelf: 'center', marginTop:-20, fontSize: 50}}>
+                .
+              </Text></View> }
 
-              {this.state.counter >= 2 ? <SleepButton marginLeft={'45%'}>
+              {this.state.counter >= 2 ? <SleepButton marginLeft={'50%'}>
                Sleep I 
-              </SleepButton> : <SleepButton disabled={true} marginLeft={'45%'} backgroundColor={'#808080'} borderColor={'#fff'}>
+              </SleepButton> : <SleepButton disabled={true} marginLeft={'50%'} backgroundColor={'#808080'} borderColor={'#fff'}>
                Sleep I 
               </SleepButton>}
 
-              <Text style={{alignSelf: 'center', marginTop: 10}}>
+              <Text style={{alignSelf: 'center', marginTop:-20, fontSize: 50}}>
                 .
               </Text>
             
-              <Text style={{alignSelf: 'center', marginTop: 10}}>
+              <Text style={{alignSelf: 'center', marginTop:-20, fontSize: 50}}>
                 .
               </Text>
             
-              <Text style={{alignSelf: 'center', marginTop: 10}}>
+              <Text style={{alignSelf: 'center', marginTop:-20, fontSize: 50}}>
                 .
               </Text>
 
@@ -82,15 +108,15 @@ class EducationWellnessRoadMap extends Component {
               </SocialButton>}
               
 
-              <Text style={{left: '25%', marginTop: 10}}>
+              <Text style={{left: '25%', marginTop:-20, fontSize: 50}}>
                 .
               </Text>
             
-              <Text style={{left: '25%', marginTop: 10}}>
+              <Text style={{left: '25%', marginTop:-20, fontSize: 50}}>
                 .
               </Text>
             
-              <Text style={{left: '25%', marginTop: 10}}>
+              <Text style={{left: '25%', marginTop:-20, fontSize: 50}}>
                 .
               </Text>
 
