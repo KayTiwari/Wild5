@@ -12,10 +12,10 @@ const Routercomponent = () => {
   return (
     <Router>
    <Scene key="root">
-        <Scene key="loginform" component={LoginForm} title="Login" initial />
+        <Scene key="loginform" component={LoginForm} title="Login" />
         <Scene key="landing" component={Landing} title='landingpage'/>
           <Scene key="account" component={Account} title='accountpage'/>
-          <Scene key="edroadmap" component={EducationWellnessRoadMap} title='wellnessroadmap'/>
+          <Scene key="edroadmap" component={EducationWellnessRoadMap} title='wellnessroadmap' initial/>
           <Scene key="kickstart" component={KickStart30} title='kickstart30'/>
           <Scene key="learnmore" component={LearnMore} title='learnmorepage'/>
           <Scene key="quests" component={Quests} title='questpage'/>
