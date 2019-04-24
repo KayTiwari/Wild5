@@ -12,9 +12,6 @@ class EducationWellnessRoadMap extends Component {
   }
   componentDidMount(){
     let count = this.state.counter;
-    this.setState({
-      completed: count*6.5
-    })
   }
 
   render() {
