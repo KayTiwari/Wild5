@@ -12,6 +12,7 @@ class EducationWellnessRoadMap extends Component {
 
   render() {
     return (
+      <View>
         <ScrollView>
           <CardSection>
             <Text style={{textAlign:'center'}}>
@@ -85,15 +86,84 @@ class EducationWellnessRoadMap extends Component {
                 .
               </Text>
 
-              <NutritionButton marginRight={'50%'}>
+              <NutritionButton marginRight={'50%'} marginTop={10}>
                Nutrition I 
               </NutritionButton>
           </Card>
-        </ScrollView>
 
-        <ScrollView>
-          
+          <Card>
+              <ExerciseButton marginRight={'50%'} marginTop={25}>
+               Exercise II 
+              </ExerciseButton>
+            
+              <Text style={{left: '25%', marginTop: 10}}>
+                .
+              </Text>
+            
+              <Text style={{left: '25%', marginTop: 10}}>
+                .
+              </Text>
+            
+              <Text style={{left: '25%', marginTop: 10}}>
+                .
+              </Text>
+
+            
+              <MindfulnessButton marginRight={'25%'} marginLeft={'25%'}>
+               Mindfulness II 
+              </MindfulnessButton>
+
+            
+              <Text style={{alignSelf: 'center', marginTop: 10}}>
+                .
+              </Text>
+            
+              <Text style={{alignSelf: 'center', marginTop: 10}}>
+                .
+              </Text>
+            
+              <Text style={{alignSelf: 'center', marginTop: 10}}>
+                .
+              </Text>
+
+              <SleepButton marginLeft={'45%'}>
+               Sleep II 
+              </SleepButton>
+
+              <Text style={{alignSelf: 'center', marginTop: 10}}>
+                .
+              </Text>
+            
+              <Text style={{alignSelf: 'center', marginTop: 10}}>
+                .
+              </Text>
+            
+              <Text style={{alignSelf: 'center', marginTop: 10}}>
+                .
+              </Text>
+
+              <SocialButton marginRight={'25%'} marginLeft={'25%'}>
+               Social II 
+              </SocialButton>
+
+              <Text style={{left: '25%', marginTop: 10}}>
+                .
+              </Text>
+            
+              <Text style={{left: '25%', marginTop: 10}}>
+                .
+              </Text>
+            
+              <Text style={{left: '25%', marginTop: 10}}>
+                .
+              </Text>
+
+              <NutritionButton marginRight={'50%'} marginTop={10}>
+               Nutrition II 
+              </NutritionButton>
+          </Card>
         </ScrollView>
+        </View>
     )
   }
 }
