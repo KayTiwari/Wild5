@@ -1,56 +1,77 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { Card, CardSection, Button, ModButton } from '../components/common'
+import { ExerciseButton, MindfulnessButton, NutritionButton, SleepButton, SocialButton } from '../components/roadmapbuttons'
 
 
 class EducationWellnessRoadMap extends Component {
 
   state = {
-
+    completed: 0
   }
 
   render() {
     return (
         <ScrollView>
+          <CardSection>
+            <Text style={{textAlign:'center'}}>
+              Completed: {this.state.completed}%
+            </Text>
+          </CardSection>
           <Card>
-              <Button style={{}}>
+              <ExerciseButton marginRight={'50%'} marginTop={25}>
                Exercise I 
-              </Button>
+              </ExerciseButton>
             
-              <Text>
-                .
-              </Text>
-              .
-            
-              <Text>
+              <Text style={{left: '25%', marginTop: 10}}>
                 .
               </Text>
             
-              <Text>
+              <Text style={{left: '25%', marginTop: 10}}>
+                .
+              </Text>
+            
+              <Text style={{left: '25%', marginTop: 10}}>
                 .
               </Text>
 
             
-              <Button>
+              <MindfulnessButton marginRight={'25%'} marginLeft={'25%'}>
                Mindfulness I 
-              </Button>
+              </MindfulnessButton>
 
             
-              <Text style={{alignSelf: 'center'}}>
+              <Text style={{alignSelf: 'center', marginTop: 10}}>
                 .
               </Text>
             
-              <Text style={{alignSelf: 'center'}}>
+              <Text style={{alignSelf: 'center', marginTop: 10}}>
                 .
               </Text>
             
-              <Text style={{alignSelf: 'center'}}>
+              <Text style={{alignSelf: 'center', marginTop: 10}}>
                 .
               </Text>
 
-              <Button>
+              <SleepButton marginLeft={'45%'}>
                Sleep I 
-              </Button>
+              </SleepButton>
+
+              <Text style={{alignSelf: 'center', marginTop: 10}}>
+                .
+              </Text>
+            
+              <Text style={{alignSelf: 'center', marginTop: 10}}>
+                .
+              </Text>
+            
+              <Text style={{alignSelf: 'center', marginTop: 10}}>
+                .
+              </Text>
+
+              <SocialButton marginRight={'25%'} marginLeft={'25%'}>
+               Social I 
+              </SocialButton>
           </Card>
         </ScrollView>
     )
