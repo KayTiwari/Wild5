@@ -40,7 +40,7 @@ class EducationWellnessRoadMap extends Component {
             
               {this.state.counter >= 1 ? <MindfulnessButton marginRight={'25%'} marginLeft={'25%'}>
                Mindfulness I 
-              </MindfulnessButton> : <MindfulnessButton marginRight={'25%'} marginLeft={'25%'} backgroundColor={'#808080'} borderColor={'#fff'}>
+              </MindfulnessButton> : <MindfulnessButton disabled={true} marginRight={'25%'} marginLeft={'25%'} backgroundColor={'#808080'} borderColor={'#fff'}>
                Mindfulness I 
               </MindfulnessButton>}
 
@@ -59,7 +59,7 @@ class EducationWellnessRoadMap extends Component {
 
               {this.state.counter >= 2 ? <SleepButton marginLeft={'45%'}>
                Sleep I 
-              </SleepButton> : <SleepButton marginLeft={'45%'} backgroundColor={'#808080'} borderColor={'#fff'}>
+              </SleepButton> : <SleepButton disabled={true} marginLeft={'45%'} backgroundColor={'#808080'} borderColor={'#fff'}>
                Sleep I 
               </SleepButton>}
 
@@ -77,7 +77,7 @@ class EducationWellnessRoadMap extends Component {
 
               {this.state.counter >= 3 ? <SocialButton marginRight={'25%'} marginLeft={'25%'}>
                Social I 
-              </SocialButton>: <SocialButton marginRight={'25%'} marginLeft={'25%'} backgroundColor={'#808080'} borderColor={'#fff'}>
+              </SocialButton>: <SocialButton disabled={true} marginRight={'25%'} marginLeft={'25%'} backgroundColor={'#808080'} borderColor={'#fff'}>
                Social I 
               </SocialButton>}
               
@@ -96,12 +96,12 @@ class EducationWellnessRoadMap extends Component {
 
              {this.state.counter >= 4 ? <NutritionButton marginRight={'50%'} marginTop={10}>
                Nutrition I 
-              </NutritionButton> : <NutritionButton marginRight={'50%'} marginTop={10} backgroundColor={'#808080'} borderColor={'#fff'}>
+              </NutritionButton> : <NutritionButton disabled={true} marginRight={'50%'} marginTop={10} backgroundColor={'#808080'} borderColor={'#fff'}>
                Nutrition I 
               </NutritionButton> }
           </Card>
 
-          <Card>
+          {/* <Card>
               <ExerciseButton marginRight={'50%'} marginTop={25}>
                Exercise II 
               </ExerciseButton>
@@ -171,7 +171,7 @@ class EducationWellnessRoadMap extends Component {
               <NutritionButton marginRight={'50%'} marginTop={10}>
                Nutrition II 
               </NutritionButton>
-          </Card>
+          </Card> */}
         </ScrollView>
         </View>
     )

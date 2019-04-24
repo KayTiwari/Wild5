@@ -6,7 +6,7 @@ const ExerciseButton = (props) => {
     const {buttonStyle, textStyle} = styles;
 
     return (
-        <TouchableOpacity onPress={props.onPress} style={[{marginRight: props.marginRight}, {backgroundColor: props.backgroundColor}, {borderColor: props.borderColor}, buttonStyle, {marginLeft: props.marginLeft, marginTop: props.marginTop},]}>
+        <TouchableOpacity disabled={props.disabled} onPress={props.onPress} style={[{marginRight: props.marginRight}, {backgroundColor: props.backgroundColor}, {borderColor: props.borderColor}, buttonStyle, {marginLeft: props.marginLeft, marginTop: props.marginTop},]}>
         <Text style={textStyle}>{props.children}</Text>
         </TouchableOpacity>
     )
