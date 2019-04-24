@@ -72,7 +72,27 @@ class EducationWellnessRoadMap extends Component {
               <SocialButton marginRight={'25%'} marginLeft={'25%'}>
                Social I 
               </SocialButton>
+
+              <Text style={{left: '25%', marginTop: 10}}>
+                .
+              </Text>
+            
+              <Text style={{left: '25%', marginTop: 10}}>
+                .
+              </Text>
+            
+              <Text style={{left: '25%', marginTop: 10}}>
+                .
+              </Text>
+
+              <NutritionButton marginRight={'50%'}>
+               Nutrition I 
+              </NutritionButton>
           </Card>
+        </ScrollView>
+
+        <ScrollView>
+          
         </ScrollView>
     )
   }
