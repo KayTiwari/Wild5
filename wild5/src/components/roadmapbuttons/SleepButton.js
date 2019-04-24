@@ -6,7 +6,7 @@ const SleepButton = (props) => {
     const {buttonStyle, textStyle} = styles;
 
     return (
-        <TouchableOpacity onPress={props.onPress} style={[{marginRight: props.marginRight}, {backgroundColor: props.backgroundColor}, {borderColor: props.borderColor}, buttonStyle, {marginLeft: props.marginLeft}]}>
+        <TouchableOpacity onPress={props.onPress} style={[{marginRight: props.marginRight}, buttonStyle, {backgroundColor: props.backgroundColor || '#ba3992'}, {borderColor: props.borderColor || '#8e2762'}, {marginLeft: props.marginLeft}]}>
         <Text style={textStyle}>{props.children}</Text>
         </TouchableOpacity>
     )

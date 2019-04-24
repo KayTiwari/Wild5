@@ -6,7 +6,7 @@ const SocialButton = (props) => {
     const {buttonStyle, textStyle} = styles;
 
     return (
-        <TouchableOpacity onPress={props.onPress} style={[{marginRight: props.marginRight}, {backgroundColor: props.backgroundColor}, {borderColor: props.borderColor}, buttonStyle, {marginLeft: props.marginLeft}]}>
+        <TouchableOpacity onPress={props.onPress} style={[{marginRight: props.marginRight}, buttonStyle, {backgroundColor: props.backgroundColor || '#ed3833'}, {borderColor: props.borderColor || '#b32824'}, {marginLeft: props.marginLeft}]}>
         <Text style={textStyle}>{props.children}</Text>
         </TouchableOpacity>
     )
