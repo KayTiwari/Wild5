@@ -20,6 +20,7 @@ class EducationWellnessRoadMap extends Component {
               <Text>
                 .
               </Text>
+              .
             
               <Text>
                 .
