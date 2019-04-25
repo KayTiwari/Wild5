@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { Card, CardSection, Button, ModButton } from '../components/common'
 import { ExerciseButton, MindfulnessButton, NutritionButton, SleepButton, SocialButton } from '../components/roadmapbuttons'
+import { Actions } from 'react-native-router-flux';
 
 
 class EducationWellnessRoadMap extends Component {
@@ -27,7 +28,7 @@ class EducationWellnessRoadMap extends Component {
             </Text>
           </CardSection>
           <Card>
-              <ExerciseButton marginRight={'50%'} marginTop={25}>
+              <ExerciseButton onPress={Actions.exercise1()} marginRight={'50%'} marginTop={25}>
                Exercise I 
               </ExerciseButton>
             
