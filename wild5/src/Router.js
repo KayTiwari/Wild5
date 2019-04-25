@@ -7,6 +7,7 @@ import EducationWellnessRoadMap from './screens/EducationWellnessRoadMap';
 import KickStart30 from './screens/KickStart30';
 import LearnMore from './screens/LearnMore';
 import Quests from './screens/Quests';
+import ExerciseI from './screens/lessonscreens/exerciselessons/ExerciseI'
 
 const Routercomponent = () => {
   return (
@@ -19,6 +20,7 @@ const Routercomponent = () => {
           <Scene key="kickstart" component={KickStart30} title='KickStart30'/>
           <Scene key="learnmore" component={LearnMore} title='Learn More'/>
           <Scene key="quests" component={Quests} title='Quests'/>
+          <Scene key="exercise1" component={ExerciseI} title='Exercise I'/>
     </Scene>
 
     </Router>
