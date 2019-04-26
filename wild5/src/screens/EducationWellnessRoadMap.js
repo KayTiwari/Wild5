@@ -28,7 +28,7 @@ class EducationWellnessRoadMap extends Component {
             </Text>
           </CardSection>
           <Card>
-              <ExerciseButton onPress={Actions.exercise1()} marginRight={'50%'} marginTop={25}>
+              <ExerciseButton onPress={1} marginRight={'50%'} marginTop={25}>
                Exercise I 
               </ExerciseButton>
             

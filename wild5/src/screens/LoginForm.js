@@ -4,7 +4,7 @@ import { Button, Card, CardSection, Input, Spinner } from '../components/common'
 import firebase from 'firebase'
 import {withAuthProvider} from '../context/authcontext';
 import { Actions } from 'react-native-router-flux';
-import RegisterModal from '../components/RegisterModal';
+import RegisterModal from '../modals/RegisterModal';
 import ForgotPassModal from '../modals/ForgotPassModal';
 
 
