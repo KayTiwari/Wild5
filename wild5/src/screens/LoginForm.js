@@ -5,7 +5,7 @@ import firebase from 'firebase'
 import {withAuthProvider} from '../context/authcontext';
 import { Actions } from 'react-native-router-flux';
 import RegisterModal from '../components/RegisterModal';
-import ForgotPassModal from '../components/ForgotPassModal';
+import ForgotPassModal from '../modals/ForgotPassModal';
 
 
 class LoginForm extends Component {
