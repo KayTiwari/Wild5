@@ -18,6 +18,16 @@ class TrackingForm extends Component{
         nutrition: '',
         HERO: ''
     }
+    componentWillMount(){
+        firebase.initializeApp({
+            apiKey: "AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o",
+            authDomain: "wild5-5ca8b.firebaseapp.com",
+            databaseURL: "https://wild5-5ca8b.firebaseio.com",
+            projectId: "wild5-5ca8b",
+            storageBucket: "wild5-5ca8b.appspot.com",
+            messagingSenderId: "714885268112"
+          })
+    }
 
     submitForm(){
         const { exercise, mindfulness, sleep, connectedness, nutrition, HERO } = state;
