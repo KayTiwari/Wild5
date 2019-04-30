@@ -13,14 +13,12 @@ class TrackingForm extends Component{
     
 
     render(){
-        let screenwidth = Dimensions.get('window').width;
         let screenheight = Dimensions.get('window').height;
         return (
             <ScrollView pagingEnabled={true}>
             <View style={{
                     backgroundColor: '#333',
                     flex: 1,
-                    width: screenwidth,
                     height: screenheight,
                     justifyContent: 'center',
                     alignItems: 'center'
@@ -42,7 +40,6 @@ class TrackingForm extends Component{
                 <View style={{
                     backgroundColor: '#5f9ea0',
                     flex: 1,
-                    width: screenwidth,
                     height: screenheight,
                     justifyContent: 'center',
                     alignItems: 'center'
