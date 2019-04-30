@@ -14,10 +14,10 @@ const Routercomponent = () => {
   return (
     <Router>
    <Scene key="root">
-        <Scene key="loginform" component={LoginForm} title="Login" />
+        <Scene key="loginform" component={LoginForm} title="Login" initial/>
         <Scene key="landing" component={Landing} title='Landing'/>
           <Scene key="account" component={Account} title='accountpage'/>
-          <Scene key="edroadmap" component={EducationWellnessRoadMap} title='Wellness Roadmap' initial/>
+          <Scene key="edroadmap" component={EducationWellnessRoadMap} title='Wellness Roadmap'/>
           <Scene key="kickstart" component={KickStart30} title='KickStart30'/>
           <Scene key="learnmore" component={LearnMore} title='Learn More'/>
           <Scene key="quests" component={Quests} title='Quests'/>
