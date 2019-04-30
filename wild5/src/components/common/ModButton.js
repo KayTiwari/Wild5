@@ -6,7 +6,7 @@ const ModButton = ({ color, onPress, label }) => (
     onPress={onPress}
     style={[styles.button, { backgroundColor: color }]}
   >
-    <Text style={styles.buttonLabel}>{label.toUpperCase()}</Text>
+    <Text style={styles.buttonLabel}>{label}</Text>
   </TouchableOpacity>
 );
 
