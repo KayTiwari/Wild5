@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import { View, Text, ScrollView, Dimensions } from 'react-native';
 import { Button, ModButton } from '../components/common'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import firebase from 'firebase'
 
 
 var radio_props = [
+    {label: 'No', value: 0 },
     {label: 'Yes', value: 1 },
-    {label: 'No', value: 0 }
   ];
 class TrackingForm extends Component{
     state = {
@@ -16,6 +17,23 @@ class TrackingForm extends Component{
         connectedness: '',
         nutrition: '',
         HERO: ''
+    }
+
+    submitForm(exercise, mindfulness, sleep, connectedness, nutrition, HERO){
+        firebase.database().ref('UsersList/').push({
+            exercise,
+            mindfulness,
+            sleep,
+            connectedness,
+            nutrition,
+            HERO
+        }).then((data)=>{
+            //success callback
+            console.log('data has been sent successfully' , data)
+        }).catch((error)=>{
+            //error callback
+            console.log('error occurred' , error)
+        })
     }
     
 
@@ -259,7 +277,7 @@ class TrackingForm extends Component{
                     textAlign: 'center',
                     color: 'white'}}>Your input today will help with your Wellness tomorrow</Text>
 
-                <ModButton label="Submit">
+                <ModButton onClick={this.submitForm.bind(this)} label="Submit">
                     Submit
                 </ModButton>
                 </View>
