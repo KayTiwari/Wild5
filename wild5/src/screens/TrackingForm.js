@@ -18,7 +18,7 @@ class TrackingForm extends Component{
         return (
             <ScrollView pagingEnabled={true}>
             <View style={{
-                    backgroundColor: '#36A0B3',
+                    backgroundColor: '#333',
                     flex: 1,
                     width: screenwidth,
                     height: screenheight,
