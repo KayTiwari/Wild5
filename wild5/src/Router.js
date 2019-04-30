@@ -11,7 +11,8 @@ import Profile from './screens/accountmenu/Profile'
 import Help from './screens/accountmenu/Help'
 import About from './screens/accountmenu/About'
 import FAQ from './screens/accountmenu/FAQ'
-
+import TrackingForm from './screens/TrackingForm';
+import ExerciseI from './screens/lessonscreens/exerciselessons/ExerciseI'
 
 const Routercomponent = () => {
   return (
@@ -28,7 +29,8 @@ const Routercomponent = () => {
           <Scene key='help' component={Help}/>
           <Scene key='about' component={About}/>
           <Scene key='faq' component={FAQ}/>
-
+          <Scene key="exercise1" component={ExerciseI} title='Exercise I'/>
+          <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' />
     </Scene>
 
     </Router>

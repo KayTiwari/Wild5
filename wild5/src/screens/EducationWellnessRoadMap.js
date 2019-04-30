@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { Card, CardSection, Button, ModButton } from '../components/common'
-import { ExerciseButton, MindfulnessButton, NutritionButton, SleepButton, SocialButton } from '../components/roadmapbuttons'
+import { ExerciseButton, MindfulnessButton, NutritionButton, SleepButton, SocialButton, TrackingformButton } from '../components/roadmapbuttons'
+import { Actions } from 'react-native-router-flux';
+import { withProvider } from '../context/context';
 
 
 class EducationWellnessRoadMap extends Component {
 
   state = {
     completed: 0,
-    counter: 2
+    counter: 0
   }
   componentDidMount(){
     let count = this.state.counter;
@@ -27,7 +29,11 @@ class EducationWellnessRoadMap extends Component {
             </Text>
           </CardSection>
           <Card>
-              <ExerciseButton marginRight={'50%'} marginTop={25}>
+              <TrackingformButton onPress={() => Actions.trackingform()} marginRight={'25%'} marginLeft={'25%'}>
+              Wellness Tracking
+              </TrackingformButton>
+
+              <ExerciseButton onPress={() => Actions.exercise1()} marginRight={'50%'} marginTop={25}>
                Exercise I 
               </ExerciseButton>
             
@@ -204,4 +210,4 @@ class EducationWellnessRoadMap extends Component {
   }
 }
 
-export default EducationWellnessRoadMap
+export default withProvider(EducationWellnessRoadMap);
