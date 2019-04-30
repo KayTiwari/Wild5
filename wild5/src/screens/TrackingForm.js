@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Dimensions } from 'react-native';
 
 class TrackingForm extends Component{
     state = {
@@ -10,13 +10,56 @@ class TrackingForm extends Component{
         nutrition: '',
         HERO: ''
     }
+    
 
     render(){
+        let screenwidth = Dimensions.get('window').width;
+        let screenheight = Dimensions.get('window').height;
         return (
             <ScrollView pagingEnabled={true}>
-            <View>
-                <Text>Enter your answer</Text>
-            </View>
+            <View style={{
+                    backgroundColor: '#5f9ea0',
+                    flex: 1,
+                    width: screenwidth,
+                    height: screenheight,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                <Text style={{
+                    fontSize: 30,
+                    padding: 50,
+                    textAlign: 'center',
+                    color: 'white'
+                    }}>Exercise Lesson I</Text>
+                    <Text style={{
+                    fontSize: 40,
+                    padding: 15,
+                    marginBottom: 200,
+                    textAlign: 'center',
+                    color: 'white'}}>FID</Text>
+                </View>
+
+                <View style={{
+                    backgroundColor: '#5f9ea0',
+                    flex: 1,
+                    width: screenwidth,
+                    height: screenheight.
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                <Text style={{
+                    fontSize: 30,
+                    padding: 50,
+                    textAlign: 'center',
+                    color: 'white'
+                    }}>Exercise Lesson I</Text>
+                    <Text style={{
+                    fontSize: 40,
+                    padding: 15,
+                    marginBottom: 200,
+                    textAlign: 'center',
+                    color: 'white'}}>FID</Text>
+                </View>
             </ScrollView>
         )
     }
