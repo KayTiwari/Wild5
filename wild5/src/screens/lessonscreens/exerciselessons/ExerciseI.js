@@ -102,6 +102,30 @@ class ExerciseI extends Component{
                     color: 'white'}}>Duration of exercise requires that we exercise at least 30-minutes per day. If you
                     want to exercise more, please do. </Text>
                 </View>
+
+
+                <View style={{
+                    backgroundColor: 'yellow',
+                    flex: 1,
+                    width: screenwidth,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                <Text style={{
+                    fontSize: 40,
+                    fontWeight: '700',
+                    padding: 50,
+                    textAlign: 'center',
+                    color: 'white'
+                    }}>Lesson Completed</Text>
+                    <Text style={{
+                    fontSize: 30,
+                    padding: 15,
+                    fontWeight: '600',
+                    marginBottom: 200,
+                    textAlign: 'center',
+                    color: 'white'}}>Feel free to review what you learned or move on to the next lesson </Text>
+                </View>
         </ScrollView>
     )
     }
