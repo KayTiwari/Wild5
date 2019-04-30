@@ -19,8 +19,9 @@ class TrackingForm extends Component{
         HERO: ''
     }
 
-    submitForm(exercise, mindfulness, sleep, connectedness, nutrition, HERO){
-        firebase.database().ref('UsersList/').push({
+    submitForm(){
+        const { exercise, mindfulness, sleep, connectedness, nutrition, HERO } = state;
+        firebase.database().ref('WellnessTrackingForm').set({
             exercise,
             mindfulness,
             sleep,
