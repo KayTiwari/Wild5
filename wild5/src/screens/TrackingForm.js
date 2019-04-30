@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { View, Text, ScrollView, Dimensions } from 'react-native';
+import { Button, ModButton } from '../components/common'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 
@@ -235,6 +236,32 @@ class TrackingForm extends Component{
                     animation={true}
                     onPress={(value) => {this.setState({HERO:value})}}
                     />
+                </View>
+
+                <View style={{
+                    backgroundColor: 'gold',
+                    flex: 1,
+                    height: screenheight,
+                    width: screenwidth,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                <Text style={{
+                    fontSize: 40,
+                    padding: 50,
+                    textAlign: 'center',
+                    color: 'white'
+                    }}>Thanks</Text>
+                    <Text style={{
+                    fontSize: 30,
+                    padding: 15,
+                    marginBottom: 150,
+                    textAlign: 'center',
+                    color: 'white'}}>Your input today will help with your Wellness tomorrow</Text>
+
+                <ModButton label="Submit">
+                    Submit
+                </ModButton>
                 </View>
             </ScrollView>
         )
