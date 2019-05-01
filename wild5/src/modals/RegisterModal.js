@@ -87,7 +87,7 @@ class RegisterModal extends Component {
               />
               <ModButton
                 color="#333"
-                label="Close Modal"
+                label="Close"
                 onPress={this.closeModal}
               />
             </ScrollView>

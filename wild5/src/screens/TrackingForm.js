@@ -3,6 +3,7 @@ import { View, Text, ScrollView, Dimensions } from 'react-native';
 import { Button, ModButton } from '../components/common'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import firebase from 'firebase'
+import { Actions } from 'react-native-router-flux';
 
 
 var radio_props = [
@@ -11,28 +12,36 @@ var radio_props = [
   ];
 class TrackingForm extends Component{
     state = {
-        exercise: '',
-        mindfulness: '',
-        sleep: '',
-        connectedness: '',
-        nutrition: '',
-        HERO: ''
+        exercise: 0,
+        mindfulness: 0,
+        sleep: 0,
+        connectedness: 0,
+        nutrition: 0,
+        HERO: 0
     }
+    // componentWillMount(){
+    //     firebase.initializeApp({
+    //         apiKey: "AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o",
+    //         authDomain: "wild5-5ca8b.firebaseapp.com",
+    //         databaseURL: "https://wild5-5ca8b.firebaseio.com",
+    //         projectId: "wild5-5ca8b",
+    //         storageBucket: "wild5-5ca8b.appspot.com",
+    //         messagingSenderId: "714885268112"
+    //       })
+    // }
 
-    submitForm(exercise, mindfulness, sleep, connectedness, nutrition, HERO){
-        firebase.database().ref('UsersList/').push({
-            exercise,
-            mindfulness,
-            sleep,
-            connectedness,
-            nutrition,
-            HERO
+    submitForm(){
+        let { exercise, mindfulness, sleep, connectedness, nutrition, HERO } = this.state;
+        firebase.database().ref('WellnessTrackingForm/001').set({
+            state
         }).then((data)=>{
             //success callback
             console.log('data has been sent successfully' , data)
+            Actions.edroadmap();
         }).catch((error)=>{
             //error callback
             console.log('error occurred' , error)
+            Actions.exercise1();
         })
     }
     
@@ -92,7 +101,7 @@ class TrackingForm extends Component{
                     labelHorizontal={true}
                     buttonColor={'#5a8f30'}
                     animation={true}
-                    onPress={(value) => {this.setState({exercise:value})}}
+                    onPress={(value) => {this.setState({exercise: value})}}
                     />
                 </View>
 
@@ -277,7 +286,7 @@ class TrackingForm extends Component{
                     textAlign: 'center',
                     color: 'white'}}>Your input today will help with your Wellness tomorrow</Text>
 
-                <ModButton onClick={this.submitForm.bind(this)} label="Submit">
+                <ModButton onPress={this.submitForm} label="Submit">
                     Submit
                 </ModButton>
                 </View>

@@ -25,7 +25,7 @@ const Routercomponent = () => {
           <Scene key="kickstart" component={KickStart30} title='KickStart30'/>
           <Scene key="learnmore" component={LearnMore} title='Learn More'/>
           <Scene key="quests" component={Quests} title='Quests'/>
-          <Scene key='profile' component={Profile} />
+          <Scene key='profile' component={Profile}/>
           <Scene key='help' component={Help}/>
           <Scene key='about' component={About}/>
           <Scene key='faq' component={FAQ}/>
