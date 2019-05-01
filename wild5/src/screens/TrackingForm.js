@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { View, Text, ScrollView, Dimensions } from 'react-native';
 import { Button, ModButton } from '../components/common'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
-import firebase from 'firebase'
 import { Actions } from 'react-native-router-flux';
+import firebase  from 'firebase'
 
 
 var radio_props = [
@@ -11,39 +11,27 @@ var radio_props = [
     {label: 'Yes', value: 1 },
   ];
 class TrackingForm extends Component{
+
     state = {
         exercise: 0,
         mindfulness: 0,
         sleep: 0,
         connectedness: 0,
         nutrition: 0,
-        HERO: 0
+        HERO: 0,
     }
-    // componentWillMount(){
-    //     firebase.initializeApp({
-    //         apiKey: "AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o",
-    //         authDomain: "wild5-5ca8b.firebaseapp.com",
-    //         databaseURL: "https://wild5-5ca8b.firebaseio.com",
-    //         projectId: "wild5-5ca8b",
-    //         storageBucket: "wild5-5ca8b.appspot.com",
-    //         messagingSenderId: "714885268112"
-    //       })
-    // }
 
-    submitForm(){
-        let { exercise, mindfulness, sleep, connectedness, nutrition, HERO } = this.state;
-        firebase.database().ref('WellnessTrackingForm/001').set({
-            state
-        }).then((data)=>{
-            //success callback
-            console.log('data has been sent successfully' , data)
-            Actions.edroadmap();
-        }).catch((error)=>{
-            //error callback
-            console.log('error occurred' , error)
-            Actions.exercise1();
-        })
-    }
+    submitForm(userId){
+        // const { exercise, mindfulness, sleep, connectedness, nutrition, HERO } = this.state;
+        firebase.database().ref('WellnessTrackingForm/').set({
+            exercise: 7,
+            mindfulness: 7,
+            sleep: 7,
+            connectedness: 7,
+            nutrition: 7,
+            HERO: 7
+          });
+        }
     
 
     render(){
