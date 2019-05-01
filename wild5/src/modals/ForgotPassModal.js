@@ -54,7 +54,7 @@ class ForgotPassModal extends Component {
             <ScrollView>
               <Text style={styles.description}>
                 {[
-                  "Please Enter Your Account Email\n"
+                  "Enter Your Account Email\n"
                 ]}
               </Text>
 
@@ -71,6 +71,7 @@ class ForgotPassModal extends Component {
             <Text style={{color: '#F00'}}>{this.state.error}</Text>
             <Text style={{color: '#BADA55'}}>{this.state.success}</Text>
 
+            <View style={{marginTop: 30}}>
               <ModButton
                 color="#4BA4E8"
                 label="Submit"
@@ -78,9 +79,10 @@ class ForgotPassModal extends Component {
               />
               <ModButton
                 color="#333"
-                label="Close Modal"
+                label="Close"
                 onPress={this.closeModal}
               />
+              </View>
             </ScrollView>
           </View>
         </Modal>
@@ -96,7 +98,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#DCDCDC",
+    backgroundColor: "#333",
     borderRadius: 4,
     borderColor: "#C0C0C0",
     borderWidth: 2,
@@ -106,6 +108,7 @@ const styles = StyleSheet.create({
   description: {
     paddingHorizontal: 20,
     paddingVertical: 40,
-    fontSize: 18
+    fontSize: 18,
+    color: 'white'
   }
 });

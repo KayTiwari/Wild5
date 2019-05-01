@@ -54,7 +54,7 @@ class RegisterModal extends Component {
             <ScrollView>
               <Text style={styles.description}>
                 {[
-                  "Hello, Welcome to the Wild5 Wellness App.\n"
+                  "Welcome to the Wild5 Wellness App.\n"
                 ]}
               </Text>
 
@@ -68,7 +68,8 @@ class RegisterModal extends Component {
                 />
             </CardSection>
 
-            <CardSection>
+            <View style={{marginTop: 20}}>
+            <CardSection >
               <Input
                 placeholder='Enter new password'
                 label='Password'
@@ -77,11 +78,13 @@ class RegisterModal extends Component {
                 secureTextEntry>
               </Input>
             </CardSection>
+            </View>
 
-            <Text style={{color: '#F00'}}>{this.state.error}</Text>
+            <Text style={{color: '#F00', alignSelf:'center'}}>{this.state.error}</Text>
 
+              <View style={{marginTop: 30}}>
               <ModButton
-                color="#00D774"
+                color="purple"
                 label="Submit"
                 onPress={this.registerUser}
               />
@@ -90,6 +93,7 @@ class RegisterModal extends Component {
                 label="Close"
                 onPress={this.closeModal}
               />
+              </View>
             </ScrollView>
           </View>
         </Modal>
@@ -105,7 +109,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#DCDCDC",
+    backgroundColor: "#333",
     borderRadius: 4,
     borderColor: "#C0C0C0",
     borderWidth: 2,
@@ -115,6 +119,7 @@ const styles = StyleSheet.create({
   description: {
     paddingHorizontal: 20,
     paddingVertical: 40,
-    fontSize: 18
+    fontSize: 18,
+    color: 'white'
   }
 });
