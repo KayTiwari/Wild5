@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import { Text, ImageBackground } from 'react-native';
+import { Text, ImageBackground, View, Image } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner } from '../components/common';
 import firebase from 'firebase'
 import {withAuthProvider} from '../context/authcontext';
 import { Actions } from 'react-native-router-flux';
 import RegisterModal from '../modals/RegisterModal';
 import ForgotPassModal from '../modals/ForgotPassModal';
-import abstractimg from '/Users/abhiktiwari/dev/wild5/wild5/src/images/abstracttitle.jpeg'
+import abstractimg from '/Users/abhiktiwari/dev/wild5/wild5/src/images/abstract2.jpeg'
+import wild5title from '/Users/abhiktiwari/dev/wild5/wild5/src/images/wild-5-logo-r-color.png'
 
 
 class LoginForm extends Component {
@@ -98,10 +99,13 @@ class LoginForm extends Component {
 
     render(){
         return (
-            <ImageBackground source={abstractimg}>
-        <Card>
+            <View>
+            <ImageBackground source={abstractimg} style={{width: '100%', height: '100%'}}>
+            <View style={{width: '80%', marginLeft: '10%'}}><Image source={wild5title} style={{width: '100%', resizeMode:'contain'}} /></View>
             {this.state.modal ? <RegisterModal visible={true}/> : null}
             {this.state.forgot ? <ForgotPassModal visible={true}/> : null}
+            
+            <View style={{marginTop: 70, width: '90%', marginLeft: '5%'}}>
             <CardSection>
                 <Input
                 placeholder='user@email.com'
@@ -111,7 +115,9 @@ class LoginForm extends Component {
                 
                 />
             </CardSection>
-
+            </View>
+            
+            <View style={{marginTop: 10, width: '90%', marginLeft: '5%'}}>
             <CardSection>
             <Input
                 placeholder='Enter your password'
@@ -121,6 +127,7 @@ class LoginForm extends Component {
                 secureTextEntry
                 />
             </CardSection>
+            </View>
 
             <Text style={styles.errorTextStyle}>
                 {this.state.error}
@@ -138,8 +145,8 @@ class LoginForm extends Component {
             </CardSection>
             <Text onPress={this.OnForgotPress.bind(this)} style={{color: 'blue', alignSelf: 'center', marginTop: 10}}>Forgot your password?</Text>
 
-        </Card>
         </ImageBackground>
+        </View>
         )
     }
 }
