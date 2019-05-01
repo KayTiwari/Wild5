@@ -11,7 +11,7 @@ import wild5title from '/Users/abhiktiwari/dev/wild5/wild5/src/images/wild-5-log
 
 
 class LoginForm extends Component {
-
+    
     state = {
         email: '',
         password: '',
@@ -30,6 +30,7 @@ class LoginForm extends Component {
             storageBucket: "wild5-5ca8b.appspot.com",
             messagingSenderId: "714885268112"
           })
+          
     }
 
     onButtonPress() {
