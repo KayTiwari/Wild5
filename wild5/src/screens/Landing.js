@@ -3,12 +3,16 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 
 class Landing extends Component {
+  state= {
+    account: 0
+  }
+
   render() {
     return (
       <View style={styles.container}>
-
+      {this.state.account === 0 ?
       <View style={styles.textCont}>
-      <TouchableOpacity onPress={() => Actions.account()}>
+      <TouchableOpacity onPress={() => this.setState({account: 1})}>
       <Text style={styles.text}>Account</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => Actions.edroadmap()}>
@@ -24,6 +28,24 @@ class Landing extends Component {
       <Text style={styles.text}>Devices</Text>
       </TouchableOpacity>
       </View>
+      :
+      <View style={styles.textCont}>
+      <TouchableOpacity onPress={() => this.setState({account: 0})}>
+      <Text style={styles.text}>Home</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => Actions.profile()}>
+      <Text style={styles.text}>Profile</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => Actions.help()}>
+      <Text style={styles.text}>Help</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => Actions.feedback()}>
+      <Text style={styles.text}>Feedback</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => Actions.settings()}>
+      <Text style={styles.text}>Settings</Text>
+      </TouchableOpacity>
+      </View>}
       </View>
     )
   }
