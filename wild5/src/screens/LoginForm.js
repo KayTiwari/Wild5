@@ -144,7 +144,7 @@ class LoginForm extends Component {
             </View>
 
 
-            <Text onPress={this.OnForgotPress.bind(this)} style={{color: 'blue', alignSelf: 'center', marginTop: 10}}>Forgot your password?</Text>
+            <Text onPress={this.OnForgotPress.bind(this)} style={{color: 'white', alignSelf: 'center', marginTop: 10}}>Forgot your password?</Text>
 
         </ImageBackground>
         </View>
