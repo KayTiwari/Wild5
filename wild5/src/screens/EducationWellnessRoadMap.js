@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, ImageBackground } from 'react-native';
 import { Card, CardSection, Button, ModButton } from '../components/common'
 import { ExerciseButton, MindfulnessButton, NutritionButton, SleepButton, SocialButton, TrackingformButton } from '../components/roadmapbuttons'
 import { Actions } from 'react-native-router-flux';
 import { withProvider } from '../context/context';
+import background1 from '/Users/abhiktiwari/dev/wild5/wild5/src/images/background1.jpeg'
 
 
 class EducationWellnessRoadMap extends Component {
@@ -21,6 +22,7 @@ class EducationWellnessRoadMap extends Component {
 
   render() {
     return (
+      <ImageBackground source={background1} style={{width: '100%', height: '100%'}}>
       <View>
         <ScrollView>
           <CardSection>
@@ -28,7 +30,6 @@ class EducationWellnessRoadMap extends Component {
               Completed: {this.state.completed}%
             </Text>
           </CardSection>
-          <Card>
               <TrackingformButton onPress={() => Actions.trackingform()} marginRight={'25%'} marginLeft={'25%'}>
               Wellness Tracking
               </TrackingformButton>
@@ -131,7 +132,6 @@ class EducationWellnessRoadMap extends Component {
               </NutritionButton> : <NutritionButton disabled={true} marginRight={'50%'} marginTop={10} backgroundColor={'#808080'} borderColor={'#fff'}>
                Nutrition I 
               </NutritionButton> }
-          </Card>
 
           {/* <Card>
               <ExerciseButton marginRight={'50%'} marginTop={25}>
@@ -206,6 +206,7 @@ class EducationWellnessRoadMap extends Component {
           </Card> */}
         </ScrollView>
         </View>
+        </ImageBackground>
     )
   }
 }

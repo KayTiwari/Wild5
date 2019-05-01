@@ -86,7 +86,9 @@ class LoginForm extends Component {
     onLoginSuccess() {
         this.setState({
             error: '',
-            loading: false
+            loading: false,
+            email: '',
+            password: ''
         })
         Actions.landing();
     }
