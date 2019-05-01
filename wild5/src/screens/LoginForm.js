@@ -102,7 +102,7 @@ class LoginForm extends Component {
         return (
             <View>
             <ImageBackground source={abstractimg} style={{width: '100%', height: '100%'}}>
-            <View style={{width: '80%', marginLeft: '10%'}}><Image source={wild5title} style={{width: '100%', resizeMode:'contain'}} /></View>
+            <View style={{width: '80%', marginLeft: '10%', marginTop: 70}}><Image source={wild5title} style={{width: '100%', resizeMode:'contain'}} /></View>
             {this.state.modal ? <RegisterModal visible={true}/> : null}
             {this.state.forgot ? <ForgotPassModal visible={true}/> : null}
             
@@ -133,16 +133,17 @@ class LoginForm extends Component {
             </CardSection>
             </View>
 
-            <CardSection>
+            <View style={{height: '5%', width: '80%', alignSelf:'center', marginTop: 30}}>
                 {this.renderButton()}
-            </CardSection>
+            </View>
 
-            <CardSection>
-
-                <Button onPress={this.OnRegisterPress.bind(this)}>
+            <View style={{height: '5%', width: '80%', alignSelf:'center', marginTop: 20}}>
+            <Button onPress={this.OnRegisterPress.bind(this)}>
                     Register
-                </Button>
-            </CardSection>
+            </Button>
+            </View>
+
+
             <Text onPress={this.OnForgotPress.bind(this)} style={{color: 'blue', alignSelf: 'center', marginTop: 10}}>Forgot your password?</Text>
 
         </ImageBackground>
