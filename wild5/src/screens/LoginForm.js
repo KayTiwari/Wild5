@@ -92,7 +92,7 @@ class LoginForm extends Component {
 
     onLoginFail() {
         this.setState({
-            error: 'Authentication failed',
+            error: 'Authentication failed, try again?',
             loading: false
         })
     }
@@ -106,6 +106,9 @@ class LoginForm extends Component {
             {this.state.forgot ? <ForgotPassModal visible={true}/> : null}
             
             <View style={{marginTop: 70, width: '90%', marginLeft: '5%'}}>
+            <Text style={styles.errorTextStyle}>
+                {this.state.error}
+            </Text>
             <CardSection>
                 <Input
                 placeholder='user@email.com'
@@ -129,10 +132,6 @@ class LoginForm extends Component {
             </CardSection>
             </View>
 
-            <Text style={styles.errorTextStyle}>
-                {this.state.error}
-            </Text>
-
             <CardSection>
                 {this.renderButton()}
             </CardSection>
@@ -154,7 +153,7 @@ const styles = {
     errorTextStyle: {
         fontSize: 20,
         alignSelf: 'center',
-        color: '#F00'
+        color: 'white'
     },
     successTextStyle: {
         fontSize: 20,
