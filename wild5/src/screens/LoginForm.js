@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import { Text } from 'react-native';
+import { Text, ImageBackground } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner } from '../components/common';
 import firebase from 'firebase'
 import {withAuthProvider} from '../context/authcontext';
 import { Actions } from 'react-native-router-flux';
 import RegisterModal from '../modals/RegisterModal';
 import ForgotPassModal from '../modals/ForgotPassModal';
+import abstractimg from '/Users/abhiktiwari/dev/wild5/wild5/src/images/abstracttitle.jpeg'
 
 
 class LoginForm extends Component {
@@ -97,6 +98,7 @@ class LoginForm extends Component {
 
     render(){
         return (
+            <ImageBackground source={abstractimg}>
         <Card>
             {this.state.modal ? <RegisterModal visible={true}/> : null}
             {this.state.forgot ? <ForgotPassModal visible={true}/> : null}
@@ -137,6 +139,7 @@ class LoginForm extends Component {
             <Text onPress={this.OnForgotPress.bind(this)} style={{color: 'blue', alignSelf: 'center', marginTop: 10}}>Forgot your password?</Text>
 
         </Card>
+        </ImageBackground>
         )
     }
 }
