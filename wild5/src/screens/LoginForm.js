@@ -6,8 +6,8 @@ import {withAuthProvider} from '../context/authcontext';
 import { Actions } from 'react-native-router-flux';
 import RegisterModal from '../modals/RegisterModal';
 import ForgotPassModal from '../modals/ForgotPassModal';
-import abstractimg from '/Users/abhiktiwari/dev/wild5/wild5/src/images/abstract2.jpeg'
-import wild5title from '/Users/abhiktiwari/dev/wild5/wild5/src/images/wild-5-logo-r-color.png'
+import abstractimg from '/Users/bill/dev/React_native/Wild5/Wild5/wild5/src/images/abstract2.jpeg'
+import wild5title from '/Users/bill/dev/React_native/Wild5/Wild5/wild5/src/images/wild-5-logo-r-color.png'
 
 
 class LoginForm extends Component {
