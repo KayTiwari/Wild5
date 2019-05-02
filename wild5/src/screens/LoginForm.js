@@ -8,6 +8,7 @@ import RegisterModal from '../modals/RegisterModal';
 import ForgotPassModal from '../modals/ForgotPassModal';
 import abstractimg from '/Users/abhiktiwari/dev/wild5/wild5/src/images/abstract2.jpeg'
 import wild5title from '/Users/abhiktiwari/dev/wild5/wild5/src/images/wild-5-logo-r-color.png'
+// import console = require('console');
 
 
 class LoginForm extends Component {
@@ -25,6 +26,7 @@ class LoginForm extends Component {
 
     onButtonPress() {
         const { email, password } = this.state
+        console.log(this);
         this.setState({
             error: '',
             loading: true
@@ -33,7 +35,8 @@ class LoginForm extends Component {
             .then(() => {
                 this.onLoginSuccess();
             })
-            .catch(() => {
+            .catch((err) => {
+                console.log(err)
                     this.onLoginFail();
                 });
     };

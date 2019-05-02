@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import firebase from 'firebase';
 const { Consumer, Provider } = React.createContext();
 
 
@@ -6,7 +7,6 @@ const { Consumer, Provider } = React.createContext();
 export default class AuthProvider extends Component {
     state = {
       email: '',
-      password: ''
     }
 
     componentWillMount(){
@@ -21,11 +21,20 @@ export default class AuthProvider extends Component {
         
   }
 
+  setEmail = (email) => {
+    this.setState({
+      email: email
+    })
+    console.log('fired');
+    console.log(this.state);
+  }
+
     
 
     render() {
         return (
           <Provider value={{
+            setEmail: this.setEmail,
             ...this.state
           }}>
             {this.props.children}
