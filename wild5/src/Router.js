@@ -19,18 +19,18 @@ const Routercomponent = () => {
     <Router>
    <Scene key="root">
     <Scene key="loginform" component={LoginForm} header={null} initial/>
-        <Scene key="landing" component={Landing} title='Landing' backTitle='Logout'/>
-          <Scene key="account" component={Account} title='Account'/>
-          <Scene key="edroadmap" component={EducationWellnessRoadMap} title='Wellness Roadmap'/>
-          <Scene key="kickstart" component={KickStart30} title='KickStart30'/>
-          <Scene key="learnmore" component={LearnMore} title='Learn More'/>
-          <Scene key="quests" component={Quests} title='Quests'/>
-          <Scene key='profile' component={Profile}/>
-          <Scene key='help' component={Help}/>
-          <Scene key='about' component={About}/>
-          <Scene key='faq' component={FAQ}/>
-          <Scene key="exercise1" component={ExerciseI} title='Exercise I'/>
-          <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' />
+        <Scene key="landing" component={Landing} title='Landing' backTitle='Logout' header={null}/>
+          <Scene key="account" component={Account} title='Account' header={null}/>
+          <Scene key="edroadmap" component={EducationWellnessRoadMap} title='Wellness Roadmap' header={null}/>
+          <Scene key="kickstart" component={KickStart30} title='KickStart30' header={null}/>
+          <Scene key="learnmore" component={LearnMore} title='Learn More' header={null}/>
+          <Scene key="quests" component={Quests} title='Quests' header={null}/>
+          <Scene key='profile' component={Profile} header={null}/>
+          <Scene key='help' component={Help} header={null}/>
+          <Scene key='about' component={About} header={null}/>
+          <Scene key='faq' component={FAQ} header={null}/>
+          <Scene key="exercise1" component={ExerciseI} title='Exercise I' header={null}/>
+          <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' header={null}/>
     </Scene>
 
     </Router>
