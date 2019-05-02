@@ -23,7 +23,7 @@ class TrackingForm extends Component{
         nutrition: 0,
         HERO: 0,
         user: 'usergoeshere',
-        date: ''
+        date: 'not today!'
     }
     componentDidMount(){
         var user = firebase.auth().currentUser;
