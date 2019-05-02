@@ -8,6 +8,8 @@ import background1 from '/Users/abhiktiwari/dev/wild5/wild5/src/images/backgroun
 
 
 class EducationWellnessRoadMap extends Component {
+  //Tinder-like game - card swiping right answers
+  //Ball rolling game - roll ball into right hole using phone gestures
 
   state = {
     completed: 0,
