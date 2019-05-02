@@ -1,3 +1,4 @@
+// import console = require('console');
 import React, {Component} from 'react';
 import { Text, ImageBackground, View, Image } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner } from '../components/common';
@@ -24,7 +25,7 @@ class LoginForm extends Component {
     
 
     onButtonPress() {
-        const { email, password } = this.state
+        const { email, password } = this.state;
         this.setState({
             error: '',
             loading: true

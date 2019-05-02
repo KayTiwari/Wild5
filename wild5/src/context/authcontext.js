@@ -6,8 +6,7 @@ const { Consumer, Provider } = React.createContext();
 
 export default class AuthProvider extends Component {
     state = {
-      email: '',
-      password: ''
+      user: '',
     }
 
     componentWillMount(){
@@ -19,8 +18,7 @@ export default class AuthProvider extends Component {
           storageBucket: "wild5-5ca8b.appspot.com",
           messagingSenderId: "714885268112"
         })
-        
-  }
+    }
 
     
 
