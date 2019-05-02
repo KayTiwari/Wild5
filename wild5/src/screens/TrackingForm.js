@@ -6,6 +6,7 @@ import { Actions } from 'react-native-router-flux';
 import firebase  from 'firebase'
 
 
+
 var radio_props = [
     {label: 'No', value: 0 },
     {label: 'Yes', value: 1 },
@@ -21,16 +22,17 @@ class TrackingForm extends Component{
         HERO: 0,
     }
 
-    submitForm(userId){
-        // const { exercise, mindfulness, sleep, connectedness, nutrition, HERO } = this.state;
-        firebase.database().ref('WellnessTrackingForm/').set({
-            exercise: 7,
-            mindfulness: 7,
-            sleep: 7,
-            connectedness: 7,
-            nutrition: 7,
-            HERO: 7
+    submitForm(){
+        const { exercise, mindfulness, sleep, connectedness, nutrition, HERO } = this.state;
+        firebase.database().ref('WellnessTrackingForm/').push({
+            exercise: exercise,
+            mindfulness: mindfulness,
+            sleep: sleep,
+            connectedness: connectedness,
+            nutrition: nutrition,
+            HERO: HERO
           });
+          Actions.edroadmap();
         }
     
 
@@ -274,7 +276,7 @@ class TrackingForm extends Component{
                     textAlign: 'center',
                     color: 'white'}}>Your input today will help with your Wellness tomorrow</Text>
 
-                <ModButton onPress={this.submitForm} label="Submit">
+                <ModButton onPress={this.submitForm.bind(this)} label="Submit">
                     Submit
                 </ModButton>
                 </View>
