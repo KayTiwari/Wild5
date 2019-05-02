@@ -4,7 +4,7 @@ import { Card, CardSection, Button, ModButton } from '../components/common'
 import { ExerciseButton, MindfulnessButton, NutritionButton, SleepButton, SocialButton, TrackingformButton } from '../components/roadmapbuttons'
 import { Actions } from 'react-native-router-flux';
 import { withProvider } from '../context/context';
-import background1 from '/Users/abhiktiwari/dev/wild5/wild5/src/images/background1.jpeg'
+import background1 from '/Users/bill/dev/React_native/Wild5/Wild5/wild5/src/images/background1.jpeg'
 
 
 class EducationWellnessRoadMap extends Component {

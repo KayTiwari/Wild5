@@ -14,9 +14,9 @@
     "react-native-button": "^2.3.0",
     "react-native-modal": "^9.0.0",
     "react-native-router-flux": "^4.0.6",
-    "toggle-switch-react-native": "^2.0.2",
     "react-native-simple-radio-button": "^2.7.3",
-    "react-native-swiper": "^1.5.14"
+    "react-native-swiper": "^1.5.14",
+    "toggle-switch-react-native": "^2.0.2"
   },
   "devDependencies": {
     "@babel/core": "7.4.3",
