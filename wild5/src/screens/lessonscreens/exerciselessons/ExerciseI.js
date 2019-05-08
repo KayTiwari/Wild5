@@ -4,7 +4,8 @@ import { ScrollView, View, Text, Dimensions } from 'react-native';
 
 class ExerciseI extends Component{
     state = {
-        question: 0
+        question: 0,
+        
     }
 
     render(){
@@ -12,7 +13,6 @@ class ExerciseI extends Component{
     let screenheight = Dimensions.get('window').height;
     return (
         <ScrollView horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={true}>
-        {/* onMomentumScrollBegin={() => function} */}
                 <View style={{
                     backgroundColor: '#5f9ea0',
                     flex: 1,
@@ -53,6 +53,34 @@ class ExerciseI extends Component{
                     marginBottom: 200,
                     textAlign: 'center',
                     color: 'white'}}>We must exercise Frequently. This means, aim for seven days a week!</Text>
+                </View>
+                <View style={{
+                    backgroundColor: 'tomato',
+                    flex: 1,
+                    width: screenwidth,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                <Text style={{
+                    fontSize: 40,
+                    padding: 50,
+                    textAlign: 'center',
+                    color: 'white'
+                    }}>How many days a week should we exercise?</Text>
+                    <RadioForm
+                    radio_props= {[
+                        {label: '5', value: 0 },
+                        {label: '6', value: 0 },
+                        {label: '7', value: 1 },
+                        {label: '8', value: 0 },
+                      ]}
+                    initial={0}
+                    formHorizontal={false}
+                    labelHorizontal={true}
+                    buttonColor={'#5a8f30'}
+                    animation={true}
+                    onPress={(value) => {this.setState({exercise: value})}}
+                    />
                 </View>
 
                 <View style={{
