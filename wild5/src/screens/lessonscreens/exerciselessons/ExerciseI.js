@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { ScrollView, View, Text, Dimensions } from 'react-native';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 class ExerciseI extends Component{
 
@@ -162,7 +163,7 @@ class ExerciseI extends Component{
                     <RadioForm
                     radio_props= {[
                         {label: 'Low', value: 0 },
-                        {label: 'Moderate', value: 2 },
+                        {label: 'Moderate', value: 1 },
                         {label: 'High', value: 0 },
                       ]}
                     initial={0}
@@ -213,7 +214,7 @@ class ExerciseI extends Component{
                     radio_props= {[
                         {label: '10 minutes', value: 0 },
                         {label: '20 minutes', value: 0 },
-                        {label: '30 minutes', value: 3 },
+                        {label: '30 minutes', value: 1 },
                         {label: 'All day', value: 0 },
                       ]}
                     initial={0}
