@@ -13,8 +13,6 @@ class ExerciseI extends Component{
         question2: 0,
         question3: 0,
         wrong1: '',
-        wrong2: '',
-        wrong3: '',
         correct1: '',
         correct2: '',
         correct3: '',
