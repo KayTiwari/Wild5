@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import { ScrollView, View, Text, Dimensions } from 'react-native';
+import { ModButton } from '../../../components/common';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 class ExerciseI extends Component{
 
     state = {
+        question1value: 0,
+        question2value: 0,
+        question3value: 0,
         question1: 0,
         question2: 0,
         question3: 0,
@@ -21,25 +25,48 @@ class ExerciseI extends Component{
         this.setState({
             wrong: ''
         })
-        if (value === 1) {
+        if (this.state.question1value === 1) {
             this.setState({
                 question1: 1,
-                correct1: 'Well done, move on to the next section',
+                correct1: 'Well done! Move on to the next section.',
             })
-        } else if (value === 2) {
+        } else {
             this.setState({
-                question2: 1,
-                correct2: 'Amazing, keep it going!'
-            })
-        } else if (value === 3) {
-            this.setState({
-                question3: 1,
-                correct3: 'Well Done with Exercise I'
+                wrong: 'Try again?',
+                correct1: ''
             })
         }
-        else {
+    }
+
+    isCorrect2 = () => {
+        this.setState({
+            wrong: ''
+        })
+        if (this.state.question2value === 1) {
             this.setState({
-                wrong: 'Try again?'
+                question2: 1,
+                correct2: 'Awesome, keep going!',
+            })
+        } else {
+            this.setState({
+                wrong: 'Try again?',
+                correct2: ''
+            })
+        }
+    }
+    isCorrect3 = () => {
+        this.setState({
+            wrong: ''
+        })
+        if (this.state.question3value === 1) {
+            this.setState({
+                question3: 1,
+                correct3: 'You did a great job this lesson.',
+            })
+        } else {
+            this.setState({
+                wrong: 'Try again?',
+                correct3: ''
             })
         }
     }
@@ -119,8 +146,10 @@ class ExerciseI extends Component{
                     labelHorizontal={true}
                     buttonColor={'#5a8f30'}
                     animation={true}
-                    onPress={(value) => this.isCorrect(value)}
+                    onPress={(value) => this.setState({question1value: value})}
                     />
+                    <ModButton style={{marginTop: 10}} label="Think you're correct?" onPress={this.isCorrect}></ModButton>
+                    <Text>{this.state.wrong}</Text><Text>{this.state.correct1}</Text>
                 </View>
 
                 {this.state.question1 === 1 ? <View style={{
@@ -171,8 +200,10 @@ class ExerciseI extends Component{
                     labelHorizontal={true}
                     buttonColor={'#5a8f30'}
                     animation={true}
-                    onPress={(value) => {this.setState({question2: value})}}
+                    onPress={(value) => this.setState({question2value: value})}
                     />
+                    <ModButton label="Give it a shot" onPress={this.isCorrect2}></ModButton>
+                    <Text>{this.state.wrong}</Text><Text>{this.state.correct2}</Text>
                 </View> : null}
 
 
@@ -222,8 +253,10 @@ class ExerciseI extends Component{
                     labelHorizontal={true}
                     buttonColor={'#5a8f30'}
                     animation={true}
-                    onPress={(value) => {this.setState({question3: value})}}
+                    onPress={(value) => this.setState({question3value: value})}
                     />
+                    <ModButton label="Last one, you got this!" onPress={this.isCorrect3}></ModButton>
+                    <Text>{this.state.wrong}</Text><Text>{this.state.correct3}</Text>
                 </View> : null}
 
 
