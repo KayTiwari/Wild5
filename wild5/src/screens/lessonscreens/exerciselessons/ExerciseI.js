@@ -1,15 +1,50 @@
 import React, {Component} from 'react';
 import { ScrollView, View, Text, Dimensions } from 'react-native';
 
-
 class ExerciseI extends Component{
+
     state = {
         question1: 0,
         question2: 0,
         question3: 0,
-        wrong: '',
-        correct: ''
+        wrong1: '',
+        wrong2: '',
+        wrong3: '',
+        correct1: '',
+        correct2: '',
+        correct3: '',
         
+    }
+
+    isCorrect = (value) => {
+        this.setState({
+            wrong: ''
+        })
+        if (value === 1) {
+            this.setState({
+                question1: 1,
+                correct1: 'Well done, move on to the next section',
+            })
+        } else if (value === 2) {
+            this.setState({
+                question2: 1,
+                correct2: 'Amazing, keep it going!'
+            })
+        } else if (value === 3) {
+            this.setState({
+                question3: 1,
+                correct3: 'Well Done with Exercise I'
+            })
+        }
+        else {
+            this.setState({
+                wrong: 'Try again?'
+            })
+        }
+    }
+
+    wasItCorrect = () => {
+
     }
 
     render(){
@@ -83,7 +118,7 @@ class ExerciseI extends Component{
                     labelHorizontal={true}
                     buttonColor={'#5a8f30'}
                     animation={true}
-                    onPress={(value) => {this.setState({question1: value})}}
+                    onPress={(value) => this.isCorrect(value)}
                     />
                 </View>
 
@@ -127,7 +162,7 @@ class ExerciseI extends Component{
                     <RadioForm
                     radio_props= {[
                         {label: 'Low', value: 0 },
-                        {label: 'Moderate', value: 1 },
+                        {label: 'Moderate', value: 2 },
                         {label: 'High', value: 0 },
                       ]}
                     initial={0}
@@ -178,7 +213,7 @@ class ExerciseI extends Component{
                     radio_props= {[
                         {label: '10 minutes', value: 0 },
                         {label: '20 minutes', value: 0 },
-                        {label: '30 minutes', value: 1 },
+                        {label: '30 minutes', value: 3 },
                         {label: 'All day', value: 0 },
                       ]}
                     initial={0}
