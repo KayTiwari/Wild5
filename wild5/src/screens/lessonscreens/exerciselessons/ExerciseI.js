@@ -87,7 +87,7 @@ class ExerciseI extends Component{
                     />
                 </View>
 
-                <View style={{
+                {this.state.question1 === 1 ? <View style={{
                     backgroundColor: '#663399',
                     flex: 1,
                     width: screenwidth,
@@ -110,8 +110,8 @@ class ExerciseI extends Component{
                     exercise. The easiest way to know you've achieved moderately intense exercise
                     is when having a conversation with your workout buddy is difficult because you
                     are winded </Text>
-                </View>
-                <View style={{
+                </View> : null}
+                {this.state.question1 === 1 ? <View style={{
                     backgroundColor: '#663399',
                     flex: 1,
                     width: screenwidth,
@@ -137,10 +137,10 @@ class ExerciseI extends Component{
                     animation={true}
                     onPress={(value) => {this.setState({question2: value})}}
                     />
-                </View>
+                </View> : null}
 
 
-                <View style={{
+                {this.state.question2 === 1 ?<View style={{
                     backgroundColor: '#8EE4AF',
                     flex: 1,
                     width: screenwidth,
@@ -160,8 +160,8 @@ class ExerciseI extends Component{
                     textAlign: 'center',
                     color: 'white'}}>Duration of exercise requires that we exercise at least 30-minutes per day. If you
                     want to exercise more, please do. </Text>
-                </View>
-                <View style={{
+                </View> : null}
+                {this.state.question2 === 1 ? <View style={{
                     backgroundColor: '#8EE4AF',
                     flex: 1,
                     width: screenwidth,
@@ -188,10 +188,10 @@ class ExerciseI extends Component{
                     animation={true}
                     onPress={(value) => {this.setState({question3: value})}}
                     />
-                </View>
+                </View> : null}
 
 
-                <View style={{
+                {this.state.question3 === 1 ? <View style={{
                     backgroundColor: 'yellow',
                     flex: 1,
                     width: screenwidth,
@@ -212,7 +212,7 @@ class ExerciseI extends Component{
                     marginBottom: 200,
                     textAlign: 'center',
                     color: 'white'}}>Feel free to review what you learned or move on to the next lesson </Text>
-                </View>
+                </View> : null}
         </ScrollView>
     )
     }
