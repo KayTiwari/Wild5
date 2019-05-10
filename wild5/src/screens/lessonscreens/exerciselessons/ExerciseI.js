@@ -4,7 +4,11 @@ import { ScrollView, View, Text, Dimensions } from 'react-native';
 
 class ExerciseI extends Component{
     state = {
-        question: 0,
+        question1: 0,
+        question2: 0,
+        question3: 0,
+        wrong: '',
+        correct: ''
         
     }
 
@@ -79,7 +83,7 @@ class ExerciseI extends Component{
                     labelHorizontal={true}
                     buttonColor={'#5a8f30'}
                     animation={true}
-                    onPress={(value) => {this.setState({exercise: value})}}
+                    onPress={(value) => {this.setState({question1: value})}}
                     />
                 </View>
 
@@ -107,6 +111,33 @@ class ExerciseI extends Component{
                     is when having a conversation with your workout buddy is difficult because you
                     are winded </Text>
                 </View>
+                <View style={{
+                    backgroundColor: '#663399',
+                    flex: 1,
+                    width: screenwidth,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                <Text style={{
+                    fontSize: 40,
+                    padding: 50,
+                    textAlign: 'center',
+                    color: 'white'
+                    }}>According to Wild5, what is the best intensity for exercise?</Text>
+                    <RadioForm
+                    radio_props= {[
+                        {label: 'Low', value: 0 },
+                        {label: 'Moderate', value: 1 },
+                        {label: 'High', value: 0 },
+                      ]}
+                    initial={0}
+                    formHorizontal={false}
+                    labelHorizontal={true}
+                    buttonColor={'#5a8f30'}
+                    animation={true}
+                    onPress={(value) => {this.setState({question2: value})}}
+                    />
+                </View>
 
 
                 <View style={{
@@ -129,6 +160,34 @@ class ExerciseI extends Component{
                     textAlign: 'center',
                     color: 'white'}}>Duration of exercise requires that we exercise at least 30-minutes per day. If you
                     want to exercise more, please do. </Text>
+                </View>
+                <View style={{
+                    backgroundColor: '#8EE4AF',
+                    flex: 1,
+                    width: screenwidth,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                <Text style={{
+                    fontSize: 40,
+                    padding: 50,
+                    textAlign: 'center',
+                    color: 'white'
+                    }}>What is the best duration for exericse?</Text>
+                    <RadioForm
+                    radio_props= {[
+                        {label: '10 minutes', value: 0 },
+                        {label: '20 minutes', value: 0 },
+                        {label: '30 minutes', value: 1 },
+                        {label: 'All day', value: 0 },
+                      ]}
+                    initial={0}
+                    formHorizontal={false}
+                    labelHorizontal={true}
+                    buttonColor={'#5a8f30'}
+                    animation={true}
+                    onPress={(value) => {this.setState({question3: value})}}
+                    />
                 </View>
 
 
