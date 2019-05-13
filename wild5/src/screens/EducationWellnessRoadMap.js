@@ -4,10 +4,12 @@ import { Card, CardSection, Button, ModButton } from '../components/common'
 import { ExerciseButton, MindfulnessButton, NutritionButton, SleepButton, SocialButton, TrackingformButton } from '../components/roadmapbuttons'
 import { Actions } from 'react-native-router-flux';
 import { withProvider } from '../context/context';
-import background1 from '/Users/bill/dev/React_native/Wild5/Wild5/wild5/src/images/background1.jpeg'
+import background1 from '../images/greengif.gif'
 
 
 class EducationWellnessRoadMap extends Component {
+  //Tinder-like game - card swiping right answers
+  //Ball rolling game - roll ball into right hole using phone gestures
 
   state = {
     completed: 0,
@@ -26,7 +28,7 @@ class EducationWellnessRoadMap extends Component {
       <View>
         <ScrollView>
           <CardSection>
-            <Text style={{textAlign:'center'}}>
+            <Text style={{borderRadius:0, textAlign:'center'}}>
               Completed: {this.state.completed}%
             </Text>
           </CardSection>

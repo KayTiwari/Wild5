@@ -1,9 +1,11 @@
+// import console = require('console');
 import React, {Component} from 'react';
 import { View, Text, ScrollView, Dimensions } from 'react-native';
 import { Button, ModButton } from '../components/common'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Actions } from 'react-native-router-flux';
-import firebase  from 'firebase'
+import firebase  from 'firebase';
+// import {withAuthProvider} from '../context/authcontext';
 
 
 
@@ -20,17 +22,40 @@ class TrackingForm extends Component{
         connectedness: 0,
         nutrition: 0,
         HERO: 0,
+        user: 'usergoeshere',
+        date: 'not today!'
+    }
+    componentDidMount(){
+        var user = firebase.auth().currentUser;
+            if (user) {
+                var res = user.email.split(".");
+                var userEm = res[0].toString();
+                this.setState({
+                    user: userEm
+                })
+            } else {
+                console.log('noperz')
+            }
+            var today = new Date();
+            var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var dateTime = date+' '+time;
+                this.setState({
+                    date: dateTime
+                })
     }
 
     submitForm(){
-        const { exercise, mindfulness, sleep, connectedness, nutrition, HERO } = this.state;
-        firebase.database().ref('WellnessTrackingForm/').push({
+        console.log(this.state);
+        const { exercise, mindfulness, sleep, connectedness, nutrition, HERO, user, date } = this.state;
+        firebase.database().ref(`WellnessTrackingForm/${user}`).push({
             exercise: exercise,
             mindfulness: mindfulness,
             sleep: sleep,
             connectedness: connectedness,
             nutrition: nutrition,
-            HERO: HERO
+            HERO: HERO,
+            DateTaken: date
           });
           Actions.edroadmap();
         }

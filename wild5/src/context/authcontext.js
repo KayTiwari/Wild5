@@ -1,12 +1,23 @@
 import React, {Component} from 'react'
-const { Consumer, Provider } = React.createContext();
 import firebase from 'firebase'
+const { Consumer, Provider } = React.createContext();
 
 
 
 export default class AuthProvider extends Component {
     state = {
-        
+      user: '',
+    }
+
+    componentWillMount(){
+      firebase.initializeApp({
+          apiKey: "AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o",
+          authDomain: "wild5-5ca8b.firebaseapp.com",
+          databaseURL: "https://wild5-5ca8b.firebaseio.com",
+          projectId: "wild5-5ca8b",
+          storageBucket: "wild5-5ca8b.appspot.com",
+          messagingSenderId: "714885268112"
+        })
     }
 
     

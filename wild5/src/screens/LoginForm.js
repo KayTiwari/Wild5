@@ -1,3 +1,4 @@
+// import console = require('console');
 import React, {Component} from 'react';
 import { Text, ImageBackground, View, Image } from 'react-native';
 import { Button, Card, CardSection, Input, Spinner } from '../components/common';
@@ -6,8 +7,8 @@ import {withAuthProvider} from '../context/authcontext';
 import { Actions } from 'react-native-router-flux';
 import RegisterModal from '../modals/RegisterModal';
 import ForgotPassModal from '../modals/ForgotPassModal';
-import abstractimg from '/Users/bill/dev/React_native/Wild5/Wild5/wild5/src/images/abstract2.jpeg'
-import wild5title from '/Users/bill/dev/React_native/Wild5/Wild5/wild5/src/images/wild-5-logo-r-color.png'
+import abstractimg from '../images/abstract2.jpeg';
+import wild5title from '../images/wild-5-logo-r-color.png'
 
 
 class LoginForm extends Component {
@@ -21,20 +22,10 @@ class LoginForm extends Component {
         modal: false,
     } 
 
-    componentWillMount(){
-        firebase.initializeApp({
-            apiKey: "AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o",
-            authDomain: "wild5-5ca8b.firebaseapp.com",
-            databaseURL: "https://wild5-5ca8b.firebaseio.com",
-            projectId: "wild5-5ca8b",
-            storageBucket: "wild5-5ca8b.appspot.com",
-            messagingSenderId: "714885268112"
-          })
-          
-    }
+    
 
     onButtonPress() {
-        const { email, password } = this.state
+        const { email, password } = this.state;
         this.setState({
             error: '',
             loading: true
