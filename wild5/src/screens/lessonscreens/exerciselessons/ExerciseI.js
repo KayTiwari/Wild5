@@ -21,9 +21,9 @@ class ExerciseI extends Component{
         correct3: '',       
     }
 
-    Pedometer.startPedometerUpdatesFromDate(now.getTime(), (pedometerData) => {
-        // do something with pedometer data
-          });
+    // Pedometer.startPedometerUpdatesFromDate(now.getTime(), (pedometerData) => {
+    //     // do something with pedometer data
+    //       });
 
 
     isCorrect = (value) => {
@@ -80,7 +80,7 @@ class ExerciseI extends Component{
 
     }
 
-    render(){
+    render() {
     let screenwidth = Dimensions.get('window').width;
     let screenheight = Dimensions.get('window').height;
     return (
