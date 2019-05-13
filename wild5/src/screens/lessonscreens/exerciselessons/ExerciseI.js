@@ -80,7 +80,7 @@ class ExerciseI extends Component{
 
     }
 
-    render(){
+    render() {
     let screenwidth = Dimensions.get('window').width;
     let screenheight = Dimensions.get('window').height;
     return (

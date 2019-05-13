@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Dimensions } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import Carousel from '../components/Carousel';
+
 
 class Landing extends Component {
   state= {
@@ -9,6 +10,7 @@ class Landing extends Component {
   }
 
   render() {
+    let screenwidth = Dimensions.get('window').width
     return (
       <>
       <Carousel />
@@ -72,6 +74,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 17,
+    color: "#FFFFFF"
 
   }
 })
