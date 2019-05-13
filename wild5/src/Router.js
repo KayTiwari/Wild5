@@ -13,6 +13,7 @@ import About from './screens/accountmenu/About'
 import FAQ from './screens/accountmenu/FAQ'
 import TrackingForm from './screens/TrackingForm';
 import ExerciseI from './screens/lessonscreens/exerciselessons/ExerciseI'
+import NutritionQuest from './screens/NutritionQuests';
 
 const Routercomponent = () => {
   return (
@@ -31,6 +32,7 @@ const Routercomponent = () => {
           <Scene key='faq' component={FAQ} header={null}/>
           <Scene key="exercise1" component={ExerciseI} title='Exercise I' header={true}/>
           <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' header={null}/>
+          <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
     </Scene>
 
     </Router>
