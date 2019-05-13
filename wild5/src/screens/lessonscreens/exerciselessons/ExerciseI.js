@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import { ScrollView, View, Text, Dimensions } from 'react-native';
 import { ModButton } from '../../../components/common';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
-import Pedometer from '../../../components/expo/PedometerSensor';
+import { SimpleStepper } from 'react-native-simple-stepper'; 
+// import Pedometer from '../../../components/expo/PedometerSensor';
 
 class ExerciseI extends Component{
 
