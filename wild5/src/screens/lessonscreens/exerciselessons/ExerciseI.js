@@ -8,6 +8,7 @@ import { SimpleStepper } from 'react-native-simple-stepper';
 class ExerciseI extends Component{
 
     state = {
+        steps: 0,
         question1value: 0,
         question2value: 0,
         question3value: 0,
@@ -259,8 +260,29 @@ class ExerciseI extends Component{
                     <Text>{this.state.wrong}</Text><Text>{this.state.correct3}</Text>
                 </View> : null}
 
+                {this.state.question3 === 1 ?<View style={{
+                    backgroundColor: '#8EE4AF',
+                    flex: 1,
+                    width: screenwidth,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                <Text style={{
+                    fontSize: 40,
+                    padding: 50,
+                    textAlign: 'center',
+                    color: 'white'
+                    }}>For the Exercise challenge: Take a small walk of 60 steps</Text>
+                    <Text style={{
+                    fontSize: 30,
+                    padding: 15,
+                    marginBottom: 200,
+                    textAlign: 'center',
+                    color: 'white'}}>{this.state.steps === 60 ? "Good Job, move on to the next section" : this.state.steps}</Text>
+                </View> : null}
 
-                {this.state.question3 === 1 ? <View style={{
+
+                {this.state.steps === 60 ? <View style={{
                     backgroundColor: 'yellow',
                     flex: 1,
                     width: screenwidth,
