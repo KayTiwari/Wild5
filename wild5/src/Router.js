@@ -13,24 +13,28 @@ import About from './screens/accountmenu/About'
 import FAQ from './screens/accountmenu/FAQ'
 import TrackingForm from './screens/TrackingForm';
 import ExerciseI from './screens/lessonscreens/exerciselessons/ExerciseI'
+import Feedback from './screens/accountmenu/Feedback'
+import NutritionQuest from './screens/NutritionQuest';
 
 const Routercomponent = () => {
   return (
     <Router>
    <Scene key="root">
-    <Scene key="loginform" component={LoginForm} header={null}/>
+    <Scene key="loginform" component={LoginForm} header={null} />
         <Scene key="landing" component={Landing} title='Landing' backTitle='Logout'/>
           <Scene key="account" component={Account} title='Account'/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} title='Wellness Roadmap'/>
           <Scene key="kickstart" component={KickStart30} title='KickStart30'/>
           <Scene key="learnmore" component={LearnMore} title='Learn More'/>
-          <Scene key="quests" component={Quests} title='Quests'/>
-          <Scene key='profile' component={Profile} initial/>
+          <Scene key="quests" component={Quests} title='Quests' />
+          <Scene key='profile' component={Profile}/>
           <Scene key='help' component={Help}/>
           <Scene key='about' component={About}/>
           <Scene key='faq' component={FAQ}/>
           <Scene key="exercise1" component={ExerciseI} title='Exercise I'/>
           <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' />
+          <Scene key='feedback' component={Feedback} />
+          <Scene key='nutritionquest' component={NutritionQuest} initial/>
     </Scene>
 
     </Router>

@@ -56,5 +56,11 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+<string>Your message to user when the camera is accessed for the first time</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>YAllow to take pictures for you to track your food</string>
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>Allow to take pictures for you to track your food</string>
 </dict>
 </plist>
