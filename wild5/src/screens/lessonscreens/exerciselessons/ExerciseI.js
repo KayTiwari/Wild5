@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import { ScrollView, View, Text, Dimensions } from 'react-native';
 import { ModButton } from '../../../components/common';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
-// import Pedometer from '../../../components/expo/PedometerSensor';
+var Pedometer = require('react-native-pedometer');
+
+var now = new Date();
 
 class ExerciseI extends Component{
 
@@ -16,9 +18,13 @@ class ExerciseI extends Component{
         wrong1: '',
         correct1: '',
         correct2: '',
-        correct3: '',
-        
+        correct3: '',       
     }
+
+    Pedometer.startPedometerUpdatesFromDate(now.getTime(), (pedometerData) => {
+        // do something with pedometer data
+          });
+
 
     isCorrect = (value) => {
         this.setState({
@@ -276,7 +282,7 @@ class ExerciseI extends Component{
                     padding: 15,
                     marginBottom: 200,
                     textAlign: 'center',
-                    color: 'white'}}>{this.state.steps === 60 ? "Good Job, move on to the next section" : null}</Text>
+                    color: 'white'}}>{this.state.steps === 60 ? "Good Job, move on to the next section" + this.state.steps : this.state.steps}</Text>
                 </View> : null}
 
 
