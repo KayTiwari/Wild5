@@ -2,13 +2,11 @@ import React, {Component} from 'react';
 import { ScrollView, View, Text, Dimensions } from 'react-native';
 import { ModButton } from '../../../components/common';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
-import { SimpleStepper } from 'react-native-simple-stepper'; 
 // import Pedometer from '../../../components/expo/PedometerSensor';
 
 class ExerciseI extends Component{
 
     state = {
-        steps: 0,
         question1value: 0,
         question2value: 0,
         question3value: 0,
@@ -278,7 +276,7 @@ class ExerciseI extends Component{
                     padding: 15,
                     marginBottom: 200,
                     textAlign: 'center',
-                    color: 'white'}}>{this.state.steps === 60 ? "Good Job, move on to the next section" : this.state.steps}</Text>
+                    color: 'white'}}>{this.state.steps === 60 ? "Good Job, move on to the next section" : null}</Text>
                 </View> : null}
 
 
