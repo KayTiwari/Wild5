@@ -21,9 +21,9 @@ class ExerciseI extends Component{
         correct3: '',       
     }
 
-    Pedometer.startPedometerUpdatesFromDate(now.getTime(), (pedometerData) => {
-        // do something with pedometer data
-          });
+    // Pedometer.startPedometerUpdatesFromDate(now.getTime(), (pedometerData) => {
+    //     // do something with pedometer data
+    //       });
 
 
     isCorrect = (value) => {
