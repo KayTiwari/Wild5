@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Dimensions } from 'react-native'
 import { Actions } from 'react-native-router-flux'
-import Carousel from '../components/Carousel'
+import Carousel from '../components/Carousel';
+
 
 class Landing extends Component {
   state= {
@@ -25,7 +26,7 @@ class Landing extends Component {
       <TouchableOpacity onPress={() => Actions.kickstart()}>
       <Text style={styles.text}>Kickstart30</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => Actions.learnmore()}>
+      <TouchableOpacity onPress={() => Actions.quests()}>
       <Text style={styles.text}>Quests</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => Actions.quests()}>

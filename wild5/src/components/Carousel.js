@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet,Text, Image, View, SafeAreaView} from 'react-native';
-
 import Carousel from 'react-native-snap-carousel';
+
 
 class App extends React.Component {
  
@@ -30,7 +30,6 @@ class App extends React.Component {
             }
         ]}
     }
-
     _renderItem = ({item,index}) => {
         return (
             <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>                 
@@ -38,11 +37,9 @@ class App extends React.Component {
             </View>
         )
     }
-
     render() {
         return (
         <View style={styles.container}>
-
 
           
             <Carousel
@@ -53,8 +50,6 @@ class App extends React.Component {
                     autoplay={true}
                     loop={true}
                 />
-           
-
         </View>
         );
     }

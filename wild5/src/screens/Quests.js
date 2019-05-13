@@ -13,5 +13,4 @@ class Quests extends Component {
     )
   }
 }
-
 export default Quests
