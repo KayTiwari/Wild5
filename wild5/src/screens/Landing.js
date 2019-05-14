@@ -53,34 +53,40 @@ class Landing extends Component {
       </View> */}
       {this.state.account === 1 ? <Footer>
           <FooterTab>
-            <Button>
-              <Text>Apps</Text>
+            <Button onPress={() => this.setState({account: 1})}>
+              <Text>Account</Text>
             </Button>
-            <Button>
-              <Text>Camera</Text>
+            <Button onPress={() => Actions.edroadmap()}>
+              <Text>RoadMap</Text>
             </Button>
-            <Button active>
-              <Text>Navigate</Text>
+            <Button onPress={() => Actions.kickstart()}>
+              <Text>Kickstart30</Text>
             </Button>
-            <Button>
-              <Text>Contact</Text>
+            <Button onPress={() => Actions.quests()}>
+              <Text>Quests</Text>
             </Button>
+            {/* <Button>
+              <Text>Devices</Text>
+            </Button> */}
           </FooterTab>
         </Footer> 
         :
       <Footer>
       <FooterTab>
-        <Button>
-          <Text>Apps</Text>
+        <Button onPress={() => this.setState({account: 0})}>
+          <Text>Home</Text>
         </Button>
-        <Button>
-          <Text>Camera</Text>
+        <Button onPress={() => Actions.profile()}>
+          <Text>Profile</Text>
         </Button>
-        <Button active>
-          <Text>Navigate</Text>
+        <Button onPress={() => Actions.help()}>
+          <Text>Help</Text>
         </Button>
-        <Button>
-          <Text>Contact</Text>
+        <Button onPress={() => Actions.feedback()}>
+          <Text>Feedback</Text>
+        </Button>
+        <Button onPress={() => Actions.settings()}>
+          <Text>Settings</Text>
         </Button>
       </FooterTab>
     </Footer>}
