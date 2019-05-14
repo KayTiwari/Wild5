@@ -262,13 +262,7 @@ class TrackingForm extends Component{
                     padding: 50,
                     textAlign: 'center',
                     color: 'white'
-                    }}>HERO</Text>
-                    <Text style={{
-                    fontSize: 40,
-                    padding: 15,
-                    marginBottom: 200,
-                    textAlign: 'center',
-                    color: 'white'}}>Here is a graphic of your responses today.</Text>
+                    }}>Here is a graphic of your responses today.</Text>
                 <ModButton label="Show" onPress={() => this.setState({show: true})} />
                 <View style={{marginBottom: 20}}>{this.state.show ? <RadarChart exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} connectedness={this.state.connectedness} nutrition={this.state.nutrition}/> : null}</View>
                 </View>

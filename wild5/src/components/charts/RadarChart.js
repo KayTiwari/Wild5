@@ -12,12 +12,20 @@ const chartConfig = {
 class RadarChart extends Component{
     state = {
         data: [
+            
+        ]
+    }
+
+    componentDidMount(){
+        this.setState({
+            data:[
             this.props.exercise,
             this.props.mindfulness,
             this.props.sleep,
             this.props.connectedness,
             this.props.nutrition,
-        ]
+            ]
+        })
     }
 
 
