@@ -24,7 +24,8 @@ class TrackingForm extends Component{
         nutrition: 0,
         HERO: 0,
         user: 'usergoeshere',
-        date: 'not today!'
+        date: 'not today!',
+        show: false
     }
     componentDidMount(){
         var user = firebase.auth().currentUser;
@@ -269,8 +270,8 @@ class TrackingForm extends Component{
                     marginBottom: 200,
                     textAlign: 'center',
                     color: 'white'}}>Here is a graphic of your responses today.</Text>
-
-                <RadarChart exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} connectedness={this.state.connectedness} nutrition={this.state.nutrition}/>
+                <ModButton label="Show" onPress={() => this.setState({show: true})} />
+                {this.state.show ? <RadarChart exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} connectedness={this.state.connectedness} nutrition={this.state.nutrition}/> : null}
                 </View>
 
                 <View style={{
