@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, TouchableOpacity, StyleSheet } from 'react-native'
+import { Footer, FooterTab, Button, Text } from 'native-base' 
 import { Actions } from 'react-native-router-flux'
 import Carousel from '../components/Carousel';
 
@@ -12,7 +13,7 @@ class Landing extends Component {
     return (
       <>
       <Carousel />
-      <View style={styles.container}>
+      {/* <View style={styles.container}>
       {this.state.account === 0 ?
       <View style={styles.textCont}>
       <TouchableOpacity onPress={() => this.setState({account: 1})}>
@@ -49,7 +50,40 @@ class Landing extends Component {
       <Text style={styles.text}>Settings</Text>
       </TouchableOpacity>
       </View>}
-      </View>
+      </View> */}
+      {this.state.account === 1 ? <Footer>
+          <FooterTab>
+            <Button>
+              <Text>Apps</Text>
+            </Button>
+            <Button>
+              <Text>Camera</Text>
+            </Button>
+            <Button active>
+              <Text>Navigate</Text>
+            </Button>
+            <Button>
+              <Text>Contact</Text>
+            </Button>
+          </FooterTab>
+        </Footer> 
+        :
+      <Footer>
+      <FooterTab>
+        <Button>
+          <Text>Apps</Text>
+        </Button>
+        <Button>
+          <Text>Camera</Text>
+        </Button>
+        <Button active>
+          <Text>Navigate</Text>
+        </Button>
+        <Button>
+          <Text>Contact</Text>
+        </Button>
+      </FooterTab>
+    </Footer>}
       </>
     )
   }
