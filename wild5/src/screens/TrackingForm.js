@@ -270,7 +270,7 @@ class TrackingForm extends Component{
                     textAlign: 'center',
                     color: 'white'}}>Here is a graphic of your responses today.</Text>
 
-                    <RadarChart exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} connectedness={this.state.connectedness} nutrition={this.state.nutrition}/>
+                <RadarChart exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} connectedness={this.state.connectedness} nutrition={this.state.nutrition}/>
                 </View>
 
                 <View style={{
