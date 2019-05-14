@@ -13,7 +13,7 @@ class Landing extends Component {
     return (
       <Container>
         <Header />
-      <View style={{marginBottom: 300}}>
+      <View style={{marginBottom: 270}}>
       <Carousel />
       </View>
       {this.state.account === 0 ? <Footer style={{bottom: 0}}>
