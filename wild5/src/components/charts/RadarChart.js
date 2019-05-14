@@ -4,9 +4,9 @@ import { ProgressChart } from 'react-native-chart-kit';
 
 const screenWidth = Dimensions.get('window').width;
 const chartConfig = {
-    backgroundGradientFrom: '#333',
-    backgroundGradientTo: 'gray',
-    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+    backgroundGradientFrom: 'gray',
+    backgroundGradientTo: '#333',
+    color: (opacity = 1) => `rgba(62, 152, 187, ${opacity})`,
     strokeWidth: 3
 };
 class RadarChart extends Component{
@@ -25,7 +25,7 @@ class RadarChart extends Component{
         console.log(this.props);
         return (
             <View>
-                <Text>Today's charts</Text>
+                <Text>Today's chart</Text>
                 <ProgressChart
                     data={this.state.data}
                     width={screenWidth}

@@ -12,7 +12,7 @@ import RadarChart from '../components/charts/RadarChart';
 
 var radio_props = [
     {label: 'No', value: 0 },
-    {label: 'Yes', value: 1 },
+    {label: 'Yes', value: .99 },
   ];
 class TrackingForm extends Component{
 
@@ -22,7 +22,6 @@ class TrackingForm extends Component{
         sleep: 0,
         connectedness: 0,
         nutrition: 0,
-        HERO: 0,
         user: 'usergoeshere',
         date: 'not today!',
         show: false
@@ -271,7 +270,7 @@ class TrackingForm extends Component{
                     textAlign: 'center',
                     color: 'white'}}>Here is a graphic of your responses today.</Text>
                 <ModButton label="Show" onPress={() => this.setState({show: true})} />
-                {this.state.show ? <RadarChart exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} connectedness={this.state.connectedness} nutrition={this.state.nutrition}/> : null}
+                <View style={{marginBottom: 20}}>{this.state.show ? <RadarChart exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} connectedness={this.state.connectedness} nutrition={this.state.nutrition}/> : null}</View>
                 </View>
 
                 <View style={{
