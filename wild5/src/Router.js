@@ -7,10 +7,8 @@ import EducationWellnessRoadMap from './screens/EducationWellnessRoadMap';
 import KickStart30 from './screens/KickStart30';
 import LearnMore from './screens/LearnMore';
 import Quests from './screens/Quests';
-import Profile from './screens/accountmenu/Profile'
+import { About, FAQ, Feedback, Profile} from './screens/accountmenu';
 import Help from './screens/accountmenu/Help'
-import About from './screens/accountmenu/About'
-import FAQ from './screens/accountmenu/FAQ'
 import TrackingForm from './screens/TrackingForm';
 import ExerciseI from './screens/lessonscreens/exerciselessons/ExerciseI'
 import NutritionQuest from './screens/NutritionQuests';
@@ -33,6 +31,7 @@ const Routercomponent = () => {
           <Scene key="exercise1" component={ExerciseI} title='Exercise I' header={true}/>
           <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' header={null}/>
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
+          <Scene key='feedback' component={Feedback} title="Feedback" header={null} />
     </Scene>
 
     </Router>
