@@ -5,6 +5,7 @@ import { Button, ModButton } from '../components/common'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Actions } from 'react-native-router-flux';
 import firebase  from 'firebase';
+import RadarChart from '../components/charts/RadarChart';
 // import {withAuthProvider} from '../context/authcontext';
 
 
@@ -267,17 +268,9 @@ class TrackingForm extends Component{
                     padding: 15,
                     marginBottom: 200,
                     textAlign: 'center',
-                    color: 'white'}}>Did I complete my HERO exercises today?</Text>
+                    color: 'white'}}>Here is a graphic of your responses today.</Text>
 
-                    <RadioForm
-                    radio_props={radio_props}
-                    initial={0}
-                    formHorizontal={false}
-                    labelHorizontal={true}
-                    buttonColor={'white'}
-                    animation={true}
-                    onPress={(value) => {this.setState({HERO:value})}}
-                    />
+                    <RadarChart exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} connectedness={this.state.connectedness} nutrition={this.state.nutrition}/>
                 </View>
 
                 <View style={{
