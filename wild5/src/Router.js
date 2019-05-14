@@ -19,8 +19,8 @@ const Routercomponent = () => {
   return (
     <Router>
    <Scene key="root">
-    <Scene key="loginform" component={LoginForm} header={null}/>
-        <Scene key="landing" component={Landing} title='Landing' backTitle='Logout' header={null} initial/>
+    <Scene key="loginform" component={LoginForm} header={null} initial/>
+        <Scene key="landing" component={Landing} title='Landing' backTitle='Logout' header={null}/>
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} title='Wellness Roadmap'/>
           <Scene key="kickstart" component={KickStart30} title='KickStart30' header={null}/>
