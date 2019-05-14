@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, TouchableOpacity, StyleSheet } from 'react-native'
-import { Footer, FooterTab, Button, Text } from 'native-base' 
+import { Container, Footer, FooterTab, Button, Text, Content, Header, Icon } from 'native-base' 
 import { Actions } from 'react-native-router-flux'
 import Carousel from '../components/Carousel';
 
@@ -11,110 +11,59 @@ class Landing extends Component {
 
   render() {
     return (
-      <>
+      <Container>
+        <Header />
+      <View style={{marginBottom: 300}}>
       <Carousel />
-      {/* <View style={styles.container}>
-      {this.state.account === 0 ?
-      <View style={styles.textCont}>
-      <TouchableOpacity onPress={() => this.setState({account: 1})}>
-      <Text style={styles.text}>Account</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => Actions.edroadmap()}>
-      <Text style={styles.text}>Education</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => Actions.kickstart()}>
-      <Text style={styles.text}>Kickstart30</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => Actions.quests()}>
-      <Text style={styles.text}>Quests</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => Actions.quests()}>
-      <Text style={styles.text}>Devices</Text>
-      </TouchableOpacity>
       </View>
-      :
-      <View style={styles.textCont}>
-      <TouchableOpacity onPress={() => this.setState({account: 0})}>
-      <Text style={styles.text}>Home</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => Actions.profile()}>
-      <Text style={styles.text}>Profile</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => Actions.help()}>
-      <Text style={styles.text}>Help</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => Actions.feedback()}>
-      <Text style={styles.text}>Feedback</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => Actions.settings()}>
-      <Text style={styles.text}>Settings</Text>
-      </TouchableOpacity>
-      </View>}
-      </View> */}
-      {this.state.account === 1 ? <Footer>
+      {this.state.account === 0 ? <Footer style={{bottom: 0}}>
           <FooterTab>
             <Button onPress={() => this.setState({account: 1})}>
+            <Icon name={'ios-pulse'} />
               <Text>Account</Text>
             </Button>
             <Button onPress={() => Actions.edroadmap()}>
+              <Icon name={"compass"} />
               <Text>RoadMap</Text>
             </Button>
             <Button onPress={() => Actions.kickstart()}>
-              <Text>Kickstart30</Text>
+            <Icon name={"rocket"} />
+              <Text>Kickstart</Text>
             </Button>
             <Button onPress={() => Actions.quests()}>
+            <Icon name={"flag"} />
               <Text>Quests</Text>
             </Button>
-            {/* <Button>
-              <Text>Devices</Text>
-            </Button> */}
           </FooterTab>
-        </Footer> 
+        </Footer>
         :
       <Footer>
       <FooterTab>
         <Button onPress={() => this.setState({account: 0})}>
+          <Icon name={'ios-home'} />
           <Text>Home</Text>
         </Button>
         <Button onPress={() => Actions.profile()}>
+        <Icon name={'ios-contacts'} />
           <Text>Profile</Text>
         </Button>
         <Button onPress={() => Actions.help()}>
+        <Icon name={'md-help'} />
           <Text>Help</Text>
         </Button>
         <Button onPress={() => Actions.feedback()}>
-          <Text>Feedback</Text>
+        <Icon name={'ios-chatboxes'} />
+          <Text style={{fontSize: 9}}>Feedback</Text>
         </Button>
         <Button onPress={() => Actions.settings()}>
-          <Text>Settings</Text>
+        <Icon name={'ios-settings'} />
+          <Text style={{fontSize: 10}}>Settings</Text>
         </Button>
       </FooterTab>
     </Footer>}
-      </>
+    </Container>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'flex-end'
-
-
-
-  },
-  textCont: {
-    backgroundColor: 'blue', 
-    height: 50,
-    flexDirection: 'row',
-    justifyContent: 'space-around'
-
-  },
-  text: {
-    fontSize: 17,
-
-  }
-})
-
-
-export default Landing
+export default Landing;
