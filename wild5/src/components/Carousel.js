@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet,Text, Image, View, SafeAreaView} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
+
+
 class App extends React.Component {
  
     constructor(props){
@@ -38,6 +40,7 @@ class App extends React.Component {
     render() {
         return (
         <View style={styles.container}>
+
           
             <Carousel
                     data={this.state.carouselItems}
@@ -47,11 +50,11 @@ class App extends React.Component {
                     autoplay={true}
                     loop={true}
                 />
-           
         </View>
         );
     }
 }
+
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
@@ -64,4 +67,5 @@ const styles = StyleSheet.create({
     marginRight: 20
   },
 });
+
 export default App
