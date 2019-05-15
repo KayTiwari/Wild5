@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, TouchableOpacity, StyleSheet } from 'react-native'
-import { Container, Footer, FooterTab, Button, Text, Content, Header, Icon } from 'native-base' 
+import { Container, Footer, FooterTab, Button, Text, Header, Icon } from 'native-base' 
 import { Actions } from 'react-native-router-flux'
 import Carousel from '../components/Carousel';
 

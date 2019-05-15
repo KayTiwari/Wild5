@@ -129,6 +129,10 @@ class Profile extends Component {
         null
         }
         </View>
+
+        <View>
+          
+        </View>
         </ScrollView>
 
       </View>
