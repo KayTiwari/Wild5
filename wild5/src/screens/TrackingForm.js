@@ -5,15 +5,23 @@ import { Button, ModButton } from '../components/common'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Actions } from 'react-native-router-flux';
 import firebase  from 'firebase';
-import RadarChart from '../components/charts/RadarChart';
+import RadarChart from '../components/charts/RadarChartDisp';
+import RadarChartDisp from '../components/charts/RadarChartDisp';
 // import {withAuthProvider} from '../context/authcontext';
 
 
 
 var radio_props = [
     {label: 'No', value: 0 },
-    {label: 'Yes', value: .99 },
+    {label: 'Yes', value: 1 },
   ];
+  const captions = {
+    exercise: 'Exercise',
+    mindfulness: 'Mindfulness',
+    sleep: 'Sleep',
+    connectedness: 'Social',
+    nutrition: 'Nutrition'
+  };
 class TrackingForm extends Component{
 
     state = {
@@ -263,7 +271,7 @@ class TrackingForm extends Component{
                     color: 'white'
                     }}>Here is a graphic of your responses today.</Text>
                 <ModButton label="Show" onPress={() => this.setState({show: true})} />
-                <View style={{marginBottom: 20}}>{this.state.show ? <RadarChart exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} connectedness={this.state.connectedness} nutrition={this.state.nutrition}/> : null}</View>
+                <View style={{marginBottom: 20}}>{this.state.show ? <RadarChartDisp exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} connectedness={this.state.connectedness} nutrition={this.state.nutrition}/> : null}</View>
                 </View>
 
                 <View style={{
