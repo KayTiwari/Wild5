@@ -5,13 +5,14 @@ import { Button, ModButton } from '../components/common'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Actions } from 'react-native-router-flux';
 import firebase  from 'firebase';
+import RadarChart from '../components/charts/RadarChart';
 // import {withAuthProvider} from '../context/authcontext';
 
 
 
 var radio_props = [
     {label: 'No', value: 0 },
-    {label: 'Yes', value: 1 },
+    {label: 'Yes', value: .99 },
   ];
 class TrackingForm extends Component{
 
@@ -21,9 +22,9 @@ class TrackingForm extends Component{
         sleep: 0,
         connectedness: 0,
         nutrition: 0,
-        HERO: 0,
         user: 'usergoeshere',
-        date: 'not today!'
+        date: 'not today!',
+        show: false
     }
     componentDidMount(){
         var user = firebase.auth().currentUser;
@@ -261,23 +262,9 @@ class TrackingForm extends Component{
                     padding: 50,
                     textAlign: 'center',
                     color: 'white'
-                    }}>HERO</Text>
-                    <Text style={{
-                    fontSize: 40,
-                    padding: 15,
-                    marginBottom: 200,
-                    textAlign: 'center',
-                    color: 'white'}}>Did I complete my HERO exercises today?</Text>
-
-                    <RadioForm
-                    radio_props={radio_props}
-                    initial={0}
-                    formHorizontal={false}
-                    labelHorizontal={true}
-                    buttonColor={'white'}
-                    animation={true}
-                    onPress={(value) => {this.setState({HERO:value})}}
-                    />
+                    }}>Here is a graphic of your responses today.</Text>
+                <ModButton label="Show" onPress={() => this.setState({show: true})} />
+                <View style={{marginBottom: 20}}>{this.state.show ? <RadarChart exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} connectedness={this.state.connectedness} nutrition={this.state.nutrition}/> : null}</View>
                 </View>
 
                 <View style={{

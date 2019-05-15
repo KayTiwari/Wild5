@@ -4,7 +4,7 @@ import { Card, CardSection, Button, ModButton } from '../components/common'
 import { ExerciseButton, MindfulnessButton, NutritionButton, SleepButton, SocialButton, TrackingformButton } from '../components/roadmapbuttons'
 import { Actions } from 'react-native-router-flux';
 import { withProvider } from '../context/context';
-import background1 from '../images/greengif.gif'
+import background1 from '../images/backgroundgif.gif'
 
 
 class EducationWellnessRoadMap extends Component {
@@ -151,12 +151,10 @@ class EducationWellnessRoadMap extends Component {
               <Text style={{left: '25%', marginTop: 10}}>
                 .
               </Text>
-
             
               <MindfulnessButton marginRight={'25%'} marginLeft={'25%'}>
                Mindfulness II 
               </MindfulnessButton>
-
             
               <Text style={{alignSelf: 'center', marginTop: 10}}>
                 .
@@ -169,11 +167,9 @@ class EducationWellnessRoadMap extends Component {
               <Text style={{alignSelf: 'center', marginTop: 10}}>
                 .
               </Text>
-
               <SleepButton marginLeft={'45%'}>
                Sleep II 
               </SleepButton>
-
               <Text style={{alignSelf: 'center', marginTop: 10}}>
                 .
               </Text>
@@ -185,11 +181,9 @@ class EducationWellnessRoadMap extends Component {
               <Text style={{alignSelf: 'center', marginTop: 10}}>
                 .
               </Text>
-
               <SocialButton marginRight={'25%'} marginLeft={'25%'}>
                Social II 
               </SocialButton>
-
               <Text style={{left: '25%', marginTop: 10}}>
                 .
               </Text>
@@ -201,7 +195,6 @@ class EducationWellnessRoadMap extends Component {
               <Text style={{left: '25%', marginTop: 10}}>
                 .
               </Text>
-
               <NutritionButton marginRight={'50%'} marginTop={10}>
                Nutrition II 
               </NutritionButton>
