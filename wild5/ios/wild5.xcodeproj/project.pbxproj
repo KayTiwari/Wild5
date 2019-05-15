@@ -14,6 +14,7 @@
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* wild5Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* wild5Tests.m */; };
 		00FC1625FBF6466F83756CC5 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 623B04C519CB4F009A3689EC /* Zocial.ttf */; };
+		0E3B0BED228CB8A40099E749 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		0EFDCD88228C9A8400CDA57F /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFDCD87228C9A5A00CDA57F /* libRCTCameraRoll.a */; };
 		0EFDCD89228C9A8400CDA57F /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFDCD7D228C99FC00CDA57F /* libRNCamera.a */; };
 		11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -21,7 +22,6 @@
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
@@ -1284,9 +1284,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				E1E3E04A8E6C48169E88DB39 /* AntDesign.ttf in Resources */,
 				BC9F1574CD38452E9D738225 /* Entypo.ttf in Resources */,
+				0E3B0BED228CB8A40099E749 /* LaunchScreen.xib in Resources */,
 				FEA3DC948FBD49DABB9EE655 /* EvilIcons.ttf in Resources */,
 				59B906ABE28441E3868B8A65 /* Feather.ttf in Resources */,
 				4820CC714D544DB8A7B7897C /* FontAwesome.ttf in Resources */,

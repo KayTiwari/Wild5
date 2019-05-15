@@ -14,7 +14,7 @@ class Landing extends Component {
     return (
       <Container>
         <View style={{width: '80%', marginLeft: '10%'}}><Image source={wild5title} style={{width: '100%', resizeMode:'contain'}} /></View>
-      <View style={{marginBottom: 220}}>
+      <View style={{marginBottom: 170}}>
       <Carousel />
       </View>
       {this.state.account === 0 ? <Footer style={{bottom: 0}}>
