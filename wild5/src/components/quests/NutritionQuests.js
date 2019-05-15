@@ -15,8 +15,8 @@ class NutritionQuest extends Component {
     if (this.camera) {
       const options = { quality: 0.5, based64: true }
       const data = await this.camera.takePictureAsync(options).then(data => 
-        console.log(data.uri))
-        CameraRoll.saveToCameraRoll(data.uri, 'photo');
+        // console.log(data.uri))
+        CameraRoll.saveToCameraRoll(data.uri, 'photo'));
       
       // console.log(data.uri)
     }
@@ -57,7 +57,7 @@ class NutritionQuest extends Component {
         <View style={{marginBottom: 25, marginRight: 10, flexDirection: 'row', justifyContent: 'flex-end'}}>
         <TouchableOpacity onPress={() => Actions.quests()}>
           
-          <Image style={{width: 45, height: 45}} source={require('../images/exitbutton.png')}/>
+          <Image style={{width: 45, height: 45}} source={require('../../images/exitbutton.png')}/>
         </TouchableOpacity>
         </View>
       </View>
