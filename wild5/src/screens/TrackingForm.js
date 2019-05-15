@@ -5,8 +5,7 @@ import { Button, ModButton } from '../components/common'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Actions } from 'react-native-router-flux';
 import firebase  from 'firebase';
-import RadarChart from '../components/charts/RadarChartDisp';
-import RadarChartDisp from '../components/charts/RadarChartDisp';
+import RadarChartDisp from '../components/charts/ProgressChart';
 // import {withAuthProvider} from '../context/authcontext';
 
 
@@ -147,7 +146,7 @@ class TrackingForm extends Component{
                     padding: 15,
                     marginBottom: 200,
                     textAlign: 'center',
-                    color: 'white'}}>Did I mindfully meditate at least 10 mnutes today?</Text>
+                    color: 'white'}}>Did I mindfully meditate at least 10 minutes today?</Text>
 
                     <RadioForm
                     radio_props={radio_props}
@@ -293,7 +292,7 @@ class TrackingForm extends Component{
                     padding: 15,
                     marginBottom: 150,
                     textAlign: 'center',
-                    color: 'white'}}>Your input today will help with your Wellness tomorrow</Text>
+                    color: 'white'}}>Your input today will help with your Wellness tomorrow.</Text>
 
                 <ModButton onPress={this.submitForm.bind(this)} label="Submit">
                     Submit
