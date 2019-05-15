@@ -55,7 +55,6 @@ class TrackingForm extends Component{
             sleep: sleep,
             connectedness: connectedness,
             nutrition: nutrition,
-            HERO: HERO,
             DateTaken: date
           });
           Actions.edroadmap();

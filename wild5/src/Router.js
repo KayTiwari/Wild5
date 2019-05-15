@@ -28,10 +28,10 @@ const Routercomponent = () => {
           <Scene key='help' component={Help} header={null}/>
           <Scene key='about' component={About} header={null}/>
           <Scene key='faq' component={FAQ} header={null}/>
-          <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' header={null}/>
+          <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' header={null} initial/>
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
           <Scene key='feedback' component={Feedback} title="Feedback" header={null} />
-          <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile} initial/>
+          <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile}/>
     </Scene>
 
     </Router>

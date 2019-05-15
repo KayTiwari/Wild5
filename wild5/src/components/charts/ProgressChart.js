@@ -9,7 +9,7 @@ const chartConfig = {
     color: (opacity = 1) => `rgba(62, 152, 187, ${opacity})`,
     strokeWidth: 3
 };
-class RadarChart extends Component{
+class ProgressChart extends Component{
     state = {
         data: [
             
@@ -45,4 +45,4 @@ class RadarChart extends Component{
     }
 }
 
-export default RadarChart;
+export default ProgressChart;
