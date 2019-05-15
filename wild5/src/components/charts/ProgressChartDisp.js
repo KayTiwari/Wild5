@@ -10,7 +10,7 @@ const chartConfig = {
     strokeWidth: 3
 };
 
-class ProgressChart extends Component{
+class ProgressChartDisp extends Component{
     state = {
         data: [
             
@@ -46,4 +46,4 @@ class ProgressChart extends Component{
     }
 }
 
-export default ProgressChart;
+export default ProgressChartDisp;

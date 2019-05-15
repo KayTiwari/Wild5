@@ -5,14 +5,14 @@ import { Button, ModButton } from '../components/common'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Actions } from 'react-native-router-flux';
 import firebase  from 'firebase';
-import RadarChartDisp from '../components/charts/ProgressChart';
+import ProgressChartDisp from '../components/charts/ProgressChartDisp';
 // import {withAuthProvider} from '../context/authcontext';
 
 
 
 var radio_props = [
     {label: 'No', value: 0 },
-    {label: 'Yes', value: 1 },
+    {label: 'Yes', value: .999 },
   ];
   const captions = {
     exercise: 'Exercise',
@@ -270,7 +270,7 @@ class TrackingForm extends Component{
                     color: 'white'
                     }}>Here is a graphic of your responses today.</Text>
                 <ModButton label="Show" onPress={() => this.setState({show: true})} />
-                <View style={{marginBottom: 20}}>{this.state.show ? <RadarChartDisp exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} connectedness={this.state.connectedness} nutrition={this.state.nutrition}/> : null}</View>
+                <View style={{marginBottom: 20}}>{this.state.show ? <ProgressChartDisp exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} connectedness={this.state.connectedness} nutrition={this.state.nutrition}/> : null}</View>
                 </View>
 
                 <View style={{
