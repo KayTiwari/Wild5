@@ -71,5 +71,11 @@
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+    <string>Accessing Camera to take pictures of your food</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Accessing Photos for reviewing your food photos</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Need permission to store photos on your device</string>
 </dict>
 </plist>
