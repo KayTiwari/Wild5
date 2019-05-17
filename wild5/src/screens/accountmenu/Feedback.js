@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, Platform, TextInput } from 'react-native'
+import { View, Dimensions, Platform, TextInput } from 'react-native'
 import t from 'tcomb-form-native'
+import { Button, Container, Text } from 'native-base';
+import Navbar from '../../components/Navbar';
 
 const Form = t.form.Form;
 
@@ -16,12 +18,16 @@ const Feedback2 = t.struct({
   feedback: t.maybe(t.String)
 })
 
+const screenheight = Dimensions.get('window').height;
+
 const stylesheet = Object.freeze({ 
 
           fields: {},
           formGroup: {
             normal: {
-              marginBottom: 10
+              marginLeft: '5%',
+              marginRight: '5%',
+              marginTop: '15%'
             }
           },
             textbox: {
@@ -34,7 +40,7 @@ const stylesheet = Object.freeze({
                     borderRadius: 4,
                     borderColor: '#000',
                     borderWidth: 1,
-                    marginBottom: 5
+                    marginBottom: 5,
                   }
                 },
               // textboxView: {
@@ -50,10 +56,23 @@ class Feedback extends Component {
 
   render() {
     return (
+      <Container style={{display:'flex', height:screenheight, flexDirection:'column', justifyContent:'space-between'}}>
+
+      <View>
+        <Text style={{marginTop:'20%', fontSize:30, fontWeight:'600', textAlign:'center'}}>Feedback</Text>
+
+
       <View style={stylesheet.formGroup.normal}>
           <Form type={Feedback1}/>
           <TextInput type={Feedback2} style={stylesheet.textbox.normal}  />
       </View>
+      </View>
+
+      <View>
+        <Navbar />
+      </View>
+
+      </Container>
     )
   }
 }
