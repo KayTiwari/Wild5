@@ -23,7 +23,7 @@ const Routercomponent = () => {
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} backTitle='Back' title='Wellness Roadmap'/>
           <Scene key="exercise1" component={ExerciseI} title='Exercise I' backTitle='Back'/>
-          <Scene key="kickstart" component={KickStart30} title='KickStart30' backTitle='Back'/>
+          <Scene key="kickstart" component={KickStart30} title='KickStart30' header={null}/>
           <Scene key="learnmore" component={LearnMore} title='Learn More' backTitle='Back'/>
           <Scene key="quests" component={Quests} title='Quests' header={null}/>
           <Scene key='help' component={Help} backTitle='Back'/>
