@@ -16,10 +16,14 @@ class NewRoadMap extends Component{
         return (
             <Container style={{height: screenheight, width: screenwidth, display:'flex', flexDirection:'column'}}>
         <ScrollView>
+
+        <View style={{marginBottom:'25%'}}>
         <Text style={{textAlign:'center', fontSize:30, fontWeight:'600', marginTop: '20%'}}>The Road To Wellness</Text>
         <Text style={{textAlign:'center', fontSize:15, fontWeight:'600'}}>Completed: {this.state.completed}%</Text>
+        </View>
+
         <View>
-            <Button success iconright>
+            <Button style={{alignSelf:'center'}} success large iconright>
                 <Icon name='bicycle' />
                 <Text>Exercise I</Text>
             </Button>
