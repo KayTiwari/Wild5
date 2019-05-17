@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Dimensions } from 'react-native'
-import {Container, Button, Text } from 'native-base'
+import { View, Dimensions } from 'react-native';
+import { Actions } from 'react-native-router-flux'; 
+import {Container, Button, Text, Icon } from 'native-base';
 import Navbar from '../components/Navbar';
 
 const screenheight = Dimensions.get('window').height;
@@ -14,6 +15,10 @@ const Settings = () => {
 
         <Button dark large style={{alignSelf:'center'}}>
             <Text>Logout</Text>
+        </Button>
+
+        <Button transparent style={{alignSelf:'center'}} onPress={() => Actions.help()}>
+          <Text>Help</Text>
         </Button>
 
         <View>

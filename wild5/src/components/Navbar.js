@@ -50,10 +50,10 @@ class Navbar extends Component{
         <Icon name={'ios-pulse'} />
           <Text>Profile</Text>
         </Button>
-        <Button onPress={() => Actions.help()}>
+        {/* <Button onPress={() => Actions.help()}>
         <Icon name={'md-help'} />
           <Text>Help</Text>
-        </Button>
+        </Button> */}
         <Button onPress={() => Actions.feedback()}>
         <Icon name={'chatbubbles'} />
           <Text style={{fontSize: 9}}>Feedback</Text>
@@ -61,6 +61,9 @@ class Navbar extends Component{
         <Button onPress={() => Actions.settings()}>
         <Icon name={'ios-settings'} />
           <Text style={{fontSize: 10}}>Settings</Text>
+        </Button>
+        <Button onPress={() => this.setState({show: 1})}>
+              <Text style={{fontSize: 30, fontWeight: '600'}}>...</Text>
         </Button>
       </FooterTab>
       </Footer>}
