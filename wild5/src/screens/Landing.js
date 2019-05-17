@@ -17,7 +17,7 @@ class Landing extends Component {
     return (
       <Container style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height:screenheight}}>
       <View>
-        <View style={{width: '80%', marginLeft: '10%', marginBottom:0}}><Image source={wild5title} style={{width: '100%', resizeMode:'contain'}} /></View>
+        <View style={{width: '80%', marginLeft: '10%', marginTop:'20%', marginBottom:0}}><Image source={wild5title} style={{width: '100%', resizeMode:'contain'}} /></View>
       <View>
       <Carousel />
       </View>
