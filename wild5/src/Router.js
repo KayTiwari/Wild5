@@ -3,7 +3,7 @@ import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './screens/LoginForm'
 import Landing from './screens/Landing'
 import Account from './screens/Account';
-import EducationWellnessRoadMap from './screens/EducationWellnessRoadMap';
+import EducationWellnessRoadMap from './screens/NewRoadMap';
 import KickStart30 from './screens/KickStart30';
 import LearnMore from './screens/LearnMore';
 import Settings from './screens/Settings';
@@ -21,7 +21,7 @@ const Routercomponent = () => {
     <Scene key="loginform" component={LoginForm} header={null}/>
         <Scene key="landing" component={Landing} title='Welcome to Wellness' backTitle='Logout' initial/>
           <Scene key="account" component={Account} title='Account' header={null}/>
-          <Scene key="edroadmap" component={EducationWellnessRoadMap} backTitle='Back' title='Wellness Roadmap'/>
+          <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Wellness Roadmap' initial/>
           <Scene key="exercise1" component={ExerciseI} title='Exercise I' backTitle='Back'/>
           <Scene key="kickstart" component={KickStart30} title='KickStart30' header={null}/>
           <Scene key="learnmore" component={LearnMore} title='Learn More' backTitle='Back'/>

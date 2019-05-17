@@ -11,7 +11,7 @@ class Quests extends Component {
       <Container style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height:screenheight}}>
         <View>
           <View>
-        <Text style={{textAlign:'center', fontSize:30, marginTop: 70, fontWeight: '600', marginBottom: 40}}>Quests</Text>
+        <Text style={{textAlign:'center', fontSize:30, marginTop: '20%', fontWeight: '600', marginBottom: 40}}>Quests</Text>
        <Button style={{alignSelf:'center'}} warning large onPress={() => Actions.nutritionquest()}>
        <Icon name='nutrition' />
        <Text>Nutrition Tracker</Text>

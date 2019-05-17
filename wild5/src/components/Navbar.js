@@ -30,7 +30,7 @@ class Navbar extends Component{
               <Text>Kickstart</Text>
             </Button>
             <Button onPress={() => Actions.quests()}>
-            <Icon name={"flag"} />
+            <Icon name={"flame"} />
               <Text>Quests</Text>
             </Button>
             <Button onPress={() => this.setState({show: 1})}>
@@ -54,7 +54,7 @@ class Navbar extends Component{
           <Text>Help</Text>
         </Button>
         <Button onPress={() => Actions.feedback()}>
-        <Icon name={'ios-chatboxes'} />
+        <Icon name={'chatbubbles'} />
           <Text style={{fontSize: 9}}>Feedback</Text>
         </Button>
         <Button onPress={() => Actions.settings()}>
