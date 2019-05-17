@@ -62,7 +62,7 @@ class Navbar extends Component{
         <Icon name={'ios-settings'} />
           <Text style={{fontSize: 10}}>Settings</Text>
         </Button>
-        <Button onPress={() => this.setState({show: 1})}>
+        <Button onPress={() => this.setState({show: 0})}>
               <Text style={{fontSize: 30, fontWeight: '600'}}>...</Text>
         </Button>
       </FooterTab>
