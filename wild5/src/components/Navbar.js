@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, TouchableOpacity, StyleSheet, Image } from 'react-native'
-import { Container, Footer, FooterTab, Button, Text, Header, Icon } from 'native-base' 
+import { Container, Footer, FooterTab, Button, Text, Header, Icon, Badge } from 'native-base' 
 import { Actions } from 'react-native-router-flux'
 
 
@@ -29,7 +29,8 @@ class Navbar extends Component{
             <Icon name={"rocket"} />
               <Text>Kickstart</Text>
             </Button>
-            <Button onPress={() => Actions.quests()}>
+            <Button badge onPress={() => Actions.quests()}>
+            <Badge><Text>1</Text></Badge>
             <Icon name={"flame"} />
               <Text>Quests</Text>
             </Button>

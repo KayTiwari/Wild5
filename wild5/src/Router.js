@@ -27,8 +27,6 @@ const Routercomponent = () => {
           <Scene key="learnmore" component={LearnMore} title='Learn More' backTitle='Back'/>
           <Scene key="quests" component={Quests} title='Quests' header={null}/>
           <Scene key='help' component={Help} backTitle='Back'/>
-          <Scene key='about' component={About} backTitle='Back'/>
-          <Scene key='faq' component={FAQ} backTitle='Back'/>
           <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' header={null}/>
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />

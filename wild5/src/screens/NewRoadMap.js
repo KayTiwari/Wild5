@@ -18,7 +18,7 @@ class NewRoadMap extends Component{
             <Container style={{height: screenheight, width: screenwidth, display:'flex', flexDirection:'column'}}>
         <ScrollView>
 
-        <View style={{marginBottom:'25%',  marginTop: '20%'}}>
+        <View style={{marginBottom:'25%',  marginTop: '20%', borderColor:'red'}}>
         <Text style={{textAlign:'center', fontSize:30, fontWeight:'600'}}>The Road To Wellness</Text>
         <Text style={{textAlign:'center', fontSize:15, fontWeight:'600'}}>Completed: {this.state.completed}%</Text>
         </View>
