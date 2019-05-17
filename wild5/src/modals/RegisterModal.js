@@ -34,9 +34,15 @@ class RegisterModal extends Component {
   }
 
   onRegisterFail = () => {
+    if (this.state.password.length < 6) {
+      this.setState({
+        error: 'Password must be at least 6 characters'
+      })
+    } else {
     this.setState({
       error: 'Something went wrong'
     })
+  }
   }
 
   closeModal = () => this.setState({ visible: false });
