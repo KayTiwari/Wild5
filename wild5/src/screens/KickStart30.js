@@ -5,8 +5,8 @@ class KickStart30 extends Component {
   render() {
     return (
         <View>
-        <Text>
-          View
+        <Text style={{textAlign: 'center', fontWeight:'600', fontSize:30}}>
+          Hang in there, chief.
         </Text>
       </View>
     )

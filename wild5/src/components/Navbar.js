@@ -3,22 +3,24 @@ import { View, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import { Container, Footer, FooterTab, Button, Text, Header, Icon } from 'native-base' 
 import { Actions } from 'react-native-router-flux'
 
+
 class Navbar extends Component{
 
     state = {
-        
+        show: 0
     }
 
+    homePress = () => {
+        this.setState({show: 0})
+        Actions.landing();
+    }
 
     render(){
     return (
         <View>
-        <Footer>
-          <FooterTab>
-            <Button onPress={() => this.setState({account: 1})}>
-            <Icon name={'ios-pulse'} />
-              <Text>Account</Text>
-            </Button>
+        {this.state.show === 0 ?
+            <Footer>
+                <FooterTab>
             <Button onPress={() => Actions.edroadmap()}>
               <Icon name={"compass"} />
               <Text>RoadMap</Text>
@@ -31,16 +33,20 @@ class Navbar extends Component{
             <Icon name={"flag"} />
               <Text>Quests</Text>
             </Button>
+            <Button onPress={() => this.setState({show: 1})}>
+              <Text style={{fontSize: 30, fontWeight: '600'}}>...</Text>
+            </Button>
           </FooterTab>
         </Footer>
+        :
       <Footer>
       <FooterTab>
-        <Button onPress={() => this.setState({account: 0})}>
+        <Button onPress={this.homePress.bind(this)}>
           <Icon name={'ios-home'} />
           <Text>Home</Text>
         </Button>
         <Button onPress={() => Actions.profile()}>
-        <Icon name={'ios-contacts'} />
+        <Icon name={'ios-pulse'} />
           <Text>Profile</Text>
         </Button>
         <Button onPress={() => Actions.help()}>
@@ -56,9 +62,10 @@ class Navbar extends Component{
           <Text style={{fontSize: 10}}>Settings</Text>
         </Button>
       </FooterTab>
-    </Footer>
-    </View>
+      </Footer>}
+      </View>
     )
 }
 }
 
+export default Navbar;
