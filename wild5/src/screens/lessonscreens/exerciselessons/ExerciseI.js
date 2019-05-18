@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import { ScrollView, View, Text, Dimensions } from 'react-native';
+import { ScrollView, View, Dimensions, Image } from 'react-native';
+import { Text, Icon } from 'native-base'
 import { ModButton } from '../../../components/common';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 // var Pedometer = require('react-native-pedometer');
+import seven from '../../../images/7.gif'
 
 var now = new Date();
 
@@ -86,28 +88,32 @@ class ExerciseI extends Component{
     return (
         <ScrollView horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={true}>
                 <View style={{
-                    backgroundColor: '#5f9ea0',
+                    backgroundColor: '#1F6521',
                     flex: 1,
                     width: screenwidth,
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
+                <Icon style={{color: 'white', fontSize: 100}} name='fitness' />
                 <Text style={{
                     fontSize: 30,
                     padding: 50,
                     textAlign: 'center',
-                    color: 'white'
+                    color: 'white',
+                    marginBottom:'10%',
+                    fontWeight:'600'
                     }}>Exercise Lesson I</Text>
                     <Text style={{
                     fontSize: 40,
                     padding: 15,
-                    marginBottom: 200,
+                    fontWeight:'600',
+                    marginBottom:'50%',
                     textAlign: 'center',
                     color: 'white'}}>FID</Text>
                 </View>
 
                 <View style={{
-                    backgroundColor: 'tomato',
+                    backgroundColor: '#53900F',
                     flex: 1,
                     width: screenwidth,
                     justifyContent: 'center',
@@ -117,17 +123,19 @@ class ExerciseI extends Component{
                     fontSize: 40,
                     padding: 50,
                     textAlign: 'center',
-                    color: 'white'
+                    color: 'white',
+                    fontWeight:'600'
                     }}>Frequency</Text>
                     <Text style={{
                     fontSize: 30,
                     padding: 15,
                     marginBottom: 200,
                     textAlign: 'center',
-                    color: 'white'}}>We must exercise Frequently. This means, aim for seven days a week!</Text>
+                    color: 'white'}}>We must exercise frequently. This means aim for seven days a week!</Text>
+                    <Image source={seven} />
                 </View>
                 <View style={{
-                    backgroundColor: 'tomato',
+                    backgroundColor: '#53900F',
                     flex: 1,
                     width: screenwidth,
                     justifyContent: 'center',
@@ -137,7 +145,8 @@ class ExerciseI extends Component{
                     fontSize: 40,
                     padding: 50,
                     textAlign: 'center',
-                    color: 'white'
+                    color: 'white',
+                    fontWeight:'600'
                     }}>How many days a week should we exercise?</Text>
                     <RadioForm
                     radio_props= {[
@@ -149,7 +158,7 @@ class ExerciseI extends Component{
                     initial={0}
                     formHorizontal={false}
                     labelHorizontal={true}
-                    buttonColor={'#5a8f30'}
+                    buttonColor={'#fff'}
                     animation={true}
                     onPress={(value) => this.setState({question1value: value})}
                     />
@@ -157,8 +166,9 @@ class ExerciseI extends Component{
                     <Text>{this.state.wrong}</Text><Text>{this.state.correct1}</Text>
                 </View>
 
+                <ScrollView>
                 {this.state.question1 === 1 ? <View style={{
-                    backgroundColor: '#663399',
+                    backgroundColor: '#31708E',
                     flex: 1,
                     width: screenwidth,
                     justifyContent: 'center',
@@ -168,7 +178,8 @@ class ExerciseI extends Component{
                     fontSize: 40,
                     padding: 50,
                     textAlign: 'center',
-                    color: 'white'
+                    color: 'white',
+                    fontWeight: '600'
                     }}>Intensity</Text>
                     <Text style={{
                     fontSize: 30,
@@ -181,8 +192,10 @@ class ExerciseI extends Component{
                     is when having a conversation with your workout buddy is difficult because you
                     are winded </Text>
                 </View> : null}
+                </ScrollView>
+
                 {this.state.question1 === 1 ? <View style={{
-                    backgroundColor: '#663399',
+                    backgroundColor: '#31708E',
                     flex: 1,
                     width: screenwidth,
                     justifyContent: 'center',
@@ -203,7 +216,7 @@ class ExerciseI extends Component{
                     initial={0}
                     formHorizontal={false}
                     labelHorizontal={true}
-                    buttonColor={'#5a8f30'}
+                    buttonColor={'#fff'}
                     animation={true}
                     onPress={(value) => this.setState({question2value: value})}
                     />
@@ -213,7 +226,7 @@ class ExerciseI extends Component{
 
 
                 {this.state.question2 === 1 ?<View style={{
-                    backgroundColor: '#8EE4AF',
+                    backgroundColor: '#782446',
                     flex: 1,
                     width: screenwidth,
                     justifyContent: 'center',
@@ -223,7 +236,8 @@ class ExerciseI extends Component{
                     fontSize: 40,
                     padding: 50,
                     textAlign: 'center',
-                    color: 'white'
+                    color: 'white',
+                    fontWeight:'600'
                     }}>Duration</Text>
                     <Text style={{
                     fontSize: 30,
@@ -244,8 +258,9 @@ class ExerciseI extends Component{
                     fontSize: 40,
                     padding: 50,
                     textAlign: 'center',
-                    color: 'white'
-                    }}>What is the best duration for exericse?</Text>
+                    color: 'white',
+                    fontWeight:'600',
+                    }}>What is the best duration for exercise?</Text>
                     <RadioForm
                     radio_props= {[
                         {label: '10 minutes', value: 0 },
@@ -277,6 +292,7 @@ class ExerciseI extends Component{
                     textAlign: 'center',
                     color: 'white'
                     }}>For the Exercise challenge: Take a small walk of 60 steps</Text>
+                    <Text></Text>
                     <Text style={{
                     fontSize: 30,
                     padding: 15,
@@ -286,7 +302,7 @@ class ExerciseI extends Component{
                 </View> : null}
 
 
-                {this.state.steps === 60 ? <View style={{
+                <View style={{
                     backgroundColor: 'yellow',
                     flex: 1,
                     width: screenwidth,
@@ -307,7 +323,7 @@ class ExerciseI extends Component{
                     marginBottom: 200,
                     textAlign: 'center',
                     color: 'white'}}>Feel free to review what you learned or move on to the next lesson </Text>
-                </View> : null}
+                </View>
         </ScrollView>
     )
     }
