@@ -23,6 +23,13 @@ class NewRoadMap extends Component{
         <Text style={{textAlign:'center', fontSize:15, fontWeight:'600', marginBottom:'20%'}}>Completed: {this.state.completed}%</Text>
         </View>
 
+        <View style={{marginBottom: '20%'}}>
+            <Button onPress={() => Actions.trackingform()} style={styles.tracking} bordered info large iconright>
+                <Text style={{}}>Wellness Tracking Form</Text>
+            </Button>
+        </View>
+
+
         <View>
             <Button onPress={() => Actions.exercise1()} style={{alignSelf:'center'}} success large iconright>
                 <Icon name='bicycle' />
@@ -107,7 +114,11 @@ const styles = StyleSheet.create({
     nutrition: {
         alignSelf:'center',
         backgroundColor: '#f3983e'
-    }
+    },
+    tracking: {
+        alignSelf:'center',
+        backgroundColor: '#333',
+    },
 })
 
 export default NewRoadMap;
