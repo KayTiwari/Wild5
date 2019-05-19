@@ -200,7 +200,6 @@ class ExerciseI extends Component{
                     exercise. The easiest way to know you've achieved moderately intense exercise
                     is when having a conversation with your workout buddy is difficult because you
                     are winded </Text>
-                    <View style={{height: '50%', width:'50%', marginBottom:'50%'}}><Image style={{width: '100%', resizeMode:'contain'}} source={seven} /></View>
                 </View> : null}
                 </ScrollView>
 
