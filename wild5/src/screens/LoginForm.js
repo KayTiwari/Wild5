@@ -1,7 +1,8 @@
 // import console = require('console');
 import React, {Component} from 'react';
-import { Text, ImageBackground, View, Image } from 'react-native';
-import { Button, Card, CardSection, Input, Spinner } from '../components/common';
+import { ImageBackground, View, Image } from 'react-native';
+import { Card, CardSection, Input, Spinner } from '../components/common';
+import { Button, Text } from 'native-base'
 import firebase from 'firebase'
 import {withAuthProvider} from '../context/authcontext';
 import { Actions } from 'react-native-router-flux';
@@ -69,7 +70,7 @@ class LoginForm extends Component {
         } else
         return (
             <Button onPress={this.onButtonPress.bind(this)}>
-                    Login
+                    <Text>Login</Text>
             </Button>
         )
     }
@@ -131,8 +132,8 @@ class LoginForm extends Component {
             </View>
 
             <View style={{height: '5%', width: '80%', alignSelf:'center', marginTop: 20}}>
-            <Button onPress={this.OnRegisterPress.bind(this)}>
-                    Register
+            <Button large bordered info style={{backgroundColor:'#333', alignSelf:'center'}} onPress={this.OnRegisterPress.bind(this)}>
+                    <Text>Register</Text>
             </Button>
             </View>
 
