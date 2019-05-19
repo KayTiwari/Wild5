@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import { ImageBackground, View, Image } from 'react-native';
 import { Card, CardSection, Input, Spinner } from '../components/common';
-import { Button, Text } from 'native-base'
+import { Button, Text, Container } from 'native-base'
 import firebase from 'firebase'
 import {withAuthProvider} from '../context/authcontext';
 import { Actions } from 'react-native-router-flux';
@@ -69,7 +69,7 @@ class LoginForm extends Component {
             return <Spinner size='small' />
         } else
         return (
-            <Button onPress={this.onButtonPress.bind(this)}>
+            <Button block info style={{backgroundColor:'#333', alignSelf:'center'}} onPress={this.onButtonPress.bind(this)}>
                     <Text>Login</Text>
             </Button>
         )
@@ -132,13 +132,13 @@ class LoginForm extends Component {
             </View>
 
             <View style={{height: '5%', width: '80%', alignSelf:'center', marginTop: 20}}>
-            <Button large bordered info style={{backgroundColor:'#333', alignSelf:'center'}} onPress={this.OnRegisterPress.bind(this)}>
+            <Button bordered info style={{backgroundColor:'#333', alignSelf:'center'}} onPress={this.OnRegisterPress.bind(this)}>
                     <Text>Register</Text>
             </Button>
             </View>
 
 
-            <Text onPress={this.OnForgotPress.bind(this)} style={{color: 'white', alignSelf: 'center', marginTop: 10}}>Forgot your password?</Text>
+            <Text onPress={this.OnForgotPress.bind(this)} style={{color: 'white', alignSelf: 'center', marginTop: 20}}>Forgot your password?</Text>
 
         </ImageBackground>
         </View>
