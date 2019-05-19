@@ -5,7 +5,7 @@ import { Button, ModButton } from '../components/common'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Actions } from 'react-native-router-flux';
 import firebase  from 'firebase';
-import ProgressChartDisp from '../components/charts/ProgressChartDisp';
+import VictoryChart from '../components/charts/VictoryRadarChart'
 // import {withAuthProvider} from '../context/authcontext';
 
 
@@ -55,7 +55,7 @@ class TrackingForm extends Component{
 
     submitForm(){
         console.log(this.state);
-        const { exercise, mindfulness, sleep, connectedness, nutrition, HERO, user, date } = this.state;
+        const { exercise, mindfulness, sleep, connectedness, nutrition, user, date } = this.state;
         firebase.database().ref(`WellnessTrackingForm/${user}`).push({
             exercise: exercise,
             mindfulness: mindfulness,
@@ -267,10 +267,11 @@ class TrackingForm extends Component{
                     fontSize: 30,
                     padding: 50,
                     textAlign: 'center',
-                    color: 'white'
+                    color: 'white',
+                    marginBottom:'0%'
                     }}>Here is a graphic of your responses today.</Text>
                 <ModButton label="Show" onPress={() => this.setState({show: true})} />
-                <View style={{marginBottom: 20}}>{this.state.show ? <ProgressChartDisp exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} connectedness={this.state.connectedness} nutrition={this.state.nutrition}/> : null}</View>
+                <View style={{marginBottom: '50%'}}>{this.state.show ? <VictoryChart /> : null}</View>
                 </View>
 
                 <View style={{
