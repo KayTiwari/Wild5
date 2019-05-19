@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { ScrollView, View, Dimensions, Image } from 'react-native';
-import { Text, Icon } from 'native-base'
+import { Text, Icon, Button } from 'native-base'
 import { ModButton } from '../../../components/common';
+import { Actions } from 'react-native-router-flux';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 // var Pedometer = require('react-native-pedometer');
 import seven from '../../../images/7.gif'
@@ -97,12 +98,19 @@ class ExerciseI extends Component{
                 <Icon style={{color: 'white', fontSize: 100}} name='fitness' />
                 <Text style={{
                     fontSize: 30,
-                    padding: 50,
+                    textAlign: 'center',
+                    color: 'white',
+                    fontSize:60,
+                    marginBottom:'5%',
+                    fontWeight:'600'
+                    }}>Exercise</Text>
+                <Text style={{
+                    fontSize: 30,
                     textAlign: 'center',
                     color: 'white',
                     marginBottom:'10%',
                     fontWeight:'600'
-                    }}>Exercise Lesson I</Text>
+                    }}>Lesson I</Text>
                     <Text style={{
                     fontSize: 40,
                     padding: 15,
@@ -129,7 +137,7 @@ class ExerciseI extends Component{
                     <Text style={{
                     fontSize: 30,
                     padding: 15,
-                    marginBottom: 200,
+                    marginBottom: '20%',
                     textAlign: 'center',
                     color: 'white'}}>We must exercise frequently. This means aim for seven days a week!</Text>
                     <Image source={seven} />
@@ -184,7 +192,7 @@ class ExerciseI extends Component{
                     <Text style={{
                     fontSize: 30,
                     padding: 15,
-                    marginBottom: 100,
+                    marginBottom: '20%',
                     textAlign: 'center',
                     color: 'white'}}>The Intensity of exercise must be at least moderately intense, otherwise brain
                     benefits are less. You may be wondering what qualifies as moderately intense
@@ -242,13 +250,13 @@ class ExerciseI extends Component{
                     <Text style={{
                     fontSize: 30,
                     padding: 15,
-                    marginBottom: 200,
+                    marginBottom: '20%',
                     textAlign: 'center',
                     color: 'white'}}>Duration of exercise requires that we exercise at least 30-minutes per day. If you
                     want to exercise more, please do. </Text>
                 </View> : null}
                 {this.state.question2 === 1 ? <View style={{
-                    backgroundColor: '#8EE4AF',
+                    backgroundColor: '#782446',
                     flex: 1,
                     width: screenwidth,
                     justifyContent: 'center',
@@ -280,7 +288,7 @@ class ExerciseI extends Component{
                 </View> : null}
 
                 {this.state.question3 === 1 ?<View style={{
-                    backgroundColor: '#8EE4AF',
+                    backgroundColor: '#333',
                     flex: 1,
                     width: screenwidth,
                     justifyContent: 'center',
@@ -303,7 +311,7 @@ class ExerciseI extends Component{
 
 
                 <View style={{
-                    backgroundColor: 'yellow',
+                    backgroundColor: '#D6CE15',
                     flex: 1,
                     width: screenwidth,
                     justifyContent: 'center',
@@ -320,9 +328,13 @@ class ExerciseI extends Component{
                     fontSize: 30,
                     padding: 15,
                     fontWeight: '600',
-                    marginBottom: 200,
+                    marginBottom: '50%',
                     textAlign: 'center',
                     color: 'white'}}>Feel free to review what you learned or move on to the next lesson </Text>
+                    <View>
+                    <Button onPress={Actions.edroadmap()} info large>
+                        <Text>End Lesson</Text>
+                    </Button></View>
                 </View>
         </ScrollView>
     )
