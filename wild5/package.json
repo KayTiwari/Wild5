@@ -20,6 +20,7 @@
     "react-native-button": "^2.3.0",
     "react-native-camera": "^2.9.0",
     "react-native-chart-kit": "^2.6.1",
+    "react-native-ios-charts": "^0.3.0",
     "react-native-modal": "^9.0.0",
     "react-native-pedometer": "0.0.7",
     "react-native-router-flux": "^4.0.6",
@@ -32,7 +33,9 @@
     "react-native-vector-icons": "^6.4.2",
     "react-svg-radar-chart": "^1.2.0",
     "tcomb-form-native": "^0.6.20",
-    "toggle-switch-react-native": "^2.0.2"
+    "toggle-switch-react-native": "^2.0.2",
+    "victory": "^32.2.3",
+    "victory-native": "^32.0.2"
   },
   "devDependencies": {
     "@babel/core": "7.4.3",
