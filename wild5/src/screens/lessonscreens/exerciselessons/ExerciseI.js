@@ -130,6 +130,7 @@ class ExerciseI extends Component{
                 <Text style={{
                     fontSize: 40,
                     padding: 50,
+                    marginTop:'20%',
                     textAlign: 'center',
                     color: 'white',
                     fontWeight:'600'
@@ -137,10 +138,10 @@ class ExerciseI extends Component{
                     <Text style={{
                     fontSize: 30,
                     padding: 15,
-                    marginBottom: '20%',
+                    marginBottom: '-20%',
                     textAlign: 'center',
                     color: 'white'}}>We must exercise frequently. This means aim for seven days a week!</Text>
-                    <View style={{height: '50%', width:'50%', marginBottom:'20%'}}><Image style={{width: '50%', resizeMode:'contain'}} source={seven} /></View>
+                    <View style={{height: '50%', width:'50%', marginBottom:'50%'}}><Image style={{width: '100%', resizeMode:'contain'}} source={seven} /></View>
                 </View>
                 <View style={{
                     backgroundColor: '#53900F',
@@ -199,7 +200,7 @@ class ExerciseI extends Component{
                     exercise. The easiest way to know you've achieved moderately intense exercise
                     is when having a conversation with your workout buddy is difficult because you
                     are winded </Text>
-                    {/* <View style={{height: '50%', width:'50%'}}><Image style={{width: '100%', resizeMode:'contain'}} source={seven} /></View> */}
+                    <View style={{height: '50%', width:'50%', marginBottom:'50%'}}><Image style={{width: '100%', resizeMode:'contain'}} source={seven} /></View>
                 </View> : null}
                 </ScrollView>
 
@@ -255,7 +256,6 @@ class ExerciseI extends Component{
                     textAlign: 'center',
                     color: 'white'}}>Duration of exercise requires that we exercise at least 30-minutes per day. If you
                     want to exercise more, please do. </Text>
-                    <View style={{height: '50%', width:'50%'}}><Image style={{width: '100%', resizeMode:'contain'}} source={seven} /></View>
                 </View> : null}
                 {this.state.question2 === 1 ? <View style={{
                     backgroundColor: '#782446',
@@ -281,7 +281,7 @@ class ExerciseI extends Component{
                     initial={0}
                     formHorizontal={false}
                     labelHorizontal={true}
-                    buttonColor={'#5a8f30'}
+                    buttonColor={'#fff'}
                     animation={true}
                     onPress={(value) => this.setState({question3value: value})}
                     />
@@ -302,12 +302,19 @@ class ExerciseI extends Component{
                     textAlign: 'center',
                     color: 'white',
                     fontWeight: '600'
-                    }}>For the Exercise challenge: Take a small walk of 60 steps. If you can't right now, move on to the next page.</Text>
+                    }}>For the Exercise challenge: Take a small walk of 60 steps.</Text>
+                <Text style={{
+                    fontSize: 40,
+                    padding: 50,
+                    textAlign: 'center',
+                    color: 'white',
+                    fontWeight: '600'
+                    }}> If you can't right now, move on to the next page.</Text>
                     <Text></Text>
                     <Text style={{
                     fontSize: 30,
                     padding: 15,
-                    marginBottom: 200,
+                    marginBottom: '20%',
                     textAlign: 'center',
                     color: 'white'}}>{this.state.steps === 60 ? "Good Job, move on to the next section" + this.state.steps : this.state.steps}</Text>
                 </View> : null}
