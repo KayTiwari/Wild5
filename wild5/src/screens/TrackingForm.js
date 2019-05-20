@@ -105,7 +105,7 @@ class TrackingForm extends Component{
                     <Text style={{
                     fontSize: 40,
                     padding: 15,
-                    marginBottom: '10%',
+                    marginBottom: '20%',
                     textAlign: 'center',
                     color: 'white'}}>Did I exercise today following the FID principles?</Text>
 
@@ -140,7 +140,7 @@ class TrackingForm extends Component{
                     <Text style={{
                     fontSize: 40,
                     padding: 15,
-                    marginBottom: '10%',
+                    marginBottom: '20%',
                     textAlign: 'center',
                     color: 'white'}}>Did I mindfully meditate at least 10 minutes today?</Text>
 
@@ -175,7 +175,7 @@ class TrackingForm extends Component{
                     <Text style={{
                     fontSize: 40,
                     padding: 15,
-                    marginBottom: '10%',
+                    marginBottom: '20%',
                     textAlign: 'center',
                     color: 'white'}}>Did I implement 4 or more of the 6 sleep hygiene practices?</Text>
 
@@ -210,7 +210,7 @@ class TrackingForm extends Component{
                     <Text style={{
                     fontSize: 40,
                     padding: 15,
-                    marginBottom: '10%',
+                    marginBottom: '20%',
                     textAlign: 'center',
                     color: 'white'}}>Did I socially connect with at least 2 people today?</Text>
 
@@ -245,7 +245,7 @@ class TrackingForm extends Component{
                     <Text style={{
                     fontSize: 40,
                     padding: 15,
-                    marginBottom: '10%',
+                    marginBottom: '20%',
                     textAlign: 'center',
                     color: 'white'}}>Did I log my meals, snacks, and beverages, including alcohol today?</Text>
 
@@ -263,6 +263,7 @@ class TrackingForm extends Component{
                     />
                 </View>
 
+                <ScrollView>
                 <View style={{
                     backgroundColor: '#333',
                     flex: 1,
@@ -281,6 +282,7 @@ class TrackingForm extends Component{
                 <ModButton label="Show" onPress={() => this.setState({show: true})} />
                 <View style={{marginBottom: '50%'}}>{this.state.show ? <VictoryChart exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} social={this.state.connectedness} nutrition={this.state.nutrition}/> : null}</View>
                 </View>
+                </ScrollView>
 
                 <View style={{
                     backgroundColor: 'gold',

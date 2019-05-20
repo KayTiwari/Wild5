@@ -47,7 +47,7 @@ class Navbar extends Component{
           <Text>Home</Text>
         </Button>
         <Button onPress={() => Actions.profile()}>
-        <Icon name={'ios-pulse'} />
+        <Icon name={'person'} />
           <Text>Profile</Text>
         </Button>
         {/* <Button onPress={() => Actions.help()}>
