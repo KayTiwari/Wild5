@@ -12,15 +12,8 @@ import VictoryChart from '../components/charts/VictoryRadarChart'
 
 var radio_props = [
     {label: 'No', value: 0 },
-    {label: 'Yes', value: .999 },
+    {label: 'Yes', value: 1 },
   ];
-  const captions = {
-    exercise: 'Exercise',
-    mindfulness: 'Mindfulness',
-    sleep: 'Sleep',
-    connectedness: 'Social',
-    nutrition: 'Nutrition'
-  };
 class TrackingForm extends Component{
 
     state = {
@@ -117,7 +110,10 @@ class TrackingForm extends Component{
                     color: 'white'}}>Did I exercise today following the FID principles?</Text>
 
                     <RadioForm
-                    radio_props={radio_props}
+                    radio_props={[
+                        {label: 'No', value: 0 },
+                        {label: 'Yes', value: 1 },
+                      ]}
                     initial={0}
                     formHorizontal={false}
                     labelHorizontal={true}
@@ -149,7 +145,10 @@ class TrackingForm extends Component{
                     color: 'white'}}>Did I mindfully meditate at least 10 minutes today?</Text>
 
                     <RadioForm
-                    radio_props={radio_props}
+                    radio_props={[
+                        {label: 'No', value: 0 },
+                        {label: 'Yes', value: 2 },
+                      ]}
                     initial={0}
                     formHorizontal={false}
                     labelHorizontal={true}
@@ -181,7 +180,10 @@ class TrackingForm extends Component{
                     color: 'white'}}>Did I implement 4 or more of the 6 sleep hygiene practices?</Text>
 
                     <RadioForm
-                    radio_props={radio_props}
+                    radio_props={[
+                        {label: 'No', value: 0 },
+                        {label: 'Yes', value: 3 },
+                      ]}
                     initial={0}
                     formHorizontal={false}
                     labelHorizontal={true}
@@ -213,7 +215,10 @@ class TrackingForm extends Component{
                     color: 'white'}}>Did I socially connect with at least 2 people today?</Text>
 
                     <RadioForm
-                    radio_props={radio_props}
+                    radio_props={[
+                        {label: 'No', value: 0 },
+                        {label: 'Yes', value: 4 },
+                      ]}
                     initial={0}
                     formHorizontal={false}
                     labelHorizontal={true}
@@ -245,7 +250,10 @@ class TrackingForm extends Component{
                     color: 'white'}}>Did I log my meals, snacks, and beverages, including alcohol today?</Text>
 
                     <RadioForm
-                    radio_props={radio_props}
+                    radio_props={[
+                        {label: 'No', value: 0 },
+                        {label: 'Yes', value: 5 },
+                      ]}
                     initial={0}
                     formHorizontal={false}
                     labelHorizontal={true}
@@ -271,7 +279,7 @@ class TrackingForm extends Component{
                     marginBottom:'0%'
                     }}>Here is a graphic of your responses today.</Text>
                 <ModButton label="Show" onPress={() => this.setState({show: true})} />
-                <View style={{marginBottom: '50%'}}>{this.state.show ? <VictoryChart /> : null}</View>
+                <View style={{marginBottom: '50%'}}>{this.state.show ? <VictoryChart exercise={this.state.exercise} mindfulness={this.state.mindfulness} sleep={this.state.sleep} social={this.state.connectedness} nutrition={this.state.nutrition}/> : null}</View>
                 </View>
 
                 <View style={{

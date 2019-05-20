@@ -4,13 +4,13 @@ import { VictoryArea, VictoryChart, VictoryGroup, VictoryLabel, VictoryPolarAxis
 
 
 const characterData = [
-  { exercise: 1, mindfulness: 1, sleep: 1, social: 1, nutrition: 1 },
+  { exercise: 1, mindfulness: 0, sleep: 1, social: 0, nutrition: 1 },
 ];
 
 class VictoryRadarChart extends Component {
     state = {
-      data: this.processData({exercise: this.props.exercise, mindfulness: this.props.mindfulness, sleep: this.props.sleep, social: this.props.connectedness, nutrition: this.props.nutrition}),
-      maxima: this.getMaxima({exercise: this.props.exercise, mindfulness: this.props.mindfulness, sleep: this.props.sleep, social: this.props.connectedness, nutrition: this.props.nutrition})
+      data: this.processData([{exercise: this.props.exercise, mindfulness: this.props.mindfulness, sleep: this.props.sleep, social: this.props.social, nutrition: this.props.nutrition}]),
+      maxima: this.getMaxima([{exercise: this.props.exercise, mindfulness: this.props.mindfulness, sleep: this.props.sleep, social: this.props.social, nutrition: this.props.nutrition}])
     }
 
   getMaxima(data) {
