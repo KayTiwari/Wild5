@@ -4,9 +4,7 @@ import { VictoryArea, VictoryChart, VictoryGroup, VictoryLabel, VictoryPolarAxis
 
 
 const characterData = [
-  { strength: 1, intelligence: 250, luck: 1, stealth: 40, charisma: 50 },
-  { strength: 2, intelligence: 300, luck: 2, stealth: 80, charisma: 90 },
-  { strength: 5, intelligence: 225, luck: 3, stealth: 60, charisma: 120 }
+  { exercise: 1, mindfulness: 1, sleep: 1, social: 1, nutrition: 1 },
 ];
 
 class VictoryRadarChart extends Component {
@@ -42,7 +40,7 @@ class VictoryRadarChart extends Component {
         theme={VictoryTheme.material}
         domain={{ y: [ 0, 1 ] }}
       >
-        <VictoryGroup colorScale={["gold", "orange", "tomato"]}
+        <VictoryGroup colorScale={["white"]}
           style={{ data: { fillOpacity: 0.2, strokeWidth: 2 } }}
         >
           {this.state.data.map((data, i) => {
