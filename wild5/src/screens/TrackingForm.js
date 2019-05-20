@@ -105,7 +105,7 @@ class TrackingForm extends Component{
                     <Text style={{
                     fontSize: 40,
                     padding: 15,
-                    marginBottom: 200,
+                    marginBottom: '10%',
                     textAlign: 'center',
                     color: 'white'}}>Did I exercise today following the FID principles?</Text>
 
@@ -140,7 +140,7 @@ class TrackingForm extends Component{
                     <Text style={{
                     fontSize: 40,
                     padding: 15,
-                    marginBottom: 200,
+                    marginBottom: '10%',
                     textAlign: 'center',
                     color: 'white'}}>Did I mindfully meditate at least 10 minutes today?</Text>
 
@@ -175,7 +175,7 @@ class TrackingForm extends Component{
                     <Text style={{
                     fontSize: 40,
                     padding: 15,
-                    marginBottom: 200,
+                    marginBottom: '10%',
                     textAlign: 'center',
                     color: 'white'}}>Did I implement 4 or more of the 6 sleep hygiene practices?</Text>
 
@@ -210,7 +210,7 @@ class TrackingForm extends Component{
                     <Text style={{
                     fontSize: 40,
                     padding: 15,
-                    marginBottom: 200,
+                    marginBottom: '10%',
                     textAlign: 'center',
                     color: 'white'}}>Did I socially connect with at least 2 people today?</Text>
 
@@ -245,7 +245,7 @@ class TrackingForm extends Component{
                     <Text style={{
                     fontSize: 40,
                     padding: 15,
-                    marginBottom: 100,
+                    marginBottom: '10%',
                     textAlign: 'center',
                     color: 'white'}}>Did I log my meals, snacks, and beverages, including alcohol today?</Text>
 
