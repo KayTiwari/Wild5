@@ -9,8 +9,8 @@ const characterData = [
 
 class VictoryRadarChart extends Component {
     state = {
-      data: this.processData(characterData),
-      maxima: this.getMaxima(characterData)
+      data: this.processData({exercise: this.props.exercise, mindfulness: this.props.mindfulness, sleep: this.props.sleep, social: this.props.connectedness, nutrition: this.props.nutrition}),
+      maxima: this.getMaxima({exercise: this.props.exercise, mindfulness: this.props.mindfulness, sleep: this.props.sleep, social: this.props.connectedness, nutrition: this.props.nutrition})
     }
 
   getMaxima(data) {
