@@ -1,188 +1,160 @@
-import React from 'react';
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { WebBrowser } from 'expo';
+// import console = require('console');
+import React, {Component} from 'react';
+import { ImageBackground, Text, View, Image } from 'react-native';
+import { Button, Card, CardSection, Input, Spinner } from '../components/common';
+import firebase from 'firebase'
+import {withAuthProvider} from '../context/authcontext';
+import { Actions } from 'react-native-router-flux';
+import RegisterModal from '../modals/RegisterModal';
+import ForgotPassModal from '../modals/ForgotPassModal';
+import abstractimg from '../images/abstract2.jpeg';
+import wild5title from '../images/wild-5-logo-r-color.png'
 
-import { MonoText } from '../components/StyledText';
 
-export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
-  };
+class LoginForm extends Component {
+    
+    state = {
+        email: '',
+        password: '',
+        error: '',
+        loading: false,
+        forgot: false,
+        modal: false,
+    } 
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
+    
 
-          <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
+    onButtonPress() {
+        const { email, password } = this.state;
+        this.setState({
+            error: '',
+            loading: true
+        })
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(() => {
+                this.onLoginSuccess();
+            })
+            .catch(() => {
+                    this.onLoginFail();
+                });
+    };
 
-            <Text style={styles.getStartedText}>Get started by opening</Text>
+    OnRegisterPress(){
+        if (this.state.modal === false){
+        this.setState({
+            modal: true
+        })
+        } else {
+            this.setState({
+                modal: false
+            })
+        }
+    }
 
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
+    OnForgotPress(){
+        if (this.state.forgot === false){
+            this.setState({
+                forgot: true
+            })
+            } else {
+                this.setState({
+                forgot: false
+                })
+            }
+    }
+ 
+    renderButton() {
+        if (this.state.loading) {
+            return <Spinner size='small' />
+        } else
+        return (
+            <Button onPress={this.onButtonPress.bind(this)}>
+                    <Text>Login</Text>
+            </Button>
+        )
+    }
+
+    onLoginSuccess() {
+        this.setState({
+            error: '',
+            loading: false,
+            email: '',
+            password: ''
+        })
+        Actions.landing();
+    }
+
+    onLoginFail() {
+        this.setState({
+            error: 'Authentication failed, try again?',
+            loading: false
+        })
+    }
+
+    render(){
+        return (
+            <View>
+            <ImageBackground source={abstractimg} style={{width: '100%', height: '100%'}}>
+            <View style={{width: '80%', marginLeft: '10%', marginTop: 70}}><Image source={wild5title} style={{width: '100%', resizeMode:'contain'}} /></View>
+            {this.state.modal ? <RegisterModal visible={true}/> : null}
+            {this.state.forgot ? <ForgotPassModal visible={true}/> : null}
+            
+            <View style={{marginTop: 70, width: '90%', marginLeft: '5%'}}>
+            <Text style={styles.errorTextStyle}>
+                {this.state.error}
+            </Text>
+            <CardSection>
+                <Input
+                placeholder='Email address'
+                // label='Email'
+                value={this.state.email}
+                onChangeText={email => this.setState({ email })}
+                
+                />
+            </CardSection>
+            </View>
+            
+            <View style={{marginTop: 10, width: '90%', marginLeft: '5%'}}>
+            <CardSection>
+            <Input
+                placeholder='Enter your password'
+                // label='Password'
+                value={this.state.password}
+                onChangeText={password => this.setState({ password })}
+                secureTextEntry
+                />
+            </CardSection>
             </View>
 
-            <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
-            </Text>
-          </View>
+            <View style={{height: '5%', width: '80%', alignSelf:'center', marginTop: 30}}>
+                {this.renderButton()}
+            </View>
 
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
+            <View style={{height: '5%', width: '80%', alignSelf:'center', marginTop: 20}}>
+            <Button style={{backgroundColor:'#333', alignSelf:'center'}} onPress={this.OnRegisterPress.bind(this)}>
+                    <Text>Register</Text>
+            </Button>
+            </View>
 
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
 
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
+            <Text onPress={this.OnForgotPress.bind(this)} style={{color: 'white', alignSelf: 'center', marginTop: 20}}>Forgot your password?</Text>
+
+        </ImageBackground>
         </View>
-      </View>
-    );
-  }
-
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
-      return (
-        <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
-        </Text>
-      );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
+        )
     }
-  }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
+}
+const styles = {
+    errorTextStyle: {
+        fontSize: 20,
+        alignSelf: 'center',
+        color: 'white'
+    },
+    successTextStyle: {
+        fontSize: 20,
+        alignSelf: 'center',
+        color: '#BADA55'
+    }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
-  },
-});
+export default withAuthProvider(LoginForm);

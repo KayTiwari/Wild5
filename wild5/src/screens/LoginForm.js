@@ -20,7 +20,7 @@ class LoginForm extends Component {
         loading: false,
         forgot: false,
         modal: false,
-    } 
+    }
 
     
 
