@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { ScrollView, View, Dimensions, Image } from 'react-native';
-import { Text, Icon, Button } from 'native-base'
+import { ScrollView, View, Dimensions, StyleSheet, Image } from 'react-native';
+import { Text, Icon, Container } from 'native-base'
 import { ModButton } from '../../../components/common';
 import { Actions } from 'react-native-router-flux';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
@@ -12,342 +12,79 @@ var now = new Date();
 class ExerciseI extends Component{
 
     state = {
-        question1value: 0,
-        question2value: 0,
-        question3value: 0,
-        question1: 0,
-        question2: 0,
-        question3: 0,
-        wrong1: '',
-        correct1: '',
-        correct2: '',
-        correct3: '',       
-    }
-
-    // Pedometer.startPedometerUpdatesFromDate(now.getTime(), (pedometerData) => {
-    //     // do something with pedometer data
-    //       });
-
-
-    isCorrect = (value) => {
-        this.setState({
-            wrong: ''
-        })
-        if (this.state.question1value === 1) {
-            this.setState({
-                question1: 1,
-                correct1: 'Well done! Move on to the next section.',
-            })
-        } else {
-            this.setState({
-                wrong: 'Try again?',
-                correct1: ''
-            })
-        }
-    }
-
-    isCorrect2 = () => {
-        this.setState({
-            wrong: ''
-        })
-        if (this.state.question2value === 1) {
-            this.setState({
-                question2: 1,
-                correct2: 'Awesome, keep going!',
-            })
-        } else {
-            this.setState({
-                wrong: 'Try again?',
-                correct2: ''
-            })
-        }
-    }
-    isCorrect3 = () => {
-        this.setState({
-            wrong: ''
-        })
-        if (this.state.question3value === 1) {
-            this.setState({
-                question3: 1,
-                correct3: 'You did a great job this lesson.',
-            })
-        } else {
-            this.setState({
-                wrong: 'Try again?',
-                correct3: ''
-            })
-        }
-    }
-
-    wasItCorrect = () => {
 
     }
 
     render(){
-    let screenwidth = Dimensions.get('window').width;
-    let screenheight = Dimensions.get('window').height;
-    return (
-        <ScrollView horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={true}>
-                <View style={{
-                    backgroundColor: '#1F6521',
-                    flex: 1,
-                    width: screenwidth,
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                <Icon style={{color: 'white', fontSize: 100}} name='fitness' />
-                <Text style={{
-                    fontSize: 30,
-                    textAlign: 'center',
-                    color: 'white',
-                    fontSize:60,
-                    marginBottom:'5%',
-                    fontWeight:'600'
-                    }}>Exercise</Text>
-                <Text style={{
-                    fontSize: 30,
-                    textAlign: 'center',
-                    color: 'white',
-                    marginBottom:'10%',
-                    fontWeight:'600'
-                    }}>Lesson I</Text>
-                    <Text style={{
-                    fontSize: 40,
-                    padding: 15,
-                    fontWeight:'600',
-                    marginBottom:'50%',
-                    textAlign: 'center',
-                    color: 'white'}}>FID</Text>
-                </View>
-
-                <View style={{
-                    backgroundColor: '#53900F',
-                    flex: 1,
-                    width: screenwidth,
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                <Text style={{
-                    fontSize: 40,
-                    padding: 50,
-                    marginTop:'20%',
-                    textAlign: 'center',
-                    color: 'white',
-                    fontWeight:'600'
-                    }}>Frequency</Text>
-                    <Text style={{
-                    fontSize: 30,
-                    padding: 15,
-                    marginBottom: '-20%',
-                    textAlign: 'center',
-                    color: 'white'}}>We must exercise frequently. This means aim for seven days a week!</Text>
-                    <View style={{height: '50%', width:'50%', marginBottom:'50%'}}><Image style={{width: '100%', resizeMode:'contain'}} source={seven} /></View>
-                </View>
-                <View style={{
-                    backgroundColor: '#53900F',
-                    flex: 1,
-                    width: screenwidth,
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                <Text style={{
-                    fontSize: 40,
-                    padding: 50,
-                    textAlign: 'center',
-                    color: 'white',
-                    fontWeight:'600'
-                    }}>How many days a week should we exercise?</Text>
-                    <RadioForm
-                    radio_props= {[
-                        {label: '5', value: 0 },
-                        {label: '6', value: 0 },
-                        {label: '7', value: 1 },
-                        {label: '8', value: 0 },
-                      ]}
-                    initial={0}
-                    formHorizontal={false}
-                    labelHorizontal={true}
-                    buttonColor={'#fff'}
-                    animation={true}
-                    onPress={(value) => this.setState({question1value: value})}
-                    />
-                    <ModButton style={{marginTop: 10}} label="Think you're correct?" onPress={this.isCorrect}></ModButton>
-                    <Text>{this.state.wrong}</Text><Text>{this.state.correct1}</Text>
-                </View>
-
-                <ScrollView>
-                {this.state.question1 === 1 ? <View style={{
-                    backgroundColor: '#31708E',
-                    flex: 1,
-                    width: screenwidth,
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                <Text style={{
-                    fontSize: 40,
-                    padding: 50,
-                    textAlign: 'center',
-                    color: 'white',
-                    fontWeight: '600'
-                    }}>Intensity</Text>
-                    <Text style={{
-                    fontSize: 30,
-                    padding: 15,
-                    marginBottom: '20%',
-                    textAlign: 'center',
-                    color: 'white'}}>The Intensity of exercise must be at least moderately intense, otherwise brain
-                    benefits are less. You may be wondering what qualifies as moderately intense
-                    exercise. The easiest way to know you've achieved moderately intense exercise
-                    is when having a conversation with your workout buddy is difficult because you
-                    are winded </Text>
-                </View> : null}
-                </ScrollView>
-
-                {this.state.question1 === 1 ? <View style={{
-                    backgroundColor: '#31708E',
-                    flex: 1,
-                    width: screenwidth,
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                <Text style={{
-                    fontSize: 40,
-                    padding: 50,
-                    textAlign: 'center',
-                    color: 'white'
-                    }}>According to Wild5, what is the best intensity for exercise?</Text>
-                    <RadioForm
-                    radio_props= {[
-                        {label: 'Low', value: 0 },
-                        {label: 'Moderate', value: 1 },
-                        {label: 'High', value: 0 },
-                      ]}
-                    initial={0}
-                    formHorizontal={false}
-                    labelHorizontal={true}
-                    buttonColor={'#fff'}
-                    animation={true}
-                    onPress={(value) => this.setState({question2value: value})}
-                    />
-                    <ModButton label="Give it a shot" onPress={this.isCorrect2}></ModButton>
-                    <Text>{this.state.wrong}</Text><Text>{this.state.correct2}</Text>
-                </View> : null}
-
-
-                {this.state.question2 === 1 ?<View style={{
-                    backgroundColor: '#782446',
-                    flex: 1,
-                    width: screenwidth,
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                <Text style={{
-                    fontSize: 40,
-                    padding: 50,
-                    textAlign: 'center',
-                    color: 'white',
-                    fontWeight:'600'
-                    }}>Duration</Text>
-                    <Text style={{
-                    fontSize: 30,
-                    padding: 15,
-                    marginBottom: '20%',
-                    textAlign: 'center',
-                    color: 'white'}}>Duration of exercise requires that we exercise at least 30-minutes per day. If you
-                    want to exercise more, please do. </Text>
-                </View> : null}
-                {this.state.question2 === 1 ? <View style={{
-                    backgroundColor: '#782446',
-                    flex: 1,
-                    width: screenwidth,
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                <Text style={{
-                    fontSize: 40,
-                    padding: 50,
-                    textAlign: 'center',
-                    color: 'white',
-                    fontWeight:'600',
-                    }}>What is the best duration for exercise?</Text>
-                    <RadioForm
-                    radio_props= {[
-                        {label: '10 minutes', value: 0 },
-                        {label: '20 minutes', value: 0 },
-                        {label: '30 minutes', value: 1 },
-                        {label: 'All day', value: 0 },
-                      ]}
-                    initial={0}
-                    formHorizontal={false}
-                    labelHorizontal={true}
-                    buttonColor={'#fff'}
-                    animation={true}
-                    onPress={(value) => this.setState({question3value: value})}
-                    />
-                    <ModButton label="Last one, you got this!" onPress={this.isCorrect3}></ModButton>
-                    <Text>{this.state.wrong}</Text><Text>{this.state.correct3}</Text>
-                </View> : null}
-
-                {this.state.question3 === 1 ?<View style={{
-                    backgroundColor: '#333',
-                    flex: 1,
-                    width: screenwidth,
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                <Text style={{
-                    fontSize: 40,
-                    padding: 50,
-                    textAlign: 'center',
-                    color: 'white',
-                    fontWeight: '600'
-                    }}>For the Exercise challenge: Take a small walk of 60 steps.</Text>
-                <Text style={{
-                    fontSize: 40,
-                    padding: 50,
-                    textAlign: 'center',
-                    color: 'white',
-                    fontWeight: '600'
-                    }}> If you can't right now, move on to the next page.</Text>
-                    <Text></Text>
-                    <Text style={{
-                    fontSize: 30,
-                    padding: 15,
-                    marginBottom: '20%',
-                    textAlign: 'center',
-                    color: 'white'}}>{this.state.steps === 60 ? "Good Job, move on to the next section" + this.state.steps : this.state.steps}</Text>
-                </View> : null}
-
-
-                {this.state.question3 === 1 ?<View style={{
-                    backgroundColor: '#D6CE15',
-                    flex: 1,
-                    width: screenwidth,
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                <Text style={{
-                    fontSize: 40,
-                    fontWeight: '700',
-                    padding: 50,
-                    textAlign: 'center',
-                    color: 'white'
-                    }}>Lesson Completed</Text>
-                    <Text style={{
-                    fontSize: 30,
-                    padding: 15,
-                    fontWeight: '600',
-                    marginBottom: '50%',
-                    textAlign: 'center',
-                    color: 'white'}}>Feel free to review what you learned or move on to the next lesson </Text>
+        return (
+            <ScrollView>
+                <Container>
                     <View>
-                    <Button onPress={() => Actions.edroadmap()} info large>
-                        <Text>End Lesson</Text>
-                    </Button></View>
-                </View> : null}
+                    <Text style={styles.mainTitle}>Learn about <Text style={[styles.mainTitle, {color: 'green'}]}>Exercise</Text></Text>
+                    </View>
+
+                    
+                        <Text style={[styles.mainTitle, {marginTop: '20%'}]}>F.I.D</Text>
+                        <Text style={styles.subTitle}>Frequency</Text>
+                        <Text style={styles.paragraph}>Exercise is recommended to be done every day for 7 days a week.</Text>
+                        <Text style={styles.subTitle}>Intensity</Text>
+                        <Text style={styles.paragraph}>Exercise done is recommended to be at moderate intensity. This optimizes brain and mental health benefits. You know you're at moderate intensity when you have trouble speaking in full sentences.
+                        Method to calculate heart rate: 
+                        </Text>
+                        <Text style={styles.subTitle}>Duration</Text>
+                        <Text style={styles.paragraph}>Recommended duration is for 30 minutes during a session.</Text>
+                    
+                </Container>
+                <Container>
+                        <Text style={[styles.mainTitle, {marginTop: '20%'}]}>Why Exercise?</Text>
+                        <Text style={styles.paragraph}>There is an impressive amount of evidence showing that exercise, if done correctly, is not only good for a person's mental and physical health , but also leads to positive brain and body changes.  Including exercise in this wellness program makes sense and offers all participants a chance to reap the many associated benefits.</Text>
+                        <Text style={[styles.mainTitle, {marginTop: '20%'}]}>What type of exercise is recommended?</Text>
+                        <Text style={styles.paragraph}>Acceptable types of exercise are(including but not limited to):
+-walking
+-jogging
+-biking
+-tennis
+-swimming
+-weight lifting
+-aerobics
+-water aerobics.
+Unacceptable types:
+	-yoga
+</Text>
+                        <Text style={[styles.mainTitle, {marginTop: '20%'}]}>What if I’m already exercising and meeting the programs criteria for FID? Do I need to make any changes?</Text>
+                        <Text style={styles.paragraph}>No, you do not need to make any changes. Just make sure you're meeting the principles of FID and keep up the good work.
+</Text>
+                        <Text style={[styles.mainTitle, {marginTop: '20%'}]}>What if I don’t have time to exercise for 30 minutes?</Text>
+                        <Text style={styles.paragraph}>Creating the time for exercise is necessary if mind-body health is one of your top priorities. Here’s some good news - breaking down your 30 minutes of exercise in 2 15 minutes sections or 3 10 minutes is perfectly acceptable.  You will receive the same mind & body benefits, regardless of the way you structure the timing of your exercise routine. 
+</Text>
+
+            </Container>
         </ScrollView>
-    )
+        )
     }
 }
 
 export default ExerciseI;
+
+const styles = StyleSheet.create({
+    mainTitle: {
+        fontSize: 30,
+        fontWeight: '600',
+        textAlign: 'center',
+        marginTop: '10%'
+    },
+    subTitle: {
+        fontSize: 20,
+        fontWeight: '600',
+        textAlign: 'center',
+        marginTop: '20%'
+    },
+    paragraph: {
+        fontSize: 20,
+        fontWeight: '400',
+        marginTop: '5%',
+        marginLeft: '5%',
+        marginRight: '5%',
+        textAlign: 'center'
+    }
+})
