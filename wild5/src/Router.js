@@ -11,7 +11,7 @@ import Quests from './screens/Quests';
 import { About, FAQ, Feedback, Profile} from './screens/accountmenu';
 import Help from './screens/accountmenu/Help'
 import TrackingForm from './screens/TrackingForm';
-import ExerciseI from './screens/lessonscreens/exerciselessons/ExerciseI'
+import ExerciseI from './screens/lessonscreens/ExerciseI'
 import NutritionQuest from './components/quests/NutritionQuests';
 
 const Routercomponent = () => {
