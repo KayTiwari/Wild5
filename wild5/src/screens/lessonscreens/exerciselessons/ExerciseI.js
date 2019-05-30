@@ -46,7 +46,22 @@ class ExerciseI extends Component{
                         <Text style={[styles.mainTitle, {marginTop: '20%'}]}>What if I don’t have time to exercise for 30 minutes?</Text>
                         <Text style={styles.paragraph}>Creating the time for exercise is necessary if mind-body health is one of your top priorities. Here’s some good news - breaking down your 30 minutes of exercise in 2 15 minutes sections or 3 10 minutes is perfectly acceptable.  You will receive the same mind & body benefits, regardless of the way you structure the timing of your exercise routine. 
 </Text>
-
+            </Container>
+            <Container>
+                <Text style={[styles.mainTitle, {marginTop: '20%'}]}>Barriers to Success</Text>
+                <Text style={styles.subTitle}>Time</Text>
+                <Text style={styles.paragraph}>Add exercise to your calendar and set reminder alerts.</Text> 
+                <Text style={styles.subTitle}>Physical Limitations</Text>
+                <Text style={styles.paragraph}>consult with healthcare provider, physical limitations may require you to modify your exercise plans and that is perfectly OK.</Text> 
+                <Text style={styles.subTitle}>Weather</Text>
+                <Text style={styles.paragraph}>Plan accordingly, have a backup plan. Exercise in your home, at a gym or walk in a mall.</Text> 
+                <Text style={styles.subTitle}>Low Motivation</Text>
+                <Text style={styles.paragraph}>Acknowledge your lack of motivation. Push yourself to do it anyways. Team up with workout buddy. Have your workout clothes packed the night before. Get an accountability buddy. Consider the 5 second rule when experiencing low motivation</Text> 
+            </Container>
+            <Container>
+            <Text style={[styles.mainTitle, {marginTop: '20%'}]}>What others are saying</Text>
+            <Text style={styles.paragraph}>“The exercise part got me sleeping much better and feeling better” I felt like I was accountable to someone for working out vs. just telling myself that I was supposed to work out everyday.”</Text>
+            <Text style={styles.paragraph}>“I think exercise must have released a lot of endorphins or something because it would really bring my mood up for the whole rest of the day if I did the jogging or whatever.”</Text>
             </Container>
         </ScrollView>
         )
