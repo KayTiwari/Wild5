@@ -39,18 +39,7 @@ class ExerciseI extends Component{
                         <Text style={[styles.mainTitle, {marginTop: '20%'}]}>Why Exercise?</Text>
                         <Text style={styles.paragraph}>There is an impressive amount of evidence showing that exercise, if done correctly, is not only good for a person's mental and physical health , but also leads to positive brain and body changes.  Including exercise in this wellness program makes sense and offers all participants a chance to reap the many associated benefits.</Text>
                         <Text style={[styles.mainTitle, {marginTop: '20%'}]}>What type of exercise is recommended?</Text>
-                        <Text style={styles.paragraph}>Acceptable types of exercise are(including but not limited to):
--walking
--jogging
--biking
--tennis
--swimming
--weight lifting
--aerobics
--water aerobics.
-Unacceptable types:
-	-yoga
-</Text>
+                        <Text style={styles.paragraph}>Acceptable types of exercise are(including but not limited to):-walking-jogging-biking-tennis-swimming-weight lifting-aerobics-water aerobics.Unacceptable types:-yoga</Text>
                         <Text style={[styles.mainTitle, {marginTop: '20%'}]}>What if I’m already exercising and meeting the programs criteria for FID? Do I need to make any changes?</Text>
                         <Text style={styles.paragraph}>No, you do not need to make any changes. Just make sure you're meeting the principles of FID and keep up the good work.
 </Text>
