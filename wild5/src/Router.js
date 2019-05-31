@@ -12,7 +12,7 @@ import Quests from './screens/Quests';
 import { About, FAQ, Feedback, Profile} from './screens/accountmenu';
 import Help from './screens/accountmenu/Help'
 import TrackingForm from './screens/TrackingForm';
-import ExerciseI from './screens/lessonscreens/exerciselessons/ExerciseI'
+import ExerciseLesson from './screens/lessonscreens/'
 import NutritionQuest from './components/quests/NutritionQuests';
 
 const Routercomponent = () => {
@@ -23,7 +23,7 @@ const Routercomponent = () => {
         <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null}/>
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Wellness Roadmap'/>
-          <Scene key="exercise1" component={ExerciseI} title='Exercise' backTitle='Back'/>
+          <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back'/>
           <Scene key="kickstart" component={KickStart30} title='KickStart30' header={null}/>
           <Scene key="learnmore" component={LearnMore} title='Learn More' backTitle='Back'/>
           <Scene key="quests" component={Quests} title='Quests' header={null}/>
