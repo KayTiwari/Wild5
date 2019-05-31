@@ -22,17 +22,15 @@ class Landing extends Component {
       <Carousel />
       </View>
 
-      <View>
-        <Button onPress={() => Actions.exercise1()} style={{alignSelf:'center'}} success large iconright>
-          <Icon name='bicycle' />
-            <Text>Exercise I</Text>
+      <View style={{marginTop: '20%'}}>
+        <Button onPress={() => Actions.exercisetracking()} style={{alignSelf:'center'}} success large iconright>
+            <Text>Exercise tracking</Text>
         </Button>
       </View>
 
-      <View>
-            <Button style={styles.mindfulness} success large iconright>
-                <Icon name='cloud' />
-                <Text>Mindfulness I</Text>
+      <View style={{marginTop: '20%'}}>
+            <Button onPress={() => Actions.mindfulnesstracking()} style={[styles.mindfulness]} success large iconright>
+                <Text>Mindfulness tracking</Text>
             </Button>
         </View>
 
@@ -42,5 +40,27 @@ class Landing extends Component {
     )
   }
 }
+const styles = StyleSheet.create({
+  mindfulness: {
+      backgroundColor: '#49b1eb',
+      alignSelf:'center'
+  },
+  sleep: {
+      alignSelf:'center',
+      backgroundColor: '#ba3992'
+  },
+  social: {
+      alignSelf:'center',
+      backgroundColor: '#ed3833'
+  },
+  nutrition: {
+      alignSelf:'center',
+      backgroundColor: '#f3983e'
+  },
+  tracking: {
+      alignSelf:'center',
+      backgroundColor: '#333',
+  },
+})
 
 export default Landing;
