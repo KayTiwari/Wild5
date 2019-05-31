@@ -13,7 +13,8 @@ import Help from './screens/accountmenu/Help'
 import TrackingForm from './screens/TrackingForm';
 import ExerciseI from './screens/lessonscreens/exerciselessons/ExerciseI'
 import NutritionQuest from './components/quests/NutritionQuests';
-
+import MindfullnessI from './screens/lessonscreens/exerciselessons/MindfullnessI'
+import MindfulnessQuest from './components/quests/MindfulnessQuest'
 const Routercomponent = () => {
   return (
     <Router>
@@ -22,7 +23,7 @@ const Routercomponent = () => {
         <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null}/>
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Wellness Roadmap'/>
-          <Scene key="exercise1" component={ExerciseI} title='Exercise' backTitle='Back' initial/>
+          <Scene key="exercise1" component={ExerciseI} title='Exercise' backTitle='Back' />
           <Scene key="kickstart" component={KickStart30} title='KickStart30' header={null}/>
           <Scene key="learnmore" component={LearnMore} title='Learn More' backTitle='Back'/>
           <Scene key="quests" component={Quests} title='Quests' header={null}/>
@@ -32,8 +33,9 @@ const Routercomponent = () => {
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile}/>
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
+          <Scene key='mindfulnessI' backTitle='Back' header={null} component={MindfullnessI}/>
+          <Scene key='mindfulnessquest' backTitle='Back' header={null} component={MindfulnessQuest}initial/>
     </Scene>
-
     </Router>
   )
 }

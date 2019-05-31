@@ -44,7 +44,7 @@ class NewRoadMap extends Component{
         </View>
 
         <View>
-            <Button style={styles.mindfulness} success large iconright>
+            <Button onPress={() => Actions.mindfulnessI()} style={styles.mindfulness} success large iconright>
                 <Icon name='cloud' />
                 <Text>Mindfulness I</Text>
             </Button>
