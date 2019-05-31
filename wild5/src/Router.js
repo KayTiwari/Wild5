@@ -40,7 +40,7 @@ const Routercomponent = () => {
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile}/>
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
-          <Scene key='exercisetracking' backTitle='Back' title='Settings' header={null} component={ExerciseTracking} initial/>
+          <Scene key='exercisetracking' backTitle='Back' title='Settings' header={null} component={ExerciseTracking}/>
           <Scene key='mindfulnesstracking' backTitle='Back' title='Settings' header={null} component={MindfulnessTracking}/>
           <Scene key='sleeptracking' backTitle='Back' title='Settings' header={null} component={SleepTracking}/>
           <Scene key='socialtracking' backTitle='Back' title='Settings' header={null} component={SocialTracking}/>
