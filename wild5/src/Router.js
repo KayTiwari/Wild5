@@ -13,6 +13,7 @@ import Help from './screens/accountmenu/Help'
 import TrackingForm from './screens/TrackingForm';
 import ExerciseI from './screens/lessonscreens/ExerciseI'
 import NutritionQuest from './components/quests/NutritionQuests';
+import { ExerciseTracking, MindfulnessTracking, SleepTracking, SocialTracking, NutritionTracking } from './screens/trackingscreens';
 
 const Routercomponent = () => {
   return (

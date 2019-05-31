@@ -23,8 +23,18 @@ class Landing extends Component {
       </View>
 
       <View>
-        
+        <Button onPress={() => Actions.exercise1()} style={{alignSelf:'center'}} success large iconright>
+          <Icon name='bicycle' />
+            <Text>Exercise I</Text>
+        </Button>
       </View>
+
+      <View>
+            <Button style={styles.mindfulness} success large iconright>
+                <Icon name='cloud' />
+                <Text>Mindfulness I</Text>
+            </Button>
+        </View>
 
       </ScrollView>
       <Navbar />
