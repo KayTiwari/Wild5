@@ -66,7 +66,7 @@ class ExerciseLesson extends Component{
     }
 }
 
-export {ExerciseLesson};
+export default {ExerciseLesson};
 
 const styles = StyleSheet.create({
     mainTitle: {
