@@ -4,11 +4,9 @@ import { Text, Icon, Container } from 'native-base'
 import { ModButton } from '../../components/common';
 import { Actions } from 'react-native-router-flux';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
-// var Pedometer = require('react-native-pedometer');
 
-var now = new Date();
 
-class ExerciseI extends Component{
+class ExerciseLesson extends Component{
 
     state = {
 
@@ -69,7 +67,7 @@ class ExerciseI extends Component{
     }
 }
 
-export default ExerciseI;
+export {ExerciseLesson};
 
 const styles = StyleSheet.create({
     mainTitle: {

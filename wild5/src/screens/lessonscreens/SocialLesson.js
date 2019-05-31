@@ -63,7 +63,7 @@ Consider practicing the 5 Second Rule on days when you’re experiencing low mot
     }
 }
 
-export default SocialLesson;
+export {SocialLesson};
 
 const styles = StyleSheet.create({
     mainTitle: {

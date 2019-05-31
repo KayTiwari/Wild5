@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
+import { View } from 'react-native'
 
 class MindfulnessTracking extends Component {
     render() {
         return (
-            <div>
-                
-            </div>
+            <View></View>
         )
     }
 }

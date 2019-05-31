@@ -68,7 +68,7 @@ class SleepLesson extends Component{
     }
 }
 
-export default SleepLesson;
+export {SleepLesson};
 
 const styles = StyleSheet.create({
     mainTitle: {

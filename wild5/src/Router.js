@@ -11,7 +11,7 @@ import Quests from './screens/Quests';
 import { About, FAQ, Feedback, Profile} from './screens/accountmenu';
 import Help from './screens/accountmenu/Help'
 import TrackingForm from './screens/TrackingForm';
-import ExerciseLesson from './screens/lessonscreens/ExerciseLesson'
+import { ExerciseLesson, NutritionLesson, SleepLesson, SocialLesson } from './screens/lessonscreens'
 import NutritionQuest from './components/quests/NutritionQuests';
 import { ExerciseTracking, MindfulnessTracking, SleepTracking, SocialTracking, NutritionTracking } from './screens/trackingscreens';
 
@@ -23,7 +23,10 @@ const Routercomponent = () => {
         <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} initial/>
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Wellness Roadmap'/>
-          <Scene key="exercise1" component={ExerciseLesson} title='Exercise' backTitle='Back'/>
+          <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back'/>
+          <Scene key="nutritionlesson" component={NutritionLesson} title='Nutrition' backTitle='Back'/>
+          <Scene key="sleeplesson" component={SleepLesson} title='Sleep' backTitle='Back'/>
+          <Scene key="sociallesson" component={SocialLesson} title='Social' backTitle='Back'/>
           <Scene key="kickstart" component={KickStart30} title='KickStart30' header={null}/>
           <Scene key="learnmore" component={LearnMore} title='Learn More' backTitle='Back'/>
           <Scene key="quests" component={Quests} title='Quests' header={null}/>

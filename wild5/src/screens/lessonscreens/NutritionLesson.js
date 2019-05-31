@@ -60,7 +60,7 @@ Consider practicing the 5 Second Rule on days when you’re experiencing low mot
     }
 }
 
-export default NutritionLesson;
+export {NutritionLesson};
 
 const styles = StyleSheet.create({
     mainTitle: {
