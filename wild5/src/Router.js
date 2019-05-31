@@ -4,6 +4,7 @@ import LoginForm from './screens/LoginForm'
 import Landing from './screens/Landing'
 import Account from './screens/Account';
 import EducationWellnessRoadMap from './screens/NewRoadMap';
+import ExerciseTracking from './screens/trackingscreens/ExerciseTracking'
 import KickStart30 from './screens/KickStart30';
 import LearnMore from './screens/LearnMore';
 import Settings from './screens/Settings';
@@ -22,7 +23,7 @@ const Routercomponent = () => {
         <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null}/>
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Wellness Roadmap'/>
-          <Scene key="exercise1" component={ExerciseI} title='Exercise' backTitle='Back' initial/>
+          <Scene key="exercise1" component={ExerciseI} title='Exercise' backTitle='Back'/>
           <Scene key="kickstart" component={KickStart30} title='KickStart30' header={null}/>
           <Scene key="learnmore" component={LearnMore} title='Learn More' backTitle='Back'/>
           <Scene key="quests" component={Quests} title='Quests' header={null}/>
@@ -32,6 +33,7 @@ const Routercomponent = () => {
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile}/>
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
+          <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' header={null} component={ExerciseTracking} initial/>
     </Scene>
 
     </Router>
