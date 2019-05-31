@@ -11,7 +11,7 @@ import Quests from './screens/Quests';
 import { About, FAQ, Feedback, Profile} from './screens/accountmenu';
 import Help from './screens/accountmenu/Help'
 import TrackingForm from './screens/TrackingForm';
-import ExerciseI from './screens/lessonscreens/ExerciseI'
+import ExerciseLesson from './screens/lessonscreens/ExerciseLesson'
 import NutritionQuest from './components/quests/NutritionQuests';
 import { ExerciseTracking, MindfulnessTracking, SleepTracking, SocialTracking, NutritionTracking } from './screens/trackingscreens';
 
@@ -23,7 +23,7 @@ const Routercomponent = () => {
         <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} initial/>
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Wellness Roadmap'/>
-          <Scene key="exercise1" component={ExerciseI} title='Exercise' backTitle='Back'/>
+          <Scene key="exercise1" component={ExerciseLesson} title='Exercise' backTitle='Back'/>
           <Scene key="kickstart" component={KickStart30} title='KickStart30' header={null}/>
           <Scene key="learnmore" component={LearnMore} title='Learn More' backTitle='Back'/>
           <Scene key="quests" component={Quests} title='Quests' header={null}/>
@@ -33,6 +33,11 @@ const Routercomponent = () => {
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile}/>
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
+          <Scene key='exercisetracking' backTitle='Back' title='Settings' header={null} component={ExerciseTracking}/>
+          <Scene key='mindfulnesstracking' backTitle='Back' title='Settings' header={null} component={MindfulnessTracking}/>
+          <Scene key='sleeptracking' backTitle='Back' title='Settings' header={null} component={SleepTracking}/>
+          <Scene key='socialtracking' backTitle='Back' title='Settings' header={null} component={SocialTracking}/>
+          <Scene key='nutritiontracking' backTitle='Back' title='Settings' header={null} component={NutritionTracking}/>
     </Scene>
 
     </Router>
