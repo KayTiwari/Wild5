@@ -11,7 +11,10 @@ import Quests from './screens/Quests';
 import { About, FAQ, Feedback, Profile} from './screens/accountmenu';
 import Help from './screens/accountmenu/Help'
 import TrackingForm from './screens/TrackingForm';
-import { ExerciseLesson, NutritionLesson, SleepLesson, SocialLesson } from './screens/lessonscreens'
+import { ExerciseLesson } from './screens/lessonscreens/ExerciseLesson'
+import { SleepLesson } from './screens/lessonscreens/SleepLesson'
+import { NutritionLesson } from './screens/lessonscreens/NutritionLesson'
+import { SocialLesson } from './screens/lessonscreens/SocialLesson'
 import NutritionQuest from './components/quests/NutritionQuests';
 import { ExerciseTracking, MindfulnessTracking, SleepTracking, SocialTracking, NutritionTracking } from './screens/trackingscreens';
 
