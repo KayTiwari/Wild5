@@ -74,6 +74,7 @@
         "react-native-ios-charts": "^0.3.0",
         "react-native-material-dropdown": "^0.11.1",
         "react-native-modal": "^9.0.0",
+        "react-native-numeric-input": "^1.8.0",
         "react-native-pedometer": "0.0.7",
         "react-native-router-flux": "^4.0.6",
         "react-native-simple-radio-button": "^2.7.3",

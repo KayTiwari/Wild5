@@ -27,7 +27,7 @@ const Routercomponent = () => {
     <Router>
    <Scene key="root">
     <Scene key="loginform" component={LoginForm} header={null} />
-        <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} initial/>
+        <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null}/>
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Wellness Roadmap'/>
           <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back'/>
@@ -43,6 +43,7 @@ const Routercomponent = () => {
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile}/>
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
+          <Scene key='exercisetracking' backTitle='Back' title='Settings' header={null} component={ExerciseTracking} initial/>
           <Scene key='mindfulnesslesson' backTitle='Back' header={null} component={MindfullnessLesson}/>
           <Scene key='mindfulnessquest' backTitle='Back' header={null} component={MindfulnessQuest}initial/>
           <Scene key='exercisetracking' backTitle='Back' title='Settings' header={null} component={ExerciseTracking}/>
