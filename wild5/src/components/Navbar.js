@@ -21,13 +21,13 @@ class Navbar extends Component{
         {this.state.show === 0 ?
             <Footer>
                 <FooterTab>
-            <Button onPress={() => Actions.edroadmap()}>
-              <Icon name={"compass"} />
-              <Text>RoadMap</Text>
+            <Button onPress={this.homePress.bind(this)}>
+              <Icon name={'ios-home'} />
+              <Text>Home</Text>
             </Button>
-            <Button onPress={() => Actions.kickstart()}>
+            <Button onPress={() => Actions.edroadmap()}>
             <Icon name={"rocket"} />
-              <Text>Kickstart</Text>
+              <Text>Learn</Text>
             </Button>
             <Button badge onPress={() => Actions.quests()}>
             <Badge><Text>1</Text></Badge>
@@ -42,13 +42,13 @@ class Navbar extends Component{
         :
       <Footer>
       <FooterTab>
-        <Button onPress={this.homePress.bind(this)}>
-          <Icon name={'ios-home'} />
-          <Text>Home</Text>
-        </Button>
         <Button onPress={() => Actions.profile()}>
         <Icon name={'person'} />
           <Text>Profile</Text>
+        </Button>
+        <Button onPress={() => Actions.profile()}>
+        <Icon name={'stats'} />
+          <Text>Stats</Text>
         </Button>
         {/* <Button onPress={() => Actions.help()}>
         <Icon name={'md-help'} />
