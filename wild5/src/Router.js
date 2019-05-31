@@ -11,12 +11,12 @@ import Quests from './screens/Quests';
 import { About, FAQ, Feedback, Profile} from './screens/accountmenu';
 import Help from './screens/accountmenu/Help'
 import TrackingForm from './screens/TrackingForm';
-import { ExerciseLesson } from './screens/lessonscreens/ExerciseLesson'
-import { SleepLesson } from './screens/lessonscreens/SleepLesson'
-import { NutritionLesson } from './screens/lessonscreens/NutritionLesson'
-import { SocialLesson } from './screens/lessonscreens/SocialLesson'
-import NutritionQuest from './components/quests/NutritionQuests';
-import { ExerciseTracking, MindfulnessTracking, SleepTracking, SocialTracking, NutritionTracking } from './screens/trackingscreens';
+import { ExerciseLesson, SleepLesson, NutritionTracking, SocialLesson } from './screens/lessonscreens/ExerciseLesson'
+import ExerciseTracking from './screens/trackingscreens/ExerciseTracking'
+import MindfulnessTracking from './screens/trackingscreens/MindfulnessTracking'
+import SocialTracking from './screens/trackingscreens/SocialTracking'
+import SleepTracking from './screens/trackingscreens/SleepTracking'
+import NutritionTracking from './screens/trackingscreens/NutritionTracking'
 
 const Routercomponent = () => {
   return (
