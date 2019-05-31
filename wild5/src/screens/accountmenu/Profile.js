@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { View, Button, Text, Image, ScrollView, TextInput, DatePickerIOS, Modal, TouchableOpacity } from 'react-native'
 import ToggleSwitch from 'toggle-switch-react-native'
 import Plus from '../../images/PlusBox.png'
-// import ToggleButton from '@bit/lekanmedia.shared-ui.toggle-button';
 
 
 class Profile extends Component {
