@@ -24,7 +24,7 @@ const Routercomponent = () => {
     <Router>
    <Scene key="root">
     <Scene key="loginform" component={LoginForm} header={null} />
-        <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} initial/>
+        <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null}/>
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Wellness Roadmap'/>
           <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back'/>
@@ -40,7 +40,7 @@ const Routercomponent = () => {
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile}/>
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
-          <Scene key='exercisetracking' backTitle='Back' title='Settings' header={null} component={ExerciseTracking}/>
+          <Scene key='exercisetracking' backTitle='Back' title='Settings' header={null} component={ExerciseTracking} initial/>
           <Scene key='mindfulnesstracking' backTitle='Back' title='Settings' header={null} component={MindfulnessTracking}/>
           <Scene key='sleeptracking' backTitle='Back' title='Settings' header={null} component={SleepTracking}/>
           <Scene key='socialtracking' backTitle='Back' title='Settings' header={null} component={SocialTracking}/>
