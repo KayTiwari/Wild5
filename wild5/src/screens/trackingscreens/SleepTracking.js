@@ -8,4 +8,4 @@ class SleepTracking extends Component {
         )
     }
 }
-export {SleepTracking}
+export default {SleepTracking}

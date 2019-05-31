@@ -11,7 +11,8 @@ import Quests from './screens/Quests';
 import { About, FAQ, Feedback, Profile} from './screens/accountmenu';
 import Help from './screens/accountmenu/Help'
 import TrackingForm from './screens/TrackingForm';
-import { ExerciseLesson, SleepLesson, NutritionTracking, SocialLesson } from './screens/lessonscreens/ExerciseLesson'
+import NutritionQuest from './components/quests/NutritionQuests'
+import { ExerciseLesson, SleepLesson, NutritionLesson, SocialLesson } from './screens/lessonscreens'
 import ExerciseTracking from './screens/trackingscreens/ExerciseTracking'
 import MindfulnessTracking from './screens/trackingscreens/MindfulnessTracking'
 import SocialTracking from './screens/trackingscreens/SocialTracking'

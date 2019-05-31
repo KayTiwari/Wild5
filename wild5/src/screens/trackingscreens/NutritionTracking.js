@@ -8,4 +8,4 @@ class NutritionTracking extends Component {
         )
     }
 }
-export {NutritionTracking}
+export default NutritionTracking

@@ -8,4 +8,4 @@ class MindfulnessTracking extends Component {
         )
     }
 }
-export {MindfulnessTracking}
+export default MindfulnessTracking
