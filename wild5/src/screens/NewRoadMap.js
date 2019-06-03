@@ -57,7 +57,7 @@ class NewRoadMap extends Component{
         </View>
 
         <View>
-            <Button style={styles.sleep} onPress={() => Actions.sleeplesson()} success large iconright>
+            <Button style={styles.sleep} success large iconright>
                 <Icon name='moon' />
                 <Text>Sleep</Text>
             </Button>
@@ -70,7 +70,7 @@ class NewRoadMap extends Component{
         </View>
 
         <View>
-            <Button style={styles.social} onPress={() => Actions.sociallesson()} success large iconright>
+            <Button style={styles.social}  success large iconright>
                 <Icon name='bonfire' />
                 <Text>Social</Text>
             </Button>
@@ -83,7 +83,7 @@ class NewRoadMap extends Component{
         </View>
 
         <View>
-            <Button style={styles.nutrition} onPress={() => Actions.nutritionlesson()} success large iconright>
+            <Button style={styles.nutrition}  success large iconright>
                 <Icon name='restaurant' />
                 <Text>Nutrition</Text>
             </Button>

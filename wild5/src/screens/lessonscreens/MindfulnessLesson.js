@@ -3,9 +3,6 @@ import { ScrollView, View, Dimensions, StyleSheet, Image, Button } from 'react-n
 import { Text, Icon, Container } from 'native-base'
 import { ModButton } from '../../components/common';
 import { Actions } from 'react-native-router-flux';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
-// var Pedometer = require('react-native-pedometer');
-import seven from '../../../images/arrowright.gif'
 
 var now = new Date();
 
