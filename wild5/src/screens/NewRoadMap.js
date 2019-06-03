@@ -23,11 +23,11 @@ class NewRoadMap extends Component{
         <Text style={{textAlign:'center', fontSize:15, fontWeight:'600', marginBottom:'20%'}}>Completed: {this.state.completed}%</Text>
         </View>
 
-        <View style={{marginBottom: '20%'}}>
+        {/* <View style={{marginBottom: '20%'}}>
             <Button onPress={() => Actions.trackingform()} style={styles.tracking} bordered info large iconright>
                 <Text style={{}}>Wellness Tracking Form</Text>
             </Button>
-        </View>
+        </View> */}
 
 
         <View>
@@ -57,7 +57,7 @@ class NewRoadMap extends Component{
         </View>
 
         <View>
-            <Button style={styles.sleep} success large iconright>
+            <Button style={styles.sleep} onPress={() => Actions.sleeplesson()} success large iconright>
                 <Icon name='moon' />
                 <Text>Sleep</Text>
             </Button>
@@ -70,7 +70,7 @@ class NewRoadMap extends Component{
         </View>
 
         <View>
-            <Button style={styles.social}  success large iconright>
+            <Button style={styles.social}  onPress={() => Actions.sociallesson()} success large iconright>
                 <Icon name='bonfire' />
                 <Text>Social</Text>
             </Button>
@@ -83,7 +83,7 @@ class NewRoadMap extends Component{
         </View>
 
         <View>
-            <Button style={styles.nutrition}  success large iconright>
+            <Button style={styles.nutrition} onPress={() => Actions.nutritionlesson()}  success large iconright>
                 <Icon name='restaurant' />
                 <Text>Nutrition</Text>
             </Button>
