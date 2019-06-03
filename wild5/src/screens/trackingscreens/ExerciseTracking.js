@@ -3,10 +3,11 @@ import { View, Dimensions } from 'react-native'
 import { withProvider } from '../../context/context'
 import { ModButton } from '../../components/common'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
-import { Text } from 'native-base'
+import { Text, Input } from 'native-base'
 import { Dropdown } from 'react-native-material-dropdown';
 import NumericInput from 'react-native-numeric-input'
 import firebase from 'firebase'
+import { Actions } from 'react-native-router-flux'
 // import console = require('console');
 
 let typedata = [{
@@ -36,51 +37,56 @@ class ExerciseTracking extends Component {
         duration: 0,
         intensity: '',
         user: '',
-        date: '',
+        date: ''
     }
     
 
     submitForm(){
         console.log(this.state);
-        console.log(this.props)
-        // const {type, duration, intensity} = this.state;
-        // firebase.database().ref(`WellnessTrackingForm/${user}`).push({
-        //     exercise: exercise,
-        //     mindfulness: mindfulness,
-        //     sleep: sleep,
-        //     connectedness: connectedness,
-        //     nutrition: nutrition,
-        //     DateTaken: date
-        //   });
-        }
-    componentDidMount(){
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-              console.log(user.email)
-            } else {
-              console.log('no')
-            }
+        const { type, duration, intensity, user, date } = this.state;
+        firebase.database().ref(`Surveys/${user}`).update({
+            date: date,
+            Extype: type,
+            Exduration: duration,
+            Exintensity: intensity
           });
-        var user = firebase.auth().currentUser;
-            if (user) {
-                var res = user.email.split(".");
-                var userEm = res[0].toString();
-                this.setState({
-                    user: userEm
-                })
-            } else {
-                console.log('nopez')
-            }
-            var today = new Date();
-            var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-            var dateTime = date+' '+time;
-                this.setState({
-                    date: dateTime
-                })
-                console.log(this.state)
-    }
+        //   Actions.edroadmap();
+        }
 
+        componentDidMount(){
+            console.log('fired')
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    console.log(user);
+                    var res = user.email.split(".");
+                    var userEm = res[0].toString();
+                    this.setState({
+                        user: userEm
+                    })
+                } else {
+                  console.log('noper');
+                }
+              });
+            // var user = firebase.auth().currentUser;
+            // console.log(user);
+            //     if (user) {
+            //         var res = user.email.split(".");
+            //         var userEm = res[0].toString();
+            //         this.setState({
+            //             user: userEm
+            //         })
+            //     } else {
+            //         console.log('noperz')
+            //     }
+                var today = new Date();
+                var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                var dateTime = date+' '+time;
+                    this.setState({
+                        date: dateTime
+                    })
+                    console.log(this.state)
+        }
 
     render() {
         return (
@@ -89,6 +95,9 @@ class ExerciseTracking extends Component {
 
                 <View style={{ marginLeft: '5%', marginRight: '5%'}}> 
                     <Dropdown baseColor='green' label='Type of Exercise' data={typedata} onChangeText={(text) => this.setState({type: text})} />
+                </View>
+                <View>
+                    {this.state.type === 'Other' ? <Input floatinglabel autoCorrect={false} onChangeText={(text) => this.setState({user: text})}/>: null}
                 </View>
 
                 <View style={{alignSelf:'center', marginTop: '20%'}}>
@@ -128,7 +137,7 @@ class ExerciseTracking extends Component {
                 </View>
 
                 <View style={{alignSelf:'center'}}>
-                <ModButton color={'black'} onPress={() => console.log(this.state)} label="Submit">
+                <ModButton color={'black'} onPress={() => this.submitForm()} label="Submit">
                     Submit
                 </ModButton>
                 </View>

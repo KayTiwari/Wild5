@@ -26,6 +26,7 @@ class TrackingForm extends Component{
         date: 'not today!',
         show: false
     }
+    
     componentDidMount(){
         var user = firebase.auth().currentUser;
             if (user) {

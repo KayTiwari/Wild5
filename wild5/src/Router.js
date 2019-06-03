@@ -19,7 +19,7 @@ const Routercomponent = () => {
   return (
     <Router>
    <Scene key="root">
-    <Scene key="loginform" component={LoginForm} header={null} />
+    <Scene key="loginform" component={LoginForm} header={null} initial/>
         <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null}/>
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Wellness Roadmap'/>
@@ -33,7 +33,7 @@ const Routercomponent = () => {
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile}/>
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
-          <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' header={null} component={ExerciseTracking} initial/>
+          <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' header={null} component={ExerciseTracking}/>
     </Scene>
 
     </Router>
