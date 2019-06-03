@@ -6,6 +6,9 @@ import Account from './screens/Account';
 import EducationWellnessRoadMap from './screens/NewRoadMap';
 import ExerciseTracking from './screens/trackingscreens/ExerciseTracking'
 import MindfulnessTracking from './screens/trackingscreens/MindfulnessTracking'
+import SleepTracking from './screens/trackingscreens/SleepTracking'
+import SocialTracking from './screens/trackingscreens/SocialTracking'
+import NutritionTracking from './screens/trackingscreens/NutritionTracking'
 import KickStart30 from './screens/KickStart30';
 import LearnMore from './screens/LearnMore';
 import Settings from './screens/Settings';
@@ -40,8 +43,11 @@ const Routercomponent = () => {
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile}/>
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
-          <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' header={null} component={ExerciseTracking}/>
-          <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' header={null} component={MindfulnessTracking}/>
+          <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking}/>
+          <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking}/>
+          <Scene key='sleeptracking' backTitle='Back' title='Sleep Tracking' component={SleepTracking}/>
+          <Scene key='socialtracking' backTitle='Back' title='Social Tracking' component={SocialTracking}/>
+          <Scene key='nutritiontracking' backTitle='Back' title='Nutrition Tracking' component={NutritionTracking}/>
     </Scene>
 
     </Router>

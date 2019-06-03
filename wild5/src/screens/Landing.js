@@ -35,19 +35,19 @@ class Landing extends Component {
       </View>
 
       <View style={{marginTop:'15%'}}>
-            <Button style={styles.sleep} onPress={() => Actions.sleeplesson()} success large iconright>
+            <Button style={styles.sleep} onPress={() => Actions.sleeptracking()} success large iconright>
                 <Text>Track Sleep</Text>
             </Button>
       </View>
 
       <View style={{marginTop:'15%'}}>
-            <Button style={styles.social}  onPress={() => Actions.sociallesson()} success large iconright>
+            <Button style={styles.social}  onPress={() => Actions.socialtracking()} success large iconright>
                 <Text>Track Social</Text>
             </Button>
      </View>
 
      <View style={{marginTop:'15%'}}>
-            <Button style={styles.nutrition} onPress={() => Actions.nutritionlesson()}  success large iconright>
+            <Button style={styles.nutrition} onPress={() => Actions.nutritiontracking()}  success large iconright>
                 <Text>Track Nutrition</Text>
             </Button>
      </View>

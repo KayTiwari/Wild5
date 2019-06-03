@@ -8,4 +8,4 @@ class SocialTracking extends Component {
         )
     }
 }
-export default {SocialTracking}
+export default SocialTracking

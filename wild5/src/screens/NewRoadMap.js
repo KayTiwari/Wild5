@@ -10,7 +10,6 @@ const screenwidth = Dimensions.get('window').width;
 class NewRoadMap extends Component{
     state = {
         counter: 0,
-        completed: 0
     }
 
     render(){
@@ -20,7 +19,7 @@ class NewRoadMap extends Component{
 
         <View style={{borderColor:'red'}}>
         <Text style={{textAlign:'center', fontSize:30, fontWeight:'600', marginTop:'20%'}}>The Road To Wellness</Text>
-        <Text style={{textAlign:'center', fontSize:15, fontWeight:'600', marginBottom:'20%'}}>Completed: {this.state.completed}%</Text>
+        <Text style={{textAlign:'center', fontSize:20, fontWeight:'600', marginBottom:'20%'}}>Learn about the Wild 5</Text>
         </View>
 
         {/* <View style={{marginBottom: '20%'}}>
