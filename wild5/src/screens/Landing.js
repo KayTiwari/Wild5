@@ -18,10 +18,25 @@ class Landing extends Component {
       <Container style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height:screenheight}}>
       <View>
         <View style={{width: '80%', marginLeft: '10%', marginTop:'20%', marginBottom:0}}><Image source={wild5title} style={{width: '100%', resizeMode:'contain'}} /></View>
+
       <View>
       <Carousel />
       </View>
+
+      <View>
+            <Button onPress={() => Actions.exercise1()} style={{alignSelf:'center'}} success large iconright>
+                <Icon name='bicycle' />
+                <Text>Exercise Tracking</Text>
+            </Button>
+        </View>
       </View>
+
+      <View>
+            <Button style={styles.mindfulness} success large iconright>
+                <Text>Mindfulness Tracking</Text>
+            </Button>
+      </View>
+
       <View style={{display:'flex'}}>
       <Navbar />
       </View>

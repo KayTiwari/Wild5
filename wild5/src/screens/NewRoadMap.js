@@ -33,7 +33,7 @@ class NewRoadMap extends Component{
         <View>
             <Button onPress={() => Actions.exercise1()} style={{alignSelf:'center'}} success large iconright>
                 <Icon name='bicycle' />
-                <Text>Exercise I</Text>
+                <Text>Exercise</Text>
             </Button>
         </View>
 
@@ -46,7 +46,7 @@ class NewRoadMap extends Component{
         <View>
             <Button style={styles.mindfulness} success large iconright>
                 <Icon name='cloud' />
-                <Text>Mindfulness I</Text>
+                <Text>Mindfulness</Text>
             </Button>
         </View>
 
@@ -59,7 +59,7 @@ class NewRoadMap extends Component{
         <View>
             <Button style={styles.sleep} success large iconright>
                 <Icon name='moon' />
-                <Text>Sleep I</Text>
+                <Text>Sleep</Text>
             </Button>
         </View>
 
@@ -72,7 +72,7 @@ class NewRoadMap extends Component{
         <View>
             <Button style={styles.social} success large iconright>
                 <Icon name='bonfire' />
-                <Text>Social I</Text>
+                <Text>Social</Text>
             </Button>
         </View>
 
@@ -85,7 +85,7 @@ class NewRoadMap extends Component{
         <View>
             <Button style={styles.nutrition} success large iconright>
                 <Icon name='restaurant' />
-                <Text>Nutrition I</Text>
+                <Text>Nutrition</Text>
             </Button>
         </View>
 
