@@ -14,19 +14,46 @@ class SleepTracking extends Component {
         regulartime: false,
         napping: false,
         warmbath: false,
-        caffeine: false
+        caffeine: false,
+    }
+    checkBox = (type) => {
+        if (type === 'elec'){
+            this.setState({
+                electronics: !this.state.electronics
+            })
+        } else if (type === 'mask'){
+            this.setState({
+                sleepmask: true
+            })
+        } else if (type === 'reg'){
+            this.setState({
+                regulartime: !this.state.regulartime
+            })
+        } else if (type === 'nap'){
+            this.setState({
+                napping: !this.state.napping
+            })
+        } else if (type === 'warm'){
+            this.setState({
+                warmbath: !this.state.warmbath
+            })
+        } else if (type === 'caff'){
+            this.setState({
+                caffeine: !this.state.caffeine
+            })
+        }
     }
 
     submitForm(){
         // console.log(this.state);
         const {  electronics, sleepmask, regulartime, napping, warmbath, caffeine, user, date } = this.state;
         firebase.database().ref(`Surveys/${user}/${date}`).update({
-            electronics: electronics,
-            sleepmask: sleepmask,
-            regulartime: regulartime,
-            napping: napping,
-            warmbath: warmbath,
-            caffeine: caffeine
+            slelectronics: electronics,
+            slsleepmask: sleepmask,
+            slregulartime: regulartime,
+            slnapping: napping,
+            slwarmbath: warmbath,
+            slcaffeine: caffeine
           });
           Actions.landing();
         }
@@ -56,38 +83,38 @@ class SleepTracking extends Component {
                 <Text style={{fontSize: 30, textAlign: 'center', marginTop: '20%', marginBottom:'20%', fontWeight: '600'}}>Track your <Text style={{color: 'purple', fontSize: 30, fontWeight: '600'}}>Sleep</Text></Text>
         <Content>
         <Text style={{fontSize: 20, textAlign: 'center', marginTop: '10%', marginBottom:'10%', fontWeight: '600'}}>Which sleep hygiene practices did you implement today?</Text>
-          <ListItem>
-            <CheckBox onPress={() => {this.setState({})}}/>
+          <ListItem onPress={() => this.checkBox('elec')}>
+            <CheckBox color='#f44336' checked={this.state.electronics} onPress={() => this.checkBox('elec')}/>
             <Body>
               <Text>No Electronics 90 minutes before bed</Text>
             </Body>
           </ListItem>
-          <ListItem>
-            <CheckBox />
+          <ListItem onPress={() => this.checkBox('mask')}>
+            <CheckBox onPress={() => this.checkBox('mask')} color='#ec49b3' checked={this.state.sleepmask}/>
             <Body>
               <Text>Sleep mask or blackout shades</Text>
             </Body>
           </ListItem>
-          <ListItem>
-            <CheckBox />
+          <ListItem onPress={() => this.checkBox('reg')}>
+            <CheckBox onPress={() => this.checkBox('reg')} color='#eb56f2' checked={this.state.regulartime}/>
             <Body>
               <Text>Regular bedtime</Text>
             </Body>
           </ListItem>
-          <ListItem>
-            <CheckBox />
+          <ListItem onPress={() => this.checkBox('nap')}>
+            <CheckBox onPress={() => this.checkBox('nap')} color='#7d49f3' checked={this.state.napping}/>
             <Body>
               <Text>No Napping</Text>
             </Body>
           </ListItem>
-          <ListItem>
-            <CheckBox />
+          <ListItem onPress={() => this.checkBox('warm')}>
+            <CheckBox onPress={() => this.checkBox('warm')} color='#0e248d' checked={this.state.warmbath}/>
             <Body>
-              <Text>Warmm bath/shower prior to bed</Text>
+              <Text>Warm bath/shower prior to bed</Text>
             </Body>
           </ListItem>
-          <ListItem>
-            <CheckBox />
+          <ListItem onPress={() => this.checkBox('caff')}>
+            <CheckBox onPress={() => this.checkBox('caff')} color='#607d8b' checked={this.state.caffeine}/>
             <Body>
               <Text>Avoid caffeine 10 hours before bed</Text>
             </Body>
