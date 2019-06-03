@@ -12,11 +12,19 @@ class Quests extends Component {
         <View>
           <View>
         <Text style={{textAlign:'center', fontSize:30, marginTop: '20%', fontWeight: '600', marginBottom: 40}}>Quests</Text>
+
        <Button style={{alignSelf:'center'}} warning large onPress={() => Actions.nutritionquest()}>
        <Icon name='nutrition' />
        <Text>Nutrition Tracker</Text>
        <Icon name='camera' />
        </Button>
+
+       <Button style={{alignSelf:'center', color: 'light-blue', marginTop:'20%'}} large onPress={() => Actions.mindfulnessquest()}>
+       <Icon name='cloud' />
+       <Text>Mindfulness Meditations</Text>
+       <Icon name='leaf' />
+       </Button>
+
        </View>
        </View>
        <View style={{justifyContent: 'flex-end'}}>
