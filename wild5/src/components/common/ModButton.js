@@ -16,9 +16,8 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     borderRadius: 4,
-    margin: 12,
-    marginLeft: 25,
-    width: "80%"
+    width: "80%",
+    alignSelf: 'center',
   },
   buttonLabel: {
     color: "white",

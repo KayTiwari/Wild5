@@ -52,6 +52,12 @@ class Landing extends Component {
             </Button>
      </View>
 
+     <View style={{marginTop:'15%'}}>
+            <Button style={styles.tracking} onPress={() => {}}  success large iconright>
+                <Text>Today's progress</Text>
+            </Button>
+     </View>
+
     </ScrollView>
       <View>
       <Navbar />
