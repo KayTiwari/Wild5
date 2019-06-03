@@ -25,7 +25,7 @@ const Routercomponent = () => {
     <Router>
    <Scene key="root">
     <Scene key="loginform" component={LoginForm} header={null}/>
-        <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} initial/>
+        <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More'/>
           <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back'/>
@@ -45,7 +45,7 @@ const Routercomponent = () => {
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
           <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking}/>
           <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking}/>
-          <Scene key='sleeptracking' backTitle='Back' title='Sleep Tracking' component={SleepTracking}/>
+          <Scene key='sleeptracking' backTitle='Back' title='Sleep Tracking' component={SleepTracking} initial/>
           <Scene key='socialtracking' backTitle='Back' title='Social Tracking' component={SocialTracking}/>
           <Scene key='nutritiontracking' backTitle='Back' title='Nutrition Tracking' component={NutritionTracking}/>
     </Scene>

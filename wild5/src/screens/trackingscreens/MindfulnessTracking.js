@@ -7,6 +7,7 @@ import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-
 import { Actions } from 'react-native-router-flux';
 
 
+
 const screenheight = Dimensions.get('window').height;
 class MindfulnessTracking extends Component {
     state = {
