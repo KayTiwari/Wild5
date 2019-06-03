@@ -49,7 +49,7 @@ class ExerciseTracking extends Component {
             Exduration: duration,
             Exintensity: intensity
           });
-        //   Actions.edroadmap();
+          Actions.landing();
         }
 
         componentDidMount(){

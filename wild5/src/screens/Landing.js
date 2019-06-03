@@ -22,17 +22,35 @@ class Landing extends Component {
       <Carousel />
       </View>
 
-      <View style={{marginTop: '20%'}}>
+      <View style={{marginTop: '15%'}}>
             <Button onPress={() => Actions.exercisetracking()} style={{alignSelf:'center'}} success large iconright>
-                <Text>Exercise Tracking</Text>
+                <Text>Track Exercise</Text>
             </Button>
       </View>
 
-      <View style={{marginTop:'20%'}}>
-            <Button style={styles.mindfulness} success large iconright>
-                <Text>Mindfulness Tracking</Text>
+      <View style={{marginTop:'15%'}}>
+            <Button onPress={() => Actions.mindfulnesstracking()} style={styles.mindfulness} success large iconright>
+                <Text>Track Mindfulness</Text>
             </Button>
       </View>
+
+      <View style={{marginTop:'15%'}}>
+            <Button style={styles.sleep} onPress={() => Actions.sleeplesson()} success large iconright>
+                <Text>Track Sleep</Text>
+            </Button>
+      </View>
+
+      <View style={{marginTop:'15%'}}>
+            <Button style={styles.social}  onPress={() => Actions.sociallesson()} success large iconright>
+                <Text>Track Social</Text>
+            </Button>
+     </View>
+
+     <View style={{marginTop:'15%'}}>
+            <Button style={styles.nutrition} onPress={() => Actions.nutritionlesson()}  success large iconright>
+                <Text>Track Nutrition</Text>
+            </Button>
+     </View>
 
     </ScrollView>
       <View>
