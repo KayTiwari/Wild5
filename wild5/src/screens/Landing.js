@@ -24,8 +24,7 @@ class Landing extends Component {
       </View>
 
       <View>
-            <Button onPress={() => Actions.exercise1()} style={{alignSelf:'center'}} success large iconright>
-                <Icon name='bicycle' />
+            <Button onPress={() => Actions.exercisetracking()} style={{alignSelf:'center', marginTop: '20%'}} success large iconright>
                 <Text>Exercise Tracking</Text>
             </Button>
         </View>
@@ -44,5 +43,27 @@ class Landing extends Component {
     )
   }
 }
+const styles = StyleSheet.create({
+  mindfulness: {
+      backgroundColor: '#49b8ea',
+      alignSelf:'center'
+  },
+  sleep: {
+      alignSelf:'center',
+      backgroundColor: '#ba3992'
+  },
+  social: {
+      alignSelf:'center',
+      backgroundColor: '#ed3833'
+  },
+  nutrition: {
+      alignSelf:'center',
+      backgroundColor: '#f3983e'
+  },
+  tracking: {
+      alignSelf:'center',
+      backgroundColor: '#333',
+  },
+})
 
 export default Landing;

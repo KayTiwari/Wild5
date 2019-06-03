@@ -44,8 +44,7 @@ class ExerciseTracking extends Component {
     submitForm(){
         console.log(this.state);
         const { type, duration, intensity, user, date } = this.state;
-        firebase.database().ref(`Surveys/${user}`).update({
-            date: date,
+        firebase.database().ref(`Surveys/${user}/${date}`).update({
             Extype: type,
             Exduration: duration,
             Exintensity: intensity
@@ -54,30 +53,16 @@ class ExerciseTracking extends Component {
         }
 
         componentDidMount(){
-            console.log('fired')
-            firebase.auth().onAuthStateChanged(function(user) {
+            var user = firebase.auth().currentUser;
                 if (user) {
-                    console.log(user);
                     var res = user.email.split(".");
                     var userEm = res[0].toString();
                     this.setState({
                         user: userEm
                     })
                 } else {
-                  console.log('noper');
+                    console.log('noperz')
                 }
-              });
-            // var user = firebase.auth().currentUser;
-            // console.log(user);
-            //     if (user) {
-            //         var res = user.email.split(".");
-            //         var userEm = res[0].toString();
-            //         this.setState({
-            //             user: userEm
-            //         })
-            //     } else {
-            //         console.log('noperz')
-            //     }
                 var today = new Date();
                 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
                 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -85,7 +70,6 @@ class ExerciseTracking extends Component {
                     this.setState({
                         date: dateTime
                     })
-                    console.log(this.state)
         }
 
     render() {

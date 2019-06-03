@@ -43,7 +43,7 @@ class MindfulnessLesson extends Component{
     }
 }
 
-export default MindfulnessLesson;
+export {MindfulnessLesson};
 
 const styles = StyleSheet.create({
     mainTitle: {
