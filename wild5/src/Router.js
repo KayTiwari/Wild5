@@ -22,9 +22,9 @@ const Routercomponent = () => {
     <Router>
    <Scene key="root">
     <Scene key="loginform" component={LoginForm} header={null}/>
-        <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null}/>
+        <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} initial/>
           <Scene key="account" component={Account} title='Account' header={null}/>
-          <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More' initial/>
+          <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More'/>
           <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back'/>
           <Scene key="mindfulnesslesson" component={MindfulnessLesson} title='Mindfulness' backTitle='Back'/>
           <Scene key="sociallesson" component={SocialLesson} title='Social' backTitle='Back'/>

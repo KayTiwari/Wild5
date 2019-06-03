@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, TouchableOpacity, StyleSheet, Image, Dimensions } from 'react-native'
+import { View, ScrollView, TouchableOpacity, StyleSheet, Image, Dimensions } from 'react-native'
 import { Container, Footer, FooterTab, Button, Text, Header, Icon } from 'native-base' 
 import wild5title from '../images/wild-5-logo-r-color.png'
 import { Actions } from 'react-native-router-flux'
@@ -15,38 +15,37 @@ class Landing extends Component {
 
   render() {
     return (
-      <Container style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height:screenheight}}>
-      <View>
+    <Container style={{height: screenheight, display:'flex', flexDirection:'column'}}>
+    <ScrollView>
         <View style={{width: '80%', marginLeft: '10%', marginTop:'20%', marginBottom:0}}><Image source={wild5title} style={{width: '100%', resizeMode:'contain'}} /></View>
-
       <View>
       <Carousel />
       </View>
 
-      <View>
-            <Button onPress={() => Actions.exercisetracking()} style={{alignSelf:'center', marginTop: '20%'}} success large iconright>
+      <View style={{marginTop: '20%'}}>
+            <Button onPress={() => Actions.exercisetracking()} style={{alignSelf:'center'}} success large iconright>
                 <Text>Exercise Tracking</Text>
             </Button>
-        </View>
       </View>
 
-      <View>
+      <View style={{marginTop:'20%'}}>
             <Button style={styles.mindfulness} success large iconright>
                 <Text>Mindfulness Tracking</Text>
             </Button>
       </View>
 
-      <View style={{display:'flex'}}>
+    </ScrollView>
+      <View>
       <Navbar />
       </View>
-      </Container>
+    </Container>
     )
   }
 }
 const styles = StyleSheet.create({
   mindfulness: {
       backgroundColor: '#49b8ea',
-      alignSelf:'center'
+      alignSelf:'center',
   },
   sleep: {
       alignSelf:'center',
