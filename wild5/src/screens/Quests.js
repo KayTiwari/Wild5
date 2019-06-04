@@ -19,9 +19,9 @@ class Quests extends Component {
        <Icon name='camera' />
        </Button>
 
-       <Button style={{alignSelf:'center', color: 'light-blue', marginTop:'20%'}} large onPress={() => Actions.mindfulnessquest()}>
+       <Button style={{alignSelf:'center', color: 'light-blue', marginTop:'15%'}} large onPress={() => Actions.mindfulnessquest()}>
        <Icon name='cloud' />
-       <Text>Mindfulness Meditations</Text>
+       <Text>Meditations</Text>
        <Icon name='leaf' />
        </Button>
 

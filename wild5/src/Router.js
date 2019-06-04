@@ -35,11 +35,11 @@ const Routercomponent = () => {
           <Scene key="sleeplesson" component={SleepLesson} title='Sleep' backTitle='Back'/>
           <Scene key="kickstart" component={KickStart30} title='KickStart30' header={null}/>
           <Scene key="learnmore" component={LearnMore} title='Learn More' backTitle='Back'/>
-          <Scene key="quests" component={Quests} title='Quests' header={null} initial/>
+          <Scene key="quests" component={Quests} title='Quests' header={null}/>
           <Scene key='help' component={Help} backTitle='Back'/>
           <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' backTitle='Back'/>
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
-          <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null} />
+          <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null} initial />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile}/>
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>

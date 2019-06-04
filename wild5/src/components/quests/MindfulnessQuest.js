@@ -59,7 +59,7 @@ class MindfulnessQuest extends Component {
                 ignoreSilentSwitch={"ignore"}           
                 progressUpdateInterval={250.0}                       
                 onProgress={this.onProgress}              
-                onEnd={() => { AlertIOS.alert('Done!') }} 
+                // onEnd={() => { AlertIOS.alert('Done!') }} 
                 />
             </TouchableOpacity>
             </View>
