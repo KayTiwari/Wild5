@@ -5,6 +5,9 @@ class Statistics extends Component{
     state = {
 
     }
+    componentDidMount{
+        
+    }
 
     render(){
         return(
