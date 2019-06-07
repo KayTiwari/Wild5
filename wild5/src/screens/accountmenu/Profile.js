@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
+import { Container, Header, Content, Form, Item, Input, DatePicker } from 'native-base';
 import { View, Button, Text, Image, ScrollView, TextInput, DatePickerIOS, Modal, TouchableOpacity } from 'react-native'
+import Navbar from '../../components/Navbar';
 import ToggleSwitch from 'toggle-switch-react-native'
 import Plus from '../../images/PlusBox.png'
 
 
 class Profile extends Component {
   state = {
-    startDate: new Date(),
+    // startDate: new Date(),
     firstName: '',
     lastName: '',
     email: '',
-    birthday: '',
-    reminder: false,
-    modalVisible: false,
-    addReminder: false,
+    birthday: new Date,
+    exerciseReminder: false,
+    mindfulnessReminder: false,
+    sleepReminder: false,
+    socialReminder: false,
+    nutritionReminder: false,
     reminders: [
       {
         title: '',
@@ -23,119 +27,141 @@ class Profile extends Component {
     ]
 
   }
-
-  setReminders = () => {
-    if(this.state.reminder === false && this.state.modalVisible === false) {
+  exerciseReminder = () => {
     this.setState({
-      reminder: true,
-      modalVisible: true
-    })
-  } else if(this.state.reminder === true && this.state.modalVisible === false){
-    this.setState({
-      reminder: false
+      exerciseReminder: !this.state.exerciseReminder
     })
   }
+
+  mindfulnessReminder = () => {
+    this.setState({
+      mindfulnessReminder: !this.state.mindfulnessReminder
+    })
   }
 
-  addReminder = () => {
+  sleepReminder = () => {
     this.setState({
-      reminder: true
+      sleepReminder: !this.state.sleepReminder
+    })
+  }
+
+  socialReminder = () => {
+    this.setState({
+      socialReminder: !this.state.socialReminder
+    })
+  }
+  nutritionReminder = () => {
+    this.setState({
+      nutritionReminder: !this.state.nutritionReminder
+    })
+  }
+
+  setDate = (newdate) => {
+    this.setState({
+      birthday: newdate
     })
   }
 
   render(){
     return (
-      <View >
-      <Modal visible={this.state.modalVisible} transparent={true}>
-        <View style={{height: 650, width: 350, backgroundColor: '#fff', marginHorizontal: 10, marginVertical: 90}}>
-        {this.state.addReminder ?  
-        <View style={{flex: 1}}>
-        <TextInput
-        style={{borderWidth: 5, borderColor: '#000', height: 50}}
-        placeholder="Reminder Title"
-        />
-        <DatePickerIOS 
-        style={{height: 100}}
-        mode="time"
-        date={this.state.startDate}
-        onDateChange={(date) => this.setState({
-          birthday: date
-        })}
-        />
-        <View style={{flex: 1, justifyContent: 'flex-end'}}>
-        <Button 
-        title="Set Reminder"
-        />
-      </View> 
-      </View>
-      :
       <>
-          <View style={{borderBottomColor: '#000', borderBottomWidth: 3, alignItems: 'center'}}>
-          <Text style={{fontSize: 25}}>Reminders</Text>
-        </View>
-        <View style={{flex: 1, justifyContent: 'flex-end'}}>
-        <View style={{alignItems: 'flex-end'}}>
-          <TouchableOpacity style={{marginRight: 10}} onPress={() => this.setState({ addReminder: true})}>
-          <Image style={{height: 60, width: 60}} source={Plus}/>
-          </TouchableOpacity>
-        </View>
-          <Button
-          color='#333333'
-          title="Hide"
-          onPress={() => this.setState({modalVisible: false})}
-          />
-          </View>
-          </>
-    }
-  
-        </View>
-      </Modal>
-      <View style={{alignItems: 'center'}}>
-        <Text style={{fontSize: 18}}>Welcome!</Text>
-        <View style={{height: 170, width: 'auto'}}>
-        <Image style={{height: 150, width: 150}} source={{uri: 'https://blackrockdigital.github.io/startbootstrap-freelancer/img/profile.png'}} />
-        </View>
-        </View>
-        <ScrollView>
-          <TextInput style={{borderWidth: 5, borderColor: '#000', height: 50, marginBottom: 15, marginLeft: 20, marginRight: 20}} value={this.state.firstName} placeholder="First Name" onChangeText={(text) => this.setState({firstName: text})}/>
-          <TextInput style={{borderWidth: 5, borderColor: '#000', height: 50, marginBottom: 15, marginLeft: 20, marginRight: 20}} value={this.state.lastName} placeholder="Last Name" onChangeText={(text) => this.setState({lastName: text})}/>
-          <TextInput style={{borderWidth: 5, borderColor: '#000', height: 50, marginLeft: 20, marginRight: 20}} value={this.state.email} placeholder="Email" onChangeText={(text) => this.setState({email: text})}/>
-          <DatePickerIOS
-          mode="date"
-          date={this.state.startDate}
-          onDateChange={(date) => this.setState({
-            birthday: date
-          })}
-          />
+      <Container>
+        <Form>
+          <Item>
+          <Input placeholder="Firstname" value={this.state.firstName}/>
+          </Item>
+          <Item>
+          <Input placeholder="Lastname" value={this.state.lastName}/>
+          </Item>
+          <Item>
+          <Input placeholder="Email" value={this.state.email}/>
+          </Item>
+          <Item>
+          <DatePicker
+            defaultDate={new Date(Date.now())}
+            maximumDate={new Date(Date.now())}
+            locale={"en"}
+            timeZoneOffsetInMinutes={undefined}
+            modalTransparent={false}
+            animationType={"fade"}
+            androidMode={"default"}
+            placeHolderText="Select date"
+            textStyle={{ color: "green" }}
+            placeHolderTextStyle={{ color: "#d3d3d3" }}
+            onDateChange={this.setDate}
+            disabled={false}
+            />
+            <Text style={{fontSize: 20}}>
+              Birthday: {this.state.birthday.toString().substr(4, 12)}
+            </Text>
+          </Item>
+        </Form>
         <View>
-        <ToggleSwitch
-        label='Set Reminders?'
+          <Text style={{fontSize: 20}}>Notifications</Text>
+          <View>
+          <Text>Exercise</Text>
+          <ToggleSwitch
+        // label='Exercise'
         labelStyle={{color: 'black', fontWeight: '900'}}
-        size="medium"
-        onColor="green"
-        offColor="#333"
-        isOn={this.state.reminder}
-        onToggle={() => this.setReminders()}
-        style={{display: 'inline-block'}}
+        size="large"
+        onColor="#73BA3F"
+        offColor="#bec6d3"
+        isOn={this.state.exerciseReminder}
+        onToggle={() => this.exerciseReminder()}
         />
-        { this.state.reminder === true ?
-        <Button
-        style={{display: 'inline-block'}}
-        title="Edit"
-        onPress={() => this.setState({
-          modalVisible: true
-        })}/>
-        :
-        null
-        }
         </View>
-
         <View>
-          
+        <Text>Mindfulness</Text>
+        <ToggleSwitch
+        // label='Mindfulness'
+        labelStyle={{color: 'black', fontWeight: '900'}}
+        size="large"
+        onColor="#0AB2E8"
+        offColor="#333"
+        isOn={this.state.mindfulnessReminder}
+        onToggle={() => this.mindfulnessReminder()}
+        />
         </View>
-        </ScrollView>
-
-      </View>
+        <View>
+          <Text>Sleep</Text>
+        <ToggleSwitch
+        // label='Sleep'
+        labelStyle={{color: 'black', fontWeight: '900'}}
+        size="large"
+        onColor="#B72B90"
+        offColor="#333"
+        isOn={this.state.sleepReminder}
+        onToggle={() => this.sleepReminder()}
+        />
+        </View>
+        <View>
+          <Text>Social</Text>
+        <ToggleSwitch
+        // label='Social'
+        labelStyle={{color: 'black', fontWeight: '900'}}
+        size="large"
+        onColor="#E93422"
+        offColor="#333"
+        isOn={this.state.socialReminder}
+        onToggle={() => this.socialReminder()}
+        />
+        </View>
+        <View>
+          <Text>Nutrition</Text>
+        <ToggleSwitch
+        // label='Nutrition'
+        labelStyle={{color: 'black', fontWeight: '900'}}
+        size="large"
+        onColor="#C6411F"
+        offColor="#333"
+        isOn={this.state.nutritionReminder}
+        onToggle={() => this.nutritionReminder()}
+        />
+        </View>
+        </View>
+      </Container>
+      <Navbar/>
+      </>
     )
   }
 }
