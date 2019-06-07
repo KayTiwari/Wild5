@@ -51,7 +51,7 @@ class Navbar extends Component{
           <Text>Profile</Text>
         </Button>
         <Button onPress={() => Actions.statistics()}>
-        <Icon name={'person'} />
+        <Icon name={'stats'} />
           <Text>Stats</Text>
         </Button>
         {/* <Button onPress={() => Actions.help()}>
