@@ -50,6 +50,10 @@ class Navbar extends Component{
         <Icon name={'person'} />
           <Text>Profile</Text>
         </Button>
+        <Button onPress={() => Actions.statistics()}>
+        <Icon name={'person'} />
+          <Text>Stats</Text>
+        </Button>
         {/* <Button onPress={() => Actions.help()}>
         <Icon name={'md-help'} />
           <Text>Help</Text>
