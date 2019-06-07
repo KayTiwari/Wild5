@@ -4,6 +4,7 @@ import { View, Button, Text, Image, ScrollView, TextInput, DatePickerIOS, Modal,
 import Navbar from '../../components/Navbar';
 import ToggleSwitch from 'toggle-switch-react-native'
 import Plus from '../../images/PlusBox.png'
+import PushNotificationIOS from '../../components/common/PushNotificationsIOS'
 
 
 class Profile extends Component {
