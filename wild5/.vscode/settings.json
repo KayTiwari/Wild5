@@ -1,4 +1,5 @@
 {
     "editor.autoClosingBrackets": "always",
-    "editor.autoClosingQuotes": "always"
+    "editor.autoClosingQuotes": "always",
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
