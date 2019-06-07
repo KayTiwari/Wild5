@@ -879,6 +879,9 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = T4Y4RA7B6F;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 0;
 							};
