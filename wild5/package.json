@@ -25,6 +25,7 @@
     "react-native-modal": "^9.0.0",
     "react-native-numeric-input": "^1.8.0",
     "react-native-pedometer": "0.0.7",
+    "react-native-push-notifications": "^3.0.10",
     "react-native-router-flux": "^4.0.6",
     "react-native-simple-radio-button": "^2.7.3",
     "react-native-simple-stepper": "^2.1.3",
