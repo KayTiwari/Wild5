@@ -1,48 +1,39 @@
 import React from 'react'
 import { BarChart, Grid } from 'react-native-svg-charts'
 import { Defs, LinearGradient, Stop } from "react-native-svg";
-
-//https://github.com/JesperLekland/react-native-svg-charts-examples
-
+// import console = require('console');
 
 class BarGraph extends React.PureComponent {
-    state = {
-        exval: 0,
-        mindval: 0,
-        sleepval: 0,
-        socval: 0,
-        nutrval: 0,
-    }
 
     render() {
-
+        console.log(this.props)
         const data = [
             {
-                value: exval,
+                value: this.props.exval,
                 svg: {
                     fill: 'green',
                 },
             },
             {
-                value: mindval,
+                value: this.props.mindval,
                 svg: {
                     fill: 'blue',
                 },
             },
             {
-                value: sleepval,
+                value: this.props.sleepval,
                 svg: {
                     fill: 'purple',
                 },
             },
             {
-                value: socval,
+                value: this.props.socval,
                 svg: {
                     fill: 'red',
                 },
             },
             {
-                value: nutrval,
+                value: this.props.nutrval,
                 svg: {
                     fill: 'orange',
                 },
