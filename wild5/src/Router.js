@@ -45,7 +45,7 @@ const Routercomponent = () => {
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='progress' component={Progress} title="Today's Progress" />
           <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
-          <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile}/>
+          <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile} initial/>
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
           <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking}/>
           <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking}/>
