@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { Container, Header, Content, Form, Item, Input, DatePicker } from 'native-base';
-import { View, Button, Text, Image, ScrollView, TextInput, DatePickerIOS, Modal, TouchableOpacity } from 'react-native'
+import { View, Button, Text, Image, ScrollView, TextInput, DatePickerIOS, Modal, TouchableOpacity, StyleSheet, Alert } from 'react-native'
 import Navbar from '../../components/Navbar';
 import ToggleSwitch from 'toggle-switch-react-native'
 import Plus from '../../images/PlusBox.png'
 import PushNotificationIOS from '../../components/common/PushNotificationsIOS'
+import appConfig from '../../../app.json'
 
 
 class Profile extends Component {
+  constructor(){
+    super()
   state = {
     // startDate: new Date(),
     firstName: '',
@@ -19,19 +22,24 @@ class Profile extends Component {
     sleepReminder: false,
     socialReminder: false,
     nutritionReminder: false,
+    senderId: appConfig.senderID,
     reminders: [
       {
         title: '',
         date: ''
 
       }
-    ]
-
+    ],
+    
   }
+  this.PushNotificationIOS = new PushNotificationIOS(this.onRegister, this.onNotif);}
+
+  
+
   exerciseReminder = () => {
     this.setState({
       exerciseReminder: !this.state.exerciseReminder
-    })
+    }, ()=> this.scheduleNotif())
   }
 
   mindfulnessReminder = () => {
@@ -62,6 +70,22 @@ class Profile extends Component {
       birthday: newdate
     })
   }
+
+  onRegister = (token) => {
+    Alert.alert("Registered !", JSON.stringify(token));
+    console.log(token);
+    this.setState({ registerToken: token.token, gcmRegistered: true });
+  }
+
+  onNotif = (notif) =>{
+    console.log(notif);
+    Alert.alert(notif.title, notif.message);
+  }
+
+  handlePerm = (perms) => {
+    Alert.alert("Permissions", JSON.stringify(perms));
+  }
+
 
   render(){
     return (
@@ -166,5 +190,6 @@ class Profile extends Component {
     )
   }
 }
+
 
 export {Profile}
