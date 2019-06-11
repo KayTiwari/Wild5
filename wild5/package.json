@@ -7,7 +7,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "antd": "^3.18.1",
     "chart.js": "^2.8.0",
     "entypo": "^2.1.0",
     "expo": "^32.0.6",
@@ -16,6 +15,7 @@
     "proptypes": "^1.1.0",
     "react": "16.8.3",
     "react-chartjs-2": "^2.7.6",
+    "react-dom": "^16.8.6",
     "react-native": "0.59.4",
     "react-native-button": "^2.3.0",
     "react-native-camera": "^2.9.0",

@@ -7,13 +7,13 @@ import Plus from '../../images/PlusBox.png'
 import PushNotificationIOS from '../../components/common/PushNotificationsIOS'
 import appConfig from '../../../app.json'
 
-
-class Profile extends Component {
-  constructor(){
-    super()
-  state = {
+type Props = {};
+class Profile extends Component<Props> {
+  constructor(props){
+    super(props)
+  this.state = {
     // startDate: new Date(),
-    firstName: '',
+    firstName: 'hello',
     lastName: '',
     email: '',
     birthday: new Date,
@@ -32,14 +32,16 @@ class Profile extends Component {
     ],
     
   }
-  this.PushNotificationIOS = new PushNotificationIOS(this.onRegister, this.onNotif);}
+  this.PushNotificationIOS = new PushNotificationIOS(this.onNotif);
+}
 
   
 
   exerciseReminder = () => {
+    this.PushNotificationIOS.scheduleNotif()
     this.setState({
       exerciseReminder: !this.state.exerciseReminder
-    }, ()=> this.scheduleNotif())
+    })
   }
 
   mindfulnessReminder = () => {
