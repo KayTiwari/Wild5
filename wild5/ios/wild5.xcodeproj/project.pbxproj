@@ -17,6 +17,7 @@
 		0E415DB1228CC4F700C78F98 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		0E415DB2228CC4F700C78F98 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		0E415DB3228CC4F800C78F98 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		0E7C9EA422AEE4AA00CF4F04 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8C535A228C93B800F83D13 /* libRNSVG.a */; };
 		0E82D5C122A6216D00AA1EB9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		0E82D5C222A621F100AA1EB9 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1573DA39C31F4516BA06ECC9 /* Ionicons.ttf */; };
 		0EFDCD88228C9A8400CDA57F /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFDCD87228C9A5A00CDA57F /* libRCTCameraRoll.a */; };
@@ -451,6 +452,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E7C9EA422AEE4AA00CF4F04 /* libRNSVG.a in Frameworks */,
 				A96D64DC22AB314100108962 /* libRCTPushNotification.a in Frameworks */,
 				0E40785722AAC5B800C19090 /* libRCTVideo.a in Frameworks */,
 				0EFDCD88228C9A8400CDA57F /* libRCTCameraRoll.a in Frameworks */,

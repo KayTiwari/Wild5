@@ -13,6 +13,8 @@ import KickStart30 from './screens/KickStart30';
 import LearnMore from './screens/LearnMore';
 import Settings from './screens/Settings';
 import Quests from './screens/Quests';
+import Progress from './screens/trackingscreens/Progress';
+import Statistics from './screens/Statistics'
 import { About, FAQ, Feedback, Profile} from './screens/accountmenu';
 import Help from './screens/accountmenu/Help'
 import TrackingForm from './screens/TrackingForm';
@@ -41,6 +43,8 @@ const Routercomponent = () => {
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
           <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null}  />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
+          <Scene key='progress' component={Progress} title="Today's Progress" />
+          <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
           <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile} initial/>
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
           <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking}/>
