@@ -38,10 +38,10 @@ class Profile extends Component<Props> {
   
 
   exerciseReminder = () => {
-    this.PushNotificationIOS.scheduleNotif()
+    
     this.setState({
       exerciseReminder: !this.state.exerciseReminder
-    })
+    },(this.state.exerciseReminder) ? () => this.PushNotificationIOS.scheduleNotif() : null)
   }
 
   mindfulnessReminder = () => {
