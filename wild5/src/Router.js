@@ -26,7 +26,7 @@ const Routercomponent = () => {
   return (
     <Router>
    <Scene key="root">
-    <Scene key="loginform" component={LoginForm} header={null}/>
+    <Scene key="loginform" component={LoginForm} header={null} initial/>
         <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More'/>
@@ -43,15 +43,15 @@ const Routercomponent = () => {
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
           <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null}  />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
-          <Scene key='progress' component={Progress} title="Today's Progress" />
           <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
-          <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile} initial/>
+          {/* <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile} initial/> */}
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
-          <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking}/>
-          <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking}/>
+          <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking} />
+          <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking} />
           <Scene key='sleeptracking' backTitle='Back' title='Sleep Tracking' component={SleepTracking} />
           <Scene key='socialtracking' backTitle='Back' title='Social Tracking' component={SocialTracking}/>
           <Scene key='nutritiontracking' backTitle='Back' title='Nutrition Tracking' component={NutritionTracking}/>
+          <Scene key='progress' component={Progress} title="Today's Progress"/>
     </Scene>
 
     </Router>

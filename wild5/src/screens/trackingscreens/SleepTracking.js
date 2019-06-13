@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { ScrollView, View, Dimensions } from 'react-native'
+import { ScrollView, View, Dimensions, ImageBackground } from 'react-native'
 import { Item, Label, Text, Content, ListItem, CheckBox, Body, Container, Header } from 'native-base'
 import { ModButton } from '../../components/common'
 import firebase from 'firebase'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Actions } from 'react-native-router-flux';
+import sleeptracking from '../../images/sleeptracking.jpg';
 
 const screenheight = Dimensions.get('window').height;
 class SleepTracking extends Component {
@@ -80,6 +81,7 @@ class SleepTracking extends Component {
     render() {
         return (
             <Container>
+                <ImageBackground source={sleeptracking} style={{height: '100%', width: '100%'}}>
                 <Text style={{fontSize: 30, textAlign: 'center', marginTop: '20%', marginBottom:'20%', fontWeight: '600'}}>Track your <Text style={{color: 'purple', fontSize: 30, fontWeight: '600'}}>Sleep</Text></Text>
         <Content>
         <Text style={{fontSize: 20, textAlign: 'center', marginTop: '10%', marginBottom:'10%', fontWeight: '600'}}>Which sleep hygiene practices did you implement today?</Text>
@@ -123,6 +125,7 @@ class SleepTracking extends Component {
                     Submit
                 </ModButton>
         </Content>
+        </ImageBackground>
       </Container>
         )
     }

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { ScrollView, View, Dimensions } from 'react-native'
+import { ScrollView, View, Dimensions, ImageBackground } from 'react-native'
 import { Input, Form, Item, Label, Text, ListItem, CheckBox, Body } from 'native-base'
 import { ModButton } from '../../components/common'
 import firebase from 'firebase'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Actions } from 'react-native-router-flux';
+import nutribackground from '../../images/nutritracking.png';
 
 
 const screenheight = Dimensions.get('window').height;
@@ -67,10 +68,11 @@ class NutritionTracking extends Component {
     render() {
         return (
            <View style={{backgroundColor: 'white', height: screenheight}}>
-           <ScrollView>
-                <Text style={{fontSize: 30, textAlign: 'center', marginTop: '20%', marginBottom:'20%', fontWeight: '600'}}>Track your <Text style={{color: 'orange', fontSize: 30, fontWeight: '600'}}>Nutrition</Text></Text>
+           <ImageBackground source={nutribackground} style={{width: '100%', height: '100%'}}>
+           <ScrollView style={{height: screenheight}}>
+                <Text style={{fontSize: 30, textAlign: 'center', marginTop: '10%', marginBottom:'20%', fontWeight: '600'}}>Track your <Text style={{color: 'orange', fontSize: 30, fontWeight: '600'}}>Nutrition</Text></Text>
 
-                <View style={{alignSelf: 'center', marginTop: '10%'}}>
+                <View style={{alignSelf: 'center', marginTop: 0}}>
                     <Text style={{marginBottom: '5%', fontSize:20, textAlign: 'center', fontWeight: '600'}}>Did you log your meals/snacks/beverages/alcohol?</Text>
                     <RadioForm
                     radio_props={[
@@ -123,10 +125,13 @@ class NutritionTracking extends Component {
                     </Body>
                 </ListItem>
                 </View>
-                <ModButton style={{marginTop:'15%'}} color={'black'} onPress={() => this.submitForm()} label="Submit">
+                <View>
+                <ModButton color={'black'} onPress={() => this.submitForm()} label="Submit">
                     Submit
                 </ModButton>
+                </View>
             </ScrollView>
+            </ImageBackground>
            </View>
         )
     }

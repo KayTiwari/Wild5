@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Dimensions } from 'react-native'
+import { View, Dimensions, ImageBackground } from 'react-native'
 import { withProvider } from '../../context/context'
 import { ModButton } from '../../components/common'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
@@ -8,6 +8,7 @@ import { Dropdown } from 'react-native-material-dropdown';
 import NumericInput from 'react-native-numeric-input'
 import firebase from 'firebase'
 import { Actions } from 'react-native-router-flux'
+import exbackground from '../../images/exercisetracking.jpg';
 // import console = require('console');
 
 let typedata = [{
@@ -74,6 +75,7 @@ class ExerciseTracking extends Component {
     render() {
         return (
             <View style={{backgroundColor: 'white', height: screenheight}}>
+            <ImageBackground source={exbackground} style={{height: '100%', width: '100%'}}>
                 <Text style={{fontSize: 30, textAlign: 'center', marginTop: '20%', marginBottom:'20%', fontWeight: '600'}}>Track your <Text style={{color: 'green', fontSize: 30, fontWeight: '600'}}>Exercise</Text></Text>
 
                 <View style={{ marginLeft: '5%', marginRight: '5%'}}> 
@@ -124,6 +126,7 @@ class ExerciseTracking extends Component {
                     Submit
                 </ModButton>
                 </View>
+                </ImageBackground>
             </View>
         )
     }
