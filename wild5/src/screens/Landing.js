@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { View, ScrollView, TouchableOpacity, StyleSheet, Image, Dimensions } from 'react-native'
+import { View, ScrollView, TouchableOpacity, StyleSheet, Image, Dimensions, ImageBackground } from 'react-native'
 import { Container, Footer, FooterTab, Button, Text, Header, Icon } from 'native-base' 
 import wild5title from '../images/wild-5-logo-r-color.png'
 import { Actions } from 'react-native-router-flux'
 import Navbar from '../components/Navbar';
 import Carousel from '../components/Carousel';
+import landingbackground from '../images/landingbackground.jpg'
 
 
 const screenheight = Dimensions.get('window').height;
@@ -17,6 +18,7 @@ class Landing extends Component {
     return (
     <Container style={{height: screenheight, display:'flex', flexDirection:'column'}}>
     <ScrollView>
+    <ImageBackground source={landingbackground} style={{width: '100%'}}>
         <View style={{width: '80%', marginLeft: '10%', marginTop:'20%', marginBottom:0}}><Image source={wild5title} style={{width: '100%', resizeMode:'contain'}} /></View>
       <View>
       <Carousel />
@@ -58,6 +60,7 @@ class Landing extends Component {
             </Button>
      </View>
 
+      </ImageBackground>
     </ScrollView>
       <View>
       <Navbar />

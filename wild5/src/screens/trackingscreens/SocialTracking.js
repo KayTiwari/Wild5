@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { ScrollView, View, Dimensions } from 'react-native'
+import { ScrollView, View, Dimensions, ImageBackground } from 'react-native'
 import { Item, Label, Text, Content, ListItem, CheckBox, Body, Container, Header } from 'native-base'
 import { ModButton } from '../../components/common'
 import firebase from 'firebase'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Actions } from 'react-native-router-flux';
+import socialtrackingbackground from '../../images/socialtracking.jpg';
 
 const screenheight = Dimensions.get('window').height;
 class SocialTracking extends Component {
@@ -70,6 +71,7 @@ class SocialTracking extends Component {
     render() {
         return (
             <Container>
+            <ImageBackground source={socialtrackingbackground} style={{height: '100%', width: '100%'}}>
                 <Text style={{fontSize: 30, textAlign: 'center', marginTop: '20%', marginBottom:'20%', fontWeight: '600'}}>Track your <Text style={{color: 'red', fontSize: 30, fontWeight: '600'}}>Social</Text></Text>
         <Content>
         <Text style={{fontSize: 20, textAlign: 'center', marginTop: '10%', marginBottom:'10%', fontWeight: '600'}}>Which social practices did you complete?</Text>
@@ -101,6 +103,7 @@ class SocialTracking extends Component {
                     Submit
                 </ModButton>
         </Content>
+        </ImageBackground>
       </Container>
         )
     }

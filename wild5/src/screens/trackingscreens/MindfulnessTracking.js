@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { ScrollView, View, Dimensions } from 'react-native'
+import { ScrollView, View, Dimensions, ImageBackground } from 'react-native'
 import { Input, Form, Item, Label, Text } from 'native-base'
 import { ModButton } from '../../components/common'
 import firebase from 'firebase'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Actions } from 'react-native-router-flux';
+import mindtracking from '../../images/mindfultracking.jpg'
 
 
 
@@ -47,6 +48,7 @@ class MindfulnessTracking extends Component {
     render() {
         return (
             <View style={{backgroundColor: 'white', height: screenheight}}>
+            <ImageBackground source={mindtracking} style={{height: '100%', width: '100%'}}>
                 <Text style={{fontSize: 30, textAlign: 'center', marginTop: '20%', marginBottom:'20%', fontWeight: '600'}}>Track your <Text style={{color: 'blue', fontSize: 30, fontWeight: '600'}}>Mindfulness</Text></Text>
 
                 <View>
@@ -79,6 +81,7 @@ class MindfulnessTracking extends Component {
                     Submit
                 </ModButton>
                 </View>
+                </ImageBackground>
             </View>
         )
     }
