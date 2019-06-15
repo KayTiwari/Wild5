@@ -43,7 +43,7 @@ const Routercomponent = () => {
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
           <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null}  />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
-          <Scene key='statistics' component={Statistics} header={null}  title="Statistics" initial/>
+          <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
           {/* <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile} initial/> */}
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
           <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking} />
