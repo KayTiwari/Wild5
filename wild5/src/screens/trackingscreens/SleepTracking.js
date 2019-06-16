@@ -24,7 +24,7 @@ class SleepTracking extends Component {
             })
         } else if (type === 'mask'){
             this.setState({
-                sleepmask: true
+                sleepmask: !this.state.sleepmask
             })
         } else if (type === 'reg'){
             this.setState({
