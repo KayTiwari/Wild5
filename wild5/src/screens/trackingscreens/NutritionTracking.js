@@ -70,8 +70,8 @@ class NutritionTracking extends Component {
            <View style={{backgroundColor: 'white', height: screenheight}}>
            <View style={{flex: 1}}>
            <ImageBackground source={nutribackground} style={{width: '100%', height: '100%'}}>
-           <ScrollView style={{height: screenheight}}>
-                <Text style={{fontSize: 30, textAlign: 'center', marginTop: '10%', marginBottom:'10%', fontWeight: '600'}}>Track your <Text style={{color: 'orange', fontSize: 30, fontWeight: '600'}}>Nutrition</Text></Text>
+           <ScrollView style={{height: screenheight, padding: 30}}>
+                <Text style={{fontSize: 30, textAlign: 'center', marginTop: '-5%', marginBottom:'10%', fontWeight: '600'}}>Track your <Text style={{color: 'orange', fontSize: 30, fontWeight: '600'}}>Nutrition</Text></Text>
 
                 <View style={{alignSelf: 'center', marginTop: 0}}>
                     <Text style={{marginBottom: '5%', fontSize:20, textAlign: 'center', fontWeight: '600'}}>Did you log your meals/snacks/beverages/alcohol?</Text>

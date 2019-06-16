@@ -76,7 +76,7 @@ class ExerciseTracking extends Component {
         return (
             <View style={{backgroundColor: 'white', height: screenheight}}>
             <ImageBackground source={exbackground} style={{height: '100%', width: '100%'}}>
-                <Text style={{fontSize: 30, textAlign: 'center', marginTop: '20%', marginBottom:'20%', fontWeight: '600'}}>Track your <Text style={{color: 'green', fontSize: 30, fontWeight: '600'}}>Exercise</Text></Text>
+                <Text style={{fontSize: 30, textAlign: 'center', marginTop: '10%', marginBottom:'20%', fontWeight: '600'}}>Track your <Text style={{color: 'green', fontSize: 30, fontWeight: '600'}}>Exercise</Text></Text>
 
                 <View style={{ marginLeft: '5%', marginRight: '5%'}}> 
                     <Dropdown baseColor='green' label='Type of Exercise' data={typedata} onChangeText={(text) => this.setState({type: text})} />
@@ -94,7 +94,7 @@ class ExerciseTracking extends Component {
                     totalWidth={240} 
                     totalHeight={50} 
                     iconSize={25}
-                    step={1}
+                    step={5}
                     minValue={0}
                     valueType='real'
                     rounded 
