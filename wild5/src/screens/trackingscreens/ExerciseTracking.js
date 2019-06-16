@@ -86,7 +86,7 @@ class ExerciseTracking extends Component {
                 </View>
 
                 <View style={{alignSelf:'center', marginTop: '20%'}}>
-                <Text>How many minutes did you exercise?</Text>
+                <Text style={{marginBottom: '5%'}}>How many minutes did you exercise?</Text>
                 <NumericInput 
                     value={this.state.value} 
                     onChange={value => this.setState({duration: value})} 
