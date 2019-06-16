@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, ImageBackground } from 'react-native';
 import { Text, } from 'native-base';
 import BarGraph from '../../components/charts/BarGraph';
 import firebase from 'firebase';
+import progbackground from '../../images/progbackground.jpg'
 
 // var firebaseConfig = {
 //     apiKey: "AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o",
@@ -254,12 +255,13 @@ class Progress extends Component {
             }
             else if (sleepval === mindval && sleepval === nutrval && sleepval === socval && sleepval === exval){
                 return <Text style={{fontSize: 20, alignSelf:'center', fontWeight:'600'}}>Amazing work!</Text>
-            } else return "Well-Rounded"
+            } else return "More than one principle"
         }
 
     render(){
         return (
             <View style={{backgroundColor:'white', height: screenheight}}>
+                <ImageBackground source={progbackground} style={{height: '100%', width: '100%'}}>
                 <View><Text style={{fontSize: 15, marginTop:'10%', alignSelf:'center', fontWeight:'600'}}>You can earn 3 points a day in every wellness principle</Text></View>
 
                 {this.state.exval ? <BarGraph exval={this.state.exval} mindval={this.state.mindval} nutrval={this.state.nutrval} sleepval={this.state.sleepval} socval={this.state.socval} /> : <Text style={{fontSize: 15, marginTop: '15%', alignSelf:'center', fontWeight:'600'}}>No data to show today :S</Text>}
@@ -270,6 +272,7 @@ class Progress extends Component {
                        {this.state.exval ? <Text style={{fontSize: 15, marginTop: '10%', alignSelf:'center', fontWeight:'600'}}>Today's least practiced principle: {this.minSkill()}</Text>: <Text style={{fontSize: 15, marginTop: '15%', alignSelf:'center', fontWeight:'600'}}>Today's best principle: None</Text>}
                     </View>
                 </View>
+                </ImageBackground>
             </View>
         )
     }
