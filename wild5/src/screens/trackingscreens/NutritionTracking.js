@@ -68,9 +68,10 @@ class NutritionTracking extends Component {
     render() {
         return (
            <View style={{backgroundColor: 'white', height: screenheight}}>
+           <View style={{flex: 1}}>
            <ImageBackground source={nutribackground} style={{width: '100%', height: '100%'}}>
            <ScrollView style={{height: screenheight}}>
-                <Text style={{fontSize: 30, textAlign: 'center', marginTop: '10%', marginBottom:'20%', fontWeight: '600'}}>Track your <Text style={{color: 'orange', fontSize: 30, fontWeight: '600'}}>Nutrition</Text></Text>
+                <Text style={{fontSize: 30, textAlign: 'center', marginTop: '10%', marginBottom:'10%', fontWeight: '600'}}>Track your <Text style={{color: 'orange', fontSize: 30, fontWeight: '600'}}>Nutrition</Text></Text>
 
                 <View style={{alignSelf: 'center', marginTop: 0}}>
                     <Text style={{marginBottom: '5%', fontSize:20, textAlign: 'center', fontWeight: '600'}}>Did you log your meals/snacks/beverages/alcohol?</Text>
@@ -125,13 +126,14 @@ class NutritionTracking extends Component {
                     </Body>
                 </ListItem>
                 </View>
-                <View>
+                <View style={{}}>
                 <ModButton color={'black'} onPress={() => this.submitForm()} label="Submit">
                     Submit
                 </ModButton>
                 </View>
             </ScrollView>
             </ImageBackground>
+            </View>
            </View>
         )
     }

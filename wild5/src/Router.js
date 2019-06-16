@@ -50,7 +50,7 @@ const Routercomponent = () => {
           <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking} />
           <Scene key='sleeptracking' backTitle='Back' title='Sleep Tracking' component={SleepTracking} />
           <Scene key='socialtracking' backTitle='Back' title='Social Tracking' component={SocialTracking}/>
-          <Scene key='nutritiontracking' backTitle='Back' title='Nutrition Tracking' component={NutritionTracking}/>
+          <Scene key='nutritiontracking' backTitle='Back' title='Nutrition Tracking' component={NutritionTracking} initial/>
           <Scene key='progress' component={Progress} backTitle='Back' title="Today's Progress"/>
     </Scene>
 

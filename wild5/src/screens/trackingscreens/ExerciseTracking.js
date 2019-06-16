@@ -85,7 +85,7 @@ class ExerciseTracking extends Component {
                     {this.state.type === 'Other' ? <Input floatinglabel autoCorrect={false} onChangeText={(text) => this.setState({user: text})}/>: null}
                 </View>
 
-                <View style={{alignSelf:'center', marginTop: '20%'}}>
+                <View style={{alignSelf:'center'}}>
                 <Text style={{marginBottom: '5%'}}>How many minutes did you exercise?</Text>
                 <NumericInput 
                     value={this.state.value} 
