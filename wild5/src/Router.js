@@ -26,7 +26,7 @@ const Routercomponent = () => {
   return (
     <Router>
    <Scene key="root">
-    <Scene key="loginform" component={LoginForm} header={null} />
+    <Scene key="loginform" component={LoginForm} header={null} initial/>
         <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More'/>
@@ -44,7 +44,7 @@ const Routercomponent = () => {
           <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null}  />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
-          {/* <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile} initial/> */}
+          <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile}/>
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
           <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking}/>
           <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking} />

@@ -49,7 +49,7 @@ class Profile extends Component<Props> {
     }
   }
 
-  mindfulnessReminder = () => {
+  mindfulnessReminder = (pillar) => {
     return (e) => {
     this.setState(prevState => ({
       mindfulnessReminder: !prevState.mindfulnessReminder
@@ -60,7 +60,7 @@ class Profile extends Component<Props> {
     });
   }}
 
-  sleepReminder = () => {
+  sleepReminder = (pillar) => {
     return (e) => {
     this.setState(prevState => ({
       sleepReminder: !prevState.sleepReminder
@@ -71,7 +71,7 @@ class Profile extends Component<Props> {
     });
   }}
 
-  socialReminder = () => {
+  socialReminder = (pillar) => {
     return (e) => {
     this.setState(prevState => ({
       socialReminder: !prevState.socialReminder
@@ -81,7 +81,7 @@ class Profile extends Component<Props> {
       }
     })
   }}
-  nutritionReminder = () => {
+  nutritionReminder = (pillar) => {
     return (e) => {
     this.setState(prevState =>({
       nutritionReminder: !prevState.nutritionReminder
@@ -171,7 +171,7 @@ class Profile extends Component<Props> {
         onColor="#0AB2E8"
         offColor="#333"
         isOn={this.state.mindfulnessReminder}
-        onToggle={() => this.mindfulnessReminder("mind")}
+        onToggle={this.mindfulnessReminder("mind")}
         />
         </View>
         <View>
@@ -183,7 +183,7 @@ class Profile extends Component<Props> {
         onColor="#B72B90"
         offColor="#333"
         isOn={this.state.sleepReminder}
-        onToggle={() => this.sleepReminder("sleep")}
+        onToggle={this.sleepReminder("sleep")}
         />
         </View>
         <View>
@@ -195,7 +195,7 @@ class Profile extends Component<Props> {
         onColor="#E93422"
         offColor="#333"
         isOn={this.state.socialReminder}
-        onToggle={() => this.socialReminder("social")}
+        onToggle={this.socialReminder("social")}
         />
         </View>
         <View>
@@ -207,7 +207,7 @@ class Profile extends Component<Props> {
         onColor="#C6411F"
         offColor="#333"
         isOn={this.state.nutritionReminder}
-        onToggle={() => this.nutritionReminder("nutrition")}
+        onToggle={this.nutritionReminder("nutrition")}
         />
         </View>
         </View>
