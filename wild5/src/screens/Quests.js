@@ -3,6 +3,7 @@ import { View, TouchableOpacity, Image, Dimensions } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { Container, Footer, FooterTab, Button, Text, Header, Icon } from 'native-base' 
 import Navbar from '../components/Navbar';
+import {QuestButton} from '../components/common/QuestButton'
 
 const screenheight = Dimensions.get('window').height;
 class Quests extends Component {
@@ -13,23 +14,25 @@ class Quests extends Component {
           <View>
         <Text style={{textAlign:'center', fontSize:30, marginTop: '20%', fontWeight: '600', marginBottom: 40}}>Quests</Text>
 
-       <Button style={{alignSelf:'center'}} warning large onPress={() => Actions.nutritionquest()}>
-       <Icon name='nutrition' />
-       <Text>Nutrition Tracker</Text>
-       <Icon name='camera' />
-       </Button>
+        <QuestButton label="Nutrition" 
+        iconName1="camera" 
+        iconName2="nutrition" 
+        onPress={() => Actions.nutritionquest()}/>
 
-       <Button style={{alignSelf:'center', color: 'light-blue', marginTop:'15%'}} large onPress={() => Actions.mindfulnessquest()}>
-       <Icon name='cloud' />
-       <Text>Meditations</Text>
-       <Icon name='leaf' />
-       </Button>
+       <QuestButton label="Meditations" 
+       iconName1="cloud" 
+       iconName2="leaf" 
+       onPress={() => Actions.mindfulnessquest()}
+       />
 
-       <Button style={{alignSelf:'center', backgroundColor:'#75BE40', marginTop:'15%'}} large onPress={() => Actions.exercisequest()}>
-       <Icon name='cloud' />
-       <Text>Exercise</Text>
-       <Icon name='leaf' />
-       </Button>
+       <QuestButton label="Exercise" 
+       style={{backgroundColor: '#72B83E'}} 
+       iconName1="cloud" 
+       iconName2="leaf" 
+       onPress={() => Actions.exercisequest()}/>
+       
+
+        <QuestButton label="social" style={{backgroundColor: '#B72B90'}} />
 
        </View>
        </View>
