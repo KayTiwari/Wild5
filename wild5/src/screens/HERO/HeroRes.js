@@ -83,7 +83,7 @@ class HeroRes extends Component{
                     {this.feeling()}
 
                     <View style={{alignSelf: 'center', marginTop: '20%'}}>
-                        <Button onPress={() => this.submit()} light rounded large><Text>Next</Text>
+                        <Button onPress={() => this.submit()} dark rounded large><Text>Next</Text>
                         <Icon name='arrow-forward' />
                         </Button>
                     </View>
