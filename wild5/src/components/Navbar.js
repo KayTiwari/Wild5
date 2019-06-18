@@ -46,6 +46,10 @@ class Navbar extends Component{
         :
       <Footer>
       <FooterTab>
+        <Button onPress={() => Actions.herointro()}>
+        <Icon name={'planet'} />
+          <Text>HERO</Text>
+        </Button>
         <Button onPress={() => Actions.statistics()}>
         <Icon name={'stats'} />
           <Text>Stats</Text>

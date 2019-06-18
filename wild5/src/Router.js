@@ -21,6 +21,8 @@ import TrackingForm from './screens/TrackingForm';
 import { ExerciseLesson, MindfulnessLesson, NutritionLesson, SocialLesson, SleepLesson } from './screens/lessonscreens/'
 import NutritionQuest from './components/quests/NutritionQuests';
 import MindfulnessQuest from './components/quests/MindfulnessQuest';
+import Herointro from './screens/HERO/Herointro';
+import { HeroEnth, HeroHappy, HeroMent, HeroOpt, HeroRes, HeroScore } from './screens/HERO';
 import ExerciseQuest from './components/quests/ExerciseQuest';
 
 const Routercomponent = () => {
@@ -54,6 +56,13 @@ const Routercomponent = () => {
           <Scene key='socialtracking' backTitle='Back' title='Social Tracking' component={SocialTracking}/>
           <Scene key='nutritiontracking' backTitle='Back' title='Nutrition Tracking' component={NutritionTracking}/>
           <Scene key='progress' component={Progress} backTitle='Back' title="Today's Progress"/>
+          <Scene key='herointro' component={Herointro} backTitle='Back' title="Today's HERO"/>
+          <Scene key='herohappy' component={HeroHappy} backTitle='Back' title="Happiness"/>
+          <Scene key='heroenth' component={HeroEnth} backTitle='Back' title="Enthusiasm" />
+          <Scene key='herores' component={HeroRes} backTitle='Back' title="Resilience" />
+          <Scene key='heroopt' component={HeroOpt} backTitle='Back' title="Optimism" />
+          <Scene key='heroment' component={HeroMent} backTitle='Back' title="Mental Wellness"/>
+          <Scene key='heroscore' component={HeroScore} header={null}/>
     </Scene>
 
     </Router>
