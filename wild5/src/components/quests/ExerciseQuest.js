@@ -4,12 +4,21 @@ import { Container, Label } from 'native-base'
 import NumericInput from 'react-native-numeric-input'
 const {height,width} = Dimensions.get('window')
 
+
+
+
 class ExerciseQuest extends Component {
     state={
-        value: ''
+        duration: 0,
+        countdownTimer: 0
     }
 
-
+    timer = () => {
+        return (
+        <Container style={{alignItems: 'center', backgroundColor: '#000'}}>
+            <Label>{}</Label>
+        </Container>
+        )}
     render() {
         return (
             
@@ -17,7 +26,7 @@ class ExerciseQuest extends Component {
                 <Label style={{marginTop: '25%', color: '#FFF', fontSize: 20}}> How long do you want to Exercise?</Label>
                 <NumericInput 
                     value={this.state.value} 
-                    onChange={value => this.setState({duration: value})} 
+                    onChange={value => this.setState({duration: value}, () => {this.timer})} 
                     onLimitReached={(isMax,msg) => console.log(isMax,msg)}
                     totalWidth={240} 
                     totalHeight={50} 
@@ -31,6 +40,7 @@ class ExerciseQuest extends Component {
                     rightButtonBackgroundColor='darkgreen' 
                     leftButtonBackgroundColor='forestgreen'/>
                 </Container>
+
         )
     }
 }

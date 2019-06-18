@@ -43,7 +43,7 @@ class PushNotificationsIOS {
 
     
       scheduleNotif = (pillar) =>{
-        AlertIOS.alert('schedulerunning')
+        // AlertIOS.alert('schedulerunning')
         this.lastId++;
 
 
