@@ -95,7 +95,7 @@ class LoginForm extends Component {
         return (
             <View>
             <ImageBackground source={abstractimg} style={{width: '100%', height: '100%'}}>
-            <View style={{width: '80%', marginLeft: '10%', marginTop: 70}}><Image source={wild5title} style={{width: '100%', resizeMode:'contain'}} /></View>
+            <View style={{width: '80%', alignSelf:'center', marginTop: 70}}><Image source={wild5title} style={{width: '100%', resizeMode:'contain'}} /></View>
             {this.state.modal ? <RegisterModal visible={true}/> : null}
             {this.state.forgot ? <ForgotPassModal visible={true}/> : null}
             

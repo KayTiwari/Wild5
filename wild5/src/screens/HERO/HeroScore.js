@@ -2,20 +2,22 @@ import React, {Component} from 'react';
 import { View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import firebase from 'firebase';
+import Navbar from '../../components/Navbar';
 
-//red
-class HeroHappy extends Component{
+
+class HeroScore extends Component{
     state = {
-        happyval: 0
+
     }
 
     render(){
         return (
             <View>
 
+            <Navbar />
             </View>
         )
     }
 }
 
-export { HeroHappy };
+export { HeroScore };
