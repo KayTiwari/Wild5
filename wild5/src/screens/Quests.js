@@ -25,7 +25,7 @@ class Quests extends Component {
        <Icon name='leaf' />
        </Button>
 
-       <Button style={{alignSelf:'center', color: 'light-blue', marginTop:'15%'}} large onPress={() => Actions.mindfulnessquest()}>
+       <Button style={{alignSelf:'center', backgroundColor:'#75BE40', marginTop:'15%'}} large onPress={() => Actions.exercisequest()}>
        <Icon name='cloud' />
        <Text>Exercise</Text>
        <Icon name='leaf' />
