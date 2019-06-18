@@ -15,7 +15,7 @@ import Settings from './screens/Settings';
 import Quests from './screens/Quests';
 import Progress from './screens/trackingscreens/Progress';
 import Statistics from './screens/Statistics'
-import { About, FAQ, Feedback, Profile} from './screens/accountmenu';
+import { About, FAQ, Feedback } from './screens/accountmenu';
 import Help from './screens/accountmenu/Help'
 import TrackingForm from './screens/TrackingForm';
 import { ExerciseLesson, MindfulnessLesson, NutritionLesson, SocialLesson, SleepLesson } from './screens/lessonscreens/'
@@ -47,7 +47,6 @@ const Routercomponent = () => {
           <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null}  />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
-          {/* <Scene key='profile' backTitle='Back' title='Your Profile' component={Profile}/> */}
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings} initial/>
           <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking}/>
           <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking} />

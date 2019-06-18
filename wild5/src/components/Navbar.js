@@ -46,10 +46,6 @@ class Navbar extends Component{
         :
       <Footer>
       <FooterTab>
-        <Button onPress={() => Actions.profile()}>
-        <Icon name={'person'} />
-          <Text>Profile</Text>
-        </Button>
         <Button onPress={() => Actions.statistics()}>
         <Icon name={'stats'} />
           <Text>Stats</Text>
