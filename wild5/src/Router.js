@@ -24,12 +24,14 @@ import MindfulnessQuest from './components/quests/MindfulnessQuest';
 import Herointro from './screens/HERO/Herointro';
 import { HeroEnth, HeroHappy, HeroMent, HeroOpt, HeroRes, HeroScore } from './screens/HERO';
 import ExerciseQuest from './components/quests/ExerciseQuest';
+import NewLogin from './screens/NewLoginScreen';
 
 const Routercomponent = () => {
   return (
     <Router>
    <Scene key="root">
-    <Scene key="loginform" component={LoginForm} header={null}/>
+          <Scene key='newlogin' component={NewLogin} header={null} />
+    <Scene key="loginform" component={LoginForm} header={null} />
         <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More'/>
@@ -45,7 +47,7 @@ const Routercomponent = () => {
           <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' backTitle='Back'/>
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
           <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null}  />
-          <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null}  initial/>
+          <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null} />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}
