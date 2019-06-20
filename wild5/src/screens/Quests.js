@@ -32,7 +32,15 @@ class Quests extends Component {
        onPress={() => Actions.exercisequest()}/>
        
 
-        <QuestButton label="social" style={{color: '#B72B90'}} />
+        <QuestButton label="social" 
+        style={{color: '#B72B90'}} 
+        onPress={() => Actions.socialquest()}
+        />
+
+        <QuestButton label="sleep" 
+        style={{color: '#B72B90'}} 
+        onPress={() => Actions.sleepquest()}
+        />
 
        </View>
        </View>

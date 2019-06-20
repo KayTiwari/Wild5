@@ -24,6 +24,8 @@ import MindfulnessQuest from './components/quests/MindfulnessQuest';
 import Herointro from './screens/HERO/Herointro';
 import { HeroEnth, HeroHappy, HeroMent, HeroOpt, HeroRes, HeroScore } from './screens/HERO';
 import ExerciseQuest from './components/quests/ExerciseQuest';
+import SocialQuest from './components/quests/SocialQuest';
+import SleepQuest from './components/quests/SleepQuest';
 
 const Routercomponent = () => {
   return (
@@ -40,12 +42,14 @@ const Routercomponent = () => {
           <Scene key="sleeplesson" component={SleepLesson} title='Sleep' backTitle='Back'/>
           <Scene key="kickstart" component={KickStart30} title='KickStart30' header={null}/>
           <Scene key="learnmore" component={LearnMore} title='Learn More' backTitle='Back'/>
-          <Scene key="quests" component={Quests} title='Quests' header={null}/>
+          <Scene key="quests" component={Quests} title='Quests' header={null} initial/>
           <Scene key='help' component={Help} backTitle='Back'/>
           <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' backTitle='Back'/>
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
           <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null}  />
-          <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null}  initial/>
+          <Scene key='sleepquest' component={SleepQuest} title="Mindfulness Quest" header={null}  />
+          <Scene key='socialquest' component={SocialQuest} title="Mindfulness Quest" header={null}  />
+          <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null}  />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}

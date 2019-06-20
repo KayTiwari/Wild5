@@ -21,12 +21,10 @@ let time = this.state.minutes;
 this.secondsRemaining = time * 60;
     }
 
-    timer = () => {
-        return () => {
-        this.setState({
-            y: !this.state.y
-        })
-    }}
+    // timer = () => {
+    //     return () => {
+       
+    // }}
 
     tick = () => {
         var min = Math.floor(this.secondsRemaining / 60);
@@ -51,13 +49,13 @@ this.secondsRemaining = time * 60;
         this.secondsRemaining--
         }
     
-      startCountDown = () => {
+      startCountDown = (func) => {
           return () => {
       this.intervalHandle = setInterval(this.tick, 1000);
       let time = this.state.minutes;
       this.secondsRemaining = time * 60;
      
-         }}
+         }, func()}
 
 
 
@@ -65,6 +63,9 @@ this.secondsRemaining = time * 60;
         
         return (
             <>
+            {( () => {
+                if(!this.state.y){
+                    return (
                     <Container style={{marginTop: '15%', backgroundColor: 'light-blue'}}>
                    <Label style={{marginTop: '25%', color: '#FFF', fontSize: 20}}> How long do you want to Exercise?</Label>
                 <NumericInput 
@@ -82,15 +83,23 @@ this.secondsRemaining = time * 60;
                     iconStyle={{ color: 'white' }} 
                     rightButtonBackgroundColor='darkgreen' 
                     leftButtonBackgroundColor='forestgreen'/>
-                     <Button onPress={this.startCountDown()}><Text>Start</Text></Button>
-                    {/* </Container> */}
-                  
-                    {/* <Container style={{marginTop: '20%'}}> */}
+                     <Button onPress={this.startCountDown( () => this.setState({
+            y: !this.state.y
+        }))}
+        >
+        <Text>Start</Text></Button>
+                    </Container>
+                    )
+                } else if(this.state.y){
+                  return (
+                    <Container style={{marginTop: '20%'}}>
                     <Text>{this.state.minutes}:{this.state.seconds}</Text>
                     <Button onPress={""}><Text>Return</Text></Button>
                      </Container>
-                    
-             
+            )
+        }
+    }
+        )()}
                 </>
         )
     }
