@@ -46,9 +46,8 @@ class Quests extends Component {
 
        </View>
        </View>
-       <View style={{justifyContent: 'flex-end'}}>
+       
        <Navbar />
-     </View>
      </Container>
     )
   }
