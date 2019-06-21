@@ -21,7 +21,7 @@ class SocialQuest extends Component {
 
     saveState = async (state) => {
         try {
-            await AsyncStorage.setItem('@SocialState:1', `${JSON.stringify(state)}`);
+            await AsyncStorage.setItem('SocialState', `${JSON.stringify(state)}`, ()=>()=> Alert.alert('savingState'));
           } catch (error) {
             Alert.alert('storage save failed')
           }
@@ -29,11 +29,11 @@ class SocialQuest extends Component {
 
     returnState = async () => {
         try {
-            const value = await AsyncStorage.getItem('@SocialState');
+            const value = await AsyncStorage.getItem('SocialState');
             if (value !== null) {
               this.setState({
                 interactions: value
-              })
+              }, ()=> Alert.alert('returnState'))
             }
           } catch (error) {
            AlertIOS.alert('get storage failed')
@@ -41,12 +41,12 @@ class SocialQuest extends Component {
     }
 
     componentWillMount(){
-        returnState()
+        this.returnState()
     }
 
 
     componentWillUnmount(){
-        saveState(this.state.interactions)
+        this.saveState(this.state.interactions)
     }
 
     onChange = (text) => {
