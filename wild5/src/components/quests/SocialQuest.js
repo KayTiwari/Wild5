@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Dimensions, Picker, Button, Modal, TouchableHighlight, TextInput, StyleSheet, AsyncStorage } from 'react-native'
+import { Text, View, Dimensions, Picker, Button, Modal, TouchableHighlight, TextInput, StyleSheet, AsyncStorage, AlertIOS } from 'react-native'
 import {Container, Icon} from 'native-base'
 import Navbar from '../../components/Navbar'
 
@@ -20,14 +20,16 @@ class SocialQuest extends Component {
     }
 
     saveState = async (state) => {
+        // AlertIOS.alert('willunmount')
         try {
-            await AsyncStorage.setItem('SocialState', `${JSON.stringify(state)}`, ()=>()=> Alert.alert('savingState'));
+            await AsyncStorage.setItem('SocialState', `${JSON.stringify(state)}`);
           } catch (error) {
-            Alert.alert('storage save failed')
+            AlertIOS.alert('storage save failed')
           }
     }
 
     returnState = async () => {
+        AlertIOS.alert('willmount')
         try {
             const value = await AsyncStorage.getItem('SocialState');
             if (value !== null) {
@@ -40,14 +42,20 @@ class SocialQuest extends Component {
           }
     }
 
-    componentWillMount(){
-        this.returnState()
+    componentDidMount(){
+        // this.returnState()
     }
 
+    // , () => this.saveState(this.state.interactions)
 
-    componentWillUnmount(){
-        this.saveState(this.state.interactions)
-    }
+    addNewInteraction = () => {
+        return () => {
+        this.setState((prevState => ({
+            interactions: [...prevState.interactions, this.state.text],
+            modalVisible: !prevState.modalVisible
+        }), ()=>this.setState({text: ''})
+    ))}}
+
 
     onChange = (text) => {
         this.setState({
@@ -58,11 +66,11 @@ class SocialQuest extends Component {
     render() {
 
         const listInteractions =
-        this.state.interactions.map(i => {
+        (this.state.interactions !== undefined) ? this.state.interactions.map(i => {
              return (
                  <Picker.Item label={i} value={i}><Button><Icon name="remove-circle"/></Button></Picker.Item>
              )
-         })
+         }) : null
         return (
             <View style={{height: '100%', width: '100%', backgroundColor:'#E93422', justifyContent: 'space-between'}}>
             <Modal
@@ -74,12 +82,7 @@ class SocialQuest extends Component {
               <TextInput style={styles.modalInput} value={this.state.text} onChangeText={(text) => this.onChange(text)}/>
             <View style={{flexDirection:"column", justifyContent: 'flex-end'}}>
               <TouchableHighlight
-                onPress={() => {
-                  this.setState((prevState => ({
-                    interactions: [...prevState.interactions, this.state.text],
-                    modalVisible: !this.state.modalVisible
-                })));
-                }}>
+                onPress={this.addNewInteraction()}>
                 <Text style={{fontSize: 16}}>Add</Text>
               </TouchableHighlight>
               </View>
