@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { View, Image, ImageBackground, Dimensions, ScrollView } from 'react-native';
-import { Text } from 'native-base';
+import { Text, Spinner } from 'native-base';
 import firebase from 'firebase'
 import {withAuthProvider} from '../context/authcontext';
 import { Actions } from 'react-native-router-flux';
@@ -17,22 +17,21 @@ class NewLoginScreen extends Component{
         email: '',
         password: '',
         raised: true,
-        error: ''
+        error: '',
+        loading: false
     }
 
     LoginPress() {
         const { email, password } = this.state;
-        console.log('yo')
         this.setState({
             error: '',
+            loading: true
         })
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(() => {
-            console.log('hi')
             this.onLoginSuccess();
         })
         .catch(() => {
-            console.log('bye')
                     this.onLoginFail();
                 });
     };
@@ -43,7 +42,7 @@ class NewLoginScreen extends Component{
 
     onLoginFail() {
         this.setState({
-            error: 'Authentication failed, try again?',
+            error: 'Authentication failed',
         })
     }
 
@@ -52,7 +51,7 @@ class NewLoginScreen extends Component{
         <ScrollView>
         <View style={{backgroundColor: 'white', height: screenheight}}>
             <ImageBackground source={abstractimg} style={{flex: 1, resizeMode: 'cover', height: screenheight*.6, width: '100%'}}>
-            <View style={{width: '80%', alignSelf: 'center', marginTop: '15%'}}><Image source={wild5title} style={{resizeMode: 'contain', width: '100%', marginTop: '15%'}}/></View> 
+            <View style={{width: '80%', alignSelf: 'center', marginTop: '10%'}}><Image source={wild5title} style={{resizeMode: 'contain', width: '100%', marginTop: '15%'}}/></View> 
             
             <View style={{backgroundColor:'white', height:'25%', width:'80%', padding:30, borderRadius:5, position:'absolute', top:'40%', alignSelf:'center' }}>
             <Input
@@ -73,8 +72,9 @@ class NewLoginScreen extends Component{
             />
             </View>
             </ImageBackground> 
-
-            <View style={{position:'absolute', top:'65%', width:'50%', alignSelf:'center'}}>
+            <Text style={{position:'absolute', top:'55%', width:'50%', marginBottom:0, alignSelf:'center', color: 'red'}}>{this.state.error}</Text>
+            {this.state.loading && !this.state.error ? <View style={{position:'absolute', top:'55%', width:'50%', marginBottom:0, alignSelf:'center'}}><Spinner /></View>: null}
+            <View style={{position:'absolute', top:'65%', width:'50%', marginTop: 0, alignSelf:'center'}}>
 
 
                 <Button 
@@ -89,6 +89,7 @@ class NewLoginScreen extends Component{
                 title='Register'
                 type='outline'
                 raised={this.state.raised}
+                onPress={() => Actions.registerpage()}
                 />
             </View>
 

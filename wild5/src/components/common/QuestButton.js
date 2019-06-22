@@ -8,7 +8,7 @@ const QuestButton = ({onPress, iconName1, iconName2, label, color}) =>{
 
         return (
             <>
-            <Button style={styles.buttonStyle} onPress={onPress} large>
+            <Button style={[styles.buttonStyle, {backgroundColor: color}]} onPress={onPress} large>
             <Icon name={iconName1} />
             <Text>{label}</Text>
             <Icon name={iconName2} />
