@@ -1,6 +1,5 @@
 import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
-import LoginForm from './screens/LoginForm'
 import Landing from './screens/Landing'
 import Account from './screens/Account';
 import EducationWellnessRoadMap from './screens/NewRoadMap';
@@ -31,8 +30,8 @@ const Routercomponent = () => {
   return (
     <Router>
    <Scene key="root">
-          <Scene key='newlogin' component={NewLogin} header={null} initial/>
-          <Scene key='registerpage' component={RegisterPage} title="Register" backTitle="Back to Login" />
+          <Scene key='newlogin' component={NewLogin} header={null}/>
+          <Scene key='registerpage' component={RegisterPage} title="Register" backTitle="Back to Login" initial/>
           <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More'/>

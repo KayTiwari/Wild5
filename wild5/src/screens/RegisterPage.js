@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { View, Dimensions, ImageBackground, ScrollView } from 'react-native';
-import { Text, Item, Icon, Input, DatePicker } from 'native-base';
+import { Text, Item, Icon, Input, Form, Textarea, Button} from 'native-base';
+import DatePicker from 'react-native-datepicker'
 import { Actions } from 'react-native-router-flux';
 import {withAuthProvider} from '../context/authcontext';
 import abstractimg from '../images/abstract2.jpeg';
@@ -17,15 +18,49 @@ class RegisterPage extends Component{
 
     componentDidMount(){
         var today = new Date();
-            var year = today.getFullYear()
-            var month = (today.getMonth()+1)
-            var day = today.getDate();
-                this.setState({
-                    year,
-                    month,
-                    day
-                })
+        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        this.setState({
+            today: date
+        })
     }
+
+    registerPress = () => {
+        const { email, password } = this.state;
+        this.setState({
+            error: ''
+        })
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then(() => {
+                        this.onRegisterSuccess();
+                    })
+                    .catch(() => {
+                        this.onRegisterFail();
+                    });
+      }
+
+      onRegisterSuccess = () => {
+        let newestuser = this.state.email.split('.');
+        let newuser = newestuser[0].toString();
+        const { fullName, DOB, Goals, today } = this.state;
+        firebase.database().ref(`UserInfo/${newuser}/${today}`).update({
+            fullName,
+            DOB,
+            Goals
+          });
+        Actions.landing();
+      }
+    
+      onRegisterFail = () => {
+        if (this.state.password.length < 6) {
+          this.setState({
+            error: 'Password must be at least 6 characters'
+          })
+        } else {
+        this.setState({
+          error: 'Something went wrong'
+        })
+      }
+      }
 
     render(){
         return(
@@ -37,28 +72,57 @@ class RegisterPage extends Component{
 
             <View><Text style={{fontSize: 15, fontWeight: '600', textAlign:'center', marginTop:'5%'}}>Register for the Wild 5 Wellness App</Text></View>
 
-            <View style={{marginTop:'10%', marginLeft:'5%', marginRight:'5%'}}><Item><Icon active name='mail' /><Input placeholder='Email Address'/></Item></View>
-            <View style={{marginTop:'10%', marginLeft:'5%', marginRight:'5%'}}><Item><Icon active name='key' /><Input secureTextEntry placeholder='Desired Password'/></Item></View>
+            <View style={{marginTop:'10%', marginLeft:'5%', marginRight:'5%'}}><Item><Icon active name='mail' /><Input onChangeText={(value) => this.setState({email: value})} placeholder='Email Address'/></Item></View>
+            <View style={{marginTop:'10%', marginLeft:'5%', marginRight:'5%'}}><Item><Icon active name='key' /><Input secureTextEntry onChangeText={(value) => this.setState({password: value})} placeholder='Desired Password'/></Item></View>
 
             <View><Text style={{fontSize: 15, fontWeight: '600', textAlign:'center', marginTop:'10%'}}>Tell us more about yourself</Text></View>
-            <View style={{marginTop:'5%', marginLeft:'5%', marginRight:'5%'}}><Item><Icon active name='contact' /><Input spellCheck={false} autoCorrect={false} placeholder='Full name'/></Item></View>
+            <View style={{marginTop:'5%', marginLeft:'5%', marginRight:'5%'}}><Item><Icon active name='contact' /><Input spellCheck={false} onChangeText={(value) => this.setState({fullName: value})} autoCorrect={false} placeholder='Full name'/></Item></View>
             <View><Text style={{fontSize: 15, fontWeight: '600', textAlign:'center', marginTop:'10%'}}>Date Of Birth</Text></View>
+            <View style={{marginTop:'5%', alignSelf: 'center'}}>
             <DatePicker
-            // defaultDate={new Date(this.state.year, this.state.month, this.state.day)}
-            // maximumDate={new Date(this.state.year, this.state.month, this.state.day)}
-            locale={"en"}
-            timeZoneOffsetInMinutes={undefined}
-            modalTransparent={false}
-            animationType={"fade"}
-            androidMode={"default"}
-            placeHolderText="Select date"
-            textStyle={{ color: "green" }}
-            placeHolderTextStyle={{ color: "#d3d3d3" }}
-            onDateChange={this.setDate}
-            disabled={false}
+        style={{width: 200}}
+        date={this.state.date}
+        mode="date"
+        placeholder="select date"
+        format="YYYY-MM-DD"
+        // minDate="1930-06-01"
+        maxDate="2019-06-24"
+        confirmBtnText="Confirm"
+        cancelBtnText="Cancel"
+        customStyles={{
+          dateIcon: {
+            position: 'absolute',
+            left: 0,
+            top: 4,
+            marginLeft: 0
+          },
+          dateInput: {
+            marginLeft: 36
+          }
+        }}
+        onDateChange={(date) => {this.setState({DOB: date})}}
+      />
+      </View>
+
+        <View>
+        <View><Text style={{fontSize: 15, fontWeight: '600', textAlign:'center', marginTop:'6%'}}>What are your Wellness Goals?</Text></View>
+          <Form>
+            <Textarea onChangeText={(value) => this.setState({Goals: value})} rowSpan={5} bordered placeholder="Write Here" />
+          </Form>
+        </View>
+
+        <Text style={{fontSize: 30, color: 'red'}}>{this.state.error}</Text>
+
+        <View style={{}}>
+            <Button 
+            title='Register'
+            type='outline'
+            raised={this.state.raised}
+            onPress={() => Actions.registerPress()}
             />
+        </View>
+
             </View>
-            <View><Text style={{fontSize: 15, fontWeight: '600', textAlign:'center', marginTop:'5%'}}>{this.state.chosenDate}</Text></View>
 
             </ImageBackground>
             </View>
@@ -67,4 +131,4 @@ class RegisterPage extends Component{
     }
 }
 
-export default RegisterPage;
+export default withAuthProvider(RegisterPage);

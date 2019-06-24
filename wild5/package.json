@@ -21,6 +21,7 @@
     "react-native-button": "^2.3.0",
     "react-native-camera": "^2.9.0",
     "react-native-chart-kit": "^2.6.1",
+    "react-native-datepicker": "^1.7.2",
     "react-native-elements": "^1.1.0",
     "react-native-ios-charts": "^0.3.0",
     "react-native-material-dropdown": "^0.11.1",
