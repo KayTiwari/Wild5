@@ -1,6 +1,5 @@
 import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
-import LoginForm from './screens/LoginForm'
 import Landing from './screens/Landing'
 import Account from './screens/Account';
 import EducationWellnessRoadMap from './screens/NewRoadMap';
@@ -24,6 +23,8 @@ import MindfulnessQuest from './components/quests/MindfulnessQuest';
 import Herointro from './screens/HERO/Herointro';
 import { HeroEnth, HeroHappy, HeroMent, HeroOpt, HeroRes, HeroScore } from './screens/HERO';
 import ExerciseQuest from './components/quests/ExerciseQuest';
+import NewLogin from './screens/NewLoginScreen';
+import RegisterPage from './screens/RegisterPage'
 import SocialQuest from './components/quests/SocialQuest';
 import SleepQuest from './components/quests/SleepQuest';
 
@@ -31,8 +32,9 @@ const Routercomponent = () => {
   return (
     <Router>
    <Scene key="root">
-    <Scene key="loginform" component={LoginForm} header={null}/>
-        <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
+          <Scene key='newlogin' component={NewLogin} header={null} initial/>
+          <Scene key='registerpage' component={RegisterPage} title="Register" backTitle="Back to Login"/>
+          <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More'/>
           <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back'/>
@@ -47,13 +49,13 @@ const Routercomponent = () => {
           <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' backTitle='Back'/>
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
           <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null}  />
+          <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null} />
           <Scene key='sleepquest' component={SleepQuest} title="sleep Quest" header={null}  initial/>
           <Scene key='socialquest' component={SocialQuest} title="social Quest" header={null} />
           <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null}  />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
-          <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}
-          />
+          <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
           <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking}/>
           <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking} />
           <Scene key='sleeptracking' backTitle='Back' title='Sleep Tracking' component={SleepTracking} />
