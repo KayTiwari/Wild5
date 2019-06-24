@@ -107,8 +107,8 @@ class NewLoginScreen extends Component{
         </View>
 
             <View style={{backgroundColor:'#333'}}>
-                <Text style={{color: 'white', fontSize:15, textAlign:'center', marginTop:'10%'}}>App made on React Native by the Wild Card Team.</Text>
-                <Text style={{color: 'white', fontSize:15, textAlign:'center', marginBottom:'5%'}}>Wild5 and all its resource materials are a product of the works by Rakesh and Saundra Jain MD.</Text>
+                <Text style={{color: 'white', fontSize:15, fontWeight:'600', textAlign:'center', marginTop:'10%'}}>App made on React Native by the Wild Card Team.</Text>
+                <Text style={{color: 'white', fontSize:15, fontWeight:'600', textAlign:'center', marginBottom:'5%'}}>Wild5 and all its resource materials are a product of the works by Rakesh and Saundra Jain MD.</Text>
             </View>
         </ScrollView>
         )
