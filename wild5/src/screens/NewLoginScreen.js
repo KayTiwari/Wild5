@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { View, Image, ImageBackground, Dimensions, ScrollView } from 'react-native';
 import { Text, Spinner } from 'native-base';
+import ForgotModal from '../modals/NewForgotModal';
 import firebase from 'firebase'
 import {withAuthProvider} from '../context/authcontext';
 import { Actions } from 'react-native-router-flux';
@@ -18,7 +19,8 @@ class NewLoginScreen extends Component{
         password: '',
         raised: true,
         error: '',
-        loading: false
+        loading: false,
+        modal: false
     }
 
     LoginPress() {
@@ -50,6 +52,7 @@ class NewLoginScreen extends Component{
         return (
         <ScrollView>
         <View style={{backgroundColor: 'white', height: screenheight}}>
+            {this.state.modal ? <ForgotModal isVisible={this.state.modal}/>: null}
             <ImageBackground source={abstractimg} style={{flex: 1, resizeMode: 'cover', height: screenheight*.6, width: '100%'}}>
             <View style={{width: '80%', alignSelf: 'center', marginTop: '10%'}}><Image source={wild5title} style={{resizeMode: 'contain', width: '100%', marginTop: '15%'}}/></View> 
             
@@ -96,6 +99,7 @@ class NewLoginScreen extends Component{
             <View style={{position:'absolute', top:'80%', width:'50%', alignSelf:'center'}}>
                 <Button 
                 title='Forgot password?'
+                onPress={() => this.setState({modal: !this.state.modal})}
                 type='clear'
                 titleStyle={{fontSize:15}}
                 />
