@@ -22,6 +22,7 @@ const QuestButton = ({onPress, iconName1, iconName2, label, color}) =>{
             alignSelf:'center', 
             width: '75%', 
             marginBottom: 10,
+        
         }
     }
 

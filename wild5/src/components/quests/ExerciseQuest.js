@@ -1,23 +1,76 @@
 import React, { Component } from 'react'
-import {Dimensions} from 'react-native'
-import { Container, Label } from 'native-base'
+import {Dimensions, View, AlertIOS} from 'react-native'
+import { Container, Text, Label, Button } from 'native-base'
 import NumericInput from 'react-native-numeric-input'
 const {height,width} = Dimensions.get('window')
 
+
+
+
 class ExerciseQuest extends Component {
-    state={
-        value: ''
+    constructor(props){
+        super(props)
+    this.state={
+        duration: 0,
+        countdownTimer: 0,
+        y: false,
+        minutes: '00',
+        seconds: '00',
     }
+let time = this.state.minutes;
+this.secondsRemaining = time * 60;
+    }
+
+    // timer = () => {
+    //     return () => {
+       
+    // }}
+
+    tick = () => {
+        var min = Math.floor(this.secondsRemaining / 60);
+        var sec = this.secondsRemaining - (min * 60);
+        this.setState({
+        minutes: min,
+        seconds: sec
+        })
+        if (sec < 10) {
+        this.setState({
+          seconds: "0" + this.state.seconds,
+        })
+        }
+        if (min < 10) {
+        this.setState({
+        value: "0" + min,
+        })
+        }
+        if (min === 0 & sec === 0) {
+        clearInterval(this.intervalHandle);
+        }
+        this.secondsRemaining--
+        }
+    
+      startCountDown = (func) => {
+          return () => {
+      this.intervalHandle = setInterval(this.tick, 1000);
+      let time = this.state.minutes;
+      this.secondsRemaining = time * 60;
+     
+         }, func()}
+
 
 
     render() {
+        
         return (
-            
-                <Container style={{alignItems: 'center', backgroundColor: '#72B83E'}}>
-                <Label style={{marginTop: '25%', color: '#FFF', fontSize: 20}}> How long do you want to Exercise?</Label>
+            <>
+            {( () => {
+                if(!this.state.y){
+                    return (
+                    <Container style={{marginTop: '15%', backgroundColor: 'light-blue'}}>
+                   <Label style={{marginTop: '25%', color: '#FFF', fontSize: 20}}> How long do you want to Exercise?</Label>
                 <NumericInput 
-                    value={this.state.value} 
-                    onChange={value => this.setState({duration: value})} 
+                    value={this.state.duration} 
+                    onChange={value => this.setState({duration: value}, ()=> this.setState({minutes: this.state.duration}))}
                     onLimitReached={(isMax,msg) => console.log(isMax,msg)}
                     totalWidth={240} 
                     totalHeight={50} 
@@ -30,9 +83,27 @@ class ExerciseQuest extends Component {
                     iconStyle={{ color: 'white' }} 
                     rightButtonBackgroundColor='darkgreen' 
                     leftButtonBackgroundColor='forestgreen'/>
-                </Container>
+                     <Button onPress={this.startCountDown( () => this.setState({
+            y: !this.state.y
+        }))}
+        >
+        <Text>Start</Text></Button>
+                    </Container>
+                    )
+                } else if(this.state.y){
+                  return (
+                    <Container style={{marginTop: '20%'}}>
+                    <Text>{this.state.minutes}:{this.state.seconds}</Text>
+                    <Button onPress={""}><Text>Return</Text></Button>
+                     </Container>
+            )
+        }
+    }
+        )()}
+                </>
         )
     }
 }
+
 
 export default ExerciseQuest

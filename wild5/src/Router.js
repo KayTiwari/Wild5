@@ -25,6 +25,8 @@ import { HeroEnth, HeroHappy, HeroMent, HeroOpt, HeroRes, HeroScore } from './sc
 import ExerciseQuest from './components/quests/ExerciseQuest';
 import NewLogin from './screens/NewLoginScreen';
 import RegisterPage from './screens/RegisterPage'
+import SocialQuest from './components/quests/SocialQuest';
+import SleepQuest from './components/quests/SleepQuest';
 
 const Routercomponent = () => {
   return (
@@ -48,6 +50,9 @@ const Routercomponent = () => {
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
           <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null}  />
           <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null} />
+          <Scene key='sleepquest' component={SleepQuest} title="sleep Quest" header={null}  initial/>
+          <Scene key='socialquest' component={SocialQuest} title="social Quest" header={null} />
+          <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null}  />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>

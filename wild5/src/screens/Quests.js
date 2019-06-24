@@ -15,30 +15,39 @@ class Quests extends Component {
         <Text style={{textAlign:'center', fontSize:30, marginTop: '20%', fontWeight: '600', marginBottom: 40}}>Quests</Text>
 
         <QuestButton label="Nutrition" 
+        color="#E06F26"
         iconName1="camera" 
         iconName2="nutrition" 
         onPress={() => Actions.nutritionquest()}/>
 
-       <QuestButton label="Meditations" 
+       <QuestButton label="Meditations"
+       color="#0AB1E8"
        iconName1="cloud" 
        iconName2="leaf" 
        onPress={() => Actions.mindfulnessquest()}
        />
 
        <QuestButton label="Exercise" 
-       style={{backgroundColor: '#72B83E'}} 
+       color="#72B83E"
        iconName1="cloud" 
        iconName2="leaf" 
        onPress={() => Actions.exercisequest()}/>
        
 
-        <QuestButton label="social" style={{color: '#B72B90'}} />
+        <QuestButton label="social" 
+        color="#E93422"
+        onPress={() => Actions.socialquest()}
+        />
+
+        <QuestButton label="sleep" 
+        color="#BD2C95" 
+        onPress={() => Actions.sleepquest()}
+        />
 
        </View>
        </View>
-       <View style={{justifyContent: 'flex-end'}}>
+       
        <Navbar />
-     </View>
      </Container>
     )
   }

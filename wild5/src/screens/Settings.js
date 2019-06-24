@@ -126,7 +126,7 @@ class Settings extends Component<Props> {
         labelStyle={{color: 'black', fontWeight: '900'}}
         size="large"
         onColor="#73BA3F"
-        offColor="#bec6d3"
+        offColor="#d5eac5"
         isOn={this.state.exerciseReminder}
         onToggle={this.exerciseReminder("exercise")}
         />
@@ -138,7 +138,7 @@ class Settings extends Component<Props> {
         labelStyle={{color: 'black', fontWeight: '900'}}
         size="large"
         onColor="#0AB2E8"
-        offColor="#333"
+        offColor="#cef0fa"
         isOn={this.state.mindfulnessReminder}
         onToggle={this.mindfulnessReminder("mind")}
         />
@@ -150,7 +150,7 @@ class Settings extends Component<Props> {
         labelStyle={{color: 'black', fontWeight: '900'}}
         size="large"
         onColor="#B72B90"
-        offColor="#333"
+        offColor="#f1d5e9"
         isOn={this.state.sleepReminder}
         onToggle={this.sleepReminder("sleep")}
         />
@@ -162,7 +162,7 @@ class Settings extends Component<Props> {
         labelStyle={{color: 'black', fontWeight: '900'}}
         size="large"
         onColor="#E93422"
-        offColor="#333"
+        offColor="#fbd6d3"
         isOn={this.state.socialReminder}
         onToggle={this.socialReminder("social")}
         />
@@ -174,7 +174,7 @@ class Settings extends Component<Props> {
         labelStyle={{color: 'black', fontWeight: '900'}}
         size="large"
         onColor="#C6411F"
-        offColor="#333"
+        offColor="#f4d9d2"
         isOn={this.state.nutritionReminder}
         onToggle={this.nutritionReminder("nutrition")}
         />
