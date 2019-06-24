@@ -30,17 +30,13 @@ class NewRoadMap extends Component{
 
 
         <View>
-            <Button onPress={() => Actions.exerciselesson()} style={{alignSelf:'center'}} success large iconright>
+            <Button onPress={() => Actions.exerciselesson()} style={{alignSelf:'center', backgroundColor: "#72B83E"}} large iconright>
                 <Icon name='bicycle' />
                 <Text>Exercise</Text>
             </Button>
         </View>
 
-        <View style={{display:'flex', flexDirection:'column', justifyContent:'space-around' }}>
-            <Text style={{color: 'red', fontSize: 25, fontWeight: '600', alignSelf:'center'}}>.</Text>
-            <Text style={{color: 'yellow', fontSize: 25, fontWeight: '600', alignSelf:'center'}}>.</Text>
-            <Text style={{color: 'green', fontSize: 25, fontWeight: '600', alignSelf:'center'}}>.</Text>
-        </View>
+            <Text style={{color: 'white', fontSize: 50, fontWeight: '600', alignSelf:'center'}}>.</Text>
 
         <View>
             <Button style={styles.mindfulness} onPress={() => Actions.mindfulnesslesson()} success large iconright>
@@ -49,11 +45,7 @@ class NewRoadMap extends Component{
             </Button>
         </View>
 
-        <View style={{display:'flex', flexDirection:'column', justifyContent:'space-around' }}>
-            <Text style={{color: 'red', fontSize: 25, fontWeight: '600', alignSelf:'center'}}>.</Text>
-            <Text style={{color: 'yellow', fontSize: 25, fontWeight: '600', alignSelf:'center'}}>.</Text>
-            <Text style={{color: 'green', fontSize: 25, fontWeight: '600', alignSelf:'center'}}>.</Text>
-        </View>
+        <Text style={{color: 'white', fontSize: 50, fontWeight: '600', alignSelf:'center'}}>.</Text>
 
         <View>
             <Button style={styles.sleep} onPress={() => Actions.sleeplesson()} success large iconright>
@@ -62,11 +54,7 @@ class NewRoadMap extends Component{
             </Button>
         </View>
 
-        <View style={{display:'flex', flexDirection:'column', justifyContent:'space-around' }}>
-            <Text style={{color: 'red', fontSize: 25, fontWeight: '600', alignSelf:'center'}}>.</Text>
-            <Text style={{color: 'yellow', fontSize: 25, fontWeight: '600', alignSelf:'center'}}>.</Text>
-            <Text style={{color: 'green', fontSize: 25, fontWeight: '600', alignSelf:'center'}}>.</Text>
-        </View>
+        <Text style={{color: 'white', fontSize: 50, fontWeight: '600', alignSelf:'center'}}>.</Text>
 
         <View>
             <Button style={styles.social}  onPress={() => Actions.sociallesson()} success large iconright>
@@ -75,11 +63,7 @@ class NewRoadMap extends Component{
             </Button>
         </View>
 
-        <View style={{display:'flex', flexDirection:'column', justifyContent:'space-around' }}>
-            <Text style={{color: 'red', fontSize: 25, fontWeight: '600', alignSelf:'center'}}>.</Text>
-            <Text style={{color: 'yellow', fontSize: 25, fontWeight: '600', alignSelf:'center'}}>.</Text>
-            <Text style={{color: 'green', fontSize: 25, fontWeight: '600', alignSelf:'center'}}>.</Text>
-        </View>
+        <Text style={{color: 'white', fontSize: 50, fontWeight: '600', alignSelf:'center'}}>.</Text>
 
         <View>
             <Button style={styles.nutrition} onPress={() => Actions.nutritionlesson()}  success large iconright>

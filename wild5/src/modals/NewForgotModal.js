@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {View, Button, Text} from 'react-native';
-import { Input } from 'native-base'
+import { Input, Item } from 'native-base'
 import firebase from 'firebase'
 import Modal from "react-native-modal";
+
+//https://github.com/react-native-community/react-native-modal
 
 class NewForgotModal extends Component{
     state = {
@@ -38,13 +40,16 @@ class NewForgotModal extends Component{
                 <Text style={{textAlign: 'center', fontSize: 20, fontWeight:'600', marginTop: '5%'}}>Please enter your Email address</Text>
                 {this.state.error ? <Text style={{textAlign:'center', color:'red'}}>{this.state.error}</Text>: null}
                 {this.state.success ? <Text style={{textAlign:'center', color:'green'}}>{this.state.success}</Text>: null}
-                <Input
-                placeholder='Email Address'
-                onChangeText={(email) => this.setState({email}) }
-                spellCheck={false}
-                textContentType={"emailAddress"}
-                shake={true}
-            />
+                <Item>
+                  <Input
+                  placeholder='Email Address'
+                  onChangeText={(email) => this.setState({email}) }
+                  spellCheck={false}
+                  textContentType={"emailAddress"}
+                  shake={true}
+                  autoCorrect={false}
+                  />
+                </Item>
                 {this.state.email ? <Button title="Get Password" onPress={() => this.forgotPress()} /> : null}
                 <Button title="Close" onPress={this.toggleModal} />
             </View>
