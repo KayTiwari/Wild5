@@ -9,7 +9,7 @@ export default class AuthProvider extends Component {
       user: '',
     }
 
-    componentWillMount(){
+    componentDidMount(){
       firebase.initializeApp({
           apiKey: "AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o",
           authDomain: "wild5-5ca8b.firebaseapp.com",

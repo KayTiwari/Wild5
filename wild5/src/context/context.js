@@ -2,9 +2,11 @@ import React, {Component} from 'react'
 import firebase from 'firebase'
 const { Consumer, Provider } = React.createContext();
 
+
+
 export default class GlobalProvider extends Component {
     state = {
-      user: ''
+      
     }
 
     componentDidMount(){

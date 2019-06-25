@@ -4,6 +4,7 @@ import { Text, } from 'native-base';
 import BarGraph from '../../components/charts/BarGraph';
 import firebase from 'firebase';
 import progbackground from '../../images/progbackground.jpg'
+import {withProvider} from '../../context/context';
 
 // var firebaseConfig = {
 //     apiKey: "AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o",
@@ -278,4 +279,4 @@ class Progress extends Component {
     }
 }
 
-export default Progress;
+export default withProvider(Progress);
