@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, CameraRoll, Image } from 'react-native'
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import CameraRollExtended from 'react-native-store-photos-album';
 import { RNCamera } from 'react-native-camera';
 import { Actions } from 'react-native-router-flux'
 
@@ -14,9 +15,10 @@ class NutritionQuest extends Component {
     // console.log("running")
     if (this.camera) {
       const options = { quality: 0.5, based64: true }
+      const fileName = Date.now()
       const data = await this.camera.takePictureAsync(options).then(data => 
         // console.log(data.uri))
-        CameraRoll.saveToCameraRoll(data.uri, 'photo'));
+        CameraRollExtended.saveToCameraRoll({uri: data.uri, album: 'Wild5', fileName: `${fileName}.jpg`}, 'photo'));
       
       // console.log(data.uri)
     }
