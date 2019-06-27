@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons'
 
-const ContactList = ({onPress}) =>  {
+const ContactList = ({onPress, isChecked, contact}) =>  {
 
 
 
@@ -12,20 +13,20 @@ const ContactList = ({onPress}) =>  {
                 borderBottomWidth: 1,
                 borderStyle: 'solid',
                 borderColor: '#ecf0f1'
-              }} onPress={() => onPress(this.props.item)}>
+              }} onPress={() => onPress(contact)}>
                 <View style={{
                   flex: 3,
                   alignItems: 'flex-start',
                   justifyContent: 'center'
                 }}>
-                  {item.check
+                  {isChecked
                     ? (
                       <Text style={{
                         fontWeight: 'bold'
-                      }}>{`${item.familyName} ${item.givenName}`}</Text>
+                      }}>{`${contact.familyName} ${contact.givenName}`}</Text>
                     )
                     : (
-                      <Text>{`${item.familyName} ${item.givenName}`}</Text>
+                      <Text>{`${contact.familyName} ${contact.givenName}`}</Text>
                     )}
                 </View>
                 <View style={{
@@ -33,12 +34,12 @@ const ContactList = ({onPress}) =>  {
                   alignItems: 'flex-end',
                   justifyContent: 'center'
                 }}>
-                  {item.check
+                  {isChecked
                     ? (
-                      <Icon name="ios-checkbox" size={30} color={primaryColor}></Icon>
+                      <Icon name="ios-checkbox" size={30} color={"light-blue"}></Icon>
                     )
                     : (
-                      <Icon name="ios-square-outline" size={30} color={darkGrey}></Icon>
+                      <Icon name="ios-square-outline" size={30} color={"#000"}></Icon>
                     )}
                 </View>
               </TouchableOpacity>
