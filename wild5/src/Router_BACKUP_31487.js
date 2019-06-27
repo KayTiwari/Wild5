@@ -33,11 +33,19 @@ const Routercomponent = () => {
   return (
     <Router>
    <Scene key="root">
+<<<<<<< HEAD
+          <Scene key='newlogin' component={NewLogin} header={null}/>
+          <Scene key='registerpage' component={RegisterPage} title="Register" backTitle="Back to Login"/>
+          <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
+          <Scene key="account" component={Account} title='Account' header={null}/>
+          <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More'/>
+=======
           <Scene key='newlogin' component={NewLogin} header={null} />
           <Scene key='registerpage' component={RegisterPage} title="Register" backTitle="Back to Login"/>
           <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More' />
+>>>>>>> 3c9d7bc4e77f256cb696cb116a78c8e09760e6dd
           <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back'/>
           <Scene key="mindfulnesslesson" component={MindfulnessLesson} title='Mindfulness' backTitle='Back'/>
           <Scene key="sociallesson" component={SocialLesson} title='Social' backTitle='Back'/>

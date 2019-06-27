@@ -6,12 +6,18 @@ import { Actions } from 'react-native-router-flux'
 import Navbar from '../components/Navbar';
 import Carousel from '../components/Carousel';
 import landingbackground from '../images/landingbackground.jpg'
+import { withAuthProvider } from '../context/authcontext';
 
 
 const screenheight = Dimensions.get('window').height;
 class Landing extends Component {
   state= {
     account: 0
+  }
+
+  progressPress = () => {
+      this.props.getTrackingData();
+      Actions.progress();
   }
 
   render() {
@@ -55,7 +61,7 @@ class Landing extends Component {
      </View>
 
      <View style={{marginTop:'15%'}}>
-            <Button style={styles.tracking} onPress={() => Actions.progress()}  success large iconright>
+            <Button style={styles.tracking} onPress={() => this.progressPress()}  success large iconright>
                 <Text>Today's progress</Text>
             </Button>
      </View>
@@ -92,4 +98,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Landing;
+export default withAuthProvider(Landing);

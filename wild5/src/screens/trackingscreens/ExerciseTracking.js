@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { View, Dimensions, ImageBackground } from 'react-native'
-import { withProvider } from '../../context/context'
 import { ModButton } from '../../components/common'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Text, Input } from 'native-base'
@@ -131,4 +130,4 @@ class ExerciseTracking extends Component {
         )
     }
 }
-export default withProvider(ExerciseTracking)
+export default ExerciseTracking

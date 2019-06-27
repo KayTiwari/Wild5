@@ -20,6 +20,7 @@
 		0E7C9EA422AEE4AA00CF4F04 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8C535A228C93B800F83D13 /* libRNSVG.a */; };
 		0E82D5C122A6216D00AA1EB9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		0E82D5C222A621F100AA1EB9 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1573DA39C31F4516BA06ECC9 /* Ionicons.ttf */; };
+		0EF6342F22C285C800DEE0B0 /* libRCTContacts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EF6340722C285B400DEE0B0 /* libRCTContacts.a */; };
 		0EFDCD88228C9A8400CDA57F /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFDCD87228C9A5A00CDA57F /* libRCTCameraRoll.a */; };
 		0EFDCD89228C9A8400CDA57F /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFDCD7D228C99FC00CDA57F /* libRNCamera.a */; };
 		11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -151,6 +152,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 94DDAC5C1F3D024300EED511;
 			remoteInfo = "RNSVG-tvOS";
+		};
+		0EF6340622C285B400DEE0B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EF633FC22C285B400DEE0B0 /* RCTContacts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1441618E1BD0A79300FA4F59;
+			remoteInfo = RCTContacts;
 		};
 		0EFDCD7C228C99FC00CDA57F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -403,6 +411,7 @@
 		00E356F21AD99517003FC87E /* wild5Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = wild5Tests.m; sourceTree = "<group>"; };
 		0E40782522AAC35E00C19090 /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		0E82D5C322A622DB00AA1EB9 /* wild5.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = wild5.entitlements; path = wild5/wild5.entitlements; sourceTree = "<group>"; };
+		0EF633FC22C285B400DEE0B0 /* RCTContacts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTContacts.xcodeproj; path = "../node_modules/react-native-contacts/ios/RCTContacts.xcodeproj"; sourceTree = "<group>"; };
 		0EFDCD53228C99FC00CDA57F /* RNCamera.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; };
 		0EFDCD82228C9A5A00CDA57F /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
@@ -472,6 +481,7 @@
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
+				0EF6342F22C285C800DEE0B0 /* libRCTContacts.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
@@ -587,6 +597,7 @@
 				B54BFFA035064B979FFFB5C7 /* libRNSVG.a */,
 				2F5D21C957EA4E99B0198346 /* libRNVectorIcons-tvOS.a */,
 				ECEA06DD33E0455682CC224E /* libRNSVG-tvOS.a */,
+				0EF6340722C285B400DEE0B0 /* libRCTContacts.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1107,6 +1118,13 @@
 			fileType = archive.ar;
 			path = "libRNSVG-tvOS.a";
 			remoteRef = 0E8C535B228C93B800F83D13 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EF6340722C285B400DEE0B0 /* libRCTContacts.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTContacts.a;
+			remoteRef = 0EF6340622C285B400DEE0B0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		0EFDCD7D228C99FC00CDA57F /* libRNCamera.a */ = {

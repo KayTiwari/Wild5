@@ -27,7 +27,6 @@ import NewLogin from './screens/NewLoginScreen';
 import RegisterPage from './screens/RegisterPage'
 import SocialQuest from './components/quests/SocialQuest';
 import SleepQuest from './components/quests/SleepQuest';
-import NutritionQuestCameraRoll from './components/quests/NutritionQuestCameraRoll'
 
 const Routercomponent = () => {
   return (
@@ -51,10 +50,9 @@ const Routercomponent = () => {
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
           <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null}  />
           <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null} />
-          <Scene key='sleepquest' component={SleepQuest} title="sleep Quest" header={null} />
-          <Scene key='socialquest' component={SocialQuest} title="social Quest" header={null} initial/>
+          <Scene key='sleepquest' component={SleepQuest} title="sleep Quest" header={null}/>
+          <Scene key='socialquest' component={SocialQuest} title="social Quest" header={null} />
           <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null}  />
-          <Scene key='nutritionquestcameraroll' component={NutritionQuestCameraRoll} title="nutritionquestcameraroll" header={null}  />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
