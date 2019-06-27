@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 
-class ContactList extends Component {
-    render() {
+const ContactList = ({onPress}) =>  {
+
+
+
         return (
             <TouchableOpacity style={{
                 flexDirection: 'row',
@@ -10,9 +12,7 @@ class ContactList extends Component {
                 borderBottomWidth: 1,
                 borderStyle: 'solid',
                 borderColor: '#ecf0f1'
-              }} onPress={() => {
-                this.press(item)
-              }}>
+              }} onPress={() => onPress(this.props.item)}>
                 <View style={{
                   flex: 3,
                   alignItems: 'flex-start',
@@ -44,7 +44,7 @@ class ContactList extends Component {
               </TouchableOpacity>
         )
     }
-}
+
 
 
 export default ContactList
