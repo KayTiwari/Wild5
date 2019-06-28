@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
-import { ScrollView, View, Dimensions, StyleSheet, Image, Button } from 'react-native';
+import { ScrollView, View, Dimensions, StyleSheet, Image, Button, ImageBackground } from 'react-native';
 import { Text, Icon, Container } from 'native-base'
 import { ModButton } from '../../components/common';
 import { Actions } from 'react-native-router-flux';
+import background from '../../images/mindfulnesslesson.jpeg';
 
 var now = new Date();
+
+screenheight = Dimensions.get('window').height;
 
 class MindfulnessLesson extends Component{
 
@@ -16,6 +19,7 @@ class MindfulnessLesson extends Component{
         return (
             <ScrollView>
                 <Container>
+                    <ImageBackground source={background} style={{width: '100%', height: screenheight*1, resizeMode: 'contain'}}>
                     <View>
                     <Text style={styles.mainTitle}>Learn about <Text style={[styles.mainTitle, {color: '#0AB1E7'}]}>Mindfulness</Text></Text>
                     </View>
@@ -27,6 +31,7 @@ class MindfulnessLesson extends Component{
                         </Text>
                         <Text style={styles.subTitle}>-When you engage in these behaviors its as if you're on “autopilot”.  When you’re on autopilot you are missing out on living your life fully are are at greater risk for feeling unhappy.</Text>
                         <Text style={styles.paragraph}>-opposite of of mindless, autostate pilot.</Text>
+                        </ImageBackground>
                 </Container>
                 <Text>”paying attention in a particular way: on purpose, in the present moment, and non-judgmentally.”m- Dr. Jon Kabat-Zinn.</Text>
                 <Container>
@@ -47,13 +52,15 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: '600',
         textAlign: 'center',
-        marginTop: '10%'
+        marginTop: '10%',
+        color:'white'
     },
     subTitle: {
         fontSize: 20,
         fontWeight: '600',
         textAlign: 'center',
-        marginTop: '20%'
+        marginTop: '20%',
+        color: 'white'
     },
     paragraph: {
         fontSize: 20,
@@ -61,6 +68,7 @@ const styles = StyleSheet.create({
         marginTop: '5%',
         marginLeft: '5%',
         marginRight: '5%',
-        textAlign: 'center'
+        textAlign: 'center',
+        color: 'white'
     }
 })

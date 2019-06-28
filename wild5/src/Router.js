@@ -8,7 +8,6 @@ import MindfulnessTracking from './screens/trackingscreens/MindfulnessTracking'
 import SleepTracking from './screens/trackingscreens/SleepTracking'
 import SocialTracking from './screens/trackingscreens/SocialTracking'
 import NutritionTracking from './screens/trackingscreens/NutritionTracking'
-import KickStart30 from './screens/KickStart30';
 import LearnMore from './screens/LearnMore';
 import Settings from './screens/Settings';
 import Quests from './screens/Quests';
@@ -38,12 +37,11 @@ const Routercomponent = () => {
           <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More' />
-          <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back'/>
+          <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back' />
           <Scene key="mindfulnesslesson" component={MindfulnessLesson} title='Mindfulness' backTitle='Back'/>
           <Scene key="sociallesson" component={SocialLesson} title='Social' backTitle='Back'/>
           <Scene key="nutritionlesson" component={NutritionLesson} title='Nutrition' backTitle='Back'/>
           <Scene key="sleeplesson" component={SleepLesson} title='Sleep' backTitle='Back'/>
-          <Scene key="kickstart" component={KickStart30} title='KickStart30' header={null}/>
           <Scene key="learnmore" component={LearnMore} title='Learn More' backTitle='Back'/>
           <Scene key="quests" component={Quests} title='Quests' header={null}/>
           <Scene key='help' component={Help} backTitle='Back'/>
@@ -52,7 +50,7 @@ const Routercomponent = () => {
           <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null}  />
           <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null} />
           <Scene key='sleepquest' component={SleepQuest} title="sleep Quest" header={null} />
-          <Scene key='socialquest' component={SocialQuest} title="social Quest" header={null} initial/>
+          <Scene key='socialquest' component={SocialQuest} title="social Quest" header={null}/>
           <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null}  />
           <Scene key='nutritionquestcameraroll' component={NutritionQuestCameraRoll} title="nutritionquestcameraroll" header={null}  />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />

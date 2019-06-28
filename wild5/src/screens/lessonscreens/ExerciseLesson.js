@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import { ScrollView, View, Dimensions, StyleSheet, Image } from 'react-native';
+import { ScrollView, View, Dimensions, StyleSheet, Image, ImageBackground } from 'react-native';
 import { Text, Icon, Container } from 'native-base'
 import { Actions } from 'react-native-router-flux';
+import background from '../../images/exerciselesson.jpeg'
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
+const screenheight = Dimensions.get('window').height;
 
 class ExerciseLesson extends Component{
 
@@ -15,6 +17,7 @@ class ExerciseLesson extends Component{
         return (
             <ScrollView>
                 <Container>
+                    <ImageBackground source={background} style={{width: '100%', height: screenheight, resizeMode: 'contain'}}>
                     <View>
                     <Text style={styles.mainTitle}>Learn about <Text style={[styles.mainTitle, {color: 'green'}]}>Exercise</Text></Text>
                     </View>
@@ -29,7 +32,7 @@ class ExerciseLesson extends Component{
                         </Text>
                         <Text style={styles.subTitle}>Duration</Text>
                         <Text style={styles.paragraph}>Recommended duration is for 30 minutes during a session.</Text>
-                    
+                    </ImageBackground>
                 </Container>
                         <Text style={[styles.mainTitle, {marginTop: '20%'}]}>Why Exercise?</Text>
                         <Text style={styles.paragraph}>There is an impressive amount of evidence showing that exercise, if done correctly, is not only good for a person's mental and physical health , but also leads to positive brain and body changes.  Including exercise in this wellness program makes sense and offers all participants a chance to reap the many associated benefits.</Text>
