@@ -51,7 +51,6 @@ const Routercomponent = () => {
           <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null} />
           <Scene key='sleepquest' component={SleepQuest} title="sleep Quest" header={null} />
           <Scene key='socialquest' component={SocialQuest} title="social Quest" header={null}/>
-          <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" header={null}  />
           <Scene key='nutritionquestcameraroll' component={NutritionQuestCameraRoll} title="nutritionquestcameraroll" header={null}  />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
