@@ -48,23 +48,26 @@ export default class AuthProvider extends Component {
     var database = firebase.database();
     var ref = database.ref(`Surveys/${this.state.user}/${this.state.date}`);
     ref.on("value", this.gotData, this.errData);
-  }
+  };
 
   gotData = data => {
     newData = data.val();
-    this.setState({
-      ran: true,
-      trackdata: newData || {}
-    }, () => {
-      this.setState({
-        ready: true
-      })
-    });
-  }
+    this.setState(
+      {
+        ran: true,
+        trackdata: newData || {}
+      },
+      () => {
+        this.setState({
+          ready: true
+        });
+      }
+    );
+  };
 
   errData = err => {
     console.log(err);
-  }
+  };
 
   render() {
     return (
