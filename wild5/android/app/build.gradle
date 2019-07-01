@@ -138,6 +138,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-sound')
+    implementation project(':@react-native-community_audio-toolkit')
     implementation project(':react-native-svg')
     implementation project(':react-native-vector-icons')
     implementation fileTree(dir: "libs", include: ["*.jar"])
