@@ -214,92 +214,117 @@ class SocialQuest extends Component {
           </View>
         ) : (
           <>
-            {( () => {
+            {(() => {
               if (this.state.selectedContacts.length === 0) {
                 return (
-              <View style={{ marginTop: "15%", height, width }}>
-            <FlatList
-              data={this.state.contacts}
-              extraData={this.state}
-              keyExtractor={item => item.recordID}
-              renderItem={({ item }) => {
-                const isChecked = this.state.selectedContacts.some(contact => item === contact);
+                  <View style={{ marginTop: "15%", height, width }}>
+                    <FlatList
+                      data={this.state.contacts}
+                      extraData={this.state}
+                      keyExtractor={item => item.recordID}
+                      renderItem={({ item }) => {
+                        const isChecked = this.state.selectedContacts.some(
+                          contact => item === contact
+                        );
 
-                return (
-                  <Contact contact={item} onPress={this.selectedContacts} isChecked={isChecked} />
-                );
-              }}/>
-              </View>
-                )
-              }
-            else if(this.state.selectedContacts.length > 0){
-              return (
-            <View style={{ marginTop: "15%", height, width }}>
-                <FlatList
-                data={this.state.contacts}
-                extraData={this.state}
-                keyExtractor={item => item.recordID}
-                renderItem={({ item }) => {
-                  const isChecked = this.state.selectedContacts.some(contact => item === contact);
-  
-                  return (
-                    <Contact contact={item} onPress={this.selectedContacts} isChecked={isChecked} />
-                  );
-                }}/>
-                <View style={{
-                   height: 50,
-                   backgroundColor: '#E93422',
-                   padding: 5,
-                   flexDirection: 'row'
-                }}>
-                <View style={{
-                  flex: 3,
-                  alignItems: 'flex-start',
-                  justifyContent: 'center',
-                  alignContent: 'center'
-                }}>
-                <FlatList
-                data={this.state.selectedContacts}
-                extraData={this.state}
-                keyExtractor={item => item.recordID}
-                horizontal={true}
-                renderItem={({item}) => {
-                  return (<View style={{
-                    paddingTop: 10
-                  }}>
-                    <Text style={{
-                      color: '#000',
-                      fontWeight: 'bold',
-                      padding: 2
-                    }}>{`${item.givenName},`}
-                    </Text>
+                        return (
+                          <Contact
+                            contact={item}
+                            onPress={this.selectedContacts}
+                            isChecked={isChecked}
+                          />
+                        );
+                      }}
+                    />
                   </View>
-                  )  
-              }}/>
-              <View style={{
-                  flex: 1,
-                  alignItems: 'flex-end',
-                  justifyContent: 'center'
-                }}>
-                  <TouchableOpacity
-                   onPress={() => Alert.alert('Message sent :)')}>
-                    <Icon name="send"/>
-                  </TouchableOpacity>
-                </View>
-                </View>
-                </View>
-                </View>
-              )
-            }
-              })()}
-              </>
-        )}
-          
-          </> )
-          }
-  };
-  
+                );
+              } else if (this.state.selectedContacts.length > 0) {
+                return (
+                  <View style={{ marginTop: "15%", height, width }}>
+                    <FlatList
+                      data={this.state.contacts}
+                      extraData={this.state}
+                      keyExtractor={item => item.recordID}
+                      renderItem={({ item }) => {
+                        const isChecked = this.state.selectedContacts.some(
+                          contact => item === contact
+                        );
 
+                        return (
+                          <Contact
+                            contact={item}
+                            onPress={this.selectedContacts}
+                            isChecked={isChecked}
+                          />
+                        );
+                      }}
+                    />
+                    <View
+                      style={{
+                        height: 50,
+                        backgroundColor: "#E93422",
+                        padding: 5,
+                        flexDirection: "row"
+                      }}
+                    >
+                      <View
+                        style={{
+                          flex: 3,
+                          alignItems: "flex-start",
+                          justifyContent: "center",
+                          alignContent: "center"
+                        }}
+                      >
+                        <FlatList
+                          data={this.state.selectedContacts}
+                          extraData={this.state}
+                          keyExtractor={item => item.recordID}
+                          horizontal={true}
+                          renderItem={({ item }) => {
+                            return (
+                              <View
+                                style={{
+                                  paddingTop: 10
+                                }}
+                              >
+                                <Text
+                                  style={{
+                                    color: "#000",
+                                    fontWeight: "bold",
+                                    padding: 2
+                                  }}
+                                >
+                                  {`${item.givenName},`}
+                                </Text>
+                              </View>
+                            );
+                          }}
+                        />
+                        <View
+                          style={{
+                            flex: 1,
+                            alignItems: "flex-end",
+                            justifyContent: "center"
+                          }}
+                        >
+                          <TouchableOpacity
+                            onPress={() => Alert.alert("Message sent :)")}
+                          >
+                            <Icon name="send" />
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                );
+              }
+            })()}
+          </>
+        )}
+      </>
+    );
+  }
+}
 
 export default SocialQuest;
 

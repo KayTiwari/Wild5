@@ -1,5 +1,5 @@
-import {AppRegistry} from 'react-native';
-import App from './src/App';
+import { AppRegistry } from "react-native";
+import App from "./src/App";
 
 console.disableYellowBox = true;
-AppRegistry.registerComponent('wild5', () => App);
+AppRegistry.registerComponent("wild5", () => App);
