@@ -27,12 +27,15 @@ import RegisterPage from './screens/RegisterPage'
 import SocialQuest from './components/quests/SocialQuest';
 import SleepQuest from './components/quests/SleepQuest';
 import NutritionQuestCameraRoll from './components/quests/NutritionQuestCameraRoll'
+import PrincipleStats from './screens/statsscreens/PrincipleStats'
+import HeroTotalStats from './screens/statsscreens/HeroTotalStats'
+import ExerciseStats from './screens/statsscreens/ExerciseStats'
 
 const Routercomponent = () => {
   return (
     <Router>
    <Scene key="root">
-          <Scene key='newlogin' component={NewLogin} header={null} />
+          <Scene key='newlogin' component={NewLogin} header={null} initial/>
           <Scene key='registerpage' component={RegisterPage} title="Register" backTitle="Back to Login"/>
           <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
           <Scene key="account" component={Account} title='Account' header={null}/>
@@ -54,6 +57,9 @@ const Routercomponent = () => {
           <Scene key='nutritionquestcameraroll' component={NutritionQuestCameraRoll} title="nutritionquestcameraroll" header={null}  />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
           <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
+          <Scene key='principlestats' component={PrincipleStats} backTitle={'Stats'}  title="Principles" />
+          <Scene key='herostats' component={HeroTotalStats} backTitle={'Stats'} />
+          <Scene key='exstats' component={ExerciseStats} backTitle={'Stats'} />
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
           <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking}/>
           <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking} />

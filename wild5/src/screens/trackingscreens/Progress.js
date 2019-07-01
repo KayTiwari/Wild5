@@ -466,7 +466,7 @@ class Progress extends Component {
                     fontWeight: "600"
                   }}
                 >
-                  Today's best principle: None
+                  Today's least practiced principle: None
                 </Text>
               )}
             </View>
