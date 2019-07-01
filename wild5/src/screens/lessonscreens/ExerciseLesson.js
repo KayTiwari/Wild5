@@ -1,12 +1,22 @@
-import React, { Component } from "react";
-import { ScrollView, View, Dimensions, StyleSheet, Image } from "react-native";
-import { Text, Icon, Container } from "native-base";
-import { Actions } from "react-native-router-flux";
+import React, {Component} from 'react';
+import {
+  ScrollView,
+  View,
+  Dimensions,
+  StyleSheet,
+  Image,
+  ImageBackground,
+} from 'react-native';
+import {Text, Icon, Container} from 'native-base';
+import {Actions} from 'react-native-router-flux';
+import background from '../../images/exerciselesson.jpeg';
 import RadioForm, {
   RadioButton,
   RadioButtonInput,
-  RadioButtonLabel
-} from "react-native-simple-radio-button";
+  RadioButtonLabel,
+} from 'react-native-simple-radio-button';
+
+const screenheight = Dimensions.get('window').height;
 
 class ExerciseLesson extends Component {
   state = {};
@@ -15,33 +25,38 @@ class ExerciseLesson extends Component {
     return (
       <ScrollView>
         <Container>
-          <View>
-            <Text style={styles.mainTitle}>
-              Learn about{" "}
-              <Text style={[styles.mainTitle, { color: "green" }]}>
-                Exercise
+          <ImageBackground
+            source={background}
+            style={{width: '100%', height: screenheight, resizeMode: 'contain'}}
+          >
+            <View>
+              <Text style={styles.mainTitle}>
+                Learn about{' '}
+                <Text style={[styles.mainTitle, {color: 'green'}]}>
+                  Exercise
+                </Text>
               </Text>
-            </Text>
-          </View>
+            </View>
 
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>F.I.D</Text>
-          <Text style={styles.subTitle}>Frequency</Text>
-          <Text style={styles.paragraph}>
-            Exercise is recommended to be done every day for 7 days a week.
-          </Text>
-          <Text style={styles.subTitle}>Intensity</Text>
-          <Text style={styles.paragraph}>
-            Exercise done is recommended to be at moderate intensity. This
-            optimizes brain and mental health benefits. You know you're at
-            moderate intensity when you have trouble speaking in full sentences.
-            Method to calculate heart rate:
-          </Text>
-          <Text style={styles.subTitle}>Duration</Text>
-          <Text style={styles.paragraph}>
-            Recommended duration is for 30 minutes during a session.
-          </Text>
+            <Text style={[styles.mainTitle, {marginTop: '20%'}]}>F.I.D</Text>
+            <Text style={styles.subTitle}>Frequency</Text>
+            <Text style={styles.paragraph}>
+              Exercise is recommended to be done every day for 7 days a week.
+            </Text>
+            <Text style={styles.subTitle}>Intensity</Text>
+            <Text style={styles.paragraph}>
+              Exercise done is recommended to be at moderate intensity. This
+              optimizes brain and mental health benefits. You know you're at
+              moderate intensity when you have trouble speaking in full
+              sentences. Method to calculate heart rate:
+            </Text>
+            <Text style={styles.subTitle}>Duration</Text>
+            <Text style={styles.paragraph}>
+              Recommended duration is for 30 minutes during a session.
+            </Text>
+          </ImageBackground>
         </Container>
-        <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+        <Text style={[styles.mainTitle, {marginTop: '20%'}]}>
           Why Exercise?
         </Text>
         <Text style={styles.paragraph}>
@@ -51,7 +66,7 @@ class ExerciseLesson extends Component {
           exercise in this wellness program makes sense and offers all
           participants a chance to reap the many associated benefits.
         </Text>
-        <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+        <Text style={[styles.mainTitle, {marginTop: '20%'}]}>
           What type of exercise is recommended?
         </Text>
         <Text style={styles.paragraph}>
@@ -60,7 +75,7 @@ class ExerciseLesson extends Component {
           lifting-aerobics-water aerobics.Unacceptable types:-yoga
         </Text>
         <View>
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+          <Text style={[styles.mainTitle, {marginTop: '20%'}]}>
             What if I’m already exercising and meeting the programs criteria for
             FID? Do I need to make any changes?
           </Text>
@@ -70,7 +85,7 @@ class ExerciseLesson extends Component {
           </Text>
         </View>
         <View>
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+          <Text style={[styles.mainTitle, {marginTop: '20%'}]}>
             What if I don’t have time to exercise for 30 minutes?
           </Text>
           <Text style={styles.paragraph}>
@@ -79,31 +94,31 @@ class ExerciseLesson extends Component {
             your 30 minutes of exercise in 2 15 minutes sections or 3 10 minutes
             is perfectly acceptable. You will receive the same mind & body
             benefits, regardless of the way you structure the timing of your
-            exercise routine.{" "}
+            exercise routine.{' '}
           </Text>
         </View>
         <Container>
           <View>
-            <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+            <Text style={[styles.mainTitle, {marginTop: '20%'}]}>
               Barriers to Success
             </Text>
-            <Text style={[styles.subTitle, { marginTop: "5%" }]}>Time</Text>
+            <Text style={[styles.subTitle, {marginTop: '5%'}]}>Time</Text>
             <Text style={styles.paragraph}>
               Add exercise to your calendar and set reminder alerts.
             </Text>
-            <Text style={[styles.subTitle, { marginTop: "5%" }]}>
+            <Text style={[styles.subTitle, {marginTop: '5%'}]}>
               Physical Limitations
             </Text>
             <Text style={styles.paragraph}>
               consult with healthcare provider, physical limitations may require
               you to modify your exercise plans and that is perfectly OK.
             </Text>
-            <Text style={[styles.subTitle, { marginTop: "5%" }]}>Weather</Text>
+            <Text style={[styles.subTitle, {marginTop: '5%'}]}>Weather</Text>
             <Text style={styles.paragraph}>
               Plan accordingly, have a backup plan. Exercise in your home, at a
               gym or walk in a mall.
             </Text>
-            <Text style={[styles.subTitle, { marginTop: "5%" }]}>
+            <Text style={[styles.subTitle, {marginTop: '5%'}]}>
               Low Motivation
             </Text>
             <Text style={styles.paragraph}>
@@ -114,8 +129,8 @@ class ExerciseLesson extends Component {
             </Text>
           </View>
         </Container>
-        <Container style={{ marginBottom: 0, height: "90%" }}>
-          <Text style={[styles.mainTitle, { marginTop: "0%" }]}>
+        <Container style={{marginBottom: 0, height: '90%'}}>
+          <Text style={[styles.mainTitle, {marginTop: '0%'}]}>
             What others are saying
           </Text>
           <Text style={styles.paragraph}>
@@ -134,27 +149,27 @@ class ExerciseLesson extends Component {
   }
 }
 
-export { ExerciseLesson };
+export {ExerciseLesson};
 
 const styles = StyleSheet.create({
   mainTitle: {
     fontSize: 30,
-    fontWeight: "600",
-    textAlign: "center",
-    marginTop: "10%"
+    fontWeight: '600',
+    textAlign: 'center',
+    marginTop: '10%',
   },
   subTitle: {
     fontSize: 20,
-    fontWeight: "600",
-    textAlign: "center",
-    marginTop: "20%"
+    fontWeight: '600',
+    textAlign: 'center',
+    marginTop: '20%',
   },
   paragraph: {
     fontSize: 20,
-    fontWeight: "400",
-    marginTop: "5%",
-    marginLeft: "5%",
-    marginRight: "5%",
-    textAlign: "center"
-  }
+    fontWeight: '400',
+    marginTop: '5%',
+    marginLeft: '5%',
+    marginRight: '5%',
+    textAlign: 'center',
+  },
 });

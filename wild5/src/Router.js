@@ -1,46 +1,45 @@
-import React from "react";
-import { Scene, Router, Actions } from "react-native-router-flux";
-import Landing from "./screens/Landing";
-import Account from "./screens/Account";
-import EducationWellnessRoadMap from "./screens/NewRoadMap";
-import ExerciseTracking from "./screens/trackingscreens/ExerciseTracking";
-import MindfulnessTracking from "./screens/trackingscreens/MindfulnessTracking";
-import SleepTracking from "./screens/trackingscreens/SleepTracking";
-import SocialTracking from "./screens/trackingscreens/SocialTracking";
-import NutritionTracking from "./screens/trackingscreens/NutritionTracking";
-import KickStart30 from "./screens/KickStart30";
-import LearnMore from "./screens/LearnMore";
-import Settings from "./screens/Settings";
-import Quests from "./screens/Quests";
-import Progress from "./screens/trackingscreens/Progress";
-import Statistics from "./screens/Statistics";
-import { About, FAQ, Feedback } from "./screens/accountmenu";
-import Help from "./screens/accountmenu/Help";
-import TrackingForm from "./screens/TrackingForm";
+import React from 'react';
+import {Scene, Router, Actions} from 'react-native-router-flux';
+import Landing from './screens/Landing';
+import Account from './screens/Account';
+import EducationWellnessRoadMap from './screens/NewRoadMap';
+import ExerciseTracking from './screens/trackingscreens/ExerciseTracking';
+import MindfulnessTracking from './screens/trackingscreens/MindfulnessTracking';
+import SleepTracking from './screens/trackingscreens/SleepTracking';
+import SocialTracking from './screens/trackingscreens/SocialTracking';
+import NutritionTracking from './screens/trackingscreens/NutritionTracking';
+import LearnMore from './screens/LearnMore';
+import Settings from './screens/Settings';
+import Quests from './screens/Quests';
+import Progress from './screens/trackingscreens/Progress';
+import Statistics from './screens/Statistics';
+import {About, FAQ, Feedback} from './screens/accountmenu';
+import Help from './screens/accountmenu/Help';
+import TrackingForm from './screens/TrackingForm';
 import {
   ExerciseLesson,
   MindfulnessLesson,
   NutritionLesson,
   SocialLesson,
-  SleepLesson
-} from "./screens/lessonscreens/";
-import NutritionQuest from "./components/quests/NutritionQuests";
-import MindfulnessQuest from "./components/quests/MindfulnessQuest";
-import Herointro from "./screens/HERO/Herointro";
+  SleepLesson,
+} from './screens/lessonscreens/';
+import NutritionQuest from './components/quests/NutritionQuests';
+import MindfulnessQuest from './components/quests/MindfulnessQuest';
+import Herointro from './screens/HERO/Herointro';
 import {
   HeroEnth,
   HeroHappy,
   HeroMent,
   HeroOpt,
   HeroRes,
-  HeroScore
-} from "./screens/HERO";
-import ExerciseQuest from "./components/quests/ExerciseQuest";
-import NewLogin from "./screens/NewLoginScreen";
-import RegisterPage from "./screens/RegisterPage";
-import SocialQuest from "./components/quests/SocialQuest";
-import SleepQuest from "./components/quests/SleepQuest";
-import NutritionQuestCameraRoll from "./components/quests/NutritionQuestCameraRoll";
+  HeroScore,
+} from './screens/HERO';
+import ExerciseQuest from './components/quests/ExerciseQuest';
+import NewLogin from './screens/NewLoginScreen';
+import RegisterPage from './screens/RegisterPage';
+import SocialQuest from './components/quests/SocialQuest';
+import SleepQuest from './components/quests/SleepQuest';
+import NutritionQuestCameraRoll from './components/quests/NutritionQuestCameraRoll';
 
 const Routercomponent = () => {
   return (
@@ -102,12 +101,6 @@ const Routercomponent = () => {
           backTitle="Back"
         />
         <Scene
-          key="kickstart"
-          component={KickStart30}
-          title="KickStart30"
-          header={null}
-        />
-        <Scene
           key="learnmore"
           component={LearnMore}
           title="Learn More"
@@ -149,12 +142,6 @@ const Routercomponent = () => {
           key="socialquest"
           component={SocialQuest}
           title="social Quest"
-          header={null}
-        />
-        <Scene
-          key="exercisequest"
-          component={ExerciseQuest}
-          title="Exercise Quest"
           header={null}
         />
         <Scene
