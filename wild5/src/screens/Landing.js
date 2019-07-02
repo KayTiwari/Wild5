@@ -1,33 +1,24 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import {
   View,
   ScrollView,
-  TouchableOpacity,
   StyleSheet,
   Image,
   Dimensions,
-  ImageBackground
-} from "react-native";
-import {
-  Container,
-  Footer,
-  FooterTab,
-  Button,
-  Text,
-  Header,
-  Icon
-} from "native-base";
-import wild5title from "../images/wild-5-logo-r-color.png";
-import { Actions } from "react-native-router-flux";
-import Navbar from "../components/Navbar";
-import Carousel from "../components/Carousel";
-import landingbackground from "../images/landingbackground.jpg";
-import { withAuthProvider } from "../context/authcontext";
+  ImageBackground,
+} from 'react-native';
+import {Container, Button, Text} from 'native-base';
+import wild5title from '../images/wild-5-logo-r-color.png';
+import {Actions} from 'react-native-router-flux';
+import Navbar from '../components/Navbar';
+import Carousel from '../components/Carousel';
+import landingbackground from '../images/landingbackground.jpg';
+import {withAuthProvider} from '../context/authcontext';
 
-const screenheight = Dimensions.get("window").height;
+const screenheight = Dimensions.get('window').height;
 class Landing extends Component {
   state = {
-    account: 0
+    account: 0,
   };
 
   progressPress = () => {
@@ -40,33 +31,33 @@ class Landing extends Component {
       <Container
         style={{
           height: screenheight,
-          display: "flex",
-          flexDirection: "column"
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
         <ScrollView>
-          <ImageBackground source={landingbackground} style={{ width: "100%" }}>
+          <ImageBackground source={landingbackground} style={{width: '100%'}}>
             <View
               style={{
-                width: "80%",
-                marginLeft: "10%",
-                marginTop: "20%",
-                marginBottom: 0
+                width: '80%',
+                marginLeft: '10%',
+                marginTop: '20%',
+                marginBottom: 0,
               }}
             >
               <Image
                 source={wild5title}
-                style={{ width: "100%", resizeMode: "contain" }}
+                style={{width: '100%', resizeMode: 'contain'}}
               />
             </View>
             <View>
               <Carousel />
             </View>
 
-            <View style={{ marginTop: "15%" }}>
+            <View style={{marginTop: '15%'}}>
               <Button
                 onPress={() => Actions.exercisetracking()}
-                style={{ alignSelf: "center" }}
+                style={{alignSelf: 'center'}}
                 success
                 large
                 iconright
@@ -75,7 +66,7 @@ class Landing extends Component {
               </Button>
             </View>
 
-            <View style={{ marginTop: "15%" }}>
+            <View style={{marginTop: '15%'}}>
               <Button
                 onPress={() => Actions.mindfulnesstracking()}
                 style={styles.mindfulness}
@@ -87,7 +78,7 @@ class Landing extends Component {
               </Button>
             </View>
 
-            <View style={{ marginTop: "15%" }}>
+            <View style={{marginTop: '15%'}}>
               <Button
                 style={styles.sleep}
                 onPress={() => Actions.sleeptracking()}
@@ -99,7 +90,7 @@ class Landing extends Component {
               </Button>
             </View>
 
-            <View style={{ marginTop: "15%" }}>
+            <View style={{marginTop: '15%'}}>
               <Button
                 style={styles.social}
                 onPress={() => Actions.socialtracking()}
@@ -111,7 +102,7 @@ class Landing extends Component {
               </Button>
             </View>
 
-            <View style={{ marginTop: "15%" }}>
+            <View style={{marginTop: '15%'}}>
               <Button
                 style={styles.nutrition}
                 onPress={() => Actions.nutritiontracking()}
@@ -123,7 +114,7 @@ class Landing extends Component {
               </Button>
             </View>
 
-            <View style={{ marginTop: "15%" }}>
+            <View style={{marginTop: '15%'}}>
               <Button
                 style={styles.tracking}
                 onPress={() => this.progressPress()}
@@ -145,25 +136,25 @@ class Landing extends Component {
 }
 const styles = StyleSheet.create({
   mindfulness: {
-    backgroundColor: "#49b8ea",
-    alignSelf: "center"
+    backgroundColor: '#49b8ea',
+    alignSelf: 'center',
   },
   sleep: {
-    alignSelf: "center",
-    backgroundColor: "#ba3992"
+    alignSelf: 'center',
+    backgroundColor: '#ba3992',
   },
   social: {
-    alignSelf: "center",
-    backgroundColor: "#ed3833"
+    alignSelf: 'center',
+    backgroundColor: '#ed3833',
   },
   nutrition: {
-    alignSelf: "center",
-    backgroundColor: "#f3983e"
+    alignSelf: 'center',
+    backgroundColor: '#f3983e',
   },
   tracking: {
-    alignSelf: "center",
-    backgroundColor: "#333"
-  }
+    alignSelf: 'center',
+    backgroundColor: '#333',
+  },
 });
 
 export default withAuthProvider(Landing);
