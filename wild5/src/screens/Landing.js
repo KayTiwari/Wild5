@@ -36,7 +36,23 @@ class Landing extends Component {
         }}
       >
         <ScrollView>
-          <ImageBackground source={landingbackground} style={{width: '100%'}}>
+          <ImageBackground
+            source={landingbackground}
+            style={{width: '100%'}}
+            blurRadius={3}
+          >
+            <View
+              style={{
+                backgroundColor: 'rgba(0,0,0,0.3)',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                flex: 1,
+                width: '100%',
+              }}
+            />
             <View
               style={{
                 width: '80%',
