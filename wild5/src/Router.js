@@ -131,6 +131,7 @@ const Routercomponent = () => {
           component={ExerciseQuest}
           title="Exercise Quest"
           header={null}
+        initial
         />
         <Scene
           key="sleepquest"

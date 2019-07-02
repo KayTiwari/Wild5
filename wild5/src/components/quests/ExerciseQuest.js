@@ -11,6 +11,8 @@ import {
 } from "react-native";
 import { Container, Text, Label, Button, Icon } from "native-base";
 import NumericInput from "react-native-numeric-input";
+import { Actions } from "react-native-router-flux";
+
 const { height, width } = Dimensions.get("window");
 
 class ExerciseQuest extends Component {
@@ -103,9 +105,8 @@ class ExerciseQuest extends Component {
               >
                 <View style={{ alignItems: "center" }}>
                   <Label
-                    style={{ marginTop: "25%", color: "#FFF", fontSize: 20 }}
+                    style={{ marginTop: "25%", color: "#FFF", fontSize: 40 }}
                   >
-                    {" "}
                     How long do you want to Exercise?
                   </Label>
                   <View style={{ marginTop: "15%" }}>
@@ -119,21 +120,28 @@ class ExerciseQuest extends Component {
                       onLimitReached={(isMax, msg) => console.log(isMax, msg)}
                       totalWidth={240}
                       totalHeight={50}
-                      iconSize={25}
+                      iconSize={35}
                       step={5}
                       minValue={0}
                       valueType="real"
                       rounded
-                      textColor="darkolivegreen"
-                      iconStyle={{ color: "white" }}
-                      rightButtonBackgroundColor="darkgreen"
-                      leftButtonBackgroundColor="forestgreen"
+                      textColor="white"
+                      iconStyle={{ color: "black" }}
+                      rightButtonBackgroundColor="white"
+                      leftButtonBackgroundColor="white"
                     />
                   </View>
-                  <View style={{ alignItems: "center", marginTop: "10%" }}>
-                    <Button onPress={() => this.startCountDown()}>
-                      <Text>Start</Text>
-                    </Button>
+                  <View style={{ alignItems: "center", marginTop: "10%", width: '100%' }}>
+                    <TouchableOpacity
+                    style={{height: 50, width: '80%', backgroundColor: 'white'}}
+                    onPress={() => this.startCountDown()}>
+                      <Text style={{
+                        fontWeight:"bold",
+                        fontSize: 20,
+                        alignSelf: 'center',
+                        justifyContent: 'center',
+                      color: "#000"}}>Start</Text>
+                    </TouchableOpacity>
                   </View>
                 </View>
               </Container>
@@ -180,7 +188,7 @@ class ExerciseQuest extends Component {
                               Yes
                             </Text>
                           </TouchableHighlight>
-                          <TouchableHighlight onPress={""} style={styles.touch}>
+                          <TouchableHighlight onPress={() => this.setState({y: !this.state.y}, ()=> Actions.landing())} style={styles.touch}>
                             <Text style={{ fontSize: 16, color: "#fff" }}>
                               No
                             </Text>
@@ -192,14 +200,15 @@ class ExerciseQuest extends Component {
                   ) : (
                     <View
                       style={{
-                        height: "25%",
+                        height: "35%",
+                        width: "85%",
                         backgroundColor: "#fff",
                         alignSelf: "center",
-                        justifyContent: "center"
+                        marginTop: '35%'
                       }}
                     >
-                      <Text>What exercise did you complete?</Text>
-                      <Picker>
+                      <Text style={{alignSelf: 'center', fontSize: 18, marginTop: '10%'}}>What exercise did you complete?</Text>
+                      <Picker onValueChange={() => AlertIOS.alert('Data submitted!')}>
                         <Picker.Item label={"Walking"} value={"Walking"}>
                           <Button>
                             <Icon name="remove-circle" />
@@ -282,14 +291,14 @@ class ExerciseQuest extends Component {
                          style={styles.controlButtons}
                         onPress={() => this.resumeTimer()}
                       >
-                        <Icon name="play" style={{alignSelf:'center',color:'#000'}}/>
+                        <Icon name="play" style={{alignSelf:'center',justifyContent:'center',color:'#000'}}/>
                       </TouchableOpacity>
                     )}
                     <TouchableOpacity
                       style={[styles.controlButtons, {marginTop: 5}]}
                       onPress={() => this.stopTimer()}
                     >
-                      <Icon name="square" style={{alignSelf:'center',color:'#000'}}/>
+                      <Icon name="square" style={{alignSelf:'center',justifyContent:'center',color:'#000'}}/>
                     </TouchableOpacity>
                     </View>
                   </View>
@@ -327,7 +336,8 @@ const styles = StyleSheet.create({
   },
   controlButtons: {
       width: '80%',
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+      height: 50
 
   }
 });
