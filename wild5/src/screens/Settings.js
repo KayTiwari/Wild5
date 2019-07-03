@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import ToggleSwitch from "toggle-switch-react-native";
 import PushNotificationIOS from "../components/common/PushNotificationsIOS";
 import appConfig from "../../app.json";
+import TimePicker from '../components/common/TimePicker'
 
 const { height, width } = Dimensions.get("window");
 
@@ -14,16 +15,14 @@ class Settings extends Component<Props> {
     super(props);
     this.state = {
       // startDate: new Date(),
-      firstName: "hello",
-      lastName: "",
-      email: "",
-      birthday: new Date(),
       exerciseReminder: false,
       mindfulnessReminder: false,
       sleepReminder: false,
       socialReminder: false,
       nutritionReminder: false,
+      showTimer: false,
       senderId: appConfig.senderID,
+      chosenDate: new Date(),
       reminders: [
         {
           title: "",
@@ -34,15 +33,31 @@ class Settings extends Component<Props> {
     this.PushNotificationIOS = new PushNotificationIOS(this.onNotif);
   }
 
-  exerciseReminder = pillar => {
+  setDate = (newDate) => {
+    this.setState({chosenDate: newDate.toString().slice(15,8)});
+  }
+
+  showTimePicker = () => {
+    return (
+      <TimePicker
+        date={this.state.chosenDate}
+        onDateChange={this.setDate}
+        showTimer={this.state.showTimer}
+      />
+    )
+  }
+  
+
+  exerciseReminder = (pillar, date) => {
     return e => {
       this.setState(
         prevState => ({
+          showTimer: !prevState.showTimer,
           exerciseReminder: !prevState.exerciseReminder
         }),
         () => {
           if (this.state.exerciseReminder) {
-            this.PushNotificationIOS.scheduleNotif(pillar);
+            this.PushNotificationIOS.scheduleNotif(pillar, date);
           }
         }
       );
@@ -108,11 +123,7 @@ class Settings extends Component<Props> {
     };
   };
 
-  setDate = newdate => {
-    this.setState({
-      birthday: newdate
-    });
-  };
+  
 
   onRegister = token => {
     Alert.alert("Registered !", JSON.stringify(token));
@@ -133,6 +144,7 @@ class Settings extends Component<Props> {
     return (
       <>
         <Container>
+          {(this.state.showTimer) ? this.showTimePicker() : null}
           <View style={{ marginTop: "10%", marginLeft: "5%" }}>
             <Text style={{ fontSize: 20 }}>Notifications</Text>
             <View>
@@ -144,7 +156,7 @@ class Settings extends Component<Props> {
                 onColor="#73BA3F"
                 offColor="#d5eac5"
                 isOn={this.state.exerciseReminder}
-                onToggle={this.exerciseReminder("exercise")}
+                onToggle={this.exerciseReminder("exercise", (this.state.chosenDate)?this.state.chosenDate : null)}
               />
             </View>
             <View>

@@ -40,12 +40,17 @@ import RegisterPage from './screens/RegisterPage';
 import SocialQuest from './components/quests/SocialQuest';
 import SleepQuest from './components/quests/SleepQuest';
 import NutritionQuestCameraRoll from './components/quests/NutritionQuestCameraRoll';
+import TimePicker from './components/common/TimePicker'
 
 const Routercomponent = () => {
   return (
     <Router>
       <Scene key="root">
         <Scene key="newlogin" component={NewLogin} header={null} />
+        <Scene 
+        key="rnmodaldatetimepicker"
+        component={TimePicker}
+        />
         <Scene
           key="registerpage"
           component={RegisterPage}
@@ -125,13 +130,13 @@ const Routercomponent = () => {
           component={MindfulnessQuest}
           title="Mindfulness Quest"
           header={null}
+          initial
         />
         <Scene
           key="exercisequest"
           component={ExerciseQuest}
           title="Exercise Quest"
           header={null}
-        initial
         />
         <Scene
           key="sleepquest"
