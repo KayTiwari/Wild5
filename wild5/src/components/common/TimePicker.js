@@ -26,8 +26,8 @@ export default class RNModalDatetimePicker extends Component {
           onDateChange={this.props.onDateChange}
           style={{ color: "blue" }}
           isVisible={this.props.showTimer}
-          onConfirm={this.hideDateTimePicker}
-          onCancel={this.hideDateTimePicker}
+          onConfirm={this.props.onConfirm}
+          onCancel={this.props.onCancel}
           mode="time"
         />
       </>

@@ -30,9 +30,9 @@ class Quests extends Component {
             <Text
               style={{
                 textAlign: "center",
-                fontSize: 30,
+                fontSize: 50,
                 marginTop: "20%",
-                fontWeight: "600",
+                fontWeight: "900",
                 marginBottom: 40
               }}
             >

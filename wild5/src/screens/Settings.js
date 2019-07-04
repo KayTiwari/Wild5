@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { View, Button, Text, Dimensions } from "react-native";
+import { View, Button, Text, Dimensions, TouchableOpacity } from "react-native";
 import { Container } from "native-base";
 import Navbar from "../components/Navbar";
 import ToggleSwitch from "toggle-switch-react-native";
 import PushNotificationIOS from "../components/common/PushNotificationsIOS";
 import appConfig from "../../app.json";
 import TimePicker from '../components/common/TimePicker'
+import { Actions } from 'react-native-router-flux'
 
 const { height, width } = Dimensions.get("window");
 
@@ -43,8 +44,18 @@ class Settings extends Component<Props> {
         date={this.state.chosenDate}
         onDateChange={this.setDate}
         showTimer={this.state.showTimer}
+        onConfirm={this.showTimer()}
+        onCancel={this.showTimer()}
       />
     )
+  }
+
+  showTimer = () => {
+    return () => {
+    this.setState( prevState =>({
+      showTimer: false
+    }))
+  }
   }
   
 
@@ -145,13 +156,17 @@ class Settings extends Component<Props> {
       <>
         <Container>
           {(this.state.showTimer) ? this.showTimePicker() : null}
-          <View style={{ marginTop: "10%", marginLeft: "5%" }}>
+          <View style={{ marginTop: "12%", marginLeft: "5%" }}>
+          <View style={{alignSelf: 'center'}}>
+          <Text style={{fontSize: 36, marginBottom: 10, fontWeight: '900'}}>Settings</Text>
+          </View>
             <Text style={{ fontSize: 20 }}>Notifications</Text>
-            <View>
-              <Text>Exercise</Text>
+            <View style={{borderTopWidth: 1, borderTopColor: 'black', width: '90%'}}>
+            <View style={{marginTop: 15}}>
+              <Text style={{fontSize: 20}}>Exercise</Text>
               <ToggleSwitch
                 // label='Exercise'
-                labelStyle={{ color: "black", fontWeight: "900" }}
+                labelStyle={{ color: "black", fontWeight: "900"}}
                 size="large"
                 onColor="#73BA3F"
                 offColor="#d5eac5"
@@ -160,7 +175,7 @@ class Settings extends Component<Props> {
               />
             </View>
             <View>
-              <Text>Mindfulness</Text>
+              <Text style={{fontSize: 20}}>Mindfulness</Text>
               <ToggleSwitch
                 // label='Mindfulness'
                 labelStyle={{ color: "black", fontWeight: "900" }}
@@ -172,7 +187,7 @@ class Settings extends Component<Props> {
               />
             </View>
             <View>
-              <Text>Sleep</Text>
+              <Text style={{fontSize: 20}}>Sleep</Text>
               <ToggleSwitch
                 // label='Sleep'
                 labelStyle={{ color: "black", fontWeight: "900" }}
@@ -184,7 +199,7 @@ class Settings extends Component<Props> {
               />
             </View>
             <View>
-              <Text>Social</Text>
+              <Text style={{fontSize: 20}}>Social</Text>
               <ToggleSwitch
                 // label='Social'
                 labelStyle={{ color: "black", fontWeight: "900" }}
@@ -196,7 +211,7 @@ class Settings extends Component<Props> {
               />
             </View>
             <View>
-              <Text>Nutrition</Text>
+              <Text style={{fontSize: 20}}>Nutrition</Text>
               <ToggleSwitch
                 // label='Nutrition'
                 labelStyle={{ color: "black", fontWeight: "900" }}
@@ -207,7 +222,21 @@ class Settings extends Component<Props> {
                 onToggle={this.nutritionReminder("nutrition")}
               />
             </View>
+            </View>
           </View>
+          <View style={{marginTop: 20, marginLeft: '5%'}}>
+          <TouchableOpacity style={{
+          borderRadius: 20,
+          width:'45%',
+          height: 60,
+          backgroundColor: '#E17026',
+          justifyContent:'center'
+          }}
+          onPress={()=>Actions.nutritionquestcameraroll()}
+          >
+            <Text style={{alignSelf:'center', fontWeight:'bold'}}>Nutrition Quest{"\n"} Photos</Text>
+          </TouchableOpacity>
+        </View>
         </Container>
         <Navbar />
       </>
