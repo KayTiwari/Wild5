@@ -47,7 +47,6 @@ import MindfulStats from './screens/statsscreens/MindfulStats'
 import SleepStats from './screens/statsscreens/SleepStats'
 import SocialStats from './screens/statsscreens/SocialStats'
 import NutriStats from './screens/statsscreens/NutrStats'
-import NutritionQuestCameraRoll from './components/quests/NutritionQuestCameraRoll';
 import TimePicker from './components/common/TimePicker'
 
 const Routercomponent = () => {

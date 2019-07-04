@@ -123,8 +123,6 @@ class Landing extends Component {
               </Button>
             </View>
 
-     <View style={{marginTop:'15%', marginBottom: '5%'}}>
-            <Button style={styles.tracking} onPress={() => this.progressPress()}  success large iconright>
             <View style={{ marginTop: "15%" }}>
               <Button
                 style={styles.tracking}
