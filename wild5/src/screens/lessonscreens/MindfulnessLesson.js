@@ -19,8 +19,9 @@ class MindfulnessLesson extends Component{
         return (
             <ScrollView>
                 <Container>
-                    <ImageBackground source={background} style={{width: '100%', height: screenheight*1, resizeMode: 'contain'}}>
-                    <View>
+                    <ImageBackground source={background} style={{width: '100%', zIndex: -100, height: screenheight*1, resizeMode: 'contain'}} >
+                        </ImageBackground>
+                    <View style={{position: 'absolute', top: 0, left: 0, zIndex: 1000}}>
                     <Text style={styles.mainTitle}>Learn about <Text style={[styles.mainTitle, {color: '#0AB1E7'}]}>Mindfulness</Text></Text>
                     </View>
 
@@ -31,7 +32,6 @@ class MindfulnessLesson extends Component{
                         </Text>
                         <Text style={styles.subTitle}>-When you engage in these behaviors its as if you're on “autopilot”.  When you’re on autopilot you are missing out on living your life fully are are at greater risk for feeling unhappy.</Text>
                         <Text style={styles.paragraph}>-opposite of of mindless, autostate pilot.</Text>
-                        </ImageBackground>
                 </Container>
                 <Text>”paying attention in a particular way: on purpose, in the present moment, and non-judgmentally.”m- Dr. Jon Kabat-Zinn.</Text>
                 <Container>
@@ -40,6 +40,7 @@ class MindfulnessLesson extends Component{
                     <Button onPress={() => Actions.mindfulnessquest()} title="Mindfulness Meditations"></Button>
 
             </Container>
+                    <View style={{position: 'absolute', backgroundColor: 'black', opacity: 0.5, height:screenheight, width: '100%', top: 0, left: 0}}></View>
         </ScrollView>
         )
     }
@@ -53,14 +54,16 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         textAlign: 'center',
         marginTop: '10%',
-        color:'white'
+        color:'white',
+        zIndex: 1000
     },
     subTitle: {
         fontSize: 20,
         fontWeight: '600',
         textAlign: 'center',
         marginTop: '20%',
-        color: 'white'
+        color: 'white',
+        zIndex: 1000
     },
     paragraph: {
         fontSize: 20,
@@ -69,6 +72,7 @@ const styles = StyleSheet.create({
         marginLeft: '5%',
         marginRight: '5%',
         textAlign: 'center',
-        color: 'white'
+        color: 'white',
+        zIndex: 1000
     }
 })

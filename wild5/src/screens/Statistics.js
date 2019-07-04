@@ -24,26 +24,40 @@ class Statistics extends Component{
 
     inDepthPress = (type) => {
         this.props.getPrincipleData();
-        if (type === 'ex'){
-            Actions.exstats();
+        switch(type){
+            case 'ex':
+                Actions.exstats();
+                break;
+            case 'mind':
+                Actions.mindstats();
+                break;
+            case 'sleep':
+                Actions.sleepstats();
+                break;
+            case 'social':
+                Actions.socialstats();
+                break;
+            case 'nutri':
+                Actions.nutristats();
+                break;
         }
     }
 
 
     render(){
         return(
-            <View style={{backgroundColor: 'white', height: screenheight, flex: 1, flexDirection:'column', justifyContent:'space-between'}}>
+            <View style={{backgroundColor: '#2e3131', height: screenheight, flex: 1, flexDirection:'column', justifyContent:'space-between'}}>
             <View>
-                <Text style={{fontSize: 30, fontWeight:'600', textAlign: 'center', marginTop:'15%'}}>Your Stats</Text>
+                <Text style={{fontSize: 30, fontWeight:'600', textAlign: 'center', color:'white', marginTop:'15%'}}>Your Stats</Text>
             </View>
             <View>
-                <Text style={{fontSize: 20, fontWeight:'600', textAlign: 'center', marginTop:'10%'}}>Interact directly with your Wellness Progress</Text>
+                <Text style={{fontSize: 20, fontWeight:'600', textAlign: 'center', color:'white', marginTop:'10%'}}>Reflect with your Wellness Progress</Text>
             </View>
             
             <ScrollView style={{}}>
             <View style={{alignSelf: 'center', marginTop:'10%'}}>
                 <Button large style={{backgroundColor: '#333'}} onPress={() => this.principlePress()}>
-                    <Text>5 Principles</Text>
+                    <Text>Wild5 Principles</Text>
                 </Button>
             </View>
             <View style={{alignSelf: 'center', marginTop:'10%' }}>
@@ -62,17 +76,17 @@ class Statistics extends Component{
                 </Button>
             </View>
             <View style={{alignSelf: 'center', marginTop:'10%'}}>
-                <Button large style={{backgroundColor: '#BD2C95'}} onPress={() => this.inDepthPress('mind')}>
+                <Button large style={{backgroundColor: '#BD2C95'}} onPress={() => this.inDepthPress('sleep')}>
                     <Text>Sleep In-Depth</Text>
                 </Button>
             </View>
             <View style={{alignSelf: 'center', marginTop:'10%'}}>
-                <Button large style={{backgroundColor:'#E93422'}} onPress={() => this.inDepthPress('mind')}>
+                <Button large style={{backgroundColor:'#E93422'}} onPress={() => this.inDepthPress('social')}>
                     <Text>Social In-Depth</Text>
                 </Button>
             </View>
             <View style={{alignSelf: 'center', marginTop:'10%', marginBottom: '5%'}}>
-                <Button large style={{backgroundColor:'#E06F26'}} onPress={() => this.inDepthPress('mind')}>
+                <Button large style={{backgroundColor:'#E06F26'}} onPress={() => this.inDepthPress('nutri')}>
                     <Text>Nutrition In-Depth</Text>
                 </Button>
             </View>

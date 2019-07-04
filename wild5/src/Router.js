@@ -30,6 +30,10 @@ import NutritionQuestCameraRoll from './components/quests/NutritionQuestCameraRo
 import PrincipleStats from './screens/statsscreens/PrincipleStats'
 import HeroTotalStats from './screens/statsscreens/HeroTotalStats'
 import ExerciseStats from './screens/statsscreens/ExerciseStats'
+import MindfulStats from './screens/statsscreens/MindfulStats'
+import SleepStats from './screens/statsscreens/SleepStats'
+import SocialStats from './screens/statsscreens/SocialStats'
+import NutriStats from './screens/statsscreens/NutrStats'
 
 const Routercomponent = () => {
   return (
@@ -60,6 +64,10 @@ const Routercomponent = () => {
           <Scene key='principlestats' component={PrincipleStats} backTitle={'Stats'}  title="Principles" />
           <Scene key='herostats' component={HeroTotalStats} backTitle={'Stats'} />
           <Scene key='exstats' component={ExerciseStats} backTitle={'Stats'} />
+          <Scene key='mindstats' component={MindfulStats} backTitle={'Stats'} />
+          <Scene key='sleepstats' component={SleepStats} backTitle={'Stats'} />
+          <Scene key='socialstats' component={SocialStats} backTitle={'Stats'} />
+          <Scene key='nutristats' component={NutriStats} backTitle={'Stats'} />
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
           <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking}/>
           <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking} />

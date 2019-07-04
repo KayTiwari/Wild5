@@ -7,9 +7,7 @@ import { withAuthProvider } from '../../context/authcontext';
 
 const screenheight = Dimensions.get('window').height;
 class PrincipleStats extends Component{
-    state = {
-        
-    }
+    state = {}
 
     componentWillMount(){
         if (this.props.princData){
@@ -26,7 +24,6 @@ class PrincipleStats extends Component{
         this.returnTotal(this.props.princData);
         }
         }
-        
 
 
         returnTotal = (data) => {
