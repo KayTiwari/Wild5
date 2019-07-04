@@ -6,7 +6,6 @@ import firebase from "firebase";
 import progbackground from "../../images/progbackground.jpg";
 import { withAuthProvider } from "../../context/authcontext";
 
-
 const screenheight = Dimensions.get("window").height;
 class Progress extends Component {
   constructor() {
@@ -22,23 +21,22 @@ class Progress extends Component {
   }
 
   componentWillMount() {
-    if (this.props.trackdata){
-        this.renderGraph()
-        }
+    if (this.props.trackdata) {
+      this.renderGraph();
+    }
   }
 
-  componentDidMount(){
-    if (this.props.trackdata){
-        this.renderGraph()
-        }
+  componentDidMount() {
+    if (this.props.trackdata) {
+      this.renderGraph();
+    }
   }
 
   componentWillReceiveProps() {
-    if (this.props.trackdata){
-        this.renderGraph()
-        }
+    if (this.props.trackdata) {
+      this.renderGraph();
+    }
   }
-
 
   renderGraph = () => {
     let exval = this.exercisecalc();

@@ -1,29 +1,42 @@
 import React from 'react';
-import { Scene, Router, Actions } from 'react-native-router-flux';
-import Landing from './screens/Landing'
+import {Scene, Router, Actions} from 'react-native-router-flux';
+import Landing from './screens/Landing';
 import Account from './screens/Account';
 import EducationWellnessRoadMap from './screens/NewRoadMap';
-import ExerciseTracking from './screens/trackingscreens/ExerciseTracking'
-import MindfulnessTracking from './screens/trackingscreens/MindfulnessTracking'
-import SleepTracking from './screens/trackingscreens/SleepTracking'
-import SocialTracking from './screens/trackingscreens/SocialTracking'
-import NutritionTracking from './screens/trackingscreens/NutritionTracking'
+import ExerciseTracking from './screens/trackingscreens/ExerciseTracking';
+import MindfulnessTracking from './screens/trackingscreens/MindfulnessTracking';
+import SleepTracking from './screens/trackingscreens/SleepTracking';
+import SocialTracking from './screens/trackingscreens/SocialTracking';
+import NutritionTracking from './screens/trackingscreens/NutritionTracking';
 import LearnMore from './screens/LearnMore';
 import Settings from './screens/Settings';
 import Quests from './screens/Quests';
 import Progress from './screens/trackingscreens/Progress';
-import Statistics from './screens/Statistics'
-import { About, FAQ, Feedback } from './screens/accountmenu';
-import Help from './screens/accountmenu/Help'
+import Statistics from './screens/Statistics';
+import {About, FAQ, Feedback} from './screens/accountmenu';
+import Help from './screens/accountmenu/Help';
 import TrackingForm from './screens/TrackingForm';
-import { ExerciseLesson, MindfulnessLesson, NutritionLesson, SocialLesson, SleepLesson } from './screens/lessonscreens/'
+import {
+  ExerciseLesson,
+  MindfulnessLesson,
+  NutritionLesson,
+  SocialLesson,
+  SleepLesson,
+} from './screens/lessonscreens/';
 import NutritionQuest from './components/quests/NutritionQuests';
 import MindfulnessQuest from './components/quests/MindfulnessQuest';
 import Herointro from './screens/HERO/Herointro';
-import { HeroEnth, HeroHappy, HeroMent, HeroOpt, HeroRes, HeroScore } from './screens/HERO';
+import {
+  HeroEnth,
+  HeroHappy,
+  HeroMent,
+  HeroOpt,
+  HeroRes,
+  HeroScore,
+} from './screens/HERO';
 import ExerciseQuest from './components/quests/ExerciseQuest';
 import NewLogin from './screens/NewLoginScreen';
-import RegisterPage from './screens/RegisterPage'
+import RegisterPage from './screens/RegisterPage';
 import SocialQuest from './components/quests/SocialQuest';
 import SleepQuest from './components/quests/SleepQuest';
 import NutritionQuestCameraRoll from './components/quests/NutritionQuestCameraRoll'
@@ -34,6 +47,8 @@ import MindfulStats from './screens/statsscreens/MindfulStats'
 import SleepStats from './screens/statsscreens/SleepStats'
 import SocialStats from './screens/statsscreens/SocialStats'
 import NutriStats from './screens/statsscreens/NutrStats'
+import NutritionQuestCameraRoll from './components/quests/NutritionQuestCameraRoll';
+import TimePicker from './components/common/TimePicker'
 
 const Routercomponent = () => {
   return (
@@ -83,10 +98,8 @@ const Routercomponent = () => {
           <Scene key='heroment' component={HeroMent} backTitle='Back' title="Mental Wellness"/>
           <Scene key='heroscore' component={HeroScore} header={null}/>
     </Scene>
-
     </Router>
-  )
-}
+  );
+};
 
-
-export default Routercomponent
+export default Routercomponent;

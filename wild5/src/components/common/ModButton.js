@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 4,
     width: "80%",
-    alignSelf: 'center',
+    alignSelf: "center"
   },
   buttonLabel: {
     color: "white",

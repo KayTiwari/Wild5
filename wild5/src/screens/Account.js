@@ -1,16 +1,14 @@
-import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import React, { Component } from "react";
+import { View, Text } from "react-native";
 
 class Account extends Component {
   render() {
     return (
-     <View>
-       <Text>
-         Account
-       </Text>
-     </View>
-    )
+      <View>
+        <Text>Account</Text>
+      </View>
+    );
   }
 }
 
-export default Account
+export default Account;
