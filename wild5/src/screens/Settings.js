@@ -224,8 +224,10 @@ class Settings extends Component<Props> {
             </View>
             </View>
           </View>
-          <View style={{marginTop: 20, marginLeft: '5%'}}>
+          <Text style={{ fontSize: 20, marginLeft: "5%", marginTop: 20 }}>Quests</Text>
+          <View style={{borderTopWidth: 1, borderTopColor: 'black', width: '90%', marginLeft: '5%'}}>
           <TouchableOpacity style={{
+          marginTop: 15,
           borderRadius: 20,
           width:'45%',
           height: 60,
@@ -234,7 +236,9 @@ class Settings extends Component<Props> {
           }}
           onPress={()=>Actions.nutritionquestcameraroll()}
           >
+            <View style={{alignItems: 'center'}}>
             <Text style={{alignSelf:'center', fontWeight:'bold'}}>Nutrition Quest{"\n"} Photos</Text>
+            </View>
           </TouchableOpacity>
         </View>
         </Container>

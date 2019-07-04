@@ -38,7 +38,7 @@ class Quests extends Component {
             >
               Quests
             </Text>
-
+              <View style={{height: '70%', justifyContent:'space-around'}}>
             <QuestButton
               label="Nutrition"
               color="#E06F26"
@@ -58,14 +58,16 @@ class Quests extends Component {
             <QuestButton
               label="Exercise"
               color="#72B83E"
-              iconName1="cloud"
-              iconName2="leaf"
+              iconName1="bicycle"
+              iconName2="walk"
               onPress={() => Actions.exercisequest()}
             />
 
             <QuestButton
               label="social"
               color="#E93422"
+              iconName1="people"
+              iconName2="mail-open"
               onPress={() => Actions.socialquest()}
             />
 
@@ -74,6 +76,7 @@ class Quests extends Component {
               color="#BD2C95"
               onPress={() => Actions.sleepquest()}
             />
+            </View>
           </View>
         </View>
 
