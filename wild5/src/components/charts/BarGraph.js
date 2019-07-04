@@ -1,7 +1,6 @@
 import React from "react";
 import { BarChart, Grid } from "react-native-svg-charts";
 import { Defs, LinearGradient, Stop } from "react-native-svg";
-// import console = require('console');
 
 class BarGraph extends React.PureComponent {
   render() {

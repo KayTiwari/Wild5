@@ -60,7 +60,7 @@ class NewLoginScreen extends Component {
   render() {
     return (
       <ScrollView>
-        <View style={{ backgroundColor: "white", height: screenheight }}>
+        <View style={{ backgroundColor: "gray", height: screenheight }}>
           {this.state.modal ? (
             <ForgotModal isVisible={this.state.modal} />
           ) : null}
@@ -69,7 +69,7 @@ class NewLoginScreen extends Component {
             style={{
               flex: 1,
               resizeMode: "cover",
-              height: screenheight * 0.6,
+              height: screenheight,
               width: "100%"
             }}
           >
@@ -89,12 +89,16 @@ class NewLoginScreen extends Component {
             <View
               style={{
                 backgroundColor: "white",
-                height: "25%",
+                height: "40%",
                 width: "80%",
                 padding: 30,
                 borderRadius: 5,
                 position: "absolute",
-                top: "40%",
+                top: "35%",
+                shadowColor: 'black',
+                shadowOffset: {width: 4, height: 4},
+                shadowOpacity: 0.5,
+                shadowRadius: 6,
                 alignSelf: "center"
               }}
             >
@@ -128,7 +132,7 @@ class NewLoginScreen extends Component {
           <Text
             style={{
               position: "absolute",
-              top: "55%",
+              top: "50%",
               width: "50%",
               marginBottom: 0,
               alignSelf: "center",
@@ -141,7 +145,7 @@ class NewLoginScreen extends Component {
             <View
               style={{
                 position: "absolute",
-                top: "55%",
+                top: "47%",
                 width: "50%",
                 marginBottom: 0,
                 alignSelf: "center"
@@ -153,7 +157,7 @@ class NewLoginScreen extends Component {
           <View
             style={{
               position: "absolute",
-              top: "65%",
+              top: "55%",
               width: "50%",
               marginTop: 0,
               alignSelf: "center"
@@ -169,7 +173,7 @@ class NewLoginScreen extends Component {
           <View
             style={{
               position: "absolute",
-              top: "73%",
+              top: "62%",
               width: "50%",
               alignSelf: "center"
             }}
@@ -185,7 +189,7 @@ class NewLoginScreen extends Component {
           <View
             style={{
               position: "absolute",
-              top: "80%",
+              top: "70%",
               width: "50%",
               alignSelf: "center"
             }}

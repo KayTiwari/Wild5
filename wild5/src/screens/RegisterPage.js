@@ -98,7 +98,11 @@ class RegisterPage extends Component {
                 backgroundColor: "white",
                 marginLeft: "5%",
                 marginRight: "5%",
-                marginTop: "10%"
+                marginTop: "10%",
+                shadowColor: 'black',
+                shadowOffset: {width: 4, height: 4},
+                shadowOpacity: 0.8,
+                shadowRadius: 6,
               }}
             >
               <View>
