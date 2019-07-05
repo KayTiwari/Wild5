@@ -1,17 +1,13 @@
-import React from 'react';
-import {StyleSheet, Text, View, Dimensions} from 'react-native';
-import RNSnapCarousel from 'react-native-snap-carousel';
-import LinearGradient from 'react-native-linear-gradient';
+import React from "react";
+import {StyleSheet, Text, View, Dimensions} from "react-native";
+import RNSnapCarousel from "react-native-snap-carousel";
+import LinearGradient from "react-native-linear-gradient";
 
-const {width: screenWidth} = Dimensions.get('window');
+const {width: screenWidth} = Dimensions.get("window");
 
 class Carousel extends React.Component {
   state = {
     carouselItems: [
-      {
-        id: 1,
-        title: 'Words of Advice',
-      },
       {
         id: 2,
         title: `"Perfection is not the goal, set your goals high and do your best everyday!"`,
@@ -33,16 +29,16 @@ class Carousel extends React.Component {
   renderItem = ({item}) => {
     return (
       <LinearGradient
-        colors={['#22c1c3', '#0AB1E7']}
+        colors={["#22c1c3", "#0AB1E7"]}
         style={{
           flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
+          justifyContent: "center",
+          alignItems: "center",
           padding: 20,
           borderRadius: 5,
         }}
       >
-        <Text style={{color: 'white', fontSize: 20}} adjustsFontSizeToFit>
+        <Text style={{color: "white", fontSize: 20}} adjustsFontSizeToFit>
           {item.title}
         </Text>
       </LinearGradient>
@@ -51,6 +47,7 @@ class Carousel extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.header}>Words of Advice</Text>
         <RNSnapCarousel
           data={this.state.carouselItems}
           sliderWidth={screenWidth}
@@ -59,7 +56,7 @@ class Carousel extends React.Component {
           autoplay={true}
           autoplayInterval={5000}
           loop={true}
-          layout={'default'}
+          layout={"default"}
         />
       </View>
     );
@@ -67,9 +64,14 @@ class Carousel extends React.Component {
 }
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: 10,
+  },
+  header: {
+    color: "#fff",
+    fontSize: 18,
+    marginBottom: 10,
   },
 });
 

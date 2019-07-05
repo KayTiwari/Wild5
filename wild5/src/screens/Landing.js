@@ -13,6 +13,7 @@ import Navbar from "../components/Navbar";
 import landingbackground from "../images/landingbackground.jpg";
 import {withAuthProvider} from "../context/authcontext";
 import {Navigation} from "../components/NavigationCarousel";
+import Carousel from "../components/Carousel";
 
 class Landing extends Component {
   state = {
@@ -58,6 +59,8 @@ class Landing extends Component {
                 style={{width: "100%", resizeMode: "contain"}}
               />
             </View>
+
+            <Carousel />
 
             <View style={{marginTop: "15%", flex: 1}}>
               <Navigation />
