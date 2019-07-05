@@ -66,7 +66,10 @@ class Landing extends Component {
             <View style={{ marginTop: "15%" }}>
               <Button
                 onPress={() => Actions.exercisetracking()}
-                style={{ alignSelf: "center" }}
+                style={{ alignSelf: "center", shadowColor: 'black',
+                shadowOffset: {width: 4, height: 4},
+                shadowOpacity: 0.8,
+                shadowRadius: 6, }}
                 success
                 large
                 iconright
