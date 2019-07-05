@@ -3,6 +3,7 @@ import {TouchableOpacity, StyleSheet, Text, View} from "react-native";
 import {Icon} from "native-base";
 import {Actions} from "react-native-router-flux";
 import LinearGradient from "react-native-linear-gradient";
+import {withAuthProvider} from "../context/authcontext";
 
 const navigationItems = [
   {
@@ -37,7 +38,7 @@ const navigationItems = [
   },
 ];
 
-export function Navigation() {
+export function Navigation(props) {
   const renderItem = React.useCallback(item => {
     return (
       <TouchableOpacity style={styles.touchable} onPress={item.action}>
@@ -52,9 +53,21 @@ export function Navigation() {
   return (
     <View style={styles.container}>
       {navigationItems.map(item => renderItem(item))}
+
+      {renderItem({
+        title: "Today's Progress",
+        icon: "stats",
+        action: () => {
+          props.getTrackingData();
+          Actions.progress();
+        },
+        background: ["#0b2261", "#762e73"],
+      })}
     </View>
   );
 }
+
+export default withAuthProvider(Navigation);
 
 const styles = StyleSheet.create({
   container: {

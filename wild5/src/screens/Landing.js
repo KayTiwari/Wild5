@@ -8,23 +8,12 @@ import {
 } from "react-native";
 import {Container} from "native-base";
 import wild5title from "../images/wild-5-logo-r-color.png";
-import {Actions} from "react-native-router-flux";
 import Navbar from "../components/Navbar";
 import landingbackground from "../images/landingbackground.jpg";
-import {withAuthProvider} from "../context/authcontext";
-import {Navigation} from "../components/NavigationCarousel";
+import Navigation from "../components/LandingNavigation";
 import Carousel from "../components/Carousel";
 
-class Landing extends Component {
-  state = {
-    account: 0,
-  };
-
-  progressPress = () => {
-    this.props.getTrackingData();
-    Actions.progress();
-  };
-
+export default class Landing extends Component {
   render() {
     return (
       <Container>
@@ -95,5 +84,3 @@ const styles = StyleSheet.create({
     backgroundColor: "#333",
   },
 });
-
-export default withAuthProvider(Landing);
