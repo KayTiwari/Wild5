@@ -5,7 +5,7 @@ import {
   ImageBackground,
   Dimensions,
   ScrollView
-} from "react-native";
+} from "react-native"; 
 import { Text, Spinner } from "native-base";
 import ForgotModal from "../modals/NewForgotModal";
 import firebase from "firebase";
