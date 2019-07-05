@@ -4,7 +4,6 @@ import {
   ScrollView,
   StyleSheet,
   Image,
-  Dimensions,
   ImageBackground,
 } from "react-native";
 import {Container} from "native-base";
@@ -13,9 +12,8 @@ import {Actions} from "react-native-router-flux";
 import Navbar from "../components/Navbar";
 import landingbackground from "../images/landingbackground.jpg";
 import {withAuthProvider} from "../context/authcontext";
-import {NavigationCarousel} from "../components/NavigationCarousel";
+import {Navigation} from "../components/NavigationCarousel";
 
-const screenheight = Dimensions.get("window").height;
 class Landing extends Component {
   state = {
     account: 0,
@@ -32,7 +30,7 @@ class Landing extends Component {
         <ScrollView>
           <ImageBackground
             source={landingbackground}
-            style={{width: "100%", height: screenheight}}
+            style={{width: "100%", flex: 1}}
             blurRadius={3}
           >
             <View
@@ -62,7 +60,7 @@ class Landing extends Component {
             </View>
 
             <View style={{marginTop: "15%", flex: 1}}>
-              <NavigationCarousel />
+              <Navigation />
             </View>
           </ImageBackground>
         </ScrollView>
