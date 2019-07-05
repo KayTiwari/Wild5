@@ -22,7 +22,7 @@ class Quests extends Component {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          height: screenheight
+          flex: 1
         }}
       >
         <View>
@@ -79,7 +79,6 @@ class Quests extends Component {
             </View>
           </View>
         </View>
-
         <Navbar />
       </Container>
     );
