@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Button, Text, Icon, Container } from "native-base";
 import { ScrollView, View, Dimensions, StyleSheet } from "react-native";
+import { human, iOSUIKit, sanFranciscoWeights, iOSColors } from 'react-native-typography'
 import Navbar from "../components/Navbar";
 import { Actions } from "react-native-router-flux";
+import { Tile } from 'react-native-elements'
 
 const screenheight = Dimensions.get("window").height;
 const screenwidth = Dimensions.get("window").width;
@@ -14,156 +16,112 @@ class NewRoadMap extends Component {
 
   render() {
     return (
-      <Container
+      <View
         style={{
           height: screenheight,
           width: screenwidth,
           display: "flex",
+          backgroundColor: '#fcd670',
           flexDirection: "column"
         }}
       >
         <ScrollView>
-          <View style={{ borderColor: "red" }}>
+          <View style={{ }}>
             <Text
-              style={{
+              style={[{
                 textAlign: "center",
                 fontSize: 30,
                 fontWeight: "600",
-                marginTop: "20%"
-              }}
+                marginTop: "20%",
+                shadowColor: 'black',
+                shadowOffset: {width: 4, height: 4},
+                shadowOpacity: 0.4,
+                shadowRadius: 6,
+              }, sanFranciscoWeights.heavy]}
             >
               The Road To Wellness
             </Text>
             <Text
-              style={{
+              style={[{
                 textAlign: "center",
                 fontSize: 20,
                 fontWeight: "600",
-                marginBottom: "20%"
-              }}
+                marginBottom: "20%",
+                color: 'white',
+                shadowColor: 'black',
+                shadowOffset: {width: 4, height: 4},
+                shadowOpacity: 0.5,
+                shadowRadius: 6,
+              }, iOSUIKit.title3White]}
             >
               Learn about the Wild 5
             </Text>
           </View>
 
-          {/* <View style={{marginBottom: '20%'}}>
-            <Button onPress={() => Actions.trackingform()} style={styles.tracking} bordered info large iconright>
-                <Text style={{}}>Wellness Tracking Form</Text>
-            </Button>
-        </View> */}
+          <View>
+          <Tile
+            imageSrc={require('../images/exerciselesson.jpeg')}
+            title="Exercise"
+            featured
+            activeOpacity={.8}
+            titleStyle={[iOSUIKit.title3EmphasizedWhiteObject]}
+            captionStyle={human.bodyWhiteObject}
+            onPress={() => Actions.exerciselesson()}
+            caption="“To enjoy the glow of good health, you must exercise.”"
+          />
+          </View>
+          
 
           <View>
-            <Button
-              onPress={() => Actions.exerciselesson()}
-              style={{ alignSelf: "center", backgroundColor: "#72B83E" }}
-              large
-              iconright
-            >
-              <Icon name="bicycle" />
-              <Text>Exercise</Text>
-            </Button>
+          <Tile
+            imageSrc={require('../images/mindfulnesslesson.jpeg')}
+            title="Mindfulness"
+            featured
+            activeOpacity={.8}
+            onPress={() => Actions.mindfulnesslesson()}
+            caption="“The past is already gone, the future is not yet here. There’s only one moment for you to live.”"
+          />
           </View>
-
-          <Text
-            style={{
-              color: "white",
-              fontSize: 50,
-              fontWeight: "600",
-              alignSelf: "center"
-            }}
-          >
-            .
-          </Text>
 
           <View>
-            <Button
-              style={styles.mindfulness}
-              onPress={() => Actions.mindfulnesslesson()}
-              success
-              large
-              iconright
-            >
-              <Icon name="cloud" />
-              <Text>Mindfulness</Text>
-            </Button>
+          <Tile
+            imageSrc={require('../images/sleeptile.jpeg')}
+            title="Sleep"
+            featured
+            activeOpacity={.8}
+            onPress={() => Actions.sleeplesson()}
+            caption="“There is a time for many words, and there is also a time for sleep.”"
+          />
           </View>
 
-          <Text
-            style={{
-              color: "white",
-              fontSize: 50,
-              fontWeight: "600",
-              alignSelf: "center"
-            }}
-          >
-            .
-          </Text>
 
           <View>
-            <Button
-              style={styles.sleep}
-              onPress={() => Actions.sleeplesson()}
-              success
-              large
-              iconright
-            >
-              <Icon name="moon" />
-              <Text>Sleep</Text>
-            </Button>
+          <Tile
+            imageSrc={require('../images/socialtile.jpeg')}
+            title="Social"
+            featured
+            activeOpacity={.8}
+            onPress={() => Actions.sociallesson()}
+            caption="“Alone we can do so little; together we can do so much.”"
+          />
           </View>
-
-          <Text
-            style={{
-              color: "white",
-              fontSize: 50,
-              fontWeight: "600",
-              alignSelf: "center"
-            }}
-          >
-            .
-          </Text>
 
           <View>
-            <Button
-              style={styles.social}
-              onPress={() => Actions.sociallesson()}
-              success
-              large
-              iconright
-            >
-              <Icon name="bonfire" />
-              <Text>Social</Text>
-            </Button>
+          <Tile
+            imageSrc={require('../images/nutritiontile.jpeg')}
+            title="Nutrition"
+            featured
+            activeOpacity={.8}
+            onPress={() => Actions.nutritionlesson()}
+            caption="“Our bodies are our gardens our wills are our gardeners.”"
+          />
           </View>
 
-          <Text
-            style={{
-              color: "white",
-              fontSize: 50,
-              fontWeight: "600",
-              alignSelf: "center"
-            }}
-          >
-            .
-          </Text>
-
-          <View>
-            <Button
-              style={styles.nutrition}
-              onPress={() => Actions.nutritionlesson()}
-              success
-              large
-              iconright
-            >
-              <Icon name="restaurant" />
-              <Text>Nutrition</Text>
-            </Button>
-          </View>
         </ScrollView>
         <View>
           <Navbar />
         </View>
-      </Container>
+      </View>
     );
   }
 }

@@ -42,6 +42,7 @@
     "react-native-svg": "^9.5.1",
     "react-native-svg-charts": "^5.2.0",
     "react-native-swiper": "^1.5.14",
+    "react-native-typography": "^1.4.1",
     "react-native-vector-icons": "^6.5.0",
     "react-svg-radar-chart": "^1.2.0",
     "tcomb-form-native": "^0.6.20",
