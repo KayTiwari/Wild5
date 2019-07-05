@@ -375,7 +375,7 @@ class Progress extends Component {
           Amazing!
         </Text>
       );
-    } else return "More than one principle";
+    } else return "Multiple Principles";
   };
 
   render() {
@@ -398,7 +398,7 @@ class Progress extends Component {
             </Text>
           </View>
 
-          {this.state.exval ? (
+          {this.state.exval || this.state.mindval || this.state.nutrval || this.state.sleepval || this.state.socval ? (
             <BarGraph
               exval={this.state.exval}
               mindval={this.state.mindval}
@@ -421,7 +421,7 @@ class Progress extends Component {
 
           <View>
             <View>
-              {this.state.exval ? (
+              {this.state.exval || this.state.mindval || this.state.nutrval || this.state.sleepval || this.state.socval ? (
                 <Text
                   style={{
                     fontSize: 15,
@@ -444,7 +444,7 @@ class Progress extends Component {
                   Today's best principle: None
                 </Text>
               )}
-              {this.state.exval ? (
+              {this.state.exval || this.state.mindval || this.state.nutrval || this.state.sleepval || this.state.socval ? (
                 <Text
                   style={{
                     fontSize: 15,
@@ -464,7 +464,7 @@ class Progress extends Component {
                     fontWeight: "600"
                   }}
                 >
-                  Today's best principle: None
+                  Today's least practiced principle: None
                 </Text>
               )}
             </View>

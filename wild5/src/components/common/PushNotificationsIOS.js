@@ -41,7 +41,13 @@ class PushNotificationsIOS {
     });
   };
 
-  scheduleNotif = pillar => {
+  // PushNotification.localNotificationSchedule({
+  //... You can use all the options from localNotifications
+  // message: "My Notification Message", // (required)
+  // repeatType: 'day',
+  //});
+
+  scheduleNotif = (pillar, date) => {
     // AlertIOS.alert('schedulerunning')
     this.lastId++;
 
@@ -74,7 +80,8 @@ class PushNotificationsIOS {
     };
 
     if (pillar === "exercise") {
-      config.date = new Date(Date.now() + 30 * 1000);
+      console.log(date)
+      config.date = new Date(date);
       config.message = "Have you Exercised today?";
     } else if (pillar === "mind") {
       config.date = new Date(Date.now() + 30 * 1000);

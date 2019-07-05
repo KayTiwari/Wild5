@@ -27,7 +27,6 @@ export default class AuthProvider extends Component {
       this.setState({
         user: userEm
       });
-      console.log(this.state);
     } else {
       console.log("noperz");
     }
@@ -50,6 +49,18 @@ export default class AuthProvider extends Component {
     ref.on("value", this.gotData, this.errData);
   };
 
+  getPrincipleData = () => {
+    var database = firebase.database();
+            var ref = database.ref(`Surveys/${this.state.user}`);
+            ref.on('value', this.gotPrincData, this.errData)
+  }
+
+  getHeroData = () => {
+    var database = firebase.database();
+    var ref = database.ref(`HERO/${this.state.user}`);
+    ref.on('value', this.gotHeroData, this.errData)
+  }
+
   gotData = data => {
     newData = data.val();
     this.setState(
@@ -65,6 +76,29 @@ export default class AuthProvider extends Component {
     );
   };
 
+  gotPrincData = data => {
+    newData = data.val();
+    this.setState({
+      princData: newData || {}
+    }, () => {
+      this.setState({
+        ready1: true
+      })
+    })
+  }
+
+  gotHeroData = data => {
+    newData = data.val();
+    this.setState({
+      heroData: newData || {}
+    }, () => {
+      this.setState({
+        ready2: true
+      })
+    })
+    console.log(this.state.heroData);
+  }
+
   errData = err => {
     console.log(err);
   };
@@ -75,6 +109,8 @@ export default class AuthProvider extends Component {
         value={{
           getUser: this.getUser,
           getTrackingData: this.getTrackingData,
+          getPrincipleData: this.getPrincipleData,
+          getHeroData: this.getHeroData,
           ...this.state
         }}
       >

@@ -26,6 +26,7 @@ class SocialQuest extends Component {
   state = {
     socialInteraction: [],
     interactions: [
+      " ",
       "Dinner with family or friends",
       "Seeing a movie with family or friends",
       "Having coffee with family or friends",

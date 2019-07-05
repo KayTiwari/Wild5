@@ -1,31 +1,31 @@
-import React from 'react';
-import {Scene, Router, Actions} from 'react-native-router-flux';
-import Landing from './screens/Landing';
-import Account from './screens/Account';
-import EducationWellnessRoadMap from './screens/NewRoadMap';
-import ExerciseTracking from './screens/trackingscreens/ExerciseTracking';
-import MindfulnessTracking from './screens/trackingscreens/MindfulnessTracking';
-import SleepTracking from './screens/trackingscreens/SleepTracking';
-import SocialTracking from './screens/trackingscreens/SocialTracking';
-import NutritionTracking from './screens/trackingscreens/NutritionTracking';
-import LearnMore from './screens/LearnMore';
-import Settings from './screens/Settings';
-import Quests from './screens/Quests';
-import Progress from './screens/trackingscreens/Progress';
-import Statistics from './screens/Statistics';
-import {About, FAQ, Feedback} from './screens/accountmenu';
-import Help from './screens/accountmenu/Help';
-import TrackingForm from './screens/TrackingForm';
+import React from "react";
+import {Scene, Router, Actions} from "react-native-router-flux";
+import Landing from "./screens/Landing";
+import Account from "./screens/Account";
+import EducationWellnessRoadMap from "./screens/NewRoadMap";
+import ExerciseTracking from "./screens/trackingscreens/ExerciseTracking";
+import MindfulnessTracking from "./screens/trackingscreens/MindfulnessTracking";
+import SleepTracking from "./screens/trackingscreens/SleepTracking";
+import SocialTracking from "./screens/trackingscreens/SocialTracking";
+import NutritionTracking from "./screens/trackingscreens/NutritionTracking";
+import LearnMore from "./screens/LearnMore";
+import Settings from "./screens/Settings";
+import Quests from "./screens/Quests";
+import Progress from "./screens/trackingscreens/Progress";
+import Statistics from "./screens/Statistics";
+import {About, FAQ, Feedback} from "./screens/accountmenu";
+import Help from "./screens/accountmenu/Help";
+import TrackingForm from "./screens/TrackingForm";
 import {
   ExerciseLesson,
   MindfulnessLesson,
   NutritionLesson,
   SocialLesson,
   SleepLesson,
-} from './screens/lessonscreens/';
-import NutritionQuest from './components/quests/NutritionQuests';
-import MindfulnessQuest from './components/quests/MindfulnessQuest';
-import Herointro from './screens/HERO/Herointro';
+} from "./screens/lessonscreens/";
+import NutritionQuest from "./components/quests/NutritionQuests";
+import MindfulnessQuest from "./components/quests/MindfulnessQuest";
+import Herointro from "./screens/HERO/Herointro";
 import {
   HeroEnth,
   HeroHappy,
@@ -33,19 +33,27 @@ import {
   HeroOpt,
   HeroRes,
   HeroScore,
-} from './screens/HERO';
-import ExerciseQuest from './components/quests/ExerciseQuest';
-import NewLogin from './screens/NewLoginScreen';
-import RegisterPage from './screens/RegisterPage';
-import SocialQuest from './components/quests/SocialQuest';
-import SleepQuest from './components/quests/SleepQuest';
-import NutritionQuestCameraRoll from './components/quests/NutritionQuestCameraRoll';
+} from "./screens/HERO";
+import ExerciseQuest from "./components/quests/ExerciseQuest";
+import NewLogin from "./screens/NewLoginScreen";
+import RegisterPage from "./screens/RegisterPage";
+import SocialQuest from "./components/quests/SocialQuest";
+import SleepQuest from "./components/quests/SleepQuest";
+import NutritionQuestCameraRoll from "./components/quests/NutritionQuestCameraRoll";
+import PrincipleStats from "./screens/statsscreens/PrincipleStats";
+import HeroTotalStats from "./screens/statsscreens/HeroTotalStats";
+import ExerciseStats from "./screens/statsscreens/ExerciseStats";
+import MindfulStats from "./screens/statsscreens/MindfulStats";
+import SleepStats from "./screens/statsscreens/SleepStats";
+import SocialStats from "./screens/statsscreens/SocialStats";
+import NutriStats from "./screens/statsscreens/NutrStats";
+import TimePicker from "./components/common/TimePicker";
 
 const Routercomponent = () => {
   return (
     <Router>
       <Scene key="root">
-        <Scene key="newlogin" component={NewLogin} header={null} />
+        <Scene key="newlogin" component={NewLogin} header={null} initial />
         <Scene
           key="registerpage"
           component={RegisterPage}
@@ -162,6 +170,18 @@ const Routercomponent = () => {
           header={null}
           title="Statistics"
         />
+        <Scene
+          key="principlestats"
+          component={PrincipleStats}
+          backTitle={"Stats"}
+          title="Principles"
+        />
+        <Scene key="herostats" component={HeroTotalStats} backTitle={"Stats"} />
+        <Scene key="exstats" component={ExerciseStats} backTitle={"Stats"} />
+        <Scene key="mindstats" component={MindfulStats} backTitle={"Stats"} />
+        <Scene key="sleepstats" component={SleepStats} backTitle={"Stats"} />
+        <Scene key="socialstats" component={SocialStats} backTitle={"Stats"} />
+        <Scene key="nutristats" component={NutriStats} backTitle={"Stats"} />
         <Scene
           key="settings"
           backTitle="Back"

@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { View, Button, Text, Dimensions } from "react-native";
+import { View, Button, Text, Dimensions, TouchableOpacity } from "react-native";
 import { Container } from "native-base";
 import Navbar from "../components/Navbar";
 import ToggleSwitch from "toggle-switch-react-native";
 import PushNotificationIOS from "../components/common/PushNotificationsIOS";
 import appConfig from "../../app.json";
+import TimePicker from '../components/common/TimePicker'
+import { Actions } from 'react-native-router-flux'
 
 const { height, width } = Dimensions.get("window");
 
@@ -14,16 +16,14 @@ class Settings extends Component<Props> {
     super(props);
     this.state = {
       // startDate: new Date(),
-      firstName: "hello",
-      lastName: "",
-      email: "",
-      birthday: new Date(),
       exerciseReminder: false,
       mindfulnessReminder: false,
       sleepReminder: false,
       socialReminder: false,
       nutritionReminder: false,
+      showTimer: false,
       senderId: appConfig.senderID,
+      chosenDate: new Date(),
       reminders: [
         {
           title: "",
@@ -34,15 +34,41 @@ class Settings extends Component<Props> {
     this.PushNotificationIOS = new PushNotificationIOS(this.onNotif);
   }
 
-  exerciseReminder = pillar => {
+  setDate = (newDate) => {
+    this.setState({chosenDate: newDate.toString().slice(15,8)});
+  }
+
+  showTimePicker = () => {
+    return (
+      <TimePicker
+        date={this.state.chosenDate}
+        onDateChange={this.setDate}
+        showTimer={this.state.showTimer}
+        onConfirm={this.showTimer()}
+        onCancel={this.showTimer()}
+      />
+    )
+  }
+
+  showTimer = () => {
+    return () => {
+    this.setState( prevState =>({
+      showTimer: false
+    }))
+  }
+  }
+  
+
+  exerciseReminder = (pillar, date) => {
     return e => {
       this.setState(
         prevState => ({
+          showTimer: !prevState.showTimer,
           exerciseReminder: !prevState.exerciseReminder
         }),
         () => {
           if (this.state.exerciseReminder) {
-            this.PushNotificationIOS.scheduleNotif(pillar);
+            this.PushNotificationIOS.scheduleNotif(pillar, date);
           }
         }
       );
@@ -108,11 +134,7 @@ class Settings extends Component<Props> {
     };
   };
 
-  setDate = newdate => {
-    this.setState({
-      birthday: newdate
-    });
-  };
+  
 
   onRegister = token => {
     Alert.alert("Registered !", JSON.stringify(token));
@@ -133,22 +155,27 @@ class Settings extends Component<Props> {
     return (
       <>
         <Container>
-          <View style={{ marginTop: "10%", marginLeft: "5%" }}>
+          {(this.state.showTimer) ? this.showTimePicker() : null}
+          <View style={{ marginTop: "12%", marginLeft: "5%" }}>
+          <View style={{alignSelf: 'center'}}>
+          <Text style={{fontSize: 36, marginBottom: 10, fontWeight: '900'}}>Settings</Text>
+          </View>
             <Text style={{ fontSize: 20 }}>Notifications</Text>
-            <View>
-              <Text>Exercise</Text>
+            <View style={{borderTopWidth: 1, borderTopColor: 'black', width: '90%'}}>
+            <View style={{marginTop: 15}}>
+              <Text style={{fontSize: 20}}>Exercise</Text>
               <ToggleSwitch
                 // label='Exercise'
-                labelStyle={{ color: "black", fontWeight: "900" }}
+                labelStyle={{ color: "black", fontWeight: "900"}}
                 size="large"
                 onColor="#73BA3F"
                 offColor="#d5eac5"
                 isOn={this.state.exerciseReminder}
-                onToggle={this.exerciseReminder("exercise")}
+                onToggle={this.exerciseReminder("exercise", (this.state.chosenDate)?this.state.chosenDate : null)}
               />
             </View>
             <View>
-              <Text>Mindfulness</Text>
+              <Text style={{fontSize: 20}}>Mindfulness</Text>
               <ToggleSwitch
                 // label='Mindfulness'
                 labelStyle={{ color: "black", fontWeight: "900" }}
@@ -160,7 +187,7 @@ class Settings extends Component<Props> {
               />
             </View>
             <View>
-              <Text>Sleep</Text>
+              <Text style={{fontSize: 20}}>Sleep</Text>
               <ToggleSwitch
                 // label='Sleep'
                 labelStyle={{ color: "black", fontWeight: "900" }}
@@ -172,7 +199,7 @@ class Settings extends Component<Props> {
               />
             </View>
             <View>
-              <Text>Social</Text>
+              <Text style={{fontSize: 20}}>Social</Text>
               <ToggleSwitch
                 // label='Social'
                 labelStyle={{ color: "black", fontWeight: "900" }}
@@ -184,7 +211,7 @@ class Settings extends Component<Props> {
               />
             </View>
             <View>
-              <Text>Nutrition</Text>
+              <Text style={{fontSize: 20}}>Nutrition</Text>
               <ToggleSwitch
                 // label='Nutrition'
                 labelStyle={{ color: "black", fontWeight: "900" }}
@@ -195,7 +222,25 @@ class Settings extends Component<Props> {
                 onToggle={this.nutritionReminder("nutrition")}
               />
             </View>
+            </View>
           </View>
+          <Text style={{ fontSize: 20, marginLeft: "5%", marginTop: 20 }}>Quests</Text>
+          <View style={{borderTopWidth: 1, borderTopColor: 'black', width: '90%', marginLeft: '5%'}}>
+          <TouchableOpacity style={{
+          marginTop: 15,
+          borderRadius: 20,
+          width:'45%',
+          height: 60,
+          backgroundColor: '#E17026',
+          justifyContent:'center'
+          }}
+          onPress={()=>Actions.nutritionquestcameraroll()}
+          >
+            <View style={{alignItems: 'center'}}>
+            <Text style={{alignSelf:'center', fontWeight:'bold'}}>Nutrition Quest{"\n"} Photos</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
         </Container>
         <Navbar />
       </>
