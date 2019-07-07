@@ -60,7 +60,7 @@ class Statistics extends Component{
             </View>
             </View>
             
-            <ScrollView style={{}}>
+            <ScrollView bounces={false} style={{}}>
                 <View style={{alignSelf: 'center', marginTop:'10%' }}>
                     <Button large danger style={{shadowColor: 'black',
                     shadowOffset: {width: 4, height: 4},

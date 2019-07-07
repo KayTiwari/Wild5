@@ -27,7 +27,7 @@ class Quests extends Component {
           backgroundColor:'white'
         }}
       >
-        <ScrollView>
+        <ScrollView bounces={false}>
         <View>
           <View>
             <Text

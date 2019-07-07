@@ -17,7 +17,7 @@ export default class Landing extends Component {
   render() {
     return (
       <Container>
-        <ScrollView>
+        <ScrollView bounces={false}>
           <ImageBackground
             source={landingbackground}
             style={{width: "100%", flex: 1}}
