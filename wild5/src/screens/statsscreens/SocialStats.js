@@ -70,7 +70,7 @@ class SocialStats extends Component{
         return (
             <View style={{height: screenheight, backgroundColor:'white'}}>
                 <View>
-                    <Text style={{marginTop: '10%', fontSize: 25, fontWeight: '600', textAlign:'center'}}>Social Connectedness Analysis</Text>
+                    <Text style={{marginTop: '10%', fontSize: 25, fontWeight: '600', textAlign:'center'}}>Social Connectedness Reflection</Text>
                 </View>
 
                 {this.state.calledfamily || this.state.metfamily || this.state.calledfriend || this.state.metfriend  ? <View>

@@ -99,7 +99,7 @@ class ExerciseStats extends Component{
         return (
             <View style={{height: screenheight, backgroundColor:'white'}}>
                 <View>
-                    <Text style={{marginTop: '10%', fontSize: 25, fontWeight: '600', textAlign:'center'}}>Exercise Analysis</Text>
+                    <Text style={{marginTop: '10%', fontSize: 25, fontWeight: '600', textAlign:'center'}}>Exercise Reflection</Text>
                 </View>
 
                 <View>
