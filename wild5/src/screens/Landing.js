@@ -58,7 +58,7 @@ export default class Landing extends Component {
           </ImageBackground>
         </ScrollView>
 
-        <Navbar />
+        <Navbar homedisable/>
       </Container>
     );
   }

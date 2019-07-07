@@ -122,7 +122,7 @@ class NewRoadMap extends Component {
 
         </ScrollView>
         <View>
-          <Navbar />
+          <Navbar learndisable/>
         </View>
       </View>
     );
