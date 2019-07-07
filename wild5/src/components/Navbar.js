@@ -69,7 +69,7 @@ class Navbar extends Component {
         </Button> */}
               <Button onPress={() => Actions.feedback()}>
                 <Icon name={"chatbubbles"} />
-                <Text style={{ fontSize: 9 }}>Feedback</Text>
+                <Text style={{ fontSize: 9 }}>FAQ</Text>
               </Button>
               <Button onPress={() => Actions.settings()}>
                 <Icon name={"ios-settings"} />

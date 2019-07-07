@@ -6,7 +6,7 @@ import {
   Image,
   ImageBackground,
 } from "react-native";
-import {Container} from "native-base";
+import {Container, Button, Text } from "native-base";
 import wild5title from "../images/wild-5-logo-r-color.png";
 import Navbar from "../components/Navbar";
 import landingbackground from "../images/landingbackground.jpg";
@@ -50,32 +50,7 @@ export default class Landing extends Component {
             </View>
 
             <Carousel />
-            <View style={{ marginTop: "15%" }}>
-              <Button
-                onPress={() => Actions.exercisetracking()}
-                style={{ alignSelf: "center", shadowColor: 'black',
-                shadowOffset: {width: 4, height: 4},
-                shadowOpacity: 0.8,
-                shadowRadius: 6, }}
-                success
-                large
-                iconright
-              >
-                <Text>Track Exercise</Text>
-              </Button>
-            </View>
-
-            <View style={{ marginTop: "15%" }}>
-              <Button
-                onPress={() => Actions.mindfulnesstracking()}
-                style={styles.mindfulness}
-                success
-                large
-                iconright
-              >
-                <Text>Track Mindfulness</Text>
-              </Button>
-            </View>
+            
 
             <View style={{marginTop: "15%", flex: 1}}>
               <Navigation />

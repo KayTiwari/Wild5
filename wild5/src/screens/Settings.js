@@ -240,6 +240,14 @@ class Settings extends Component<Props> {
             <Text style={{alignSelf:'center', fontWeight:'bold'}}>Nutrition Quest{"\n"} Photos</Text>
             </View>
           </TouchableOpacity>
+
+          <Button onPress={() => Actions.feedback()}>
+            <Text>Feedback</Text>
+          </Button>
+
+          <Button>
+            <Text>Logout</Text>
+          </Button>
         </View>
         </Container>
         <Navbar />

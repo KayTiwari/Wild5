@@ -53,9 +53,9 @@ const Routercomponent = () => {
   return (
     <Router>
    <Scene key="root">
-          <Scene key='newlogin' component={NewLogin} header={null} initial/>
+          <Scene key='newlogin' component={NewLogin} header={null} />
           <Scene key='registerpage' component={RegisterPage} title="Register" backTitle="Back to Login"/>
-          <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
+          <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} initial/>
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More'/>
           <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back' />
@@ -73,7 +73,7 @@ const Routercomponent = () => {
           <Scene key='socialquest' component={SocialQuest} title="social Quest" header={null}/>
           <Scene key='nutritionquestcameraroll' component={NutritionQuestCameraRoll} title="nutritionquestcameraroll" header={null}  />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
-          <Scene key='statistics' component={Statistics} header={null}  title="Statistics" initial/>
+          <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
           <Scene key='principlestats' component={PrincipleStats} backTitle={'Stats'}  title="Principles" />
           <Scene key='herostats' component={HeroTotalStats} backTitle={'Stats'} />
           <Scene key='exstats' component={ExerciseStats} backTitle={'Stats'} />
