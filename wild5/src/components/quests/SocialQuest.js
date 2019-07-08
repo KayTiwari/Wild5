@@ -210,7 +210,7 @@ class SocialQuest extends Component {
               <View style={{ flexDirection: 'row', height: '15%', justifyContent: 'flex-start', marginLeft: '7%'}}>
               <View>
               <View style={{flexDirection:'row'}}>
-              <Text style={{color: 'red', fontSize: 20, marginBottom: 15}}>Pick Social Type</Text><TouchableOpacity onPress={this.showHelp}><Icon name='help-circle-outline' style={{marginLeft:7, fontSize: 23}} onPress={this.showHelp}/></TouchableOpacity>
+              <Text style={{color: 'red', fontSize: 20, marginBottom: 15}}>Pick Social Type</Text><TouchableOpacity onPress={""}><Icon name='help-circle-outline' style={{marginLeft:7, fontSize: 23}} onPress={""}/></TouchableOpacity>
               </View>
               <RadioForm
               radio_props={[

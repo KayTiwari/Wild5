@@ -55,7 +55,7 @@ const Routercomponent = () => {
    <Scene key="root">
           <Scene key='newlogin' component={NewLogin} header={null} />
           <Scene key='registerpage' component={RegisterPage} title="Register" backTitle="Back to Login" />
-          <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
+          <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} initial/>
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More' />
           <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back' />

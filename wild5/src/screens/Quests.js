@@ -51,7 +51,7 @@ class Quests extends Component {
             />
 
             <QuestButton
-              label="Meditations"
+              label="Mindfulness"
               color="#0AB1E8"
               iconName1="cloud"
               iconName2="leaf"
@@ -67,7 +67,7 @@ class Quests extends Component {
             />
 
             <QuestButton
-              label="social"
+              label="Social"
               color="#E93422"
               iconName1="people"
               iconName2="mail-open"
@@ -75,17 +75,15 @@ class Quests extends Component {
             />
 
             <QuestButton
-              label="sleep"
+              label="Sleep"
               color="#BD2C95"
+              iconName1="moon"
+              iconName2="bed"
               onPress={() => Actions.sleepquest()}
             />
             </View>
           </View>
         </View>
-<<<<<<< HEAD
-        <Navbar />
-      </Container>
-=======
 
         </ScrollView>
         <View>
@@ -93,7 +91,6 @@ class Quests extends Component {
         </View>
       </View>
       </>
->>>>>>> 24abde40b60cf5b64fd12792f2b70c6383c62d6e
     );
   }
 }

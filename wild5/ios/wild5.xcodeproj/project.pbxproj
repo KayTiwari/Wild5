@@ -46,7 +46,7 @@
 		3F28889887BA4ECCAC8E874A /* libRNSVG-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECEA06DD33E0455682CC224E /* libRNSVG-tvOS.a */; };
 		42358486F88143D1A58F3C71 /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D21C957EA4E99B0198346 /* libRNVectorIcons-tvOS.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		97B59C16EDC3477082E9680C /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F69759C8BEEA40A2AE9CBB81 /* libBVLinearGradient.a */; };
+		A918D00B22D3EF20000441FB /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A918CFDC22D3EC49000441FB /* libBVLinearGradient.a */; };
 		A91B45B422C70A050006AB9D /* libReactNativeAudioToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A91B45B322C6FE320006AB9D /* libReactNativeAudioToolkit.a */; };
 		A9521F6A22D28AE700165807 /* happiness_meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9521F6122D28AE700165807 /* happiness_meditation.mp3 */; };
 		A9521F6B22D28AE700165807 /* five_minute_breathing_space.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9521F6222D28AE700165807 /* five_minute_breathing_space.mp3 */; };
@@ -156,20 +156,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 1441618E1BD0A79300FA4F59;
 			remoteInfo = RCTContacts;
-		};
-		0EFBA6CB22D1571C003AEAAA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EA5F8FEB727343DEA6ED7CEA /* BVLinearGradient.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = BVLinearGradient;
-		};
-		0EFBA6CD22D1571C003AEAAA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EA5F8FEB727343DEA6ED7CEA /* BVLinearGradient.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 64AA15081EF7F30100718508;
-			remoteInfo = "BVLinearGradient-tvOS";
 		};
 		0EFDCD7C228C99FC00CDA57F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -381,6 +367,20 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		A918CFD922D3EC49000441FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9EAB71F54EB14DBF9DD20A7B /* BVLinearGradient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = BVLinearGradient;
+		};
+		A918CFDB22D3EC49000441FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9EAB71F54EB14DBF9DD20A7B /* BVLinearGradient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 64AA15081EF7F30100718508;
+			remoteInfo = "BVLinearGradient-tvOS";
+		};
 		A91B45B222C6FE320006AB9D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 28155EC8158B49A2995E5077 /* ReactNativeAudioToolkit.xcodeproj */;
@@ -470,6 +470,7 @@
 		95219C752952442DBF9E6BCF /* libReactNativeAudioToolkit.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeAudioToolkit.a; sourceTree = "<group>"; };
 		975DD66730034EC18A5C6863 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		9781F040C94A46A4BFD3BDE8 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		9EAB71F54EB14DBF9DD20A7B /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		9F6AFC779AC34E268E5F3193 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		A9521F6122D28AE700165807 /* happiness_meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = happiness_meditation.mp3; sourceTree = "<group>"; };
 		A9521F6222D28AE700165807 /* five_minute_breathing_space.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = five_minute_breathing_space.mp3; sourceTree = "<group>"; };
@@ -487,7 +488,6 @@
 		C2A95D85512B453DBA40D97C /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		D48E0E5AEC6C4D2C90A586BB /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		E93E44A4017A40E58D48BDAF /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
-		EA5F8FEB727343DEA6ED7CEA /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		EBC2747C108E4FF38C01BF83 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		ECEA06DD33E0455682CC224E /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -509,6 +509,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A918D00B22D3EF20000441FB /* libBVLinearGradient.a in Frameworks */,
 				A98DB56F22C11F660016D97B /* libRCTContacts.a in Frameworks */,
 				0E7C9EA422AEE4AA00CF4F04 /* libRNSVG.a in Frameworks */,
 				A96D64DC22AB314100108962 /* libRCTPushNotification.a in Frameworks */,
@@ -530,7 +531,6 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				A91B45B422C70A050006AB9D /* libReactNativeAudioToolkit.a in Frameworks */,
 				B548B01B63C345EAADEC1CDB /* libRNSound.a in Frameworks */,
-				97B59C16EDC3477082E9680C /* libBVLinearGradient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,15 +642,6 @@
 			children = (
 				0E8C535A228C93B800F83D13 /* libRNSVG.a */,
 				0E8C535C228C93B800F83D13 /* libRNSVG-tvOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		0EFBA6C722D1571C003AEAAA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0EFBA6CC22D1571C003AEAAA /* libBVLinearGradient.a */,
-				0EFBA6CE22D1571C003AEAAA /* libBVLinearGradient.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -809,7 +800,7 @@
 				942B9DC2450F4C2092ACA583 /* RNSVG.xcodeproj */,
 				28155EC8158B49A2995E5077 /* ReactNativeAudioToolkit.xcodeproj */,
 				234F8BB3545A496C98EA87BC /* RNSound.xcodeproj */,
-				EA5F8FEB727343DEA6ED7CEA /* BVLinearGradient.xcodeproj */,
+				9EAB71F54EB14DBF9DD20A7B /* BVLinearGradient.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -846,6 +837,15 @@
 				00E356EE1AD99517003FC87E /* wild5Tests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* wild5-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* wild5-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A918CFD522D3EC49000441FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A918CFDA22D3EC49000441FB /* libBVLinearGradient.a */,
+				A918CFDC22D3EC49000441FB /* libBVLinearGradient.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1017,8 +1017,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 0EFBA6C722D1571C003AEAAA /* Products */;
-					ProjectRef = EA5F8FEB727343DEA6ED7CEA /* BVLinearGradient.xcodeproj */;
+					ProductGroup = A918CFD522D3EC49000441FB /* Products */;
+					ProjectRef = 9EAB71F54EB14DBF9DD20A7B /* BVLinearGradient.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -1190,20 +1190,6 @@
 			fileType = archive.ar;
 			path = libRCTContacts.a;
 			remoteRef = 0EF6340622C285B400DEE0B0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0EFBA6CC22D1571C003AEAAA /* libBVLinearGradient.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libBVLinearGradient.a;
-			remoteRef = 0EFBA6CB22D1571C003AEAAA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0EFBA6CE22D1571C003AEAAA /* libBVLinearGradient.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libBVLinearGradient.a;
-			remoteRef = 0EFBA6CD22D1571C003AEAAA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		0EFDCD7D228C99FC00CDA57F /* libRNCamera.a */ = {
@@ -1409,6 +1395,20 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		A918CFDA22D3EC49000441FB /* libBVLinearGradient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBVLinearGradient.a;
+			remoteRef = A918CFD922D3EC49000441FB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A918CFDC22D3EC49000441FB /* libBVLinearGradient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBVLinearGradient.a;
+			remoteRef = A918CFDB22D3EC49000441FB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		A91B45B322C6FE320006AB9D /* libReactNativeAudioToolkit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1609,6 +1609,8 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/audio-toolkit/ios/ReactNativeAudioToolkit/ReactNativeAudioToolkit",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 				);
 				INFOPLIST_FILE = wild5Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1645,6 +1647,8 @@
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/@react-native-community/audio-toolkit/ios/ReactNativeAudioToolkit/ReactNativeAudioToolkit",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 				);
 				INFOPLIST_FILE = wild5Tests/Info.plist;
@@ -1684,6 +1688,8 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/audio-toolkit/ios/ReactNativeAudioToolkit/ReactNativeAudioToolkit",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 				);
 				INFOPLIST_FILE = wild5/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1711,6 +1717,8 @@
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/@react-native-community/audio-toolkit/ios/ReactNativeAudioToolkit/ReactNativeAudioToolkit",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 				);
 				INFOPLIST_FILE = wild5/Info.plist;
@@ -1745,6 +1753,8 @@
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/@react-native-community/audio-toolkit/ios/ReactNativeAudioToolkit/ReactNativeAudioToolkit",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 				);
 				INFOPLIST_FILE = "wild5-tvOS/Info.plist";
@@ -1790,6 +1800,8 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/audio-toolkit/ios/ReactNativeAudioToolkit/ReactNativeAudioToolkit",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 				);
 				INFOPLIST_FILE = "wild5-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1833,6 +1845,8 @@
 					"$(SRCROOT)/../node_modules/@react-native-community/audio-toolkit/ios/ReactNativeAudioToolkit/ReactNativeAudioToolkit",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 				);
 				INFOPLIST_FILE = "wild5-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1875,6 +1889,8 @@
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/@react-native-community/audio-toolkit/ios/ReactNativeAudioToolkit/ReactNativeAudioToolkit",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 				);
 				INFOPLIST_FILE = "wild5-tvOSTests/Info.plist";
