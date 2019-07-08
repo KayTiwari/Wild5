@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {Scene, Router, Actions} from 'react-native-router-flux';
 import Landing from './screens/Landing';
@@ -20,7 +21,7 @@ import {
   MindfulnessLesson,
   NutritionLesson,
   SocialLesson,
-  SleepLesson
+  SleepLesson,
 } from "./screens/lessonscreens/";
 import NutritionQuest from "./components/quests/NutritionQuests";
 import MindfulnessQuest from "./components/quests/MindfulnessQuest";
@@ -31,7 +32,7 @@ import {
   HeroMent,
   HeroOpt,
   HeroRes,
-  HeroScore
+  HeroScore,
 } from "./screens/HERO";
 import ExerciseQuest from "./components/quests/ExerciseQuest";
 import NewLogin from "./screens/NewLoginScreen";
@@ -53,10 +54,10 @@ const Routercomponent = () => {
     <Router>
    <Scene key="root">
           <Scene key='newlogin' component={NewLogin} header={null} />
-          <Scene key='registerpage' component={RegisterPage} title="Register" backTitle="Back to Login"/>
+          <Scene key='registerpage' component={RegisterPage} title="Register" backTitle="Back to Login" />
           <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
           <Scene key="account" component={Account} title='Account' header={null}/>
-          <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More'/>
+          <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More' />
           <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back' />
           <Scene key="mindfulnesslesson" component={MindfulnessLesson} title='Mindfulness' backTitle='Back'/>
           <Scene key="sociallesson" component={SocialLesson} title='Social' backTitle='Back'/>

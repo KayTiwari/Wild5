@@ -3,6 +3,7 @@ import { Button, Text, Icon, Container } from "native-base";
 import { ScrollView, View, Dimensions, StyleSheet } from "react-native";
 import { human, iOSUIKit, sanFranciscoWeights, iOSColors } from 'react-native-typography'
 import Navbar from "../components/Navbar";
+import LinearGradient from "react-native-linear-gradient";
 import { Actions } from "react-native-router-flux";
 import { Tile } from 'react-native-elements'
 
@@ -21,24 +22,24 @@ class NewRoadMap extends Component {
           height: screenheight,
           width: screenwidth,
           display: "flex",
-          backgroundColor: '#fcd670',
+          backgroundColor: '#333',
           flexDirection: "column"
         }}
       >
-        <ScrollView>
-          <View style={{ }}>
+          <LinearGradient style={{alignItems: "center", borderRadius: 5,}}
+          colors={["#348F50", "#56B4D3"]}>
             <Text
               style={[{
                 textAlign: "center",
                 fontSize: 30,
                 fontWeight: "600",
                 marginTop: "20%",
-                shadowColor: 'black',
+                shadowColor: 'white',
                 shadowOffset: {width: 4, height: 4},
                 shadowOpacity: 0.4,
                 shadowRadius: 6,
               }, sanFranciscoWeights.heavy]}
-            >
+              >
               The Road To Wellness
             </Text>
             <Text
@@ -53,15 +54,17 @@ class NewRoadMap extends Component {
                 shadowOpacity: 0.5,
                 shadowRadius: 6,
               }, iOSUIKit.title3White]}
-            >
+              >
               Learn about the Wild 5
             </Text>
-          </View>
+          </LinearGradient>
 
+            <ScrollView>
           <View>
           <Tile
             imageSrc={require('../images/exerciselesson.jpeg')}
             title="Exercise"
+            overlayContainerStyle={{}}
             featured
             activeOpacity={.8}
             titleStyle={[iOSUIKit.title3EmphasizedWhiteObject]}
@@ -119,7 +122,7 @@ class NewRoadMap extends Component {
 
         </ScrollView>
         <View>
-          <Navbar />
+          <Navbar learndisable/>
         </View>
       </View>
     );

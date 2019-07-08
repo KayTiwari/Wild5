@@ -86,11 +86,11 @@ class RegisterPage extends Component {
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView bounces={false} style={{height: screenheight*1.5 }}>
         <View style={{ height: screenheight }}>
           <ImageBackground
             source={abstractimg}
-            style={{ height: screenheight, width: "100%", resizeMode: "cover" }}
+            style={{ height: screenheight*1.5, width: "100%", resizeMode: "cover" }}
           >
             <View
               style={{
@@ -98,7 +98,8 @@ class RegisterPage extends Component {
                 backgroundColor: "white",
                 marginLeft: "5%",
                 marginRight: "5%",
-                marginTop: "10%",
+                marginTop: "5%",
+                borderRadius: 20,
                 shadowColor: 'black',
                 shadowOffset: {width: 4, height: 4},
                 shadowOpacity: 0.8,
@@ -193,7 +194,7 @@ class RegisterPage extends Component {
                   style={{ width: 200 }}
                   date={this.state.DOB}
                   mode="date"
-                  placeholder="select date"
+                  placeholder="Select DOB"
                   format="YYYY-MM-DD"
                   // minDate="1930-06-01"
                   maxDate="2019-06-24"
@@ -226,17 +227,19 @@ class RegisterPage extends Component {
                       marginTop: "6%"
                     }}
                   >
-                    What are your Wellness Goals?
+                    
                   </Text>
                 </View>
+                <View style={{marginLeft:'5%', marginRight:'5%'}}>
                 <Form>
                   <Textarea
                     onChangeText={value => this.setState({ Goals: value })}
                     rowSpan={5}
                     bordered
-                    placeholder="Write Here"
-                  />
+                    placeholder="What are your Wellness Goals?"
+                    />
                 </Form>
+                </View>
               </View>
 
               <Text style={{ fontSize: 30, color: "red" }}>

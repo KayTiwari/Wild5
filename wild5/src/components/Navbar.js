@@ -28,11 +28,11 @@ class Navbar extends Component {
         {this.state.show === 0 ? (
           <Footer>
             <FooterTab>
-              <Button onPress={this.homePress.bind(this)}>
+              <Button disabled={this.props.homedisable} onPress={this.homePress.bind(this)}>
                 <Icon name={"ios-home"} />
                 <Text>Home</Text>
               </Button>
-              <Button onPress={() => Actions.edroadmap()}>
+              <Button disabled={this.props.learndisable} onPress={() => Actions.edroadmap()}>
                 <Icon name={"rocket"} />
                 <Text>Learn</Text>
               </Button>
@@ -40,10 +40,7 @@ class Navbar extends Component {
             <Icon name={"rocket"} />
               <Text>Kickstart</Text>
             </Button> */}
-              <Button badge onPress={() => Actions.quests()}>
-                <Badge>
-                  <Text>1</Text>
-                </Badge>
+              <Button disabled={this.props.questdisable} onPress={() => Actions.quests()}>
                 <Icon name={"flame"} />
                 <Text>Quests</Text>
               </Button>
@@ -56,10 +53,10 @@ class Navbar extends Component {
           <Footer>
             <FooterTab>
               <Button onPress={() => Actions.herointro()}>
-                <Icon name={"planet"} />
+                <Icon name={"sunny"} />
                 <Text>HERO</Text>
               </Button>
-              <Button onPress={() => Actions.statistics()}>
+              <Button disabled={this.props.statsdisable} onPress={() => Actions.statistics()}>
                 <Icon name={"stats"} />
                 <Text>Stats</Text>
               </Button>
@@ -69,7 +66,7 @@ class Navbar extends Component {
         </Button> */}
               <Button onPress={() => Actions.feedback()}>
                 <Icon name={"chatbubbles"} />
-                <Text style={{ fontSize: 9 }}>Feedback</Text>
+                <Text style={{}}>FAQ</Text>
               </Button>
               <Button onPress={() => Actions.settings()}>
                 <Icon name={"ios-settings"} />

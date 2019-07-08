@@ -88,7 +88,7 @@ class MindfulStats extends Component{
         return (
             <View style={{height: screenheight, backgroundColor:'white'}}>
                 <View>
-                    <Text style={{marginTop: '10%', fontSize: 25, fontWeight: '600', textAlign:'center'}}>Mindfulness Analysis</Text>
+                    <Text style={{marginTop: '10%', fontSize: 25, fontWeight: '600', textAlign:'center'}}>Mindfulness Reflection</Text>
                 </View>
 
                 <View>

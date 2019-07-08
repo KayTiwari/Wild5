@@ -60,21 +60,21 @@ class Statistics extends Component{
             </View>
             </View>
             
-            <ScrollView style={{}}>
+            <ScrollView bounces={false} style={{}}>
+                <View style={{alignSelf: 'center', marginTop:'10%' }}>
+                    <Button large danger style={{shadowColor: 'black',
+                    shadowOffset: {width: 4, height: 4},
+                    shadowOpacity: 0.5,
+                    shadowRadius: 6}} onPress={() => this.heroPress()}>
+                        <Text>HERO Totals</Text>
+                    </Button>
+                </View>
             <View style={{alignSelf: 'center', marginTop:'10%'}}>
                 <Button large style={{backgroundColor: '#333', shadowColor: 'black',
                 shadowOffset: {width: 4, height: 4},
                 shadowOpacity: 0.5,
                 shadowRadius: 6, width: '75%'}} onPress={() => this.principlePress()}>
                     <Text>Wild5 Principles</Text>
-                </Button>
-            </View>
-            <View style={{alignSelf: 'center', marginTop:'10%' }}>
-                <Button large danger style={{shadowColor: 'black',
-                shadowOffset: {width: 4, height: 4},
-                shadowOpacity: 0.5,
-                shadowRadius: 6}} onPress={() => this.heroPress()}>
-                    <Text>HERO Totals</Text>
                 </Button>
             </View>
             <View style={{alignSelf: 'center', marginTop:'10%'}}>
@@ -121,7 +121,7 @@ class Statistics extends Component{
             
 
             <View style={{}}>
-                <Navbar />
+                <Navbar statsdisable/>
             </View>
             </View>
                 )

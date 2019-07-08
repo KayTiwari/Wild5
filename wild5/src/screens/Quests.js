@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, TouchableOpacity, Image, Dimensions } from "react-native";
+import { View, TouchableOpacity, Image, Dimensions, ScrollView } from "react-native";
 import { Actions } from "react-native-router-flux";
 import {
   Container,
@@ -17,7 +17,17 @@ const screenheight = Dimensions.get("window").height;
 class Quests extends Component {
   render() {
     return (
-      <Container>
+      <>
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          height: screenheight,
+          backgroundColor:'white'
+        }}
+      >
+        <ScrollView bounces={false}>
         <View>
           <View>
             <Text
@@ -72,8 +82,18 @@ class Quests extends Component {
             </View>
           </View>
         </View>
+<<<<<<< HEAD
         <Navbar />
       </Container>
+=======
+
+        </ScrollView>
+        <View>
+        <Navbar questdisable/>
+        </View>
+      </View>
+      </>
+>>>>>>> 24abde40b60cf5b64fd12792f2b70c6383c62d6e
     );
   }
 }
