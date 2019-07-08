@@ -107,7 +107,7 @@ class ExerciseQuest extends Component {
                   <Label
                     style={{ marginTop: "25%", color: "#FFF", fontSize: 40 }}
                   >
-                    How long do you want to Exercise?
+                    How Long Do You Want To Exercise?
                   </Label>
                   <View style={{ marginTop: "15%" }}>
                     <NumericInput
@@ -133,13 +133,12 @@ class ExerciseQuest extends Component {
                   </View>
                   <View style={{ alignItems: "center", marginTop: "10%", width: '100%' }}>
                     <TouchableOpacity
-                    style={{height: 50, width: '80%', backgroundColor: 'white'}}
-                    onPress={() => this.startCountDown()}>
+                    style={{height: 50, width: '80%', backgroundColor: 'white', borderColor:'black', borderWidth: 1, justifyContent: 'center'}}
+                    onPress={() =>this.state.minutes !== "00" ? this.startCountDown() : null}>
                       <Text style={{
+                        alignSelf:'center',
                         fontWeight:"bold",
                         fontSize: 20,
-                        alignSelf: 'center',
-                        justifyContent: 'center',
                       color: "#000"}}>Start</Text>
                     </TouchableOpacity>
                   </View>
@@ -161,7 +160,7 @@ class ExerciseQuest extends Component {
                           flexDirection: "column",
                           backgroundColor: "#fff",
                           alignSelf: "center",
-                          height: "35%",
+                          height: "45%",
                           width: "80%"
                         }}
                       >

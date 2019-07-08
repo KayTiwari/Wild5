@@ -47,14 +47,15 @@
 		42358486F88143D1A58F3C71 /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D21C957EA4E99B0198346 /* libRNVectorIcons-tvOS.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A91B45B422C70A050006AB9D /* libReactNativeAudioToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A91B45B322C6FE320006AB9D /* libReactNativeAudioToolkit.a */; };
-		A95ED69022CEFBC600D6331B /* pain_meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A95ED68822CEFBC500D6331B /* pain_meditation.mp3 */; };
-		A95ED69122CEFBC600D6331B /* mindful_breathing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A95ED68922CEFBC600D6331B /* mindful_breathing.mp3 */; };
-		A95ED69222CEFBC600D6331B /* mindful_moment_with_a_raisen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A95ED68A22CEFBC600D6331B /* mindful_moment_with_a_raisen.mp3 */; };
-		A95ED69322CEFBC600D6331B /* a_moment_of_graditude.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A95ED68B22CEFBC600D6331B /* a_moment_of_graditude.mp3 */; };
-		A95ED69422CEFBC600D6331B /* five_minute_breathing_space.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A95ED68C22CEFBC600D6331B /* five_minute_breathing_space.mp3 */; };
-		A95ED69522CEFBC600D6331B /* happiness_meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A95ED68D22CEFBC600D6331B /* happiness_meditation.mp3 */; };
-		A95ED69622CEFBC600D6331B /* mindful_meal_meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A95ED68E22CEFBC600D6331B /* mindful_meal_meditation.mp3 */; };
-		A95ED69722CEFBC600D6331B /* intro_to_mindful_meal_meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A95ED68F22CEFBC600D6331B /* intro_to_mindful_meal_meditation.mp3 */; };
+		A9521F6A22D28AE700165807 /* happiness_meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9521F6122D28AE700165807 /* happiness_meditation.mp3 */; };
+		A9521F6B22D28AE700165807 /* five_minute_breathing_space.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9521F6222D28AE700165807 /* five_minute_breathing_space.mp3 */; };
+		A9521F6C22D28AE700165807 /* intro_to_mindful_meal_meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9521F6322D28AE700165807 /* intro_to_mindful_meal_meditation.mp3 */; };
+		A9521F6D22D28AE700165807 /* body_scan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9521F6422D28AE700165807 /* body_scan.mp3 */; };
+		A9521F6E22D28AE700165807 /* a_moment_of_graditude.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9521F6522D28AE700165807 /* a_moment_of_graditude.mp3 */; };
+		A9521F6F22D28AE700165807 /* mindful_meal_meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9521F6622D28AE700165807 /* mindful_meal_meditation.mp3 */; };
+		A9521F7022D28AE700165807 /* mindful_moment_with_a_raisen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9521F6722D28AE700165807 /* mindful_moment_with_a_raisen.mp3 */; };
+		A9521F7122D28AE700165807 /* pain_meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9521F6822D28AE700165807 /* pain_meditation.mp3 */; };
+		A9521F7222D28AE700165807 /* mindful_breathing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A9521F6922D28AE700165807 /* mindful_breathing.mp3 */; };
 		A96D64DC22AB314100108962 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A96D64A522AB1EB900108962 /* libRCTPushNotification.a */; };
 		A98DB56F22C11F660016D97B /* libRCTContacts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A98DB54722C11F540016D97B /* libRCTContacts.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
@@ -455,14 +456,15 @@
 		975DD66730034EC18A5C6863 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		9781F040C94A46A4BFD3BDE8 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		9F6AFC779AC34E268E5F3193 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
-		A95ED68822CEFBC500D6331B /* pain_meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = pain_meditation.mp3; path = build/pain_meditation.mp3; sourceTree = "<group>"; };
-		A95ED68922CEFBC600D6331B /* mindful_breathing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = mindful_breathing.mp3; path = build/mindful_breathing.mp3; sourceTree = "<group>"; };
-		A95ED68A22CEFBC600D6331B /* mindful_moment_with_a_raisen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = mindful_moment_with_a_raisen.mp3; path = build/mindful_moment_with_a_raisen.mp3; sourceTree = "<group>"; };
-		A95ED68B22CEFBC600D6331B /* a_moment_of_graditude.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = a_moment_of_graditude.mp3; path = build/a_moment_of_graditude.mp3; sourceTree = "<group>"; };
-		A95ED68C22CEFBC600D6331B /* five_minute_breathing_space.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = five_minute_breathing_space.mp3; path = build/five_minute_breathing_space.mp3; sourceTree = "<group>"; };
-		A95ED68D22CEFBC600D6331B /* happiness_meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = happiness_meditation.mp3; path = build/happiness_meditation.mp3; sourceTree = "<group>"; };
-		A95ED68E22CEFBC600D6331B /* mindful_meal_meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = mindful_meal_meditation.mp3; path = build/mindful_meal_meditation.mp3; sourceTree = "<group>"; };
-		A95ED68F22CEFBC600D6331B /* intro_to_mindful_meal_meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = intro_to_mindful_meal_meditation.mp3; path = build/intro_to_mindful_meal_meditation.mp3; sourceTree = "<group>"; };
+		A9521F6122D28AE700165807 /* happiness_meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = happiness_meditation.mp3; sourceTree = "<group>"; };
+		A9521F6222D28AE700165807 /* five_minute_breathing_space.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = five_minute_breathing_space.mp3; sourceTree = "<group>"; };
+		A9521F6322D28AE700165807 /* intro_to_mindful_meal_meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = intro_to_mindful_meal_meditation.mp3; sourceTree = "<group>"; };
+		A9521F6422D28AE700165807 /* body_scan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = body_scan.mp3; sourceTree = "<group>"; };
+		A9521F6522D28AE700165807 /* a_moment_of_graditude.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = a_moment_of_graditude.mp3; sourceTree = "<group>"; };
+		A9521F6622D28AE700165807 /* mindful_meal_meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mindful_meal_meditation.mp3; sourceTree = "<group>"; };
+		A9521F6722D28AE700165807 /* mindful_moment_with_a_raisen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mindful_moment_with_a_raisen.mp3; sourceTree = "<group>"; };
+		A9521F6822D28AE700165807 /* pain_meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pain_meditation.mp3; sourceTree = "<group>"; };
+		A9521F6922D28AE700165807 /* mindful_breathing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mindful_breathing.mp3; sourceTree = "<group>"; };
 		A96D649222AB1EB900108962 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		A98DB53C22C11F540016D97B /* RCTContacts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTContacts.xcodeproj; path = "../node_modules/react-native-contacts/ios/RCTContacts.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
@@ -664,14 +666,6 @@
 		13B07FAE1A68108700A75B9A /* wild5 */ = {
 			isa = PBXGroup;
 			children = (
-				A95ED68B22CEFBC600D6331B /* a_moment_of_graditude.mp3 */,
-				A95ED68C22CEFBC600D6331B /* five_minute_breathing_space.mp3 */,
-				A95ED68D22CEFBC600D6331B /* happiness_meditation.mp3 */,
-				A95ED68F22CEFBC600D6331B /* intro_to_mindful_meal_meditation.mp3 */,
-				A95ED68922CEFBC600D6331B /* mindful_breathing.mp3 */,
-				A95ED68E22CEFBC600D6331B /* mindful_meal_meditation.mp3 */,
-				A95ED68A22CEFBC600D6331B /* mindful_moment_with_a_raisen.mp3 */,
-				A95ED68822CEFBC500D6331B /* pain_meditation.mp3 */,
 				0E82D5C322A622DB00AA1EB9 /* wild5.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -719,6 +713,15 @@
 		2FB6EA17E15D429C90E3066C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A9521F6522D28AE700165807 /* a_moment_of_graditude.mp3 */,
+				A9521F6422D28AE700165807 /* body_scan.mp3 */,
+				A9521F6222D28AE700165807 /* five_minute_breathing_space.mp3 */,
+				A9521F6122D28AE700165807 /* happiness_meditation.mp3 */,
+				A9521F6322D28AE700165807 /* intro_to_mindful_meal_meditation.mp3 */,
+				A9521F6922D28AE700165807 /* mindful_breathing.mp3 */,
+				A9521F6622D28AE700165807 /* mindful_meal_meditation.mp3 */,
+				A9521F6722D28AE700165807 /* mindful_moment_with_a_raisen.mp3 */,
+				A9521F6822D28AE700165807 /* pain_meditation.mp3 */,
 				9781F040C94A46A4BFD3BDE8 /* AntDesign.ttf */,
 				F0DB396186724EAAB6D0DE83 /* Entypo.ttf */,
 				EBC2747C108E4FF38C01BF83 /* EvilIcons.ttf */,
@@ -1416,17 +1419,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9521F6B22D28AE700165807 /* five_minute_breathing_space.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				A95ED69122CEFBC600D6331B /* mindful_breathing.mp3 in Resources */,
 				0E82D5C122A6216D00AA1EB9 /* LaunchScreen.xib in Resources */,
-				A95ED69322CEFBC600D6331B /* a_moment_of_graditude.mp3 in Resources */,
-				A95ED69022CEFBC600D6331B /* pain_meditation.mp3 in Resources */,
-				A95ED69522CEFBC600D6331B /* happiness_meditation.mp3 in Resources */,
-				A95ED69222CEFBC600D6331B /* mindful_moment_with_a_raisen.mp3 in Resources */,
-				A95ED69722CEFBC600D6331B /* intro_to_mindful_meal_meditation.mp3 in Resources */,
-				A95ED69422CEFBC600D6331B /* five_minute_breathing_space.mp3 in Resources */,
+				A9521F6E22D28AE700165807 /* a_moment_of_graditude.mp3 in Resources */,
+				A9521F7022D28AE700165807 /* mindful_moment_with_a_raisen.mp3 in Resources */,
+				A9521F7222D28AE700165807 /* mindful_breathing.mp3 in Resources */,
+				A9521F6C22D28AE700165807 /* intro_to_mindful_meal_meditation.mp3 in Resources */,
+				A9521F6F22D28AE700165807 /* mindful_meal_meditation.mp3 in Resources */,
+				A9521F6A22D28AE700165807 /* happiness_meditation.mp3 in Resources */,
 				0E82D5C222A621F100AA1EB9 /* Ionicons.ttf in Resources */,
-				A95ED69622CEFBC600D6331B /* mindful_meal_meditation.mp3 in Resources */,
+				A9521F6D22D28AE700165807 /* body_scan.mp3 in Resources */,
+				A9521F7122D28AE700165807 /* pain_meditation.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

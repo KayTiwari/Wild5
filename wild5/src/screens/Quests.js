@@ -17,21 +17,14 @@ const screenheight = Dimensions.get("window").height;
 class Quests extends Component {
   render() {
     return (
-      <Container
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          flex: 1
-        }}
-      >
+      <Container>
         <View>
           <View>
             <Text
               style={{
                 textAlign: "center",
                 fontSize: 50,
-                marginTop: "20%",
+                marginTop: "10%",
                 fontWeight: "900",
                 marginBottom: 40
               }}

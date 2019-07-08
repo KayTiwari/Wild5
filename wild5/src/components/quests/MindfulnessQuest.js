@@ -60,7 +60,7 @@ export default class MindfulnessQuest extends Component {
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
-          <View style={{marginTop:"15%", height: '85%', alignItems: 'center', justifyContent: 'space-around'}}>
+          <View style={{marginTop:"10%", height: '85%', alignItems: 'center', justifyContent: 'space-around'}}>
           <Text style={{fontWeight: "bold", fontSize:30, marginTop:10, color: "#0AB2E8",marginBottom:25}}>Listen To A Mediatation</Text>
             {players.map(({ player, name }) => {
               return (

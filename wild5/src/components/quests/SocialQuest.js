@@ -50,6 +50,16 @@ class SocialQuest extends Component {
     completedSocialInteractions: []
   };
 
+  showHelp = () => {
+    return () => {
+      <Modal>
+        <View style={{height:"60%", borderWidth:1, borderColor: 'black'}}>
+          <Text>HELLO</Text>
+        </View>
+      </Modal>
+    }
+  }
+
   showModal = () => {
     this.setState({
       modalVisible: !this.state.modalVisible
@@ -197,14 +207,18 @@ class SocialQuest extends Component {
               </Text>
               </View>
               </View>
-              <View style={{borderWidth: 1, borderColor: "#000", height: '15%', alignItems: 'center'}}>
-              <Text style={{color: 'red', fontSize: 20, marginBottom: 15}}>Pick Social Type</Text>
+              <View style={{ flexDirection: 'row', height: '15%', justifyContent: 'flex-start', marginLeft: '7%'}}>
+              <View>
+              <View style={{flexDirection:'row'}}>
+              <Text style={{color: 'red', fontSize: 20, marginBottom: 15}}>Pick Social Type</Text><TouchableOpacity onPress={this.showHelp}><Icon name='help-circle-outline' style={{marginLeft:7, fontSize: 23}} onPress={this.showHelp}/></TouchableOpacity>
+              </View>
               <RadioForm
               radio_props={[
                 { label: "Micro", value: "1" },
                 { label: "Macro", value: "0" }
               ]}
               initial={1}
+              buttonInnerColor={'#E93422'}
               formHorizontal={false}
               labelHorizontal={true}
               buttonColor={"#E93422"}
@@ -213,6 +227,7 @@ class SocialQuest extends Component {
                 console.log("hello");
               }}
             />
+            </View>
             </View>
             <View
               style={{
@@ -232,10 +247,10 @@ class SocialQuest extends Component {
                 {listInteractions}
               </Picker>
             </View>
-            <View style={{borderWidth: 1, borderColor: '#000'}}>
-              <Text>Completed Social Activities</Text>
+            {/* <View style={{borderWidth: 1, borderColor: '#000'}}>
+              <Text>Current Social Quest: </Text>
 
-            </View>
+            </View> */}
             {/* <Button
               title="Add a New Experience"
               onPress={() => this.showModal}
@@ -270,7 +285,7 @@ class SocialQuest extends Component {
                 );
               } else if (this.state.selectedContacts.length > 0) {
                 return (
-                  <View style={{ marginTop: "15%", height, width }}>
+                  <View style={{flex: 1}}>
                     <FlatList
                       data={this.state.contacts}
                       extraData={this.state}
@@ -293,13 +308,13 @@ class SocialQuest extends Component {
                       style={{
                         height: 50,
                         backgroundColor: "#E93422",
-                        padding: 5,
                         flexDirection: "row"
                       }}
                     >
                       <View
                         style={{
                           flex: 3,
+                          height: '100%',
                           alignItems: "flex-start",
                           justifyContent: "center",
                           alignContent: "center"
@@ -312,11 +327,7 @@ class SocialQuest extends Component {
                           horizontal={true}
                           renderItem={({ item }) => {
                             return (
-                              <View
-                                style={{
-                                  paddingTop: 10
-                                }}
-                              >
+                              <>
                                 <Text
                                   style={{
                                     color: "#000",
@@ -326,13 +337,13 @@ class SocialQuest extends Component {
                                 >
                                   {`${item.givenName},`}
                                 </Text>
-                              </View>
+                              </>
                             );
                           }}
                         />
                         <View
                           style={{
-                            width: '95%',
+                            width: '90%',
                             alignItems: "flex-end",
                             justifyContent: "center"
                           }}
