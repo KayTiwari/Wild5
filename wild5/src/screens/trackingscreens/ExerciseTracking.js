@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Dimensions, ImageBackground} from 'react-native';
+import {View} from 'react-native';
 import {ModButton} from '../../components/common';
 import RadioForm from 'react-native-simple-radio-button';
 import {Text, Input} from 'native-base';
@@ -7,7 +7,8 @@ import {Dropdown} from 'react-native-material-dropdown';
 import NumericInput from 'react-native-numeric-input';
 import firebase from 'firebase';
 import {Actions} from 'react-native-router-flux';
-import exbackground from '../../images/exercisetracking.jpg';
+import exbackground from '../../images/exercise-background.jpg';
+import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
 
 let typedata = [
   {
@@ -38,7 +39,16 @@ let typedata = [
     value: 'Other',
   },
 ];
-const screenheight = Dimensions.get('window').height;
+
+firebase.initializeApp({
+  apiKey: 'AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o',
+  authDomain: 'wild5-5ca8b.firebaseapp.com',
+  databaseURL: 'https://wild5-5ca8b.firebaseio.com',
+  projectId: 'wild5-5ca8b',
+  storageBucket: 'wild5-5ca8b.appspot.com',
+  messagingSenderId: '714885268112',
+});
+
 class ExerciseTracking extends Component {
   state = {
     type: '',
@@ -88,104 +98,112 @@ class ExerciseTracking extends Component {
 
   render() {
     return (
-      <View style={{backgroundColor: 'white', height: screenheight}}>
-        <ImageBackground
-          source={exbackground}
-          style={{height: '100%', width: '100%'}}
+      <BlurredBackgroundImage
+        style={{paddingHorizontal: 10}}
+        source={exbackground}
+        blurRadius={20}
+      >
+        <Text
+          style={{
+            fontSize: 30,
+            textAlign: 'center',
+            marginTop: '10%',
+            marginBottom: '20%',
+            fontWeight: '600',
+            color: 'white',
+          }}
+        >
+          Track your{' '}
+          <Text style={{color: '#a8eb12', fontSize: 30, fontWeight: '600'}}>
+            Exercise
+          </Text>
+        </Text>
+
+        <View style={{marginLeft: '5%', marginRight: '5%'}}>
+          <Dropdown
+            baseColor="#a8eb12"
+            label="Type of Exercise"
+            data={typedata}
+            onChangeText={text => this.setState({type: text})}
+          />
+        </View>
+        <View>
+          {this.state.type === 'Other' ? (
+            <Input
+              floatinglabel
+              autoCorrect={false}
+              onChangeText={text => this.setState({user: text})}
+            />
+          ) : null}
+        </View>
+
+        <View style={{alignSelf: 'center'}}>
+          <Text style={{marginBottom: '5%', color: 'white'}}>
+            How many minutes did you exercise?
+          </Text>
+          <NumericInput
+            value={this.state.value}
+            onChange={value => this.setState({duration: value})}
+            onLimitReached={(isMax, msg) => console.log(isMax, msg)}
+            totalWidth={240}
+            totalHeight={50}
+            iconSize={25}
+            step={5}
+            minValue={0}
+            valueType="real"
+            rounded
+            textColor="white"
+            iconStyle={{color: 'white'}}
+            rightButtonBackgroundColor="#a8eb12"
+            leftButtonBackgroundColor="#a8eb12"
+          />
+        </View>
+
+        <View
+          style={{
+            alignSelf: 'center',
+            marginTop: '10%',
+            marginBottom: '10%',
+          }}
         >
           <Text
             style={{
-              fontSize: 30,
-              textAlign: 'center',
-              marginTop: '10%',
-              marginBottom: '20%',
+              marginBottom: '5%',
+              fontSize: 25,
               fontWeight: '600',
+              color: 'white',
             }}
           >
-            Track your{' '}
-            <Text style={{color: 'green', fontSize: 30, fontWeight: '600'}}>
-              Exercise
-            </Text>
+            Intensity of exercise
           </Text>
-
-          <View style={{marginLeft: '5%', marginRight: '5%'}}>
-            <Dropdown
-              baseColor="green"
-              label="Type of Exercise"
-              data={typedata}
-              onChangeText={text => this.setState({type: text})}
-            />
-          </View>
-          <View>
-            {this.state.type === 'Other' ? (
-              <Input
-                floatinglabel
-                autoCorrect={false}
-                onChangeText={text => this.setState({user: text})}
-              />
-            ) : null}
-          </View>
-
-          <View style={{alignSelf: 'center'}}>
-            <Text style={{marginBottom: '5%'}}>
-              How many minutes did you exercise?
-            </Text>
-            <NumericInput
-              value={this.state.value}
-              onChange={value => this.setState({duration: value})}
-              onLimitReached={(isMax, msg) => console.log(isMax, msg)}
-              totalWidth={240}
-              totalHeight={50}
-              iconSize={25}
-              step={5}
-              minValue={0}
-              valueType="real"
-              rounded
-              textColor="darkolivegreen"
-              iconStyle={{color: 'white'}}
-              rightButtonBackgroundColor="darkgreen"
-              leftButtonBackgroundColor="forestgreen"
-            />
-          </View>
-
-          <View
-            style={{
-              alignSelf: 'center',
-              marginTop: '10%',
-              marginBottom: '10%',
+          <RadioForm
+            radio_props={[
+              {label: 'Low', value: 'low'},
+              {label: 'Moderate', value: 'moderate'},
+              {label: 'High', value: 'high'},
+            ]}
+            initial={0}
+            formHorizontal={false}
+            labelHorizontal={true}
+            buttonColor={'#a8eb12'}
+            selectedButtonColor={'#a8eb12'}
+            labelColor="white"
+            selectedLabelColor="white"
+            animation={true}
+            onPress={value => {
+              this.setState({intensity: value});
             }}
-          >
-            <Text style={{marginBottom: '5%', fontSize: 25, fontWeight: '600'}}>
-              Intensity of exercise
-            </Text>
-            <RadioForm
-              radio_props={[
-                {label: 'Low', value: 'low'},
-                {label: 'Moderate', value: 'moderate'},
-                {label: 'High', value: 'high'},
-              ]}
-              initial={0}
-              formHorizontal={false}
-              labelHorizontal={true}
-              buttonColor={'#5a8f30'}
-              animation={true}
-              onPress={value => {
-                this.setState({intensity: value});
-              }}
-            />
-          </View>
+          />
+        </View>
 
-          <View style={{alignSelf: 'center'}}>
-            <ModButton
-              color={'black'}
-              onPress={() => this.submitForm()}
-              label="Submit"
-            >
-              Submit
-            </ModButton>
-          </View>
-        </ImageBackground>
-      </View>
+        <ModButton
+          color={'#a8eb12'}
+          onPress={() => this.submitForm()}
+          label="Submit"
+        >
+          Submit
+        </ModButton>
+      </BlurredBackgroundImage>
     );
   }
 }
