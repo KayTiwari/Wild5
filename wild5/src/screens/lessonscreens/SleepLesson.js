@@ -12,7 +12,7 @@ class SleepLesson extends Component {
   render() {
     return (
       <ScrollView>
-        <Container>
+        <View>
           <View>
             <Text style={styles.mainTitle}>
               Learn about{" "}
@@ -60,8 +60,6 @@ class SleepLesson extends Component {
           <Text style={styles.subTitle}>
             Avoid caffeinated drinks 0 hours before bedtime.
           </Text>
-        </Container>
-        <Container>
           <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
             I’m confused about logging my daily sleep practices on the
             Participant Tracking Form? What if I only implement 2 of the 6sleep
@@ -140,8 +138,6 @@ class SleepLesson extends Component {
             Don’t underestimate the disrupting effect ambient light has on your
             sleep.
           </Text>
-        </Container>
-        <Container>
           <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
             Barriers to Success
           </Text>
@@ -162,8 +158,6 @@ class SleepLesson extends Component {
             on days when you’re experiencing low motivation (See Tackling Low
             Motivation on page 45 for information about the 5 Second Rule).
           </Text>
-        </Container>
-        <Container>
           <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
             What others are saying
           </Text>
@@ -181,7 +175,7 @@ class SleepLesson extends Component {
             all night while I tried to sleep could play such a role in my poor
             sleep quality. What a revelation that the world needs to hear!”
           </Text>
-        </Container>
+        </View>
       </ScrollView>
     );
   }
