@@ -54,7 +54,7 @@ const Routercomponent = () => {
    <Scene key="root">
           <Scene key='newlogin' component={NewLogin} header={null} />
           <Scene key='registerpage' component={RegisterPage} title="Register" backTitle="Back to Login" />
-          <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} initial/>
+          <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More' />
           <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back' onBack={()=> Actions.edroadmap()}/>
@@ -77,7 +77,7 @@ const Routercomponent = () => {
           <Scene key='herostats' component={HeroTotalStats} backTitle={'Stats'} />
           <Scene key='exstats' component={ExerciseStats} backTitle={'Stats'} />
           <Scene key='mindstats' component={MindfulStats} backTitle={'Stats'} />
-          <Scene key='sleepstats' component={SleepStats} backTitle={'Stats'} />
+          <Scene key='sleepstats' component={SleepStats} backTitle={'Stats'}/>
           <Scene key='socialstats' component={SocialStats} backTitle={'Stats'} />
           <Scene key='nutristats' component={NutriStats} backTitle={'Stats'} />
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>

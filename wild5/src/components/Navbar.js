@@ -33,7 +33,7 @@ class Navbar extends Component {
                 <Text>Home</Text>
               </Button>
               <Button disabled={this.props.learndisable} onPress={() => Actions.edroadmap()}>
-                <Icon name={"rocket"} />
+                <Icon name={"ribbon"} />
                 <Text>Learn</Text>
               </Button>
               {/* <Button onPress={() => Actions.kickstart()}>
