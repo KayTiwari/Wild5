@@ -44,17 +44,16 @@ class HeroTotalStats extends Component{
     datesAndScores = () => {
         let data = Object.values(this.props.heroData);
         let dates = Object.keys(this.props.heroData);
+        let arr = []
         for (let i = 0; i < dates.length; i++){
             let total = data[i].happyval + data[i].enthval + data[i].mentval + data[i].optval + data[i].resval;
             let date = dates[i];
             for(let k = 0; k < 1; k++){
-                return (
-                    <Text style={{textAlign:'center', fontSize: 20, fontWeight: '600'}}>Score for {date}: {total}</Text>
-                )
-                //multiple returns?
+                    arr.push(<Text style={{textAlign:'center', fontSize: 20, fontWeight: '600'}}>Score for {date}: {total}</Text>);
                 //Hero only once every 8 days
             }
         }
+        return arr;
     }
 
     render(){
