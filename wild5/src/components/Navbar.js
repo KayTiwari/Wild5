@@ -40,9 +40,9 @@ class Navbar extends Component {
             <Icon name={"rocket"} />
               <Text>Kickstart</Text>
             </Button> */}
-              <Button disabled={this.props.questdisable} onPress={() => Actions.quests()}>
-                <Icon name={"flame"} />
-                <Text>Quests</Text>
+            <Button onPress={() => Actions.herointro()}>
+                <Icon name={"sunny"} />
+                <Text>HERO</Text>
               </Button>
               <Button onPress={() => this.setState({ show: 1 })}>
                 <Text style={{ fontSize: 30, fontWeight: "600" }}>...</Text>
@@ -52,9 +52,9 @@ class Navbar extends Component {
         ) : (
           <Footer>
             <FooterTab>
-              <Button onPress={() => Actions.herointro()}>
-                <Icon name={"sunny"} />
-                <Text>HERO</Text>
+            <Button disabled={this.props.questdisable} onPress={() => Actions.quests()}>
+                <Icon name={"flame"} />
+                <Text>Quest</Text>
               </Button>
               <Button disabled={this.props.statsdisable} onPress={() => Actions.statistics()}>
                 <Icon name={"stats"} />
