@@ -41,8 +41,8 @@ class NewLoginScreen extends Component {
       .then(() => {
         this.onLoginSuccess();
       })
-      .catch(() => {
-        this.onLoginFail();
+      .catch((err) => {
+        this.onLoginFail(err);
       });
   }
 
@@ -51,10 +51,25 @@ class NewLoginScreen extends Component {
     this.props.getUser();
   }
 
-  onLoginFail() {
+  onLoginFail(err) {
+    console.log(err.message);
+    if (err.message === 'The email address is badly formatted'){
+      this.setState({
+        error: 'Invalid Email Address'
+      })
+    } else if (err.message === 'There is no user record corresponding to this identifier. The user may have been deleted.'){
+      this.setState({
+        error: 'Email address not registered yet!'
+      })
+    } else if (err.message === 'The password is invalid or the user does not have a password.'){
+      this.setState({
+        error: 'Wrong Password'
+      })
+    } else{
     this.setState({
-      error: "Authentication failed"
+      error: err.message
     });
+  }
   }
 
   render() {
