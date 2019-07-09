@@ -29,7 +29,7 @@ const Help = () => {
             About
           </Text>
           <Text style={{}}>
-            Resource materials created by Saundra and Rakesh Jain.
+            Resource materials created by Saundra (MD) and Rakesh Jain MD.
           </Text>
           <Text style={{ marginTop: "5%" }}>
             App created on React Native by Abhi Tiwari and Bill Violette.
