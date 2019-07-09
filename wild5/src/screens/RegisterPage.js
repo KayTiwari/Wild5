@@ -15,6 +15,7 @@ import firebase from "firebase";
 import { Actions } from "react-native-router-flux";
 import { withAuthProvider } from "../context/authcontext";
 import abstractimg from "../images/abstract2.jpeg";
+// import console = require("console");
 
 const screenheight = Dimensions.get("window").height;
 class RegisterPage extends Component {
@@ -50,8 +51,8 @@ class RegisterPage extends Component {
       .then(() => {
         this.onRegisterSuccess();
       })
-      .catch(() => {
-        this.onRegisterFail();
+      .catch((err) => {
+        this.onRegisterFail(err);
       });
   };
 
@@ -70,18 +71,11 @@ class RegisterPage extends Component {
     Actions.landing();
   };
 
-  onRegisterFail = () => {
-    if (this.state.password.length < 6) {
+  onRegisterFail = (err) => {
       this.setState({
-        error: "Password must be at least 6 characters",
+        error: err.message,
         loading: false
       });
-    } else {
-      this.setState({
-        error: "Something went wrong",
-        loading: false
-      });
-    }
   };
 
   render() {
@@ -256,7 +250,9 @@ class RegisterPage extends Component {
                 <Button
                   style={{ zIndex: 1000 }}
                   title="Register"
+                  info
                   type="outline"
+                  large
                   raised={this.state.raised}
                   onPress={() => this.registerPress()}
                 >

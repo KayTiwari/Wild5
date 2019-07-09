@@ -193,7 +193,7 @@ class PrincipleStats extends Component{
     render(){
         return(
             <View style={{backgroundColor: 'white', height: screenheight}}>
-            <ScrollView>
+            <ScrollView bounces={false}>
                 <Text style={{fontSize: 30, fontWeight:'600', textAlign:'center', marginTop: '10%', marginBottom:'5%'}}>5 Principles</Text>
                 <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '5%', marginBottom:'5%', marginLeft:'5%', marginRight:'5%'}}>Principle scores against each other</Text>
                 <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '5%', marginBottom:'5%'}}>30 Days Graph</Text>
