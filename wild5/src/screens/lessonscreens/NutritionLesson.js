@@ -1,24 +1,15 @@
 import React, { Component } from "react";
-import { ScrollView, View, Dimensions, StyleSheet, Image } from "react-native";
-import { Text, Icon, Container } from "native-base";
-import { Actions } from "react-native-router-flux";
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel
-} from "react-native-simple-radio-button";
-// var Pedometer = require('react-native-pedometer');
+import { ScrollView, View, StyleSheet, Text } from "react-native";
 
-var now = new Date();
 
-class NutritionLesson extends Component {
-  state = {};
 
-  render() {
+
+const NutritionLesson = () => {
+ 
     return (
+      <View style={{flex: 1}}>
       <ScrollView>
-        <Container>
-          <View>
+        <View>
             <Text style={styles.mainTitle}>
               Learn about{" "}
               <Text style={[styles.mainTitle, { color: "orange" }]}>
@@ -26,12 +17,11 @@ class NutritionLesson extends Component {
               </Text>
             </Text>
           </View>
-
           <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
             Program Expectations
           </Text>
           <Text style={styles.subTitle}>
-            {" "}
+            
             Log your daily meals/snacks/beverages/alcohol each day for 30 days [
             follow the MIND diet principles as closely as you can]
           </Text>
@@ -52,9 +42,8 @@ class NutritionLesson extends Component {
             principles eat more vegetables, fruits, whole grains, fish, olive
             oil, and nuts. Limit consumption of diary.
           </Text>
-        </Container>
-        <Container>
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+          <View style={{flex: 1}}>
+          <Text style={styles.subTitle}>
             Why is food logging so important to my mental wellness?
           </Text>
           <Text style={styles.paragraph}>
@@ -67,7 +56,7 @@ class NutritionLesson extends Component {
             mindful awareness, you’ll make changes that ultimately benefit your
             body, brain and mental wellness. Logging is crucial!!
           </Text>
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+          <Text style={styles.subTitle}>
             What is the MIND diet? Why is it being recommended for Kickstart30?
           </Text>
           <Text style={styles.paragraph}>
@@ -77,7 +66,7 @@ class NutritionLesson extends Component {
             proteins. This is a simple and effective way to improve your global
             health and well-being without too much effort.
           </Text>
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+          <Text style={styles.subTitle}>
             Is MyFitnessPal an easy app or website to use?
           </Text>
           <Text style={styles.paragraph}>
@@ -89,7 +78,7 @@ class NutritionLesson extends Component {
             keep a paper food diary. If you’re already using another food
             logging app, like Weight Watchers, there is no need to change.
           </Text>
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+          <Text style={styles.subTitle}>
             Can I follow the MIND diet for a lifetime?
           </Text>
           <Text style={styles.paragraph}>
@@ -99,7 +88,7 @@ class NutritionLesson extends Component {
             fruits. It’s a win-win lifestyle modification that pays off very
             handsomely in many ways.
           </Text>
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+          <Text style={styles.subTitle}>
             Is KickStart30 a weight loss program?
           </Text>
           <Text style={styles.paragraph}>
@@ -109,8 +98,6 @@ class NutritionLesson extends Component {
             fact lose weight. Keeping a food diary significantly reduces
             mindless eating which can be a major factor in gaining weight.
           </Text>
-        </Container>
-        <Container>
           <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
             Barriers to Success
           </Text>
@@ -134,8 +121,6 @@ class NutritionLesson extends Component {
             motivation ( see Tackling Low Motivation on page 45 for information
             about the 5 Second Rule).
           </Text>
-        </Container>
-        <Container>
           <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
             What others are saying
           </Text>
@@ -157,11 +142,14 @@ class NutritionLesson extends Component {
             a toll. I feel better about what I’m eating and I’m happier that I
             am more active.”
           </Text>
-        </Container>
+          </View>
+
+        
       </ScrollView>
+      </View>
     );
   }
-}
+
 
 export { NutritionLesson };
 

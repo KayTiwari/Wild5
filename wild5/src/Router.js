@@ -58,11 +58,11 @@ const Routercomponent = () => {
           <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More' />
-          <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back' />
-          <Scene key="mindfulnesslesson" component={MindfulnessLesson} title='Mindfulness' backTitle='Back'/>
-          <Scene key="sociallesson" component={SocialLesson} title='Social' backTitle='Back'/>
+          <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back'/>
+          <Scene key="mindfulnesslesson" component={MindfulnessLesson} title='Mindfulness' backTitle='Back' />
+          <Scene key="sociallesson" component={SocialLesson} title='Social' backTitle='Back' />
           <Scene key="nutritionlesson" component={NutritionLesson} title='Nutrition' backTitle='Back'/>
-          <Scene key="sleeplesson" component={SleepLesson} title='Sleep' backTitle='Back'/>
+          <Scene key="sleeplesson" component={SleepLesson} title='Sleep' backTitle='Back' initial/>
           <Scene key="quests" component={Quests} title='Quests' header={null} />
           <Scene key='help' component={Help} backTitle='Back'/>
           <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' backTitle='Back'/>
