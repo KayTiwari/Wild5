@@ -79,14 +79,14 @@ class SleepStats extends Component{
 
     render(){
         return (
-            <LinearGradient colors={["#E55D87", "#5FC3E4"]}>
+            <View style={{backgroundColor:'#eeeeee'}}>
                 <View>
-                    <Text style={{fontSize: 40, fontWeight: '600', textAlign:'center', shadowColor: 'white',
+                    <Text style={{fontSize: 40, fontWeight: '600', textAlign:'center', shadowColor: 'black',
                 shadowOffset: {width: 4, height: 4},
                 shadowOpacity: 0.4,
-                shadowRadius: 6,}}>Sleep Reflection</Text>
+                shadowRadius: 6, color: '#BD2C95'}}>Sleep Reflection</Text>
                 </View>
-            <View style={{backgroundColor: "white", marginLeft:'10%', marginRight:'10%', height: screenheight, shadowColor: 'black',
+            <View style={{backgroundColor: "white", marginLeft:'5%', marginRight:'5%', height: screenheight, shadowColor: 'black',
                 shadowOffset: {width: 4, height: 4},
                 shadowOpacity: 0.4,
                 shadowRadius: 6,}}>
@@ -98,16 +98,49 @@ class SleepStats extends Component{
                 <View>
                     <Text style={{marginTop: '5%', fontSize: 20, fontWeight: '600', textAlign: 'center'}}>Points out of: {this.state.total}</Text>
                     <ScrollView>
-                    <Text style={{marginTop: '5%', fontSize: 20, fontWeight: '600', textAlign: 'center'}}>Avoided caffeine 10 hours before bed: {this.state.caff}</Text>
-                    <Text style={{marginTop: '5%', fontSize: 20, fontWeight: '600', textAlign: 'center'}}>No Electronics 90 minutes before bed: {this.state.elec}</Text>
-                    <Text style={{marginTop: '5%', fontSize: 20, fontWeight: '600', textAlign: 'center'}}>No Napping: {this.state.nap}</Text>
-                    <Text style={{marginTop: '5%', fontSize: 20, fontWeight: '600', textAlign: 'center'}}>Regular bedtime: {this.state.regtime}</Text>
-                    <Text style={{marginTop: '5%', fontSize: 20, fontWeight: '600', textAlign: 'center'}}>Sleep mask or blackout shades: {this.state.mask}</Text>
-                    <Text style={{marginTop: '5%', fontSize: 20, fontWeight: '600', textAlign: 'center'}}>Warm bath/shower prior to bed: {this.state.bath}</Text>
+                    <View style={{flex: 1, flexDirection:'row'}}>
+                        <View style={{borderWidth: 1, borderLeftColor:'transparent', borderColor: '#947cb0', width:'50%'}}>
+                            <Text style={{fontWeight:'600', fontSize: 50, letterSpacing:1.2, alignSelf:'center'}}>{this.state.caff}<Text style={{fontWeight:'600', fontSize: 40, opacity:.5}}>x</Text></Text>
+                            <Icon name='cafe' style={{alignSelf:'center', color:'#913d88'}}/>
+                            <Text style={{fontWeight:'400', marginTop:'5%', color:'gray', fontSize: 15, alignSelf:'center'}}>Avoided Caffeine</Text>
+                        </View>
+
+                        <View style={{borderWidth: 1, borderRightColor:'transparent', borderColor: '#947cb0', width:'50%'}}>
+                            <Text style={{fontWeight:'600', fontSize: 50, letterSpacing:1.2, alignSelf:'center'}}>{this.state.elec}<Text style={{fontWeight:'600', fontSize: 40, opacity:.5}}>x</Text></Text>
+                            <Icon name='tv' style={{alignSelf:'center', color:'#a96dad'}}/>
+                            <Text style={{fontWeight:'400', marginTop:'5%', marginBottom:0, color:'gray', fontSize: 15, alignSelf:'center'}}>No Electronics</Text>
+                        </View>
+                    </View>
+                    <View style={{flex: 1, flexDirection:'row'}}>
+                        <View style={{borderWidth: 1, borderLeftColor:'transparent', borderColor: '#947cb0', width:'50%'}}>
+                            <Text style={{fontWeight:'600', fontSize: 50, letterSpacing:1.2, alignSelf:'center'}}>{this.state.nap}<Text style={{fontWeight:'600', fontSize: 40, opacity:.5}}>x</Text></Text>
+                            <Icon name='moon' style={{alignSelf:'center', color:'#aea8d3'}}/>
+                            <Text style={{fontWeight:'400', marginTop:'5%', color:'gray', fontSize: 15, alignSelf:'center'}}>Avoided Napping</Text>
+                        </View>
+
+                        <View style={{borderWidth: 1,  borderRightColor:'transparent', borderColor: '#947cb0', width:'50%'}}>
+                            <Text style={{fontWeight:'600', fontSize: 50, letterSpacing:1.2, alignSelf:'center'}}>{this.state.regtime}<Text style={{fontWeight:'600', fontSize: 40, opacity:.5}}>x</Text></Text>
+                            <Icon name='time' style={{alignSelf:'center', color:'#9f5afd'}}/>
+                            <Text style={{fontWeight:'400', marginTop:'5%', marginBottom:0, color:'gray', fontSize: 15, alignSelf:'center'}}>Regular Bedtime</Text>
+                        </View>
+                    </View>
+                    <View style={{flex: 1, flexDirection:'row'}}>
+                        <View style={{borderWidth: 1, borderLeftColor:'transparent', borderColor: '#947cb0', width:'50%'}}>
+                            <Text style={{fontWeight:'600', fontSize: 50, letterSpacing:1.2, alignSelf:'center'}}>{this.state.mask}<Text style={{fontWeight:'600', fontSize: 40, opacity:.5}}>x</Text></Text>
+                            <Icon name='eye-off' style={{alignSelf:'center', color:'#aea8d3'}}/>
+                            <Text style={{fontWeight:'400', marginTop:'5%', color:'gray', fontSize: 15, alignSelf:'center'}}>Wore Sleep Mask</Text>
+                        </View>
+
+                        <View style={{borderWidth: 1, borderRightColor:'transparent', borderColor: '#947cb0', width:'50%'}}>
+                            <Text style={{fontWeight:'600', fontSize: 50, letterSpacing:1.2, alignSelf:'center'}}>{this.state.bath}<Text style={{fontWeight:'600', fontSize: 40, opacity:.5}}>x</Text></Text>
+                            <Icon name='water' style={{alignSelf:'center', color:'gray'}}/>
+                            <Text style={{fontWeight:'400', marginTop:'5%', marginBottom:0, color:'gray', fontSize: 15, alignSelf:'center'}}>Warm Bath/Shower</Text>
+                        </View>
+                    </View>
                     </ScrollView>
                 </View>
             </View>
-            </LinearGradient>
+            </View>
         )
     }
 }
