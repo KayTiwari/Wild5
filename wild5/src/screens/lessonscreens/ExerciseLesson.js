@@ -51,12 +51,14 @@ class ExerciseLesson extends Component {
               sentences. Method to calculate heart rate:
             </Text>
             <Text style={styles.subTitle}>Duration</Text>
-            <Text style={styles.paragraph}>
+            <Text style={{alignSelf: 'center', marginTop: '5%', marginLeft: '5%',
+    marginRight: '5%'}}>
               Recommended duration is for 30 minutes during a session.
             </Text>
           </ImageBackground>
         </Container>
-        <Text style={[styles.mainTitle, {marginTop: '20%'}]}>
+        <View style={{marginTop: 135}}>
+        <Text style={{ alignSelf: 'center', fontSize: 30, fontWeight: '600'}}>
           Why Exercise?
         </Text>
         <Text style={styles.paragraph}>
@@ -66,6 +68,7 @@ class ExerciseLesson extends Component {
           exercise in this wellness program makes sense and offers all
           participants a chance to reap the many associated benefits.
         </Text>
+        </View>
         <Text style={[styles.mainTitle, {marginTop: '20%'}]}>
           What type of exercise is recommended?
         </Text>

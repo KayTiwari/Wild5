@@ -241,13 +241,11 @@ class Settings extends Component<Props> {
             </View>
           </TouchableOpacity>
 
-          <Button onPress={() => Actions.feedback()}>
-            <Text>Feedback</Text>
-          </Button>
+          <Button title="Feedback" onPress={() => Actions.feedback()}/>
+  
 
-          <Button>
-            <Text>Logout</Text>
-          </Button>
+          <Button title="Logout" onPress={""}/>
+         
         </View>
         </Container>
         <Navbar />
