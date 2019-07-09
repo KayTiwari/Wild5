@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { ScrollView, View, Dimensions, StyleSheet, Image } from "react-native";
 import { Text, Icon, Container } from "native-base";
 import { Actions } from "react-native-router-flux";
-// var Pedometer = require('react-native-pedometer');
 
 var now = new Date();
 

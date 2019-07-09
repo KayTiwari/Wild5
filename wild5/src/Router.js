@@ -55,14 +55,14 @@ const Routercomponent = () => {
    <Scene key="root">
           <Scene key='newlogin' component={NewLogin} header={null} />
           <Scene key='registerpage' component={RegisterPage} title="Register" backTitle="Back to Login" />
-          <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} />
+          <Scene key="landing" component={Landing} title='Welcome to Wellness' header={null} initial/>
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More' />
-          <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back'/>
-          <Scene key="mindfulnesslesson" component={MindfulnessLesson} title='Mindfulness' backTitle='Back' />
-          <Scene key="sociallesson" component={SocialLesson} title='Social' backTitle='Back' />
-          <Scene key="nutritionlesson" component={NutritionLesson} title='Nutrition' backTitle='Back'/>
-          <Scene key="sleeplesson" component={SleepLesson} title='Sleep' backTitle='Back' initial/>
+          <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back' onBack={()=> Actions.edroadmap()}/>
+          <Scene key="mindfulnesslesson" component={MindfulnessLesson} title='Mindfulness' backTitle='Back' onBack={()=> Actions.edroadmap()}/>
+          <Scene key="sociallesson" component={SocialLesson} title='Social' backTitle='Back' onBack={()=> Actions.edroadmap()}/>
+          <Scene key="nutritionlesson" component={NutritionLesson} title='Nutrition' backTitle='Back' onBack={()=> Actions.edroadmap()}/>
+          <Scene key="sleeplesson" component={SleepLesson} title='Sleep' backTitle='Back' onBack={()=> Actions.edroadmap()}/>
           <Scene key="quests" component={Quests} title='Quests' header={null} />
           <Scene key='help' component={Help} backTitle='Back'/>
           <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' backTitle='Back'/>
@@ -82,7 +82,7 @@ const Routercomponent = () => {
           <Scene key='socialstats' component={SocialStats} backTitle={'Stats'} />
           <Scene key='nutristats' component={NutriStats} backTitle={'Stats'} />
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
-          <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking}/>
+          <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking} />
           <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking} />
           <Scene key='sleeptracking' backTitle='Back' title='Sleep Tracking' component={SleepTracking} />
           <Scene key='socialtracking' backTitle='Back' title='Social Tracking' component={SocialTracking}/>
