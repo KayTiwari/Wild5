@@ -64,7 +64,7 @@ class Navbar extends Component {
         <Icon name={'md-help'} />
           <Text>Help</Text>
         </Button> */}
-              <Button onPress={() => Actions.feedback()}>
+              <Button disabled={this.props.faqdisable} onPress={() => Actions.about()}>
                 <Icon name={"chatbubbles"} />
                 <Text style={{}}>FAQ</Text>
               </Button>

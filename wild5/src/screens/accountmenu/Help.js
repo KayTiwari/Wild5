@@ -56,10 +56,10 @@ const Help = () => {
         </View>
       </ScrollView>
       <View>
-        <Navbar />
+        <Navbar faqdisable/>
       </View>
     </Container>
   );
 };
 
-export default Help;
+export {Help};

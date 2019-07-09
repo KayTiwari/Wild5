@@ -13,8 +13,7 @@ import Settings from './screens/Settings';
 import Quests from './screens/Quests';
 import Progress from './screens/trackingscreens/Progress';
 import Statistics from './screens/Statistics';
-import {About, FAQ, Feedback} from './screens/accountmenu';
-import Help from './screens/accountmenu/Help';
+import {Help, Feedback} from './screens/accountmenu';
 import TrackingForm from './screens/TrackingForm';
 import {
   ExerciseLesson,
@@ -64,7 +63,6 @@ const Routercomponent = () => {
           <Scene key="nutritionlesson" component={NutritionLesson} title='Nutrition' backTitle='Back' onBack={()=> Actions.edroadmap()}/>
           <Scene key="sleeplesson" component={SleepLesson} title='Sleep' backTitle='Back' onBack={()=> Actions.edroadmap()}/>
           <Scene key="quests" component={Quests} title='Quests' header={null} />
-          <Scene key='help' component={Help} backTitle='Back'/>
           <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' backTitle='Back'/>
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
           <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null} />
@@ -73,6 +71,7 @@ const Routercomponent = () => {
           <Scene key='socialquest' component={SocialQuest} title="social Quest" header={null} />
           <Scene key='nutritionquestcameraroll' component={NutritionQuestCameraRoll} title="nutritionquestcameraroll" header={null} />
           <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
+          <Scene key='about' component={Help} header={null} title="About" />
           <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
           <Scene key='principlestats' component={PrincipleStats} backTitle={'Stats'}  title="Principles" />
           <Scene key='herostats' component={HeroTotalStats} backTitle={'Stats'} />
