@@ -192,19 +192,21 @@ class PrincipleStats extends Component{
 
     render(){
         return(
-            <View style={{backgroundColor: 'white', height: screenheight}}>
+            <View style={{backgroundColor: 'white', height: screenheight*1.2}}>
             <ScrollView bounces={false}>
-                <Text style={{fontSize: 30, fontWeight:'600', textAlign:'center', marginTop: '10%', marginBottom:'5%'}}>5 Principles</Text>
-                <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '5%', marginBottom:'5%', marginLeft:'5%', marginRight:'5%'}}>Principle scores against each other</Text>
-                <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '5%', marginBottom:'5%'}}>30 Days Graph</Text>
-                {this.state.exval ? <BarGraph exval={this.state.exval} mindval={this.state.mindval} sleepval={this.state.sleepval} socval={this.state.socval} nutrval={this.state.nutrval} />: <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '15%', marginBottom:'5%'}}>No Graph Data to show :S</Text>}
-                <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '5%', marginBottom:'2%'}}>You can earn 3 points a day</Text>
-                <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '5%', marginBottom:'2%'}}>Current Max: {this.state.total}</Text>
-                {this.state.exval ? <Text style={{fontSize: 20, fontWeight:'600', textAlign:'center', marginTop: '5%', color:'green'}}>Exercise: {this.state.exval} / {this.state.total}</Text> : <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '15%', marginBottom:'5%',}}>No exercise data</Text>}
-                {this.state.exval ? <Text style={{fontSize: 20, fontWeight:'600', textAlign:'center', marginTop: '3%', color:'blue'}}>Mindfulness: {this.state.mindval} / {this.state.total}</Text> : <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '15%', marginBottom:'5%'}}>No mindfulness data</Text>}
-                {this.state.exval ? <Text style={{fontSize: 20, fontWeight:'600', textAlign:'center', marginTop: '3%', color:'purple'}}>Sleep: {this.state.sleepval} / {this.state.total}</Text> : <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '15%', marginBottom:'5%'}}>No sleep data</Text>}
-                {this.state.exval ? <Text style={{fontSize: 20, fontWeight:'600', textAlign:'center', marginTop: '3%', color:'red'}}>Social: {this.state.socval} / {this.state.total}</Text> : <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '15%', marginBottom:'5%'}}>No social data</Text>}
-                {this.state.exval ? <Text style={{fontSize: 20, fontWeight:'600', textAlign:'center', marginTop: '3%', color:'orange'}}>Nutrition: {this.state.nutrval} / {this.state.total}</Text> : <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '15%', marginBottom:'5%'}}>No nutrition data</Text>}
+                <Text style={{fontSize: 30, fontWeight:'600', textAlign:'center', marginTop: '5%'}}>5 Principles</Text>
+                <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '5%', marginLeft:'5%', marginRight:'5%'}}>Principle scores against each other</Text>
+                {/* <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '5%', marginBottom:'5%'}}>30 Days Graph</Text> */}
+                {this.state.exval || this.state.mindval || this.state.sleepval || this.state.socval || this.state.nutrval ? <BarGraph exval={this.state.exval} mindval={this.state.mindval} sleepval={this.state.sleepval} socval={this.state.socval} nutrval={this.state.nutrval} />: <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '15%', marginBottom:'5%'}}>No Graph Data to show :S</Text>}
+                <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '5%'}}>You can earn 3 points a day</Text>
+                <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '3%', marginBottom:'2%'}}>Current Max: {this.state.total}</Text>
+                <ScrollView bounces={false}>
+                {this.state.exval || this.state.mindval || this.state.sleepval || this.state.socval || this.state.nutrval  ? <Text style={{fontSize: 20, fontWeight:'600', textAlign:'center', marginTop: '3%', color:'green'}}>Exercise: {this.state.exval} / {this.state.total}</Text> : <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '15%', marginBottom:'5%',}}>No exercise data</Text>}
+                {this.state.exval || this.state.mindval || this.state.sleepval || this.state.socval || this.state.nutrval  ? <Text style={{fontSize: 20, fontWeight:'600', textAlign:'center', marginTop: '3%', color:'blue'}}>Mindfulness: {this.state.mindval} / {this.state.total}</Text> : <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '15%', marginBottom:'5%'}}>No mindfulness data</Text>}
+                {this.state.exval || this.state.mindval || this.state.sleepval || this.state.socval || this.state.nutrval  ? <Text style={{fontSize: 20, fontWeight:'600', textAlign:'center', marginTop: '3%', color:'purple'}}>Sleep: {this.state.sleepval} / {this.state.total}</Text> : <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '15%', marginBottom:'5%'}}>No sleep data</Text>}
+                {this.state.exval || this.state.mindval || this.state.sleepval || this.state.socval || this.state.nutrval  ? <Text style={{fontSize: 20, fontWeight:'600', textAlign:'center', marginTop: '3%', color:'red'}}>Social: {this.state.socval} / {this.state.total}</Text> : <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '15%', marginBottom:'5%'}}>No social data</Text>}
+                {this.state.exval || this.state.mindval || this.state.sleepval || this.state.socval || this.state.nutrval  ? <Text style={{fontSize: 20, fontWeight:'600', textAlign:'center', marginTop: '3%', color:'orange'}}>Nutrition: {this.state.nutrval} / {this.state.total}</Text> : <Text style={{fontSize: 15, fontWeight:'600', textAlign:'center', marginTop: '15%', marginBottom:'5%'}}>No nutrition data</Text>}
+                </ScrollView>
             </ScrollView>
             </View>
         )

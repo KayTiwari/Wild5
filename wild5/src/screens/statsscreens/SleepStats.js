@@ -94,7 +94,7 @@ class SleepStats extends Component{
 
                 <View>
                     <Text style={{marginTop: '5%', fontSize: 20, fontWeight: '600', textAlign: 'center'}}>Points out of: {this.state.total}</Text>
-                    <ScrollView bounces={false}>
+                    <ScrollView bounces={false} snapToEnd={true} style={{height:screenheight, marginTop:'10%'}}>
                     <View style={{flex: 1, flexDirection:'row'}}>
                         <View style={{borderWidth: 1, borderLeftColor:'transparent', borderColor: '#947cb0', width:'50%'}}>
                             <Text style={{fontWeight:'600', fontSize: 50, letterSpacing:1.2, alignSelf:'center'}}>{this.state.caff}<Text style={{fontWeight:'600', fontSize: 40, opacity:.5}}>x</Text></Text>
