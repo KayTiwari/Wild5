@@ -23,14 +23,15 @@ class SocialLesson extends Component {
               <Text style={[styles.mainTitle, { color: "#EB3422" }]}>Social</Text>
             </Text>
           </View>
-
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+          <View style={{backgroundColor:"#EB3422", width: '85%', alignSelf: 'center', height: 80 }}>
+          <Text style={{fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '700'}}>
             Program Expectations
           </Text>
-          <Text style={styles.subTitle}>
+          <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
             Meet or call a minimum of two friends or family each day for 30
             days.
           </Text>
+          </View>
           <Text style={styles.paragraph}>
             Humans are social animals. Socialization is important to both mental
             and physical health. People who socialize more live longer, have
@@ -38,7 +39,7 @@ class SocialLesson extends Component {
             epidemic level in our society and leads to higher rates of
             depression, anxiety, increased cardiovascular problems, obesity
           </Text>
-          <Text style={styles.subTitle}>Two types of Socialization</Text>
+          <Text style={{fontSize: }}>Two types of Socialization</Text>
           <Text style={styles.subTitle}>Macro-socialization</Text>
           <Text style={styles.paragraph}>
             Engaging in social activities with friends and family members over
