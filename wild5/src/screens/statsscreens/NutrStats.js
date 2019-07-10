@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Dimensions } from 'react-native'
+import { View, Dimensions, ScrollView } from 'react-native'
 import { Text, Icon } from 'native-base'
 import { withAuthProvider } from '../../context/authcontext';
 import BarGraph from '../../components/charts/NutriGraph';
@@ -85,12 +85,14 @@ class SleepStats extends Component{
                 <View>
                     <Text style={{marginTop: '5%', fontSize: 20, fontWeight: '600', textAlign: 'center'}}>Points out of: {this.state.total}</Text>
                     <Icon name='restaurant' style={{textAlign: 'center', marginTop: '10%'}}/>
+                    <ScrollView bounces={true}>
                     <Text style={{marginTop: '5%', fontSize: 20, fontWeight: '600', textAlign: 'center'}}>Logged Meals: {this.state.logmeals}</Text>
                     <Text style={{marginTop: '5%', fontSize: 20, fontWeight: '600', textAlign: 'center'}}>Practiced MIND Diet Principles: {this.state.MIND}</Text>
                     <Text style={{marginTop: '5%', fontSize: 30, fontWeight: '600', textAlign: 'center'}}>Practiced MINDful Meal Meditation</Text>
                     <Text style={{marginTop: '5%', fontSize: 20, fontWeight: '600', textAlign: 'center'}}>Breakfast: {this.state.breakfast}</Text>
                     <Text style={{marginTop: '5%', fontSize: 20, fontWeight: '600', textAlign: 'center'}}>Lunch: {this.state.lunch}</Text>
                     <Text style={{marginTop: '5%', fontSize: 20, fontWeight: '600', textAlign: 'center'}}>Dinner: {this.state.dinner}</Text>
+                    </ScrollView>
                 </View>
 
             </View>
