@@ -20,7 +20,9 @@ import abstractimg from "../images/abstract2.jpeg";
 const screenheight = Dimensions.get("window").height;
 class RegisterPage extends Component {
   state = {
-    loading: false
+    loading: false,
+    email: '',
+    password: ''
   };
   setDate = newDate => {
     this.setState({ chosenDate: newDate });
@@ -45,6 +47,7 @@ class RegisterPage extends Component {
       loading: true,
       error: ""
     });
+    if (email !== '') {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -54,6 +57,12 @@ class RegisterPage extends Component {
       .catch((err) => {
         this.onRegisterFail(err);
       });
+    } else {
+      this.setState({
+        error: "Please enter a valid email",
+        loading: false
+      })
+    }
   };
 
   onRegisterSuccess = () => {
@@ -80,15 +89,15 @@ class RegisterPage extends Component {
 
   render() {
     return (
-      <ScrollView bounces={false} style={{height: screenheight*1.5 }}>
-        <View style={{ height: screenheight }}>
+      <ScrollView bounces={false} style={{height: screenheight*2 }}>
+        <View style={{ height: screenheight*1.2}}>
           <ImageBackground
             source={abstractimg}
             style={{ height: screenheight*1.5, width: "100%", resizeMode: "cover" }}
           >
             <View
               style={{
-                height: screenheight,
+                height: screenheight*1.2,
                 backgroundColor: "white",
                 marginLeft: "5%",
                 marginRight: "5%",
@@ -246,7 +255,7 @@ class RegisterPage extends Component {
                 </View>
               ) : null}
 
-              <View style={{ alignSelf: "center" }}>
+              <View style={{ alignSelf: "center", marginTop: '5%' }}>
                 <Button
                   style={{ zIndex: 1000 }}
                   title="Register"
