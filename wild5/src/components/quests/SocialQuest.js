@@ -18,6 +18,7 @@ import Navbar from "../../components/Navbar";
 import Contacts from "react-native-contacts";
 import Contact from "../common/ContactList";
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
+import { Actions } from 'react-native-router-flux'
 
 const { width, height } = Dimensions.get("window");
 
@@ -349,7 +350,18 @@ class SocialQuest extends Component {
                           }}
                         >
                           <TouchableOpacity
-                            onPress={() => AlertIOS.alert("Message sent :)")}
+                            onPress={() => {AlertIOS.alert(
+                              'Message Sent',
+                              '',
+                              [
+                                {
+                                  text: 'ok',
+                                  onPress: () => Actions.quests(),
+                                  style: 'ok',
+                                }
+                              ],
+                            );
+                          }}
                           >
                             <Icon name="send" />
                           </TouchableOpacity>

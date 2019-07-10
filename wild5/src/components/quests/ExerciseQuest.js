@@ -101,7 +101,7 @@ class ExerciseQuest extends Component {
           if (!this.state.y) {
             return (
               <Container
-                style={{ marginTop: "15%", backgroundColor: "#76BE40" }}
+                style={{ backgroundColor: "#76BE40" }}
               >
                 <View style={{ alignItems: "center" }}>
                   <Label
@@ -267,7 +267,7 @@ class ExerciseQuest extends Component {
                   )}
                 </Modal>
                 <Container
-                  style={{ marginTop: "20%", backgroundColor: "#76BE40" }}
+                  style={{ backgroundColor: "#76BE40" }}
                 >
                   <View style={styles.timeView}>
                     <View style={{ marginTop: "25%" }}>
@@ -334,6 +334,7 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   controlButtons: {
+      justifyContent: 'center',
       width: '80%',
       backgroundColor: 'white',
       height: 50
