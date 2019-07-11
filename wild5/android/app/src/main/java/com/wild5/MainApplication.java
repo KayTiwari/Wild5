@@ -3,9 +3,9 @@ package com.wild5;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativecommunity.slider.ReactSliderPackage;
 import org.reactnative.camera.RNCameraPackage;
-import com.BV.LinearGradient.LinearGradientPackage;
 import com.devialab.camerarollextended.CameraRollExtendedManager;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
@@ -34,9 +34,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new LinearGradientPackage(),
             new ReactSliderPackage(),
             new RNCameraPackage(),
-            new LinearGradientPackage(),
             new CameraRollExtendedManager(),
             new ReactNativePushNotificationPackage(),
             new ReactNativePushNotificationPackage(),

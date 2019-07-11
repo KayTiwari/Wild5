@@ -141,7 +141,7 @@ class ExerciseTracking extends Component {
               iosHeader="Exercises"
               iosIcon={
                 <Icon
-                  name="arrow-dropdown-circle"
+                  name="ios-arrow-dropdown"
                   style={{color: 'white', fontSize: 25}}
                 />
               }
