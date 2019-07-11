@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@react-native-community/audio-toolkit": "^2.0.1",
+    "@react-native-community/slider": "^1.1.4",
     "chart.js": "^2.8.0",
     "entypo": "^2.1.0",
     "expo": "^32.0.6",

@@ -1,12 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ImageBackground, StyleSheet, View} from 'react-native';
+import {
+  ImageBackground,
+  StyleSheet,
+  View,
+  SafeAreaView,
+  ScrollView,
+} from 'react-native';
 
 export function BlurredBackgroundImage({style, ...props}) {
   return (
     <ImageBackground style={[styles.imageBackground, style]} {...props}>
       <View style={styles.overlay} />
-      {props.children}
+      <SafeAreaView style={{flex: 1}}>
+        <ScrollView contentContainerStyle={{flex: 1}}>
+          {props.children}
+        </ScrollView>
+      </SafeAreaView>
     </ImageBackground>
   );
 }
