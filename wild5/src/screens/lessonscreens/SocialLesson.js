@@ -17,7 +17,7 @@ class SocialLesson extends Component {
               activeTextStyle={{ color: '#EB3422' }}>
               <ScrollView>
                 <View style={{flex: 1}}>
-                <View>
+                <View style={{marginBottom: 20}}>
             <Text style={styles.mainTitle}>
               Learn about{" "}
               <Text style={[styles.mainTitle, { color: "#EB3422" }]}>Social</Text>
@@ -39,8 +39,9 @@ class SocialLesson extends Component {
             epidemic level in our society and leads to higher rates of
             depression, anxiety, increased cardiovascular problems, obesity
           </Text>
-          <Text style={{fontSize: }}>Two types of Socialization</Text>
-          <Text style={styles.subTitle}>Macro-socialization</Text>
+          <Text style={{fontSize: 20, alignSelf: 'center', fontWeight: '700', marginTop: '10%', textDecorationLine:'underline'}}>Two types of Socialization</Text>
+          <Text style={{marginTop: 20, alignSelf: 'center', fontSize: 20,
+    fontWeight: "600"}}>Macro-socialization</Text>
           <Text style={styles.paragraph}>
             Engaging in social activities with friends and family members over
             period of months, years, lifetime. Examples include: Dinner with
@@ -162,7 +163,8 @@ class SocialLesson extends Component {
               </ScrollView>
               </Tab>
 
-            <Tab heading="Barriers to Success"
+            <Tab 
+              heading="Barriers to Success"
               tabStyle={{ backgroundColor: 'white' }}
               textStyle={{ color: 'grey' }}
               activeTabStyle={{ backgroundColor: 'white' }}
