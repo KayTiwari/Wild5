@@ -33,16 +33,16 @@ class Navbar extends Component {
                 <Text>Home</Text>
               </Button>
               <Button disabled={this.props.learndisable} onPress={() => Actions.edroadmap()}>
-                <Icon name={"rocket"} />
+                <Icon name={"ribbon"} />
                 <Text>Learn</Text>
               </Button>
               {/* <Button onPress={() => Actions.kickstart()}>
             <Icon name={"rocket"} />
               <Text>Kickstart</Text>
             </Button> */}
-              <Button disabled={this.props.questdisable} onPress={() => Actions.quests()}>
-                <Icon name={"flame"} />
-                <Text>Quests</Text>
+            <Button onPress={() => Actions.herointro()}>
+                <Icon name={"sunny"} />
+                <Text>HERO</Text>
               </Button>
               <Button onPress={() => this.setState({ show: 1 })}>
                 <Text style={{ fontSize: 30, fontWeight: "600" }}>...</Text>
@@ -52,9 +52,9 @@ class Navbar extends Component {
         ) : (
           <Footer>
             <FooterTab>
-              <Button onPress={() => Actions.herointro()}>
-                <Icon name={"sunny"} />
-                <Text>HERO</Text>
+            <Button disabled={this.props.questdisable} onPress={() => Actions.quests()}>
+                <Icon name={"flame"} />
+                <Text>Quest</Text>
               </Button>
               <Button disabled={this.props.statsdisable} onPress={() => Actions.statistics()}>
                 <Icon name={"stats"} />
@@ -64,7 +64,7 @@ class Navbar extends Component {
         <Icon name={'md-help'} />
           <Text>Help</Text>
         </Button> */}
-              <Button onPress={() => Actions.feedback()}>
+              <Button disabled={this.props.faqdisable} onPress={() => Actions.about()}>
                 <Icon name={"chatbubbles"} />
                 <Text style={{}}>FAQ</Text>
               </Button>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import { Icon } from "native-base";
 
 const ContactList = ({ onPress, isChecked, contact }) => {
   return (

@@ -12,8 +12,7 @@ import Settings from './screens/Settings';
 import Quests from './screens/Quests';
 import Progress from './screens/trackingscreens/Progress';
 import Statistics from './screens/Statistics';
-import {About, FAQ, Feedback} from './screens/accountmenu';
-import Help from './screens/accountmenu/Help';
+import {Help, Feedback} from './screens/accountmenu';
 import TrackingForm from './screens/TrackingForm';
 import {
   ExerciseLesson,
@@ -82,33 +81,37 @@ const Routercomponent = () => {
           component={ExerciseLesson}
           title="Exercise"
           backTitle="Back"
+          onBack={() => Actions.edroadmap()}
         />
         <Scene
           key="mindfulnesslesson"
           component={MindfulnessLesson}
           title="Mindfulness"
           backTitle="Back"
+          onBack={() => Actions.edroadmap()}
         />
         <Scene
           key="sociallesson"
           component={SocialLesson}
           title="Social"
           backTitle="Back"
+          onBack={() => Actions.edroadmap()}
         />
         <Scene
           key="nutritionlesson"
           component={NutritionLesson}
           title="Nutrition"
           backTitle="Back"
+          onBack={() => Actions.edroadmap()}
         />
         <Scene
           key="sleeplesson"
           component={SleepLesson}
           title="Sleep"
           backTitle="Back"
+          onBack={() => Actions.edroadmap()}
         />
         <Scene key="quests" component={Quests} title="Quests" header={null} />
-        <Scene key="help" component={Help} backTitle="Back" />
         <Scene
           key="trackingform"
           component={TrackingForm}
@@ -131,7 +134,9 @@ const Routercomponent = () => {
           key="exercisequest"
           component={ExerciseQuest}
           title="Exercise Quest"
-          header={null}
+          backTitle="Back"
+          onBack={() => Actions.quests()}
+          initial
         />
         <Scene
           key="sleepquest"
@@ -157,6 +162,7 @@ const Routercomponent = () => {
           header={null}
           title="Feedback"
         />
+        <Scene key="about" component={Help} header={null} title="About" />
         <Scene
           key="statistics"
           component={Statistics}
@@ -187,7 +193,6 @@ const Routercomponent = () => {
           backTitle="Back"
           title="Exercise Tracking"
           component={ExerciseTracking}
-          initial
         />
         <Scene
           key="mindfulnesstracking"

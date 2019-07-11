@@ -1,127 +1,170 @@
 import React, { Component } from "react";
-import { Text, View, Dimensions } from "react-native";
-import { CheckBox, ListItem, Body } from "native-base";
+import {
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity,
+  DatePickerIOS,
+  Modal
+} from "react-native";
+import { CheckBox, ListItem, Body, Icon } from "native-base";
 import PushNotificationIOS from "../common/PushNotificationsIOS";
 import Navbar from "../Navbar";
 
 const { width, height } = Dimensions.get("window");
-
+const date = new Date();
+// const hour = date.getHours()
+// const minutes = date.getMinutes()
+// const time = hour + minutes
 class SleepQuest extends Component {
   state = {
-    sleep1: false,
-    sleep2: false,
-    sleep3: false,
-    sleep4: false,
-    sleep5: false,
-    sleep6: false
+    chosenDate: new Date(),
+    hour: "12",
+    minutes: "00",
+    sleepConfirmed: false,
+    modalView: false
   };
 
-  checkBox = type => {
-    if (type === "sleep1") {
-      this.setState({
-        sleep1: !this.state.sleep1
-      });
-    } else if (type === "sleep2") {
-      this.setState({
-        sleep2: !this.state.sleep2
-      });
-    } else if (type === "sleep3") {
-      this.setState({
-        sleep3: !this.state.sleep3
-      });
-    } else if (type === "sleep4") {
-      this.setState({
-        sleep4: !this.state.sleep4
-      });
-    } else if (type === "sleep5") {
-      this.setState({
-        sleep5: !this.state.sleep5
-      });
-    } else if (type === "sleep6") {
-      this.setState({
-        sleep6: !this.state.sleep6
-      });
-    }
+  setDate = newDate => {
+    this.setState({ chosenDate: newDate });
   };
+
+  componentDidMount() {
+    console.log(this.state.chosenDate.toString());
+  }
+
+  modalView = () => {
+    this.setState({
+      modalView: !this.state.modalView
+    })
+  }
 
   render() {
+    
     return (
-      <View
-        style={{
-          width,
-          height,
-          backgroundColor: "#B72B90",
-          justifyContent: "space-between"
-        }}
+      <>
+      <Modal
+      animationType="none"
+      transparent={true}
+      visible={this.state.modalView}
       >
-        <View style={{ marginTop: "20%" }}>
-          <Text style={{ fontSize: 28, alignSelf: "center" }}>
-            Get Better Sleep!
-          </Text>
-          <Text>Select Best Practices to Receive Reminders</Text>
-          <ListItem onPress={() => this.checkBox("sleep1")}>
-            <CheckBox
-              checked={this.state.sleep1}
-              color="green"
-              onPress={() => this.checkBox("sleep1")}
-            />
-            <Body>
-              <Text>Avoid Electronics 90 min Prior Bedtime</Text>
-            </Body>
-          </ListItem>
-          <ListItem onPress={() => this.checkBox("sleep2")}>
-            <CheckBox
-              checked={this.state.sleep2}
-              color="green"
-              onPress={() => this.checkBox("sleep2")}
-            />
-            <Body>
-              <Text>Avoid Napping During the Day</Text>
-            </Body>
-          </ListItem>
-          <ListItem onPress={() => this.checkBox("sleep3")}>
-            <CheckBox
-              checked={this.state.sleep3}
-              color="green"
-              onPress={() => this.checkBox("sleep3")}
-            />
-            <Body>
-              <Text>Eliminate Ambient Light in your Bedroom</Text>
-            </Body>
-          </ListItem>
-          <ListItem onPress={() => this.checkBox("sleep4")}>
-            <CheckBox
-              checked={this.state.sleep4}
-              color="green"
-              onPress={() => this.checkBox("sleep4")}
-            />
-            <Body>
-              <Text>Enjoy a Warm Bath Prior to Bedtime</Text>
-            </Body>
-          </ListItem>
-          <ListItem onPress={() => this.checkBox("sleep5")}>
-            <CheckBox
-              checked={this.state.sleep5}
-              color="green"
-              onPress={() => this.checkBox("sleep5")}
-            />
-            <Body>
-              <Text>Stick to Regular Bedtime Each Night</Text>
-            </Body>
-          </ListItem>
-          <ListItem onPress={() => this.checkBox("sleep6")}>
-            <CheckBox
-              checked={this.state.sleep6}
-              color="green"
-              onPress={() => this.checkBox("sleep6")}
-            />
-            <Body>
-              <Text>Avoid Caffeine 10 hrs Prior to Bed</Text>
-            </Body>
-          </ListItem>
-        </View>
-        <Navbar />
+        <View style={{justifyContent: "center",
+    alignItems: "center"}}>
+      <View style={{height: '42%', width: "70%", backgroundColor: '#fff', borderColor: 'black', borderWidth: 2, borderRadius:10}}>
+        <Text style={{margin: 5, fontSize: 20}}>Set your regular bedtime and receive a notification to remind you 30 minutes prior</Text>
+        <TouchableOpacity 
+        style={{height: 25, width:"70%", backgroundColor: "lime", alignSelf:'center', borderRadius: 7}} 
+        onPress={this.modalView}>
+          <Text style={{fontSize:20, alignSelf: 'center', fontWeight:'700'}}>Ok, Got it!</Text>
+        </TouchableOpacity>
       </View>
+
+        </View>
+      </Modal>
+      
+      <View style={{ flex: 1, backgroundColor: "#A72782" }}>
+        <View style={{ marginTop: 90, alignItems: "center" }}>
+          <Text style={{ color: "white", fontSize: 25, fontWeight: "700" }}>
+            Get Help Tracking Your Sleep
+          </Text>
+        </View>
+        <View style={{ alignItems:'center' , marginTop: 10 }}>
+        <View style={{flexDirection:'row'}}>
+          <Text style={{ color: "white", fontSize: 20, fontWeight: "600" }}>
+            What Time Do You Go To Bed?</Text><TouchableOpacity onPress={this.modalView}><Icon name='help-circle-outline' style={{marginLeft: 5,fontSize: 23}} onPress={this.modalView}/></TouchableOpacity>
+          </View>
+        </View>
+        {!this.state.sleepConfirmed ? (
+          <>
+            <View style={{ height: 100 }}>
+              <DatePickerIOS
+                date={this.state.chosenDate}
+                onDateChange={this.setDate}
+                mode="time"
+              />
+            </View>
+            <View style={{ marginTop: 150, alignItems: "center" }}>
+              <TouchableOpacity
+                onPress={() =>
+                  this.setState(prevState => ({
+                    sleepConfirmed: !prevState.sleepConfirmed
+                  }))
+                }
+                style={{
+                  borderColor: "white",
+                  borderWidth: 2,
+                  borderRadius: 10
+                }}
+              >
+                <Text
+                  style={{
+                    color: "white",
+                    fontSize: 26,
+                    fontWeight: "900",
+                    padding: 10
+                  }}
+                >
+                  Set Time
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        ) : (
+          <>
+            <View
+              style={{
+                flex: 1,
+                width: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Icon name="checkmark" style={{ color: "lime", fontSize: 200}} />
+            </View>
+            <View style={{marginTop: 20, marginBottom: 20, alignItems: 'center'}}>
+                <Text style={{color: 'white', fontSize: 20}}>
+                  You BedTime is Set for
+                </Text>
+                <Text style={{color: 'white', fontSize: 20}}></Text>
+              </View>
+            <View
+              style={{
+                justifyContent: "flex-end",
+                alignItems: "center",
+                marginTop: 20
+              }}
+            >
+              <TouchableOpacity
+                onPress={() =>
+                  this.setState(prevState => ({
+                    sleepConfirmed: !prevState.sleepConfirmed
+                  }))
+                }
+                style={{
+                  borderColor: "white",
+                  borderWidth: 2,
+                  borderRadius: 10
+                }}
+              >
+                <Text
+                  style={{
+                    color: "white",
+                    fontSize: 26,
+                    fontWeight: "900",
+                    padding: 10
+                  }}
+                >
+                  Change Time
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        )}
+        <View style={{ flex: 1, justifyContent: "flex-end" }}>
+          <Navbar />
+        </View>
+      </View>
+      </>
     );
   }
 }

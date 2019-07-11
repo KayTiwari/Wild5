@@ -3,7 +3,6 @@ import {
   Text,
   View,
   Dimensions,
-  Picker,
   Button,
   Modal,
   TouchableHighlight,
@@ -14,34 +13,53 @@ import {
   FlatList,
   TouchableOpacity
 } from "react-native";
-import { Icon } from "native-base";
+import { Icon,  Picker, Form, Header, Left, Title, Right, Body } from "native-base";
 import Navbar from "../../components/Navbar";
 import Contacts from "react-native-contacts";
 import Contact from "../common/ContactList";
-// import { HeroHappy } from '../../screens/HERO';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
+import { Actions } from 'react-native-router-flux'
 
 const { width, height } = Dimensions.get("window");
+
+// const completed = this.state.completedSocialInteractions.length !== 0 ?
+//   this.state.completedSocialInteractions.map( completed => {
+//     return (
+//       <Text>{completed}</Text>
+//     )
+//   }) : null;  
 
 class SocialQuest extends Component {
   state = {
     socialInteraction: [],
     interactions: [
-      " ",
       "Dinner with family or friends",
       "Seeing a movie with family or friends",
       "Having coffee with family or friends",
-      "taking a walk with family or friends",
-      "joining a book club",
+      "Taking a walk with family or friends",
+      "Joining a book club",
       "Participating in a sporting activity ie, tennis, basketball",
-      "taking a cooking class",
+      "Taking a cooking class",
       "Taking a dance class"
     ],
     modalVisible: false,
     text: "",
     contacts: [],
     showContacts: false,
-    selectedContacts: []
+    selectedContacts: [],
+    socialType: 0,
+    completedSocialInteractions: []
   };
+
+  showHelp = () => {
+    return () => {
+      <Modal>
+        <View style={{height:"60%", borderWidth:1, borderColor: 'black'}}>
+          <Text>HELLO</Text>
+        </View>
+      </Modal>
+    }
+  }
 
   showModal = () => {
     this.setState({
@@ -151,7 +169,7 @@ class SocialQuest extends Component {
             style={{
               height: "100%",
               width: "100%",
-              backgroundColor: "#E93422",
+              backgroundColor: "#fff",
               justifyContent: "space-between"
             }}
           >
@@ -180,15 +198,37 @@ class SocialQuest extends Component {
                 </View>
               </View>
             </Modal>
-            <View>
-              <View style={{ alignItems: "center", marginTop: "20%" }}>
-                <Text style={{ fontWeight: "bold", fontSize: 26 }}>
-                  Branch Out
+              <View style={{ height: '20%', backgroundColor: "#E93422" }}>
+                  <View style={{alignItems: "center",marginTop: '13%'}}>
+                <Text style={{ fontWeight: "bold", fontSize: 36, color: '#fff' }}>
+                  Be Social
                 </Text>
-              </View>
-              <Text style={{ marginLeft: 10, marginRight: 10, fontSize: 20 }}>
-                Experience a New Social Interaction
+              <Text style={{ marginLeft: 10, marginRight: 10, fontSize: 26, color: '#fff' }}>
+                Plan a New Social Activity
               </Text>
+              </View>
+              </View>
+              <View style={{ flexDirection: 'row', height: '15%', justifyContent: 'flex-start', marginLeft: '7%'}}>
+              <View>
+              <View style={{flexDirection:'row'}}>
+              <Text style={{color: 'red', fontSize: 20, marginBottom: 15}}>Pick Social Type</Text><TouchableOpacity onPress={""}><Icon name='help-circle-outline' style={{marginLeft:7, fontSize: 23}} onPress={""}/></TouchableOpacity>
+              </View>
+              <RadioForm
+              radio_props={[
+                { label: "Micro", value: "1" },
+                { label: "Macro", value: "0" }
+              ]}
+              initial={1}
+              buttonInnerColor={'#E93422'}
+              formHorizontal={false}
+              labelHorizontal={true}
+              buttonColor={"#E93422"}
+              animation={true}
+              onPress={() => {
+                console.log("hello");
+              }}
+            />
+            </View>
             </View>
             <View
               style={{
@@ -200,17 +240,22 @@ class SocialQuest extends Component {
               }}
             >
               <Picker
+                placeholder="Select a Social Activity"
                 selectedValue={this.state.socialInteraction}
-                style={{ height: 100, width: "90%" }}
+                style={{ height: 60, width: "90%", borderColor: 'red', borderWidth: 1, alignSelf: 'center' }}
                 onValueChange={itemValue => this.setActivity(itemValue)}
               >
                 {listInteractions}
               </Picker>
             </View>
-            <Button
+            {/* <View style={{borderWidth: 1, borderColor: '#000'}}>
+              <Text>Current Social Quest: </Text>
+
+            </View> */}
+            {/* <Button
               title="Add a New Experience"
               onPress={() => this.showModal}
-            />
+            /> */}
             <Navbar />
           </View>
         ) : (
@@ -241,7 +286,7 @@ class SocialQuest extends Component {
                 );
               } else if (this.state.selectedContacts.length > 0) {
                 return (
-                  <View style={{ marginTop: "15%", height, width }}>
+                  <View style={{flex: 1}}>
                     <FlatList
                       data={this.state.contacts}
                       extraData={this.state}
@@ -264,13 +309,13 @@ class SocialQuest extends Component {
                       style={{
                         height: 50,
                         backgroundColor: "#E93422",
-                        padding: 5,
                         flexDirection: "row"
                       }}
                     >
                       <View
                         style={{
                           flex: 3,
+                          height: '100%',
                           alignItems: "flex-start",
                           justifyContent: "center",
                           alignContent: "center"
@@ -283,11 +328,7 @@ class SocialQuest extends Component {
                           horizontal={true}
                           renderItem={({ item }) => {
                             return (
-                              <View
-                                style={{
-                                  paddingTop: 10
-                                }}
-                              >
+                              <>
                                 <Text
                                   style={{
                                     color: "#000",
@@ -297,19 +338,30 @@ class SocialQuest extends Component {
                                 >
                                   {`${item.givenName},`}
                                 </Text>
-                              </View>
+                              </>
                             );
                           }}
                         />
                         <View
                           style={{
-                            flex: 1,
+                            width: '90%',
                             alignItems: "flex-end",
                             justifyContent: "center"
                           }}
                         >
                           <TouchableOpacity
-                            onPress={() => Alert.alert("Message sent :)")}
+                            onPress={() => {AlertIOS.alert(
+                              'Message Sent',
+                              '',
+                              [
+                                {
+                                  text: 'ok',
+                                  onPress: () => Actions.quests(),
+                                  style: 'ok',
+                                }
+                              ],
+                            );
+                          }}
                           >
                             <Icon name="send" />
                           </TouchableOpacity>

@@ -1,27 +1,26 @@
-import React, { Component } from "react";
-import { ScrollView, View, Dimensions, StyleSheet, Image } from "react-native";
-import { Text, Icon, Container } from "native-base";
-import { Actions } from "react-native-router-flux";
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel
-} from "react-native-simple-radio-button";
-// var Pedometer = require('react-native-pedometer');
+import React, { Component } from 'react';
+import { SafeAreaView, Text, StyleSheet, ScrollView, View } from 'react-native'
+import { Container, Header, Content, Tab, Tabs, Title } from 'native-base';
 
-var now = new Date();
 
 class SocialLesson extends Component {
-  state = {};
-
   render() {
     return (
-      <ScrollView>
-        <Container>
-          <View>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Container
+          style={{ flex: 1, backgroundColor: '#fff' }}>
+          <Tabs tabBarUnderlineStyle={{ backgroundColor: '#EB3422', height: 1 }}>
+            <Tab heading="Learn"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#EB3422' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+                <View>
             <Text style={styles.mainTitle}>
               Learn about{" "}
-              <Text style={[styles.mainTitle, { color: "red" }]}>Social</Text>
+              <Text style={[styles.mainTitle, { color: "#EB3422" }]}>Social</Text>
             </Text>
           </View>
 
@@ -59,9 +58,34 @@ class SocialLesson extends Component {
             socialization activities.**Texting is not an option for socially
             connecting with others**
           </Text>
-        </Container>
-        <Container>
           <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+            What others are saying
+          </Text>
+          <Text style={styles.paragraph}>
+            “I enjoyed the social connection piece, as I went into the program
+            feeling somewhat “isolated” after I retired - spent most of my time
+            at home (or though it seemed). I was pleased to find out that my
+            social connections were present every day. I was also reaching out
+            to more friends by text and by written notes than I had been able to
+            do in the past while working. The connections were positive and very
+            satisfying”
+          </Text>
+          <Text style={styles.paragraph}>
+            “A great transformation for me in terms of social contact. Needing
+            to follow through helped me get over my reticence to call people in
+            the evenings. My life is much better”
+          </Text>
+          </View>
+              </ScrollView>
+            </Tab>
+            <Tab heading="FAQ"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#EB3422' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+                <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
             I don’t like talking on the phone. It makes me uncomfortable. What
             should I do?
           </Text>
@@ -133,9 +157,18 @@ class SocialLesson extends Component {
             No, you don’t need to keep records. Simply log your practices daily
             using your Participant Tracking Form.
           </Text>
-        </Container>
-        <Container>
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+                </View>
+              </ScrollView>
+              </Tab>
+
+            <Tab heading="Barriers to Success"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#EB3422' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+                <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
             Barriers to Success
           </Text>
           <Text style={styles.subTitle}>Time</Text>
@@ -155,32 +188,20 @@ class SocialLesson extends Component {
             motivation ( see Tackling Low Motivation on page 45 for information
             about the 5 Second Rule).
           </Text>
+
+                </View>
+              </ScrollView>
+            </Tab>
+           
+          </Tabs>
+
         </Container>
-        <Container>
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
-            What others are saying
-          </Text>
-          <Text style={styles.paragraph}>
-            “I enjoyed the social connection piece, as I went into the program
-            feeling somewhat “isolated” after I retired - spent most of my time
-            at home (or though it seemed). I was pleased to find out that my
-            social connections were present every day. I was also reaching out
-            to more friends by text and by written notes than I had been able to
-            do in the past while working. The connections were positive and very
-            satisfying”
-          </Text>
-          <Text style={styles.paragraph}>
-            “A great transformation for me in terms of social contact. Needing
-            to follow through helped me get over my reticence to call people in
-            the evenings. My life is much better”
-          </Text>
-        </Container>
-      </ScrollView>
+      </SafeAreaView>
     );
   }
 }
-
 export { SocialLesson };
+
 
 const styles = StyleSheet.create({
   mainTitle: {

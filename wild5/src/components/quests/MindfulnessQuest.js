@@ -48,24 +48,24 @@ export default class MindfulnessQuest extends Component {
     console.log("mounted")
   }
 
-  componentWillUnmount(){
-    players.map(player => {
-      return (
-        player.destroy(() => console.log("destroyed"))
-      )
-    })
-    console.log("unmounted")
-  }
+  // componentWillUnmount(){
+  //   players.map(player => {
+  //     return (
+  //       player.destroy(() => console.log("destroyed"))
+  //     )
+  //   })
+  //   console.log("unmounted")
+  // }
 
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
-          <View style={{marginTop:"15%", height: '85%', alignItems: 'center', justifyContent: 'space-around'}}>
-          <Text style={{fontWeight: "bold", fontSize:30, marginTop:10, color: "#0AB2E8",marginBottom:25}}>Listen To A Mediatation</Text>
+          <View style={{marginTop:"10%", height: '85%', alignItems: 'center', justifyContent: 'space-around'}}>
+          <Text style={{fontWeight: "bold", fontSize:30, marginTop:10, color: "#0AB2E8",marginBottom:25}}>Listen To A Meditation</Text>
             {players.map(({ player, name }) => {
               return (
                 <TouchableOpacity
-                  ref={this.state.activePlayerId}
+                key={this.state.activePlayerId + Math.random()}
                   style={{
                     height: 50,
                     width: "90%",
@@ -80,14 +80,14 @@ export default class MindfulnessQuest extends Component {
                         this.setState({
                           activePlayerId: NO_PLAYER,
                           isPlaying: !this.state.isPlaying
-                        });
+                        }, () => console.log(this.state.activePlayerId,this.state.isPlaying));
                       });
                     } else {
                       // We're not playing, we should play, and then declare that we are the active player.
                       player.prepare().play(() => {
                         this.setState({ activePlayerId: player._playerId,
                                     isPlaying: true
-                        });
+                        }, () => console.log(this.state.activePlayerId,this.state.isPlaying));
                       });
                     }
                   }}

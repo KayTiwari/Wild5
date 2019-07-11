@@ -34,7 +34,7 @@ class Quests extends Component {
               style={{
                 textAlign: "center",
                 fontSize: 50,
-                marginTop: "20%",
+                marginTop: "10%",
                 fontWeight: "900",
                 marginBottom: 40
               }}
@@ -51,7 +51,7 @@ class Quests extends Component {
             />
 
             <QuestButton
-              label="Meditations"
+              label="Mindfulness"
               color="#0AB1E8"
               iconName1="cloud"
               iconName2="leaf"
@@ -67,7 +67,7 @@ class Quests extends Component {
             />
 
             <QuestButton
-              label="social"
+              label="Social"
               color="#E93422"
               iconName1="people"
               iconName2="mail-open"
@@ -75,8 +75,10 @@ class Quests extends Component {
             />
 
             <QuestButton
-              label="sleep"
+              label="Sleep"
               color="#BD2C95"
+              iconName1="moon"
+              iconName2="bed"
               onPress={() => Actions.sleepquest()}
             />
             </View>

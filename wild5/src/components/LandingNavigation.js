@@ -20,7 +20,7 @@ const navigationItems = [
   },
   {
     title: "Track Sleep",
-    icon: "bed",
+    icon: "moon",
     action: () => Actions.sleeptracking(),
     background: ["#e94c7e", "#b92e91"],
   },
