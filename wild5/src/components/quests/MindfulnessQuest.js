@@ -4,6 +4,9 @@ import { Icon } from "native-base";
 // import { Player } from "@react-native-community/audio-toolkit";
 import Sound from "react-native-sound";
 import Navbar from "../Navbar";
+
+Sound.setCategory("Playback");
+
 const players = [
   {
     path: "a_moment_of_graditude.mp3",
@@ -108,8 +111,7 @@ export default class MindfulnessQuest extends Component {
                     this.setState({ activePlayerId: NO_PLAYER });
                   } else {
                     // We're not playing, we should play, and then declare that we are the active player.
-                    player.play(() => {
-                    });
+                    player.play(() => {});
                     this.setState({ activePlayerId: player._key });
                   }
                 }}
