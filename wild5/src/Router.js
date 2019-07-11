@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {Scene, Router, Actions} from 'react-native-router-flux';
 import Landing from './screens/Landing';
@@ -21,10 +20,10 @@ import {
   NutritionLesson,
   SocialLesson,
   SleepLesson,
-} from "./screens/lessonscreens/";
-import NutritionQuest from "./components/quests/NutritionQuests";
-import MindfulnessQuest from "./components/quests/MindfulnessQuest";
-import Herointro from "./screens/HERO/Herointro";
+} from './screens/lessonscreens/';
+import NutritionQuest from './components/quests/NutritionQuests';
+import MindfulnessQuest from './components/quests/MindfulnessQuest';
+import Herointro from './screens/HERO/Herointro';
 import {
   HeroEnth,
   HeroHappy,
@@ -32,21 +31,21 @@ import {
   HeroOpt,
   HeroRes,
   HeroScore,
-} from "./screens/HERO";
-import ExerciseQuest from "./components/quests/ExerciseQuest";
-import NewLogin from "./screens/NewLoginScreen";
-import RegisterPage from "./screens/RegisterPage";
-import SocialQuest from "./components/quests/SocialQuest";
-import SleepQuest from "./components/quests/SleepQuest";
-import NutritionQuestCameraRoll from "./components/quests/NutritionQuestCameraRoll";
-import PrincipleStats from "./screens/statsscreens/PrincipleStats";
-import HeroTotalStats from "./screens/statsscreens/HeroTotalStats";
-import ExerciseStats from "./screens/statsscreens/ExerciseStats";
-import MindfulStats from "./screens/statsscreens/MindfulStats";
-import SleepStats from "./screens/statsscreens/SleepStats";
-import SocialStats from "./screens/statsscreens/SocialStats";
-import NutriStats from "./screens/statsscreens/NutrStats";
-import TimePicker from "./components/common/TimePicker";
+} from './screens/HERO';
+import ExerciseQuest from './components/quests/ExerciseQuest';
+import NewLogin from './screens/NewLoginScreen';
+import RegisterPage from './screens/RegisterPage';
+import SocialQuest from './components/quests/SocialQuest';
+import SleepQuest from './components/quests/SleepQuest';
+import NutritionQuestCameraRoll from './components/quests/NutritionQuestCameraRoll';
+import PrincipleStats from './screens/statsscreens/PrincipleStats';
+import HeroTotalStats from './screens/statsscreens/HeroTotalStats';
+import ExerciseStats from './screens/statsscreens/ExerciseStats';
+import MindfulStats from './screens/statsscreens/MindfulStats';
+import SleepStats from './screens/statsscreens/SleepStats';
+import SocialStats from './screens/statsscreens/SocialStats';
+import NutriStats from './screens/statsscreens/NutrStats';
+import TimePicker from './components/common/TimePicker';
 
 const Routercomponent = () => {
   return (

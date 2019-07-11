@@ -1,76 +1,76 @@
-import React, { Component } from "react";
-import firebase from "firebase";
-const { Consumer, Provider } = React.createContext();
+import React, {Component} from 'react';
+import firebase from 'firebase';
+const {Consumer, Provider} = React.createContext();
 
 export default class AuthProvider extends Component {
   state = {
-    user: "",
-    ready: false
+    user: '',
+    ready: false,
   };
 
   componentDidMount() {
-    firebase.initializeApp({
-      apiKey: "AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o",
-      authDomain: "wild5-5ca8b.firebaseapp.com",
-      databaseURL: "https://wild5-5ca8b.firebaseio.com",
-      projectId: "wild5-5ca8b",
-      storageBucket: "wild5-5ca8b.appspot.com",
-      messagingSenderId: "714885268112"
-    });
+    // firebase.initializeApp({
+    //   apiKey: "AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o",
+    //   authDomain: "wild5-5ca8b.firebaseapp.com",
+    //   databaseURL: "https://wild5-5ca8b.firebaseio.com",
+    //   projectId: "wild5-5ca8b",
+    //   storageBucket: "wild5-5ca8b.appspot.com",
+    //   messagingSenderId: "714885268112"
+    // });
   }
 
   getUser = () => {
     var user = firebase.auth().currentUser;
     if (user) {
-      var res = user.email.split(".");
+      var res = user.email.split('.');
       var userEm = res[0].toString();
       this.setState({
-        user: userEm
+        user: userEm,
       });
     } else {
-      console.log("noperz");
+      console.log('noperz');
     }
     var today = new Date();
     var date =
       today.getFullYear() +
-      "-" +
+      '-' +
       (today.getMonth() + 1) +
-      "-" +
+      '-' +
       today.getDate();
     var dateTime = date;
     this.setState({
-      date: dateTime
+      date: dateTime,
     });
   };
 
   getTrackingData = () => {
     var database = firebase.database();
     var ref = database.ref(`Surveys/${this.state.user}/${this.state.date}`);
-    ref.on("value", this.gotData, this.errData);
+    ref.on('value', this.gotData, this.errData);
   };
 
   getPrincipleData = () => {
     var database = firebase.database();
-            var ref = database.ref(`Surveys/${this.state.user}`);
-            ref.on('value', this.gotPrincData, this.errData)
-  }
+    var ref = database.ref(`Surveys/${this.state.user}`);
+    ref.on('value', this.gotPrincData, this.errData);
+  };
 
   getHeroData = () => {
     var database = firebase.database();
     var ref = database.ref(`HERO/${this.state.user}`);
-    ref.on('value', this.gotHeroData, this.errData)
-  }
+    ref.on('value', this.gotHeroData, this.errData);
+  };
 
   gotData = data => {
     newData = data.val();
     this.setState(
       {
         ran: true,
-        trackdata: newData || {}
+        trackdata: newData || {},
       },
       () => {
         this.setState({
-          ready: true
+          ready: true,
         });
       }
     );
@@ -78,26 +78,32 @@ export default class AuthProvider extends Component {
 
   gotPrincData = data => {
     newData = data.val();
-    this.setState({
-      princData: newData || {}
-    }, () => {
-      this.setState({
-        ready1: true
-      })
-    })
-  }
+    this.setState(
+      {
+        princData: newData || {},
+      },
+      () => {
+        this.setState({
+          ready1: true,
+        });
+      }
+    );
+  };
 
   gotHeroData = data => {
     newData = data.val();
-    this.setState({
-      heroData: newData || {}
-    }, () => {
-      this.setState({
-        ready2: true
-      })
-    })
+    this.setState(
+      {
+        heroData: newData || {},
+      },
+      () => {
+        this.setState({
+          ready2: true,
+        });
+      }
+    );
     console.log(this.state.heroData);
-  }
+  };
 
   errData = err => {
     console.log(err);
@@ -111,7 +117,7 @@ export default class AuthProvider extends Component {
           getTrackingData: this.getTrackingData,
           getPrincipleData: this.getPrincipleData,
           getHeroData: this.getHeroData,
-          ...this.state
+          ...this.state,
         }}
       >
         {this.props.children}
