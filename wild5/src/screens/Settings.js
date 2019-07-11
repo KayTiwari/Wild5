@@ -63,7 +63,7 @@ class Settings extends Component<Props> {
     return e => {
       this.setState(
         prevState => ({
-          showTimer: !prevState.showTimer,
+          showTimer: !this.state.showTimer,
           exerciseReminder: !prevState.exerciseReminder
         }),
         () => {
