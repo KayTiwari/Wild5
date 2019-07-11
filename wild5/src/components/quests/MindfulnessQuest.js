@@ -56,6 +56,19 @@ export default class MindfulnessQuest extends Component {
     console.log("mounted");
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.activePlayerId !== this.state.activePlayerId) {
+      // Loop through the players and pause any that are playing except for the currently active one
+      const prevPlayer = players.find(
+        player => player._key === prevState.activePlayerId
+      );
+
+      if (prevPlayer) {
+        prevPlayer.pause();
+      }
+    }
+  }
+
   // componentWillUnmount(){
   //   players.map(player => {
   //     return (
@@ -111,7 +124,7 @@ export default class MindfulnessQuest extends Component {
                     this.setState({ activePlayerId: NO_PLAYER });
                   } else {
                     // We're not playing, we should play, and then declare that we are the active player.
-                    player.play(() => {});
+                    player.play();
                     this.setState({ activePlayerId: player._key });
                   }
                 }}
