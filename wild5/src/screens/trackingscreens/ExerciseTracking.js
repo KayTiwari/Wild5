@@ -1,198 +1,243 @@
-import React, { Component } from "react";
-import { View, Dimensions, ImageBackground } from "react-native";
-import { ModButton } from "../../components/common";
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel
-} from "react-native-simple-radio-button";
-import { Text, Input } from "native-base";
-import { Dropdown } from "react-native-material-dropdown";
-import NumericInput from "react-native-numeric-input";
-import firebase from "firebase";
-import { Actions } from "react-native-router-flux";
-import exbackground from "../../images/exercisetracking.jpg";
-// import console = require('console');
+import React, {Component} from 'react';
+import {View} from 'react-native';
+import {ModButton} from '../../components/common';
+import RadioForm from 'react-native-simple-radio-button';
+import {Text, Item, Label, Input, Picker, Icon} from 'native-base';
+import Slider from '@react-native-community/slider';
+import firebase from 'firebase';
+import {Actions} from 'react-native-router-flux';
+import exbackground from '../../images/exercise-background.jpg';
+import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
 
 let typedata = [
   {
-    value: "Walking"
+    value: 'Walking',
   },
   {
-    value: "Jogging"
+    value: 'Jogging',
   },
   {
-    value: "Biking"
+    value: 'Biking',
   },
   {
-    value: "Playing Sports"
+    value: 'Playing Sports',
   },
   {
-    value: "Swimming"
+    value: 'Swimming',
   },
   {
-    value: "Weight Lifting"
+    value: 'Weight Lifting',
   },
   {
-    value: "Aerobics"
+    value: 'Aerobics',
   },
   {
-    value: "Water Aerobics"
+    value: 'Water Aerobics',
   },
   {
-    value: "Other"
-  }
+    value: 'Other',
+  },
 ];
-const screenheight = Dimensions.get("window").height;
+
+firebase.initializeApp({
+  apiKey: 'AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o',
+  authDomain: 'wild5-5ca8b.firebaseapp.com',
+  databaseURL: 'https://wild5-5ca8b.firebaseio.com',
+  projectId: 'wild5-5ca8b',
+  storageBucket: 'wild5-5ca8b.appspot.com',
+  messagingSenderId: '714885268112',
+});
+
 class ExerciseTracking extends Component {
   state = {
-    type: "",
+    type: '',
     duration: 0,
-    intensity: "",
-    user: "",
-    date: ""
+    intensity: '',
+    user: '',
+    date: '',
   };
 
   submitForm() {
-    console.log(this.state);
-    const { type, duration, intensity, user, date } = this.state;
+    const {type, duration, intensity, user, date} = this.state;
+
     firebase
       .database()
       .ref(`Surveys/${user}/${date}`)
       .update({
         Extype: type,
         Exduration: duration,
-        Exintensity: intensity
+        Exintensity: intensity,
       });
+
     Actions.landing();
   }
 
   componentDidMount() {
     var user = firebase.auth().currentUser;
     if (user) {
-      var res = user.email.split(".");
+      var res = user.email.split('.');
       var userEm = res[0].toString();
       this.setState({
-        user: userEm
+        user: userEm,
       });
     } else {
-      console.log("noperz");
+      console.log('noperz');
     }
     var today = new Date();
     var date =
       today.getFullYear() +
-      "-" +
+      '-' +
       (today.getMonth() + 1) +
-      "-" +
+      '-' +
       today.getDate();
     var dateTime = date;
     this.setState({
-      date: dateTime
+      date: dateTime,
     });
   }
 
   render() {
     return (
-      <View style={{ backgroundColor: "white", height: screenheight }}>
-        <ImageBackground
-          source={exbackground}
-          style={{ height: "100%", width: "100%" }}
+      <BlurredBackgroundImage
+        style={{paddingHorizontal: 10}}
+        source={exbackground}
+        blurRadius={20}
+      >
+        <Text
+          style={{
+            fontSize: 30,
+            textAlign: 'center',
+            marginTop: '10%',
+            marginBottom: '10%',
+            fontWeight: '600',
+            color: 'white',
+          }}
+        >
+          Track your{' '}
+          <Text style={{color: '#a8eb12', fontSize: 30, fontWeight: '600'}}>
+            Exercise
+          </Text>
+        </Text>
+
+        <View style={{alignItems: 'center'}}>
+          <Text
+            style={{
+              color: 'white',
+              alignSelf: 'center',
+              fontSize: 24,
+              fontWeight: '600',
+            }}
+          >
+            Type of Exercise?
+          </Text>
+          <Item style={{marginVertical: 20}} picker>
+            <Picker
+              selectedValue={this.state.type}
+              onValueChange={type => this.setState({type})}
+              mode="dropdown"
+              placeholder="Select Type of Exercise"
+              placeholderStyle={{color: 'white'}}
+              placeholderIconColor="white"
+              iosHeader="Exercises"
+              iosIcon={
+                <Icon
+                  name="ios-arrow-dropdown"
+                  style={{color: 'white', fontSize: 25}}
+                />
+              }
+              textStyle={{color: 'white'}}
+            >
+              {typedata.map(type => (
+                <Picker.Item
+                  key={type.value}
+                  label={type.value}
+                  value={type.value}
+                />
+              ))}
+            </Picker>
+          </Item>
+
+          {this.state.type === 'Other' && (
+            <Item style={{marginBottom: 20}} floatingLabel>
+              <Label style={{color: 'white'}}>Enter other exercise...</Label>
+              <Input
+                style={{color: 'white'}}
+                autoCorrect={false}
+                onChangeText={text => this.setState({type: text})}
+              />
+            </Item>
+          )}
+        </View>
+
+        <View style={{alignItems: 'center', alignSelf: 'stretch'}}>
+          <Text
+            style={{
+              marginBottom: '5%',
+              color: 'white',
+              fontSize: 24,
+              fontWeight: '600',
+              textAlign: 'center',
+            }}
+          >
+            Exercise Duration?
+          </Text>
+          <Slider
+            style={{width: '80%'}}
+            minimumValue={0}
+            maximumValue={120}
+            minimumTrackTintColor="#a8eb12"
+            step={5}
+            onValueChange={value => this.setState({duration: value})}
+          />
+          <Text style={{color: 'white'}}>{this.state.duration} minutes</Text>
+        </View>
+
+        <View
+          style={{
+            alignSelf: 'center',
+            marginTop: '10%',
+            marginBottom: '10%',
+          }}
         >
           <Text
             style={{
-              fontSize: 30,
-              textAlign: "center",
-              marginTop: "10%",
-              marginBottom: "20%",
-              fontWeight: "600"
+              marginBottom: '5%',
+              fontSize: 24,
+              fontWeight: '600',
+              color: 'white',
             }}
           >
-            Track your{" "}
-            <Text style={{ color: "green", fontSize: 30, fontWeight: "600" }}>
-              Exercise
-            </Text>
+            Intensity of Exercise?
           </Text>
-
-          <View style={{ marginLeft: "5%", marginRight: "5%" }}>
-            <Dropdown
-              baseColor="green"
-              label="Type of Exercise"
-              data={typedata}
-              onChangeText={text => this.setState({ type: text })}
-            />
-          </View>
-          <View>
-            {this.state.type === "Other" ? (
-              <Input
-                floatinglabel
-                autoCorrect={false}
-                onChangeText={text => this.setState({ user: text })}
-              />
-            ) : null}
-          </View>
-
-          <View style={{ alignSelf: "center" }}>
-            <Text style={{ marginBottom: "5%" }}>
-              How many minutes did you exercise?
-            </Text>
-            <NumericInput
-              value={this.state.value}
-              onChange={value => this.setState({ duration: value })}
-              onLimitReached={(isMax, msg) => console.log(isMax, msg)}
-              totalWidth={240}
-              totalHeight={50}
-              iconSize={25}
-              step={5}
-              minValue={0}
-              valueType="real"
-              rounded
-              textColor="darkolivegreen"
-              iconStyle={{ color: "white" }}
-              rightButtonBackgroundColor="darkgreen"
-              leftButtonBackgroundColor="forestgreen"
-            />
-          </View>
-
-          <View
-            style={{
-              alignSelf: "center",
-              marginTop: "10%",
-              marginBottom: "10%"
+          <RadioForm
+            style={{alignSelf: 'center'}}
+            radio_props={[
+              {label: 'Low', value: 'low'},
+              {label: 'Moderate', value: 'moderate'},
+              {label: 'High', value: 'high'},
+            ]}
+            initial={0}
+            formHorizontal={false}
+            labelHorizontal={true}
+            buttonColor={'#a8eb12'}
+            selectedButtonColor={'#a8eb12'}
+            labelColor="white"
+            selectedLabelColor="white"
+            animation={true}
+            onPress={value => {
+              this.setState({intensity: value});
             }}
-          >
-            <Text
-              style={{ marginBottom: "5%", fontSize: 25, fontWeight: "600" }}
-            >
-              Intensity of exercise
-            </Text>
-            <RadioForm
-              radio_props={[
-                { label: "Low", value: "low" },
-                { label: "Moderate", value: "moderate" },
-                { label: "High", value: "high" }
-              ]}
-              initial={0}
-              formHorizontal={false}
-              labelHorizontal={true}
-              buttonColor={"#5a8f30"}
-              animation={true}
-              onPress={value => {
-                this.setState({ intensity: value });
-              }}
-            />
-          </View>
+          />
+        </View>
 
-          <View style={{ alignSelf: "center" }}>
-            <ModButton
-              color={"black"}
-              onPress={() => this.submitForm()}
-              label="Submit"
-            >
-              Submit
-            </ModButton>
-          </View>
-        </ImageBackground>
-      </View>
+        <ModButton
+          color={'#a8eb12'}
+          onPress={() => this.submitForm()}
+          label="Submit"
+        >
+          Submit
+        </ModButton>
+      </BlurredBackgroundImage>
     );
   }
 }
