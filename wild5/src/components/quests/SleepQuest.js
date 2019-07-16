@@ -25,6 +25,20 @@ class SleepQuest extends Component {
     modalView: false
   };
 
+  time = (date1) => {
+    let date = date1,
+     h = date.getHours(),
+     m = date.getMinutes(),
+    ampm;
+    if(h> 12){
+      h-= 12;
+      ampm= (h%12)? 'PM': 'AM'
+    } else ampm=(h%12)? 'AM':'PM';
+    m= m <10 ? '0' +m : m;
+    return [h, m].join(':')+ampm;
+  }
+
+
   setDate = newDate => {
     this.setState({ chosenDate: newDate });
   };
@@ -123,7 +137,7 @@ class SleepQuest extends Component {
             </View>
             <View style={{marginTop: 20, marginBottom: 20, alignItems: 'center'}}>
                 <Text style={{color: 'white', fontSize: 20}}>
-                  You BedTime is Set for
+                  You BedTime is Set for {this.time(this.state.chosenDate)}
                 </Text>
                 <Text style={{color: 'white', fontSize: 20}}></Text>
               </View>
