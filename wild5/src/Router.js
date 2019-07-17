@@ -64,7 +64,7 @@ const Routercomponent = () => {
           <Scene key="quests" component={Quests} title='Quests' header={null} />
           <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' backTitle='Back'/>
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
-          <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null} initial/>
+          <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null} />
           <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" backTitle='Back' onBack={()=> Actions.quests()} />
           <Scene key='sleepquest' component={SleepQuest} title="sleep Quest" header={null} />
           <Scene key='socialquest' component={SocialQuest} title="social Quest" header={null} />
@@ -79,7 +79,7 @@ const Routercomponent = () => {
           <Scene key='sleepstats' component={SleepStats} backTitle={'Stats'}/>
           <Scene key='socialstats' component={SocialStats} backTitle={'Stats'} />
           <Scene key='nutristats' component={NutriStats} backTitle={'Stats'} />
-          <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
+          <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings} />
           <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking} />
           <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking} />
           <Scene key='sleeptracking' backTitle='Back' title='Sleep Tracking' component={SleepTracking} />

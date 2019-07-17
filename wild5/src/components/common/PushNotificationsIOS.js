@@ -75,13 +75,16 @@ class PushNotificationsIOS {
 
       /* iOS and Android properties */
       // title: "Scheduled Notification", // (optional)
+      repeatType: "time",
+      repeatTime: 86400000,
       message: "Hello",
       number: "10"
     };
 
     if (pillar === "exercise") {
-      console.log(date)
-      config.date = new Date(date);
+      config.repeatType = "time",
+      config.repeatTime = 86400000,
+      config.date = date
       config.message = "Remember to Exercise daily, FID";
     } else if (pillar === "mind") {
       config.date = new Date(Date.now() + 5 * 1000);
