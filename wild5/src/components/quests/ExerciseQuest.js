@@ -25,11 +25,11 @@ class ExerciseQuest extends Component {
       date: "",
       duration: 0,
       countdownTimer: 0,
-      y: false,
+      y: true,
       minutes: "00",
       seconds: "00",
       modalVisible: false,
-      logExercise: false,
+      logExercise: true,
       paused: false,
       exerciseChecked: "",
       exerciseSelected: false,
@@ -196,6 +196,7 @@ class ExerciseQuest extends Component {
                         backgroundColor: "white",
                         borderColor: "black",
                         borderWidth: 1,
+                        borderRadius: 6,
                         justifyContent: "center"
                       }}
                       onPress={() =>
@@ -208,11 +209,12 @@ class ExerciseQuest extends Component {
                         style={{
                           alignSelf: "center",
                           fontWeight: "bold",
-                          fontSize: 20,
-                          color: "#000"
+                          fontSize: 26,
+                          color: "#000",
+                          letterSpacing: 4
                         }}
                       >
-                        Start
+                        START
                       </Text>
                     </TouchableOpacity>
                   </View>
@@ -286,7 +288,7 @@ class ExerciseQuest extends Component {
                   ) : (
                     <View
                       style={{
-                        height: "35%",
+                        height: (this.state.exerciseSelected === false)?"65%" :'35%',
                         width: "85%",
                         backgroundColor: "#fff",
                         alignSelf: "center",
@@ -296,8 +298,9 @@ class ExerciseQuest extends Component {
                       <Text
                         style={{
                           alignSelf: "center",
-                          fontSize: 18,
-                          marginTop: "10%"
+                          fontSize: 20,
+                          marginTop: "5%",
+                          fontWeight: '700'
                         }}
                       >
                         {this.state.exerciseSelected === false
@@ -322,7 +325,7 @@ class ExerciseQuest extends Component {
                                   onPress={() =>
                                     this.setState({ exerciseChecked: item.key })
                                   }
-                                  style={{ height: 30, width: "100%" }}
+                                  style={{ height: 45, width: "100%", justifyContent: 'center' }}
                                 >
                                   <View
                                     style={{
@@ -341,7 +344,7 @@ class ExerciseQuest extends Component {
                                     {this.state.exerciseChecked === item.key ? (
                                       <Icon
                                         name="checkbox"
-                                        style={{ color: "red" }}
+                                        style={{ color: "blue", fontSize: 40 }}
                                       />
                                     ) : null}
                                   </View>
@@ -349,15 +352,18 @@ class ExerciseQuest extends Component {
                               )}
                             />
                           </View>
+                          <View style={{height: '100%',alignItems: 'center'}}>
                           <TouchableOpacity
+                          style={{alignSelf: 'center', backgroundColor: '#333', height: '20%', width: '30%', justifyContent: 'center', borderRadius: 7}}
                             onPress={() =>
                               this.setState({
                                 exerciseSelected: !this.state.exerciseSelected
                               })
                             }
                           >
-                            <Text>Confirm</Text>
+                            <Text style={{fontSize: 18, alignSelf: 'center'}}>CONFIRM</Text>
                           </TouchableOpacity>
+                          </View>
                         </>
                       ) : (
                         <>
@@ -383,17 +389,19 @@ class ExerciseQuest extends Component {
                                       justifyContent: "space-between"
                                     }}
                                   >
-                                    <Text style={{ fontSize: 26 }}>
+                                    <Text style={{ fontSize: 26}}>
                                       {item.key}
                                     </Text>
-                                    {(this.state.intensityChecked === item.key)?<Icon name="checkbox" /> : null}
+                                    {(this.state.intensityChecked === item.key)?<Icon name="checkbox" style={{color:'blue',fontSize: 40}} /> : null}
                                   </View>
                                 </TouchableOpacity>
                               )}
                             />
                           </View>
-                          <TouchableOpacity onPress={this.submitData}>
-                            <Text>Submit Data</Text>
+                          <TouchableOpacity 
+                          style={{alignSelf: 'center', backgroundColor: '#333', height: '35%', width: '30%', justifyContent: 'center', borderRadius: 7}}
+                          onPress={this.submitData}>
+                            <Text style={{fontSize: 18, alignSelf: 'center', textAlign:'center'}}>Submit Data</Text>
                           </TouchableOpacity>
                         </>
                       )}
@@ -489,6 +497,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "80%",
     backgroundColor: "white",
-    height: 50
+    height: 50,
+    borderRadius: 6
   }
 });

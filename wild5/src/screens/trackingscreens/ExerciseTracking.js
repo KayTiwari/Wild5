@@ -68,7 +68,7 @@ class ExerciseTracking extends Component {
         Exduration: duration,
         Exintensity: intensity,
       }).then(()=>AlertIOS.alert(
-        'Message Sent',
+        'Data submitted Successfully',
         '',
         [
           {
@@ -77,10 +77,9 @@ class ExerciseTracking extends Component {
             style: 'ok',
           }
         ],
-      );
-    });
+      )
+    );
 
-    Actions.landing();
   }
 
   componentDidMount() {
