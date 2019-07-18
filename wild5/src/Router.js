@@ -65,7 +65,7 @@ const Routercomponent = () => {
           <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' backTitle='Back'/>
           <Scene key='nutritionquest' component={NutritionQuest} title="Nutrition Quest" header={null} />
           <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null} />
-          <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" backTitle='Back' onBack={()=> Actions.quests()}/>
+          <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" backTitle='Back' onBack={()=> Actions.quests()} />
           <Scene key='sleepquest' component={SleepQuest} title="sleep Quest" header={null} />
           <Scene key='socialquest' component={SocialQuest} title="social Quest" header={null} />
           <Scene key='nutritionquestcameraroll' component={NutritionQuestCameraRoll} title="nutritionquestcameraroll" header={null} />

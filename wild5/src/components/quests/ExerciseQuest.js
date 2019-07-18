@@ -25,11 +25,11 @@ class ExerciseQuest extends Component {
       date: "",
       duration: 0,
       countdownTimer: 0,
-      y: true,
+      y: false,
       minutes: "00",
       seconds: "00",
       modalVisible: false,
-      logExercise: true,
+      logExercise: false,
       paused: false,
       exerciseChecked: "",
       exerciseSelected: false,
@@ -127,8 +127,19 @@ class ExerciseQuest extends Component {
       .ref(`Surveys/${this.state.user}/${this.state.date}`)
       .set({
         data
-      }).then(r => console.log(r))
-      .catch(e => console.log(e));
+      }, ()=> 
+        AlertIOS.alert(
+          'Data successfully saved',
+          '',
+          [
+            {
+              text: 'ok',
+              onPress: () => this.setState({modalVisible: !this.state.modalVisible}, ()=> Actions.quests() ),
+              style: 'ok',
+            }
+          ],
+        )
+        );
   };
 
   endExercise = () => {
