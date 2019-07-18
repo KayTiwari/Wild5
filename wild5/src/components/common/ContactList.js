@@ -39,9 +39,9 @@ const ContactList = ({ onPress, isChecked, contact }) => {
         }}
       >
         {isChecked ? (
-          <Icon name="ios-checkbox" size={30} color={"light-blue"}></Icon>
+          <Icon name="checkbox" size={30} color={"light-blue"}></Icon>
         ) : (
-          <Icon name="ios-square-outline" size={30} color={"#000"}></Icon>
+          <Icon name="square-outline" size={30} color={"#000"}></Icon>
         )}
       </View>
     </TouchableOpacity>

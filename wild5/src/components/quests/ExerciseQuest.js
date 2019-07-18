@@ -381,7 +381,7 @@ class ExerciseQuest extends Component {
                               renderItem={({ item }) => (
                                 <TouchableOpacity
                                   onPress={()=>this.setState({intensityChecked: item.key})}
-                                  style={{ height: 30, width: "100%" }}
+                                  style={{ height: 45, width: "100%" }}
                                 >
                                   <View
                                     style={{
@@ -389,7 +389,7 @@ class ExerciseQuest extends Component {
                                       justifyContent: "space-between"
                                     }}
                                   >
-                                    <Text style={{ fontSize: 26}}>
+                                    <Text style={{ fontSize: 26 }}>
                                       {item.key}
                                     </Text>
                                     {(this.state.intensityChecked === item.key)?<Icon name="checkbox" style={{color:'blue',fontSize: 40}} /> : null}
