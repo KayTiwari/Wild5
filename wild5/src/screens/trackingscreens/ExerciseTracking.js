@@ -233,10 +233,8 @@ class ExerciseTracking extends Component {
         <ModButton
           color={'#a8eb12'}
           onPress={() => this.submitForm()}
-          label="Submit"
-        >
-          Submit
-        </ModButton>
+          label="Save My Exercise"
+        />
       </BlurredBackgroundImage>
     );
   }
