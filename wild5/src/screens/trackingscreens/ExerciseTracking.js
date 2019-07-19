@@ -67,9 +67,19 @@ class ExerciseTracking extends Component {
         Extype: type,
         Exduration: duration,
         Exintensity: intensity,
-      });
+      }).then(()=>AlertIOS.alert(
+        'Data submitted Successfully',
+        '',
+        [
+          {
+            text: 'ok',
+            onPress: () => Actions.quests(),
+            style: 'ok',
+          }
+        ],
+      )
+    );
 
-    Actions.landing();
   }
 
   componentDidMount() {
