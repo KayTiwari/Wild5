@@ -1,44 +1,37 @@
-import React, {Component} from 'react';
-import {
-  ScrollView,
-  View,
-  Dimensions,
-  StyleSheet,
-  Image,
-  ImageBackground,
-} from 'react-native';
-import {Text, Icon, Container} from 'native-base';
-import {Actions} from 'react-native-router-flux';
-import background from '../../images/exerciselesson.jpeg';
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel,
-} from 'react-native-simple-radio-button';
+import React, { Component } from 'react';
+import { SafeAreaView, Text, StyleSheet, ScrollView, View } from 'react-native'
+import { Container, Header, Content, Tab, Tabs, Title } from 'native-base';
 
-const screenheight = Dimensions.get('window').height;
 
 class ExerciseLesson extends Component {
-  state = {};
-
   render() {
     return (
-      <ScrollView>
-        <Container>
-          <ImageBackground
-            source={background}
-            style={{width: '100%', height: screenheight, resizeMode: 'contain'}}
-          >
-            <View>
-              <Text style={styles.mainTitle}>
-                Learn about{' '}
-                <Text style={[styles.mainTitle, {color: 'green'}]}>
-                  Exercise
-                </Text>
-              </Text>
-            </View>
-
-            <Text style={[styles.mainTitle, {marginTop: '20%'}]}>F.I.D</Text>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Container
+          style={{ flex: 1, backgroundColor: '#fff' }}>
+          <Tabs tabBarUnderlineStyle={{ backgroundColor: '#72B83E', height: 1 }}>
+            <Tab heading="Learn"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#72B83E' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+                <View style={{marginBottom: 20}}>
+            <Text style={styles.mainTitle}>
+              Learn about{" "}
+              <Text style={[styles.mainTitle, { color: "#72B83E" }]}>Exercise</Text>
+            </Text>
+          </View>
+          <View style={{backgroundColor:"#72B83E", width: '85%', alignSelf: 'center', height: 80 }}>
+          <Text style={{fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '700'}}>
+            Program Expectations
+          </Text>
+          <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
+            Exercise 30 minutes each day for 30 days, aim for at least moderate intensity
+          </Text>
+          </View>
+          <Text style={[styles.mainTitle, {marginTop: '20%'}]}>F.I.D</Text>
             <Text style={styles.subTitle}>Frequency</Text>
             <Text style={styles.paragraph}>
               Exercise is recommended to be done every day for 7 days a week.
@@ -55,10 +48,7 @@ class ExerciseLesson extends Component {
     marginRight: '5%'}}>
               Recommended duration is for 30 minutes during a session.
             </Text>
-          </ImageBackground>
-        </Container>
-        <View style={{marginTop: 135}}>
-        <Text style={{ alignSelf: 'center', fontSize: 30, fontWeight: '600'}}>
+            <Text style={{ alignSelf: 'center', fontSize: 30, fontWeight: '600'}}>
           Why Exercise?
         </Text>
         <Text style={styles.paragraph}>
@@ -68,8 +58,17 @@ class ExerciseLesson extends Component {
           exercise in this wellness program makes sense and offers all
           participants a chance to reap the many associated benefits.
         </Text>
-        </View>
-        <Text style={[styles.mainTitle, {marginTop: '20%'}]}>
+          </View>
+              </ScrollView>
+            </Tab>
+            <Tab heading="FAQ"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#72B83E' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+                    <Text style={[styles.mainTitle, {marginTop: '20%'}]}>
           What type of exercise is recommended?
         </Text>
         <Text style={styles.paragraph}>
@@ -99,13 +98,24 @@ class ExerciseLesson extends Component {
             benefits, regardless of the way you structure the timing of your
             exercise routine.{' '}
           </Text>
-        </View>
-        <Container>
-          <View>
-            <Text style={[styles.mainTitle, {marginTop: '20%'}]}>
-              Barriers to Success
-            </Text>
-            <Text style={[styles.subTitle, {marginTop: '5%'}]}>Time</Text>
+                </View>
+                </View>
+              </ScrollView>
+              </Tab>
+              
+
+            <Tab 
+              heading="Barriers to Success"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#72B83E' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+                <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+            Barriers to Success
+          </Text>
+          <Text style={[styles.subTitle, {marginTop: '5%'}]}>Time</Text>
             <Text style={styles.paragraph}>
               Add exercise to your calendar and set reminder alerts.
             </Text>
@@ -130,49 +140,40 @@ class ExerciseLesson extends Component {
               packed the night before. Get an accountability buddy. Consider the
               5 second rule when experiencing low motivation
             </Text>
-          </View>
+
+                </View>
+              </ScrollView>
+            </Tab>
+           
+          </Tabs>
+
         </Container>
-        <Container style={{marginBottom: 0, height: '90%'}}>
-          <Text style={[styles.mainTitle, {marginTop: '0%'}]}>
-            What others are saying
-          </Text>
-          <Text style={styles.paragraph}>
-            “The exercise part got me sleeping much better and feeling better” I
-            felt like I was accountable to someone for working out vs. just
-            telling myself that I was supposed to work out everyday.”
-          </Text>
-          <Text style={styles.paragraph}>
-            “I think exercise must have released a lot of endorphins or
-            something because it would really bring my mood up for the whole
-            rest of the day if I did the jogging or whatever.”
-          </Text>
-        </Container>
-      </ScrollView>
+      </SafeAreaView>
     );
   }
 }
+export { ExerciseLesson };
 
-export {ExerciseLesson};
 
 const styles = StyleSheet.create({
   mainTitle: {
     fontSize: 30,
-    fontWeight: '600',
-    textAlign: 'center',
-    marginTop: '10%',
+    fontWeight: "600",
+    textAlign: "center",
+    marginTop: "10%"
   },
   subTitle: {
     fontSize: 20,
-    fontWeight: '600',
-    textAlign: 'center',
-    marginTop: '20%',
+    fontWeight: "600",
+    textAlign: "center",
+    marginTop: "20%"
   },
   paragraph: {
     fontSize: 20,
-    fontWeight: '400',
-    marginTop: '5%',
-    marginLeft: '5%',
-    marginRight: '5%',
-    textAlign: 'center',
-  },
+    fontWeight: "400",
+    marginTop: "5%",
+    marginLeft: "5%",
+    marginRight: "5%",
+    textAlign: "center"
+  }
 });

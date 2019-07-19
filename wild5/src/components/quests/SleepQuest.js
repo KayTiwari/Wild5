@@ -65,6 +65,10 @@ class SleepQuest extends Component {
     });
   }
 
+cancelSleep = ()=> {
+  firebase.database().ref(`SleepSettings/${this.state.user}/`).set(null).then( ()=> this.setState({sleepConfirmed: false}))
+}
+
   getBedTime = () => {
     firebase
       .database()
@@ -90,7 +94,7 @@ class SleepQuest extends Component {
           bedtime: this.state.chosenDate.toString(),
           sleepConfirmed: true
         })
-        .then((r) => console.log(r))
+        .then(r => console.log(r))
         .catch(e => console.log(e))
     );
   };
@@ -254,6 +258,26 @@ class SleepQuest extends Component {
                     }}
                   >
                     Change Time
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={this.cancelSleep}
+                  style={{
+                    marginTop: 10,
+                    borderColor: "white",
+                    borderWidth: 2,
+                    borderRadius: 10
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: "white",
+                      fontSize: 26,
+                      fontWeight: "900",
+                      padding: 10
+                    }}
+                  >
+                    Cancel
                   </Text>
                 </TouchableOpacity>
               </View>

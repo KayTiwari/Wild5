@@ -1,78 +1,104 @@
-import React, {Component} from 'react';
-import {
-  ScrollView,
-  View,
-  Dimensions,
-  StyleSheet,
-  Image,
-  Button,
-  ImageBackground,
-} from 'react-native';
-import {Text, Icon, Container} from 'native-base';
-import {Actions} from 'react-native-router-flux';
-import background from '../../images/mindfulnesslesson.jpeg';
+import React, { Component } from 'react';
+import { SafeAreaView, Text, StyleSheet, ScrollView, View } from 'react-native'
+import { Container, Header, Content, Tab, Tabs, Title } from 'native-base';
 
-var now = new Date();
-
-screenheight = Dimensions.get('window').height;
 
 class MindfulnessLesson extends Component {
-    render(){
-        return (
-            <ScrollView>
-                <Container>
-                    <View>
-                    <Text style={styles.mainTitle}>Learn about <Text style={[styles.mainTitle, {color: '#0AB1E7'}]}>Mindfulness</Text></Text>
-                    </View>
-
-                        <Text style={styles.subTitle}>What is mindfulness?</Text>
-                        <Text style={styles.paragraph}>Experiences demonstrating mindlessness</Text>
-                        <Text style={styles.subTitle}>You probably had the experience of driving in your car and arriving at your destination without remembering how you got there.</Text>
-                        <Text style={styles.paragraph}>Or, there may be times when you realize that your plate is empty , shortly after you sit down to eat a meal, but you have no memory of eating. 
-                        </Text>
-                        <Text style={styles.subTitle}>When you engage in these behaviors its as if you're on “autopilot”.  When you’re on autopilot you are missing out on living your life fully are are at greater risk for feeling unhappy.</Text>
-                        <Text style={styles.paragraph}>opposite of of mindless, autostate pilot.</Text>
-                </Container>
-                <Container>
-                <View style={{marginTop: 50}}>
-                <Text>”paying attention in a particular way: on purpose, in the present moment, and non-judgmentally.”m- Dr. Jon Kabat-Zinn.</Text>
+  render() {
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+        <Container
+          style={{ flex: 1, backgroundColor: '#fff' }}>
+          <Tabs tabBarUnderlineStyle={{ backgroundColor: '#0AB1E7', height: 1 }}>
+            <Tab heading="Learn"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#0AB1E7' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+                <View style={{marginBottom: 20}}>
+            <Text style={styles.mainTitle}>
+              Learn about{" "}
+              <Text style={[styles.mainTitle, { color: "#0AB1E7" }]}>Mindfulness</Text>
+            </Text>
+          </View>
+          <View style={{backgroundColor:"#0AB1E7", width: '85%', alignSelf: 'center', height: 80 }}>
+          <Text style={{fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '700'}}>
+            Program Expectations
+          </Text>
+          <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
+            Practice mindfulness for at least 10 minutes each day for 30 days.
+          </Text>
+          </View>
+       
+          
+        
+          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+            What others are saying
+          </Text>
+          
+          </View>
+              </ScrollView>
+            </Tab>
+            <Tab heading="FAQ"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#0AB1E7' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+      
                 </View>
-                
-                        <Text style={[styles.mainTitle, {marginTop: '20%'}]}>Mindfulness Meditations</Text>
-                        
-                    <Button onPress={() => Actions.mindfulnessquest()} title="Mindfulness Meditations"></Button>
+              </ScrollView>
+              </Tab>
 
-            </Container>
-        </ScrollView>
-        )
+            <Tab 
+              heading="Barriers to Success"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#0AB1E7' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+                <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+            Barriers to Success
+          </Text>
+      
+
+                </View>
+              </ScrollView>
+            </Tab>
+           
+          </Tabs>
+
+        </Container>
+      </SafeAreaView>
+    );
   }
 }
+export { MindfulnessLesson };
 
-export {MindfulnessLesson};
 
 const styles = StyleSheet.create({
-
-    mainTitle: {
-        fontSize: 30,
-        fontWeight: '600',
-        textAlign: 'center',
-        marginTop: '10%',
-        zIndex: 1000
-    },
-    subTitle: {
-        fontSize: 20,
-        fontWeight: '600',
-        textAlign: 'center',
-        marginTop: '20%',
-        zIndex: 1000
-    },
-    paragraph: {
-        fontSize: 20,
-        fontWeight: '400',
-        marginTop: '5%',
-        marginLeft: '5%',
-        marginRight: '5%',
-        textAlign: 'center',
-        zIndex: 1000
-    }
-})
+  mainTitle: {
+    fontSize: 30,
+    fontWeight: "600",
+    textAlign: "center",
+    marginTop: "10%"
+  },
+  subTitle: {
+    fontSize: 20,
+    fontWeight: "600",
+    textAlign: "center",
+    marginTop: "20%"
+  },
+  paragraph: {
+    fontSize: 20,
+    fontWeight: "400",
+    marginTop: "5%",
+    marginLeft: "5%",
+    marginRight: "5%",
+    textAlign: "center"
+  }
+});
