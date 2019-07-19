@@ -1,30 +1,37 @@
-import React, { Component } from "react";
-import { ScrollView, View, StyleSheet, Text } from "react-native";
+import React, { Component } from 'react';
+import { SafeAreaView, Text, StyleSheet, ScrollView, View } from 'react-native'
+import { Container, Header, Content, Tab, Tabs, Title } from 'native-base';
 
 
-
-
-const NutritionLesson = () => {
- 
+class NutritionLesson extends Component {
+  render() {
     return (
-      <View style={{flex: 1}}>
-      <ScrollView>
-        <View>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Container
+          style={{ flex: 1, backgroundColor: '#fff' }}>
+          <Tabs tabBarUnderlineStyle={{ backgroundColor: '#E27027', height: 1 }}>
+            <Tab heading="Learn"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#E27027' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+                <View style={{marginBottom: 20}}>
             <Text style={styles.mainTitle}>
               Learn about{" "}
-              <Text style={[styles.mainTitle, { color: "orange" }]}>
-                Nutrition
-              </Text>
+              <Text style={[styles.mainTitle, { color: "#E27027" }]}>Nutrition</Text>
             </Text>
           </View>
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+          <View style={{backgroundColor:"#E27027", width: '85%', alignSelf: 'center', height: 120 }}>
+          <Text style={{fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '700'}}>
             Program Expectations
           </Text>
-          <Text style={styles.subTitle}>
-            
-            Log your daily meals/snacks/beverages/alcohol each day for 30 days [
+          <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
+          Log your daily meals/snacks/beverages/alcohol each day for 30 days [
             follow the MIND diet principles as closely as you can]
           </Text>
+          </View>
           <Text style={styles.paragraph}>
             Goal is to increase your mindful awareness of what you’re consuming.
             Research has shown that many people who keep a journal lose weight.
@@ -42,8 +49,38 @@ const NutritionLesson = () => {
             principles eat more vegetables, fruits, whole grains, fish, olive
             oil, and nuts. Limit consumption of diary.
           </Text>
-          <View style={{flex: 1}}>
-          <Text style={styles.subTitle}>
+          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+            What others are saying
+          </Text>
+          <Text style={styles.paragraph}>
+            “I have already lost weight. I’m developing a new appreciation of
+            the taste of food. I feel very strongly that the “mindful eating
+            meditation” is integral to success with changing eating habits. It
+            slows everything down, maintains awareness, enhances the
+            appreciation of food, and interestingly, when done appropriately it
+            cuts down the amount of food I even want completely outside of my
+            conscious awareness.”
+          </Text>
+          <Text style={styles.paragraph}>
+            “I have lost ten pounds since the completion of the survey. It has
+            helped me feel better about myself. This program has helped to show
+            me that with a bit more attention to what I’m eating and some
+            exercise, I can change my body for the better. I never ate terribly,
+            but the amount of sugar and caffeine I was using to keep going took
+            a toll. I feel better about what I’m eating and I’m happier that I
+            am more active.”
+          </Text>
+          </View>
+              </ScrollView>
+            </Tab>
+            <Tab heading="FAQ"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#E27027' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+                <Text style={styles.subTitle}>
             Why is food logging so important to my mental wellness?
           </Text>
           <Text style={styles.paragraph}>
@@ -98,10 +135,21 @@ const NutritionLesson = () => {
             fact lose weight. Keeping a food diary significantly reduces
             mindless eating which can be a major factor in gaining weight.
           </Text>
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+                </View>
+              </ScrollView>
+              </Tab>
+
+            <Tab 
+              heading="Barriers to Success"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#E27027' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+                <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
             Barriers to Success
           </Text>
-          <Text style={styles.subTitle}>Time</Text>
           <Text style={styles.paragraph}>
             Take the time to log your meals/snacks/beverages/alcohol throughout
             the day. Try best to avoid waiting until bedtime to complete your
@@ -121,37 +169,19 @@ const NutritionLesson = () => {
             motivation ( see Tackling Low Motivation on page 45 for information
             about the 5 Second Rule).
           </Text>
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
-            What others are saying
-          </Text>
-          <Text style={styles.paragraph}>
-            “I have already lost weight. I’m developing a new appreciation of
-            the taste of food. I feel very strongly that the “mindful eating
-            meditation” is integral to success with changing eating habits. It
-            slows everything down, maintains awareness, enhances the
-            appreciation of food, and interestingly, when done appropriately it
-            cuts down the amount of food I even want completely outside of my
-            conscious awareness.”
-          </Text>
-          <Text style={styles.paragraph}>
-            “I have lost ten pounds since the completion of the survey. It has
-            helped me feel better about myself. This program has helped to show
-            me that with a bit more attention to what I’m eating and some
-            exercise, I can change my body for the better. I never ate terribly,
-            but the amount of sugar and caffeine I was using to keep going took
-            a toll. I feel better about what I’m eating and I’m happier that I
-            am more active.”
-          </Text>
-          </View>
+                </View>
+              </ScrollView>
+            </Tab>
+           
+          </Tabs>
 
-        
-      </ScrollView>
-      </View>
+        </Container>
+      </SafeAreaView>
     );
   }
-
-
+}
 export { NutritionLesson };
+
 
 const styles = StyleSheet.create({
   mainTitle: {

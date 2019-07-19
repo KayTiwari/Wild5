@@ -1,31 +1,37 @@
-import React, { Component } from "react";
-import { ScrollView, View, Dimensions, StyleSheet, Image } from "react-native";
-import { Text, Icon, Container } from "native-base";
-import { Actions } from "react-native-router-flux";
+import React, { Component } from 'react';
+import { SafeAreaView, Text, StyleSheet, ScrollView, View } from 'react-native'
+import { Container, Header, Content, Tab, Tabs, Title } from 'native-base';
 
-var now = new Date();
 
 class SleepLesson extends Component {
-  state = {};
-
   render() {
     return (
-      <ScrollView>
-        <View>
-          <View>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Container
+          style={{ flex: 1, backgroundColor: '#fff' }}>
+          <Tabs tabBarUnderlineStyle={{ backgroundColor: '#B72B90', height: 1 }}>
+            <Tab heading="Learn"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#B72B90' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+                <View style={{marginBottom: 20}}>
             <Text style={styles.mainTitle}>
               Learn about{" "}
-              <Text style={[styles.mainTitle, { color: "purple" }]}>Sleep</Text>
+              <Text style={[styles.mainTitle, { color: "#B72B90" }]}>Sleep</Text>
             </Text>
           </View>
-
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+          <View style={{backgroundColor:"#B72B90", width: '85%', alignSelf: 'center', height: 80 }}>
+          <Text style={{fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '700'}}>
             Program Expectations
           </Text>
-          <Text style={styles.subTitle}>
-            Implement 4 or more of the 6 sleep hygiene practices each day for 30
+          <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
+          Implement 4 or more of the 6 sleep hygiene practices each day for 30
             days
           </Text>
+          </View>
           <Text style={styles.paragraph}>
             Sleep is crucial for overall good health. Lack of sleep or poor
             quality of sleep is connected to increased inflammation. Lack of
@@ -60,6 +66,33 @@ class SleepLesson extends Component {
             Avoid caffeinated drinks 0 hours before bedtime.
           </Text>
           <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+            What others are saying
+          </Text>
+          <Text style={styles.paragraph}>
+            “Incorporation of the wellness practices has enhanced my life! I
+            never thought I could get away from napping on the weekends, but it
+            has become a reality! I also have more mental clarity and energy as
+            a result of the 5 wellness practices combined”
+          </Text>
+          <Text style={styles.paragraph}>
+            “This was a wonderful and enlightening experience as I balanced all
+            five elements of wellness practices that were already a part of my
+            life. Our culture is at new heights of stress and sleep problems.
+            Little did I know how internet modem lights flashing my direction
+            all night while I tried to sleep could play such a role in my poor
+            sleep quality. What a revelation that the world needs to hear!”
+          </Text>
+          </View>
+              </ScrollView>
+            </Tab>
+            <Tab heading="FAQ"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#B72B90' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+                <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
             I’m confused about logging my daily sleep practices on the
             Participant Tracking Form? What if I only implement 2 of the 6sleep
             hygiene practices?
@@ -137,7 +170,19 @@ class SleepLesson extends Component {
             Don’t underestimate the disrupting effect ambient light has on your
             sleep.
           </Text>
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+                </View>
+              </ScrollView>
+              </Tab>
+
+            <Tab 
+              heading="Barriers to Success"
+              tabStyle={{ backgroundColor: 'white' }}
+              textStyle={{ color: 'grey' }}
+              activeTabStyle={{ backgroundColor: 'white' }}
+              activeTextStyle={{ color: '#B72B90' }}>
+              <ScrollView>
+                <View style={{flex: 1}}>
+                <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
             Barriers to Success
           </Text>
           <Text style={styles.subTitle}>Time</Text>
@@ -157,30 +202,20 @@ class SleepLesson extends Component {
             on days when you’re experiencing low motivation (See Tackling Low
             Motivation on page 45 for information about the 5 Second Rule).
           </Text>
-          <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
-            What others are saying
-          </Text>
-          <Text style={styles.paragraph}>
-            “Incorporation of the wellness practices has enhanced my life! I
-            never thought I could get away from napping on the weekends, but it
-            has become a reality! I also have more mental clarity and energy as
-            a result of the 5 wellness practices combined”
-          </Text>
-          <Text style={styles.paragraph}>
-            “This was a wonderful and enlightening experience as I balanced all
-            five elements of wellness practices that were already a part of my
-            life. Our culture is at new heights of stress and sleep problems.
-            Little did I know how internet modem lights flashing my direction
-            all night while I tried to sleep could play such a role in my poor
-            sleep quality. What a revelation that the world needs to hear!”
-          </Text>
-        </View>
-      </ScrollView>
+
+                </View>
+              </ScrollView>
+            </Tab>
+           
+          </Tabs>
+
+        </Container>
+      </SafeAreaView>
     );
   }
 }
-
 export { SleepLesson };
+
 
 const styles = StyleSheet.create({
   mainTitle: {
