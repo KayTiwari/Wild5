@@ -3,13 +3,14 @@ import { ScrollView, View, Dimensions, ImageBackground } from "react-native";
 import { Input, Form, Item, Label, Text } from "native-base";
 import { ModButton } from "../../components/common";
 import firebase from "firebase";
+import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
 import RadioForm, {
   RadioButton,
   RadioButtonInput,
   RadioButtonLabel
 } from "react-native-simple-radio-button";
 import { Actions } from "react-native-router-flux";
-import mindtracking from "../../images/mindfultracking.jpg";
+import mindtracking from "../../images/mindfultracking1.jpg";
 
 const screenheight = Dimensions.get("window").height;
 class MindfulnessTracking extends Component {
@@ -57,11 +58,12 @@ class MindfulnessTracking extends Component {
 
   render() {
     return (
-      <View style={{ backgroundColor: "white", height: screenheight }}>
-        <ImageBackground
-          source={mindtracking}
-          style={{ height: "100%", width: "100%" }}
-        >
+      // <View style={{ backgroundColor: "white", height: screenheight }}>
+        <BlurredBackgroundImage
+        style={{paddingHorizontal: 10}}
+        source={mindtracking}
+        blurRadius={10}
+      >
           <Text
             style={{
               fontSize: 30,
@@ -72,7 +74,7 @@ class MindfulnessTracking extends Component {
             }}
           >
             Track your{" "}
-            <Text style={{ color: "blue", fontSize: 30, fontWeight: "600" }}>
+            <Text style={{ color: "#81cfe0", fontSize: 30, fontWeight: "600" }}>
               Mindfulness
             </Text>
           </Text>
@@ -124,8 +126,8 @@ class MindfulnessTracking extends Component {
               Submit
             </ModButton>
           </View>
-        </ImageBackground>
-      </View>
+        </BlurredBackgroundImage>
+      // </View>
     );
   }
 }

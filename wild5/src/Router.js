@@ -59,7 +59,7 @@ const Routercomponent = () => {
           <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back' onBack={()=> Actions.edroadmap()} />
           <Scene key="mindfulnesslesson" component={MindfulnessLesson} title='Mindfulness' backTitle='Back' onBack={()=> Actions.edroadmap()}/>
           <Scene key="sociallesson" component={SocialLesson} title='Social' backTitle='Back' onBack={()=> Actions.edroadmap()} />
-          <Scene key="nutritionlesson" component={NutritionLesson} title='Nutrition' backTitle='Back' onBack={()=> Actions.edroadmap()} initial/>
+          <Scene key="nutritionlesson" component={NutritionLesson} title='Nutrition' backTitle='Back' onBack={()=> Actions.edroadmap()}/>
           <Scene key="sleeplesson" component={SleepLesson} title='Sleep' backTitle='Back' onBack={()=> Actions.edroadmap()} />
           <Scene key="quests" component={Quests} title='Quests' header={null} />
           <Scene key='trackingform' component={TrackingForm} title='Wellness Tracking Form' backTitle='Back'/>
@@ -81,7 +81,7 @@ const Routercomponent = () => {
           <Scene key='nutristats' component={NutriStats} backTitle={'Stats'} />
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings} />
           <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking} />
-          <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking} />
+          <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking} initial/>
           <Scene key='sleeptracking' backTitle='Back' title='Sleep Tracking' component={SleepTracking} />
           <Scene key='socialtracking' backTitle='Back' title='Social Tracking' component={SocialTracking}/>
           <Scene key='nutritiontracking' backTitle='Back' title='Nutrition Tracking' component={NutritionTracking}/>
