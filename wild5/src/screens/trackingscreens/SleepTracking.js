@@ -20,6 +20,8 @@ import RadioForm, {
 } from "react-native-simple-radio-button";
 import { Actions } from "react-native-router-flux";
 import sleeptracking from "../../images/sleeptracking.jpg";
+import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
+
 
 const screenheight = Dimensions.get("window").height;
 class SleepTracking extends Component {
@@ -112,10 +114,11 @@ class SleepTracking extends Component {
   render() {
     return (
       <Container>
-        <ImageBackground
-          source={sleeptracking}
-          style={{ height: "100%", width: "100%" }}
-        >
+        <BlurredBackgroundImage
+        style={{paddingHorizontal: 10}}
+        source={sleeptracking}
+        blurRadius={20}
+      >
           <Text
             style={{
               fontSize: 30,
@@ -126,7 +129,7 @@ class SleepTracking extends Component {
             }}
           >
             Track your{" "}
-            <Text style={{ color: "purple", fontSize: 30, fontWeight: "600" }}>
+            <Text style={{ color: "#bf55ec", fontSize: 30, fontWeight: "600" }}>
               Sleep
             </Text>
           </Text>
@@ -210,7 +213,7 @@ class SleepTracking extends Component {
               Submit
             </ModButton>
           </Content>
-        </ImageBackground>
+        </BlurredBackgroundImage>
       </Container>
     );
   }
