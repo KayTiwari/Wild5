@@ -81,9 +81,9 @@ const Routercomponent = () => {
           <Scene key='nutristats' component={NutriStats} backTitle={'Stats'} />
           <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings} />
           <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking} />
-          <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking} initial/>
-          <Scene key='sleeptracking' backTitle='Back' title='Sleep Tracking' component={SleepTracking} />
-          <Scene key='socialtracking' backTitle='Back' title='Social Tracking' component={SocialTracking}/>
+          <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking} />
+          <Scene key='sleeptracking' backTitle='Back' title='Sleep Tracking' component={SleepTracking}  />
+          <Scene key='socialtracking' backTitle='Back' title='Social Tracking' component={SocialTracking} initial/>
           <Scene key='nutritiontracking' backTitle='Back' title='Nutrition Tracking' component={NutritionTracking}/>
           <Scene key='progress' component={Progress} backTitle='Back' title="Today's Progress"/>
           <Scene key='herointro' component={Herointro} backTitle='Back' title="Today's HERO"/>
