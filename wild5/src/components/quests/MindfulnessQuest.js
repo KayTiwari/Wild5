@@ -69,14 +69,14 @@ export default class MindfulnessQuest extends Component {
     currentTime: 0,
     completedTracks: [],
     modalVisible: false,
-    date1: new Date(),
+    date1: new Date().toString().slice(0,9),
     user: "",
     date: ""
   };
 
   componentDidMount() {
     
-    // this.checkData()
+    this.checkData()
     var user = firebase.auth().currentUser;
     if (user) {
       var res = user.email.split(".");
@@ -116,13 +116,15 @@ export default class MindfulnessQuest extends Component {
   }
 
 checkData = () => {
-  firebase.database.ref(`CompletedTracks/${this.state.user}/${
+  firebase.database().ref(`CompletedTracks/${this.state.user}/${
     this.state.date}`).once('value', (snap)=> {
-      const firebaseDate = `firebase.database().ref(CompletedTracks/${this.state.user}/${
-        this.state.date})`.slice()
-      if(`firebase.database().ref(CompletedTracks/${this.state.user}/${
-        this.state.date})` === this.state.date1){
-          return this.setState({completedTracks: snap.val()});
+      const data = snap.val()
+      if(data !== null && data[`${this.state.user}`][`${
+        this.state.date}`][Object.keys(data[`${this.state.user}`][`${
+          this.state.date}`])].player_datePlayed === this.state.date1){
+          return this.setState({completedTracks: [data[`${this.state.user}`][`${
+            this.state.date}`][Object.keys(data[`${this.state.user}`][`${
+              this.state.date}`])]]});
         }else{
           return this.setState({completedTracks: []});
         }})
@@ -130,7 +132,7 @@ checkData = () => {
 
 
   render() {
-    console.log(players[0].player);
+    // console.log(players[0].player);
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <Modal
@@ -176,23 +178,26 @@ checkData = () => {
                 style={{
                   height: 50,
                   width: "90%",
-                  backgroundColor: this.state.completedTracks.some(
+                  backgroundColor:
+                  (this.state.completedTracks.length !==0) ?this.state.completedTracks.some(
                     track => track.player_Name === name
                   )
                     ? "#32CD32"
-                    : "#0AB2E8",
+                    : "#0AB2E8" : 
+                  "#0AB2E8",
                   marginBottom: "2%",
                   marginTop: "2%"
                 }}
                 onPress={() => {
-                  console.log(this.state.activePlayerId, player._key);
+                  // console.log(this.state.activePlayerId, player._key);
                   // Am I the currently playing player? If so, pause me and declare that I am no longer the active player.
                   if (this.state.activePlayerId === player._key) {
                     player.pause();
                     this.setState({ activePlayerId: NO_PLAYER });
                   } else {
                     // We're not playing, we should play, and then declare that we are the active player.
-                    player.play(() =>
+                    player.play(() => {
+                    const date =  new Date().toString().slice(0,9)
                       this.setState(
                         prevState => ({
                           completedTracks: [
@@ -201,8 +206,9 @@ checkData = () => {
                               player_id: this.state.activePlayerId,
                               player_Name: name,
                               player_duration: Math.round(
-                                player.getDuration() / 60
-                              )
+                                player.getDuration() / 60),
+                                player_datePlayed: date
+                              
                             }
                           ],
                           activePlayerId: NO_PLAYER
@@ -215,9 +221,9 @@ checkData = () => {
                                 this.state.date
                               }`
                             )
-                            .push(this.state.completedTracks)
+                            .push(...this.state.completedTracks)
                       )
-                    );
+                            });
 
                     this.setState({ activePlayerId: player._key });
                   }
