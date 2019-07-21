@@ -43,7 +43,7 @@
 	<string>Permission needed for accessing Contacts</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
-	<key>NSMainNibFile</key>
+	<key>NSMainNibFile~iphone</key>
 	<string>LaunchScreen</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Accessing Photos for reviewing your food photos</string>
