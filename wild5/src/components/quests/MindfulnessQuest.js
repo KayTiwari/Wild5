@@ -75,6 +75,8 @@ export default class MindfulnessQuest extends Component {
   };
 
   componentDidMount() {
+    
+    // this.checkData()
     var user = firebase.auth().currentUser;
     if (user) {
       var res = user.email.split(".");
@@ -96,6 +98,8 @@ export default class MindfulnessQuest extends Component {
     this.setState({
       date: dateTime
     });
+    console.log(`firebase.database().ref(CompletedTracks/${this.state.user}/${
+      this.state.date})`)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -111,14 +115,19 @@ export default class MindfulnessQuest extends Component {
     }
   }
 
-  static onExit = () => {};
+checkData = () => {
+  firebase.database.ref(`CompletedTracks/${this.state.user}/${
+    this.state.date}`).once('value', (snap)=> {
+      const firebaseDate = `firebase.database().ref(CompletedTracks/${this.state.user}/${
+        this.state.date})`.slice()
+      if(`firebase.database().ref(CompletedTracks/${this.state.user}/${
+        this.state.date})` === this.state.date1){
+          return this.setState({completedTracks: snap.val()});
+        }else{
+          return this.setState({completedTracks: []});
+        }})
+    }
 
-  setData = () => {
-    firebase
-      .database()
-      .ref(`TEST/`)
-      .set(`${this.state.date1}`);
-  };
 
   render() {
     console.log(players[0].player);
@@ -206,7 +215,7 @@ export default class MindfulnessQuest extends Component {
                                 this.state.date
                               }`
                             )
-                            .push(`${[ ...this.state.completedTracks.map(obj => {return obj})]}`)
+                            .push(this.state.completedTracks)
                       )
                     );
 
