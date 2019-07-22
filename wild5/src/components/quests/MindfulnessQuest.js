@@ -88,7 +88,7 @@ export default class MindfulnessQuest extends Component {
       console.log("noperz");
     }
     var today = new Date();
-    var date =
+    var date = 
       today.getFullYear() +
       "-" +
       (today.getMonth() + 1) +
@@ -96,7 +96,7 @@ export default class MindfulnessQuest extends Component {
       today.getDate();
     var dateTime = date;
     this.setState({
-      date: dateTime
+      date: dateTime,
     });
     console.log(`firebase.database().ref(CompletedTracks/${this.state.user}/${
       this.state.date})`)
@@ -119,15 +119,15 @@ checkData = () => {
   firebase.database().ref(`CompletedTracks/${this.state.user}/${
     this.state.date}`).once('value', (snap)=> {
       const data = snap.val()
-      if(data !== null && data[`${this.state.user}`][`${
-        this.state.date}`][Object.keys(data[`${this.state.user}`][`${
-          this.state.date}`])].player_datePlayed === this.state.date1){
-          return this.setState({completedTracks: [data[`${this.state.user}`][`${
-            this.state.date}`][Object.keys(data[`${this.state.user}`][`${
-              this.state.date}`])]]});
+      console.log(data)
+      console.log(data[`${this.state.user}`])
+      if(data !== null && data[`${this.state.user}`][0].player_datePlayed === this.state.date1){
+          return this.setState({completedTracks: data[`${this.state.user}`]});
         }else{
           return this.setState({completedTracks: []});
-        }})
+        }
+      }
+        )
     }
 
 
@@ -213,16 +213,23 @@ checkData = () => {
                           ],
                           activePlayerId: NO_PLAYER
                         }),
-                        () =>
-                          firebase
+                        () => {
+                        if(this.state.completedTracks.length === 0){
+                          return firebase
                             .database()
                             .ref(
-                              `CompletedTracks/${this.state.user}/${
-                                this.state.date
-                              }`
+                              `CompletedTracks/${this.state.user}`
                             )
-                            .push(...this.state.completedTracks)
-                      )
+                            .set(this.state.completedTracks)
+                            } else {
+                              return firebase
+                              .database()
+                              .ref(
+                                `CompletedTracks/${this.state.user}`
+                              )
+                              .set(this.state.completedTracks)
+                            }
+                          })
                             });
 
                     this.setState({ activePlayerId: player._key });
@@ -263,6 +270,11 @@ checkData = () => {
               </TouchableOpacity>
             );
           })}
+          <View>
+            <Text style={{fontSize: 20, color: '#32CD32', fontWeight: '700'}}>Total Listening Time For Today {(this.state.completedTracks.length !==0)?this.state.completedTracks.reduce((total, num)=>{
+              return total.player_duration + num.player_duration
+            }): null} Min</Text>
+          </View>
         </View>
         <Navbar />
       </View>
