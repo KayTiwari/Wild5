@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
 
@@ -138,6 +139,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-config')
     implementation project(':react-native-linear-gradient')
     implementation project(':@react-native-community_slider')
     implementation project(':react-native-camera')
