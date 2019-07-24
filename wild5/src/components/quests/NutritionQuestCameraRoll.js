@@ -22,20 +22,22 @@ class NutritionQuestCameraRoll extends Component {
       assetType: "Photos",
       groupTypes: "album",
       groupName: "Wild5"
-    }).then(r =>
+    }).then(r => {
+      console.log(r.edges),
       this.setState({
         photos: r.edges
       }).catch(err => AlertIOS.alert(err))
-    );
+    });
   }
 
   render() {
     const pictures =
       this.state.photos.length !== 0
-        ? this.state.photos.map(p => {
+        ? this.state.photos.map((p,i) => {
             return (
+              console.log(p.node.timestamp),
               <Image
-                key={p.node.image.timestamp}
+                key={i}
                 style={{
                   width: 300,
                   height: 200

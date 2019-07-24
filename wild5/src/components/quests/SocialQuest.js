@@ -22,12 +22,6 @@ import { Actions } from 'react-native-router-flux'
 
 const { width, height } = Dimensions.get("window");
 
-// const completed = this.state.completedSocialInteractions.length !== 0 ?
-//   this.state.completedSocialInteractions.map( completed => {
-//     return (
-//       <Text>{completed}</Text>
-//     )
-//   }) : null;  
 
 class SocialQuest extends Component {
   state = {
@@ -59,6 +53,28 @@ class SocialQuest extends Component {
         </View>
       </Modal>
     }
+  }
+
+  sendText = (activity) => {
+    return this.state.selectedContacts.forEach(element => {
+      return SMS.send({
+       
+    body: `${activity}`,
+    //Recipients Number
+    recipients: [element.phoneNumbers[0].number],
+    //An array of types that would trigger a "completed" response when using android
+    successTypes: ['sent', 'queued']
+}, (completed, cancelled, error) => {
+    if(completed){
+      console.log('SMS Sent Completed');
+    }else if(cancelled){
+      console.log('SMS Sent Cancelled');
+    }else if(error){
+      console.log('Some error occured');
+    }
+
+      })
+    });
   }
 
   showModal = () => {
@@ -174,26 +190,36 @@ class SocialQuest extends Component {
             }}
           >
             <Modal
-              animationType="slide"
+              animationType="fade"
               transparent={true}
               visible={this.state.modalVisible}
             >
               <View style={styles.modalView}>
                 <View style={styles.modalInput}>
-                  <TextInput
-                    style={styles.modalInput}
-                    value={this.state.text}
-                    onChangeText={text => this.onChange(text)}
-                  />
-                  <View
-                    style={{
-                      flexDirection: "column",
-                      justifyContent: "flex-end"
-                    }}
-                  >
-                    <TouchableHighlight onPress={this.addNewInteraction()}>
-                      <Text style={{ fontSize: 16 }}>Add</Text>
-                    </TouchableHighlight>
+                
+                  <View>
+                  <Text style={{textAlign: 'center', fontSize: 20}}>Select a social activity from the list.  You'll then be able to invite family and/or friends to join you by sending a text message.</Text>
+                  <TouchableOpacity
+                style={{
+                  marginTop: 15,
+                  height: 35,
+                  width: "70%",
+                  backgroundColor: "lime",
+                  alignSelf: "center",
+                  borderRadius: 7
+                }}
+                onPress={this.showModal}
+              >
+                <Text
+                  style={{
+                    fontSize: 20,
+                    alignSelf: "center",
+                    fontWeight: "700"
+                  }}
+                >
+                  Ok, Got it!
+                </Text>
+              </TouchableOpacity>
                   </View>
                 </View>
               </View>
@@ -211,9 +237,9 @@ class SocialQuest extends Component {
               <View style={{ flexDirection: 'row', height: '15%', justifyContent: 'flex-start', marginLeft: '7%'}}>
               <View>
               <View style={{flexDirection:'row'}}>
-              <Text style={{color: 'red', fontSize: 20, marginBottom: 15}}>Pick Social Type</Text><TouchableOpacity onPress={""}><Icon name='help-circle-outline' style={{marginLeft:7, fontSize: 23}} onPress={""}/></TouchableOpacity>
+              <Text style={{color: 'red', fontSize: 20}}>Pick a New Activity</Text><TouchableOpacity onPress={this.showModal}><Icon name='help-circle-outline' style={{marginLeft:7, fontSize: 23}} /></TouchableOpacity>
               </View>
-              <RadioForm
+              {/* <RadioForm
               radio_props={[
                 { label: "Micro", value: "1" },
                 { label: "Macro", value: "0" }
@@ -227,7 +253,7 @@ class SocialQuest extends Component {
               onPress={() => {
                 console.log("hello");
               }}
-            />
+            /> */}
             </View>
             </View>
             <View
@@ -350,18 +376,7 @@ class SocialQuest extends Component {
                           }}
                         >
                           <TouchableOpacity
-                            onPress={() => {AlertIOS.alert(
-                              'Message Sent',
-                              '',
-                              [
-                                {
-                                  text: 'ok',
-                                  onPress: () => Actions.quests(),
-                                  style: 'ok',
-                                }
-                              ],
-                            );
-                          }}
+                            onPress={()=>this.sendText(this.state.socialInteraction)}
                           >
                             <Icon name="send" />
                           </TouchableOpacity>
@@ -387,6 +402,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   modalInput: {
+    marginTop: '35%',
     width: "80%",
     height: "40%",
     backgroundColor: "#fff",

@@ -119,8 +119,6 @@ checkData = () => {
   firebase.database().ref(`CompletedTracks/${this.state.user}/${
     this.state.date}`).once('value', (snap)=> {
       const data = snap.val()
-      console.log(data)
-      console.log(data[`${this.state.user}`])
       if(data !== null && data[`${this.state.user}`][0].player_datePlayed === this.state.date1){
           return this.setState({completedTracks: data[`${this.state.user}`]});
         }else{
@@ -132,7 +130,11 @@ checkData = () => {
 
 
   render() {
-    // console.log(players[0].player);
+    const totalMin = (this.state.completedTracks.length >=1)?this.state.completedTracks.reduce((total, num)=>{
+      return (total.player_duration + num.player_duration).toString()
+    }): null
+    // (this.state.completedTracks.length !== 0)
+    //   this.state.completedTracks[0].player_duration
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <Modal
@@ -270,11 +272,10 @@ checkData = () => {
               </TouchableOpacity>
             );
           })}
+          {(this.state.completedTracks.length !== 0)?
           <View>
-            <Text style={{fontSize: 20, color: '#32CD32', fontWeight: '700'}}>Total Listening Time For Today {(this.state.completedTracks.length !==0)?this.state.completedTracks.reduce((total, num)=>{
-              return total.player_duration + num.player_duration
-            }): null} Min</Text>
-          </View>
+            <Text style={{fontSize: 20, color: '#32CD32', fontWeight: '700'}}>Total Listening Time For Today{totalMin}  Min</Text>
+          </View> : null}
         </View>
         <Navbar />
       </View>
