@@ -19,7 +19,7 @@ import Contacts from "react-native-contacts";
 import Contact from "../common/ContactList";
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
 import { Actions } from 'react-native-router-flux'
-import SendSMS from 'react-native-sms'
+import SMS from 'react-native-sms'
 const { width, height } = Dimensions.get("window");
 
 
