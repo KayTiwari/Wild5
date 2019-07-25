@@ -26,9 +26,9 @@ const ContactList = ({ onPress, isChecked, contact }) => {
             style={{
               fontWeight: "bold"
             }}
-          >{`${contact.familyName} ${contact.givenName}`}</Text>
+          >{`${contact.givenName} ${contact.familyName}`}</Text>
         ) : (
-          <Text>{`${contact.familyName} ${contact.givenName}`}</Text>
+          <Text>{`${contact.givenName} ${contact.familyName} `}</Text>
         )}
       </View>
       <View
@@ -39,9 +39,9 @@ const ContactList = ({ onPress, isChecked, contact }) => {
         }}
       >
         {isChecked ? (
-          <Icon name="checkbox" size={30} color={"light-blue"}></Icon>
+          <Icon name="checkbox" size={30} color={"light-blue"}/>
         ) : (
-          <Icon name="square-outline" size={30} color={"#000"}></Icon>
+          <Icon name="square-outline" size={30} color={"#000"}/>
         )}
       </View>
     </TouchableOpacity>

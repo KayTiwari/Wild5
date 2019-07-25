@@ -15,7 +15,6 @@ class Settings extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      // startDate: new Date(),
       exerciseReminder: false,
       mindfulnessReminder: false,
       sleepReminder: false,
@@ -24,18 +23,18 @@ class Settings extends Component<Props> {
       showTimer: false,
       senderId: appConfig.senderID,
       chosenDate: new Date(),
-      reminders: [
-        {
-          title: "",
-          date: ""
-        }
-      ]
+      exerciseTime: "",
+      mindfulnessTime: "",
+      sleepTime: "",
+      socialTime: "",
+      nutritionTime: "",
     };
     this.PushNotificationIOS = new PushNotificationIOS(this.onNotif);
   }
 
   setDate = (newDate) => {
     this.setState({chosenDate: newDate.toString().slice(15,8)});
+    // schedule notification (this.state.piller, newDate)
   }
 
   showTimePicker = () => {
@@ -50,6 +49,9 @@ class Settings extends Component<Props> {
     )
   }
 
+  // You only schedule the notification when the date changes
+  // You need to keep track (in state) of which toggle button is being configured at the moment
+
   showTimer = () => {
     return () => {
     this.setState( prevState =>({
@@ -61,13 +63,14 @@ class Settings extends Component<Props> {
 
   exerciseReminder = (pillar, date) => {
     return e => {
-      this.setState(
-        prevState => ({
+      (this.state.exerciseReminder)? this.setState(prevState => ({exerciseReminder: !prevState.exerciseReminder})) :
+      this.setState(prevState => ({
           showTimer: !this.state.showTimer,
           exerciseReminder: !prevState.exerciseReminder
         }),
         () => {
-          if (this.state.exerciseReminder) {
+         if (this.state.exerciseReminder) {
+           this.setState({exerciseTime: date})
             this.PushNotificationIOS.scheduleNotif(pillar, date);
           }
         }
@@ -75,59 +78,67 @@ class Settings extends Component<Props> {
     };
   };
 
-  mindfulnessReminder = pillar => {
+  mindfulnessReminder = (pillar, date) => {
     return e => {
+      (this.state.mindfulnessReminder)? this.setState(prevState => ({mindfulnessReminder: !prevState.mindfulnessReminder})) :
       this.setState(
         prevState => ({
+          showTimer: !this.state.showTimer,
           mindfulnessReminder: !prevState.mindfulnessReminder
         }),
         () => {
           if (this.state.mindfulnessReminder) {
-            this.PushNotificationIOS.scheduleNotif(pillar);
+            this.PushNotificationIOS.scheduleNotif(pillar, date);
           }
         }
       );
     };
   };
 
-  sleepReminder = pillar => {
+  sleepReminder = (pillar, date) => {
     return e => {
+      (this.state.sleepReminder)? this.setState(prevState => ({sleepReminder: !prevState.sleepReminder})) :
       this.setState(
         prevState => ({
+          showTimer: !this.state.showTimer,
           sleepReminder: !prevState.sleepReminder
         }),
         () => {
           if (this.state.sleepReminder) {
-            this.PushNotificationIOS.scheduleNotif(pillar);
+            this.PushNotificationIOS.scheduleNotif(pillar, date);
           }
         }
       );
     };
   };
 
-  socialReminder = pillar => {
+  socialReminder = (pillar, date) => {
     return e => {
+      (this.state.socialReminder)? this.setState(prevState => ({socialReminder: !prevState.socialReminder})) :
       this.setState(
         prevState => ({
+          showTimer: !this.state.showTimer,
           socialReminder: !prevState.socialReminder
         }),
         () => {
           if (this.state.socialReminder) {
-            this.PushNotificationIOS.scheduleNotif(pillar);
+            this.PushNotificationIOS.scheduleNotif(pillar, date);
           }
         }
       );
     };
   };
-  nutritionReminder = pillar => {
+  nutritionReminder = (pillar, date) => {
     return e => {
+      (this.state.nutritionReminder)? this.setState(prevState => ({nutritionReminder: !prevState.nutritionReminder})) :
       this.setState(
         prevState => ({
+          showTimer: !this.state.showTimer,
           nutritionReminder: !prevState.nutritionReminder
         }),
         () => {
           if (this.state.nutritionReminder) {
-            this.PushNotificationIOS.scheduleNotif(pillar);
+            this.PushNotificationIOS.scheduleNotif(pillar, date);
           }
         }
       );
@@ -183,7 +194,7 @@ class Settings extends Component<Props> {
                 onColor="#0AB2E8"
                 offColor="#cef0fa"
                 isOn={this.state.mindfulnessReminder}
-                onToggle={this.mindfulnessReminder("mind")}
+                onToggle={this.mindfulnessReminder("mind", (this.state.chosenDate)?this.state.chosenDate : null)}
               />
             </View>
             <View>
@@ -195,7 +206,7 @@ class Settings extends Component<Props> {
                 onColor="#B72B90"
                 offColor="#f1d5e9"
                 isOn={this.state.sleepReminder}
-                onToggle={this.sleepReminder("sleep")}
+                onToggle={this.sleepReminder("sleep", (this.state.chosenDate)?this.state.chosenDate : null)}
               />
             </View>
             <View>
@@ -207,7 +218,7 @@ class Settings extends Component<Props> {
                 onColor="#E93422"
                 offColor="#fbd6d3"
                 isOn={this.state.socialReminder}
-                onToggle={this.socialReminder("social")}
+                onToggle={this.socialReminder("social", (this.state.chosenDate)?this.state.chosenDate : null)}
               />
             </View>
             <View>
@@ -219,7 +230,7 @@ class Settings extends Component<Props> {
                 onColor="#C6411F"
                 offColor="#f4d9d2"
                 isOn={this.state.nutritionReminder}
-                onToggle={this.nutritionReminder("nutrition")}
+                onToggle={this.nutritionReminder("nutrition", (this.state.chosenDate)?this.state.chosenDate : null)}
               />
             </View>
             </View>
@@ -241,7 +252,7 @@ class Settings extends Component<Props> {
             </View>
           </TouchableOpacity>
 
-          <Button title="Feedback" onPress={() => Actions.feedback()}/>
+          {/* <Button title="Feedback" onPress={() => Actions.feedback()}/> */}
   
 
           <Button title="Logout" onPress={""}/>

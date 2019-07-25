@@ -67,9 +67,9 @@ const Routercomponent = () => {
           <Scene key='mindfulnessquest' component={MindfulnessQuest} title="Mindfulness Quest" header={null} />
           <Scene key='exercisequest' component={ExerciseQuest} title="Exercise Quest" backTitle='Back' onBack={()=> Actions.quests()} />
           <Scene key='sleepquest' component={SleepQuest} title="sleep Quest" header={null} />
-          <Scene key='socialquest' component={SocialQuest} title="social Quest" header={null} initial/>
+          <Scene key='socialquest' component={SocialQuest} title="social Quest" header={null}initial/>
           <Scene key='nutritionquestcameraroll' component={NutritionQuestCameraRoll} title="nutritionquestcameraroll" header={null} />
-          <Scene key='feedback' component={Feedback} header={null}  title="Feedback" />
+          {/* <Scene key='feedback' component={Feedback} header={null}  title="Feedback" /> */}
           <Scene key='about' component={Help} header={null} title="About" />
           <Scene key='statistics' component={Statistics} header={null}  title="Statistics" />
           <Scene key='principlestats' component={PrincipleStats} backTitle={'Stats'}  title="Principles" />
@@ -79,7 +79,7 @@ const Routercomponent = () => {
           <Scene key='sleepstats' component={SleepStats} backTitle={'Stats'}/>
           <Scene key='socialstats' component={SocialStats} backTitle={'Stats'} />
           <Scene key='nutristats' component={NutriStats} backTitle={'Stats'} />
-          <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings} />
+          <Scene key='settings' backTitle='Back' title='Settings' header={null} component={Settings}/>
           <Scene key='exercisetracking' backTitle='Back' title='Exercise Tracking' component={ExerciseTracking} />
           <Scene key='mindfulnesstracking' backTitle='Back' title='Mindfulness Tracking' component={MindfulnessTracking} />
           <Scene key='sleeptracking' backTitle='Back' title='Sleep Tracking' component={SleepTracking}  />
