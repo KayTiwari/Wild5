@@ -5,6 +5,7 @@ import firebase from 'firebase';
 import {Actions} from 'react-native-router-flux';
 import socialtracking from '../../images/socialtracking.jpg';
 import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
+import {scopeRefByUserAndDate} from '../../utils/firebase';
 
 const CALLED_FRIEND = 'calledFriend';
 const MET_FRIEND_IN_PERSON = 'metFriendInPerson';
@@ -23,19 +24,19 @@ class SocialTracking extends Component {
     this.setState({[stateKey]: !this.state[stateKey]});
   };
 
-  submitForm() {
+  submitForm = () => {
     const {
       [CALLED_FRIEND]: calledFriend,
       [MET_FRIEND_IN_PERSON]: metFriendInPerson,
       [CALLED_FAMILY]: calledFamily,
       [MET_FAMILY_IN_PERSON]: metFamilyInPerson,
-      user,
-      date,
     } = this.state;
+
+    const surveysRef = scopeRefByUserAndDate('Surveys');
 
     firebase
       .database()
-      .ref(`Surveys/${user}/${date}`)
+      .ref(surveysRef)
       .update({
         socfriendcall: calledFriend,
         socfriendinperson: metFriendInPerson,
@@ -44,31 +45,7 @@ class SocialTracking extends Component {
       });
 
     Actions.landing();
-  }
-
-  componentDidMount() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var res = user.email.split('.');
-      var userEm = res[0].toString();
-      this.setState({
-        user: userEm,
-      });
-    } else {
-      console.log('noperz');
-    }
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      '-' +
-      (today.getMonth() + 1) +
-      '-' +
-      today.getDate();
-    var dateTime = date;
-    this.setState({
-      date: dateTime,
-    });
-  }
+  };
 
   render() {
     return (
