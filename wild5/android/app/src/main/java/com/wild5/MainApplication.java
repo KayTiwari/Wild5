@@ -1,18 +1,16 @@
 package com.wild5;
 
 import android.app.Application;
-
 import com.facebook.react.ReactApplication;
 import com.tkporter.sendsms.SendSMSPackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativecommunity.slider.ReactSliderPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.devialab.camerarollextended.CameraRollExtendedManager;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
-import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 import com.zmxv.RNSound.RNSoundPackage;
-import com.reactnativecommunity.rctaudiotoolkit.AudioPackage;
 import com.horcrux.svg.SvgPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
@@ -36,15 +34,14 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             SendSMSPackage.getInstance(),
+            new ReactNativeConfigPackage(),
             new LinearGradientPackage(),
             new ReactSliderPackage(),
             new RNCameraPackage(),
             new CameraRollExtendedManager(),
             new ReactNativePushNotificationPackage(),
-            new ReactNativePushNotificationPackage(),
             new ReactNativeContacts(),
             new RNSoundPackage(),
-            new AudioPackage(),
             new SvgPackage(),
             new VectorIconsPackage()
       );
