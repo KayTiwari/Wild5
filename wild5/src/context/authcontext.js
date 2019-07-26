@@ -11,7 +11,6 @@ export default class AuthProvider extends Component {
 
   componentDidMount() {
     if (firebase.apps.length === 0) {
-      console.log('initializing the app!');
       firebase.initializeApp({
         apiKey: Config.FIREBASE_API_KEY,
         authDomain: Config.FIREBASE_AUTH_DOMAIN,
