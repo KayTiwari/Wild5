@@ -6,40 +6,29 @@ import {Actions} from 'react-native-router-flux';
 import socialtracking from '../../images/socialtracking.jpg';
 import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
 
+const CALLED_FRIEND = 'calledFriend';
+const MET_FRIEND_IN_PERSON = 'metFriendInPerson';
+const CALLED_FAMILY = 'calledFamily';
+const MET_FAMILY_IN_PERSON = 'metFamilyInPerson';
+
 class SocialTracking extends Component {
   state = {
-    calledFriend: false,
-    metFriendInPerson: false,
-    calledFamily: false,
-    metFamilyInPerson: false,
+    [CALLED_FRIEND]: false,
+    [MET_FRIEND_IN_PERSON]: false,
+    [CALLED_FAMILY]: false,
+    [MET_FAMILY_IN_PERSON]: false,
   };
 
-  checkBox = type => {
-    if (type === 'fc') {
-      this.setState({
-        calledFriend: !this.state.calledFriend,
-      });
-    } else if (type === 'fip') {
-      this.setState({
-        metFriendInPerson: !this.state.metFriendInPerson,
-      });
-    } else if (type === 'famc') {
-      this.setState({
-        calledFamily: !this.state.calledFamily,
-      });
-    } else if (type === 'famip') {
-      this.setState({
-        metFamilyInPerson: !this.state.metFamilyInPerson,
-      });
-    }
+  toggleCheckbox = stateKey => {
+    this.setState({[stateKey]: !this.state[stateKey]});
   };
 
   submitForm() {
     const {
-      calledFriend,
-      metFriendInPerson,
-      calledFamily,
-      metFamilyInPerson,
+      [CALLED_FRIEND]: calledFriend,
+      [MET_FRIEND_IN_PERSON]: metFriendInPerson,
+      [CALLED_FAMILY]: calledFamily,
+      [MET_FAMILY_IN_PERSON]: metFamilyInPerson,
       user,
       date,
     } = this.state;
@@ -115,58 +104,61 @@ class SocialTracking extends Component {
             >
               Which social practices did you complete?
             </Text>
-            <ListItem onPress={() => this.checkBox('fc')}>
-              <CheckBox
-                color="red"
-                checked={this.state.calledFriend}
-                onPress={() => this.checkBox('fc')}
-              />
-              <Body>
-                <Text>Called Friend</Text>
-              </Body>
-            </ListItem>
-            <ListItem onPress={() => this.checkBox('fip')}>
-              <CheckBox
-                color="green"
-                checked={this.state.metFriendInPerson}
-                onPress={() => this.checkBox('fip')}
-              />
-              <Body>
-                <Text>Met Friend in person</Text>
-              </Body>
-            </ListItem>
-            <ListItem onPress={() => this.checkBox('famc')}>
-              <CheckBox
-                color="blue"
-                checked={this.state.calledFamily}
-                onPress={() => this.checkBox('famc')}
-              />
-              <Body>
-                <Text>Called Family</Text>
-              </Body>
-            </ListItem>
-            <ListItem onPress={() => this.checkBox('famip')}>
-              <CheckBox
-                color="orange"
-                checked={this.state.metFamilyInPerson}
-                onPress={() => this.checkBox('famip')}
-              />
-              <Body>
-                <Text>Met Family in person</Text>
-              </Body>
-            </ListItem>
+
+            <CheckBoxItem
+              checked={this.state.calledFriend}
+              onPress={() => this.toggleCheckbox(CALLED_FRIEND)}
+              color="red"
+            >
+              Called Friend
+            </CheckBoxItem>
+
+            <CheckBoxItem
+              checked={this.state.metFriendInPerson}
+              onPress={() => this.toggleCheckbox(MET_FRIEND_IN_PERSON)}
+              color="green"
+            >
+              Met Friend in person
+            </CheckBoxItem>
+
+            <CheckBoxItem
+              checked={this.state.calledFamily}
+              onPress={() => this.toggleCheckbox(CALLED_FAMILY)}
+              color="blue"
+            >
+              Called Family
+            </CheckBoxItem>
+
+            <CheckBoxItem
+              checked={this.state.metFamilyInPerson}
+              onPress={() => this.toggleCheckbox(MET_FAMILY_IN_PERSON)}
+              color="orange"
+            >
+              Met Family in person
+            </CheckBoxItem>
+
             <ModButton
               style={{alignSelf: 'center', textAlign: 'center'}}
               color={'black'}
-              onPress={() => this.submitForm()}
+              onPress={this.submitForm}
               label="Submit"
-            >
-              Submit
-            </ModButton>
+            />
           </Content>
         </BlurredBackgroundImage>
       </Container>
     );
   }
 }
+
+function CheckBoxItem({onPress, children, ...checkboxProps}) {
+  return (
+    <ListItem onPress={onPress}>
+      <CheckBox {...checkboxProps} onPress={onPress} />
+      <Body>
+        <Text>{children}</Text>
+      </Body>
+    </ListItem>
+  );
+}
+
 export default SocialTracking;
