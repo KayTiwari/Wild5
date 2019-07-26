@@ -52,6 +52,7 @@
 		4697B0104AFE4A59B5565F2F /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC787E3E16C54283A054C320 /* FontAwesome5_Regular.ttf */; };
 		4F04EA0B45CA4355BEB6C232 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51F449BCB074277B5191C96 /* libReactNativeConfig.a */; };
 		55F24AA0ABB049239793DB20 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58C271DD02C0430A9C06FEED /* Roboto_medium.ttf */; };
+		5A66F8289DC04626852EBF59 /* libSendSMS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 821162C6CB654C5BA48C8F2F /* libSendSMS.a */; };
 		56588936ABAD4D7297567822 /* libReactNativeConfig-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7354A2B513D411FADC8389A /* libReactNativeConfig-tvOS.a */; };
 		5F298DC13B4D4AD78A46BB94 /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B713ADA4312F4CC1AC28D5C2 /* libRNCamera.a */; };
 		62B80CBC4D9B4AB78342A340 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A74AFD597764757B34AC0CA /* Ionicons.ttf */; };
@@ -444,6 +445,13 @@
 			remoteGlobalIDString = 1441618E1BD0A79300FA4F59;
 			remoteInfo = RCTContacts;
 		};
+		A997980B22E8AF4D00D6E02F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D712EF422F834500A57C753D /* SendSMS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 95688E1A1D38251600F72D63;
+			remoteInfo = SendSMS;
+		};
 		A9A48A6322DE93C6003218C6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0459484B86964C19850D1C37 /* RNCSlider.xcodeproj */;
@@ -536,6 +544,7 @@
 		765466D61BBC4D8D85988E20 /* libRNSound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSound.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		794A8CC2E1A74A63823F1426 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		821162C6CB654C5BA48C8F2F /* libSendSMS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSendSMS.a; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		832697E1EBB9438FBFBCD148 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		8A332B567D8B4C1D99052919 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
@@ -574,6 +583,7 @@
 		B7E04D266AA84261961F67B2 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		C2A95D85512B453DBA40D97C /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		D48E0E5AEC6C4D2C90A586BB /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		D712EF422F834500A57C753D /* SendSMS.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SendSMS.xcodeproj; path = "../node_modules/react-native-sms/SendSMS.xcodeproj"; sourceTree = "<group>"; };
 		E2609B450CD94C71A49D485B /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		E5A2329E17D945739000A415 /* libRNCSlider.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCSlider.a; sourceTree = "<group>"; };
 		E93E44A4017A40E58D48BDAF /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
@@ -625,6 +635,7 @@
 				AB4CDC2D11354F7197181E55 /* libReactNativeStorePhotosAlbum.a in Frameworks */,
 				5F298DC13B4D4AD78A46BB94 /* libRNCamera.a in Frameworks */,
 				CC28A6657CAF4C83AEFE5ECE /* libBVLinearGradient.a in Frameworks */,
+				5A66F8289DC04626852EBF59 /* libSendSMS.a in Frameworks */,
 				4F04EA0B45CA4355BEB6C232 /* libReactNativeConfig.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -732,6 +743,7 @@
 				B713ADA4312F4CC1AC28D5C2 /* libRNCamera.a */,
 				E5A2329E17D945739000A415 /* libRNCSlider.a */,
 				3AD1D9C7010D435E89CA2F2A /* libBVLinearGradient.a */,
+				821162C6CB654C5BA48C8F2F /* libSendSMS.a */,
 				A51F449BCB074277B5191C96 /* libReactNativeConfig.a */,
 				F7354A2B513D411FADC8389A /* libReactNativeConfig-tvOS.a */,
 			);
@@ -942,6 +954,7 @@
 				16131879B2E347BA828382D2 /* RNVectorIcons.xcodeproj */,
 				634388B77120472A8642CAF1 /* BVLinearGradient.xcodeproj */,
 				0459484B86964C19850D1C37 /* RNCSlider.xcodeproj */,
+				D712EF422F834500A57C753D /* SendSMS.xcodeproj */,
 				75D1A953C7EA4011B926C85B /* ReactNativeConfig.xcodeproj */,
 			);
 			name = Libraries;
@@ -1012,6 +1025,14 @@
 			isa = PBXGroup;
 			children = (
 				A98DB54722C11F540016D97B /* libRCTContacts.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A997980822E8AF4D00D6E02F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A997980C22E8AF4D00D6E02F /* libSendSMS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1265,6 +1286,10 @@
 				{
 					ProductGroup = A9B75BA822D43C8700DC0C05 /* Products */;
 					ProjectRef = 16131879B2E347BA828382D2 /* RNVectorIcons.xcodeproj */;
+				},
+				{
+					ProductGroup = A997980822E8AF4D00D6E02F /* Products */;
+					ProjectRef = D712EF422F834500A57C753D /* SendSMS.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1621,6 +1646,13 @@
 			remoteRef = A98DB54622C11F540016D97B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		A997980C22E8AF4D00D6E02F /* libSendSMS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSendSMS.a;
+			remoteRef = A997980B22E8AF4D00D6E02F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		A9A48A6422DE93C6003218C6 /* libRNCSlider.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1837,6 +1869,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/@react-native-community/slider/ios",
+					"$(SRCROOT)/../node_modules/react-native-sms/SendSMS",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = wild5Tests/Info.plist;
@@ -1876,6 +1909,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/@react-native-community/slider/ios",
+					"$(SRCROOT)/../node_modules/react-native-sms/SendSMS",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = wild5Tests/Info.plist;
@@ -1916,6 +1950,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/@react-native-community/slider/ios",
+					"$(SRCROOT)/../node_modules/react-native-sms/SendSMS",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = wild5/Info.plist;
@@ -1951,6 +1986,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/@react-native-community/slider/ios",
+					"$(SRCROOT)/../node_modules/react-native-sms/SendSMS",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = wild5/Info.plist;
@@ -1992,6 +2028,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/@react-native-community/slider/ios",
+					"$(SRCROOT)/../node_modules/react-native-sms/SendSMS",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "wild5-tvOS/Info.plist";
@@ -2038,6 +2075,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/@react-native-community/slider/ios",
+					"$(SRCROOT)/../node_modules/react-native-sms/SendSMS",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "wild5-tvOS/Info.plist";
@@ -2083,6 +2121,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/@react-native-community/slider/ios",
+					"$(SRCROOT)/../node_modules/react-native-sms/SendSMS",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "wild5-tvOSTests/Info.plist";
@@ -2128,6 +2167,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/@react-native-community/slider/ios",
+					"$(SRCROOT)/../node_modules/react-native-sms/SendSMS",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = "wild5-tvOSTests/Info.plist";
