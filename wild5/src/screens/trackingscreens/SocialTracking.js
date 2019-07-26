@@ -8,50 +8,52 @@ import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundI
 
 class SocialTracking extends Component {
   state = {
-    friendcall: false,
-    friendinperson: false,
-    familycall: false,
-    familyinperson: false,
+    calledFriend: false,
+    metFriendInPerson: false,
+    calledFamily: false,
+    metFamilyInPerson: false,
   };
 
   checkBox = type => {
     if (type === 'fc') {
       this.setState({
-        friendcall: !this.state.friendcall,
+        calledFriend: !this.state.calledFriend,
       });
     } else if (type === 'fip') {
       this.setState({
-        friendinperson: !this.state.friendinperson,
+        metFriendInPerson: !this.state.metFriendInPerson,
       });
     } else if (type === 'famc') {
       this.setState({
-        familycall: !this.state.familycall,
+        calledFamily: !this.state.calledFamily,
       });
     } else if (type === 'famip') {
       this.setState({
-        familyinperson: !this.state.familyinperson,
+        metFamilyInPerson: !this.state.metFamilyInPerson,
       });
     }
   };
 
   submitForm() {
     const {
-      friendcall,
-      friendinperson,
-      familycall,
-      familyinperson,
+      calledFriend,
+      metFriendInPerson,
+      calledFamily,
+      metFamilyInPerson,
       user,
       date,
     } = this.state;
+
     firebase
       .database()
       .ref(`Surveys/${user}/${date}`)
       .update({
-        socfriendcall: friendcall,
-        socfriendinperson: friendinperson,
-        socfamilycall: familycall,
-        socfamilyinperson: familyinperson,
+        socfriendcall: calledFriend,
+        socfriendinperson: metFriendInPerson,
+        socfamilycall: calledFamily,
+        socfamilyinperson: metFamilyInPerson,
       });
+
     Actions.landing();
   }
 
@@ -116,7 +118,7 @@ class SocialTracking extends Component {
             <ListItem onPress={() => this.checkBox('fc')}>
               <CheckBox
                 color="red"
-                checked={this.state.friendcall}
+                checked={this.state.calledFriend}
                 onPress={() => this.checkBox('fc')}
               />
               <Body>
@@ -126,7 +128,7 @@ class SocialTracking extends Component {
             <ListItem onPress={() => this.checkBox('fip')}>
               <CheckBox
                 color="green"
-                checked={this.state.friendinperson}
+                checked={this.state.metFriendInPerson}
                 onPress={() => this.checkBox('fip')}
               />
               <Body>
@@ -136,7 +138,7 @@ class SocialTracking extends Component {
             <ListItem onPress={() => this.checkBox('famc')}>
               <CheckBox
                 color="blue"
-                checked={this.state.familycall}
+                checked={this.state.calledFamily}
                 onPress={() => this.checkBox('famc')}
               />
               <Body>
@@ -146,7 +148,7 @@ class SocialTracking extends Component {
             <ListItem onPress={() => this.checkBox('famip')}>
               <CheckBox
                 color="orange"
-                checked={this.state.familyinperson}
+                checked={this.state.metFamilyInPerson}
                 onPress={() => this.checkBox('famip')}
               />
               <Body>
