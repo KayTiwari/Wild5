@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import firebase from 'firebase';
+import Config from 'react-native-config';
 const {Consumer, Provider} = React.createContext();
 
 export default class AuthProvider extends Component {
@@ -9,14 +10,16 @@ export default class AuthProvider extends Component {
   };
 
   componentDidMount() {
-    // firebase.initializeApp({
-    //   apiKey: "AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o",
-    //   authDomain: "wild5-5ca8b.firebaseapp.com",
-    //   databaseURL: "https://wild5-5ca8b.firebaseio.com",
-    //   projectId: "wild5-5ca8b",
-    //   storageBucket: "wild5-5ca8b.appspot.com",
-    //   messagingSenderId: "714885268112"
-    // });
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp({
+        apiKey: Config.FIREBASE_API_KEY,
+        authDomain: Config.FIREBASE_AUTH_DOMAIN,
+        databaseURL: Config.FIREBASE_DB_URL,
+        projectId: Config.FIREBASE_PROJECT_ID,
+        storageBucket: Config.FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: Config.FIREBASE_MESSAGING_SENDER_ID,
+      });
+    }
   }
 
   getUser = () => {
