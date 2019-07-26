@@ -122,7 +122,7 @@ checkData = () => {
       if(data !== null && data[`${this.state.user}`][0].player_datePlayed === this.state.date1){
           return this.setState({completedTracks: data[`${this.state.user}`]});
         }else{
-          return this.setState({completedTracks: []});
+          firebase.database().ref('CompletedTracks').child(`${this.state.user}`).remove().then(()=> this.setState({completedTracks: []}))
         }
       }
         )
@@ -130,9 +130,7 @@ checkData = () => {
 
 
   render() {
-    const totalMin = (this.state.completedTracks.length >=1)?this.state.completedTracks.reduce((total, num)=>{
-      return (total.player_duration + num.player_duration).toString()
-    }): null
+    const totalMin = this.state.completedTracks.reduce((total, track) => total + track.player_duration, 0);
     // (this.state.completedTracks.length !== 0)
     //   this.state.completedTracks[0].player_duration
     return (
