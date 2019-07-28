@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { View, Dimensions, Image } from "react-native";
+import { View, Dimensions, Image, ImageBackground } from "react-native";
 import { Text, Spinner } from "native-base";
 import { Actions } from "react-native-router-flux";
 import firebase from "firebase";
 import Navbar from "../../components/Navbar";
 import HEROlogo from "../../images/herologo.png";
 import AnimateNumber from "react-native-animate-number";
+import Star from '../../images/wild5star.png';
 
 const screenheight = Dimensions.get("window").height;
 class HeroScore extends Component {
@@ -187,7 +188,7 @@ class HeroScore extends Component {
           </Text>
         </View>
 
-        <View>
+        <View >
           <Text
             style={{
               textAlign: "center",
