@@ -4,9 +4,9 @@ import {Alert} from 'react-native';
 import firebase from 'firebase';
 import {Actions} from 'react-native-router-flux';
 import {ModButton} from '../../components/common';
-import socialtracking from '../../images/socialtracking.jpg';
 import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
+import {Card} from '../../components/common/Card';
 
 const CALLED_FRIEND = 'calledFriend';
 const MET_FRIEND_IN_PERSON = 'metFriendInPerson';
@@ -58,76 +58,64 @@ class SocialTracking extends Component {
     return (
       <Container>
         <BlurredBackgroundImage
-          style={{paddingHorizontal: 10}}
-          source={socialtracking}
+          style={{padding: 20}}
+          source={{uri: 'social-tracking-bg'}}
           blurRadius={20}
         >
-          <Text
-            style={{
-              fontSize: 30,
-              textAlign: 'center',
-              marginTop: '20%',
-              marginBottom: '20%',
-              fontWeight: '600',
-            }}
-          >
-            Track your{' '}
-            <Text style={{color: 'red', fontSize: 30, fontWeight: '600'}}>
-              Social
-            </Text>
-          </Text>
-          <Content>
+          <Card>
             <Text
-              style={{
-                fontSize: 20,
-                textAlign: 'center',
-                marginTop: '10%',
-                marginBottom: '10%',
-                fontWeight: '600',
-              }}
+              style={{fontSize: 30, fontWeight: '600', width: '100%'}}
+              adjustsFontSizeToFit
+              numberOfLines={1}
             >
-              Which social practices did you complete?
+              <Text>
+                Track your{' '}
+                <Text style={{color: '#EE3322'}}>Social Connectedness</Text>
+              </Text>
             </Text>
+            <Content>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  marginTop: '10%',
+                  marginBottom: '10%',
+                  fontWeight: '600',
+                }}
+                numberOfLines={1}
+              >
+                What social contacts did you make?
+              </Text>
 
-            <CheckBoxItem
-              checked={this.state.calledFriend}
-              onPress={() => this.toggleCheckbox(CALLED_FRIEND)}
-              color="red"
-            >
-              Called Friend
-            </CheckBoxItem>
+              <CheckBoxItem
+                checked={this.state.calledFriend}
+                onPress={() => this.toggleCheckbox(CALLED_FRIEND)}
+              >
+                Called Friend
+              </CheckBoxItem>
 
-            <CheckBoxItem
-              checked={this.state.metFriendInPerson}
-              onPress={() => this.toggleCheckbox(MET_FRIEND_IN_PERSON)}
-              color="green"
-            >
-              Met Friend in person
-            </CheckBoxItem>
+              <CheckBoxItem
+                checked={this.state.metFriendInPerson}
+                onPress={() => this.toggleCheckbox(MET_FRIEND_IN_PERSON)}
+              >
+                Met Friend in Person
+              </CheckBoxItem>
 
-            <CheckBoxItem
-              checked={this.state.calledFamily}
-              onPress={() => this.toggleCheckbox(CALLED_FAMILY)}
-              color="blue"
-            >
-              Called Family
-            </CheckBoxItem>
+              <CheckBoxItem
+                checked={this.state.calledFamily}
+                onPress={() => this.toggleCheckbox(CALLED_FAMILY)}
+              >
+                Called Family
+              </CheckBoxItem>
 
-            <CheckBoxItem
-              checked={this.state.metFamilyInPerson}
-              onPress={() => this.toggleCheckbox(MET_FAMILY_IN_PERSON)}
-              color="orange"
-            >
-              Met Family in person
-            </CheckBoxItem>
-
-            <ModButton
-              style={{alignSelf: 'center', textAlign: 'center'}}
-              color={'black'}
-              onPress={this.submitForm}
-              label="Submit"
-            />
-          </Content>
+              <CheckBoxItem
+                checked={this.state.metFamilyInPerson}
+                onPress={() => this.toggleCheckbox(MET_FAMILY_IN_PERSON)}
+              >
+                Met Family in Person
+              </CheckBoxItem>
+            </Content>
+            <ModButton color="#EE3322" onPress={this.submitForm} label="Save" />
+          </Card>
         </BlurredBackgroundImage>
       </Container>
     );
@@ -137,7 +125,7 @@ class SocialTracking extends Component {
 function CheckBoxItem({onPress, children, ...checkboxProps}) {
   return (
     <ListItem onPress={onPress}>
-      <CheckBox {...checkboxProps} onPress={onPress} />
+      <CheckBox {...checkboxProps} onPress={onPress} color="#EE3322" />
       <Body>
         <Text>{children}</Text>
       </Body>
