@@ -1,12 +1,11 @@
-import React, { Component } from "react";
-import { View, Dimensions, ImageBackground } from "react-native";
-import { Text } from "native-base";
-import BarGraph from "../../components/charts/BarGraph";
-import firebase from "firebase";
-import progbackground from "../../images/progbackground.jpg";
-import { withAuthProvider } from "../../context/authcontext";
+import React, {Component} from 'react';
+import {View, Dimensions, ImageBackground} from 'react-native';
+import {Text} from 'native-base';
+import BarGraph from '../../components/charts/BarGraph';
+import progbackground from '../../images/progbackground.jpg';
+import {withAuthProvider} from '../../context/authcontext';
 
-const screenheight = Dimensions.get("window").height;
+const screenheight = Dimensions.get('window').height;
 class Progress extends Component {
   constructor() {
     super();
@@ -16,7 +15,7 @@ class Progress extends Component {
       mindval: 0,
       socval: 0,
       sleepval: 0,
-      nutrval: 0
+      nutrval: 0,
     };
   }
 
@@ -49,7 +48,7 @@ class Progress extends Component {
       mindval,
       sleepval,
       socval,
-      nutrval
+      nutrval,
     });
   };
 
@@ -59,7 +58,7 @@ class Progress extends Component {
     if (test.Exduration >= 30) {
       i = i + 1;
     }
-    if (test.Exintensity === "moderate" || test.Exintensity === "high") {
+    if (test.Exintensity === 'moderate' || test.Exintensity === 'high') {
       i = i + 1;
     }
     if (test.Extype) {
@@ -74,7 +73,7 @@ class Progress extends Component {
     if (test.mindprac) {
       i = i + 1;
     }
-    if (test.mindtype && test.mindtype !== "None") {
+    if (test.mindtype && test.mindtype !== 'None') {
       i = i + 1;
     }
     if (i === 2) {
@@ -116,17 +115,20 @@ class Progress extends Component {
 
   soccalc = () => {
     let i = 0;
-    let test = this.props.trackdata;
-    if (test.socfamilycall) {
+    let test = this.props.trackdata.social || {};
+
+    console.log(test);
+
+    if (test.calledFamily) {
       i = i + 1;
     }
-    if (test.socfriendcall) {
+    if (test.calledFriend) {
       i = i + 1;
     }
-    if (test.socfamilyinperson) {
+    if (test.metFamilyInPerson) {
       i = i + 1;
     }
-    if (test.socfriendinperson) {
+    if (test.metFriendInPerson) {
       i = i + 1;
     }
     if (i >= 2) {
@@ -163,7 +165,7 @@ class Progress extends Component {
     } else return i;
   };
   maxSkill = () => {
-    let { exval, mindval, nutrval, socval, sleepval } = this.state;
+    let {exval, mindval, nutrval, socval, sleepval} = this.state;
     if (
       exval > mindval &&
       exval > nutrval &&
@@ -174,9 +176,9 @@ class Progress extends Component {
         <Text
           style={{
             fontSize: 15,
-            alignSelf: "center",
-            fontWeight: "600",
-            color: "green"
+            alignSelf: 'center',
+            fontWeight: '600',
+            color: 'green',
           }}
         >
           Exercise
@@ -192,9 +194,9 @@ class Progress extends Component {
         <Text
           style={{
             fontSize: 15,
-            alignSelf: "center",
-            fontWeight: "600",
-            color: "blue"
+            alignSelf: 'center',
+            fontWeight: '600',
+            color: 'blue',
           }}
         >
           Mindfulness
@@ -210,9 +212,9 @@ class Progress extends Component {
         <Text
           style={{
             fontSize: 15,
-            alignSelf: "center",
-            fontWeight: "600",
-            color: "orange"
+            alignSelf: 'center',
+            fontWeight: '600',
+            color: 'orange',
           }}
         >
           Nutrition
@@ -228,9 +230,9 @@ class Progress extends Component {
         <Text
           style={{
             fontSize: 15,
-            alignSelf: "center",
-            fontWeight: "600",
-            color: "red"
+            alignSelf: 'center',
+            fontWeight: '600',
+            color: 'red',
           }}
         >
           Social Connectedness
@@ -246,9 +248,9 @@ class Progress extends Component {
         <Text
           style={{
             fontSize: 15,
-            alignSelf: "center",
-            fontWeight: "600",
-            color: "purple"
+            alignSelf: 'center',
+            fontWeight: '600',
+            color: 'purple',
           }}
         >
           Sleep
@@ -261,19 +263,19 @@ class Progress extends Component {
       sleepval === exval
     ) {
       return (
-        <Text style={{ fontSize: 20, alignSelf: "center", fontWeight: "600" }}>
+        <Text style={{fontSize: 20, alignSelf: 'center', fontWeight: '600'}}>
           Flying Colors!
         </Text>
       );
     } else
       return (
-        <Text style={{ fontSize: 15, alignSelf: "center", fontWeight: "600" }}>
+        <Text style={{fontSize: 15, alignSelf: 'center', fontWeight: '600'}}>
           Well-Rounded
         </Text>
       );
   };
   minSkill = () => {
-    let { exval, mindval, nutrval, socval, sleepval } = this.state;
+    let {exval, mindval, nutrval, socval, sleepval} = this.state;
     if (
       exval < mindval &&
       exval < nutrval &&
@@ -284,9 +286,9 @@ class Progress extends Component {
         <Text
           style={{
             fontSize: 15,
-            alignSelf: "center",
-            fontWeight: "600",
-            color: "green"
+            alignSelf: 'center',
+            fontWeight: '600',
+            color: 'green',
           }}
         >
           Exercise
@@ -302,9 +304,9 @@ class Progress extends Component {
         <Text
           style={{
             fontSize: 15,
-            alignSelf: "center",
-            fontWeight: "600",
-            color: "blue"
+            alignSelf: 'center',
+            fontWeight: '600',
+            color: 'blue',
           }}
         >
           Mindfulness
@@ -320,9 +322,9 @@ class Progress extends Component {
         <Text
           style={{
             fontSize: 15,
-            alignSelf: "center",
-            fontWeight: "600",
-            color: "orange"
+            alignSelf: 'center',
+            fontWeight: '600',
+            color: 'orange',
           }}
         >
           Nutrition
@@ -338,9 +340,9 @@ class Progress extends Component {
         <Text
           style={{
             fontSize: 15,
-            alignSelf: "center",
-            fontWeight: "600",
-            color: "red"
+            alignSelf: 'center',
+            fontWeight: '600',
+            color: 'red',
           }}
         >
           Social Connectedness
@@ -356,9 +358,9 @@ class Progress extends Component {
         <Text
           style={{
             fontSize: 15,
-            alignSelf: "center",
-            fontWeight: "600",
-            color: "purple"
+            alignSelf: 'center',
+            fontWeight: '600',
+            color: 'purple',
           }}
         >
           Sleep
@@ -371,34 +373,38 @@ class Progress extends Component {
       sleepval === exval
     ) {
       return (
-        <Text style={{ fontSize: 20, alignSelf: "center", fontWeight: "600" }}>
+        <Text style={{fontSize: 20, alignSelf: 'center', fontWeight: '600'}}>
           Amazing!
         </Text>
       );
-    } else return "Multiple Principles";
+    } else return 'Multiple Principles';
   };
 
   render() {
     return (
-      <View style={{ backgroundColor: "white", height: screenheight }}>
+      <View style={{backgroundColor: 'white', height: screenheight}}>
         <ImageBackground
           source={progbackground}
-          style={{ height: "100%", width: "100%" }}
+          style={{height: '100%', width: '100%'}}
         >
           <View>
             <Text
               style={{
                 fontSize: 15,
-                marginTop: "10%",
-                alignSelf: "center",
-                fontWeight: "600"
+                marginTop: '10%',
+                alignSelf: 'center',
+                fontWeight: '600',
               }}
             >
               You can earn 3 points a day in every wellness principle
             </Text>
           </View>
 
-          {this.state.exval || this.state.mindval || this.state.nutrval || this.state.sleepval || this.state.socval ? (
+          {this.state.exval ||
+          this.state.mindval ||
+          this.state.nutrval ||
+          this.state.sleepval ||
+          this.state.socval ? (
             <BarGraph
               exval={this.state.exval}
               mindval={this.state.mindval}
@@ -410,9 +416,9 @@ class Progress extends Component {
             <Text
               style={{
                 fontSize: 15,
-                marginTop: "15%",
-                alignSelf: "center",
-                fontWeight: "600"
+                marginTop: '15%',
+                alignSelf: 'center',
+                fontWeight: '600',
               }}
             >
               No data to show today :S
@@ -421,13 +427,17 @@ class Progress extends Component {
 
           <View>
             <View>
-              {this.state.exval || this.state.mindval || this.state.nutrval || this.state.sleepval || this.state.socval ? (
+              {this.state.exval ||
+              this.state.mindval ||
+              this.state.nutrval ||
+              this.state.sleepval ||
+              this.state.socval ? (
                 <Text
                   style={{
                     fontSize: 15,
-                    marginTop: "15%",
-                    alignSelf: "center",
-                    fontWeight: "600"
+                    marginTop: '15%',
+                    alignSelf: 'center',
+                    fontWeight: '600',
                   }}
                 >
                   Today's best principle: {this.maxSkill()}
@@ -436,21 +446,25 @@ class Progress extends Component {
                 <Text
                   style={{
                     fontSize: 15,
-                    marginTop: "15%",
-                    alignSelf: "center",
-                    fontWeight: "600"
+                    marginTop: '15%',
+                    alignSelf: 'center',
+                    fontWeight: '600',
                   }}
                 >
                   Today's best principle: None
                 </Text>
               )}
-              {this.state.exval || this.state.mindval || this.state.nutrval || this.state.sleepval || this.state.socval ? (
+              {this.state.exval ||
+              this.state.mindval ||
+              this.state.nutrval ||
+              this.state.sleepval ||
+              this.state.socval ? (
                 <Text
                   style={{
                     fontSize: 15,
-                    marginTop: "10%",
-                    alignSelf: "center",
-                    fontWeight: "600"
+                    marginTop: '10%',
+                    alignSelf: 'center',
+                    fontWeight: '600',
                   }}
                 >
                   Today's least practiced principle: {this.minSkill()}
@@ -459,9 +473,9 @@ class Progress extends Component {
                 <Text
                   style={{
                     fontSize: 15,
-                    marginTop: "15%",
-                    alignSelf: "center",
-                    fontWeight: "600"
+                    marginTop: '15%',
+                    alignSelf: 'center',
+                    fontWeight: '600',
                   }}
                 >
                   Today's least practiced principle: None

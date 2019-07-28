@@ -5,6 +5,9 @@ import BarGraph from '../../components/charts/BarGraph';
 import {withAuthProvider} from '../../context/authcontext';
 
 const screenheight = Dimensions.get('window').height;
+
+const MAX_POINTS_PER_DAY = 3;
+
 class PrincipleStats extends Component {
   state = {};
 
@@ -132,29 +135,24 @@ class PrincipleStats extends Component {
   };
 
   soccalc = () => {
-    let i = 0;
-    let v = 0;
-    let values = Object.values(this.props.princData);
-    for (var k = 0; k < values.length; k++) {
-      if (values[k].socfamilycall) {
-        i = i + 1;
-      }
-      if (values[k].socfriendcall) {
-        i = i + 1;
-      }
-      if (values[k].socfamilyinperson) {
-        i = i + 1;
-      }
-      if (values[k].socfriendinperson) {
-        i = i + 1;
-      }
-      if (i >= 2) {
-        v = v + 3;
-      } else {
-        v = i;
-      }
-    }
-    return v;
+    // Grab every day recorded for the user
+    const days = Object.values(this.props.princData);
+    const sum = arr => arr.reduce((sum, num) => sum + num, 0);
+
+    return days.reduce((total, {social}) => {
+      // Convert the number of completed connections to an array of numbers
+      // Example: {calledFriend: true, metWithFriend: false} -> [1, 0]
+      const todaysConnections = Object.values(social).map(didConnect =>
+        Number(didConnect)
+      );
+
+      // The day is considered completed if you made at least 2 connections
+      const totalConnections = sum(todaysConnections);
+      const dayIsCompleted = totalConnections >= 2;
+
+      // If the day is completed, add it to the total
+      return total + (dayIsCompleted ? MAX_POINTS_PER_DAY : totalConnections);
+    }, 0);
   };
 
   nutrcalc = () => {
