@@ -11,7 +11,6 @@ import firebase from "firebase";
 import { CheckBox, ListItem, Body, Icon } from "native-base";
 import PushNotificationIOS from "../common/PushNotificationsIOS";
 import Navbar from "../Navbar";
-
 class SleepQuest extends Component {
   state = {
     chosenDate: new Date(),

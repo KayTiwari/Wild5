@@ -1,4 +1,8 @@
 rootProject.name = 'wild5'
+include ':react-native-sms'
+project(':react-native-sms').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sms/android')
+include ':react-native-config'
+project(':react-native-config').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-config/android')
 include ':react-native-linear-gradient'
 project(':react-native-linear-gradient').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-linear-gradient/android')
 include ':@react-native-community_slider'
@@ -9,14 +13,10 @@ include ':react-native-store-photos-album'
 project(':react-native-store-photos-album').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-store-photos-album/android')
 include ':react-native-push-notifications'
 project(':react-native-push-notifications').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-push-notifications/android')
-include ':react-native-push-notification'
-project(':react-native-push-notification').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-push-notification/android')
 include ':react-native-contacts'
 project(':react-native-contacts').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-contacts/android')
 include ':react-native-sound'
 project(':react-native-sound').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sound/android')
-include ':@react-native-community_audio-toolkit'
-project(':@react-native-community_audio-toolkit').projectDir = new File(rootProject.projectDir, '../node_modules/@react-native-community/audio-toolkit/android')
 include ':react-native-svg'
 project(':react-native-svg').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-svg/android')
 include ':react-native-vector-icons'
