@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Text, Content, ListItem, CheckBox, Body, Container} from 'native-base';
-import {ModButton} from '../../components/common';
+import {Alert} from 'react-native';
 import firebase from 'firebase';
 import {Actions} from 'react-native-router-flux';
+import {ModButton} from '../../components/common';
 import socialtracking from '../../images/socialtracking.jpg';
 import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
@@ -24,7 +25,7 @@ class SocialTracking extends Component {
     this.setState({[stateKey]: !this.state[stateKey]});
   };
 
-  submitForm = () => {
+  submitForm = async () => {
     const {
       [CALLED_FRIEND]: calledFriend,
       [MET_FRIEND_IN_PERSON]: metFriendInPerson,
@@ -34,7 +35,7 @@ class SocialTracking extends Component {
 
     const surveysRef = scopeRefByUserAndDate('Surveys', 'social');
 
-    firebase
+    await firebase
       .database()
       .ref(surveysRef)
       .update({
@@ -44,7 +45,13 @@ class SocialTracking extends Component {
         metFamilyInPerson,
       });
 
-    Actions.landing();
+    // Add error handling here...
+
+    Alert.alert(
+      'Success!',
+      'Your social interactions for today have been recorded.',
+      [{text: 'OK', onPress: Actions.landing}]
+    );
   };
 
   render() {
