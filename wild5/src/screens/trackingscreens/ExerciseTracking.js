@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import {ModButton} from '../../components/common';
 import RadioForm from 'react-native-simple-radio-button';
 import {Text, Item, Label, Input, Picker, Icon} from 'native-base';
 import Slider from '@react-native-community/slider';
 import firebase from 'firebase';
 import {Actions} from 'react-native-router-flux';
 import exbackground from '../../images/exercise-background.jpg';
-import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
+import {TrackingScreen} from './TrackingScreen';
+import {withAuthProvider} from '../../context/authcontext';
 
 let typedata = [
   {
@@ -67,19 +67,16 @@ class ExerciseTracking extends Component {
         Extype: type,
         Exduration: duration,
         Exintensity: intensity,
-      }).then(()=>AlertIOS.alert(
-        'Data submitted Successfully',
-        '',
-        [
+      })
+      .then(() =>
+        AlertIOS.alert('Data submitted Successfully', '', [
           {
             text: 'ok',
             onPress: () => Actions.quests(),
             style: 'ok',
-          }
-        ],
-      )
-    );
-
+          },
+        ])
+      );
   }
 
   componentDidMount() {
@@ -108,145 +105,100 @@ class ExerciseTracking extends Component {
 
   render() {
     return (
-      <BlurredBackgroundImage
-        style={{paddingHorizontal: 10}}
-        source={exbackground}
-        blurRadius={20}
+      <TrackingScreen
+        backgroundImage={exbackground}
+        color="#a8eb12"
+        activityTitle="Exercise"
+        onSave={this.submitForm}
       >
         <Text
           style={{
-            fontSize: 30,
             textAlign: 'center',
             marginTop: '10%',
             marginBottom: '10%',
             fontWeight: '600',
-            color: 'white',
           }}
         >
-          Track your{' '}
-          <Text style={{color: '#a8eb12', fontSize: 30, fontWeight: '600'}}>
-            Exercise
-          </Text>
+          Type of Exercise?
         </Text>
-
-        <View style={{alignItems: 'center'}}>
-          <Text
-            style={{
-              color: 'white',
-              alignSelf: 'center',
-              fontSize: 24,
-              fontWeight: '600',
-            }}
+        <Item style={{marginBottom: '10%'}} picker>
+          <Picker
+            selectedValue={this.state.type}
+            onValueChange={type => this.setState({type})}
+            mode="dropdown"
+            style={{width: undefined}}
+            placeholder="Select One..."
+            iosHeader="Exercises"
+            iosIcon={<Icon name="ios-arrow-dropdown" style={{fontSize: 25}} />}
           >
-            Type of Exercise?
-          </Text>
-          <Item style={{marginVertical: 20}} picker>
-            <Picker
-              selectedValue={this.state.type}
-              onValueChange={type => this.setState({type})}
-              mode="dropdown"
-              placeholder="Select Type of Exercise"
-              placeholderStyle={{color: 'white'}}
-              placeholderIconColor="white"
-              iosHeader="Exercises"
-              iosIcon={
-                <Icon
-                  name="ios-arrow-dropdown"
-                  style={{color: 'white', fontSize: 25}}
-                />
-              }
-              textStyle={{color: 'white'}}
-            >
-              {typedata.map(type => (
-                <Picker.Item
-                  key={type.value}
-                  label={type.value}
-                  value={type.value}
-                />
-              ))}
-            </Picker>
-          </Item>
-
-          {this.state.type === 'Other' && (
-            <Item style={{marginBottom: 20}} floatingLabel>
-              <Label style={{color: 'white'}}>Enter other exercise...</Label>
-              <Input
-                style={{color: 'white'}}
-                autoCorrect={false}
-                onChangeText={text => this.setState({type: text})}
+            {typedata.map(type => (
+              <Picker.Item
+                key={type.value}
+                label={type.value}
+                value={type.value}
               />
-            </Item>
-          )}
-        </View>
+            ))}
+          </Picker>
+        </Item>
 
-        <View style={{alignItems: 'center', alignSelf: 'stretch'}}>
-          <Text
-            style={{
-              marginBottom: '5%',
-              color: 'white',
-              fontSize: 24,
-              fontWeight: '600',
-              textAlign: 'center',
-            }}
-          >
-            Exercise Duration?
-          </Text>
-          <Slider
-            style={{width: '80%'}}
-            minimumValue={0}
-            maximumValue={120}
-            minimumTrackTintColor="#a8eb12"
-            step={5}
-            onValueChange={value => this.setState({duration: value})}
-          />
-          <Text style={{color: 'white'}}>{this.state.duration} minutes</Text>
-        </View>
+        {this.state.type === 'Other' && (
+          <Item style={{marginBottom: 20}} floatingLabel>
+            <Label>Enter other exercise...</Label>
+            <Input
+              autoCorrect={false}
+              onChangeText={text => this.setState({type: text})}
+            />
+          </Item>
+        )}
 
-        <View
+        <Text
           style={{
-            alignSelf: 'center',
-            marginTop: '10%',
-            marginBottom: '10%',
+            marginBottom: '5%',
+            fontSize: 24,
+            fontWeight: '600',
+            textAlign: 'center',
           }}
         >
-          <Text
-            style={{
-              marginBottom: '5%',
-              fontSize: 24,
-              fontWeight: '600',
-              color: 'white',
-            }}
-          >
-            Intensity of Exercise?
-          </Text>
-          <RadioForm
-            style={{alignSelf: 'center'}}
-            radio_props={[
-              {label: 'Low', value: 'low'},
-              {label: 'Moderate', value: 'moderate'},
-              {label: 'High', value: 'high'},
-            ]}
-            initial={0}
-            formHorizontal={false}
-            labelHorizontal={true}
-            buttonColor={'#a8eb12'}
-            selectedButtonColor={'#a8eb12'}
-            labelColor="white"
-            selectedLabelColor="white"
-            animation={true}
-            onPress={value => {
-              this.setState({intensity: value});
-            }}
-          />
-        </View>
-
-        <ModButton
-          color={'#a8eb12'}
-          onPress={() => this.submitForm()}
-          label="Save My Exercise"
+          Exercise Duration?
+        </Text>
+        <Slider
+          style={{width: '80%', alignSelf: 'center'}}
+          minimumValue={0}
+          maximumValue={120}
+          minimumTrackTintColor="#a8eb12"
+          step={5}
+          onValueChange={value => this.setState({duration: value})}
         />
-      </BlurredBackgroundImage>
+        <Text style={{textAlign: 'center'}}>{this.state.duration} minutes</Text>
+        <Text
+          style={{
+            marginVertical: '10%',
+            fontSize: 24,
+            fontWeight: '600',
+            textAlign: 'center',
+          }}
+        >
+          Intensity of Exercise?
+        </Text>
+        <RadioForm
+          style={{alignSelf: 'center'}}
+          radio_props={[
+            {label: 'Low', value: 'low'},
+            {label: 'Moderate', value: 'moderate'},
+            {label: 'High', value: 'high'},
+          ]}
+          initial={0}
+          formHorizontal={false}
+          labelHorizontal={true}
+          buttonColor={'#a8eb12'}
+          selectedButtonColor={'#a8eb12'}
+          animation={true}
+          onPress={value => {
+            this.setState({intensity: value});
+          }}
+        />
+      </TrackingScreen>
     );
   }
 }
-export default ExerciseTracking;
+export default withAuthProvider(ExerciseTracking);

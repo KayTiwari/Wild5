@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '600',
     width: '100%',
+    textAlign: 'center',
   },
   backgroundImage: {
     padding: 20,
