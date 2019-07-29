@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import {Text, Content, ListItem, CheckBox, Body, Container} from 'native-base';
-import {Alert} from 'react-native';
+import {Text, ListItem, CheckBox, Body} from 'native-base';
+import {Alert, StyleSheet} from 'react-native';
 import firebase from 'firebase';
 import {Actions} from 'react-native-router-flux';
-import {ModButton} from '../../components/common';
-import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
-import {Card} from '../../components/common/Card';
+import {TrackingScreen} from './TrackingScreen';
 
 const CALLED_FRIEND = 'calledFriend';
 const MET_FRIEND_IN_PERSON = 'metFriendInPerson';
@@ -56,71 +54,56 @@ class SocialTracking extends Component {
 
   render() {
     return (
-      <Container>
-        <BlurredBackgroundImage
-          style={{padding: 20}}
-          source={{uri: 'social-tracking-bg'}}
-          blurRadius={20}
+      <TrackingScreen
+        backgroundImage={{uri: 'social-tracking-bg'}}
+        color="#ee3322"
+        activityTitle="Social Connectedness"
+        onSave={this.submitForm}
+      >
+        <Text style={styles.subtitle} numberOfLines={1}>
+          What social contacts did you make?
+        </Text>
+
+        <CheckBoxItem
+          checked={this.state.calledFriend}
+          onPress={() => this.toggleCheckbox(CALLED_FRIEND)}
         >
-          <Card>
-            <Text
-              style={{fontSize: 30, fontWeight: '600', width: '100%'}}
-              adjustsFontSizeToFit
-              numberOfLines={1}
-            >
-              <Text>
-                Track your{' '}
-                <Text style={{color: '#EE3322'}}>Social Connectedness</Text>
-              </Text>
-            </Text>
-            <Content>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  marginTop: '10%',
-                  marginBottom: '10%',
-                  fontWeight: '600',
-                }}
-                numberOfLines={1}
-              >
-                What social contacts did you make?
-              </Text>
+          Called Friend
+        </CheckBoxItem>
 
-              <CheckBoxItem
-                checked={this.state.calledFriend}
-                onPress={() => this.toggleCheckbox(CALLED_FRIEND)}
-              >
-                Called Friend
-              </CheckBoxItem>
+        <CheckBoxItem
+          checked={this.state.metFriendInPerson}
+          onPress={() => this.toggleCheckbox(MET_FRIEND_IN_PERSON)}
+        >
+          Met Friend in Person
+        </CheckBoxItem>
 
-              <CheckBoxItem
-                checked={this.state.metFriendInPerson}
-                onPress={() => this.toggleCheckbox(MET_FRIEND_IN_PERSON)}
-              >
-                Met Friend in Person
-              </CheckBoxItem>
+        <CheckBoxItem
+          checked={this.state.calledFamily}
+          onPress={() => this.toggleCheckbox(CALLED_FAMILY)}
+        >
+          Called Family
+        </CheckBoxItem>
 
-              <CheckBoxItem
-                checked={this.state.calledFamily}
-                onPress={() => this.toggleCheckbox(CALLED_FAMILY)}
-              >
-                Called Family
-              </CheckBoxItem>
-
-              <CheckBoxItem
-                checked={this.state.metFamilyInPerson}
-                onPress={() => this.toggleCheckbox(MET_FAMILY_IN_PERSON)}
-              >
-                Met Family in Person
-              </CheckBoxItem>
-            </Content>
-            <ModButton color="#EE3322" onPress={this.submitForm} label="Save" />
-          </Card>
-        </BlurredBackgroundImage>
-      </Container>
+        <CheckBoxItem
+          checked={this.state.metFamilyInPerson}
+          onPress={() => this.toggleCheckbox(MET_FAMILY_IN_PERSON)}
+        >
+          Met Family in Person
+        </CheckBoxItem>
+      </TrackingScreen>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  subtitle: {
+    textAlign: 'center',
+    marginTop: '10%',
+    marginBottom: '10%',
+    fontWeight: '600',
+  },
+});
 
 function CheckBoxItem({onPress, children, ...checkboxProps}) {
   return (
