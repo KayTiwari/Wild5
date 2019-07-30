@@ -37,8 +37,6 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Accessing Camera to take pictures of your food</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Permission needed for accessing Contacts</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -86,7 +84,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow access for taking pictures of food</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+	<true/>
 </dict>
 </plist>

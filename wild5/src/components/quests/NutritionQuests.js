@@ -12,6 +12,7 @@ class NutritionQuest extends Component {
 
   async takePicture() {
     // console.log("running")
+    
     if (this.camera) {
       const options = { quality: 0.5, based64: true };
       const fileName = Date.now();
@@ -21,10 +22,9 @@ class NutritionQuest extends Component {
           { uri: data.uri, album: "Wild5", fileName: `${fileName}.jpg` },
           "photo"
         )
-      );
-
-      // console.log(data.uri)
-    }
+      ).catch(e => console.log(e))
+  }
+  
   }
 
   render() {
@@ -72,7 +72,7 @@ class NutritionQuest extends Component {
             justifyContent: "flex-end"
           }}
         >
-          <TouchableOpacity onPress={() => Actions.quests()}>
+          <TouchableOpacity onPress={()=> Actions.quests()}>
             <Image
               style={{ width: 45, height: 45 }}
               source={require("../../images/exitbutton.png")}

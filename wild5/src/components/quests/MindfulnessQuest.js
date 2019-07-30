@@ -122,7 +122,7 @@ checkData = () => {
       if(data !== null && data[`${this.state.user}`][0].player_datePlayed === this.state.date1){
           return this.setState({completedTracks: data[`${this.state.user}`]});
         }else{
-          firebase.database().ref('CompletedTracks').child(`${this.state.user}`).remove().then(()=> this.setState({completedTracks: []}))
+          firebase.database().ref('CompletedTracks/').child(`${this.state.user}`).remove().then(()=> this.setState({completedTracks: []}))
         }
       }
         )

@@ -1,7 +1,7 @@
 package com.wild5;
-
 import android.app.Application;
 import com.facebook.react.ReactApplication;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.tkporter.sendsms.SendSMSPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -33,6 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactNativePushNotificationPackage(),
             SendSMSPackage.getInstance(),
             new ReactNativeConfigPackage(),
             new LinearGradientPackage(),

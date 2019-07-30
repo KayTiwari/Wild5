@@ -6,10 +6,10 @@ import {
   Dimensions,
   Button,
   Modal,
-  TouchableHighlight,
+  PermissionsAndroid,
   TextInput,
   StyleSheet,
-  AsyncStorage,
+  Platform,
   AlertIOS,
   FlatList,
   TouchableOpacity
@@ -152,30 +152,29 @@ class SocialQuest extends Component {
     // if contact is in selectedContacts
   };
 
-  saveState = async state => {
-    // AlertIOS.alert('willunmount')
-    try {
-      await AsyncStorage.setItem("SocialState", `${JSON.stringify(state)}`);
-    } catch (error) {
-      AlertIOS.alert("storage save failed");
-    }
-  };
-
-  // returnState = async () => {
-  //     AlertIOS.alert('willmount')
-  //     try {
-  //         const value = await AsyncStorage.getItem('SocialState');
-  //         if (value !== null) {
-  //           this.setState({
-  //             interactions: value
-  //           }, ()=> Alert.alert('returnState'))
-  //         }
-  //       } catch (error) {
-  //        AlertIOS.alert('get storage failed')
-  //       }
-  // }
-
   setActivity = itemValue => {
+    if(Platform.OS === 'android'){
+      PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
+        {
+          'title': 'Contacts',
+          'message': 'This app would like to view your contacts.'
+        }
+      ).then(() => {
+        this.setState({ socialInteraction: itemValue }, () =>
+        Contacts.getAll((err, contacts) => {
+          if (err) {
+            AlertIOS.alert(err);
+          } else {
+            this.setState({ contacts }, () =>
+              this.setState({ showContacts: !this.state.showContacts })
+            );
+          }
+        })
+      );
+      })
+      
+    } else {
     this.setState({ socialInteraction: itemValue }, () =>
       Contacts.getAll((err, contacts) => {
         if (err) {
@@ -187,7 +186,8 @@ class SocialQuest extends Component {
         }
       })
     );
-  };
+  }
+};
 
   addNewInteraction = () => {
     return () => {

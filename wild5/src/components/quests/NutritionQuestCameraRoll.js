@@ -13,12 +13,17 @@ const { height, width } = Dimensions.get("window");
 
 class NutritionQuestCameraRoll extends Component {
   state = {
-    photos: []
+    photos: [],
+    date: new Date
   };
 
   componentDidMount() {
+   this.getPhotos()
+  }
+
+  getPhotos = () => {
     CameraRoll.getPhotos({
-      first: 3,
+      first: 14,
       assetType: "Photos",
       groupTypes: "album",
       groupName: "Wild5"
@@ -34,8 +39,10 @@ class NutritionQuestCameraRoll extends Component {
     const pictures =
       this.state.photos.length !== 0
         ? this.state.photos.map((p,i) => {
+          const photoTime = 
+          console.log(this.state.date, new Date(p.node.timestamp * 1000))
+          if (new Date(p.node.timestamp * 1000) === this.state.date)
             return (
-              console.log(p.node.timestamp),
               <Image
                 key={i}
                 style={{
