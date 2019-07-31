@@ -38,14 +38,14 @@ class SleepQuest extends Component {
   };
 
   componentDidMount() {
-    this.getBedTime()
+    
     var user = firebase.auth().currentUser;
     if (user) {
       var res = user.email.split(".");
       var userEm = res[0].toString();
       this.setState({
         user: userEm
-      });
+      }, ()=> this.getBedTime());
     } else {
       console.log("set State for user failed sleepquest line 52");
     }
@@ -62,32 +62,43 @@ class SleepQuest extends Component {
     });
   }
 
-cancelSleep = ()=> {
-  firebase.database().ref("SleepSettings/").child(`${this.state.user}`).remove().then( ()=>
-  this.setState({sleepConfirmed: false}))
-}
-
-  getBedTime = () => {
+  cancelSleep = () => {
     firebase
       .database()
       .ref(`SleepSettings/${this.state.user}`)
-      .once("value", (snapshot)=>{
-        if(snapshot.val() !== null){
-        const data = snapshot.val()
-        // const { `${this.state.user}`.bedtime, sleepConfirmed } = data
-        this.setState({
-            chosenDate: new Date(data[`${this.state.user}`].bedtime),
-            sleepConfirmed: data[`${this.state.user}`].sleepConfirmed
-        }, console.log(this.state))
-      
-  }}).then(r => console.log(r))};
+      .remove()
+      .then(() => this.setState({ sleepConfirmed: false }));
+  };
+
+  getBedTime = () => {
+    const path = 'SleepSettings'
+    console.log(this.state.user)
+    firebase
+      .database()
+      .ref('SleepSettings')
+      .child(this.state.user)
+      .once("value", snapshot => {
+        console.log(snapshot)
+        if (snapshot.val() !== null) {
+          const data = snapshot.val();
+          console.log(data);
+          this.setState(
+            {
+              chosenDate: new Date(data.bedtime),
+              sleepConfirmed: data.sleepConfirmed
+            },
+            console.log(this.state)
+          );
+        }
+      })
+  };
 
   setBedTime = () => {
-    this.setState(
-      { sleepConfirmed: !this.state.sleepConfirmed }, ()=>
+    this.setState({ sleepConfirmed: !this.state.sleepConfirmed }, () =>
       firebase
         .database()
-        .ref(`SleepSettings/${this.state.user}`)
+        .ref('SleepSettings/')
+        .child(`${this.state.user}`)
         .set({
           bedtime: this.state.chosenDate.toString(),
           sleepConfirmed: true
@@ -224,7 +235,8 @@ cancelSleep = ()=> {
                 }}
               >
                 <Text style={{ color: "white", fontSize: 20 }}>
-                  You BedTime is Set for {this.time(this.state.chosenDate).toString()}
+                  You BedTime is Set for{" "}
+                  {this.time(this.state.chosenDate).toString()}
                 </Text>
                 <Text style={{ color: "white", fontSize: 20 }} />
               </View>
