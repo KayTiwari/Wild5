@@ -46,6 +46,7 @@ class ExerciseTracking extends Component {
     intensity: '',
     user: '',
     date: '',
+    otherType: false
   };
 
   submitForm() {
@@ -97,6 +98,11 @@ class ExerciseTracking extends Component {
     });
   }
 
+  checkOther = ()=> {
+    this.state.type === "other" ?
+                  this.setState({otherType: true}) : null
+  }
+
   render() {
     return (
       <BlurredBackgroundImage
@@ -134,7 +140,13 @@ class ExerciseTracking extends Component {
           <Item style={{marginVertical: 20}} picker>
             <Picker
               selectedValue={this.state.type}
-              onValueChange={type => this.setState({type})}
+              onValueChange={type => this.setState({
+
+                type}, ()=> {
+                this.state.type === "Other" ? this.setState({
+                  type: "",
+                  otherType: true}) : null
+              })}
               mode="dropdown"
               placeholder="Select Type of Exercise"
               placeholderStyle={{color: 'white'}}
@@ -158,16 +170,17 @@ class ExerciseTracking extends Component {
             </Picker>
           </Item>
 
-          {this.state.type === 'Other' && (
+          {this.state.otherType === true ?
             <Item style={{marginBottom: 20}} floatingLabel>
               <Label style={{color: 'white'}}>Enter other exercise...</Label>
               <Input
                 style={{color: 'white'}}
                 autoCorrect={false}
                 onChangeText={text => this.setState({type: text})}
+                value={this.state.type}
               />
             </Item>
-          )}
+           : null}
         </View>
 
         <View style={{alignItems: 'center', alignSelf: 'stretch'}}>
