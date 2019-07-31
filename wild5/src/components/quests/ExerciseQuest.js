@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {
   Dimensions,
   View,
-  AlertIOS,
+  Alert,
   StyleSheet,
   Modal,
   TouchableHighlight,
@@ -14,6 +14,7 @@ import { Container, Text, Label, Button, Icon } from "native-base";
 import NumericInput from "react-native-numeric-input";
 import { Actions } from "react-native-router-flux";
 import firebase from "firebase";
+import {scopeRefByUserAndDate} from '../../utils/firebase';
 
 const { height, width } = Dimensions.get("window");
 
@@ -21,8 +22,6 @@ class ExerciseQuest extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: "",
-      date: "",
       duration: 0,
       countdownTimer: 0,
       y: false,
@@ -48,30 +47,6 @@ class ExerciseQuest extends Component {
     };
     let time = this.state.minutes;
     this.secondsRemaining = time * 60;
-  }
-
-  componentDidMount() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var res = user.email.split('.');
-      var userEm = res[0].toString();
-      this.setState({
-        user: userEm,
-      });
-    } else {
-      console.log('noperz');
-    }
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      '-' +
-      (today.getMonth() + 1) +
-      '-' +
-      today.getDate();
-    var dateTime = date;
-    this.setState({
-      date: dateTime,
-    });
   }
 
   tick = () => {
@@ -115,31 +90,31 @@ class ExerciseQuest extends Component {
     }));
   };
 
-  submitData = () => {
+  submitData = async () => {
     const data = {
-      Extype: this.state.exerciseChecked,
-      Exduration: this.state.duration,
-      Exintensity: this.state.intensityChecked
+      type: this.state.exerciseChecked,
+      duration: this.state.duration,
+      intensity: this.state.intensityChecked,
     };
 
-    firebase
+    const exerciseRef = scopeRefByUserAndDate('Surveys', 'exercise');
+
+    await firebase
       .database()
-      .ref(`Surveys/${this.state.user}/${this.state.date}`)
-      .set({
-        data
-      }, ()=> 
-        AlertIOS.alert(
-          'Data successfully saved',
-          '',
-          [
-            {
-              text: 'ok',
-              onPress: () => this.setState({modalVisible: !this.state.modalVisible}, ()=> Actions.quests() ),
-              style: 'ok',
-            }
-          ],
-        )
-        );
+      .ref(exerciseRef)
+      .update(data);
+
+    // handle errors here
+
+    Alert.alert('Success!', 'Your exercises for today have been recorded.', [
+      {
+        text: 'OK',
+        onPress: () =>
+          this.setState({modalVisible: !this.state.modalVisible}, () =>
+            Actions.quests()
+          ),
+      },
+    ]);
   };
 
   endExercise = () => {
