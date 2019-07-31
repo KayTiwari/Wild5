@@ -92,7 +92,7 @@ const Routercomponent = () => {
           <Scene key='herores' component={HeroRes} backTitle='Back' title="Resilience" />
           <Scene key='heroopt' component={HeroOpt} backTitle='Back' title="Optimism" />
           <Scene key='heroment' component={HeroMent} backTitle='Back' title="Mental Wellness"/>
-          <Scene key='heroscore' component={HeroScore} header={null}/>
+          <Scene key='heroscore' component={HeroScore} header={null} />
     </Scene>
     </Router>
   );

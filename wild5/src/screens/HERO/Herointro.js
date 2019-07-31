@@ -29,8 +29,7 @@ const HeroIntro = () => {
               textAlign: "center"
             }}
           >
-            The HERO scale is your way to measure and track your wellness
-            throughout the Wild5 program.
+            The HERO scale is your way to measure and track your wellness goals.
           </Text>
         </View>
         <View>
