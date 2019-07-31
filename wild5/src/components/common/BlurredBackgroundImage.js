@@ -23,7 +23,7 @@ export function BlurredBackgroundImage({style, ...props}) {
 
 BlurredBackgroundImage.propTypes = {
   source: PropTypes.number.isRequired,
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   blurRadius: PropTypes.number,
 };
 
