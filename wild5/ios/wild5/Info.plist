@@ -87,6 +87,6 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Allow access for taking pictures of food</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
+	<false/>
 </dict>
 </plist>

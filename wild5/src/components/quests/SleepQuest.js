@@ -14,8 +14,6 @@ import Navbar from "../Navbar";
 class SleepQuest extends Component {
   state = {
     chosenDate: new Date(),
-    hour: "12",
-    minutes: "00",
     sleepConfirmed: false,
     modalView: false,
     user: "",
@@ -65,7 +63,8 @@ class SleepQuest extends Component {
   }
 
 cancelSleep = ()=> {
-  firebase.database().ref(`SleepSettings/${this.state.user}/`).set(null).then( ()=> this.setState({sleepConfirmed: false}))
+  firebase.database().ref("SleepSettings/").child(`${this.state.user}`).remove().then( ()=>
+  this.setState({sleepConfirmed: false}))
 }
 
   getBedTime = () => {

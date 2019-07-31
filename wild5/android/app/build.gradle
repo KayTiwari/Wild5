@@ -140,12 +140,12 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-camera')
     implementation project(':react-native-push-notification')
     implementation project(':react-native-sms')
     implementation project(':react-native-config')
     implementation project(':react-native-linear-gradient')
     implementation project(':@react-native-community_slider')
-    implementation project(':react-native-camera')
     implementation project(':react-native-store-photos-album')
     implementation project(':react-native-contacts')
     implementation project(':react-native-sound')

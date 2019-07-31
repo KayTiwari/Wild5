@@ -19,9 +19,7 @@ class NutritionQuest extends Component {
       const data = await this.camera.takePictureAsync(options).then(data =>
         // console.log(data.uri))
         CameraRollExtended.saveToCameraRoll(
-          { uri: data.uri, album: "Wild5", fileName: `${fileName}.jpg` },
-          "photo"
-        )
+          { uri: data.uri, album: "Wild5", fileName: `${fileName}.jpg` },"photo")
       ).catch(e => console.log(e))
   }
   
