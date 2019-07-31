@@ -36,7 +36,10 @@ TrackingScreen.propTypes = {
   color: PropTypes.string.isRequired,
   activityTitle: PropTypes.string.isRequired,
   onSave: PropTypes.func.isRequired,
-  backgroundImageStyle: PropTypes.object,
+  backgroundImageStyle: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+  ]),
 };
 
 const styles = StyleSheet.create({

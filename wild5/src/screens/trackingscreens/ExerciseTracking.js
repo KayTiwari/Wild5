@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {Alert} from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import {Text, Item, Label, Input, Picker, Icon} from 'native-base';
 import Slider from '@react-native-community/slider';
@@ -8,35 +8,18 @@ import {Actions} from 'react-native-router-flux';
 import exbackground from '../../images/exercise-background.jpg';
 import {TrackingScreen} from './TrackingScreen';
 import {withAuthProvider} from '../../context/authcontext';
+import {scopeRefByUserAndDate} from '../../utils/firebase';
 
-let typedata = [
-  {
-    value: 'Walking',
-  },
-  {
-    value: 'Jogging',
-  },
-  {
-    value: 'Biking',
-  },
-  {
-    value: 'Playing Sports',
-  },
-  {
-    value: 'Swimming',
-  },
-  {
-    value: 'Weight Lifting',
-  },
-  {
-    value: 'Aerobics',
-  },
-  {
-    value: 'Water Aerobics',
-  },
-  {
-    value: 'Other',
-  },
+const exerciseTypes = [
+  'Walking',
+  'Jogging',
+  'Biking',
+  'Playing Sports',
+  'Swimming',
+  'Weight Lifting',
+  'Aerobics',
+  'Water Aerobics',
+  'Other',
 ];
 
 firebase.initializeApp({
@@ -53,55 +36,28 @@ class ExerciseTracking extends Component {
     type: '',
     duration: 0,
     intensity: '',
-    user: '',
-    date: '',
   };
 
-  submitForm() {
-    const {type, duration, intensity, user, date} = this.state;
+  submitForm = async () => {
+    const {type, duration, intensity} = this.state;
 
-    firebase
+    const exerciseRef = scopeRefByUserAndDate('Surveys', 'exercise');
+
+    await firebase
       .database()
-      .ref(`Surveys/${user}/${date}`)
+      .ref(exerciseRef)
       .update({
-        Extype: type,
-        Exduration: duration,
-        Exintensity: intensity,
-      })
-      .then(() =>
-        AlertIOS.alert('Data submitted Successfully', '', [
-          {
-            text: 'ok',
-            onPress: () => Actions.quests(),
-            style: 'ok',
-          },
-        ])
-      );
-  }
-
-  componentDidMount() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var res = user.email.split('.');
-      var userEm = res[0].toString();
-      this.setState({
-        user: userEm,
+        type,
+        duration,
+        intensity,
       });
-    } else {
-      console.log('noperz');
-    }
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      '-' +
-      (today.getMonth() + 1) +
-      '-' +
-      today.getDate();
-    var dateTime = date;
-    this.setState({
-      date: dateTime,
-    });
-  }
+
+    // Handle errors here
+
+    Alert.alert('Success!', 'Your exercises for today have been recorded.', [
+      {text: 'OK', onPress: Actions.landing},
+    ]);
+  };
 
   render() {
     return (
@@ -131,12 +87,8 @@ class ExerciseTracking extends Component {
             iosHeader="Exercises"
             iosIcon={<Icon name="ios-arrow-dropdown" style={{fontSize: 25}} />}
           >
-            {typedata.map(type => (
-              <Picker.Item
-                key={type.value}
-                label={type.value}
-                value={type.value}
-              />
+            {exerciseTypes.map(type => (
+              <Picker.Item key={type} label={type} value={type} />
             ))}
           </Picker>
         </Item>
