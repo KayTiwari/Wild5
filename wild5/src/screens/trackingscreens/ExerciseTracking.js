@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, Alert} from 'react-native';
 import {ModButton} from '../../components/common';
 import RadioForm from 'react-native-simple-radio-button';
 import {Text, Item, Label, Input, Picker, Icon} from 'native-base';
@@ -59,13 +59,13 @@ class ExerciseTracking extends Component {
         Extype: type,
         Exduration: duration,
         Exintensity: intensity,
-      }).then(()=>AlertIOS.alert(
+      }).then(()=>Alert.alert(
         'Data submitted Successfully',
         '',
         [
           {
             text: 'ok',
-            onPress: () => Actions.quests(),
+            onPress: () => Actions.landing(),
             style: 'ok',
           }
         ],
