@@ -143,7 +143,9 @@ class ExerciseTracking extends Component {
               onValueChange={type => this.setState({
 
                 type}, ()=> {
-                this.state.type === "Other" ? this.setState({otherType: true}) : null
+                this.state.type === "Other" ? this.setState({
+                  type: "",
+                  otherType: true}) : null
               })}
               mode="dropdown"
               placeholder="Select Type of Exercise"
