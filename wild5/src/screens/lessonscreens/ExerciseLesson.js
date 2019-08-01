@@ -23,7 +23,7 @@ class ExerciseLesson extends Component {
               <Text style={[styles.mainTitle, { color: "#72B83E" }]}>Exercise</Text>
             </Text>
           </View>
-          <View style={{backgroundColor:"#72B83E", width: '85%', alignSelf: 'center', height: 80 }}>
+          <View style={{backgroundColor:"#72B83E", width: '85%', alignSelf: 'center', height: 90 }}>
           <Text style={{fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '700'}}>
             Program Expectations
           </Text>
@@ -31,7 +31,7 @@ class ExerciseLesson extends Component {
             Exercise 30 minutes each day for 30 days, aim for at least moderate intensity
           </Text>
           </View>
-          <Text style={[styles.mainTitle, {marginTop: '20%'}]}>F.I.D</Text>
+          <Text style={{marginTop: '12%', fontSize: 40, alignSelf: 'center', fontWeight: '700'}}>F.I.D</Text>
             <Text style={styles.subTitle}>Frequency</Text>
             <Text style={styles.paragraph}>
               Exercise is recommended to be done every day for 7 days a week.
@@ -41,14 +41,13 @@ class ExerciseLesson extends Component {
               Exercise done is recommended to be at moderate intensity. This
               optimizes brain and mental health benefits. You know you're at
               moderate intensity when you have trouble speaking in full
-              sentences. Method to calculate heart rate:
+              sentences. Method to calculate heart rate: at your wrist, place two fingers between the bone and the tendon over your radial artery — which is located on the thumb side of your wrist. When you feel your pulse, count the number of beats in 15 seconds. Multiply this number by four to calculate your beats per minute.
             </Text>
             <Text style={styles.subTitle}>Duration</Text>
-            <Text style={{alignSelf: 'center', marginTop: '5%', marginLeft: '5%',
-    marginRight: '5%'}}>
+            <Text style={styles.paragraph}>
               Recommended duration is for 30 minutes during a session.
             </Text>
-            <Text style={{ alignSelf: 'center', fontSize: 30, fontWeight: '600'}}>
+            <Text style={{ alignSelf: 'center', fontSize: 30, fontWeight: '600', marginTop:'12%'}}>
           Why Exercise?
         </Text>
         <Text style={styles.paragraph}>
@@ -58,6 +57,15 @@ class ExerciseLesson extends Component {
           exercise in this wellness program makes sense and offers all
           participants a chance to reap the many associated benefits.
         </Text>
+        <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
+            What others are saying
+          </Text>
+          <Text style={styles.paragraph}>
+          The exercise part got me sleeping better and feeling better. I felt like I was accountable to someone for working out vs just telling myself that I was supposed to work out everyday.
+          </Text>
+          <Text style={styles.paragraph}>
+          I think the exercise must have released a lot of endorphins or something because it would really bring my mood up for the whole rest of the day if I did the jogging or whatever.
+          </Text>
           </View>
               </ScrollView>
             </Tab>
@@ -96,7 +104,7 @@ class ExerciseLesson extends Component {
             your 30 minutes of exercise in 2 15 minutes sections or 3 10 minutes
             is perfectly acceptable. You will receive the same mind & body
             benefits, regardless of the way you structure the timing of your
-            exercise routine.{' '}
+            exercise routine.
           </Text>
                 </View>
                 </View>
@@ -166,7 +174,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "600",
     textAlign: "center",
-    marginTop: "20%"
+    marginTop: "7%"
   },
   paragraph: {
     fontSize: 20,

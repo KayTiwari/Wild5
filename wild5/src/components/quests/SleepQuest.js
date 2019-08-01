@@ -11,14 +11,19 @@ import firebase from "firebase";
 import { CheckBox, ListItem, Body, Icon } from "native-base";
 import PushNotificationIOS from "../common/PushNotificationsIOS";
 import Navbar from "../Navbar";
-class SleepQuest extends Component {
-  state = {
+type Props = {};
+class SleepQuest extends Component<Props>{
+  constructor(props) {
+    super(props)
+  this.state = {
     chosenDate: new Date(),
     sleepConfirmed: false,
     modalView: false,
     user: "",
     date: ""
   };
+  this.PushNotificationIOS = new PushNotificationIOS(this.onNotif);
+}
 
   time = date1 => {
     let date = date1,
@@ -103,7 +108,7 @@ class SleepQuest extends Component {
           bedtime: this.state.chosenDate.toString(),
           sleepConfirmed: true
         })
-        .then(r => console.log(r))
+        .then(() => this.PushNotificationIOS.scheduleNotif("sleepquest", this.state.chosenDate))
         .catch(e => console.log(e))
     );
   };

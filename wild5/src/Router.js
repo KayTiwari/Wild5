@@ -57,7 +57,7 @@ const Routercomponent = () => {
           <Scene key="account" component={Account} title='Account' header={null}/>
           <Scene key="edroadmap" component={EducationWellnessRoadMap} header={null} title='Learn More' />
           <Scene key="exerciselesson" component={ExerciseLesson} title='Exercise' backTitle='Back' onBack={()=> Actions.edroadmap()} />
-          <Scene key="mindfulnesslesson" component={MindfulnessLesson} title='Mindfulness' backTitle='Back' onBack={()=> Actions.edroadmap()}/>
+          <Scene key="mindfulnesslesson" component={MindfulnessLesson} title='Mindfulness' backTitle='Back' onBack={()=> Actions.edroadmap()} initial/>
           <Scene key="sociallesson" component={SocialLesson} title='Social' backTitle='Back' onBack={()=> Actions.edroadmap()} />
           <Scene key="nutritionlesson" component={NutritionLesson} title='Nutrition' backTitle='Back' onBack={()=> Actions.edroadmap()}/>
           <Scene key="sleeplesson" component={SleepLesson} title='Sleep' backTitle='Back' onBack={()=> Actions.edroadmap()} />

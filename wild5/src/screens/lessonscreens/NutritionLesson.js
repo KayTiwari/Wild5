@@ -150,6 +150,7 @@ class NutritionLesson extends Component {
                 <Text style={[styles.mainTitle, { marginTop: "20%" }]}>
             Barriers to Success
           </Text>
+          <Text style={styles.subTitle}>Time</Text>
           <Text style={styles.paragraph}>
             Take the time to log your meals/snacks/beverages/alcohol throughout
             the day. Try best to avoid waiting until bedtime to complete your
