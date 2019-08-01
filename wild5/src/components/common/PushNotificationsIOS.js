@@ -77,6 +77,9 @@ class PushNotificationsIOS {
     } else if (pillar === "nutrition") {
       config.date = new Date(Date.now() + 5 * 1000);
       config.message = "Remember to track you nutrition habits";
+    } else if (pillar === "sleepquest"){
+      config.date = new Date(date);
+      config.message = "Time to wind down before your bedtime"
     }
     PushNotification.localNotificationSchedule(config);
     console.log(config)
