@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, Alert} from 'react-native';
 import {ModButton} from '../../components/common';
 import RadioForm from 'react-native-simple-radio-button';
 import {Text, Item, Label, Input, Picker, Icon} from 'native-base';
@@ -39,15 +39,6 @@ let typedata = [
   },
 ];
 
-firebase.initializeApp({
-  apiKey: 'AIzaSyC93k0KGpd8myVQxCTgWPw6Qk9NzNA6b_o',
-  authDomain: 'wild5-5ca8b.firebaseapp.com',
-  databaseURL: 'https://wild5-5ca8b.firebaseio.com',
-  projectId: 'wild5-5ca8b',
-  storageBucket: 'wild5-5ca8b.appspot.com',
-  messagingSenderId: '714885268112',
-});
-
 class ExerciseTracking extends Component {
   state = {
     type: '',
@@ -55,6 +46,7 @@ class ExerciseTracking extends Component {
     intensity: '',
     user: '',
     date: '',
+    otherType: false
   };
 
   submitForm() {
@@ -67,13 +59,13 @@ class ExerciseTracking extends Component {
         Extype: type,
         Exduration: duration,
         Exintensity: intensity,
-      }).then(()=>AlertIOS.alert(
+      }).then(()=>Alert.alert(
         'Data submitted Successfully',
         '',
         [
           {
             text: 'ok',
-            onPress: () => Actions.quests(),
+            onPress: () => Actions.landing(),
             style: 'ok',
           }
         ],
@@ -104,6 +96,11 @@ class ExerciseTracking extends Component {
     this.setState({
       date: dateTime,
     });
+  }
+
+  checkOther = ()=> {
+    this.state.type === "other" ?
+                  this.setState({otherType: true}) : null
   }
 
   render() {
@@ -143,7 +140,13 @@ class ExerciseTracking extends Component {
           <Item style={{marginVertical: 20}} picker>
             <Picker
               selectedValue={this.state.type}
-              onValueChange={type => this.setState({type})}
+              onValueChange={type => this.setState({
+
+                type}, ()=> {
+                this.state.type === "Other" ? this.setState({
+                  type: "",
+                  otherType: true}) : null
+              })}
               mode="dropdown"
               placeholder="Select Type of Exercise"
               placeholderStyle={{color: 'white'}}
@@ -167,16 +170,17 @@ class ExerciseTracking extends Component {
             </Picker>
           </Item>
 
-          {this.state.type === 'Other' && (
+          {this.state.otherType === true ?
             <Item style={{marginBottom: 20}} floatingLabel>
               <Label style={{color: 'white'}}>Enter other exercise...</Label>
               <Input
                 style={{color: 'white'}}
                 autoCorrect={false}
                 onChangeText={text => this.setState({type: text})}
+                value={this.state.type}
               />
             </Item>
-          )}
+           : null}
         </View>
 
         <View style={{alignItems: 'center', alignSelf: 'stretch'}}>

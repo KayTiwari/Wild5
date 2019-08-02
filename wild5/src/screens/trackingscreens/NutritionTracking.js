@@ -18,7 +18,8 @@ import RadioForm, {
   RadioButtonLabel
 } from "react-native-simple-radio-button";
 import { Actions } from "react-native-router-flux";
-import nutribackground from "../../images/nutritracking.png";
+import nutritracking from "../../images/nutritracking.jpg";
+import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
 
 const screenheight = Dimensions.get("window").height;
 class NutritionTracking extends Component {
@@ -97,10 +98,11 @@ class NutritionTracking extends Component {
     return (
       <View style={{ backgroundColor: "white", height: screenheight }}>
         <View style={{ flex: 1 }}>
-          <ImageBackground
-            source={nutribackground}
-            style={{ width: "100%", height: "100%" }}
-          >
+        <BlurredBackgroundImage
+        style={{paddingHorizontal: 10}}
+        source={nutritracking}
+        blurRadius={20}
+      >
             <ScrollView style={{ height: screenheight, padding: 30 }}>
               <Text
                 style={{
@@ -225,7 +227,7 @@ class NutritionTracking extends Component {
                 </ModButton>
               </View>
             </ScrollView>
-          </ImageBackground>
+          </BlurredBackgroundImage>
         </View>
       </View>
     );

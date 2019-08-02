@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { View, Dimensions, Image } from "react-native";
+import { View, Dimensions, Image, ImageBackground } from "react-native";
 import { Text, Spinner } from "native-base";
 import { Actions } from "react-native-router-flux";
 import firebase from "firebase";
 import Navbar from "../../components/Navbar";
 import HEROlogo from "../../images/herologo.png";
 import AnimateNumber from "react-native-animate-number";
+import Star from '../../images/wild5star.png';
 
 const screenheight = Dimensions.get("window").height;
 class HeroScore extends Component {
@@ -72,7 +73,7 @@ class HeroScore extends Component {
             color: "#2e3131"
           }}
         >
-          Keep at it!
+          Keep it Going!
         </Text>
       );
     } else if (this.state.total >= 10 && this.state.total <= 20) {
@@ -114,7 +115,7 @@ class HeroScore extends Component {
             color: "#1e8bc3"
           }}
         >
-          Almost Perfect!
+          Outstanding work!
         </Text>
       );
     } else if (this.state.total === 50) {
@@ -128,7 +129,7 @@ class HeroScore extends Component {
             color: "#a537fd"
           }}
         >
-          Amazing, perfect score!
+          Exceptional Work!
         </Text>
       );
     }
@@ -187,7 +188,7 @@ class HeroScore extends Component {
           </Text>
         </View>
 
-        <View>
+        <View >
           <Text
             style={{
               textAlign: "center",

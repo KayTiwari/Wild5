@@ -13,29 +13,38 @@ const { height, width } = Dimensions.get("window");
 
 class NutritionQuestCameraRoll extends Component {
   state = {
-    photos: []
+    photos: [],
+    date: new Date
   };
 
   componentDidMount() {
+   this.getPhotos()
+  }
+
+  getPhotos = () => {
     CameraRoll.getPhotos({
-      first: 3,
+      first: 14,
       assetType: "Photos",
       groupTypes: "album",
       groupName: "Wild5"
-    }).then(r =>
+    }).then(r => {
+      console.log(r.edges),
       this.setState({
         photos: r.edges
       }).catch(err => AlertIOS.alert(err))
-    );
+    });
   }
 
   render() {
     const pictures =
       this.state.photos.length !== 0
-        ? this.state.photos.map(p => {
+        ? this.state.photos.map((p,i) => {
+          const photoTime = 
+          console.log(this.state.date, new Date(p.node.timestamp * 1000))
+          if (new Date(p.node.timestamp * 1000) === this.state.date)
             return (
               <Image
-                key={p.node.image.timestamp}
+                key={i}
                 style={{
                   width: 300,
                   height: 200

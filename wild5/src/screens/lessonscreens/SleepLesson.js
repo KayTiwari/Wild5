@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "600",
     textAlign: "center",
-    marginTop: "20%"
+    marginTop: "10%"
   },
   paragraph: {
     fontSize: 20,

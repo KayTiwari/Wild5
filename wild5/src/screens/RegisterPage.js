@@ -198,9 +198,7 @@ class RegisterPage extends Component {
                   date={this.state.DOB}
                   mode="date"
                   placeholder="Select DOB"
-                  format="YYYY-MM-DD"
-                  // minDate="1930-06-01"
-                  maxDate="2019-06-24"
+                  format="MM-DD-YYYY"
                   confirmBtnText="Confirm"
                   cancelBtnText="Cancel"
                   customStyles={{

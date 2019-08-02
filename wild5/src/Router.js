@@ -155,12 +155,7 @@ const Routercomponent = () => {
           title="nutritionquestcameraroll"
           header={null}
         />
-        <Scene
-          key="feedback"
-          component={Feedback}
-          header={null}
-          title="Feedback"
-        />
+        {/* <Scene key='feedback' component={Feedback} header={null}  title="Feedback" /> */}
         <Scene key="about" component={Help} header={null} title="About" />
         <Scene
           key="statistics"
