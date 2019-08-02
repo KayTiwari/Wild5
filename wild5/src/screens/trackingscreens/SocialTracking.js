@@ -1,188 +1,119 @@
-import React, { Component } from "react";
-import { ScrollView, View, Dimensions, ImageBackground } from "react-native";
-import {
-  Item,
-  Label,
-  Text,
-  Content,
-  ListItem,
-  CheckBox,
-  Body,
-  Container,
-  Header
-} from "native-base";
-import { ModButton } from "../../components/common";
-import firebase from "firebase";
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel
-} from "react-native-simple-radio-button";
-import { Actions } from "react-native-router-flux";
-import socialtracking from "../../images/socialtracking.jpg";
-import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
+import React, {Component} from 'react';
+import {Text, ListItem, CheckBox, Body} from 'native-base';
+import {Alert, StyleSheet} from 'react-native';
+import firebase from 'firebase';
+import {Actions} from 'react-native-router-flux';
+import {scopeRefByUserAndDate} from '../../utils/firebase';
+import {TrackingScreen} from './TrackingScreen';
 
-const screenheight = Dimensions.get("window").height;
+const CALLED_FRIEND = 'calledFriend';
+const MET_FRIEND_IN_PERSON = 'metFriendInPerson';
+const CALLED_FAMILY = 'calledFamily';
+const MET_FAMILY_IN_PERSON = 'metFamilyInPerson';
+
 class SocialTracking extends Component {
   state = {
-    friendcall: false,
-    friendinperson: false,
-    familycall: false,
-    familyinperson: false
+    [CALLED_FRIEND]: false,
+    [MET_FRIEND_IN_PERSON]: false,
+    [CALLED_FAMILY]: false,
+    [MET_FAMILY_IN_PERSON]: false,
   };
 
-  checkBox = type => {
-    if (type === "fc") {
-      this.setState({
-        friendcall: !this.state.friendcall
-      });
-    } else if (type === "fip") {
-      this.setState({
-        friendinperson: !this.state.friendinperson
-      });
-    } else if (type === "famc") {
-      this.setState({
-        familycall: !this.state.familycall
-      });
-    } else if (type === "famip") {
-      this.setState({
-        familyinperson: !this.state.familyinperson
-      });
-    }
+  toggleCheckbox = stateKey => {
+    this.setState({[stateKey]: !this.state[stateKey]});
   };
 
-  submitForm() {
-    // console.log(this.state);
+  submitForm = async () => {
     const {
-      friendcall,
-      friendinperson,
-      familycall,
-      familyinperson,
-      user,
-      date
+      [CALLED_FRIEND]: calledFriend,
+      [MET_FRIEND_IN_PERSON]: metFriendInPerson,
+      [CALLED_FAMILY]: calledFamily,
+      [MET_FAMILY_IN_PERSON]: metFamilyInPerson,
     } = this.state;
-    firebase
-      .database()
-      .ref(`Surveys/${user}/${date}`)
-      .update({
-        socfriendcall: friendcall,
-        socfriendinperson: friendinperson,
-        socfamilycall: familycall,
-        socfamilyinperson: familyinperson
-      });
-    Actions.landing();
-  }
 
-  componentDidMount() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var res = user.email.split(".");
-      var userEm = res[0].toString();
-      this.setState({
-        user: userEm
+    const surveysRef = scopeRefByUserAndDate('Surveys', 'social');
+
+    await firebase
+      .database()
+      .ref(surveysRef)
+      .update({
+        calledFriend,
+        metFriendInPerson,
+        calledFamily,
+        metFamilyInPerson,
       });
-    } else {
-      console.log("noperz");
-    }
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
-    var dateTime = date;
-    this.setState({
-      date: dateTime
-    });
-  }
+
+    // Add error handling here...
+
+    Alert.alert(
+      'Success!',
+      'Your social interactions for today have been recorded.',
+      [{text: 'OK', onPress: Actions.landing}]
+    );
+  };
 
   render() {
     return (
-      <Container>
-        <BlurredBackgroundImage
-        style={{paddingHorizontal: 10}}
-        source={socialtracking}
-        blurRadius={20}
+      <TrackingScreen
+        backgroundImage={{uri: 'social-tracking-bg'}}
+        color="#ee3322"
+        activityTitle="Social Connectedness"
+        onSave={this.submitForm}
       >
-          <Text
-            style={{
-              fontSize: 30,
-              textAlign: "center",
-              marginTop: "20%",
-              marginBottom: "20%",
-              fontWeight: "600"
-            }}
-          >
-            Track your{" "}
-            <Text style={{ color: "red", fontSize: 30, fontWeight: "600" }}>
-              Social
-            </Text>
-          </Text>
-          <Content>
-            <Text
-              style={{
-                fontSize: 20,
-                textAlign: "center",
-                marginTop: "10%",
-                marginBottom: "10%",
-                fontWeight: "600"
-              }}
-            >
-              Which social practices did you complete?
-            </Text>
-            <ListItem onPress={() => this.checkBox("fc")}>
-              <CheckBox
-                color="red"
-                checked={this.state.friendcall}
-                onPress={() => this.checkBox("fc")}
-              />
-              <Body>
-                <Text>Called Friend</Text>
-              </Body>
-            </ListItem>
-            <ListItem onPress={() => this.checkBox("fip")}>
-              <CheckBox
-                color="green"
-                checked={this.state.friendinperson}
-                onPress={() => this.checkBox("fip")}
-              />
-              <Body>
-                <Text>Met Friend in person</Text>
-              </Body>
-            </ListItem>
-            <ListItem onPress={() => this.checkBox("famc")}>
-              <CheckBox
-                color="blue"
-                checked={this.state.familycall}
-                onPress={() => this.checkBox("famc")}
-              />
-              <Body>
-                <Text>Called Family</Text>
-              </Body>
-            </ListItem>
-            <ListItem onPress={() => this.checkBox("famip")}>
-              <CheckBox
-                color="orange"
-                checked={this.state.familyinperson}
-                onPress={() => this.checkBox("famip")}
-              />
-              <Body>
-                <Text>Met Family in person</Text>
-              </Body>
-            </ListItem>
-            <ModButton
-              style={{ alignSelf: "center", textAlign: "center" }}
-              color={"black"}
-              onPress={() => this.submitForm()}
-              label="Submit"
-            >
-              Submit
-            </ModButton>
-          </Content>
-        </BlurredBackgroundImage>
-      </Container>
+        <Text style={styles.subtitle} numberOfLines={1}>
+          What social contacts did you make?
+        </Text>
+
+        <CheckBoxItem
+          checked={this.state.calledFriend}
+          onPress={() => this.toggleCheckbox(CALLED_FRIEND)}
+        >
+          Called Friend
+        </CheckBoxItem>
+
+        <CheckBoxItem
+          checked={this.state.metFriendInPerson}
+          onPress={() => this.toggleCheckbox(MET_FRIEND_IN_PERSON)}
+        >
+          Met Friend in Person
+        </CheckBoxItem>
+
+        <CheckBoxItem
+          checked={this.state.calledFamily}
+          onPress={() => this.toggleCheckbox(CALLED_FAMILY)}
+        >
+          Called Family
+        </CheckBoxItem>
+
+        <CheckBoxItem
+          checked={this.state.metFamilyInPerson}
+          onPress={() => this.toggleCheckbox(MET_FAMILY_IN_PERSON)}
+        >
+          Met Family in Person
+        </CheckBoxItem>
+      </TrackingScreen>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  subtitle: {
+    textAlign: 'center',
+    marginTop: '10%',
+    marginBottom: '10%',
+    fontWeight: '600',
+  },
+});
+
+function CheckBoxItem({onPress, children, ...checkboxProps}) {
+  return (
+    <ListItem onPress={onPress}>
+      <CheckBox {...checkboxProps} onPress={onPress} color="#EE3322" />
+      <Body>
+        <Text>{children}</Text>
+      </Body>
+    </ListItem>
+  );
+}
+
 export default SocialTracking;

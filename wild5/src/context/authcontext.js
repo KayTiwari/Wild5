@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import firebase from 'firebase';
+import format from 'date-fns/format';
 import Config from 'react-native-config';
 const {Consumer, Provider} = React.createContext();
 
@@ -47,8 +48,9 @@ export default class AuthProvider extends Component {
   };
 
   getTrackingData = () => {
+    const date = format(new Date(), 'YYYY-MM-DD');
     var database = firebase.database();
-    var ref = database.ref(`Surveys/${this.state.user}/${this.state.date}`);
+    var ref = database.ref(`Surveys/${this.state.user}/${date}`);
     ref.on('value', this.gotData, this.errData);
   };
 

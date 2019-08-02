@@ -1,25 +1,15 @@
-import React from "react";
-import { View } from "react-native";
+import React from 'react';
+import {Card as NBCard} from 'native-base';
 
-const Card = props => {
-  return <View style={styles.containerStyle}>{props.children}</View>;
+export const Card = props => {
+  return <NBCard style={[styles.card, props.style]}>{props.children}</NBCard>;
 };
 
 const styles = {
-  containerStyle: {
-    borderWidth: 1,
-    borderRadius: 2,
-    borderColor: "#ddd",
-    borderBottomWidth: 0,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 1,
-    marginLeft: 5,
-    marginRight: 5,
-    marginTop: 10
-  }
+  card: {
+    flex: 1,
+    backgroundColor: 'rgba(255,255,255,0.9)',
+    borderRadius: 10,
+    padding: 20,
+  },
 };
-
-export { Card };

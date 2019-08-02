@@ -1,10 +1,10 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet, Text} from 'react-native';
 
-const ModButton = ({color, onPress, label}) => (
+const ModButton = ({color, onPress, label, style}) => (
   <TouchableOpacity
     onPress={onPress}
-    style={[styles.button, {backgroundColor: color}]}
+    style={[styles.button, style, {backgroundColor: color}]}
   >
     <Text style={styles.buttonLabel}>{label}</Text>
   </TouchableOpacity>
