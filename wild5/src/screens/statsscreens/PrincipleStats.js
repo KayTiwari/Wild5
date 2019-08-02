@@ -136,7 +136,10 @@ class PrincipleStats extends Component {
 
   soccalc = () => {
     // Grab every day recorded for the user
-    const days = Object.values(this.props.princData);
+    const days = Object.values(this.props.princData).filter(day =>
+      day.hasOwnProperty('social')
+    );
+
     const sum = arr => arr.reduce((sum, num) => sum + num, 0);
 
     return days.reduce((total, {social}) => {
