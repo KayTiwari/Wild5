@@ -5755,7 +5755,7 @@ react-native-animate-number@0.1.2:
   dependencies:
     react-timer-mixin "^0.13.3"
 
-react-native-camera@^3.0.0:
+react-native-camera@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.0.0.tgz#67427cda54bb67afa08aeae1320dd540b14d5cfd"
   integrity sha512-U8o5Kiv0/Vpwkp+SGpovhVdFMpFJpiXwl7NJLQ6a5EFoAy0CYyMFyfw8aXinplNfLetb3iXv1FmXLNkoawEYDw==
@@ -5781,7 +5781,7 @@ react-native-cli@^2.0.1:
     prompt "^0.2.14"
     semver "^5.0.3"
 
-react-native-config@^0.11.7:
+react-native-config@0.11.7:
   version "0.11.7"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
   integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
@@ -5894,7 +5894,7 @@ react-native-pixel-perfect@^1.0.1:
   resolved "https://registry.yarnpkg.com/react-native-pixel-perfect/-/react-native-pixel-perfect-1.0.2.tgz#8e6dc97e377caa4bd07f9e584ba438d53c0e25e8"
   integrity sha512-0IvYCNkxuQbQC9q4tI+C3i6o38nbx916p7gBRBWuPxDhKBCuTkVV3VukcfW6vtjRlwQm6kwQcF9OtI+yUBt+YA==
 
-react-native-push-notification@^3.1.3:
+react-native-push-notification@3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/react-native-push-notification/-/react-native-push-notification-3.1.3.tgz#f8dab43aec734dbb1a8bbc50caf82dd682655392"
   integrity sha512-bOZBApQ2zQ41/kSX047jm06XeDl2ylCwMuraT+4yRrlMQ6FDoAxIBh+Q+6jE1B5tVzot62mZnPcV6JaFTWtYeg==
@@ -5935,7 +5935,7 @@ react-native-simple-radio-button@2.7.3:
   resolved "https://registry.yarnpkg.com/react-native-simple-radio-button/-/react-native-simple-radio-button-2.7.3.tgz#c7227c0f963d6bbcfa245255d18a5a8b98fde41f"
   integrity sha512-kiYRarFj7PXzV9fbQwMBiYwS4YnhrR4NZGT68atlFIoNFxZLrt5OMCDqXZqu6R6bUWKLndzPpO/nhXc6/OU1Mg==
 
-react-native-sms@^1.9.0:
+react-native-sms@1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/react-native-sms/-/react-native-sms-1.9.0.tgz#362d94f75664d45144433d820155d9da66adf053"
   integrity sha512-qq5v5rClCSMwTZL5TAK3P89SOQFrBwa6LyqCQV1Md0p78cS+DQWTX/wnb1H8gH32gDzr7barKTEXZPN7lZ5fCA==
