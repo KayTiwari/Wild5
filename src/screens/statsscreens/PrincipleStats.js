@@ -100,7 +100,6 @@ class PrincipleStats extends Component {
         v += 1;
       }
     }
-    console.log(i);
     return v;
   };
 
