@@ -22,8 +22,15 @@ const exerciseTypes = [
   'Other',
 ];
 
+export const EXERCISE_INTENSITY = {
+  LOW: 'low',
+  MODERATE: 'moderate',
+  HIGH: 'high',
+};
+
 function ExerciseTracking() {
   const [type, setType] = React.useState('');
+  const [otherType, setOtherType] = React.useState('');
   const [duration, setDuration] = React.useState(0);
   const [intensity, setIntensity] = React.useState('');
 
@@ -34,7 +41,7 @@ function ExerciseTracking() {
       .database()
       .ref(exerciseRef)
       .update({
-        type,
+        type: otherType || type,
         duration,
         intensity,
       });
@@ -82,7 +89,7 @@ function ExerciseTracking() {
       {type === 'Other' && (
         <Item style={{marginBottom: 20}} floatingLabel>
           <Label>Enter other exercise...</Label>
-          <Input autoCorrect={false} onChangeText={setType} />
+          <Input autoCorrect={false} onChangeText={setOtherType} />
         </Item>
       )}
 
@@ -118,9 +125,9 @@ function ExerciseTracking() {
       <RadioForm
         style={{alignSelf: 'center'}}
         radio_props={[
-          {label: 'Low', value: 'low'},
-          {label: 'Moderate', value: 'moderate'},
-          {label: 'High', value: 'high'},
+          {label: 'Low', value: EXERCISE_INTENSITY.LOW},
+          {label: 'Moderate', value: EXERCISE_INTENSITY.MODERATE},
+          {label: 'High', value: EXERCISE_INTENSITY.HIGH},
         ]}
         initial={0}
         formHorizontal={false}

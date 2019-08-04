@@ -14,6 +14,7 @@ import NumericInput from 'react-native-numeric-input';
 import {Actions} from 'react-native-router-flux';
 import firebase from 'firebase';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
+import {EXERCISE_INTENSITY} from '../../screens/trackingscreens/ExerciseTracking';
 
 const {height, width} = Dimensions.get('window');
 
@@ -42,7 +43,11 @@ class ExerciseQuest extends Component {
         {key: 'Aerobics'},
         {key: 'Running'},
       ],
-      intensityType: [{key: 'Low'}, {key: 'Moderate'}, {key: 'High'}],
+      intensityType: [
+        {key: EXERCISE_INTENSITY.LOW},
+        {key: EXERCISE_INTENSITY.MODERATE},
+        {key: EXERCISE_INTENSITY.HIGH},
+      ],
     };
     let time = this.state.minutes;
     this.secondsRemaining = time * 60;
