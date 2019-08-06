@@ -1,77 +1,56 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import {
   Dimensions,
   View,
-  AlertIOS,
+  Alert,
   StyleSheet,
   Modal,
   TouchableHighlight,
-  Picker,
   TouchableOpacity,
-  FlatList
-} from "react-native";
-import { Container, Text, Label, Button, Icon } from "native-base";
-import NumericInput from "react-native-numeric-input";
-import { Actions } from "react-native-router-flux";
-import firebase from "firebase";
+  FlatList,
+} from 'react-native';
+import {Container, Text, Label, Icon} from 'native-base';
+import NumericInput from 'react-native-numeric-input';
+import {Actions} from 'react-native-router-flux';
+import firebase from 'firebase';
+import {scopeRefByUserAndDate} from '../../utils/firebase';
+import {EXERCISE_INTENSITY} from '../../screens/trackingscreens/ExerciseTracking';
 
-const { height, width } = Dimensions.get("window");
+const {height, width} = Dimensions.get('window');
 
 class ExerciseQuest extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: "",
-      date: "",
       duration: 0,
       countdownTimer: 0,
       y: false,
-      minutes: "00",
-      seconds: "00",
+      minutes: '00',
+      seconds: '00',
       modalVisible: false,
       logExercise: false,
       paused: false,
-      exerciseChecked: "",
+      exerciseChecked: '',
       exerciseSelected: false,
-      intensityChecked: "",
+      intensityChecked: '',
       exerciseActivities: [
-        { key: "Walking" },
-        { key: "Jogging" },
-        { key: "Biking" },
-        { key: "Playing Sports" },
-        { key: "Swimming" },
-        { key: "Weight Lifting" },
-        { key: "Aerobics" },
-        { key: "Running" }
+        {key: 'Walking'},
+        {key: 'Jogging'},
+        {key: 'Biking'},
+        {key: 'Playing Sports'},
+        {key: 'Swimming'},
+        {key: 'Weight Lifting'},
+        {key: 'Aerobics'},
+        {key: 'Running'},
       ],
-      intensityType: [{ key: "Low" }, { key: "Moderate" }, { key: "High" }]
+      intensityType: [
+        {key: EXERCISE_INTENSITY.LOW},
+        {key: EXERCISE_INTENSITY.MODERATE},
+        {key: EXERCISE_INTENSITY.HIGH},
+      ],
     };
     let time = this.state.minutes;
     this.secondsRemaining = time * 60;
-  }
-
-  componentDidMount() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var res = user.email.split('.');
-      var userEm = res[0].toString();
-      this.setState({
-        user: userEm,
-      });
-    } else {
-      console.log('noperz');
-    }
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      '-' +
-      (today.getMonth() + 1) +
-      '-' +
-      today.getDate();
-    var dateTime = date;
-    this.setState({
-      date: dateTime,
-    });
   }
 
   tick = () => {
@@ -79,16 +58,16 @@ class ExerciseQuest extends Component {
     var sec = this.secondsRemaining - min * 60;
     this.setState({
       minutes: min,
-      seconds: sec
+      seconds: sec,
     });
     if (sec < 10) {
       this.setState({
-        seconds: "0" + this.state.seconds
+        seconds: '0' + this.state.seconds,
       });
     }
     if (min < 10) {
       this.setState({
-        value: "0" + min
+        value: '0' + min,
       });
     }
     if ((min === 0) & (sec === 0)) {
@@ -98,7 +77,7 @@ class ExerciseQuest extends Component {
   };
 
   startCountDown = () => {
-    this.setState({ y: !this.state.y });
+    this.setState({y: !this.state.y});
 
     this.intervalHandle = setInterval(() => {
       this.tick();
@@ -111,51 +90,51 @@ class ExerciseQuest extends Component {
   stopTimer = () => {
     clearInterval(this.intervalHandle);
     this.setState(prevState => ({
-      modalVisible: !prevState.modalVisible
+      modalVisible: !prevState.modalVisible,
     }));
   };
 
-  submitData = () => {
+  submitData = async () => {
     const data = {
-      Extype: this.state.exerciseChecked,
-      Exduration: this.state.duration,
-      Exintensity: this.state.intensityChecked
+      type: this.state.exerciseChecked,
+      duration: this.state.duration,
+      intensity: this.state.intensityChecked,
     };
 
-    firebase
+    const exerciseRef = scopeRefByUserAndDate('Surveys', 'exercise');
+
+    await firebase
       .database()
-      .ref(`Surveys/${this.state.user}/${this.state.date}`)
-      .set({
-        data
-      }, ()=> 
-        AlertIOS.alert(
-          'Data successfully saved',
-          '',
-          [
-            {
-              text: 'ok',
-              onPress: () => this.setState({modalVisible: !this.state.modalVisible}, ()=> Actions.quests() ),
-              style: 'ok',
-            }
-          ],
-        )
-        );
+      .ref(exerciseRef)
+      .update(data);
+
+    // handle errors here
+
+    Alert.alert('Success!', 'Your exercises for today have been recorded.', [
+      {
+        text: 'OK',
+        onPress: () =>
+          this.setState({modalVisible: !this.state.modalVisible}, () =>
+            Actions.quests()
+          ),
+      },
+    ]);
   };
 
   endExercise = () => {
-    this.setState({ logExercise: !this.state.logExercise });
+    this.setState({logExercise: !this.state.logExercise});
   };
 
   pauseTimer = () => {
     clearInterval(this.intervalHandle);
-    this.setState({ pause: true });
+    this.setState({pause: true});
   };
 
   resumeTimer = () => {
     this.intervalHandle = setInterval(() => {
       this.tick();
     }, 1000);
-    this.setState({ pause: false });
+    this.setState({pause: false});
   };
 
   render() {
@@ -164,19 +143,19 @@ class ExerciseQuest extends Component {
         {(() => {
           if (!this.state.y) {
             return (
-              <Container style={{ backgroundColor: "#79c141" }}>
-                <View style={{ alignItems: "center" }}>
+              <Container style={{backgroundColor: '#79c141'}}>
+                <View style={{alignItems: 'center'}}>
                   <Label
-                    style={{ marginTop: "25%", color: "#FFF", fontSize: 40 }}
+                    style={{marginTop: '25%', color: '#FFF', fontSize: 40}}
                   >
                     How Long Do You Want To Exercise?
                   </Label>
-                  <View style={{ marginTop: "15%" }}>
+                  <View style={{marginTop: '15%'}}>
                     <NumericInput
                       value={this.state.duration}
                       onChange={value =>
-                        this.setState({ duration: value }, () =>
-                          this.setState({ minutes: this.state.duration })
+                        this.setState({duration: value}, () =>
+                          this.setState({minutes: this.state.duration})
                         )
                       }
                       onLimitReached={(isMax, msg) => console.log(isMax, msg)}
@@ -188,41 +167,41 @@ class ExerciseQuest extends Component {
                       valueType="real"
                       rounded
                       textColor="white"
-                      iconStyle={{ color: "black" }}
+                      iconStyle={{color: 'black'}}
                       rightButtonBackgroundColor="white"
                       leftButtonBackgroundColor="white"
                     />
                   </View>
                   <View
                     style={{
-                      alignItems: "center",
-                      marginTop: "10%",
-                      width: "100%"
+                      alignItems: 'center',
+                      marginTop: '10%',
+                      width: '100%',
                     }}
                   >
                     <TouchableOpacity
                       style={{
                         height: 50,
-                        width: "80%",
-                        backgroundColor: "white",
-                        borderColor: "black",
+                        width: '80%',
+                        backgroundColor: 'white',
+                        borderColor: 'black',
                         borderWidth: 1,
                         borderRadius: 6,
-                        justifyContent: "center"
+                        justifyContent: 'center',
                       }}
                       onPress={() =>
-                        this.state.minutes !== "00"
+                        this.state.minutes !== '00'
                           ? this.startCountDown()
                           : null
                       }
                     >
                       <Text
                         style={{
-                          alignSelf: "center",
-                          fontWeight: "bold",
+                          alignSelf: 'center',
+                          fontWeight: 'bold',
                           fontSize: 26,
-                          color: "#000",
-                          letterSpacing: 4
+                          color: '#000',
+                          letterSpacing: 4,
                         }}
                       >
                         START
@@ -241,54 +220,54 @@ class ExerciseQuest extends Component {
                   visible={this.state.modalVisible}
                 >
                   {!this.state.logExercise ? (
-                    <View style={{ height, width, marginTop: "40%" }}>
+                    <View style={{height, width, marginTop: '40%'}}>
                       <View
                         style={{
-                          flexDirection: "column",
-                          backgroundColor: "#fff",
-                          alignSelf: "center",
-                          height: "45%",
-                          width: "80%"
+                          flexDirection: 'column',
+                          backgroundColor: '#fff',
+                          alignSelf: 'center',
+                          height: '45%',
+                          width: '80%',
                         }}
                       >
                         <View
                           style={{
-                            alignItems: "center"
+                            alignItems: 'center',
                           }}
                         >
                           <Text
                             style={{
-                              marginTop: "5%",
+                              marginTop: '5%',
                               fontSize: 20,
-                              color: "red"
+                              color: 'red',
                             }}
                           >
                             Do You Want to Log Your Exercise?
                           </Text>
                           <View
                             style={{
-                              alignItems: "center",
-                              justifyContent: "flex-end",
-                              width: "85%"
+                              alignItems: 'center',
+                              justifyContent: 'flex-end',
+                              width: '85%',
                             }}
                           >
                             <TouchableHighlight
                               onPress={() => this.endExercise()}
                               style={[styles.touch, styles.touch1]}
                             >
-                              <Text style={{ fontSize: 16, color: "#fff" }}>
+                              <Text style={{fontSize: 16, color: '#fff'}}>
                                 Yes
                               </Text>
                             </TouchableHighlight>
                             <TouchableHighlight
                               onPress={() =>
-                                this.setState({ y: !this.state.y }, () =>
+                                this.setState({y: !this.state.y}, () =>
                                   Actions.landing()
                                 )
                               }
                               style={styles.touch}
                             >
-                              <Text style={{ fontSize: 16, color: "#fff" }}>
+                              <Text style={{fontSize: 16, color: '#fff'}}>
                                 No
                               </Text>
                             </TouchableHighlight>
@@ -299,55 +278,60 @@ class ExerciseQuest extends Component {
                   ) : (
                     <View
                       style={{
-                        height: (this.state.exerciseSelected === false)?"65%" :'35%',
-                        width: "85%",
-                        backgroundColor: "#fff",
-                        alignSelf: "center",
-                        marginTop: "35%"
+                        height:
+                          this.state.exerciseSelected === false ? '65%' : '35%',
+                        width: '85%',
+                        backgroundColor: '#fff',
+                        alignSelf: 'center',
+                        marginTop: '35%',
                       }}
                     >
                       <Text
                         style={{
-                          alignSelf: "center",
+                          alignSelf: 'center',
                           fontSize: 20,
-                          marginTop: "5%",
-                          fontWeight: '700'
+                          marginTop: '5%',
+                          fontWeight: '700',
                         }}
                       >
                         {this.state.exerciseSelected === false
-                          ? "What exercise did you complete?"
-                          : "Choose Intensity Level"}
+                          ? 'What exercise did you complete?'
+                          : 'Choose Intensity Level'}
                       </Text>
                       {this.state.exerciseSelected === false ? (
                         <>
                           <View
                             style={{
-                              height: "100%",
-                              marginLeft: "2%",
-                              marginRight: "2%"
+                              height: '100%',
+                              marginLeft: '2%',
+                              marginRight: '2%',
                             }}
                           >
                             <FlatList
                               data={this.state.exerciseActivities}
                               extraData={this.state}
-                              renderItem={({ item }) => (
+                              renderItem={({item}) => (
                                 <TouchableOpacity
                                   isChecked={this.state.exerciseChecked}
                                   onPress={() =>
-                                    this.setState({ exerciseChecked: item.key })
+                                    this.setState({exerciseChecked: item.key})
                                   }
-                                  style={{ height: 45, width: "100%", justifyContent: 'center' }}
+                                  style={{
+                                    height: 45,
+                                    width: '100%',
+                                    justifyContent: 'center',
+                                  }}
                                 >
                                   <View
                                     style={{
-                                      flexDirection: "row",
-                                      justifyContent: "space-between"
+                                      flexDirection: 'row',
+                                      justifyContent: 'space-between',
                                     }}
                                   >
                                     <Text
                                       style={{
                                         fontSize: 18,
-                                        alignSelf: "center"
+                                        alignSelf: 'center',
                                       }}
                                     >
                                       {item.key}
@@ -355,7 +339,7 @@ class ExerciseQuest extends Component {
                                     {this.state.exerciseChecked === item.key ? (
                                       <Icon
                                         name="checkbox"
-                                        style={{ color: "blue", fontSize: 40 }}
+                                        style={{color: 'blue', fontSize: 40}}
                                       />
                                     ) : null}
                                   </View>
@@ -363,73 +347,107 @@ class ExerciseQuest extends Component {
                               )}
                             />
                           </View>
-                          <View style={{height: '100%',alignItems: 'center'}}>
-                          <TouchableOpacity
-                          style={{alignSelf: 'center', backgroundColor: '#333', height: '20%', width: '30%', justifyContent: 'center', borderRadius: 7}}
-                            onPress={() =>
-                              this.setState({
-                                exerciseSelected: !this.state.exerciseSelected
-                              })
-                            }
-                          >
-                            <Text style={{fontSize: 18, alignSelf: 'center'}}>CONFIRM</Text>
-                          </TouchableOpacity>
+                          <View style={{height: '100%', alignItems: 'center'}}>
+                            <TouchableOpacity
+                              style={{
+                                alignSelf: 'center',
+                                backgroundColor: '#333',
+                                height: '20%',
+                                width: '30%',
+                                justifyContent: 'center',
+                                borderRadius: 7,
+                              }}
+                              onPress={() =>
+                                this.setState({
+                                  exerciseSelected: !this.state
+                                    .exerciseSelected,
+                                })
+                              }
+                            >
+                              <Text style={{fontSize: 18, alignSelf: 'center'}}>
+                                CONFIRM
+                              </Text>
+                            </TouchableOpacity>
                           </View>
                         </>
                       ) : (
                         <>
                           <View
                             style={{
-                              height: "100%",
-                              marginLeft: "2%",
-                              marginRight: "2%"
+                              height: '100%',
+                              marginLeft: '2%',
+                              marginRight: '2%',
                             }}
                           >
                             <FlatList
                               isChecked={this.state.intensityChecked}
                               data={this.state.intensityType}
                               extraData={this.state}
-                              renderItem={({ item }) => (
+                              renderItem={({item}) => (
                                 <TouchableOpacity
-                                  onPress={()=>this.setState({intensityChecked: item.key})}
-                                  style={{ height: 45, width: "100%" }}
+                                  onPress={() =>
+                                    this.setState({intensityChecked: item.key})
+                                  }
+                                  style={{height: 45, width: '100%'}}
                                 >
                                   <View
                                     style={{
-                                      flexDirection: "row",
-                                      justifyContent: "space-between"
+                                      flexDirection: 'row',
+                                      justifyContent: 'space-between',
                                     }}
                                   >
-                                    <Text style={{ fontSize: 26 }}>
+                                    <Text style={{fontSize: 26}}>
                                       {item.key}
                                     </Text>
-                                    {(this.state.intensityChecked === item.key)?<Icon name="checkbox" style={{color:'blue',fontSize: 40}} /> : null}
+                                    {this.state.intensityChecked ===
+                                    item.key ? (
+                                      <Icon
+                                        name="checkbox"
+                                        style={{color: 'blue', fontSize: 40}}
+                                      />
+                                    ) : null}
                                   </View>
                                 </TouchableOpacity>
                               )}
                             />
                           </View>
-                          <TouchableOpacity 
-                          style={{alignSelf: 'center', backgroundColor: '#333', height: '35%', width: '30%', justifyContent: 'center', borderRadius: 7}}
-                          onPress={this.submitData}>
-                            <Text style={{fontSize: 18, alignSelf: 'center', textAlign:'center'}}>Submit Data</Text>
+                          <TouchableOpacity
+                            style={{
+                              alignSelf: 'center',
+                              backgroundColor: '#333',
+                              height: '35%',
+                              width: '30%',
+                              justifyContent: 'center',
+                              borderRadius: 7,
+                            }}
+                            onPress={this.submitData}
+                          >
+                            <Text
+                              style={{
+                                fontSize: 18,
+                                alignSelf: 'center',
+                                textAlign: 'center',
+                              }}
+                            >
+                              Submit Data
+                            </Text>
                           </TouchableOpacity>
                         </>
                       )}
                     </View>
                   )}
                 </Modal>
-                <Container style={{ backgroundColor: "#76BE40" }}>
+                <Container style={{backgroundColor: '#76BE40'}}>
                   <View style={styles.timeView}>
-                    <View style={{ marginTop: "25%" }}>
+                    <View style={{marginTop: '25%'}}>
                       <Text style={styles.time}>
                         {this.state.minutes}:{this.state.seconds}
                       </Text>
                     </View>
                     <View
                       style={{
-                        width: "80%",
-                        alignItems: "center"
+                        width: '80%',
+                        alignItems: 'center',
                       }}
                     >
                       {!this.state.pause ? (
@@ -439,7 +457,7 @@ class ExerciseQuest extends Component {
                         >
                           <Icon
                             name="pause"
-                            style={{ alignSelf: "center", color: "#000" }}
+                            style={{alignSelf: 'center', color: '#000'}}
                           />
                         </TouchableOpacity>
                       ) : (
@@ -450,23 +468,23 @@ class ExerciseQuest extends Component {
                           <Icon
                             name="play"
                             style={{
-                              alignSelf: "center",
-                              justifyContent: "center",
-                              color: "#000"
+                              alignSelf: 'center',
+                              justifyContent: 'center',
+                              color: '#000',
                             }}
                           />
                         </TouchableOpacity>
                       )}
                       <TouchableOpacity
-                        style={[styles.controlButtons, { marginTop: 5 }]}
+                        style={[styles.controlButtons, {marginTop: 5}]}
                         onPress={() => this.stopTimer()}
                       >
                         <Icon
                           name="square"
                           style={{
-                            alignSelf: "center",
-                            justifyContent: "center",
-                            color: "#000"
+                            alignSelf: 'center',
+                            justifyContent: 'center',
+                            color: '#000',
                           }}
                         />
                       </TouchableOpacity>
@@ -486,29 +504,29 @@ export default ExerciseQuest;
 
 const styles = StyleSheet.create({
   timeView: {
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   time: {
-    fontSize: 100
+    fontSize: 100,
   },
   modalView: {
-    backgroundColor: "#fff",
-    alignItems: "center"
+    backgroundColor: '#fff',
+    alignItems: 'center',
   },
   touch: {
-    backgroundColor: "#000",
-    height: "30%",
-    width: "90%"
+    backgroundColor: '#000',
+    height: '30%',
+    width: '90%',
   },
   touch1: {
-    marginBottom: 10
+    marginBottom: 10,
   },
   controlButtons: {
-    justifyContent: "center",
-    width: "80%",
-    backgroundColor: "white",
+    justifyContent: 'center',
+    width: '80%',
+    backgroundColor: 'white',
     height: 50,
-    borderRadius: 6
-  }
+    borderRadius: 6,
+  },
 });

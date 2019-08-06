@@ -8,12 +8,23 @@ import {
   ScrollView,
 } from 'react-native';
 
+export const VERTICAL_POSITION = {
+  TOP: 'flex-start',
+  CENTER: 'center',
+  BOTTOM: 'flex-end',
+};
+
 export function BlurredBackgroundImage({style, ...props}) {
   return (
     <ImageBackground style={[styles.imageBackground, style]} {...props}>
       <View style={styles.overlay} />
       <SafeAreaView style={{flex: 1}}>
-        <ScrollView contentContainerStyle={{flex: 1}}>
+        <ScrollView
+          contentContainerStyle={{
+            flex: 1,
+            justifyContent: props.verticalPosition,
+          }}
+        >
           {props.children}
         </ScrollView>
       </SafeAreaView>
@@ -23,12 +34,18 @@ export function BlurredBackgroundImage({style, ...props}) {
 
 BlurredBackgroundImage.propTypes = {
   source: PropTypes.number.isRequired,
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   blurRadius: PropTypes.number,
+  verticalPosition: PropTypes.oneOf([
+    VERTICAL_POSITION.TOP,
+    VERTICAL_POSITION.CENTER,
+    VERTICAL_POSITION.BOTTOM,
+  ]),
 };
 
 BlurredBackgroundImage.defaultProps = {
   blurRadius: 3,
+  verticalPosition: VERTICAL_POSITION.TOP,
 };
 
 const styles = StyleSheet.create({

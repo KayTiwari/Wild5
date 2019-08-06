@@ -54,14 +54,14 @@ class Progress extends Component {
 
   exercisecalc = () => {
     let i = 0;
-    let test = this.props.trackdata;
-    if (test.Exduration >= 30) {
+    let test = this.props.trackdata.exercise || {};
+    if (test.duration >= 30) {
       i = i + 1;
     }
-    if (test.Exintensity === 'moderate' || test.Exintensity === 'high') {
+    if (test.intensity === 'moderate' || test.intensity === 'high') {
       i = i + 1;
     }
-    if (test.Extype) {
+    if (test.type) {
       i = i + 1;
     }
     return i;
