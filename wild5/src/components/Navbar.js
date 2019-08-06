@@ -32,10 +32,10 @@ class Navbar extends Component {
                 <Icon name={"ios-home"} />
                 <Text>Home</Text>
               </Button>
-              <Button disabled={this.props.learndisable} onPress={() => Actions.edroadmap()}>
+              {/* <Button disabled={this.props.learndisable} onPress={() => Actions.edroadmap()}>
                 <Icon name={"ribbon"} />
                 <Text>Learn</Text>
-              </Button>
+              </Button> */}
               {/* <Button onPress={() => Actions.kickstart()}>
             <Icon name={"rocket"} />
               <Text>Kickstart</Text>
@@ -52,10 +52,10 @@ class Navbar extends Component {
         ) : (
           <Footer>
             <FooterTab>
-            <Button disabled={this.props.questdisable} onPress={() => Actions.quests()}>
+            {/* <Button disabled={this.props.questdisable} onPress={() => Actions.quests()}>
                 <Icon name={"flame"} />
                 <Text>Quest</Text>
-              </Button>
+              </Button> */}
               <Button disabled={this.props.statsdisable} onPress={() => Actions.statistics()}>
                 <Icon name={"stats"} />
                 <Text>Stats</Text>
@@ -66,7 +66,7 @@ class Navbar extends Component {
         </Button> */}
               <Button disabled={this.props.faqdisable} onPress={() => Actions.about()}>
                 <Icon name={"chatbubbles"} />
-                <Text style={{}}>FAQ</Text>
+                <Text style={{}}>About</Text>
               </Button>
               <Button onPress={() => Actions.settings()}>
                 <Icon name={"ios-settings"} />

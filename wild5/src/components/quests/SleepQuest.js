@@ -5,25 +5,28 @@ import {
   Dimensions,
   TouchableOpacity,
   DatePickerIOS,
-  Modal
+  Modal,
+  Platform,
+  TimePickerAndroid
 } from "react-native";
 import firebase from "firebase";
 import { CheckBox, ListItem, Body, Icon } from "native-base";
 import PushNotificationIOS from "../common/PushNotificationsIOS";
 import Navbar from "../Navbar";
+import Config from "react-native-config";
 type Props = {};
-class SleepQuest extends Component<Props>{
+class SleepQuest extends Component<Props> {
   constructor(props) {
-    super(props)
-  this.state = {
-    chosenDate: new Date(),
-    sleepConfirmed: false,
-    modalView: false,
-    user: "",
-    date: ""
-  };
-  this.PushNotificationIOS = new PushNotificationIOS(this.onNotif);
-}
+    super(props);
+    this.state = {
+      chosenDate: new Date(),
+      sleepConfirmed: false,
+      modalView: false,
+      user: "",
+      date: ""
+    };
+    this.PushNotificationIOS = new PushNotificationIOS(this.onNotif);
+  }
 
   time = date1 => {
     let date = date1,
@@ -43,14 +46,16 @@ class SleepQuest extends Component<Props>{
   };
 
   componentDidMount() {
-    
     var user = firebase.auth().currentUser;
     if (user) {
       var res = user.email.split(".");
       var userEm = res[0].toString();
-      this.setState({
-        user: userEm
-      }, ()=> this.getBedTime());
+      this.setState(
+        {
+          user: userEm
+        },
+        () => this.getBedTime()
+      );
     } else {
       console.log("set State for user failed sleepquest line 52");
     }
@@ -76,39 +81,63 @@ class SleepQuest extends Component<Props>{
   };
 
   getBedTime = () => {
-    const path = 'SleepSettings'
-    console.log(this.state.user)
+    const path = "SleepSettings";
+    console.log(this.state.user);
     firebase
       .database()
-      .ref('SleepSettings')
+      .ref("SleepSettings")
       .child(this.state.user)
       .once("value", snapshot => {
-        console.log(snapshot)
+        console.log(snapshot);
         if (snapshot.val() !== null) {
           const data = snapshot.val();
-          console.log(data);
+          console.log(data.bedtime);
           this.setState(
             {
-              chosenDate: new Date(data.bedtime),
+              chosenDate:
+                Platform.OS === "ios" ? new Date(data.bedtime) : data.bedtime,
               sleepConfirmed: data.sleepConfirmed
             },
             console.log(this.state)
           );
         }
-      })
+      });
+  };
+
+  stringToDate = date => {
+    console.log(date)
+
+    h = date.slice(0, 1);
+    m = date.slice(3, 4);
+    console.log(h, m)
+    date = new Date();
+
+    return new Date(date.setDate(h, m));
   };
 
   setBedTime = () => {
-    this.setState({ sleepConfirmed: !this.state.sleepConfirmed }, () =>
+    this.setState(
+      { sleepConfirmed: !this.state.sleepConfirmed },
+      () => console.log(this.stringToDate(this.state.chosenDate)),
+      console.log(new Date(this.state.chosenDate)),
       firebase
         .database()
-        .ref('SleepSettings/')
+        .ref("SleepSettings/")
         .child(`${this.state.user}`)
         .set({
-          bedtime: this.state.chosenDate.toString(),
+          bedtime:
+            Platform.OS === "ios"
+              ? this.state.chosenDate.toString()
+              : this.stringToDate(this.state.chosenDate),
           sleepConfirmed: true
         })
-        .then(() => this.PushNotificationIOS.scheduleNotif("sleepquest", this.state.chosenDate))
+        .then(
+          () => console.log(this.state.chosenDate)
+          // this.PushNotificationIOS.scheduleNotif(
+          //   "sleepquest",
+          //   this.state.chosenDate
+          // )
+        )
         .catch(e => console.log(e))
     );
   };
@@ -117,6 +146,25 @@ class SleepQuest extends Component<Props>{
     this.setState({
       modalView: !this.state.modalView
     });
+  };
+
+  setTimeAndroid = async () => {
+    try {
+      const { action, hour, minute } = await TimePickerAndroid.open({
+        hour: 12,
+        minute: 0,
+        is24Hour: false // Will display '2 PM'
+      });
+      if (action !== TimePickerAndroid.dismissedAction) {
+        // Selected hour (0-23), minute (0-59)
+        const m = minute < 10 ? `0${minute}` : minute;
+        const h = hour < 10 ? `0${hour}` : hour;
+        console.log(`time: ${hour}:${minute}`);
+        this.setState({ chosenDate: `${h}:${m}` });
+      }
+    } catch ({ code, message }) {
+      console.warn("Cannot open time picker", message);
+    }
   };
 
   render() {
@@ -189,11 +237,28 @@ class SleepQuest extends Component<Props>{
           {!this.state.sleepConfirmed ? (
             <>
               <View style={{ height: 100 }}>
-                <DatePickerIOS
-                  date={this.state.chosenDate}
-                  onDateChange={this.setDate}
-                  mode="time"
-                />
+                {Platform.OS === "ios" ? (
+                  <DatePickerIOS
+                    date={this.state.chosenDate}
+                    onDateChange={this.setDate}
+                    mode="time"
+                  />
+                ) : (
+                  <View style={{ alignSelf: "center" }}>
+                    <TouchableOpacity onPress={() => this.setTimeAndroid()}>
+                      <View>
+                        <Icon
+                          name="ios-time"
+                          size={25}
+                          color="rgb(49, 49, 49)"
+                        />
+                        <Text style={{ fontSize: 16 }}>
+                          {this.state.chosenDate.toString()}
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+                  </View>
+                )}
               </View>
               <View style={{ marginTop: 150, alignItems: "center" }}>
                 <TouchableOpacity
@@ -241,7 +306,9 @@ class SleepQuest extends Component<Props>{
               >
                 <Text style={{ color: "white", fontSize: 20 }}>
                   You BedTime is Set for{" "}
-                  {this.time(this.state.chosenDate).toString()}
+                  {Platform.OS === "ios"
+                    ? this.time(this.state.chosenDate).toString()
+                    : this.state.chosenDate.toString()}
                 </Text>
                 <Text style={{ color: "white", fontSize: 20 }} />
               </View>

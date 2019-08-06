@@ -297,18 +297,18 @@ class Settings extends Component<Props> {
               </View>
             </View>
           </View>
-          <Text style={{ fontSize: 20, marginLeft: "5%", marginTop: 20 }}>
+          {/* <Text style={{ fontSize: 20, marginLeft: "5%", marginTop: 20 }}>
             Quests
-          </Text>
-          <View
+          </Text> */}
+          {/* <View
             style={{
               borderTopWidth: 1,
               borderTopColor: "black",
               width: "90%",
               marginLeft: "5%"
             }}
-          >
-            <TouchableOpacity
+          > */}
+            {/* <TouchableOpacity
               style={{
                 marginTop: 15,
                 borderRadius: 20,
@@ -324,12 +324,12 @@ class Settings extends Component<Props> {
                   Nutrition Quest{"\n"} Photos
                 </Text>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             {/* <Button title="Feedback" onPress={() => Actions.feedback()}/> */}
 
-            <Button title="Logout" onPress={""} />
-          </View>
+            {/* <Button title="Logout" onPress={""} /> */}
+          {/* </View> */}
         </Container>
         <Navbar />
       </>

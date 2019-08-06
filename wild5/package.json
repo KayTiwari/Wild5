@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "react-native start",
     "test": "jest"
   },
   "dependencies": {
@@ -45,10 +45,10 @@
     "victory-native": "32.0.2"
   },
   "devDependencies": {
-    "@babel/core": "7.4.3",
-    "@babel/runtime": "7.4.3",
-    "babel-jest": "24.7.1",
-    "jest": "24.7.1",
+    "@babel/core": "7.5.5",
+    "@babel/runtime": "7.5.5",
+    "babel-jest": "24.8.0",
+    "jest": "24.8.0",
     "jetifier": "^1.6.3",
     "metro-react-native-babel-preset": "0.53.1",
     "prop-types": "15.7.2",

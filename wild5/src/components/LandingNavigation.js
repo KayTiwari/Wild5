@@ -1,9 +1,10 @@
 import React from "react";
-import {TouchableOpacity, StyleSheet, Text, View} from "react-native";
+import {TouchableOpacity, StyleSheet, Text, View, Image} from "react-native";
 import {Icon} from "native-base";
 import {Actions} from "react-native-router-flux";
 import LinearGradient from "react-native-linear-gradient";
 import {withAuthProvider} from "../context/authcontext";
+import HEROlogo from "../images/herologo.png"
 
 const navigationItems = [
   {
@@ -36,6 +37,12 @@ const navigationItems = [
     action: () => Actions.nutritiontracking(),
     background: ["#f66f63", "#f79a2e"],
   },
+  {
+    title: "Track HERO Exercises",
+    icon: HEROlogo,
+    action: () => Actions.herotracking(),
+    background: ["#DD3121","#0BA2D4","#70B43C","#B72B90"]
+  }
 ];
 
 export function Navigation(props) {
@@ -43,7 +50,7 @@ export function Navigation(props) {
     return (
       <TouchableOpacity style={styles.touchable} onPress={item.action}>
         <LinearGradient style={styles.item} colors={item.background}>
-          <Icon name={item.icon} style={styles.icon} />
+          {item.title === "Track HERO Exercises" ? <Image source={item.icon} style={{height: 60, width: "80%"}}/>:<Icon name={item.icon} style={styles.icon} />}
           <Text style={styles.title}>{item.title}</Text>
         </LinearGradient>
       </TouchableOpacity>

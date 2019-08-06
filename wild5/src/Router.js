@@ -8,6 +8,7 @@ import MindfulnessTracking from './screens/trackingscreens/MindfulnessTracking';
 import SleepTracking from './screens/trackingscreens/SleepTracking';
 import SocialTracking from './screens/trackingscreens/SocialTracking';
 import NutritionTracking from './screens/trackingscreens/NutritionTracking';
+import HeroTracking from './screens/trackingscreens/HeroTracking'
 import Settings from './screens/Settings';
 import Quests from './screens/Quests';
 import Progress from './screens/trackingscreens/Progress';
@@ -212,6 +213,13 @@ const Routercomponent = () => {
           title="Nutrition Tracking"
           component={NutritionTracking}
         />
+         <Scene
+          key="herotracking"
+          backTitle="Back"
+          onBack={()=> Actions.landing()}
+          title="HERO Tracking"
+          component={HeroTracking}
+        initial/>
         <Scene
           key="progress"
           component={Progress}

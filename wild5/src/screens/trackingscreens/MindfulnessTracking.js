@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { ScrollView, View, Dimensions, ImageBackground } from "react-native";
-import { Input, Form, Item, Label, Text } from "native-base";
+import { Input, Form, Item, Label, Text, Picker, Icon } from "native-base";
 import { ModButton } from "../../components/common";
 import firebase from "firebase";
-import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
+import { BlurredBackgroundImage } from "../../components/common/BlurredBackgroundImage";
 import RadioForm, {
   RadioButton,
   RadioButtonInput,
@@ -12,22 +12,42 @@ import RadioForm, {
 import { Actions } from "react-native-router-flux";
 import mindtracking from "../../images/mindfultracking1.jpg";
 
-const screenheight = Dimensions.get("window").height;
+let typedata = [
+  {
+    value: 'Mindfulness',
+  },
+  {
+    value: 'Transcendental',
+  },
+  {
+    value: 'Silent',
+  },
+  {
+    value: 'Qigong',
+  },
+  {
+    value: 'Compassion',
+  },
+  {
+    value: 'Other',
+  }
+];
 class MindfulnessTracking extends Component {
   state = {
-    mindtype: "",
-    mindprac: 0
+    mindType: "",
+    mindDaily: "",
+    otherType: false
   };
 
   submitForm() {
     // console.log(this.state);
-    const { mindtype, mindprac, user, date } = this.state;
+    const { mindtype, mindDaily, user, date } = this.state;
     firebase
       .database()
       .ref(`Surveys/${user}/${date}`)
       .update({
         mindtype: mindtype,
-        mindprac: mindprac
+        mindDaily: mindDaily
       });
     Actions.landing();
   }
@@ -59,38 +79,55 @@ class MindfulnessTracking extends Component {
   render() {
     return (
       // <View style={{ backgroundColor: "white", height: screenheight }}>
-        <BlurredBackgroundImage
-        style={{paddingHorizontal: 10}}
+      <BlurredBackgroundImage
+        style={{ paddingHorizontal: 10 }}
         source={mindtracking}
         blurRadius={10}
       >
+        <Text
+          style={{
+            fontSize: 30,
+            textAlign: "center",
+            marginTop: "20%",
+            marginBottom: "5%",
+            fontWeight: "600"
+          }}
+        >
+          Track your{" "}
+          <Text style={{ color: "#81cfe0", fontSize: 30, fontWeight: "600" }}>
+            Mindfulness
+          </Text>
+        </Text>
+        <View
+          style={{
+            backgroundColor: "#0AB1E7",
+            width: "85%",
+            alignSelf: "center",
+            height: 80
+          }}
+        >
           <Text
             style={{
-              fontSize: 30,
-              textAlign: "center",
-              marginTop: "20%",
-              marginBottom: "20%",
-              fontWeight: "600"
+              fontSize: 20,
+              color: "white",
+              alignSelf: "center",
+              fontWeight: "700"
             }}
           >
-            Track your{" "}
-            <Text style={{ color: "#81cfe0", fontSize: 30, fontWeight: "600" }}>
-              Mindfulness
-            </Text>
+            Program Expectations
           </Text>
-
-          <View>
-            <Form>
-              <Item floatingLabel>
-                <Label>Type of meditation</Label>
-                <Input
-                  onChangeText={text => this.setState({ mindtype: text })}
-                />
-              </Item>
-            </Form>
-          </View>
-
-          <View style={{ alignSelf: "center", marginTop: "10%" }}>
+          <Text style={{ fontSize: 18, color: "white", textAlign: "center" }}>
+            Practice mindfulness for at least 10 minutes each day for 30 days.
+          </Text>
+        </View>
+        <View>
+          <View
+            style={{
+              alignSelf: "center",
+              marginTop: "10%",
+              alignItems: "center"
+            }}
+          >
             <Text
               style={{
                 marginBottom: "5%",
@@ -99,34 +136,85 @@ class MindfulnessTracking extends Component {
                 fontWeight: "600"
               }}
             >
-              Did you practice for 10 minutes?
+              Did I Mindfully Meditate at Least 10 Mintues Today?
             </Text>
+            
             <RadioForm
               radio_props={[
                 { label: "Yes", value: "1" },
                 { label: "No", value: "0" }
               ]}
-              initial={1}
+              initial={false}
               formHorizontal={false}
               labelHorizontal={true}
               buttonColor={"#4682b4"}
               animation={true}
               onPress={value => {
-                this.setState({ mindprac: value });
+                this.setState({ mindDaily: value });
               }}
             />
           </View>
-
-          <View style={{ alignSelf: "center" }}>
-            <ModButton
-              color={"black"}
-              onPress={() => this.submitForm()}
-              label="Submit"
-            >
-              Submit
-            </ModButton>
+          <View style={{alignItems: 'center', marginTop: 10}}>
+          <Picker
+            selectedValue={this.state.mindType}
+            onValueChange={type =>
+              this.setState(
+                {
+                  mindType: type
+                },
+                () => {
+                  this.state.type === "Other"
+                    ? this.setState({
+                        type: "",
+                        otherType: true
+                      })
+                    : null;
+                }
+              )
+            }
+            mode="dropdown"
+            placeholder="Select Type of Exercise"
+            placeholderStyle={{ color: "white" }}
+            placeholderIconColor="white"
+            iosHeader="Exercises"
+            iosIcon={
+              <Icon
+                name="ios-arrow-dropdown"
+                style={{ color: "white", fontSize: 25 }}
+              />
+            }
+            textStyle={{ color: "white" }}
+          >
+            {typedata.map(type => (
+              <Picker.Item
+                key={type.value}
+                label={type.value}
+                value={type.value}
+              />
+            ))}
+          </Picker>
           </View>
-        </BlurredBackgroundImage>
+          {this.state.otherType ? (
+            <Form>
+              <Item floatingLabel>
+                <Label>Type of meditation</Label>
+                <Input
+                  onChangeText={text => this.setState({ mindtype: text })}
+                />
+              </Item>
+            </Form>
+          ) : null}
+        </View>
+        <View style={{ alignSelf: "center" }}>
+          <ModButton
+            color={"black"}
+            onPress={() => this.submitForm()}
+            label="Submit"
+          >
+            Submit
+          </ModButton>
+        </View>
+      </BlurredBackgroundImage>
       // </View>
     );
   }

@@ -9,6 +9,7 @@ import {Actions} from 'react-native-router-flux';
 import exbackground from '../../images/exercise-background.jpg';
 import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
 
+const radio_props = [{ label: "Yes", value: "1" }, { label: "No", value: "0" }];
 let typedata = [
   {
     value: 'Walking',
@@ -46,7 +47,8 @@ class ExerciseTracking extends Component {
     intensity: '',
     user: '',
     date: '',
-    otherType: false
+    otherType: false,
+    exercisevalue: 0
   };
 
   submitForm() {
@@ -115,7 +117,7 @@ class ExerciseTracking extends Component {
             fontSize: 30,
             textAlign: 'center',
             marginTop: '10%',
-            marginBottom: '10%',
+            marginBottom: '5%',
             fontWeight: '600',
             color: 'white',
           }}
@@ -125,8 +127,38 @@ class ExerciseTracking extends Component {
             Exercise
           </Text>
         </Text>
-
-        <View style={{alignItems: 'center'}}>
+        <View style={{backgroundColor:"#72B83E", width: '85%', alignSelf: 'center', height: 90, marginBottom: 10 }}>
+          <Text style={{fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '700'}}>
+            Program Expectations
+          </Text>
+          <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
+            Exercise 30 minutes each day for 30 days, aim for at least moderate intensity
+          </Text>
+          </View>
+          <View style={{alignSelf:'center', alignItems:'center'}}>
+            <Text  style={{
+              textAlign:'center',
+              color: 'white',
+              alignSelf: 'center',
+              fontSize: 24,
+              fontWeight: '600',
+              marginBottom: 7
+            }}>Did I Exercise Today Following the FID Practices?</Text>
+            <RadioForm
+            radio_props={radio_props}
+            initial={1}
+            formHorizontal={false}
+            labelHorizontal={true}
+            buttonColor={"#a8eb12"}
+            selectedButtonColor={"#a8eb12"}
+            labelStyle={{fontSize: 20, color: '#fff'}}
+            animation={true}
+            onPress={value => {
+              this.setState({ exerciseValue: value });
+            }}
+          />
+          </View>
+        <View style={{alignItems: 'center', marginTop: 10}}>
           <Text
             style={{
               color: 'white',

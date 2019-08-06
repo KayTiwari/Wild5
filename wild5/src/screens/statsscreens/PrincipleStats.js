@@ -203,7 +203,7 @@ class PrincipleStats extends Component {
               marginTop: '5%',
             }}
           >
-            5 Principles
+            5 Practices
           </Text>
           <Text
             style={{
