@@ -18,10 +18,9 @@ export function BlurredBackgroundImage({style, ...props}) {
   return (
     <ImageBackground style={[styles.imageBackground, style]} {...props}>
       <View style={styles.overlay} />
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView>
         <ScrollView
           contentContainerStyle={{
-            flex: 1,
             justifyContent: props.verticalPosition,
           }}
         >
