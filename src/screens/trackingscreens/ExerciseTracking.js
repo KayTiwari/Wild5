@@ -1,7 +1,7 @@
 import React from 'react';
-import {Alert} from 'react-native';
+import {Alert, View} from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
-import {Text, Item, Label, Input, Picker, Icon} from 'native-base';
+import {Text, Item, Label, Input, Picker, Form} from 'native-base';
 import Slider from '@react-native-community/slider';
 import firebase from 'firebase';
 import {Actions} from 'react-native-router-flux';
@@ -33,6 +33,7 @@ function ExerciseTracking() {
   const [otherType, setOtherType] = React.useState('');
   const [duration, setDuration] = React.useState(0);
   const [intensity, setIntensity] = React.useState('');
+  const [didFollowFID, setDidFollowFID] = React.useState(1);
 
   const submitForm = React.useCallback(async () => {
     const exerciseRef = scopeRefByUserAndDate('Surveys', 'exercise');
@@ -60,43 +61,87 @@ function ExerciseTracking() {
       activityTitle="Exercise"
       onSave={submitForm}
     >
+      <View
+        style={{
+          backgroundColor: '#72B83E',
+          alignSelf: 'center',
+          marginVertical: 10,
+          padding: 10,
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 20,
+            color: 'white',
+            alignSelf: 'center',
+            fontWeight: '700',
+          }}
+        >
+          Program Expectations
+        </Text>
+        <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
+          Exercise 30 minutes each day for 30 days, aim for at least moderate
+          intensity.
+        </Text>
+      </View>
+      <View style={{alignItems: 'center', marginVertical: 10}}>
+        <Text
+          style={{
+            textAlign: 'center',
+            alignSelf: 'center',
+            fontWeight: '600',
+            marginBottom: 10,
+          }}
+        >
+          Did I Exercise Today Following the FID Practices?
+        </Text>
+        <RadioForm
+          radio_props={[{label: 'Yes', value: 1}, {label: 'No', value: 0}]}
+          initial={didFollowFID}
+          formHorizontal={true}
+          buttonColor={'#a8eb12'}
+          selectedButtonColor={'#a8eb12'}
+          animation={true}
+          onPress={value => setDidFollowFID(value)}
+          radioStyle={{marginRight: 20}}
+        />
+      </View>
+
       <Text
         style={{
           textAlign: 'center',
           marginTop: '10%',
-          marginBottom: '10%',
           fontWeight: '600',
         }}
       >
         Type of Exercise?
       </Text>
-      <Item style={{marginBottom: '10%'}} picker>
+      <Form style={{marginBottom: '10%'}}>
         <Picker
+          note={false}
           selectedValue={type}
           onValueChange={setType}
           mode="dropdown"
           style={{width: undefined}}
           placeholder="Select One..."
           iosHeader="Exercises"
-          iosIcon={<Icon name="ios-arrow-dropdown" style={{fontSize: 25}} />}
         >
           {exerciseTypes.map(type => (
             <Picker.Item key={type} label={type} value={type} />
           ))}
         </Picker>
-      </Item>
 
-      {type === 'Other' && (
-        <Item style={{marginBottom: 20}} floatingLabel>
-          <Label>Enter other exercise...</Label>
-          <Input autoCorrect={false} onChangeText={setOtherType} />
-        </Item>
-      )}
+        {type === 'Other' && (
+          <Item style={{marginBottom: 20}} floatingLabel>
+            <Label>Enter other exercise...</Label>
+            <Input autoCorrect={false} onChangeText={setOtherType} />
+          </Item>
+        )}
+      </Form>
 
       <Text
         style={{
           marginBottom: '5%',
-          fontSize: 24,
           fontWeight: '600',
           textAlign: 'center',
         }}
@@ -114,8 +159,8 @@ function ExerciseTracking() {
       <Text style={{textAlign: 'center'}}>{duration} minutes</Text>
       <Text
         style={{
-          marginVertical: '10%',
-          fontSize: 24,
+          marginTop: '10%',
+          marginBottom: 10,
           fontWeight: '600',
           textAlign: 'center',
         }}

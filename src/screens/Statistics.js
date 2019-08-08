@@ -74,7 +74,7 @@ class Statistics extends Component{
                 shadowOffset: {width: 4, height: 4},
                 shadowOpacity: 0.5,
                 shadowRadius: 6, width: '75%'}} onPress={() => this.principlePress()}>
-                    <Text>Wild5 Principles</Text>
+                    <Text>Wild5 Practices</Text>
                 </Button>
             </View>
             <View style={{alignSelf: 'center', marginTop:'10%'}}>

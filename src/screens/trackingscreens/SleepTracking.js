@@ -26,6 +26,7 @@ import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundI
 const screenheight = Dimensions.get("window").height;
 class SleepTracking extends Component {
   state = {
+    sleepDaily: "",
     electronics: false,
     sleepmask: false,
     regulartime: false,
@@ -64,6 +65,7 @@ class SleepTracking extends Component {
   submitForm() {
     // console.log(this.state);
     const {
+      sleepDaily,
       electronics,
       sleepmask,
       regulartime,
@@ -77,6 +79,7 @@ class SleepTracking extends Component {
       .database()
       .ref(`Surveys/${user}/${date}`)
       .update({
+        sleepDaily: sleepDaily,
         slelectronics: electronics,
         slsleepmask: sleepmask,
         slregulartime: regulartime,
@@ -124,7 +127,7 @@ class SleepTracking extends Component {
               fontSize: 30,
               textAlign: "center",
               marginTop: "20%",
-              marginBottom: "20%",
+              marginBottom: "5%",
               fontWeight: "600"
             }}
           >
@@ -133,6 +136,39 @@ class SleepTracking extends Component {
               Sleep
             </Text>
           </Text>
+          <View style={{backgroundColor:"#B72B90", width: '85%', alignSelf: 'center', height: 90 }}>
+          <Text style={{fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '700'}}>
+            Program Expectations
+          </Text>
+          <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
+          Implement 4 or more of the 6 sleep hygiene practices each day for 30
+            days
+          </Text>
+          </View>
+          <View style={{alignItems:'center', marginTop: 10}}>
+            <Text  style={{
+                marginBottom: "5%",
+                fontSize: 20,
+                textAlign: "center",
+                fontWeight: "600"
+              }}>Did I Implement 4 or More of the 6 Sleep Hygiene Practices?</Text>
+            <RadioForm
+              radio_props={[
+                { label: "Yes", value: "1" },
+                { label: "No", value: "0" }
+              ]}
+              initial={false}
+              formHorizontal={false}
+              labelHorizontal={true}
+              buttonColor={"#fff"}
+              selectedButtonColor={"#fff"}
+              labelStyle={{fontSize: 20, color: '#000'}}
+              animation={true}
+              onPress={value => {
+                this.setState({ sleepDaily: value });
+              }}
+            />
+          </View>
           <Content>
             <Text
               style={{

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ScrollView, View, Dimensions, ImageBackground } from "react-native";
+import { ScrollView, View, Dimensions, ImageBackground, SafeAreaView } from "react-native";
 import {
   Input,
   Form,
@@ -12,23 +12,19 @@ import {
 } from "native-base";
 import { ModButton } from "../../components/common";
 import firebase from "firebase";
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel
-} from "react-native-simple-radio-button";
+import RadioForm from "react-native-simple-radio-button";
 import { Actions } from "react-native-router-flux";
 import nutritracking from "../../images/nutritracking.jpg";
-import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
+import { BlurredBackgroundImage } from "../../components/common/BlurredBackgroundImage";
 
-const screenheight = Dimensions.get("window").height;
 class NutritionTracking extends Component {
   state = {
     logged: false,
     MIND: false,
     breakmed: false,
     lunchmed: false,
-    dinnermed: false
+    dinnermed: false,
+    nutritionDaily: ""
   };
   checkBox = type => {
     if (type === "break") {
@@ -49,6 +45,7 @@ class NutritionTracking extends Component {
   submitForm() {
     // console.log(this.state);
     const {
+      nutritionDaily,
       logged,
       MIND,
       breakmed,
@@ -61,6 +58,7 @@ class NutritionTracking extends Component {
       .database()
       .ref(`Surveys/${user}/${date}`)
       .update({
+        nutritionDaily: nutritionDaily,
         nutrlogged: logged,
         nutrMIND: MIND,
         nutrbreakfast: breakmed,
@@ -96,14 +94,14 @@ class NutritionTracking extends Component {
 
   render() {
     return (
-      <View style={{ backgroundColor: "white", height: screenheight }}>
+      <SafeAreaView style={{ backgroundColor: "white", flex: 1}}>
         <View style={{ flex: 1 }}>
-        <BlurredBackgroundImage
-        style={{paddingHorizontal: 10}}
-        source={nutritracking}
-        blurRadius={20}
-      >
-            <ScrollView style={{ height: screenheight, padding: 30 }}>
+          <BlurredBackgroundImage
+            style={{ paddingHorizontal: 10 }}
+            source={nutritracking}
+            blurRadius={20}
+          >
+            <ScrollView style={{ flex:1, padding: 30 }}>
               <Text
                 style={{
                   fontSize: 30,
@@ -120,8 +118,56 @@ class NutritionTracking extends Component {
                   Nutrition
                 </Text>
               </Text>
-
-              <View style={{ alignSelf: "center", marginTop: 0 }}>
+              <View
+                style={{
+                  backgroundColor: "#E27027",
+                  width: "85%",
+                  alignSelf: "center",
+                  height: 140
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 20,
+                    color: "white",
+                    alignSelf: "center",
+                    fontWeight: "700"
+                  }}
+                >
+                  Program Expectations
+                </Text>
+                <Text
+                  style={{ fontSize: 18, color: "white", textAlign: "center" }}
+                >
+                  Log your daily meals/snacks/beverages/alcohol each day for 30
+                  days, follow the MIND diet principles as closely as you can
+                </Text>
+              </View>
+              <View style={{alignItems:'center', marginTop: 10}}>
+            <Text  style={{
+                marginBottom: "5%",
+                fontSize: 20,
+                textAlign: "center",
+                fontWeight: "600"
+              }}>Did I Log My Meals, Snacks, and Beverages, Including Alcohol Today?</Text>
+            <RadioForm
+              radio_props={[
+                { label: "Yes", value: "1" },
+                { label: "No", value: "0" }
+              ]}
+              initial={false}
+              formHorizontal={false}
+              labelHorizontal={true}
+              buttonColor={"#f5bd68"}
+              selectedButtonColor={"#f5bd68"}
+              labelStyle={{fontSize: 20, color: '#000'}}
+              animation={true}
+              onPress={value => {
+                this.setState({ nutritionDaily: value });
+              }}
+            />
+          </View>
+              <View style={{ alignSelf: "center", marginTop: 10, alignItems:'center' }}>
                 <Text
                   style={{
                     marginBottom: "5%",
@@ -141,6 +187,7 @@ class NutritionTracking extends Component {
                   formHorizontal={false}
                   labelHorizontal={true}
                   buttonColor={"#f5bd68"}
+                  selectedButtonColor={"#f5bd68"}
                   animation={true}
                   onPress={value => {
                     this.setState({ logged: value });
@@ -148,7 +195,7 @@ class NutritionTracking extends Component {
                 />
               </View>
 
-              <View style={{ alignSelf: "center", marginTop: "10%" }}>
+              <View style={{ alignSelf: "center", marginTop: "10%", alignItems:'center' }}>
                 <Text
                   style={{
                     marginBottom: "5%",
@@ -168,6 +215,7 @@ class NutritionTracking extends Component {
                   formHorizontal={false}
                   labelHorizontal={true}
                   buttonColor={"#dd7435"}
+                  selectedButtonColor={"#f5bd68"}
                   animation={true}
                   onPress={value => {
                     this.setState({ MIND: value });
@@ -229,7 +277,7 @@ class NutritionTracking extends Component {
             </ScrollView>
           </BlurredBackgroundImage>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }

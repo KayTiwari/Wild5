@@ -54,30 +54,33 @@ class PushNotificationsIOS {
     let config = {
       date: new Date(Date.now() + 5 * 1000), // in 30 secs
       alertAction: "view",
-      repeatType: "time",
-      repeatTime: 86400000,
-      message: "Hello",
+      repeatType: "day",
+      message: "",
       number: "10"
     };
 
     if (pillar === "exercise") {
-      config.repeatType = "time",
-      config.repeatTime = 86400000,
-      config.date = date
-      config.message = "Remember to Exercise daily, FID";
+      config.repeatType = "day"
+      config.date = new Date(date)
+      config.message = "Remember to Exercise Daily Following the FID Practices";
     } else if (pillar === "mind") {
-      config.date = new Date(Date.now() + 5 * 1000);
-      config.message = "Take a moment and meditate, it will help you through your day";
+      config.repeatType = "day"
+      config.date = new Date(date);
+      config.message = "Remember to Mindfully Meditate at Least 10 Minutes a Day";
     } else if (pillar === "sleep") {
-      config.date = new Date(Date.now() + 5 * 1000);
-      config.message = "Get to bed at a good hour";
+      config.repeatType = "day"
+      config.date = new Date(date);
+      config.message = "Remember to Implement 4 or more of the 6 Sleep Hygiene Practices";
     } else if (pillar === "social") {
-      config.date = new Date(Date.now() + 5 * 1000);
-      config.message = "Reach out and be Social";
+      config.repeatType = "day"
+      config.date = new Date(date);
+      config.message = "Remember to Socially Connect with at Least 2 People Today";
     } else if (pillar === "nutrition") {
-      config.date = new Date(Date.now() + 5 * 1000);
-      config.message = "Remember to track you nutrition habits";
+      config.repeatType = "day"
+      config.date = new Date(date);
+      config.message = "Remember to Log Your Meals, Snacks, and Beevrages Including Alcohol";
     } else if (pillar === "sleepquest"){
+      config.repeatType = "day"
       config.date = new Date(date);
       config.message = "Time to wind down before your bedtime"
     }

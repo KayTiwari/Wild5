@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
+import {View} from 'react-native'
 import {Text, ListItem, CheckBox, Body} from 'native-base';
 import {Alert, StyleSheet} from 'react-native';
 import firebase from 'firebase';
 import {Actions} from 'react-native-router-flux';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
 import {TrackingScreen} from './TrackingScreen';
+import RadioForm, {
+  RadioButton,
+  RadioButtonInput,
+  RadioButtonLabel
+} from "react-native-simple-radio-button";
 
 const CALLED_FRIEND = 'calledFriend';
 const MET_FRIEND_IN_PERSON = 'metFriendInPerson';
@@ -60,6 +66,39 @@ class SocialTracking extends Component {
         activityTitle="Social Connectedness"
         onSave={this.submitForm}
       >
+      <View style={{backgroundColor:"#EB3422", width: '85%', alignSelf: 'center', height: 90, marginTop: 10 }}>
+          <Text style={{fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '700'}}>
+            Program Expectations
+          </Text>
+          <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
+            Meet or call a minimum of two friends or family each day for 30
+            days.
+          </Text>
+          </View>
+          <View style={{alignItems:'center', marginTop: 10}}>
+            <Text style={{
+                marginBottom: "5%",
+                fontSize: 20,
+                textAlign: "center",
+                fontWeight: "600"
+              }}>Did I Socially Connect With at Least 2 People Today</Text>
+            <RadioForm
+              radio_props={[
+                { label: "Yes", value: "1" },
+                { label: "No", value: "0" }
+              ]}
+              initial={1}
+              formHorizontal={false}
+              labelHorizontal={true}
+              buttonColor={"#EB3422"}
+              selectedButtonColor={"#EB3422"}
+              labelStyle={{fontSize: 20, color: '#000'}}
+              animation={true}
+              onPress={value => {
+                this.setState({ socialDaily: value });
+              }}
+            />
+          </View>
         <Text style={styles.subtitle} numberOfLines={1}>
           What social contacts did you make?
         </Text>

@@ -9,9 +9,8 @@ import {
 import {Container, Button, Text } from "native-base";
 import wild5title from "../images/wild-5-logo-r-color.png";
 import Navbar from "../components/Navbar";
-import landingbackground from "../images/landingbackground.jpg";
+import landingbackground from "../images/landingBackground2.jpg";
 import Navigation from "../components/LandingNavigation";
-import Carousel from "../components/Carousel";
 
 export default class Landing extends Component {
   render() {
@@ -48,8 +47,6 @@ export default class Landing extends Component {
                 style={{width: "100%", resizeMode: "contain"}}
               />
             </View>
-
-            <Carousel />
             
 
             <View style={{marginTop: "15%", flex: 1}}>
