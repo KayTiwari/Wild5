@@ -46,9 +46,13 @@ const navigationItems = [
 ];
 
 export function Navigation(props) {
-  const renderItem = React.useCallback(item => {
+  const renderItem = React.useCallback((item, index) => {
     return (
-      <TouchableOpacity style={styles.touchable} onPress={item.action}>
+      <TouchableOpacity
+        key={index}
+        style={styles.touchable}
+        onPress={item.action}
+      >
         <LinearGradient style={styles.item} colors={item.background}>
           {item.title === "Track HERO Exercises" ? <Image source={item.icon} style={{height: 60, width: "80%"}}/>:<Icon name={item.icon} style={styles.icon} />}
           <Text style={styles.title}>{item.title}</Text>
@@ -59,7 +63,7 @@ export function Navigation(props) {
 
   return (
     <View style={styles.container}>
-      {navigationItems.map(item => renderItem(item))}
+      {navigationItems.map(renderItem)}
 
       {renderItem({
         title: "Today's Progress",

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import firebase from 'firebase';
-import format from 'date-fns/format';
+import * as firebase from 'firebase';
 import Config from 'react-native-config';
+import {scopeRefByUserAndDate} from '../utils/firebase';
 const {Consumer, Provider} = React.createContext();
 
 export default class AuthProvider extends Component {
@@ -48,10 +48,12 @@ export default class AuthProvider extends Component {
   };
 
   getTrackingData = () => {
-    const date = format(new Date(), 'YYYY-MM-DD');
-    var database = firebase.database();
-    var ref = database.ref(`Surveys/${this.state.user}/${date}`);
-    ref.on('value', this.gotData, this.errData);
+    const ref = scopeRefByUserAndDate('Surveys');
+
+    firebase
+      .database()
+      .ref(ref)
+      .on('value', this.gotData, this.errData);
   };
 
   getPrincipleData = () => {

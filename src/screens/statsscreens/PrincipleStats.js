@@ -3,6 +3,7 @@ import {View, Dimensions, ScrollView} from 'react-native';
 import {Text} from 'native-base';
 import BarGraph from '../../components/charts/BarGraph';
 import {withAuthProvider} from '../../context/authcontext';
+import {EXERCISE_INTENSITY} from '../trackingscreens/ExerciseTracking';
 
 const screenheight = Dimensions.get('window').height;
 
@@ -55,23 +56,28 @@ class PrincipleStats extends Component {
   };
 
   exercisecalc = () => {
-    let i = 0;
-    let values = Object.values(this.props.princData);
-    for (var k = 0; k < values.length; k++) {
-      if (values[k].Exduration >= 30) {
-        i = i + 1;
+    const days = Object.values(this.props.princData).filter(day =>
+      day.hasOwnProperty('exercise')
+    );
+
+    return days.reduce((total, {exercise}) => {
+      if (exercise.duration >= 30) {
+        total += 1;
       }
+
       if (
-        values[k].Exintensity === 'moderate' ||
-        values[k].Exintensity === 'high'
+        exercise.intensity === EXERCISE_INTENSITY.MODERATE ||
+        exercise.intensity === EXERCISE_INTENSITY.HIGH
       ) {
-        i = i + 1;
+        total += 1;
       }
-      if (values[k].Extype) {
-        i = i + 1;
+
+      if (exercise.type) {
+        total += 1;
       }
-    }
-    return i;
+
+      return total;
+    }, 0);
   };
 
   mindcalc = () => {
@@ -94,7 +100,6 @@ class PrincipleStats extends Component {
         v += 1;
       }
     }
-    console.log(i);
     return v;
   };
 
