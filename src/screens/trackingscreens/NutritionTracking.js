@@ -11,7 +11,7 @@ import {
   Body
 } from "native-base";
 import { ModButton } from "../../components/common";
-import firebase from "firebase";
+import firebase from 'react-native-firebase';
 import RadioForm from "react-native-simple-radio-button";
 import { Actions } from "react-native-router-flux";
 import nutritracking from "../../images/nutritracking.jpg";

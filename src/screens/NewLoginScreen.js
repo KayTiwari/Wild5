@@ -8,7 +8,7 @@ import {
 } from "react-native"; 
 import { Text, Spinner } from "native-base";
 import ForgotModal from "../modals/NewForgotModal";
-import firebase from "firebase";
+import firebase from 'react-native-firebase';
 import { withAuthProvider } from "../context/authcontext";
 import { Actions } from "react-native-router-flux";
 import abstractimg from "../images/abstract2.jpeg";

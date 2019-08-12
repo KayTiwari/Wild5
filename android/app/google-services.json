@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "714885268112",
+    "firebase_url": "https://wild5-5ca8b.firebaseio.com",
+    "project_id": "wild5-5ca8b",
+    "storage_bucket": "wild5-5ca8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714885268112:android:5cc5613b50360fa9",
+        "android_client_info": {
+          "package_name": "com.wild5"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714885268112-9ie420nregp2fotdgpqv0vpoh2n69q2i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJhSRN8jk3CwAk6i6ZLKIZ8K3xx01Gcgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714885268112-9ie420nregp2fotdgpqv0vpoh2n69q2i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

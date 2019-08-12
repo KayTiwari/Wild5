@@ -9,7 +9,7 @@ import {
   Platform,
   TimePickerAndroid
 } from "react-native";
-import firebase from "firebase";
+import firebase from 'react-native-firebase';
 import { CheckBox, ListItem, Body, Icon } from "native-base";
 import PushNotificationIOS from "../common/PushNotificationsIOS";
 import Navbar from "../Navbar";

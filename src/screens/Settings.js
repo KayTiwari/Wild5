@@ -7,7 +7,7 @@ import PushNotificationIOS from "../components/common/PushNotificationsIOS";
 import appConfig from "../../app.json";
 import TimePicker from "../components/common/TimePicker";
 import { Actions } from "react-native-router-flux";
-import firebase from "firebase";
+import firebase from 'react-native-firebase';
 
 const { height, width } = Dimensions.get("window");
 

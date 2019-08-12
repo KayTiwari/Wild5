@@ -8,7 +8,7 @@ import RadioForm, {
   RadioButtonLabel
 } from "react-native-simple-radio-button";
 import { Actions } from "react-native-router-flux";
-import firebase from "firebase";
+import firebase from 'react-native-firebase';
 import VictoryChart from "../components/charts/VictoryRadarChart";
 // import {withAuthProvider} from '../context/authcontext';
 

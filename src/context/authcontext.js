@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import * as firebase from 'firebase';
+import firebase from 'react-native-firebase';
 import Config from 'react-native-config';
 import {scopeRefByUserAndDate} from '../utils/firebase';
 const {Consumer, Provider} = React.createContext();

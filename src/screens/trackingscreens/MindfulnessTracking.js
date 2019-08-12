@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { ScrollView, View, Dimensions, ImageBackground } from "react-native";
 import { Input, Form, Item, Label, Text, Picker, Icon } from "native-base";
 import { ModButton } from "../../components/common";
-import firebase from "firebase";
+import firebase from 'react-native-firebase';
 import { BlurredBackgroundImage } from "../../components/common/BlurredBackgroundImage";
 import RadioForm, {
   RadioButton,
