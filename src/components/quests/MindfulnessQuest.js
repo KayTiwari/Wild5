@@ -11,7 +11,7 @@ import { Icon } from "native-base";
 // import { Player } from "@react-native-community/audio-toolkit";
 import Sound from "react-native-sound";
 import Navbar from "../Navbar";
-import firebase from "firebase";
+import firebase from 'react-native-firebase';
 
 Sound.setCategory("Playback");
 

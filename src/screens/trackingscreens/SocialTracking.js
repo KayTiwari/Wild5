@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View} from 'react-native'
 import {Text, ListItem, CheckBox, Body} from 'native-base';
 import {Alert, StyleSheet} from 'react-native';
-import firebase from 'firebase';
+import firebase from 'react-native-firebase';
 import {Actions} from 'react-native-router-flux';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
 import {TrackingScreen} from './TrackingScreen';

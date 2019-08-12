@@ -3,7 +3,7 @@ import {Alert, View} from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import {Text, Item, Label, Input, Picker, Form} from 'native-base';
 import Slider from '@react-native-community/slider';
-import firebase from 'firebase';
+import firebase from 'react-native-firebase';
 import {Actions} from 'react-native-router-flux';
 import exbackground from '../../images/exercise-background.jpg';
 import {TrackingScreen} from './TrackingScreen';

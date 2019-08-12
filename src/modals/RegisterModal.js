@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, ScrollView } from "react-native";
 import { ModButton, Input, CardSection, Button } from "../components/common";
 import { withProvider } from "../context/context";
 import { Actions } from "react-native-router-flux";
-import firebase from "firebase";
+import firebase from 'react-native-firebase';
 
 import Modal from "react-native-modal";
 

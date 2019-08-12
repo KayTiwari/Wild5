@@ -1,0 +1,6 @@
+framework module RNFirebase {
+  umbrella header "RNFirebase-umbrella.h"
+
+  export *
+  module * { export * }
+}

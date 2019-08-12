@@ -11,7 +11,7 @@ import {
   Spinner
 } from "native-base";
 import DatePicker from "react-native-datepicker";
-import firebase from "firebase";
+import firebase from 'react-native-firebase';
 import { Actions } from "react-native-router-flux";
 import { withAuthProvider } from "../context/authcontext";
 import abstractimg from "../images/abstract2.jpeg";

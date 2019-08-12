@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Dimensions } from "react-native";
 import { Text, Button, Icon } from "native-base";
 import { Actions } from "react-native-router-flux";
-import firebase from "firebase";
+import firebase from 'react-native-firebase';
 import { Slider } from "react-native-elements";
 
 const screenheight = Dimensions.get("window").height;

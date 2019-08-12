@@ -12,7 +12,7 @@ import {
   Header
 } from "native-base";
 import { ModButton } from "../../components/common";
-import firebase from "firebase";
+import firebase from 'react-native-firebase';
 import RadioForm, {
   RadioButton,
   RadioButtonInput,

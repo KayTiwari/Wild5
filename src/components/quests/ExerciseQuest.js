@@ -12,7 +12,7 @@ import {
 import {Container, Text, Label, Icon} from 'native-base';
 import NumericInput from 'react-native-numeric-input';
 import {Actions} from 'react-native-router-flux';
-import firebase from 'firebase';
+import firebase from 'react-native-firebase';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
 import {EXERCISE_INTENSITY} from '../../screens/trackingscreens/ExerciseTracking';
 
