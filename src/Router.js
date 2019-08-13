@@ -108,7 +108,7 @@ const Routercomponent = () => {
           title="Mindfulness Tracking"
           component={MindfulnessTracking}
           onBack={()=> Actions.landing()}
-        initial/>
+        />
         <Scene
           key="sleeptracking"
           backTitle="Back"
@@ -136,7 +136,7 @@ const Routercomponent = () => {
           onBack={() => Actions.landing()}
           title="HERO Tracking"
           component={HeroTracking}
-        />
+        initial/>
         <Scene
           key="progress"
           component={Progress}

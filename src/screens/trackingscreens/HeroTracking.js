@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Text, View, SafeAreaView, Image, TouchableOpacity, Alert } from "react-native";
 import RadioForm from "react-native-simple-radio-button";
-import heroTrackImg from "../../images/herologo.png";
+// import heroTrackImg from "../../images/herologo.png";
+import heroTrackImg from '../../images/hero_logo_track.png'
 import heroBackground from '../../images/herobackground.jpeg'
 import firebase from 'react-native-firebase'
 import { TrackingScreen } from './TrackingScreen'
@@ -44,6 +45,7 @@ const [heroDaily, setHeroDaily] = React.useState("")
       activityTitle="Hero Score"
       onSave={submitForm}
       >
+      <SafeAreaView style={{flex: 1}}>
         <View
           style={{
             height: "30%",
@@ -54,22 +56,23 @@ const [heroDaily, setHeroDaily] = React.useState("")
         >
           <Image
             source={heroTrackImg}
-            style={{ height: 120, width: "100%", alignSelf: "center" }}
+            style={{ height: 95, width: "100%", alignSelf: "center" }}
           />
         </View>
-        <View style={{ height: "25%", width: "80%", alignItems: "center", alignSelf:'center'}}>
-          <Text style={{fontSize: 30, fontWeight:'700', textAlign:'center', marginBottom: 20}}>Did I Complete My HERO Exercises Today?</Text>
+        <View style={{ height: "35%", width: "80%", alignItems: "center", alignSelf:'center', marginTop: 30}}>
+          <Text style={{fontSize: 20, fontWeight:'700', textAlign:'center', marginBottom: 20}}>Did I Complete My HERO Exercises Today?</Text>
           <RadioForm
             radio_props={radio_props}
             initial={false}
             formHorizontal={false}
             labelHorizontal={true}
             buttonColor={"#DD3121"}
-            labelStyle={{fontSize: 26, color: '#000'}}
+            labelStyle={{fontSize: 20, color: '#000'}}
             animation={true}
             onPress={value => setHeroDaily(value)}
           />
         </View>
+        </SafeAreaView>
         </TrackingScreen>
     );
   
