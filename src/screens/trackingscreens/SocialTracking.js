@@ -37,11 +37,11 @@ class SocialTracking extends Component {
       [MET_FAMILY_IN_PERSON]: metFamilyInPerson,
     } = this.state;
 
-    const surveysRef = scopeRefByUserAndDate('Surveys', 'social');
+    const socialRef = scopeRefByUserAndDate('Surveys', 'social');
 
     await firebase
       .database()
-      .ref(surveysRef)
+      .ref(socialRef)
       .update({
         calledFriend,
         metFriendInPerson,

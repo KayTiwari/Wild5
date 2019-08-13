@@ -1,49 +1,26 @@
 import React, { Component } from "react";
 import { Text, View, SafeAreaView, Image, TouchableOpacity, Alert } from "react-native";
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from "react-native-simple-radio-button";
-import HEROtrack from "../../images/herologo.png";
-// import firebase from "firebase";
+import heroTrackImg from "../../images/herologo.png";
+import firebase from 'react-native-firebase'
+import { TrackingScreen } from './TrackingScreen'
+import { scopeRefByUserAndDate } from '../../utils/firebase'
 import { Actions } from 'react-native-router-flux'
 
 const radio_props = [{ label: "Yes", value: "1" }, { label: "No", value: "0" }];
 
-export default class HeroTracking extends Component {
-  state = { heroDaily: "",
-user:'',
-date: '',
-value3Index: null
-};
+const HeroTracking = () => {
 
-//   componentDidMount() {
-//     var user = firebase.auth().currentUser;
-//     if (user) {
-//       var res = user.email.split(".");
-//       var userEm = res[0].toString();
-//       this.setState({
-//         user: userEm
-//       });
-//     } else {
-//       console.log("noperz");
-//     }
-//     var today = new Date();
-//     var date =
-//       today.getFullYear() +
-//       "-" +
-//       (today.getMonth() + 1) +
-//       "-" +
-//       today.getDate();
-//     var dateTime = date;
-//     this.setState({
-//       date: dateTime
-//     });
-//   }
 
-  submitData = () => {
+const [heroDaily, setHeroDaily] = React.useState("")
+
+   const submitForm = React.useCallback( async ()=>{
+     const heroRef = scopeRefByUserAndDate('Surveys', 'heroDaily')
     firebase
     .database()
-    .ref(`Surveys/${this.state.user}/${this.state.date}`)
+    .ref(heroRef)
     .update({
-      HeroDailyScore: this.state.heroDaily
+      HeroDailyScore: heroDaily
     }).then(()=>Alert.alert(
       'Data submitted Successfully',
       '',
@@ -55,13 +32,19 @@ value3Index: null
         }
       ],
     )
-  );
+  )
 
-  }
+  })
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <TrackingScreen 
+      backgroundImage={heroTrackImg}
+      color="#333"
+      activityTitle="Hero Score"
+      onSave={submitForm}
+      
+      >
         <View
           style={{
             height: "30%",
@@ -85,15 +68,10 @@ value3Index: null
             buttonColor={"#DD3121"}
             labelStyle={{fontSize: 26, color: '#000'}}
             animation={true}
-            onPress={value => {
-              this.setState({ heroDaily: value });
-            }}
+            onPress={value => setHeroDaily(value)}
           />
-          <TouchableOpacity style={{height:50,width:'80%',alignSelf:'center', backgroundColor:'#000', borderRadius: 7, justifyContent: 'center', marginTop: 15}} onPress={()=> this.submitData()}>
-            <Text style={{alignSelf:'center', color: '#fff', fontSize: 20}}>Submit</Text>
-          </TouchableOpacity>
         </View>
-      </SafeAreaView>
+        </TrackingScreen>
     );
   }
 }

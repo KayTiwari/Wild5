@@ -3,14 +3,15 @@ import { ScrollView, View, Dimensions, ImageBackground } from "react-native";
 import { Input, Form, Item, Label, Text, Picker, Icon } from "native-base";
 import { ModButton } from "../../components/common";
 import firebase from 'react-native-firebase';
-import { BlurredBackgroundImage } from "../../components/common/BlurredBackgroundImage";
 import RadioForm, {
   RadioButton,
   RadioButtonInput,
   RadioButtonLabel
 } from "react-native-simple-radio-button";
+import {TrackingScreen} from './TrackingScreen'
+import {scopeRefByUserAndDate} from '../../utils/firebase'
 import { Actions } from "react-native-router-flux";
-import mindtracking from "../../images/mindfultracking1.jpg";
+import mindTrackingImage from "../../images/mindfultracking1.jpg";
 
 let typedata = [
   {
@@ -32,57 +33,35 @@ let typedata = [
     value: 'Other',
   }
 ];
-class MindfulnessTracking extends Component {
-  state = {
-    mindType: "",
-    mindDaily: "",
-    otherType: false
-  };
 
-  submitForm() {
-    // console.log(this.state);
-    const { mindtype, mindDaily, user, date } = this.state;
+
+
+const MindfulnessTracking = () => {
+  const [mindType, setMindType] = React.useState("");
+  const [mindDaily, setMindDaily] = React.useState("");
+  const [otherType, setOtherType] = React.useState(false)
+
+  const submitForm = React.useCallback(async ()=> {
+    const mindfulnessRef = scopeRefByUserAndDate('Surveys', 'mindfulness')
     firebase
       .database()
-      .ref(`Surveys/${user}/${date}`)
+      .ref(mindfulnessRef)
       .update({
         mindtype: mindtype,
         mindDaily: mindDaily
       });
     Actions.landing();
-  }
+  })
 
-  componentDidMount() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var res = user.email.split(".");
-      var userEm = res[0].toString();
-      this.setState({
-        user: userEm
-      });
-    } else {
-      console.log("noperz");
-    }
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
-    var dateTime = date;
-    this.setState({
-      date: dateTime
-    });
-  }
 
-  render() {
+
     return (
       // <View style={{ backgroundColor: "white", height: screenheight }}>
-      <BlurredBackgroundImage
-        style={{ paddingHorizontal: 10 }}
-        source={mindtracking}
-        blurRadius={10}
+      <TrackingScreen
+      backgroundImage={mindTrackingImage}
+      color="#81cfe0"
+      activityTitle="Mindfulness"
+      onSave={submitForm}
       >
         <Text
           style={{
@@ -149,29 +128,14 @@ class MindfulnessTracking extends Component {
               labelHorizontal={true}
               buttonColor={"#4682b4"}
               animation={true}
-              onPress={value => {
-                this.setState({ mindDaily: value });
-              }}
+              onPress={value => setMindDaily(value)}
             />
+          </View>
           </View>
           <View style={{alignItems: 'center', marginTop: 10}}>
           <Picker
             selectedValue={this.state.mindType}
-            onValueChange={type =>
-              this.setState(
-                {
-                  mindType: type
-                },
-                () => {
-                  this.state.type === "Other"
-                    ? this.setState({
-                        type: "",
-                        otherType: true
-                      })
-                    : null;
-                }
-              )
-            }
+            onValueChange={""}
             mode="dropdown"
             placeholder="Select Type of Exercise"
             placeholderStyle={{ color: "white" }}
@@ -194,7 +158,7 @@ class MindfulnessTracking extends Component {
             ))}
           </Picker>
           </View>
-          {this.state.otherType ? (
+          {otherType ? (
             <Form>
               <Item floatingLabel>
                 <Label>Type of meditation</Label>
@@ -204,19 +168,9 @@ class MindfulnessTracking extends Component {
               </Item>
             </Form>
           ) : null}
-        </View>
-        <View style={{ alignSelf: "center" }}>
-          <ModButton
-            color={"black"}
-            onPress={() => this.submitForm()}
-            label="Submit"
-          >
-            Submit
-          </ModButton>
-        </View>
-      </BlurredBackgroundImage>
+        </TrackingScreen>
       // </View>
     );
-  }
+  
 }
 export default MindfulnessTracking;

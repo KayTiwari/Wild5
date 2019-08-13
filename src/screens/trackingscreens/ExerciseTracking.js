@@ -45,6 +45,7 @@ function ExerciseTracking() {
         type: otherType || type,
         duration,
         intensity,
+        didFollowFID
       });
 
     // Handle errors here

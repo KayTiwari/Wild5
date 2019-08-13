@@ -26,7 +26,8 @@ class NewLoginScreen extends Component {
     raised: true,
     error: "",
     loading: false,
-    modal: false
+    modal: false,
+    authenticated: false
   };
 
   LoginPress() {
@@ -35,16 +36,14 @@ class NewLoginScreen extends Component {
       error: "",
       loading: true
     });
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
+          firebase.auth().signInWithEmailAndPassword(email, password)
       .then(() => {
         this.onLoginSuccess();
       })
       .catch((err) => {
         this.onLoginFail(err);
-      });
-  }
+      })
+    }
 
   onLoginSuccess() {
     Actions.landing();
