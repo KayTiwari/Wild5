@@ -77,25 +77,11 @@ const setCaffeine = () => {
       <Container>
      <TrackingScreen
       backgroundImage={sleepTrackingImage}
-      color="#81cfe0"
-      activityTitle="Mindfulness"
+      color="#B72B90"
+      activityTitle="Sleep"
       onSave={submitForm}
      
      >
-          <Text
-            style={{
-              fontSize: 30,
-              textAlign: "center",
-              marginTop: "20%",
-              marginBottom: "5%",
-              fontWeight: "600"
-            }}
-          >
-            Track your{" "}
-            <Text style={{ color: "#bf55ec", fontSize: 30, fontWeight: "600" }}>
-              Sleep
-            </Text>
-          </Text>
           <View style={{backgroundColor:"#B72B90", width: '85%', alignSelf: 'center', height: 90 }}>
           <Text style={{fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '700'}}>
             Program Expectations

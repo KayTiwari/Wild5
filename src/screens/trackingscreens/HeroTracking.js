@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Text, View, SafeAreaView, Image, TouchableOpacity, Alert } from "react-native";
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from "react-native-simple-radio-button";
+import RadioForm from "react-native-simple-radio-button";
 import heroTrackImg from "../../images/herologo.png";
+import heroBackground from '../../images/herobackground.jpeg'
 import firebase from 'react-native-firebase'
 import { TrackingScreen } from './TrackingScreen'
 import { scopeRefByUserAndDate } from '../../utils/firebase'
@@ -36,14 +37,12 @@ const [heroDaily, setHeroDaily] = React.useState("")
 
   })
 
-  render() {
     return (
       <TrackingScreen 
-      backgroundImage={heroTrackImg}
+      backgroundImage={heroBackground}
       color="#333"
       activityTitle="Hero Score"
       onSave={submitForm}
-      
       >
         <View
           style={{
@@ -54,7 +53,7 @@ const [heroDaily, setHeroDaily] = React.useState("")
           }}
         >
           <Image
-            source={HEROtrack}
+            source={heroTrackImg}
             style={{ height: 120, width: "100%", alignSelf: "center" }}
           />
         </View>
@@ -73,5 +72,7 @@ const [heroDaily, setHeroDaily] = React.useState("")
         </View>
         </TrackingScreen>
     );
-  }
+  
 }
+ 
+export default HeroTracking;

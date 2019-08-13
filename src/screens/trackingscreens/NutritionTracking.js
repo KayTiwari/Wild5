@@ -64,22 +64,6 @@ const NutritionTracking = () => {
       onSave={submitForm}
     >
             <ScrollView style={{ flex:1, padding: 30 }}>
-              <Text
-                style={{
-                  fontSize: 30,
-                  textAlign: "center",
-                  marginTop: "-5%",
-                  marginBottom: "10%",
-                  fontWeight: "600"
-                }}
-              >
-                Track your{" "}
-                <Text
-                  style={{ color: "#E27027", fontSize: 30, fontWeight: "600" }}
-                >
-                  Nutrition
-                </Text>
-              </Text>
               <View
                 style={{
                   backgroundColor: "#E27027",

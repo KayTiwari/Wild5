@@ -14,13 +14,6 @@ import Progress from './screens/trackingscreens/Progress';
 import Statistics from './screens/Statistics';
 import {Help} from './screens/accountmenu';
 import TrackingForm from './screens/TrackingForm';
-import {
-  ExerciseLesson,
-  MindfulnessLesson,
-  NutritionLesson,
-  SocialLesson,
-  SleepLesson,
-} from './screens/lessonscreens/';
 import Herointro from './screens/HERO/Herointro';
 import {
   HeroEnth,
@@ -70,41 +63,6 @@ const Routercomponent = () => {
           title="Learn More"
         />
         <Scene
-          key="exerciselesson"
-          component={ExerciseLesson}
-          title="Exercise"
-          backTitle="Back"
-          onBack={() => Actions.edroadmap()}
-        />
-        <Scene
-          key="mindfulnesslesson"
-          component={MindfulnessLesson}
-          title="Mindfulness"
-          backTitle="Back"
-          onBack={() => Actions.edroadmap()}
-        />
-        <Scene
-          key="sociallesson"
-          component={SocialLesson}
-          title="Social"
-          backTitle="Back"
-          onBack={() => Actions.edroadmap()}
-        />
-        <Scene
-          key="nutritionlesson"
-          component={NutritionLesson}
-          title="Nutrition"
-          backTitle="Back"
-          onBack={() => Actions.edroadmap()}
-        />
-        <Scene
-          key="sleeplesson"
-          component={SleepLesson}
-          title="Sleep"
-          backTitle="Back"
-          onBack={() => Actions.edroadmap()}
-        />
-        <Scene
           key="trackingform"
           component={TrackingForm}
           title="Wellness Tracking Form"
@@ -140,6 +98,7 @@ const Routercomponent = () => {
         <Scene
           key="exercisetracking"
           backTitle="Back"
+          onBack={()=> Actions.landing()}
           title="Exercise Tracking"
           component={ExerciseTracking}
         />
@@ -148,22 +107,26 @@ const Routercomponent = () => {
           backTitle="Back"
           title="Mindfulness Tracking"
           component={MindfulnessTracking}
-        />
+          onBack={()=> Actions.landing()}
+        initial/>
         <Scene
           key="sleeptracking"
           backTitle="Back"
+          onBack={()=> Actions.landing()}
           title="Sleep Tracking"
           component={SleepTracking}
         />
         <Scene
           key="socialtracking"
           backTitle="Back"
+          onBack={()=> Actions.landing()}
           title="Social Tracking"
           component={SocialTracking}
         />
         <Scene
           key="nutritiontracking"
           backTitle="Back"
+          onBack={()=> Actions.landing()}
           title="Nutrition Tracking"
           component={NutritionTracking}
         />

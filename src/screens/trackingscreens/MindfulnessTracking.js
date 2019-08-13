@@ -53,36 +53,31 @@ const MindfulnessTracking = () => {
     Actions.landing();
   })
 
+  updateValueChange = (type) => {
+    if(type === "other"){
+      setOtherType(true)
+      setMindType("")
+    } else {
+      setMindType(type)
+    }
+
+  }
+
 
 
     return (
-      // <View style={{ backgroundColor: "white", height: screenheight }}>
       <TrackingScreen
       backgroundImage={mindTrackingImage}
       color="#81cfe0"
       activityTitle="Mindfulness"
       onSave={submitForm}
       >
-        <Text
-          style={{
-            fontSize: 30,
-            textAlign: "center",
-            marginTop: "20%",
-            marginBottom: "5%",
-            fontWeight: "600"
-          }}
-        >
-          Track your{" "}
-          <Text style={{ color: "#81cfe0", fontSize: 30, fontWeight: "600" }}>
-            Mindfulness
-          </Text>
-        </Text>
         <View
           style={{
             backgroundColor: "#0AB1E7",
             width: "85%",
             alignSelf: "center",
-            height: 80
+            height: 90
           }}
         >
           <Text
@@ -134,20 +129,20 @@ const MindfulnessTracking = () => {
           </View>
           <View style={{alignItems: 'center', marginTop: 10}}>
           <Picker
-            selectedValue={this.state.mindType}
-            onValueChange={""}
+            selectedValue={mindType}
+            onValueChange={updateValueChange}
             mode="dropdown"
             placeholder="Select Type of Exercise"
-            placeholderStyle={{ color: "white" }}
-            placeholderIconColor="white"
+            placeholderStyle={{ color: "#000" }}
+            placeholderIconColor="#000"
             iosHeader="Exercises"
             iosIcon={
               <Icon
                 name="ios-arrow-dropdown"
-                style={{ color: "white", fontSize: 25 }}
+                style={{ color: "#000", fontSize: 25 }}
               />
             }
-            textStyle={{ color: "white" }}
+            textStyle={{ color: "#000" }}
           >
             {typedata.map(type => (
               <Picker.Item
@@ -163,13 +158,12 @@ const MindfulnessTracking = () => {
               <Item floatingLabel>
                 <Label>Type of meditation</Label>
                 <Input
-                  onChangeText={text => this.setState({ mindtype: text })}
+                  onChangeText={text => setMindType(text)}
                 />
               </Item>
             </Form>
           ) : null}
         </TrackingScreen>
-      // </View>
     );
   
 }
