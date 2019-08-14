@@ -1,7 +1,6 @@
 import React from 'react';
 import {Scene, Router, Actions} from 'react-native-router-flux';
 import Landing from './screens/Landing';
-import Account from './screens/Account';
 import EducationWellnessRoadMap from './screens/NewRoadMap';
 import ExerciseTracking from './screens/trackingscreens/ExerciseTracking';
 import MindfulnessTracking from './screens/trackingscreens/MindfulnessTracking';
@@ -12,7 +11,7 @@ import HeroTracking from './screens/trackingscreens/HeroTracking';
 import Settings from './screens/Settings';
 import Progress from './screens/trackingscreens/Progress';
 import Statistics from './screens/Statistics';
-import {Help} from './screens/accountmenu';
+import Help from './screens/accountmenu/Help'
 import TrackingForm from './screens/TrackingForm';
 import Herointro from './screens/HERO/Herointro';
 import {
@@ -51,12 +50,6 @@ const Routercomponent = () => {
           header={null}
         />
         <Scene
-          key="account"
-          component={Account}
-          title="Account"
-          header={null}
-        />
-        <Scene
           key="edroadmap"
           component={EducationWellnessRoadMap}
           header={null}
@@ -69,7 +62,7 @@ const Routercomponent = () => {
           backTitle="Back"
         />
         {/* <Scene key='feedback' component={Feedback} header={null}  title="Feedback" /> */}
-        <Scene key="about" component={Help} header={null} title="About" />
+        <Scene key="about" component={Help} header={null} title="About" initial/>
         <Scene
           key="statistics"
           component={Statistics}
@@ -108,7 +101,7 @@ const Routercomponent = () => {
           title="Mindfulness Tracking"
           component={MindfulnessTracking}
           onBack={()=> Actions.landing()}
-        initial/>
+        />
         <Scene
           key="sleeptracking"
           backTitle="Back"

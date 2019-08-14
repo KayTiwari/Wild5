@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Dimensions, ImageBackground, ScrollView } from "react-native";
+import { View, Dimensions, ImageBackground, ScrollView, TouchableOpacity, SafeAreaView } from "react-native";
 import {
   Text,
   Item,
@@ -15,14 +15,15 @@ import firebase from 'react-native-firebase';
 import { Actions } from "react-native-router-flux";
 import { withAuthProvider } from "../context/authcontext";
 import abstractimg from "../images/abstract2.jpeg";
-// import console = require("console");
-
+import Disclaimer from '../components/common/Disclaimer'
 const screenheight = Dimensions.get("window").height;
 class RegisterPage extends Component {
   state = {
     loading: false,
     email: '',
-    password: ''
+    password: '',
+    acceptDisclaimer: false,
+    showDisclaimer: false
   };
   setDate = newDate => {
     this.setState({ chosenDate: newDate });
@@ -45,6 +46,7 @@ class RegisterPage extends Component {
     const { email, password } = this.state;
     this.setState({
       loading: true,
+      acceptDisclaimer: true,
       error: ""
     });
     if (email !== '') {
@@ -68,11 +70,12 @@ class RegisterPage extends Component {
   onRegisterSuccess = () => {
     let newestuser = this.state.email.split(".");
     let newuser = newestuser[0].toString();
-    const { fullName, DOB, Goals } = this.state;
+    const { fullName, DOB, Goals, acceptDisclaimer } = this.state;
     firebase
       .database()
       .ref(`UserInfo/${newuser}`)
       .update({
+        accepteddisclaimer: acceptDisclaimer,
         fullName,
         DOB,
         Goals
@@ -89,8 +92,9 @@ class RegisterPage extends Component {
 
   render() {
     return (
-      <ScrollView bounces={false} style={{height: screenheight*2 }}>
-        <View style={{ height: screenheight*1.2}}>
+      !this.state.showDisclaimer ?
+      <ScrollView bounces={false} style={{flex: 1 }}>
+        <View style={{ flex: 1}}>
           <ImageBackground
             source={abstractimg}
             style={{ height: screenheight*1.5, width: "100%", resizeMode: "cover" }}
@@ -129,14 +133,15 @@ class RegisterPage extends Component {
                   marginRight: "5%"
                 }}
               >
-                <Item>
-                  <Icon active name="mail" />
+                <View style={{height: 50, flexDirection: 'row', justifyContent: 'space-between'}}>
+                  <Icon active name="mail" style={{alignSelf: 'center', marginRight: 5}} />
                   <Input
+                  style={{alignSelf: 'center'}}
                     onChangeText={value => this.setState({ email: value })}
                     placeholder="Email Address"
                     autoCapitalize={"none"}
                   />
-                </Item>
+                </View>
               </View>
               <View
                 style={{
@@ -145,14 +150,15 @@ class RegisterPage extends Component {
                   marginRight: "5%"
                 }}
               >
-                <Item>
-                  <Icon active name="key" />
+                <View style={{height: 50, flexDirection: 'row', justifyContent: 'space-between'}}>
+                  <Icon active name="key" style={{alignSelf: 'center', marginRight: 5}}/>
                   <Input
+                  style={{alignSelf: 'center'}}
                     secureTextEntry
                     onChangeText={value => this.setState({ password: value })}
                     placeholder="Desired Password"
                   />
-                </Item>
+                </View>
               </View>
 
               <View>
@@ -261,7 +267,7 @@ class RegisterPage extends Component {
                   type="outline"
                   large
                   raised={this.state.raised}
-                  onPress={() => this.registerPress()}
+                  onPress={()=> this.setState({showDisclaimer: !this.state.showDisclaimer})}
                 >
                   <Text>Register</Text>
                 </Button>
@@ -270,6 +276,38 @@ class RegisterPage extends Component {
           </ImageBackground>
         </View>
       </ScrollView>
+      : 
+      <SafeAreaView style={{flex: 1}}>
+      <Disclaimer/>
+      <View style={{flexDirection: 'row', height: 100, justifyContent: 'space-around', alignContent: 'center'}}>
+      <View style={{ alignSelf: "center" }}>
+                <Button
+                  style={{ zIndex: 1000 }}
+                  title="Accept"
+                  info
+                  type="outline"
+                  large
+                  raised={this.state.raised}
+                  onPress={()=> this.registerPress()}
+                >
+                  <Text>Accept</Text>
+                </Button>
+              </View>
+              <View style={{ alignSelf: "center" }}>
+                <Button
+                  style={{ zIndex: 1000 }}
+                  title="Decline"
+                  info
+                  type="outline"
+                  large
+                  raised={this.state.raised}
+                  onPress={()=> Actions.newlogin()}
+                >
+                  <Text>Decline</Text>
+                </Button>
+              </View>
+      </View>
+      </SafeAreaView>
     );
   }
 }

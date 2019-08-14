@@ -1,65 +1,22 @@
 import React from "react";
-import { ScrollView, View, Dimensions } from "react-native";
+import { ScrollView, View, Dimensions, SafeAreaView, Text } from "react-native";
+import { Accordion } from 'native-base'
 import { Actions } from "react-native-router-flux";
-import { Container, Text } from "native-base";
 import Navbar from "../../components/Navbar";
-
-const screenheight = Dimensions.get("window").height;
+import { aboutData }from '../../components/common/aboutData'
 
 const Help = () => {
   return (
-    <Container
-      style={{
-        height: screenheight,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between"
-      }}
+    <View
+      style={{height: "100%", display: 'flex', marginTop: "10%"}}
     >
-      <ScrollView style={{ marginLeft: "5%", marginRight: "5%" }}>
-        <View>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: "600",
-              marginTop: "20%",
-              marginBottom: "5%"
-            }}
-          >
-            About
-          </Text>
-          <Text style={{}}>
-            Resource materials created by Saundra (MD) and Rakesh Jain MD.
-          </Text>
-          <Text style={{ marginTop: "5%" }}>
-            App created on React Native by Abhi Tiwari and Bill Violette.
-          </Text>
-        </View>
-
-        <View>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: "600",
-              marginTop: "20%",
-              marginBottom: "5%"
-            }}
-          >
-            FAQ
-          </Text>
-          <Text style={{ fontSize: 15, fontWeight: "600" }}>
-            How do I use this app?
-          </Text>
-          <Text style={{ fontSize: 15, marginTop: "5%" }}>
-            Use this app daily as supplemental instruction to the Wild5 booklet.
-          </Text>
-        </View>
-      </ScrollView>
-      <View>
+      <Accordion dataArray={aboutData} expanded={4} headerStyle={{ backgroundColor: "#fff" }}
+            contentStyle={{ backgroundColor: "#fff", color: "#000" }}/>
+      <View style={{justifyContent: 'flex-end'}}>
         <Navbar faqdisable/>
       </View>
-    </Container>
+    </View>
   );
 };
 
-export {Help};
+export default Help;
