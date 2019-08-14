@@ -47,21 +47,19 @@ const MindfulnessTracking = () => {
       .database()
       .ref(mindfulnessRef)
       .update({
-        mindtype: mindtype,
+        mindtype: mindType,
         mindDaily: mindDaily
       });
     Actions.landing();
   })
 
-  updateValueChange = (type) => {
-    if(type === "other"){
-      setOtherType(true)
-      setMindType("")
-    } else {
-      setMindType(type)
-    }
+  
+    React.useEffect(()=> {
+      if(mindType === "Other"){
+        setOtherType(true) 
+      }})
 
-  }
+ 
 
 
 
@@ -127,10 +125,12 @@ const MindfulnessTracking = () => {
             />
           </View>
           </View>
+          <View style={{height: 100}}>
           <View style={{alignItems: 'center', marginTop: 10}}>
           <Picker
+          style={{marginLeft: 5, marginRight: 5}}
             selectedValue={mindType}
-            onValueChange={updateValueChange}
+            onValueChange={type => setMindType(type)}
             mode="dropdown"
             placeholder="Select Type of Exercise"
             placeholderStyle={{ color: "#000" }}
@@ -163,6 +163,7 @@ const MindfulnessTracking = () => {
               </Item>
             </Form>
           ) : null}
+          </View>
         </TrackingScreen>
     );
   
