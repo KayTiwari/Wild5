@@ -1,7 +1,6 @@
 import React from "react";
-import { ScrollView, View, Dimensions, SafeAreaView, Text } from "react-native";
+import { View } from "react-native";
 import { Accordion } from 'native-base'
-import { Actions } from "react-native-router-flux";
 import Navbar from "../../components/Navbar";
 import { aboutData }from '../../components/common/aboutData'
 

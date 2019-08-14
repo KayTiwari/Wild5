@@ -1,16 +1,11 @@
-import React, { Component } from "react";
-import { ScrollView, View, Dimensions, ImageBackground, SafeAreaView } from "react-native";
+import React from "react";
+import { ScrollView, View, SafeAreaView } from "react-native";
 import {
-  Input,
-  Form,
-  Item,
-  Label,
   Text,
   ListItem,
   CheckBox,
   Body
 } from "native-base";
-import { ModButton } from "../../components/common";
 import firebase from 'react-native-firebase';
 import RadioForm from "react-native-simple-radio-button";
 import { Actions } from "react-native-router-flux";
@@ -40,7 +35,7 @@ const NutritionTracking = () => {
 
   const submitForm = React.useCallback( async () => {
     const nutritionRef = scopeRefByUserAndDate('Surveys', 'mindfulness')
-    firebase
+    await firebase
       .database()
       .ref(nutritionRef)
       .update({
@@ -154,7 +149,7 @@ const NutritionTracking = () => {
                 </Text>
                 <ListItem onPress={breakfastCheckBox}>
                   <CheckBox
-                    color="#f44336"
+                    color="#E27027"
                     checked={breakfastMindfulness}
                     onPress={breakfastCheckBox}
                   />
@@ -174,7 +169,7 @@ const NutritionTracking = () => {
                 </ListItem>
                 <ListItem onPress={dinnerCheckBox}>
                   <CheckBox
-                    color="##E27027"
+                    color="#E27027"
                     checked={dinnerMindfulness}
                     onPress={dinnerCheckBox}
                   />

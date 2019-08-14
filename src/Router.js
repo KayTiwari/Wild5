@@ -62,7 +62,7 @@ const Routercomponent = () => {
           backTitle="Back"
         />
         {/* <Scene key='feedback' component={Feedback} header={null}  title="Feedback" /> */}
-        <Scene key="about" component={Help} header={null} title="About" initial/>
+        <Scene key="about" component={Help} header={null} title="About" />
         <Scene
           key="statistics"
           component={Statistics}

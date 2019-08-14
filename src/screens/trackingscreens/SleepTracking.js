@@ -1,17 +1,13 @@
-import React, { Component } from "react";
-import { ScrollView, View, Dimensions, ImageBackground } from "react-native";
+import React from "react";
+import { View} from "react-native";
 import {
-  Item,
-  Label,
   Text,
   Content,
   ListItem,
   CheckBox,
   Body,
   Container,
-  Header
 } from "native-base";
-import { ModButton } from "../../components/common";
 import firebase from 'react-native-firebase';
 import RadioForm from "react-native-simple-radio-button";
 import { Actions } from "react-native-router-flux";

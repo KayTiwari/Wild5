@@ -13,9 +13,7 @@ import { withAuthProvider } from "../context/authcontext";
 import { Actions } from "react-native-router-flux";
 import abstractimg from "../images/abstract2.jpeg";
 import wild5title from "../images/wild-5-logo-r-color.png";
-// import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input, Button } from "react-native-elements";
-// import console = require('console');
 
 const screenheight = Dimensions.get("window").height;
 

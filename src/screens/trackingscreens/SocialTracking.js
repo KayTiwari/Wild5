@@ -6,11 +6,7 @@ import firebase from 'react-native-firebase';
 import {Actions} from 'react-native-router-flux';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
 import {TrackingScreen} from './TrackingScreen';
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel
-} from "react-native-simple-radio-button";
+import RadioForm from "react-native-simple-radio-button";
 
 const CALLED_FRIEND = 'calledFriend';
 const MET_FRIEND_IN_PERSON = 'metFriendInPerson';

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Button, Text, Dimensions, TouchableOpacity } from "react-native";
+import { View, Text, Dimensions, TouchableOpacity } from "react-native";
 import { Container } from "native-base";
 import Navbar from "../components/Navbar";
 import ToggleSwitch from "toggle-switch-react-native";

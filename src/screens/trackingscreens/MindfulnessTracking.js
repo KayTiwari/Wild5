@@ -1,13 +1,8 @@
-import React, { Component } from "react";
-import { ScrollView, View, Dimensions, ImageBackground } from "react-native";
+import React from "react";
+import { View } from "react-native";
 import { Input, Form, Item, Label, Text, Picker, Icon } from "native-base";
-import { ModButton } from "../../components/common";
 import firebase from 'react-native-firebase';
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel
-} from "react-native-simple-radio-button";
+import RadioForm from "react-native-simple-radio-button";
 import {TrackingScreen} from './TrackingScreen'
 import {scopeRefByUserAndDate} from '../../utils/firebase'
 import { Actions } from "react-native-router-flux";

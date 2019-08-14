@@ -5467,11 +5467,6 @@ react-native-chart-kit@2.6.1:
     paths-js "^0.4.7"
     point-in-polygon "^1.0.1"
 
-react-native-config@0.11.7:
-  version "0.11.7"
-  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
-  integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
-
 react-native-datepicker@1.7.2:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/react-native-datepicker/-/react-native-datepicker-1.7.2.tgz#58d0822591a0ac9b32aba082650222a0ee29669d"
@@ -6649,25 +6644,6 @@ tar@^4:
     mkdirp "^0.5.0"
     safe-buffer "^5.1.2"
     yallist "^3.0.3"
-
-tcomb-form-native@0.6.20:
-  version "0.6.20"
-  resolved "https://registry.yarnpkg.com/tcomb-form-native/-/tcomb-form-native-0.6.20.tgz#81771faf86536a5d4c0f492885eb229324d47ea5"
-  integrity sha512-tuvLmdii2zvkevzFKMS1lYbmE5BeKuRF+sokVqllfjwrViLjgdSCD2Y8WZHUYbUMTbBfEUF65F0vd5zP+Owr2Q==
-  dependencies:
-    tcomb-validation "^3.0.0"
-
-tcomb-validation@^3.0.0:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/tcomb-validation/-/tcomb-validation-3.4.1.tgz#a7696ec176ce56a081d9e019f8b732a5a8894b65"
-  integrity sha512-urVVMQOma4RXwiVCa2nM2eqrAomHROHvWPuj6UkDGz/eb5kcy0x6P0dVt6kzpUZtYMNoAqJLWmz1BPtxrtjtrA==
-  dependencies:
-    tcomb "^3.0.0"
-
-tcomb@^3.0.0:
-  version "3.2.29"
-  resolved "https://registry.yarnpkg.com/tcomb/-/tcomb-3.2.29.tgz#32404fe9456d90c2cf4798682d37439f1ccc386c"
-  integrity sha512-di2Hd1DB2Zfw6StGv861JoAF5h/uQVu/QJp2g8KVbtfKnoHdBQl5M32YWq6mnSYBQ1vFFrns5B1haWJL7rKaOQ==
 
 temp@0.8.3:
   version "0.8.3"

@@ -6,7 +6,7 @@ import {
   Image,
   ImageBackground,
 } from "react-native";
-import {Container, Button, Text } from "native-base";
+import { Container } from "native-base";
 import wild5title from "../images/wild-5-logo-r-color.png";
 import Navbar from "../components/Navbar";
 import landingbackground from "../images/landingBackground2.jpg";

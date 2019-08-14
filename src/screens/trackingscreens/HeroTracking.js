@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Text, View, SafeAreaView, Image, TouchableOpacity, Alert } from "react-native";
 import RadioForm from "react-native-simple-radio-button";
 // import heroTrackImg from "../../images/herologo.png";

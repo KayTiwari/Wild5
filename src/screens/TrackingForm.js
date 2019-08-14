@@ -1,12 +1,8 @@
 // import console = require('console');
 import React, { Component } from "react";
 import { View, Text, ScrollView, Dimensions } from "react-native";
-import { Button, ModButton } from "../components/common";
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel
-} from "react-native-simple-radio-button";
+import { ModButton } from "../components/common";
+import RadioForm from "react-native-simple-radio-button";
 import { Actions } from "react-native-router-flux";
 import firebase from 'react-native-firebase';
 import VictoryChart from "../components/charts/VictoryRadarChart";

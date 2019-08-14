@@ -5,7 +5,6 @@ import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 import io.invertase.firebase.database.RNFirebaseDatabasePackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
-import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativecommunity.slider.ReactSliderPackage;
 import com.horcrux.svg.SvgPackage;
