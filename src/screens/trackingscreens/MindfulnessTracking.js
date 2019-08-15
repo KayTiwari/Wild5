@@ -144,7 +144,7 @@ const MindfulnessTracking = () => {
           </Picker>
         </View>
         {otherType ? (
-          <Form style={{ marginBottom: 10 }}>
+          <View style={{ marginBottom: 10, height: 30}}>
             <Item floatingLabel>
               <Label>Type of meditation</Label>
               <Input
@@ -152,7 +152,7 @@ const MindfulnessTracking = () => {
                 onChangeText={text => setMindType(text)}
               />
             </Item>
-          </Form>
+          </View>
         ) : null}
       </View>
     </TrackingScreen>

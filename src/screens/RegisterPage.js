@@ -136,6 +136,7 @@ class RegisterPage extends Component {
                 <View style={{height: 50, flexDirection: 'row', justifyContent: 'space-between'}}>
                   <Icon active name="mail" style={{alignSelf: 'center', marginRight: 5}} />
                   <Input
+                  keyboardType={"email-address"}
                   style={{alignSelf: 'center'}}
                     onChangeText={value => this.setState({ email: value })}
                     placeholder="Email Address"

@@ -325,10 +325,11 @@ class Settings extends Component<Props> {
                 </Text>
               </View>
             </TouchableOpacity> */}
-
-            {/* <Button title="Feedback" onPress={() => Actions.feedback()}/> */}
-
-            {/* <Button title="Logout" onPress={""} /> */}
+            <View style={{marginLeft: 15, marginTop: 20}}>
+              <TouchableOpacity style={{height: 60, width: 100, backgroundColor:"#000", justifyContent:'center', borderRadius: 7}} onPress={()=> firebase.auth().signOut().then(()=> Actions.newlogin())}>
+                <Text style={{color: "#fff", alignSelf:'center'}}>Logout</Text>
+              </TouchableOpacity>
+            </View>
           {/* </View> */}
         </Container>
         <Navbar />
