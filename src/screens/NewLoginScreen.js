@@ -19,11 +19,7 @@ const screenheight = Dimensions.get("window").height;
 
 const NewLoginScreen = (props) => {
 
-  useEffect(() => {
-   console.log(props)
-  },[])
-  
-
+ 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [modal, setModal] = useState(false);
