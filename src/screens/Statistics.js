@@ -1,208 +1,86 @@
-import React, {Component} from 'react';
-import {View, Dimensions, ScrollView} from 'react-native';
-import {Text, Button} from 'native-base';
-import {Actions} from 'react-native-router-flux';
-import Navbar from '../components/Navbar';
+import React from 'react';
+import PropTypes from 'prop-types';
+import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import {withAuthProvider} from '../context/authcontext';
+import {Exercise} from './stats-at-a-glance/Exercise';
+import {Social} from './stats-at-a-glance/Social';
+import {Layout} from '../components/common/Layout';
 
-const {height, width} = Dimensions.get('window');
+export function Statistics(props) {
+  const [loading, setLoading] = React.useState(false);
 
-class Statistics extends Component {
-  state = {};
+  React.useEffect(() => {
+    setLoading(true);
+    props.getPrincipleData();
+  }, []);
 
-  principlePress = () => {
-    this.props.getPrincipleData();
-    Actions.principlestats();
-  };
-
-  heroPress = () => {
-    this.props.getHeroData();
-    Actions.herostats();
-  };
-
-  inDepthPress = type => {
-    this.props.getPrincipleData();
-    switch (type) {
-      case 'ex':
-        Actions.exstats();
-        break;
-      case 'mind':
-        Actions.mindstats();
-        break;
-      case 'sleep':
-        Actions.sleepstats();
-        break;
-      case 'social':
-        Actions.socialstats();
-        break;
-      case 'nutri':
-        Actions.nutristats();
-        break;
+  React.useEffect(() => {
+    if (Boolean(props.princData)) {
+      setLoading(false);
     }
-  };
+  }, [props.princData]);
 
-  render() {
-    return (
-      <View
-        style={{
-          backgroundColor: 'white',
-          height: height,
-          width: width,
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-        }}
-      >
-        <View style={{backgroundColor: '#2e3131'}}>
-          <View>
-            <Text
-              style={{
-                fontSize: 30,
-                fontWeight: '600',
-                textAlign: 'center',
-                color: 'white',
-                marginTop: '15%',
-                shadowColor: 'black',
-                shadowOffset: {width: 4, height: 4},
-                shadowOpacity: 0.5,
-                shadowRadius: 6,
-              }}
-            >
-              Your Stats
-            </Text>
-          </View>
-          <View>
-            <Text
-              style={{
-                fontSize: 20,
-                fontWeight: '600',
-                textAlign: 'center',
-                color: 'white',
-                marginTop: '10%',
-              }}
-            >
-              Reflect with your Wellness Progress
-            </Text>
-          </View>
-        </View>
-
-        <ScrollView bounces={false} style={{}}>
-          <View style={{alignSelf: 'center', marginTop: '10%'}}>
-            <Button
-              large
-              danger
-              style={{
-                shadowColor: 'black',
-                shadowOffset: {width: 4, height: 4},
-                shadowOpacity: 0.5,
-                shadowRadius: 6,
-              }}
-              onPress={() => this.heroPress()}
-            >
-              <Text>HERO Totals</Text>
-            </Button>
-          </View>
-          <View style={{alignSelf: 'center', marginTop: '10%'}}>
-            <Button
-              large
-              style={{
-                backgroundColor: '#333',
-                shadowColor: 'black',
-                shadowOffset: {width: 4, height: 4},
-                shadowOpacity: 0.5,
-                shadowRadius: 6,
-                width: '75%',
-              }}
-              onPress={() => this.principlePress()}
-            >
-              <Text>Wild5 Practices</Text>
-            </Button>
-          </View>
-          <View style={{alignSelf: 'center', marginTop: '10%'}}>
-            <Button
-              large
-              style={{
-                backgroundColor: '#72B83E',
-                shadowColor: 'black',
-                shadowOffset: {width: 4, height: 4},
-                shadowOpacity: 0.5,
-                shadowRadius: 6,
-              }}
-              onPress={() => this.inDepthPress('ex')}
-            >
-              <Text>Exercise In-Depth</Text>
-            </Button>
-          </View>
-          <View style={{alignSelf: 'center', marginTop: '10%'}}>
-            <Button
-              large
-              info
-              style={{
-                shadowColor: 'black',
-                shadowOffset: {width: 4, height: 4},
-                shadowOpacity: 0.5,
-                shadowRadius: 6,
-              }}
-              onPress={() => this.inDepthPress('mind')}
-            >
-              <Text>Mindfulness In-Depth</Text>
-            </Button>
-          </View>
-          <View style={{alignSelf: 'center', marginTop: '10%'}}>
-            <Button
-              large
-              style={{
-                backgroundColor: '#BD2C95',
-                shadowColor: 'black',
-                shadowOffset: {width: 4, height: 4},
-                shadowOpacity: 0.5,
-                shadowRadius: 6,
-              }}
-              onPress={() => this.inDepthPress('sleep')}
-            >
-              <Text>Sleep In-Depth</Text>
-            </Button>
-          </View>
-          <View style={{alignSelf: 'center', marginTop: '10%'}}>
-            <Button
-              large
-              style={{
-                backgroundColor: '#E93422',
-                shadowColor: 'black',
-                shadowOffset: {width: 4, height: 4},
-                shadowOpacity: 0.5,
-                shadowRadius: 6,
-              }}
-              onPress={() => this.inDepthPress('social')}
-            >
-              <Text>Social In-Depth</Text>
-            </Button>
-          </View>
-          <View
-            style={{alignSelf: 'center', marginTop: '10%', marginBottom: '5%'}}
-          >
-            <Button
-              large
-              style={{
-                backgroundColor: '#E06F26',
-                shadowColor: 'black',
-                shadowOffset: {width: 4, height: 4},
-                shadowOpacity: 0.5,
-                shadowRadius: 6,
-              }}
-              onPress={() => this.inDepthPress('nutri')}
-            >
-              <Text>Nutrition In-Depth</Text>
-            </Button>
-          </View>
-        </ScrollView>
-
-        <View style={{}}>
-          <Navbar statsdisable />
-        </View>
-      </View>
+  // Memo: The rest of this should be implemented as soon as the other tracking pages are updated
+  const {exerciseData, socialData} = React.useMemo(() => {
+    return ['exercise', 'social'].reduce(
+      (dataMap, type) => ({
+        ...dataMap,
+        [`${type}Data`]: extractRelevantData(props.princData, type),
+      }),
+      {}
     );
-  }
+  }, [props.princData]);
+
+  return (
+    <Layout title="Statistics">
+      {loading ? (
+        <ActivityIndicator size="large" />
+      ) : (
+        <View style={styles.tiles}>
+          <Exercise data={exerciseData} />
+          <Social data={socialData} />
+        </View>
+      )}
+    </Layout>
+  );
 }
+
+Statistics.propTypes = {
+  princData: PropTypes.objectOf(
+    PropTypes.shape({
+      exercise: PropTypes.shape({
+        duration: PropTypes.number,
+        intensity: PropTypes.oneOf(['low', 'moderate', 'high']),
+        type: PropTypes.string,
+      }),
+      social: PropTypes.shape({
+        calledFamily: PropTypes.bool,
+        calledFriend: PropTypes.bool,
+        metFamilyInPerson: PropTypes.bool,
+        metFriendInPerson: PropTypes.bool,
+      }),
+    })
+  ),
+  getPrincipleData: PropTypes.func.isRequired,
+};
+
+Statistics.defaultProps = {
+  princData: {},
+};
+
+function extractRelevantData(princData, type) {
+  return Object.keys(princData).reduce(
+    (data, date) => ({...data, [date]: princData[date][type] || {}}),
+    {}
+  );
+}
+
+const styles = StyleSheet.create({
+  tiles: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+});
 
 export default withAuthProvider(Statistics);
