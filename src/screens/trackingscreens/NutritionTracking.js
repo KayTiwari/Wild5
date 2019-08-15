@@ -11,6 +11,7 @@ import RadioForm from "react-native-simple-radio-button";
 import { Actions } from "react-native-router-flux";
 import nutriTrackingImage from "../../images/nutritracking.jpg";
 import {TrackingScreen} from './TrackingScreen';
+import {scopeRefByUserAndDate} from '../../utils/firebase'
 
 const NutritionTracking = () => {
 
@@ -34,7 +35,7 @@ const NutritionTracking = () => {
 
 
   const submitForm = React.useCallback( async () => {
-    const nutritionRef = scopeRefByUserAndDate('Surveys', 'mindfulness')
+    const nutritionRef = scopeRefByUserAndDate('Surveys', 'nutrition')
     await firebase
       .database()
       .ref(nutritionRef)
@@ -100,8 +101,8 @@ const NutritionTracking = () => {
               initial={false}
               formHorizontal={false}
               labelHorizontal={true}
-              buttonColor={"#f5bd68"}
-              selectedButtonColor={"#f5bd68"}
+              buttonColor={"#E27027"}
+              selectedButtonColor={"#E27027"}
               labelStyle={{fontSize: 20, color: '#000'}}
               animation={true}
               onPress={value => dailyValue(value)}

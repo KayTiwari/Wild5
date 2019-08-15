@@ -51,7 +51,7 @@ function ExerciseTracking() {
     // Handle errors here
 
     Alert.alert('Success!', 'Your exercises for today have been recorded.', [
-      {text: 'OK', onPress: Actions.landing},
+      {text: 'OK', onPress: Actions.landing()},
     ]);
   }, [type, duration, intensity]);
 

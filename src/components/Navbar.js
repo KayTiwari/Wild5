@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, TouchableOpacity, StyleSheet, Image } from "react-native";
+import { View } from "react-native";
 import {
   Container,
   Footer,
@@ -25,12 +25,11 @@ class Navbar extends Component {
   render() {
     return (
       <View>
-        {this.state.show === 0 ? (
           <Footer>
             <FooterTab>
               <Button disabled={this.props.homedisable} onPress={this.homePress.bind(this)}>
                 <Icon name={"ios-home"} />
-                <Text>Home</Text>
+                <Text>Track</Text>
               </Button>
               {/* <Button disabled={this.props.learndisable} onPress={() => Actions.edroadmap()}>
                 <Icon name={"ribbon"} />
@@ -44,14 +43,6 @@ class Navbar extends Component {
                 <Icon name={"sunny"} />
                 <Text>HERO</Text>
               </Button>
-              <Button onPress={() => this.setState({ show: 1 })}>
-                <Text style={{ fontSize: 30, fontWeight: "600" }}>...</Text>
-              </Button>
-            </FooterTab>
-          </Footer>
-        ) : (
-          <Footer>
-            <FooterTab>
             {/* <Button disabled={this.props.questdisable} onPress={() => Actions.quests()}>
                 <Icon name={"flame"} />
                 <Text>Quest</Text>
@@ -72,12 +63,8 @@ class Navbar extends Component {
                 <Icon name={"ios-settings"} />
                 <Text style={{ fontSize: 10 }}>Settings</Text>
               </Button>
-              <Button onPress={() => this.setState({ show: 0 })}>
-                <Text style={{ fontSize: 30, fontWeight: "600" }}>...</Text>
-              </Button>
             </FooterTab>
           </Footer>
-        )}
       </View>
     );
   }

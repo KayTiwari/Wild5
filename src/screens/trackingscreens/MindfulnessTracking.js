@@ -127,7 +127,7 @@ const MindfulnessTracking = () => {
             selectedValue={mindType}
             onValueChange={type => setMindType(type)}
             mode="dropdown"
-            placeholder="Select Type of Exercise"
+            placeholder="Select Type of Meditation"
             placeholderStyle={{ color: "#000" }}
             placeholderIconColor="#000"
             iosHeader="Exercises"
@@ -149,10 +149,11 @@ const MindfulnessTracking = () => {
           </Picker>
           </View>
           {otherType ? (
-            <Form>
+            <Form style={{marginBottom: 10}}>
               <Item floatingLabel>
                 <Label>Type of meditation</Label>
                 <Input
+                style={{marginTop: 5}}
                   onChangeText={text => setMindType(text)}
                 />
               </Item>
