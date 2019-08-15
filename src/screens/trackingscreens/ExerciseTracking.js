@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, View} from 'react-native';
+import {Alert, View, KeyboardAvoidingView} from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import {Text, Item, Label, Input, Picker, Form} from 'native-base';
 import Slider from '@react-native-community/slider';
@@ -56,6 +56,7 @@ function ExerciseTracking() {
   }, [type, duration, intensity]);
 
   return (
+    <KeyboardAvoidingView style={{flex:1}}behavior="padding" enabled>
     <TrackingScreen
       backgroundImage={exbackground}
       color="#a8eb12"
@@ -184,6 +185,7 @@ function ExerciseTracking() {
         onPress={value => setIntensity(value)}
       />
     </TrackingScreen>
+    </KeyboardAvoidingView>
   );
 }
 export default withAuthProvider(ExerciseTracking);

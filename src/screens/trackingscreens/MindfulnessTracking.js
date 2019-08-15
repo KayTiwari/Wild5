@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, KeyboardAvoidingView } from "react-native";
 import { Input, Form, Item, Label, Text, Picker, Icon } from "native-base";
 import firebase from "react-native-firebase";
 import RadioForm from "react-native-simple-radio-button";
@@ -55,6 +55,7 @@ const MindfulnessTracking = () => {
   });
 
   return (
+    <KeyboardAvoidingView style={{flex:1}}behavior="padding" enabled>
     <TrackingScreen
       backgroundImage={mindTrackingImage}
       color="#81cfe0"
@@ -158,6 +159,7 @@ const MindfulnessTracking = () => {
         ) : null}
       </View>
     </TrackingScreen>
+    </KeyboardAvoidingView>
   );
 };
 export default MindfulnessTracking;
