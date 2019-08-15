@@ -72,13 +72,13 @@ function ExerciseTracking() {
       >
         <Text
           style={{
-            fontSize: 20,
+            fontSize: 26,
             color: 'white',
             alignSelf: 'center',
             fontWeight: '700',
           }}
         >
-          Program Expectations
+          Practices
         </Text>
         <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
           Exercise 30 minutes each day for 30 days, aim for at least moderate
@@ -149,6 +149,7 @@ function ExerciseTracking() {
       >
         Exercise Duration?
       </Text>
+      <Text style={{textAlign: 'center'}}>{duration} minutes</Text>
       <Slider
         style={{width: '80%', alignSelf: 'center'}}
         minimumValue={0}
@@ -157,7 +158,6 @@ function ExerciseTracking() {
         step={5}
         onValueChange={setDuration}
       />
-      <Text style={{textAlign: 'center'}}>{duration} minutes</Text>
       <Text
         style={{
           marginTop: '10%',

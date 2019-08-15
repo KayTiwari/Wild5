@@ -35,15 +35,17 @@ const MindfulnessTracking = () => {
   const [otherType, setOtherType] = React.useState(false);
 
   const submitForm = React.useCallback(async () => {
+    setTrackedToday(true)
     const mindfulnessRef = scopeRefByUserAndDate("Surveys", "mindfulness");
     firebase
       .database()
       .ref(mindfulnessRef)
       .update({
         mindtype: mindType,
-        mindDaily: mindDaily
+        mindDaily: mindDaily,
       });
     Actions.landing();
+
   });
 
   React.useEffect(() => {

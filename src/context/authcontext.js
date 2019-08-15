@@ -13,15 +13,15 @@ export default class AuthProvider extends Component {
 
 componentDidMount(){
 
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      this.setState({  authenticated: true });
-      if(Actions.currentScene !== "landing"){Actions.landing()}
-    } else {
-      this.setState({  authenticated: false });
-      Actions.newlogin()
-    }
-  });
+  // firebase.auth().onAuthStateChanged((user) => {
+  //   if (user) {
+  //     this.setState({  authenticated: true });
+  //     if(Actions.currentScene !== "landing"){Actions.landing()}
+  //   } else {
+  //     this.setState({  authenticated: false });
+  //     Actions.newlogin()
+  //   }
+  // });
 }
 
   getUser = () => {

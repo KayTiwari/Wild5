@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, Dimensions, TouchableOpacity } from "react-native";
-import { Container } from "native-base";
+import { Container, Icon } from "native-base";
 import Navbar from "../components/Navbar";
 import ToggleSwitch from "toggle-switch-react-native";
 import PushNotificationIOS from "../components/common/PushNotificationsIOS";
@@ -9,7 +9,6 @@ import TimePicker from "../components/common/TimePicker";
 import { Actions } from "react-native-router-flux";
 import firebase from 'react-native-firebase';
 
-const { height, width } = Dimensions.get("window");
 
 type Props = {};
 class Settings extends Component<Props> {
@@ -31,7 +30,7 @@ class Settings extends Component<Props> {
   }
 
   componentDidMount() {
-    this.getNotifStatus();
+    
     var user = firebase.auth().currentUser;
     if (user) {
       var res = user.email.split(".");
@@ -42,6 +41,7 @@ class Settings extends Component<Props> {
     } else {
       console.log("set State for user failed sleepquest line 52");
     }
+    this.getNotifStatus();
   }
 
   getNotifStatus = () => {
@@ -226,6 +226,7 @@ class Settings extends Component<Props> {
               >
                 Settings
               </Text>
+              <Icon />
             </View>
             <Text style={{ fontSize: 20 }}>Notifications</Text>
             <View

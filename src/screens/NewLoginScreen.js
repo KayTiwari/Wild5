@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Image,
@@ -17,26 +17,26 @@ import { Input, Button } from "react-native-elements";
 
 const screenheight = Dimensions.get("window").height;
 
-class NewLoginScreen extends Component {
-  state = {
-    email: "",
-    password: "",
-    raised: true,
-    error: "",
-    loading: false,
-    modal: false,
-    authenticated: false
-  };
+const NewLoginScreen = (props) => {
+
+  useEffect(() => {
+   console.log(props)
+  },[])
+  
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [modal, setModal] = useState(false);
+  const [raised, setRaised] = useState(true);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
  
 
-  LoginPress() {
-    const { email, password } = this.state;
-    this.setState({
-      error: "",
-      loading: true
-    });
-          firebase.auth().signInWithEmailAndPassword(email, password)
+  LoginPress = () => {
+    setLoading(true);
+    setError("");
+     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(() => {
         this.onLoginSuccess();
       })
@@ -45,38 +45,29 @@ class NewLoginScreen extends Component {
       })
     }
 
-  onLoginSuccess() {
+  onLoginSuccess = () => {
     Actions.landing();
-    this.props.getUser();
+    props.getUser();
   }
 
-  onLoginFail(err) {
+  onLoginFail = err => {
     console.log(err.message);
     if (err.message === 'The email address is badly formatted'){
-      this.setState({
-        error: 'Invalid Email Address'
-      })
+    setError("Invalid Email Address")
     } else if (err.message === 'There is no user record corresponding to this identifier. The user may have been deleted.'){
-      this.setState({
-        error: 'Email address not registered yet!'
-      })
+      setError("Email address not registered yet!")
     } else if (err.message === 'The password is invalid or the user does not have a password.'){
-      this.setState({
-        error: 'Wrong Password'
-      })
+     setError('Wrong Password')
     } else{
-    this.setState({
-      error: err.message
-    });
+    setError(err.message)
   }
   }
 
-  render() {
     return (
       <ScrollView>
         <View style={{ backgroundColor: "gray", height: screenheight }}>
-          {this.state.modal ? (
-            <ForgotModal isVisible={this.state.modal} />
+          {modal ? (
+            <ForgotModal isVisible={modal} />
           ) : null}
           <ImageBackground
             source={abstractimg}
@@ -118,7 +109,7 @@ class NewLoginScreen extends Component {
             >
               <Input
                 placeholder="Email"
-                onChangeText={email => this.setState({ email })}
+                onChangeText={text => setEmail(text)}
                 spellCheck={false}
                 keyboardType={"email-address"}
                 autoCapitalize={"none"}
@@ -127,7 +118,7 @@ class NewLoginScreen extends Component {
               />
               <Input
                 placeholder="Password"
-                onChangeText={password => this.setState({ password })}
+                onChangeText={text => setPassword(text)}
                 spellCheck={false}
                 textContentType={"password"}
                 autoCapitalize={"none"}
@@ -153,9 +144,9 @@ class NewLoginScreen extends Component {
               color: "red"
             }}
           >
-            {this.state.error}
+            {error}
           </Text>
-          {this.state.loading && !this.state.error ? (
+          {loading && !error ? (
             <View
               style={{
                 position: "absolute",
@@ -180,7 +171,7 @@ class NewLoginScreen extends Component {
             <Button
               title="Login"
               type="outline"
-              raised={this.state.raised}
+              raised={raised}
               onPress={() => this.LoginPress()}
             />
           </View>
@@ -195,7 +186,7 @@ class NewLoginScreen extends Component {
             <Button
               title="Register"
               type="outline"
-              raised={this.state.raised}
+              raised={raised}
               onPress={() => Actions.registerpage()}
             />
           </View>
@@ -210,7 +201,7 @@ class NewLoginScreen extends Component {
           >
             <Button
               title="Forgot password?"
-              onPress={() => this.setState({ modal: !this.state.modal })}
+              onPress={()=> setModal(prevState=> !prevState)}
               type="clear"
               titleStyle={{ fontSize: 15 }}
             />
@@ -244,7 +235,7 @@ class NewLoginScreen extends Component {
         </View>
       </ScrollView>
     );
-  }
+  
 }
 
 export default withAuthProvider(NewLoginScreen);
