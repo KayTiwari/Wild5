@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* wild5Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* wild5Tests.m */; };
 		03E72D9E622E41248A1779C7 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19DD33A738924ACD87E3E6B1 /* Ionicons.ttf */; };
@@ -167,7 +168,6 @@
 				2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */,
 				42358486F88143D1A58F3C71 /* libRNVectorIcons-tvOS.a in Frameworks */,
 				E4A19919307A4D4ABCFC8312 /* libRNSVG-tvOS.a in Frameworks */,
-				5D4CCDF733A142D8B2D63084 /* libReactNativeConfig-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,9 +207,7 @@
 				FDCDAFB3BDAF45F1B2D7D24C /* libRNSVG.a */,
 				3711FDC9F67E410991623E1E /* libRNCSlider.a */,
 				3D8B1A3718904F368DC1419C /* libBVLinearGradient.a */,
-				6E5A3F7BF26744B6A9C52E9E /* libReactNativeConfig.a */,
 				0240F0F143874750899EF064 /* libRNSVG-tvOS.a */,
-				707AB39CD90343DE8C2D72F8 /* libReactNativeConfig-tvOS.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -495,13 +493,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		23518B7A22FD22CF0035C850 /* libReactNativeConfig-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libReactNativeConfig-tvOS.a";
-			remoteRef = 23518B7922FD22CF0035C850 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		23518B8A22FD22CF0035C850 /* libRNSVG.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;

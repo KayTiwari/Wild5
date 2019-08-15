@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import firebase from 'react-native-firebase';
+import { Actions } from 'react-native-router-flux'
 import {scopeRefByUserAndDate} from '../utils/firebase';
 const {Consumer, Provider} = React.createContext();
 
@@ -7,16 +8,18 @@ export default class AuthProvider extends Component {
   state = {
     user: '',
     ready: false,
-    loading: true,
     authenticated: false
   };
 
 componentDidMount(){
+
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      this.setState({ loading: false, authenticated: true });
+      this.setState({  authenticated: true });
+      if(Actions.currentScene !== "landing"){Actions.landing()}
     } else {
-      this.setState({ loading: false, authenticated: false });
+      this.setState({  authenticated: false });
+      Actions.newlogin()
     }
   });
 }

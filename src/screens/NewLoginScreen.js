@@ -28,6 +28,8 @@ class NewLoginScreen extends Component {
     authenticated: false
   };
 
+ 
+
   LoginPress() {
     const { email, password } = this.state;
     this.setState({
