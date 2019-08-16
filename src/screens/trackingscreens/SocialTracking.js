@@ -2,15 +2,11 @@ import React, {Component} from 'react';
 import {View} from 'react-native'
 import {Text, ListItem, CheckBox, Body} from 'native-base';
 import {Alert, StyleSheet} from 'react-native';
-import firebase from 'firebase';
+import firebase from 'react-native-firebase';
 import {Actions} from 'react-native-router-flux';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
 import {TrackingScreen} from './TrackingScreen';
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel
-} from "react-native-simple-radio-button";
+import RadioForm from "react-native-simple-radio-button";
 
 const CALLED_FRIEND = 'calledFriend';
 const MET_FRIEND_IN_PERSON = 'metFriendInPerson';
@@ -37,11 +33,11 @@ class SocialTracking extends Component {
       [MET_FAMILY_IN_PERSON]: metFamilyInPerson,
     } = this.state;
 
-    const surveysRef = scopeRefByUserAndDate('Surveys', 'social');
+    const socialRef = scopeRefByUserAndDate('Surveys', 'social');
 
     await firebase
       .database()
-      .ref(surveysRef)
+      .ref(socialRef)
       .update({
         calledFriend,
         metFriendInPerson,

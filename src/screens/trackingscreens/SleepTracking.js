@@ -1,141 +1,83 @@
-import React, { Component } from "react";
-import { ScrollView, View, Dimensions, ImageBackground } from "react-native";
+import React from "react";
+import { View} from "react-native";
 import {
-  Item,
-  Label,
   Text,
   Content,
   ListItem,
   CheckBox,
   Body,
   Container,
-  Header
 } from "native-base";
-import { ModButton } from "../../components/common";
-import firebase from "firebase";
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel
-} from "react-native-simple-radio-button";
+import firebase from 'react-native-firebase';
+import RadioForm from "react-native-simple-radio-button";
 import { Actions } from "react-native-router-flux";
-import sleeptracking from "../../images/sleeptracking.jpg";
-import {BlurredBackgroundImage} from '../../components/common/BlurredBackgroundImage';
+import sleepTrackingImage from "../../images/sleeptracking.jpg";
+import {TrackingScreen} from './TrackingScreen'
+import {scopeRefByUserAndDate} from '../../utils/firebase'
 
 
-const screenheight = Dimensions.get("window").height;
-class SleepTracking extends Component {
-  state = {
-    sleepDaily: "",
-    electronics: false,
-    sleepmask: false,
-    regulartime: false,
-    napping: false,
-    warmbath: false,
-    caffeine: false
-  };
-  checkBox = type => {
-    if (type === "elec") {
-      this.setState({
-        electronics: !this.state.electronics
-      });
-    } else if (type === "mask") {
-      this.setState({
-        sleepmask: !this.state.sleepmask
-      });
-    } else if (type === "reg") {
-      this.setState({
-        regulartime: !this.state.regulartime
-      });
-    } else if (type === "nap") {
-      this.setState({
-        napping: !this.state.napping
-      });
-    } else if (type === "warm") {
-      this.setState({
-        warmbath: !this.state.warmbath
-      });
-    } else if (type === "caff") {
-      this.setState({
-        caffeine: !this.state.caffeine
-      });
-    }
-  };
+const SleepTracking = () => {
 
-  submitForm() {
-    // console.log(this.state);
-    const {
-      sleepDaily,
-      electronics,
-      sleepmask,
-      regulartime,
-      napping,
-      warmbath,
-      caffeine,
-      user,
-      date
-    } = this.state;
-    firebase
+  const [sleepDaily, setDailySleepValue] = React.useState("")
+  const [electronics, setElectronicsValue] = React.useState(false)
+  const [sleepMask, setSleepMaskValue] = React.useState(false)
+  const [regularTime, setRegularTimeValue] = React.useState(false)
+  const [napping, setNappingValue] = React.useState(false)
+  const [warmBath, setWarmbathValue] = React.useState(false)
+  const [caffeine, setCaffeineValue] = React.useState(false)
+
+const setElectronics = () => {
+  setElectronicsValue(prevValue => !prevValue)
+}
+
+const setSleepMask = () => {
+  setSleepMaskValue(prevValue => !prevValue)
+}
+
+const setRegularTime = () => {
+  setRegularTimeValue(prevValue => !prevValue)
+}
+
+const setNapping = () => {
+  setNappingValue(prevValue => !prevValue)
+}
+
+const setWarmBath = () => {
+  setWarmbathValue(prevValue => !prevValue)
+}
+
+const setCaffeine = () => {
+  setCaffeineValue(prevValue => !prevValue)
+}
+  
+
+
+  const submitForm = React.useCallback( async () =>{
+  const sleepRef = scopeRefByUserAndDate('Surveys', 'sleep')
+    await firebase
       .database()
-      .ref(`Surveys/${user}/${date}`)
+      .ref(sleepRef)
       .update({
         sleepDaily: sleepDaily,
         slelectronics: electronics,
-        slsleepmask: sleepmask,
-        slregulartime: regulartime,
+        slsleepmask: sleepMask,
+        slregulartime: regularTime,
         slnapping: napping,
-        slwarmbath: warmbath,
+        slwarmbath: warmBath,
         slcaffeine: caffeine
       });
     Actions.landing();
-  }
+  })
 
-  componentDidMount() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var res = user.email.split(".");
-      var userEm = res[0].toString();
-      this.setState({
-        user: userEm
-      });
-    } else {
-      console.log("noperz");
-    }
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
-    var dateTime = date;
-    this.setState({
-      date: dateTime
-    });
-  }
-
-  render() {
     return (
       <Container>
-        <BlurredBackgroundImage
-        style={{paddingHorizontal: 10}}
-        source={sleeptracking}
-        blurRadius={20}
-      >
-          <Text
-            style={{
-              fontSize: 30,
-              textAlign: "center",
-              marginTop: "20%",
-              marginBottom: "5%",
-              fontWeight: "600"
-            }}
-          >
-            Track your{" "}
-            <Text style={{ color: "#bf55ec", fontSize: 30, fontWeight: "600" }}>
-              Sleep
-            </Text>
-          </Text>
+     <TrackingScreen
+      backgroundImage={sleepTrackingImage}
+      color="#B72B90"
+      activityTitle="Sleep"
+      onSave={submitForm}
+     
+     >
           <View style={{backgroundColor:"#B72B90", width: '85%', alignSelf: 'center', height: 90 }}>
           <Text style={{fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '700'}}>
             Program Expectations
@@ -164,9 +106,7 @@ class SleepTracking extends Component {
               selectedButtonColor={"#fff"}
               labelStyle={{fontSize: 20, color: '#000'}}
               animation={true}
-              onPress={value => {
-                this.setState({ sleepDaily: value });
-              }}
+              onPress={value => setDailySleepValue(value)}
             />
           </View>
           <Content>
@@ -181,77 +121,69 @@ class SleepTracking extends Component {
             >
               Which sleep hygiene practices did you implement today?
             </Text>
-            <ListItem onPress={() => this.checkBox("elec")}>
+            <ListItem onPress={setElectronics}>
               <CheckBox
                 color="#f44336"
-                checked={this.state.electronics}
-                onPress={() => this.checkBox("elec")}
+                checked={electronics}
+                onPress={setElectronics}
               />
               <Body>
                 <Text>No Electronics 90 minutes before bed</Text>
               </Body>
             </ListItem>
-            <ListItem onPress={() => this.checkBox("mask")}>
+            <ListItem onPress={setSleepMask}>
               <CheckBox
-                onPress={() => this.checkBox("mask")}
+                onPress={setSleepMask}
                 color="#ec49b3"
-                checked={this.state.sleepmask}
+                checked={sleepMask}
               />
               <Body>
                 <Text>Sleep mask or blackout shades</Text>
               </Body>
             </ListItem>
-            <ListItem onPress={() => this.checkBox("reg")}>
+            <ListItem onPress={setRegularTime}>
               <CheckBox
-                onPress={() => this.checkBox("reg")}
+                onPress={setRegularTime}
                 color="#eb56f2"
-                checked={this.state.regulartime}
+                checked={regularTime}
               />
               <Body>
                 <Text>Regular bedtime</Text>
               </Body>
             </ListItem>
-            <ListItem onPress={() => this.checkBox("nap")}>
+            <ListItem onPress={setNapping}>
               <CheckBox
-                onPress={() => this.checkBox("nap")}
+                onPress={setNapping}
                 color="#7d49f3"
-                checked={this.state.napping}
+                checked={napping}
               />
               <Body>
                 <Text>No Napping</Text>
               </Body>
             </ListItem>
-            <ListItem onPress={() => this.checkBox("warm")}>
+            <ListItem onPress={setWarmBath}>
               <CheckBox
-                onPress={() => this.checkBox("warm")}
+                onPress={setWarmBath}
                 color="#0e248d"
-                checked={this.state.warmbath}
+                checked={warmBath}
               />
               <Body>
                 <Text>Warm bath/shower prior to bed</Text>
               </Body>
             </ListItem>
-            <ListItem onPress={() => this.checkBox("caff")}>
+            <ListItem onPress={setCaffeine}>
               <CheckBox
-                onPress={() => this.checkBox("caff")}
+                onPress={setCaffeine}
                 color="#607d8b"
-                checked={this.state.caffeine}
+                checked={caffeine}
               />
               <Body>
                 <Text>Avoid caffeine 10 hours before bed</Text>
               </Body>
             </ListItem>
-            <ModButton
-              color={"black"}
-              onPress={() => this.submitForm()}
-              label="Submit"
-            >
-              Submit
-            </ModButton>
           </Content>
-        </BlurredBackgroundImage>
+          </TrackingScreen>
       </Container>
     );
-  }
 }
 export default SleepTracking;

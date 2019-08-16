@@ -1,14 +1,12 @@
 package com.wild5;
 import android.app.Application;
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.auth.RNFirebaseAuthPackage;
+import io.invertase.firebase.database.RNFirebaseDatabasePackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
-import com.tkporter.sendsms.SendSMSPackage;
-import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativecommunity.slider.ReactSliderPackage;
-import com.devialab.camerarollextended.CameraRollExtendedManager;
-import com.rt2zz.reactnativecontacts.ReactNativeContacts;
-import com.zmxv.RNSound.RNSoundPackage;
 import com.horcrux.svg.SvgPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
@@ -37,6 +35,8 @@ public class MainApplication extends Application implements ReactApplication {
       List<ReactPackage> packages = new PackageList(this).getPackages();
       // Packages that cannot be autolinked yet can be added manually here, for example:
       // packages.add(new MyReactNativePackage());
+      packages.add(new RNFirebaseDatabasePackage());
+      packages.add(new RNFirebaseAuthPackage());
             return packages;
     };
   

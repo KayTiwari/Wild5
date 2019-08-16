@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "887512641659",
+    "firebase_url": "https://wild5-164d9.firebaseio.com",
+    "project_id": "wild5-164d9",
+    "storage_bucket": "wild5-164d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887512641659:android:5cc5613b50360fa9",
+        "android_client_info": {
+          "package_name": "com.wild5"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887512641659-5sktevrb0dijkppdd7toflvl8ur4ntmd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfFDuL9SAED9iDps4BsDrL72gtwHMvTag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "887512641659-5sktevrb0dijkppdd7toflvl8ur4ntmd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "887512641659-869crak211ku9emosj46vj24e7gh65kk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wild5wellness.kickstart30"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

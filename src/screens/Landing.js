@@ -6,10 +6,10 @@ import {
   Image,
   ImageBackground,
 } from "react-native";
-import {Container, Button, Text } from "native-base";
+import { Container } from "native-base";
 import wild5title from "../images/wild-5-logo-r-color.png";
 import Navbar from "../components/Navbar";
-import landingbackground from "../images/landingBackground2.jpg";
+import wild5 from '../images/wild5_back9.jpg'
 import Navigation from "../components/LandingNavigation";
 
 export default class Landing extends Component {
@@ -18,7 +18,7 @@ export default class Landing extends Component {
       <Container>
         <ScrollView bounces={false}>
           <ImageBackground
-            source={landingbackground}
+            source={wild5}
             style={{width: "100%", flex: 1}}
             blurRadius={3}
           >

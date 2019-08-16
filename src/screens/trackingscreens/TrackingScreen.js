@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, Text} from 'react-native';
-import {Container, Content} from 'native-base';
+import {Container} from 'native-base';
 import {
   BlurredBackgroundImage,
   VERTICAL_POSITION,

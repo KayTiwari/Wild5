@@ -1,7 +1,6 @@
 import React from 'react';
 import {Scene, Router, Actions} from 'react-native-router-flux';
 import Landing from './screens/Landing';
-import Account from './screens/Account';
 import EducationWellnessRoadMap from './screens/NewRoadMap';
 import ExerciseTracking from './screens/trackingscreens/ExerciseTracking';
 import MindfulnessTracking from './screens/trackingscreens/MindfulnessTracking';
@@ -12,15 +11,8 @@ import HeroTracking from './screens/trackingscreens/HeroTracking';
 import Settings from './screens/Settings';
 import Progress from './screens/trackingscreens/Progress';
 import Statistics from './screens/Statistics';
-import {Help} from './screens/accountmenu';
+import Help from './screens/accountmenu/Help'
 import TrackingForm from './screens/TrackingForm';
-import {
-  ExerciseLesson,
-  MindfulnessLesson,
-  NutritionLesson,
-  SocialLesson,
-  SleepLesson,
-} from './screens/lessonscreens/';
 import Herointro from './screens/HERO/Herointro';
 import {
   HeroEnth,
@@ -58,51 +50,10 @@ const Routercomponent = () => {
           header={null}
         />
         <Scene
-          key="account"
-          component={Account}
-          title="Account"
-          header={null}
-        />
-        <Scene
           key="edroadmap"
           component={EducationWellnessRoadMap}
           header={null}
           title="Learn More"
-        />
-        <Scene
-          key="exerciselesson"
-          component={ExerciseLesson}
-          title="Exercise"
-          backTitle="Back"
-          onBack={() => Actions.edroadmap()}
-        />
-        <Scene
-          key="mindfulnesslesson"
-          component={MindfulnessLesson}
-          title="Mindfulness"
-          backTitle="Back"
-          onBack={() => Actions.edroadmap()}
-        />
-        <Scene
-          key="sociallesson"
-          component={SocialLesson}
-          title="Social"
-          backTitle="Back"
-          onBack={() => Actions.edroadmap()}
-        />
-        <Scene
-          key="nutritionlesson"
-          component={NutritionLesson}
-          title="Nutrition"
-          backTitle="Back"
-          onBack={() => Actions.edroadmap()}
-        />
-        <Scene
-          key="sleeplesson"
-          component={SleepLesson}
-          title="Sleep"
-          backTitle="Back"
-          onBack={() => Actions.edroadmap()}
         />
         <Scene
           key="trackingform"
@@ -140,6 +91,7 @@ const Routercomponent = () => {
         <Scene
           key="exercisetracking"
           backTitle="Back"
+          onBack={()=> Actions.landing()}
           title="Exercise Tracking"
           component={ExerciseTracking}
         />
@@ -148,22 +100,26 @@ const Routercomponent = () => {
           backTitle="Back"
           title="Mindfulness Tracking"
           component={MindfulnessTracking}
+          onBack={()=> Actions.landing()}
         />
         <Scene
           key="sleeptracking"
           backTitle="Back"
+          onBack={()=> Actions.landing()}
           title="Sleep Tracking"
           component={SleepTracking}
         />
         <Scene
           key="socialtracking"
           backTitle="Back"
+          onBack={()=> Actions.landing()}
           title="Social Tracking"
           component={SocialTracking}
         />
         <Scene
           key="nutritiontracking"
           backTitle="Back"
+          onBack={()=> Actions.landing()}
           title="Nutrition Tracking"
           component={NutritionTracking}
         />

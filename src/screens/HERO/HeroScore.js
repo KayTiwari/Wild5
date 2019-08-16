@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Dimensions, Image, ImageBackground } from "react-native";
 import { Text, Spinner } from "native-base";
 import { Actions } from "react-native-router-flux";
-import firebase from "firebase";
+import firebase from 'react-native-firebase';
 import Navbar from "../../components/Navbar";
 import HEROlogo from "../../images/herologo.png";
 import AnimateNumber from "react-native-animate-number";
