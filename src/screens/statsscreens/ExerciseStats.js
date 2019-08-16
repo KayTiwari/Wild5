@@ -21,7 +21,7 @@ function ExerciseStats(props) {
       0
     );
 
-    return totalDurationExercised / days.length;
+    return Math.round(totalDurationExercised / days.length);
   }, [days]);
 
   const longestTime = React.useMemo(() => {
