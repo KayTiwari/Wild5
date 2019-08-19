@@ -18,31 +18,31 @@ const {width} = Dimensions.get('window');
 
 const navigationItems = [
   {
-    title: 'Exercise',
+    title: 'Track Exercise',
     icon: 'bicycle',
     action: () => Actions.exercisetracking(),
     background: ['#a8eb12', '#79c141'],
   },
   {
-    title: 'Mindfulness',
+    title: 'Track Mindfulness',
     icon: 'headset',
     action: () => Actions.mindfulnesstracking(),
     background: ['#00cbea', '#3fb5eb'],
   },
   {
-    title: 'Sleep',
+    title: 'Track Sleep',
     icon: 'moon',
     action: () => Actions.sleeptracking(),
     background: ['#e94c7e', '#b92e91'],
   },
   {
-    title: 'Social',
+    title: 'Track Social',
     icon: 'contacts',
     action: () => Actions.socialtracking(),
     background: ['#db1b63', '#ee3422'],
   },
   {
-    title: 'Nutrition',
+    title: 'Track Nutrition',
     icon: 'restaurant',
     action: () => Actions.nutritiontracking(),
     background: ['#f66f63', '#f79a2e'],
@@ -76,7 +76,7 @@ export function Navigation(props) {
           {item.title === 'HERO Exercises' ? (
             <Image
               source={item.icon}
-              style={{width: '100%', height: 55, resizeMode: 'contain'}}
+              style={{width: '100%', height: 65, resizeMode: 'contain'}}
             />
           ) : (
             <Icon name={item.icon} style={styles.icon} />
