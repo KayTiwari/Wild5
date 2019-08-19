@@ -167,7 +167,6 @@ dependencies {
     implementation project(':react-native-push-notification')
     implementation project(':react-native-linear-gradient')
     implementation project(':@react-native-community_slider')
-    implementation project(':react-native-svg')
     implementation project(':react-native-vector-icons')
     implementation 'androidx.exifinterface:exifinterface:1.0.0'
     implementation 'androidx.annotation:annotation:1.0.0'
