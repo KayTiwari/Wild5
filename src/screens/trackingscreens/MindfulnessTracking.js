@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, KeyboardAvoidingView} from 'react-native';
-import {Input, Form, Item, Label, Text, Picker, Icon} from 'native-base';
+import {View, KeyboardAvoidingView, Alert} from 'react-native';
+import {Input, Item, Label, Text, Picker, Icon} from 'native-base';
 import firebase from 'react-native-firebase';
 import RadioForm from 'react-native-simple-radio-button';
 import {TrackingScreen} from './TrackingScreen';
@@ -8,50 +8,40 @@ import {scopeRefByUserAndDate} from '../../utils/firebase';
 import {Actions} from 'react-native-router-flux';
 import mindTrackingImage from '../../images/mindfultracking1.jpg';
 
-let typedata = [
-  {
-    value: 'Mindfulness',
-  },
-  {
-    value: 'Transcendental',
-  },
-  {
-    value: 'Silent',
-  },
-  {
-    value: 'Qigong',
-  },
-  {
-    value: 'Compassion',
-  },
-  {
-    value: 'Other',
-  },
+const types = [
+  'Mindfulness',
+  'Transcendental',
+  'Silent',
+  'Qigong',
+  'Compassion',
+  'Other',
 ];
 
 const MindfulnessTracking = () => {
-  const [mindType, setMindType] = React.useState('');
-  const [mindDaily, setMindDaily] = React.useState('');
-  const [otherType, setOtherType] = React.useState(false);
+  const [type, setType] = React.useState('');
+  const [didMeditateToday, setDidMeditateToday] = React.useState(true);
+  const [showOther, setShowOther] = React.useState(false);
+  const [otherType, setOtherType] = React.useState('');
 
   const submitForm = React.useCallback(async () => {
-    setTrackedToday(true);
     const mindfulnessRef = scopeRefByUserAndDate('Surveys', 'mindfulness');
-    firebase
+
+    await firebase
       .database()
       .ref(mindfulnessRef)
       .update({
-        mindtype: mindType,
-        mindDaily: mindDaily,
+        type: otherType || type,
+        didMeditateToday,
       });
-    Actions.landing();
-  });
+
+    Alert.alert('Success!', 'Your mindfulness for today have been recorded.', [
+      {text: 'OK', onPress: Actions.landing()},
+    ]);
+  }, [otherType, type, didMeditateToday]);
 
   React.useEffect(() => {
-    if (mindType === 'Other') {
-      setOtherType(true);
-    }
-  });
+    setShowOther(type === 'Other');
+  }, [type]);
 
   return (
     <KeyboardAvoidingView style={{flex: 1}} behavior="padding" enabled>
@@ -104,15 +94,14 @@ const MindfulnessTracking = () => {
 
             <RadioForm
               radio_props={[
-                {label: 'Yes', value: '1'},
-                {label: 'No', value: '0'},
+                {label: 'Yes', value: true},
+                {label: 'No', value: false},
               ]}
-              initial={false}
               formHorizontal={false}
               labelHorizontal={true}
               buttonColor={'#4682b4'}
               animation={true}
-              onPress={value => setMindDaily(value)}
+              onPress={value => setDidMeditateToday(value)}
             />
           </View>
         </View>
@@ -121,8 +110,8 @@ const MindfulnessTracking = () => {
           <View style={{alignItems: 'center', marginTop: 10}}>
             <Picker
               style={{marginLeft: 5, marginRight: 5}}
-              selectedValue={mindType}
-              onValueChange={type => setMindType(type)}
+              selectedValue={type}
+              onValueChange={type => setType(type)}
               mode="dropdown"
               placeholder="Select Type of Meditation"
               placeholderStyle={{color: '#000'}}
@@ -136,22 +125,18 @@ const MindfulnessTracking = () => {
               }
               textStyle={{color: '#000'}}
             >
-              {typedata.map(type => (
-                <Picker.Item
-                  key={type.value}
-                  label={type.value}
-                  value={type.value}
-                />
+              {types.map(type => (
+                <Picker.Item key={type} label={type} value={type} />
               ))}
             </Picker>
           </View>
-          {otherType ? (
+          {showOther ? (
             <View style={{marginBottom: 10, height: 30}}>
               <Item floatingLabel>
                 <Label>Type of meditation</Label>
                 <Input
                   style={{marginTop: 5}}
-                  onChangeText={text => setMindType(text)}
+                  onChangeText={text => setOtherType(text)}
                 />
               </Item>
             </View>

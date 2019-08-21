@@ -28,7 +28,7 @@ export function Social(props) {
     <StatTile
       value={goalMetTotal / 30}
       onPress={() => Actions.socialstats()}
-      progressColor="#EB3422"
+      progressColor="#ee3322"
       header="Social"
       goalMetTotal={goalMetTotal}
     />

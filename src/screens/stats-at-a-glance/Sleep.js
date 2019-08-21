@@ -5,18 +5,18 @@ import {StatTile} from './StatTile';
 
 const sum = arr => arr.reduce((total, num) => total + num, 0);
 
-export function Social(props) {
+export function Sleep(props) {
   const goalMetTotal = React.useMemo(
     () =>
-      Object.values(props.data).reduce((daysCompleted, activities) => {
+      Object.values(props.data).reduce((daysCompleted, practices) => {
         // Convert the number of completed connections to an array of numbers
         // Example: {calledFriend: true, metWithFriend: false} -> [1, 0]
-        const todaysConnections = Object.values(activities).map(didConnect =>
-          Number(didConnect)
+        const todaysPractices = Object.values(practices).map(didImplement =>
+          Number(didImplement)
         );
 
-        // The day is considered completed if you made at least 2 connections
-        const dayIsCompleted = sum(todaysConnections) >= 2;
+        // The day is considered completed if they implemented at least 4 practices
+        const dayIsCompleted = sum(todaysPractices) >= 4;
 
         // If the day is completed, add it to the total
         return daysCompleted + (dayIsCompleted ? 1 : 0);
@@ -27,21 +27,24 @@ export function Social(props) {
   return (
     <StatTile
       value={goalMetTotal / 30}
-      onPress={() => Actions.socialstats()}
-      progressColor="#EB3422"
-      header="Social"
+      onPress={() => Actions.sleepstats()}
+      progressColor="#b92e91"
+      header="Sleep"
       goalMetTotal={goalMetTotal}
     />
   );
 }
 
-Social.propTypes = {
+Sleep.propTypes = {
   data: PropTypes.objectOf(
     PropTypes.shape({
-      calledFamily: PropTypes.bool,
-      calledFriend: PropTypes.bool,
-      metFamilyInPerson: PropTypes.bool,
-      metFriendInPerson: PropTypes.bool,
+      didImplementSleepPractices: PropTypes.bool,
+      noElectronics: PropTypes.bool,
+      sleepMask: PropTypes.bool,
+      regularTime: PropTypes.bool,
+      noNapping: PropTypes.bool,
+      warmBath: PropTypes.bool,
+      noCaffeine: PropTypes.bool,
     })
   ),
 };

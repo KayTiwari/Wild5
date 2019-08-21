@@ -24,7 +24,7 @@ export function scopeRefByUserAndDate(ref, subType) {
  * Get a scoped user from the current firebase user
  * Example: fakeemail@gmail.com -> fakeemail@gmail
  */
-function getScopedUser() {
+export function getScopedUser() {
   const user = firebase.auth().currentUser;
 
   if (!user) {

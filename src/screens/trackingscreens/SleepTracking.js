@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Alert} from 'react-native';
 import {Text, Content, ListItem, CheckBox, Body, Container} from 'native-base';
 import firebase from 'react-native-firebase';
 import RadioForm from 'react-native-simple-radio-button';
@@ -9,66 +9,74 @@ import {TrackingScreen} from './TrackingScreen';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
 
 const SleepTracking = () => {
-  const [sleepDaily, setDailySleepValue] = React.useState('');
-  const [electronics, setElectronicsValue] = React.useState(false);
-  const [sleepMask, setSleepMaskValue] = React.useState(false);
-  const [regularTime, setRegularTimeValue] = React.useState(false);
-  const [napping, setNappingValue] = React.useState(false);
-  const [warmBath, setWarmbathValue] = React.useState(false);
-  const [caffeine, setCaffeineValue] = React.useState(false);
+  const [
+    didImplementSleepPractices,
+    setDidImplementSleepPractices,
+  ] = React.useState(true);
 
-  const setElectronics = () => {
-    setElectronicsValue(prevValue => !prevValue);
-  };
+  const [noElectronics, setNoElectronics] = React.useState(false);
+  const [sleepMask, setSleepMask] = React.useState(false);
+  const [regularTime, setRegularTime] = React.useState(false);
+  const [noNapping, setNoNapping] = React.useState(false);
+  const [warmBath, setWarmBath] = React.useState(false);
+  const [noCaffeine, setNoCaffeine] = React.useState(false);
 
-  const setSleepMask = () => {
-    setSleepMaskValue(prevValue => !prevValue);
-  };
-
-  const setRegularTime = () => {
-    setRegularTimeValue(prevValue => !prevValue);
-  };
-
-  const setNapping = () => {
-    setNappingValue(prevValue => !prevValue);
-  };
-
-  const setWarmBath = () => {
-    setWarmbathValue(prevValue => !prevValue);
-  };
-
-  const setCaffeine = () => {
-    setCaffeineValue(prevValue => !prevValue);
-  };
+  const [
+    toggleNoElectronics,
+    toggleSleepMask,
+    toggleRegularTime,
+    toggleNoNapping,
+    toggleWarmBath,
+    toggleNoCaffeine,
+  ] = [
+    [noElectronics, setNoElectronics],
+    [sleepMask, setSleepMask],
+    [regularTime, setRegularTime],
+    [noNapping, setNoNapping],
+    [warmBath, setWarmBath],
+    [noCaffeine, setNoCaffeine],
+  ].map(([value, updater]) => () => updater(!value));
 
   const submitForm = React.useCallback(async () => {
     const sleepRef = scopeRefByUserAndDate('Surveys', 'sleep');
+
     await firebase
       .database()
       .ref(sleepRef)
       .update({
-        sleepDaily: sleepDaily,
-        slelectronics: electronics,
-        slsleepmask: sleepMask,
-        slregulartime: regularTime,
-        slnapping: napping,
-        slwarmbath: warmBath,
-        slcaffeine: caffeine,
+        didImplementSleepPractices,
+        noElectronics,
+        sleepMask,
+        regularTime,
+        noNapping,
+        warmBath,
+        noCaffeine,
       });
-    Actions.landing();
-  });
+
+    Alert.alert('Success!', 'Your sleep for today has been recorded.', [
+      {text: 'OK', onPress: Actions.landing()},
+    ]);
+  }, [
+    didImplementSleepPractices,
+    noElectronics,
+    sleepMask,
+    regularTime,
+    noNapping,
+    warmBath,
+    noCaffeine,
+  ]);
 
   return (
     <Container>
       <TrackingScreen
         backgroundImage={sleepTrackingImage}
-        color="#B72B90"
+        color="#b92e91"
         activityTitle="Sleep"
         onSave={submitForm}
       >
         <View
           style={{
-            backgroundColor: '#B72B90',
+            backgroundColor: '#b92e91',
             width: '85%',
             alignSelf: 'center',
             height: 90,
@@ -102,17 +110,17 @@ const SleepTracking = () => {
           </Text>
           <RadioForm
             radio_props={[
-              {label: 'Yes', value: '1'},
-              {label: 'No', value: '0'},
+              {label: 'Yes', value: true},
+              {label: 'No', value: false},
             ]}
-            initial={false}
+            initial={0}
             formHorizontal={false}
             labelHorizontal={true}
-            buttonColor={'#fff'}
-            selectedButtonColor={'#fff'}
+            buttonColor={'#b92e91'}
+            selectedButtonColor={'#b92e91'}
             labelStyle={{fontSize: 20, color: '#000'}}
             animation={true}
-            onPress={value => setDailySleepValue(value)}
+            onPress={value => setDidImplementSleepPractices(value)}
           />
         </View>
         <Content>
@@ -127,57 +135,61 @@ const SleepTracking = () => {
           >
             Which sleep hygiene practices did you implement today?
           </Text>
-          <ListItem onPress={setElectronics}>
+          <ListItem onPress={toggleNoElectronics}>
             <CheckBox
-              color="#f44336"
-              checked={electronics}
-              onPress={setElectronics}
+              color="#b92e91"
+              checked={noElectronics}
+              onPress={toggleNoElectronics}
             />
             <Body>
               <Text>No Electronics 90 minutes before bed</Text>
             </Body>
           </ListItem>
-          <ListItem onPress={setSleepMask}>
+          <ListItem onPress={toggleSleepMask}>
             <CheckBox
-              onPress={setSleepMask}
-              color="#ec49b3"
+              onPress={toggleSleepMask}
+              color="#b92e91"
               checked={sleepMask}
             />
             <Body>
               <Text>Sleep mask or blackout shades</Text>
             </Body>
           </ListItem>
-          <ListItem onPress={setRegularTime}>
+          <ListItem onPress={toggleRegularTime}>
             <CheckBox
-              onPress={setRegularTime}
-              color="#eb56f2"
+              onPress={toggleRegularTime}
+              color="#b92e91"
               checked={regularTime}
             />
             <Body>
               <Text>Regular bedtime</Text>
             </Body>
           </ListItem>
-          <ListItem onPress={setNapping}>
-            <CheckBox onPress={setNapping} color="#7d49f3" checked={napping} />
+          <ListItem onPress={toggleNoNapping}>
+            <CheckBox
+              onPress={toggleNoNapping}
+              color="#b92e91"
+              checked={noNapping}
+            />
             <Body>
               <Text>No Napping</Text>
             </Body>
           </ListItem>
-          <ListItem onPress={setWarmBath}>
+          <ListItem onPress={toggleWarmBath}>
             <CheckBox
-              onPress={setWarmBath}
-              color="#0e248d"
+              onPress={toggleWarmBath}
+              color="#b92e91"
               checked={warmBath}
             />
             <Body>
               <Text>Warm bath/shower prior to bed</Text>
             </Body>
           </ListItem>
-          <ListItem onPress={setCaffeine}>
+          <ListItem onPress={toggleNoCaffeine}>
             <CheckBox
-              onPress={setCaffeine}
-              color="#607d8b"
-              checked={caffeine}
+              onPress={toggleNoCaffeine}
+              color="#b92e91"
+              checked={noCaffeine}
             />
             <Body>
               <Text>Avoid caffeine 10 hours before bed</Text>

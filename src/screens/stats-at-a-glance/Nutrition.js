@@ -5,43 +5,40 @@ import {StatTile} from './StatTile';
 
 const sum = arr => arr.reduce((total, num) => total + num, 0);
 
-export function Social(props) {
+export function Nutrition(props) {
   const goalMetTotal = React.useMemo(
     () =>
-      Object.values(props.data).reduce((daysCompleted, activities) => {
-        // Convert the number of completed connections to an array of numbers
-        // Example: {calledFriend: true, metWithFriend: false} -> [1, 0]
-        const todaysConnections = Object.values(activities).map(didConnect =>
-          Number(didConnect)
-        );
-
-        // The day is considered completed if you made at least 2 connections
-        const dayIsCompleted = sum(todaysConnections) >= 2;
-
-        // If the day is completed, add it to the total
-        return daysCompleted + (dayIsCompleted ? 1 : 0);
-      }, 0),
+      Object.values(props.data).reduce(
+        (total, {loggedNutritionToday, implementedMINDDietPrinciples}) => {
+          return (
+            total +
+            Number(loggedNutritionToday && implementedMINDDietPrinciples)
+          );
+        },
+        0
+      ),
     [props.data]
   );
 
   return (
     <StatTile
       value={goalMetTotal / 30}
-      onPress={() => Actions.socialstats()}
-      progressColor="#EB3422"
-      header="Social"
+      onPress={() => Actions.nutristats()}
+      progressColor="#f89829"
+      header="Nutrition"
       goalMetTotal={goalMetTotal}
     />
   );
 }
 
-Social.propTypes = {
+Nutrition.propTypes = {
   data: PropTypes.objectOf(
     PropTypes.shape({
-      calledFamily: PropTypes.bool,
-      calledFriend: PropTypes.bool,
-      metFamilyInPerson: PropTypes.bool,
-      metFriendInPerson: PropTypes.bool,
+      loggedNutritionToday: PropTypes.bool,
+      implementedMINDDietPrinciples: PropTypes.bool,
+      breakfastMeditation: PropTypes.bool,
+      lunchMeditation: PropTypes.bool,
+      dinnerMeditation: PropTypes.bool,
     })
   ),
 };

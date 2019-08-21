@@ -4,6 +4,9 @@ import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import {withAuthProvider} from '../context/authcontext';
 import {Exercise} from './stats-at-a-glance/Exercise';
 import {Social} from './stats-at-a-glance/Social';
+import {Mindfulness} from './stats-at-a-glance/Mindfulness';
+import {Sleep} from './stats-at-a-glance/Sleep';
+import {Nutrition} from './stats-at-a-glance/Nutrition';
 import {Layout} from '../components/common/Layout';
 
 export function Statistics(props) {
@@ -21,8 +24,14 @@ export function Statistics(props) {
   }, [props.princData]);
 
   // Memo: The rest of this should be implemented as soon as the other tracking pages are updated
-  const {exerciseData, socialData} = React.useMemo(() => {
-    return ['exercise', 'social'].reduce(
+  const {
+    exerciseData,
+    socialData,
+    mindfulnessData,
+    sleepData,
+    nutritionData,
+  } = React.useMemo(() => {
+    return ['exercise', 'social', 'mindfulness', 'sleep', 'nutrition'].reduce(
       (dataMap, type) => ({
         ...dataMap,
         [`${type}Data`]: extractRelevantData(props.princData, type),
@@ -36,9 +45,18 @@ export function Statistics(props) {
       {loading ? (
         <ActivityIndicator size="large" />
       ) : (
-        <View style={styles.tiles}>
-          <Exercise data={exerciseData} />
-          <Social data={socialData} />
+        <View>
+          <View style={styles.tiles}>
+            <Exercise data={exerciseData} />
+            <Social data={socialData} />
+          </View>
+          <View style={styles.tiles}>
+            <Mindfulness data={mindfulnessData} />
+            <Sleep data={sleepData} />
+          </View>
+          <View style={styles.tiles}>
+            <Nutrition data={nutritionData} />
+          </View>
         </View>
       )}
     </Layout>
@@ -58,6 +76,10 @@ Statistics.propTypes = {
         calledFriend: PropTypes.bool,
         metFamilyInPerson: PropTypes.bool,
         metFriendInPerson: PropTypes.bool,
+      }),
+      mindfulness: PropTypes.shape({
+        didMeditateToday: PropTypes.bool,
+        type: PropTypes.string,
       }),
     })
   ),
@@ -80,6 +102,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
+    marginBottom: 10,
   },
 });
 

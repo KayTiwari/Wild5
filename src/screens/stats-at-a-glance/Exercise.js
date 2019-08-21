@@ -17,7 +17,7 @@ export function Exercise(props) {
     <StatTile
       value={goalMetTotal / 30}
       onPress={() => Actions.exstats()}
-      progressColor="#a8eb12"
+      progressColor="#79c141"
       header="Exercise"
       goalMetTotal={goalMetTotal}
     />
