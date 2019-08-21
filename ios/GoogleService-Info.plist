@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>714885268112-mas29envqo2mf2rvl7jctheimtv3iihk.apps.googleusercontent.com</string>
+	<string>887512641659-869crak211ku9emosj46vj24e7gh65kk.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.714885268112-mas29envqo2mf2rvl7jctheimtv3iihk</string>
+	<string>com.googleusercontent.apps.887512641659-869crak211ku9emosj46vj24e7gh65kk</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCxM9xzo7ahygFwJPIMtgCT8BeK4mJiIvc</string>
+	<string>AIzaSyDB98dsLB5_2ATo8YoyTJuFiOXIdxAXqwM</string>
 	<key>GCM_SENDER_ID</key>
-	<string>714885268112</string>
+	<string>887512641659</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.wild5wellness.kickstart30</string>
 	<key>PROJECT_ID</key>
-	<string>wild5-5ca8b</string>
+	<string>wild5-164d9</string>
 	<key>STORAGE_BUCKET</key>
-	<string>wild5-5ca8b.appspot.com</string>
+	<string>wild5-164d9.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:714885268112:ios:cc5bffaa74838592</string>
+	<string>1:887512641659:ios:cc5bffaa74838592</string>
 	<key>DATABASE_URL</key>
-	<string>https://wild5-5ca8b.firebaseio.com</string>
+	<string>https://wild5-164d9.firebaseio.com</string>
 </dict>
 </plist>
