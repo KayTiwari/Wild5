@@ -89,8 +89,10 @@ export function Navigation(props) {
 
   return (
     <View style={styles.container}>
-      {chunk(navigationItems, 2).map(items => (
-        <View style={styles.row}>{items.map(renderItem)}</View>
+      {chunk(navigationItems, 2).map((items, index) => (
+        <View key={index} style={styles.row}>
+          {items.map(renderItem)}
+        </View>
       ))}
     </View>
   );
@@ -106,6 +108,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
   },
   touchable: {
+    backgroundColor: 'transparent',
     marginBottom: 10,
     width: (1 / 2) * width - 20,
     shadowColor: '#000',

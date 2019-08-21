@@ -11,7 +11,7 @@ import HeroTracking from './screens/trackingscreens/HeroTracking';
 import Settings from './screens/Settings';
 import Progress from './screens/trackingscreens/Progress';
 import Statistics from './screens/Statistics';
-import Help from './screens/accountmenu/Help'
+import Help from './screens/accountmenu/Help';
 import TrackingForm from './screens/TrackingForm';
 import Herointro from './screens/HERO/Herointro';
 import {
@@ -91,7 +91,7 @@ const Routercomponent = () => {
         <Scene
           key="exercisetracking"
           backTitle="Back"
-          onBack={()=> Actions.landing()}
+          onBack={() => Actions.landing()}
           title="Exercise Tracking"
           component={ExerciseTracking}
         />
@@ -100,26 +100,26 @@ const Routercomponent = () => {
           backTitle="Back"
           title="Mindfulness Tracking"
           component={MindfulnessTracking}
-          onBack={()=> Actions.landing()}
+          onBack={() => Actions.landing()}
         />
         <Scene
           key="sleeptracking"
           backTitle="Back"
-          onBack={()=> Actions.landing()}
+          onBack={() => Actions.landing()}
           title="Sleep Tracking"
           component={SleepTracking}
         />
         <Scene
           key="socialtracking"
           backTitle="Back"
-          onBack={()=> Actions.landing()}
+          onBack={() => Actions.landing()}
           title="Social Tracking"
           component={SocialTracking}
         />
         <Scene
           key="nutritiontracking"
           backTitle="Back"
-          onBack={()=> Actions.landing()}
+          onBack={() => Actions.landing()}
           title="Nutrition Tracking"
           component={NutritionTracking}
         />
