@@ -23,7 +23,6 @@ export function Statistics(props) {
     }
   }, [props.princData]);
 
-  // Memo: The rest of this should be implemented as soon as the other tracking pages are updated
   const {
     exerciseData,
     socialData,
@@ -45,7 +44,7 @@ export function Statistics(props) {
       {loading ? (
         <ActivityIndicator size="large" />
       ) : (
-        <View>
+        <View style={{marginBottom: 10}}>
           <View style={styles.tiles}>
             <Exercise data={exerciseData} />
             <Social data={socialData} />
