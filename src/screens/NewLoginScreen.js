@@ -40,7 +40,6 @@ const NewLoginScreen = props => {
   };
 
   onLoginSuccess = () => {
-    Actions.landing();
     props.getUser();
   };
 

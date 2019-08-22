@@ -18,11 +18,11 @@ export default class AuthProvider extends Component {
       if (user) {
         this.setState({authenticated: true});
         if (Actions.currentScene !== 'landing') {
-          Actions.landing();
+          Actions.replace('landing');
         }
       } else {
         this.setState({authenticated: false});
-        Actions.newlogin();
+        Actions.replace('newlogin');
       }
     });
   }
