@@ -35,7 +35,7 @@ target 'wild5' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
-  pod 'RNSVG', :path => '../node_modules/react-native-svg'  
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
   # Required by RNFirebase
   pod 'Firebase/Core', '~> 6.3.0'

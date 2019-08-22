@@ -5169,10 +5169,10 @@ path-type@^3.0.0:
   dependencies:
     pify "^3.0.0"
 
-paths-js@^0.4.7:
-  version "0.4.9"
-  resolved "https://registry.yarnpkg.com/paths-js/-/paths-js-0.4.9.tgz#dc926a7b35fee91bdfa7f984db904a697d8a57c0"
-  integrity sha512-bu3iCT1D/0yfIBwlw8y07Ggf4k8j1BzKtwcrQqk0XSMCJxYPJpNbSkgNPU8c63HchinmFY+vqEp/P+9oiBZZhA==
+paths-js@^0.4.10:
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/paths-js/-/paths-js-0.4.10.tgz#a3575f409b4a36f8aa795ba4d051989021be58c7"
+  integrity sha512-JZoqlRSHtx+bc+xKI9o4bropEbqZBF4ZfYImiB1T9RYpHB73h5I8XZ7FfSBbHbBMtdD1c04ujjAPH8wUuu4+Gw==
 
 performance-now@^2.1.0:
   version "2.1.0"
@@ -5458,13 +5458,13 @@ react-native-bundle-visualizer@^2.0.1:
     minimist "^1.2.0"
     source-map-explorer "^2.0.1"
 
-react-native-chart-kit@2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/react-native-chart-kit/-/react-native-chart-kit-2.6.1.tgz#a0b6a7a5978b90798b1d89a0a609f19c2681bad4"
-  integrity sha512-o4tH4xJc7RKLdCvLNnD4h54K+GPuP8GxIGJiE8loS/PpkAho+v9uPwd+jST11HabHsaZQvp2TuIPE3VPSIjMVA==
+react-native-chart-kit@3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-chart-kit/-/react-native-chart-kit-3.2.1.tgz#bb316c2466f4cc7ba0d5b900865a76f6faf1f470"
+  integrity sha512-sEspbbEvOdjttt4ZxgoFOkxIZBhmcDQHJxaYCafsr4oaXEV/tTEcvcWb9cZ427VVOhsb0p6JW82bhrqFuPjFIA==
   dependencies:
     lodash "^4.17.11"
-    paths-js "^0.4.7"
+    paths-js "^0.4.10"
     point-in-polygon "^1.0.1"
 
 react-native-datepicker@1.7.2:
