@@ -8,7 +8,7 @@ export function Mindfulness(props) {
     () =>
       Object.values(props.data).reduce(
         (daysCompleted, {didMeditateToday}) =>
-          daysCompleted + Number(didMeditateToday),
+          daysCompleted + Number(Boolean(didMeditateToday)),
         0
       ),
     [props.data]

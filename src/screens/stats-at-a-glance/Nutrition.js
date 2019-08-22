@@ -12,7 +12,9 @@ export function Nutrition(props) {
         (total, {loggedNutritionToday, implementedMINDDietPrinciples}) => {
           return (
             total +
-            Number(loggedNutritionToday && implementedMINDDietPrinciples)
+            Number(
+              Boolean(loggedNutritionToday && implementedMINDDietPrinciples)
+            )
           );
         },
         0
