@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, ScrollView, SafeAreaView, Image} from 'react-native';
-import wild5title from '../images/wild-5-logo-r-color.png';
+import KS30title from '../images/KS30_578_113.png';
+import wild5title from '../images/wild5_logo_resized4.png'
 import Navbar from '../components/Navbar';
 import Navigation from '../components/LandingNavigation';
 
@@ -10,18 +11,28 @@ export default function Landing() {
       <SafeAreaView style={{flex: 1}}>
         <ScrollView bounces={false}>
           <Image
+            source={KS30title}
+            style={{
+              width: '80%',
+              resizeMode: 'contain',
+              marginTop: '3%',
+              alignSelf: 'center',
+            }}
+          />
+          <View style={{marginTop: '2%', flex: 1}}>
+            <Navigation />
+          </View>
+        </ScrollView>
+        <Image
             source={wild5title}
             style={{
               width: '80%',
               resizeMode: 'contain',
               marginTop: '5%',
+              marginBottom: '2%',
               alignSelf: 'center',
             }}
           />
-          <View style={{marginTop: '5%', flex: 1}}>
-            <Navigation />
-          </View>
-        </ScrollView>
       </SafeAreaView>
       <Navbar homedisable />
     </View>
