@@ -87,6 +87,7 @@ const Routercomponent = () => {
           title="Settings"
           header={null}
           component={Settings}
+          initial
         />
         <Scene
           key="exercisetracking"
