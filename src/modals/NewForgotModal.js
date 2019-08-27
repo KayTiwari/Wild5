@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Button, Text } from "react-native";
 import { Input, Item } from "native-base";
-import firebase from "firebase";
+import firebase from 'react-native-firebase';
 import Modal from "react-native-modal";
 
 //https://github.com/react-native-community/react-native-modal

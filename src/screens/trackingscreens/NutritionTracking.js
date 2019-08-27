@@ -1,284 +1,197 @@
-import React, { Component } from "react";
-import { ScrollView, View, Dimensions, ImageBackground, SafeAreaView } from "react-native";
-import {
-  Input,
-  Form,
-  Item,
-  Label,
-  Text,
-  ListItem,
-  CheckBox,
-  Body
-} from "native-base";
-import { ModButton } from "../../components/common";
-import firebase from "firebase";
-import RadioForm from "react-native-simple-radio-button";
-import { Actions } from "react-native-router-flux";
-import nutritracking from "../../images/nutritracking.jpg";
-import { BlurredBackgroundImage } from "../../components/common/BlurredBackgroundImage";
+import React from 'react';
+import {ScrollView, View, SafeAreaView, Alert} from 'react-native';
+import {Text, ListItem, CheckBox, Body} from 'native-base';
+import firebase from 'react-native-firebase';
+import RadioForm from 'react-native-simple-radio-button';
+import {Actions} from 'react-native-router-flux';
+import nutriTrackingImage from '../../images/nutritracking.jpg';
+import {TrackingScreen} from './TrackingScreen';
+import {scopeRefByUserAndDate} from '../../utils/firebase';
 
-class NutritionTracking extends Component {
-  state = {
-    logged: false,
-    MIND: false,
-    breakmed: false,
-    lunchmed: false,
-    dinnermed: false,
-    nutritionDaily: ""
-  };
-  checkBox = type => {
-    if (type === "break") {
-      this.setState({
-        breakmed: !this.state.breakmed
-      });
-    } else if (type === "lunch") {
-      this.setState({
-        lunchmed: !this.state.lunchmed
-      });
-    } else if (type === "dinner") {
-      this.setState({
-        dinnermed: !this.state.dinnermed
-      });
-    }
-  };
+const NutritionTracking = () => {
+  const [loggedNutritionToday, setLoggedNutritionToday] = React.useState(true);
 
-  submitForm() {
-    // console.log(this.state);
-    const {
-      nutritionDaily,
-      logged,
-      MIND,
-      breakmed,
-      lunchmed,
-      dinnermed,
-      user,
-      date
-    } = this.state;
-    firebase
+  const [
+    implementedMINDDietPrinciples,
+    setImplementedMINDDietPrinciples,
+  ] = React.useState(true);
+
+  const [breakfastMeditation, setBreakfastMeditation] = React.useState(false);
+  const [lunchMeditation, setLunchMeditation] = React.useState(false);
+  const [dinnerMeditation, setDinnerMeditation] = React.useState(false);
+
+  const [
+    toggleBreakfastMeditation,
+    toggleLunchMeditation,
+    toggleDinnerMeditation,
+  ] = [
+    [breakfastMeditation, setBreakfastMeditation],
+    [lunchMeditation, setLunchMeditation],
+    [dinnerMeditation, setDinnerMeditation],
+  ].map(([value, updater]) => () => updater(!value));
+
+  const submitForm = React.useCallback(async () => {
+    const nutritionRef = scopeRefByUserAndDate('Surveys', 'nutrition');
+
+    await firebase
       .database()
-      .ref(`Surveys/${user}/${date}`)
+      .ref(nutritionRef)
       .update({
-        nutritionDaily: nutritionDaily,
-        nutrlogged: logged,
-        nutrMIND: MIND,
-        nutrbreakfast: breakmed,
-        nutrlunch: lunchmed,
-        nutrdinner: dinnermed
+        loggedNutritionToday,
+        implementedMINDDietPrinciples,
+        breakfastMeditation,
+        lunchMeditation,
+        dinnerMeditation,
       });
-    Actions.landing();
-  }
 
-  componentDidMount() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var res = user.email.split(".");
-      var userEm = res[0].toString();
-      this.setState({
-        user: userEm
-      });
-    } else {
-      console.log("noperz");
-    }
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
-    var dateTime = date;
-    this.setState({
-      date: dateTime
-    });
-  }
+    Alert.alert('Success!', 'Your nutrition for today has been recorded.', [
+      {text: 'OK', onPress: Actions.landing()},
+    ]);
+  }, [
+    loggedNutritionToday,
+    implementedMINDDietPrinciples,
+    breakfastMeditation,
+    lunchMeditation,
+    dinnerMeditation,
+  ]);
 
-  render() {
-    return (
-      <SafeAreaView style={{ backgroundColor: "white", flex: 1}}>
-        <View style={{ flex: 1 }}>
-          <BlurredBackgroundImage
-            style={{ paddingHorizontal: 10 }}
-            source={nutritracking}
-            blurRadius={20}
-          >
-            <ScrollView style={{ flex:1, padding: 30 }}>
+  return (
+    <SafeAreaView style={{backgroundColor: 'white', flex: 1}}>
+      <View style={{flex: 1}}>
+        <TrackingScreen
+          backgroundImage={nutriTrackingImage}
+          color="#f89829"
+          activityTitle="Nutrition"
+          onSave={submitForm}
+        >
+          <ScrollView style={{flex: 1, padding: 30}}>
+            <View
+              style={{
+                backgroundColor: '#f89829',
+                width: '100%',
+                alignSelf: 'center',
+              }}
+            >
               <Text
                 style={{
-                  fontSize: 30,
-                  textAlign: "center",
-                  marginTop: "-5%",
-                  marginBottom: "10%",
-                  fontWeight: "600"
+                  fontSize: 20,
+                  color: 'white',
+                  alignSelf: 'center',
+                  fontWeight: '700',
                 }}
               >
-                Track your{" "}
-                <Text
-                  style={{ color: "orange", fontSize: 30, fontWeight: "600" }}
-                >
-                  Nutrition
-                </Text>
+                Program Expectations
               </Text>
-              <View
+              <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
+                Log your daily meals/snacks/beverages/alcohol each day for 30
+                days, follow the MIND diet principles as closely as you can
+              </Text>
+            </View>
+            <View style={{alignItems: 'center', marginTop: 10}}>
+              <Text
                 style={{
-                  backgroundColor: "#E27027",
-                  width: "85%",
-                  alignSelf: "center",
-                  height: 140
+                  color: '#000',
+                  marginBottom: '5%',
+                  textAlign: 'center',
+                  fontWeight: '600',
                 }}
               >
-                <Text
-                  style={{
-                    fontSize: 20,
-                    color: "white",
-                    alignSelf: "center",
-                    fontWeight: "700"
-                  }}
-                >
-                  Program Expectations
-                </Text>
-                <Text
-                  style={{ fontSize: 18, color: "white", textAlign: "center" }}
-                >
-                  Log your daily meals/snacks/beverages/alcohol each day for 30
-                  days, follow the MIND diet principles as closely as you can
-                </Text>
-              </View>
-              <View style={{alignItems:'center', marginTop: 10}}>
-            <Text  style={{
-                marginBottom: "5%",
-                fontSize: 20,
-                textAlign: "center",
-                fontWeight: "600"
-              }}>Did I Log My Meals, Snacks, and Beverages, Including Alcohol Today?</Text>
-            <RadioForm
-              radio_props={[
-                { label: "Yes", value: "1" },
-                { label: "No", value: "0" }
-              ]}
-              initial={false}
-              formHorizontal={false}
-              labelHorizontal={true}
-              buttonColor={"#f5bd68"}
-              selectedButtonColor={"#f5bd68"}
-              labelStyle={{fontSize: 20, color: '#000'}}
-              animation={true}
-              onPress={value => {
-                this.setState({ nutritionDaily: value });
+                Did I Log My Meals, Snacks, and Beverages, Including Alcohol
+                Today?
+              </Text>
+              <RadioForm
+                radio_props={[
+                  {label: 'Yes', value: true},
+                  {label: 'No', value: false},
+                ]}
+                initial={0}
+                formHorizontal={false}
+                labelHorizontal={true}
+                buttonColor={'#f89829'}
+                selectedButtonColor={'#f89829'}
+                labelStyle={{fontSize: 20, color: '#000'}}
+                animation={true}
+                onPress={value => setLoggedNutritionToday(value)}
+              />
+            </View>
+            <View
+              style={{
+                alignSelf: 'center',
+                marginTop: '10%',
+                alignItems: 'center',
               }}
-            />
-          </View>
-              <View style={{ alignSelf: "center", marginTop: 10, alignItems:'center' }}>
-                <Text
-                  style={{
-                    marginBottom: "5%",
-                    fontSize: 20,
-                    textAlign: "center",
-                    fontWeight: "600"
-                  }}
-                >
-                  Did you log your meals/snacks/beverages/alcohol?
-                </Text>
-                <RadioForm
-                  radio_props={[
-                    { label: "No", value: false },
-                    { label: "Yes", value: true }
-                  ]}
-                  initial={false}
-                  formHorizontal={false}
-                  labelHorizontal={true}
-                  buttonColor={"#f5bd68"}
-                  selectedButtonColor={"#f5bd68"}
-                  animation={true}
-                  onPress={value => {
-                    this.setState({ logged: value });
-                  }}
-                />
-              </View>
+            >
+              <Text
+                style={{
+                  color: '#000',
+                  marginBottom: '5%',
+                  textAlign: 'center',
+                  fontWeight: '600',
+                }}
+              >
+                Did I implement MIND diet principles?
+              </Text>
+              <RadioForm
+                radio_props={[
+                  {label: 'Yes', value: true},
+                  {label: 'No', value: false},
+                ]}
+                initial={0}
+                formHorizontal={false}
+                labelHorizontal={true}
+                buttonColor={'#f89829'}
+                selectedButtonColor={'#f89829'}
+                animation={true}
+                onPress={value => setImplementedMINDDietPrinciples(value)}
+              />
+            </View>
 
-              <View style={{ alignSelf: "center", marginTop: "10%", alignItems:'center' }}>
-                <Text
-                  style={{
-                    marginBottom: "5%",
-                    fontSize: 15,
-                    textAlign: "center",
-                    fontWeight: "600"
-                  }}
-                >
-                  Did you implement MIND diet principles?
-                </Text>
-                <RadioForm
-                  radio_props={[
-                    { label: "No", value: false },
-                    { label: "Yes", value: true }
-                  ]}
-                  initial={false}
-                  formHorizontal={false}
-                  labelHorizontal={true}
-                  buttonColor={"#dd7435"}
-                  selectedButtonColor={"#f5bd68"}
-                  animation={true}
-                  onPress={value => {
-                    this.setState({ MIND: value });
-                  }}
+            <View style={{marginTop: '10%'}}>
+              <Text
+                style={{
+                  color: '#000',
+                  marginBottom: '5%',
+                  textAlign: 'center',
+                  fontWeight: '600',
+                }}
+              >
+                Did I practice MIND Meal Meditation?
+              </Text>
+              <ListItem onPress={toggleBreakfastMeditation}>
+                <CheckBox
+                  color="#f89829"
+                  checked={breakfastMeditation}
+                  onPress={toggleBreakfastMeditation}
                 />
-              </View>
-
-              <View style={{ marginTop: "10%" }}>
-                <Text
-                  style={{
-                    marginBottom: "5%",
-                    fontSize: 15,
-                    textAlign: "center",
-                    fontWeight: "600"
-                  }}
-                >
-                  Did you practice Mind Meal Meditation?
-                </Text>
-                <ListItem onPress={() => this.checkBox("break")}>
-                  <CheckBox
-                    color="#f44336"
-                    checked={this.state.breakmed}
-                    onPress={() => this.checkBox("break")}
-                  />
-                  <Body>
-                    <Text>Breakfast</Text>
-                  </Body>
-                </ListItem>
-                <ListItem onPress={() => this.checkBox("lunch")}>
-                  <CheckBox
-                    color="#f44336"
-                    checked={this.state.lunchmed}
-                    onPress={() => this.checkBox("lunch")}
-                  />
-                  <Body>
-                    <Text>Lunch</Text>
-                  </Body>
-                </ListItem>
-                <ListItem onPress={() => this.checkBox("dinner")}>
-                  <CheckBox
-                    color="#f44336"
-                    checked={this.state.dinnermed}
-                    onPress={() => this.checkBox("dinner")}
-                  />
-                  <Body>
-                    <Text>Dinner</Text>
-                  </Body>
-                </ListItem>
-              </View>
-              <View style={{}}>
-                <ModButton
-                  color={"black"}
-                  onPress={() => this.submitForm()}
-                  label="Submit"
-                >
-                  Submit
-                </ModButton>
-              </View>
-            </ScrollView>
-          </BlurredBackgroundImage>
-        </View>
-      </SafeAreaView>
-    );
-  }
-}
+                <Body>
+                  <Text>Breakfast</Text>
+                </Body>
+              </ListItem>
+              <ListItem onPress={toggleLunchMeditation}>
+                <CheckBox
+                  color="#f89829"
+                  checked={lunchMeditation}
+                  onPress={toggleLunchMeditation}
+                />
+                <Body>
+                  <Text>Lunch</Text>
+                </Body>
+              </ListItem>
+              <ListItem onPress={toggleDinnerMeditation}>
+                <CheckBox
+                  color="#f89829"
+                  checked={dinnerMeditation}
+                  onPress={toggleDinnerMeditation}
+                />
+                <Body>
+                  <Text>Dinner</Text>
+                </Body>
+              </ListItem>
+            </View>
+          </ScrollView>
+        </TrackingScreen>
+      </View>
+    </SafeAreaView>
+  );
+};
 export default NutritionTracking;

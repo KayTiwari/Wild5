@@ -1,9 +1,9 @@
 import React from 'react';
-import {Alert, View} from 'react-native';
+import {Alert, View, KeyboardAvoidingView} from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import {Text, Item, Label, Input, Picker, Form} from 'native-base';
 import Slider from '@react-native-community/slider';
-import firebase from 'firebase';
+import firebase from 'react-native-firebase';
 import {Actions} from 'react-native-router-flux';
 import exbackground from '../../images/exercise-background.jpg';
 import {TrackingScreen} from './TrackingScreen';
@@ -45,16 +45,18 @@ function ExerciseTracking() {
         type: otherType || type,
         duration,
         intensity,
+        didFollowFID
       });
 
     // Handle errors here
 
     Alert.alert('Success!', 'Your exercises for today have been recorded.', [
-      {text: 'OK', onPress: Actions.landing},
+      {text: 'OK', onPress: Actions.landing()},
     ]);
   }, [type, duration, intensity]);
 
   return (
+    <KeyboardAvoidingView style={{flex:1}}behavior="padding" enabled>
     <TrackingScreen
       backgroundImage={exbackground}
       color="#a8eb12"
@@ -71,13 +73,13 @@ function ExerciseTracking() {
       >
         <Text
           style={{
-            fontSize: 20,
+            fontSize: 26,
             color: 'white',
             alignSelf: 'center',
             fontWeight: '700',
           }}
         >
-          Program Expectations
+          Practices
         </Text>
         <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
           Exercise 30 minutes each day for 30 days, aim for at least moderate
@@ -148,6 +150,7 @@ function ExerciseTracking() {
       >
         Exercise Duration?
       </Text>
+      <Text style={{textAlign: 'center'}}>{duration} minutes</Text>
       <Slider
         style={{width: '80%', alignSelf: 'center'}}
         minimumValue={0}
@@ -156,7 +159,6 @@ function ExerciseTracking() {
         step={5}
         onValueChange={setDuration}
       />
-      <Text style={{textAlign: 'center'}}>{duration} minutes</Text>
       <Text
         style={{
           marginTop: '10%',
@@ -183,6 +185,7 @@ function ExerciseTracking() {
         onPress={value => setIntensity(value)}
       />
     </TrackingScreen>
+    </KeyboardAvoidingView>
   );
 }
 export default withAuthProvider(ExerciseTracking);

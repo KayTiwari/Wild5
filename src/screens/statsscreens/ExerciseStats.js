@@ -3,6 +3,7 @@ import {View, Dimensions} from 'react-native';
 import {Text, Icon} from 'native-base';
 import countBy from 'lodash/countBy';
 import {withAuthProvider} from '../../context/authcontext';
+import {objectMax} from '../../utils/object';
 
 const screenheight = Dimensions.get('window').height;
 
@@ -21,7 +22,7 @@ function ExerciseStats(props) {
       0
     );
 
-    return totalDurationExercised / days.length;
+    return Math.round(totalDurationExercised / days.length);
   }, [days]);
 
   const longestTime = React.useMemo(() => {
@@ -129,19 +130,6 @@ function ExerciseStats(props) {
         </Text>
       </View>
     </View>
-  );
-}
-
-function objectMax(object) {
-  return Object.entries(object).reduce(
-    ([maxKey, maxValue], [key, value]) => {
-      if (value > maxValue) {
-        return [key, value];
-      } else {
-        return [maxKey, maxValue];
-      }
-    },
-    ['', -Infinity]
   );
 }
 
