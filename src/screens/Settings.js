@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Dimensions, TouchableOpacity} from 'react-native';
+import {View, Text, Dimensions, TouchableOpacity, Platform} from 'react-native';
 import {Container, Icon} from 'native-base';
 import Navbar from '../components/Navbar';
 import ToggleSwitch from 'toggle-switch-react-native';
@@ -230,28 +230,28 @@ class Settings extends Component<Props> {
   render() {
     return (
       <>
-        <Container>
+        <View style={{flex: 1, backgroundColor: '#fff'}}>
           {this.state.showTimer ? this.showTimePicker() : null}
-          <View style={{marginTop: '12%', marginLeft: '5%'}}>
+          <View style={{marginTop: Platform.OS === 'ios' ? '12%' : '5%', marginLeft: '5%'}}>
             <View style={{alignSelf: 'center'}}>
-              <Text style={{fontSize: 36, marginBottom: 10, fontWeight: '900'}}>
+              <Text style={{fontSize: 36, marginBottom: Platform.OS === 'ios' ? 10 : 0, fontWeight: '900', color: '#000'}}>
                 Settings
               </Text>
               <Icon />
             </View>
-            <Text style={{fontSize: 20}}>Notifications</Text>
+            <Text style={{fontSize: 20, color: '#000'}}>Notifications</Text>
             <View
               style={{
                 borderTopWidth: 1,
-                borderTopColor: 'black',
+                borderTopColor: '#000',
                 width: '90%',
               }}
             >
               <View style={{marginTop: 15}}>
-                <Text style={{fontSize: 20}}>Exercise</Text>
+                <Text style={{fontSize: 20, color: '#000'}}>Exercise</Text>
                 <ToggleSwitch
                   // label='Exercise'
-                  labelStyle={{color: 'black', fontWeight: '900'}}
+                  labelStyle={{color: '#000', fontWeight: '900'}}
                   size="large"
                   onColor="#73BA3F"
                   offColor="#d5eac5"
@@ -260,10 +260,10 @@ class Settings extends Component<Props> {
                 />
               </View>
               <View>
-                <Text style={{fontSize: 20}}>Mindfulness</Text>
+                <Text style={{fontSize: 20, color: '#000'}}>Mindfulness</Text>
                 <ToggleSwitch
                   // label='Mindfulness'
-                  labelStyle={{color: 'black', fontWeight: '900'}}
+                  labelStyle={{color: '#000', fontWeight: '900'}}
                   size="large"
                   onColor="#0AB2E8"
                   offColor="#cef0fa"
@@ -272,10 +272,10 @@ class Settings extends Component<Props> {
                 />
               </View>
               <View>
-                <Text style={{fontSize: 20}}>Sleep</Text>
+                <Text style={{fontSize: 20, color: '#000'}}>Sleep</Text>
                 <ToggleSwitch
                   // label='Sleep'
-                  labelStyle={{color: 'black', fontWeight: '900'}}
+                  labelStyle={{color: '#000', fontWeight: '900'}}
                   size="large"
                   onColor="#B72B90"
                   offColor="#f1d5e9"
@@ -284,10 +284,10 @@ class Settings extends Component<Props> {
                 />
               </View>
               <View>
-                <Text style={{fontSize: 20}}>Social</Text>
+                <Text style={{fontSize: 20, color: '#000'}}>Social</Text>
                 <ToggleSwitch
                   // label='Social'
-                  labelStyle={{color: 'black', fontWeight: '900'}}
+                  labelStyle={{color: '#000', fontWeight: '900'}}
                   size="large"
                   onColor="#E93422"
                   offColor="#fbd6d3"
@@ -296,10 +296,10 @@ class Settings extends Component<Props> {
                 />
               </View>
               <View>
-                <Text style={{fontSize: 20}}>Nutrition</Text>
+                <Text style={{fontSize: 20, color: '#000'}}>Nutrition</Text>
                 <ToggleSwitch
                   // label='Nutrition'
-                  labelStyle={{color: 'black', fontWeight: '900'}}
+                  labelStyle={{color: '#000', fontWeight: '900'}}
                   size="large"
                   onColor="#C6411F"
                   offColor="#f4d9d2"
@@ -352,7 +352,7 @@ class Settings extends Component<Props> {
             </TouchableOpacity>
           </View>
           {/* </View> */}
-        </Container>
+        </View>
         <Navbar />
       </>
     );

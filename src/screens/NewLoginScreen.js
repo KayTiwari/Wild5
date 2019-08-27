@@ -5,6 +5,7 @@ import {
   ImageBackground,
   Dimensions,
   ScrollView,
+  Platform
 } from 'react-native';
 import {Text, Spinner} from 'native-base';
 import ForgotModal from '../modals/NewForgotModal';
@@ -12,7 +13,7 @@ import firebase from 'react-native-firebase';
 import {withAuthProvider} from '../context/authcontext';
 import {Actions} from 'react-native-router-flux';
 import abstractimg from '../images/abstract2.jpeg';
-import wild5title from '../images/wild-5-logo-r-color.png';
+import wild5title from '../images/wild5_logo.png';
 import {Input, Button} from 'react-native-elements';
 
 const screenheight = Dimensions.get('window').height;

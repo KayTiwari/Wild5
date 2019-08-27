@@ -6,7 +6,7 @@ import firebase from 'react-native-firebase';
 import Navbar from "../../components/Navbar";
 import HEROlogo from "../../images/herologo.png";
 import AnimateNumber from "react-native-animate-number";
-import Star from '../../images/wild5star.png';
+import Star from '../../images/Wild5Star.png';
 
 const screenheight = Dimensions.get("window").height;
 class HeroScore extends Component {
