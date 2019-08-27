@@ -1,47 +1,47 @@
-import React, { Component } from "react";
-import { View, Dimensions, Image, ImageBackground } from "react-native";
-import { Text, Spinner } from "native-base";
-import { Actions } from "react-native-router-flux";
+import React, {Component} from 'react';
+import {View, Dimensions, Image, ImageBackground} from 'react-native';
+import {Text, Spinner} from 'native-base';
+import {Actions} from 'react-native-router-flux';
 import firebase from 'react-native-firebase';
-import Navbar from "../../components/Navbar";
-import HEROlogo from "../../images/herologo.png";
-import AnimateNumber from "react-native-animate-number";
-import Star from '../../images/Wild5Star.png';
+import Navbar from '../../components/Navbar';
+import HEROlogo from '../../images/herologo.png';
+import AnimateNumber from 'react-native-animate-number';
+import Star from '../../images/wild5star.png';
 
-const screenheight = Dimensions.get("window").height;
+const screenheight = Dimensions.get('window').height;
 class HeroScore extends Component {
   state = {
-    total: 0
+    total: 0,
   };
 
   componentWillMount() {
     var user = firebase.auth().currentUser;
     if (user) {
-      var res = user.email.split(".");
+      var res = user.email.split('.');
       var userEm = res[0].toString();
       this.setState({
-        user: userEm
+        user: userEm,
       });
     } else {
-      console.log("noperz");
+      console.log('noperz');
     }
     var today = new Date();
     var date =
       today.getFullYear() +
-      "-" +
+      '-' +
       (today.getMonth() + 1) +
-      "-" +
+      '-' +
       today.getDate();
     var dateTime = date;
     this.setState({
-      date: dateTime
+      date: dateTime,
     });
   }
 
   componentDidMount() {
     var database = firebase.database();
     var ref = database.ref(`HERO/${this.state.user}/${this.state.date}`);
-    ref.on("value", this.gotData, this.errData);
+    ref.on('value', this.gotData, this.errData);
   }
 
   gotData = data => {
@@ -49,7 +49,7 @@ class HeroScore extends Component {
     console.log(newData);
     this.returnTotal(newData);
     this.setState({
-      data: newData
+      data: newData,
     });
   };
 
@@ -57,7 +57,7 @@ class HeroScore extends Component {
     let total =
       data.happyval + data.enthval + data.mentval + data.optval + data.resval;
     this.setState({
-      total
+      total,
     });
   };
 
@@ -67,10 +67,10 @@ class HeroScore extends Component {
         <Text
           style={{
             fontSize: 30,
-            fontWeight: "600",
-            textAlign: "center",
-            marginTop: "0%",
-            color: "#2e3131"
+            fontWeight: '600',
+            textAlign: 'center',
+            marginTop: '0%',
+            color: '#2e3131',
           }}
         >
           Keep it Going!
@@ -81,10 +81,10 @@ class HeroScore extends Component {
         <Text
           style={{
             fontSize: 30,
-            fontWeight: "600",
-            textAlign: "center",
-            marginTop: "0%",
-            color: "#e47833"
+            fontWeight: '600',
+            textAlign: 'center',
+            marginTop: '0%',
+            color: '#e47833',
           }}
         >
           Great Start!
@@ -95,10 +95,10 @@ class HeroScore extends Component {
         <Text
           style={{
             fontSize: 30,
-            fontWeight: "600",
-            textAlign: "center",
-            marginTop: "0%",
-            color: "#f62459"
+            fontWeight: '600',
+            textAlign: 'center',
+            marginTop: '0%',
+            color: '#f62459',
           }}
         >
           Amazing Work!
@@ -109,10 +109,10 @@ class HeroScore extends Component {
         <Text
           style={{
             fontSize: 30,
-            fontWeight: "600",
-            textAlign: "center",
-            marginTop: "0%",
-            color: "#1e8bc3"
+            fontWeight: '600',
+            textAlign: 'center',
+            marginTop: '0%',
+            color: '#1e8bc3',
           }}
         >
           Outstanding work!
@@ -123,10 +123,10 @@ class HeroScore extends Component {
         <Text
           style={{
             fontSize: 30,
-            fontWeight: "600",
-            textAlign: "center",
-            marginTop: "0%",
-            color: "#a537fd"
+            fontWeight: '600',
+            textAlign: 'center',
+            marginTop: '0%',
+            color: '#a537fd',
           }}
         >
           Exceptional Work!
@@ -140,25 +140,25 @@ class HeroScore extends Component {
       <View
         style={{
           flex: 1,
-          justifyContent: "space-between",
+          justifyContent: 'space-between',
           height: screenheight,
-          backgroundColor: "white"
+          backgroundColor: 'white',
         }}
       >
-        <View style={{ width: "80%", alignSelf: "center", marginTop: "15%" }}>
+        <View style={{width: '80%', alignSelf: 'center', marginTop: '15%'}}>
           <Image
             source={HEROlogo}
-            style={{ width: "100%", resizeMode: "contain" }}
+            style={{width: '100%', resizeMode: 'contain'}}
           />
         </View>
 
         <View>
           <Text
             style={{
-              textAlign: "center",
+              textAlign: 'center',
               fontSize: 30,
-              fontWeight: "600",
-              marginTop: "0%"
+              fontWeight: '600',
+              marginTop: '0%',
             }}
           >
             Your HERO Score For This Week
@@ -168,34 +168,34 @@ class HeroScore extends Component {
         <View>
           <Text
             style={{
-              textAlign: "center",
+              textAlign: 'center',
               fontSize: 15,
-              fontWeight: "600",
-              marginTop: "-10%"
+              fontWeight: '600',
+              marginTop: '-10%',
             }}
           >
             TOTAL SCORE: 0 - 50
           </Text>
           <Text
             style={{
-              textAlign: "center",
+              textAlign: 'center',
               fontSize: 15,
-              fontWeight: "600",
-              marginTop: "-10%"
+              fontWeight: '600',
+              marginTop: '-10%',
             }}
           >
             Higher scores indicate higher levels of wellness
           </Text>
         </View>
 
-        <View >
+        <View>
           <Text
             style={{
-              textAlign: "center",
+              textAlign: 'center',
               fontSize: 30,
-              fontWeight: "600",
-              marginTop: "0%",
-              marginBottom: "0%"
+              fontWeight: '600',
+              marginTop: '0%',
+              marginBottom: '0%',
             }}
           >
             <AnimateNumber
@@ -217,4 +217,4 @@ class HeroScore extends Component {
   }
 }
 
-export { HeroScore };
+export {HeroScore};
