@@ -52,16 +52,7 @@ const navigationItems = [
     icon: HEROlogo,
     action: () => Actions.herotracking(),
     background: ['#DD3121', '#0BA2D4', '#70B43C', '#B72B90'],
-  },
-  {
-    title: "Today's Progress",
-    icon: 'stats',
-    action: () => {
-      props.getTrackingData();
-      Actions.progress();
-    },
-    background: ['#0b2261', '#762e73'],
-  },
+  }
 ];
 
 export function Navigation(props) {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, View } from "react-native";
+import { Button, View, Platform } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
 
 export default class RNModalDatetimePicker extends Component {
@@ -20,7 +20,7 @@ export default class RNModalDatetimePicker extends Component {
 
   render() {
     return (
-      <>
+      <> 
         <DateTimePicker
           // date={this.props.date}
           onDateChange={this.props.onDateChange}
@@ -29,7 +29,10 @@ export default class RNModalDatetimePicker extends Component {
           onConfirm={this.props.onConfirm}
           onCancel={this.props.onCancel}
           mode="time"
-        />
+          is24Hour={false}
+          datePickerModeAndroid="default"
+
+        /> 
       </>
     );
   }

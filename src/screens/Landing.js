@@ -22,17 +22,17 @@ export default function Landing() {
           <View style={{marginTop: '2%', flex: 1}}>
             <Navigation />
           </View>
-        </ScrollView>
-        <Image
+          <Image
             source={wild5title}
             style={{
               width: '80%',
               resizeMode: 'contain',
-              marginTop: '5%',
+              marginTop: '10%',
               marginBottom: '2%',
               alignSelf: 'center',
             }}
           />
+        </ScrollView>
       </SafeAreaView>
       <Navbar homedisable />
     </View>

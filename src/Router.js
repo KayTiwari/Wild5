@@ -9,7 +9,6 @@ import SocialTracking from './screens/trackingscreens/SocialTracking';
 import NutritionTracking from './screens/trackingscreens/NutritionTracking';
 import HeroTracking from './screens/trackingscreens/HeroTracking';
 import Settings from './screens/Settings';
-import Progress from './screens/trackingscreens/Progress';
 import Statistics from './screens/Statistics';
 import Help from './screens/accountmenu/Help';
 import TrackingForm from './screens/TrackingForm';
@@ -129,12 +128,6 @@ const Routercomponent = () => {
           onBack={() => Actions.landing()}
           title="HERO Tracking"
           component={HeroTracking}
-        />
-        <Scene
-          key="progress"
-          component={Progress}
-          backTitle="Back"
-          title="Today's Progress"
         />
         <Scene
           key="herointro"

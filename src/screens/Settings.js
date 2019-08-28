@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Dimensions, TouchableOpacity, Platform} from 'react-native';
+import {View, Text, Dimensions, TouchableOpacity, Platform, TimePickerAndroid} from 'react-native';
 import {Container, Icon} from 'native-base';
 import Navbar from '../components/Navbar';
 import ToggleSwitch from 'toggle-switch-react-native';
@@ -24,6 +24,7 @@ class Settings extends Component<Props> {
       senderId: appConfig.senderID,
       chosenDate: new Date(),
       user: '',
+      chosenAndroidTime: '00:00'
     };
     this.PushNotificationIOS = new PushNotificationIOS(this.onNotif);
   }
@@ -47,10 +48,8 @@ class Settings extends Component<Props> {
       .database()
       .ref(`notifications/${this.state.user}/`)
       .once('value', snap => {
-        console.log(snap.val());
         if (snap.val() !== null) {
           let data = snap.val();
-          console.log(data[`${this.state.user}`].social);
           this.setState({
             exerciseReminder:
               data[`${this.state.user}`].exercise !== undefined
@@ -75,9 +74,30 @@ class Settings extends Component<Props> {
           });
         }
       })
-      .then(r => console.log(r))
-      .catch(e => console.log(e));
+      .then()
+      .catch();
   };
+
+  androidTimePicker = async () => {
+    try {
+      const {action, hour, minute} = await TimePickerAndroid.open({
+        hour: 14,
+        minute: 0,
+        is24Hour: false,
+        mode: 'default'
+      });
+      if (action !== TimePickerAndroid.dismissedAction) {
+      const m = (minute < 10) ? `0${minute}` : minute;
+      const h = (hour < 10) ? `0${hour}` : hour;
+      console.log(`time: ${hour}:${minute}`);
+      const date = new Date()
+      this.setState({ chosenAndroidTime: `${h}:${m}` }, ()=> this.submitTime(new Date(date.setHours(h,m,)),
+        this.state.currentPillar));
+      }
+    } catch ({code, message}) {
+      console.warn('Cannot open time picker', message);
+    }
+  }
 
   setDate = newDate => {
     this.setState({chosenDate: newDate});
@@ -127,17 +147,17 @@ class Settings extends Component<Props> {
         this.state.exerciseReminder
           ? this.setState({
               exerciseReminder: false,
-            })
+            },()=> this.deleteTime(pillar))
           : this.setState({
               exerciseReminder: !this.state.exerciseReminder,
               showTimer: true,
               currentPillar: pillar,
-            });
+            }, ()=> Platform.OS === 'android' ? this.androidTimePicker() : null);
       } else if (pillar === 'mind') {
         this.state.mindfulnessReminder
           ? this.setState({
               mindfulnessReminder: false,
-            })
+            }, ()=> this.deleteTime(pillar))
           : this.setState({
               mindfulnessReminder: !this.state.mindfulnessReminder,
               showTimer: true,
@@ -147,17 +167,17 @@ class Settings extends Component<Props> {
         this.state.sleepReminder
           ? this.setState({
               sleepReminder: false,
-            })
+            },()=> this.deleteTime(pillar))
           : this.setState({
               sleepReminder: !this.state.sleepReminder,
               showTimer: true,
               currentPillar: pillar,
-            });
+            }, );
       } else if (pillar === 'social') {
         this.state.socialReminder
           ? this.setState({
               socialReminder: false,
-            })
+            },()=> this.deleteTime(pillar))
           : this.setState({
               socialReminder: !this.state.socialReminder,
               showTimer: true,
@@ -167,7 +187,7 @@ class Settings extends Component<Props> {
         this.state.nutritionReminder
           ? this.setState({
               nutritionReminder: false,
-            })
+            },()=> this.deleteTime(pillar))
           : this.setState({
               nutritionReminder: !this.state.nutritionReminder,
               showTimer: true,
@@ -181,11 +201,14 @@ class Settings extends Component<Props> {
     };
   };
 
+  deleteTime = (pillar) => {
+    firebase.database().ref(`notifications/${this.state.user}/${pillar}`).set(null)
+  }
+
   submitTime = (date, pillar) => {
-    return () => {
+      console.log(pillar, date)
       this.PushNotificationIOS.scheduleNotif(pillar, date);
       let date1 = date;
-      console.log(typeof date1);
       const data = {
         notifOn: '',
         timeChosen: date,
@@ -210,12 +233,11 @@ class Settings extends Component<Props> {
         currentPillar: '',
       }));
     };
-  };
 
   onRegister = token => {
     Alert.alert('Registered !', JSON.stringify(token));
     console.log(token);
-    this.setState({registerToken: token.token, gcmRegistered: true});
+    this.setState({registerToken: token.token, gcmRegistered: true}, ()=>console.log("onRegister setState ran"));
   };
 
   onNotif = notif => {
@@ -231,7 +253,7 @@ class Settings extends Component<Props> {
     return (
       <>
         <View style={{flex: 1, backgroundColor: '#fff'}}>
-          {this.state.showTimer ? this.showTimePicker() : null}
+          {this.state.showTimer && Platform.OS === 'ios' ? this.showTimePicker() : null}
           <View style={{marginTop: Platform.OS === 'ios' ? '12%' : '5%', marginLeft: '5%'}}>
             <View style={{alignSelf: 'center'}}>
               <Text style={{fontSize: 36, marginBottom: Platform.OS === 'ios' ? 10 : 0, fontWeight: '900', color: '#000'}}>

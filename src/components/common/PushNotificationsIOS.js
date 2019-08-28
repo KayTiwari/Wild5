@@ -41,12 +41,6 @@ class PushNotificationsIOS {
     });
   };
 
-  // PushNotification.localNotificationSchedule({
-  //... You can use all the options from localNotifications
-  // message: "My Notification Message", // (required)
-  // repeatType: 'day',
-  //});
-
   scheduleNotif = (pillar, date) => {
     // AlertIOS.alert('schedulerunning')
     this.lastId++;
@@ -60,6 +54,7 @@ class PushNotificationsIOS {
     };
 
     if (pillar === "exercise") {
+      console.log(date)
       config.repeatType = "day"
       config.date = new Date(date)
       config.message = "Remember to Exercise Daily Following the FID Practices";
