@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
-import {View, Dimensions, ScrollView} from 'react-native';
+import {View, Dimensions, ScrollView, Button} from 'react-native';
 import {Text, Icon, Spinner} from 'native-base';
+import {Actions} from 'react-native-router-flux';
 import {withAuthProvider} from '../../context/authcontext';
 import BarGraph from '../../components/charts/SleepGraph';
+import {compose} from '../../utils/array';
+import {emptyState} from './EmptyState';
 
 const screenheight = Dimensions.get('window').height;
 
@@ -387,4 +390,12 @@ class SleepStats extends Component {
   }
 }
 
-export default withAuthProvider(SleepStats);
+export default compose(
+  withAuthProvider,
+  emptyState(
+    <Button onPress={() => Actions.sleeptracking()} title="Add Sleep Data" />,
+    props =>
+      Object.values(props.princData).filter(day => day.hasOwnProperty('sleep'))
+        .length === 0
+  )
+)(SleepStats);

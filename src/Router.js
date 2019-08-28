@@ -91,7 +91,6 @@ const Routercomponent = () => {
         <Scene
           key="exercisetracking"
           backTitle="Back"
-          onBack={() => Actions.landing()}
           title="Exercise Tracking"
           component={ExerciseTracking}
         />
@@ -100,33 +99,28 @@ const Routercomponent = () => {
           backTitle="Back"
           title="Mindfulness Tracking"
           component={MindfulnessTracking}
-          onBack={() => Actions.landing()}
         />
         <Scene
           key="sleeptracking"
           backTitle="Back"
-          onBack={() => Actions.landing()}
           title="Sleep Tracking"
           component={SleepTracking}
         />
         <Scene
           key="socialtracking"
           backTitle="Back"
-          onBack={() => Actions.landing()}
           title="Social Tracking"
           component={SocialTracking}
         />
         <Scene
           key="nutritiontracking"
           backTitle="Back"
-          onBack={() => Actions.landing()}
           title="Nutrition Tracking"
           component={NutritionTracking}
         />
         <Scene
           key="herotracking"
           backTitle="Back"
-          onBack={() => Actions.landing()}
           title="HERO Tracking"
           component={HeroTracking}
         />
