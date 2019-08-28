@@ -8,7 +8,13 @@ const screenheight = Dimensions.get('window').height;
 
 class SleepStats extends Component {
   state = {
-    best: 'None',
+    caff: 0,
+    elec: 0,
+    nap: 0,
+    regtime: 0,
+    mask: 0,
+    bath: 0,
+    total: 0,
   };
 
   componentWillMount() {
@@ -28,7 +34,10 @@ class SleepStats extends Component {
   }
 
   calculateStats = () => {
-    let data = Object.values(this.props.princData);
+    let data = Object.values(this.props.princData).filter(day =>
+      day.hasOwnProperty('sleep')
+    );
+
     this.renderGraph(data);
   };
 

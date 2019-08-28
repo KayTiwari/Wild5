@@ -11,7 +11,10 @@ const screenheight = Dimensions.get('window').height;
 
 class SocialStats extends Component {
   state = {
-    best: 'None',
+    calledFriend: 0,
+    metFriendInPerson: 0,
+    calledFamily: 0,
+    metFamilyInPerson: 0,
   };
 
   componentWillMount() {
@@ -31,11 +34,15 @@ class SocialStats extends Component {
   }
 
   calculateStats = () => {
-    const data = Object.values(this.props.princData).map(day => day.social);
+    const data = Object.values(this.props.princData)
+      .filter(day => day.hasOwnProperty('social'))
+      .map(day => day.social);
+
     this.renderGraph(data);
   };
 
   renderGraph = data => {
+    console.log(data);
     const stats = data.reduce(
       (totals, activities) => {
         return mapValues(
