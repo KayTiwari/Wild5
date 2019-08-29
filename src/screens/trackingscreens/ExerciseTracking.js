@@ -9,6 +9,7 @@ import exbackground from '../../images/exercise-background.jpg';
 import {TrackingScreen} from './TrackingScreen';
 import {withAuthProvider} from '../../context/authcontext';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
+import {exerciseColor} from '../../components/common/colors'
 
 const exerciseTypes = [
   'Walking',
@@ -59,13 +60,13 @@ function ExerciseTracking() {
     <KeyboardAvoidingView style={{flex:1}}behavior="padding" enabled>
     <TrackingScreen
       backgroundImage={exbackground}
-      color="#a8eb12"
+      color={exerciseColor}
       activityTitle="Exercise"
       onSave={submitForm}
     >
       <View
         style={{
-          backgroundColor: '#72B83E',
+          backgroundColor: exerciseColor,
           alignSelf: 'center',
           marginVertical: 10,
           padding: 10,
@@ -101,8 +102,8 @@ function ExerciseTracking() {
           radio_props={[{label: 'Yes', value: 1}, {label: 'No', value: 0}]}
           initial={didFollowFID}
           formHorizontal={true}
-          buttonColor={'#a8eb12'}
-          selectedButtonColor={'#a8eb12'}
+          buttonColor={exerciseColor}
+          selectedButtonColor={exerciseColor}
           animation={true}
           onPress={value => setDidFollowFID(value)}
           radioStyle={{marginRight: 20}}
@@ -155,7 +156,7 @@ function ExerciseTracking() {
         style={{width: '80%', alignSelf: 'center'}}
         minimumValue={0}
         maximumValue={120}
-        minimumTrackTintColor="#a8eb12"
+        minimumTrackTintColor={exerciseColor}
         step={5}
         onValueChange={setDuration}
       />
@@ -179,8 +180,8 @@ function ExerciseTracking() {
         initial={0}
         formHorizontal={false}
         labelHorizontal={true}
-        buttonColor={'#a8eb12'}
-        selectedButtonColor={'#a8eb12'}
+        buttonColor={exerciseColor}
+        selectedButtonColor={exerciseColor}
         animation={true}
         onPress={value => setIntensity(value)}
       />

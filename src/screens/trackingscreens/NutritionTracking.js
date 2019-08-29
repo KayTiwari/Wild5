@@ -7,6 +7,7 @@ import {Actions} from 'react-native-router-flux';
 import nutriTrackingImage from '../../images/nutritracking.jpg';
 import {TrackingScreen} from './TrackingScreen';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
+import { nutritionColor } from '../../components/common/colors'
 
 const NutritionTracking = () => {
   const [loggedNutritionToday, setLoggedNutritionToday] = React.useState(true);
@@ -60,14 +61,14 @@ const NutritionTracking = () => {
       <View style={{flex: 1}}>
         <TrackingScreen
           backgroundImage={nutriTrackingImage}
-          color="#f89829"
+          color={nutritionColor}
           activityTitle="Nutrition"
           onSave={submitForm}
         >
           <ScrollView style={{flex: 1, padding: 30}}>
             <View
               style={{
-                backgroundColor: '#f89829',
+                backgroundColor: nutritionColor,
                 width: '100%',
                 alignSelf: 'center',
               }}
@@ -104,11 +105,11 @@ const NutritionTracking = () => {
                   {label: 'Yes', value: true},
                   {label: 'No', value: false},
                 ]}
-                initial={0}
+                initial={false}
                 formHorizontal={false}
                 labelHorizontal={true}
-                buttonColor={'#f89829'}
-                selectedButtonColor={'#f89829'}
+                buttonColor={nutritionColor}
+                selectedButtonColor={nutritionColor}
                 labelStyle={{fontSize: 20, color: '#000'}}
                 animation={true}
                 onPress={value => setLoggedNutritionToday(value)}
@@ -136,11 +137,11 @@ const NutritionTracking = () => {
                   {label: 'Yes', value: true},
                   {label: 'No', value: false},
                 ]}
-                initial={0}
+                initial={false}
                 formHorizontal={false}
                 labelHorizontal={true}
-                buttonColor={'#f89829'}
-                selectedButtonColor={'#f89829'}
+                buttonColor={nutritionColor}
+                selectedButtonColor={nutritionColor}
                 animation={true}
                 onPress={value => setImplementedMINDDietPrinciples(value)}
               />
@@ -159,7 +160,7 @@ const NutritionTracking = () => {
               </Text>
               <ListItem onPress={toggleBreakfastMeditation}>
                 <CheckBox
-                  color="#f89829"
+                  color={nutritionColor}
                   checked={breakfastMeditation}
                   onPress={toggleBreakfastMeditation}
                 />
@@ -169,7 +170,7 @@ const NutritionTracking = () => {
               </ListItem>
               <ListItem onPress={toggleLunchMeditation}>
                 <CheckBox
-                  color="#f89829"
+                  color={nutritionColor}
                   checked={lunchMeditation}
                   onPress={toggleLunchMeditation}
                 />
@@ -179,7 +180,7 @@ const NutritionTracking = () => {
               </ListItem>
               <ListItem onPress={toggleDinnerMeditation}>
                 <CheckBox
-                  color="#f89829"
+                  color={nutritionColor}
                   checked={dinnerMeditation}
                   onPress={toggleDinnerMeditation}
                 />
