@@ -26,8 +26,8 @@ export default function Landing() {
             source={wild5title}
             style={{
               width: '80%',
+              marginTop: '25%',
               resizeMode: 'contain',
-              marginTop: '10%',
               marginBottom: '2%',
               alignSelf: 'center',
             }}

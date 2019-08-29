@@ -110,7 +110,7 @@ class Settings extends Component<Props> {
         date={this.state.chosenDate}
         onDateChange={this.setDate}
         showTimer={this.state.showTimer}
-        onConfirm={this.submitTime(
+        onConfirm={()=>this.submitTime(
           this.state.chosenDate,
           this.state.currentPillar
         )}
@@ -147,7 +147,7 @@ class Settings extends Component<Props> {
         this.state.exerciseReminder
           ? this.setState({
               exerciseReminder: false,
-            },()=> this.deleteTime(pillar))
+            },()=> this.deleteTime(pillar), this.PushNotificationIOS.cancel('0'))
           : this.setState({
               exerciseReminder: !this.state.exerciseReminder,
               showTimer: true,
@@ -157,7 +157,7 @@ class Settings extends Component<Props> {
         this.state.mindfulnessReminder
           ? this.setState({
               mindfulnessReminder: false,
-            }, ()=> this.deleteTime(pillar))
+            }, ()=> this.deleteTime(pillar), this.PushNotificationIOS.cancel('1'))
           : this.setState({
               mindfulnessReminder: !this.state.mindfulnessReminder,
               showTimer: true,
@@ -167,7 +167,7 @@ class Settings extends Component<Props> {
         this.state.sleepReminder
           ? this.setState({
               sleepReminder: false,
-            },()=> this.deleteTime(pillar))
+            },()=> this.deleteTime(pillar), this.PushNotificationIOS.cancel('2'))
           : this.setState({
               sleepReminder: !this.state.sleepReminder,
               showTimer: true,
@@ -177,7 +177,7 @@ class Settings extends Component<Props> {
         this.state.socialReminder
           ? this.setState({
               socialReminder: false,
-            },()=> this.deleteTime(pillar))
+            },()=> this.deleteTime(pillar), this.PushNotificationIOS.cancel('3'))
           : this.setState({
               socialReminder: !this.state.socialReminder,
               showTimer: true,
@@ -187,7 +187,7 @@ class Settings extends Component<Props> {
         this.state.nutritionReminder
           ? this.setState({
               nutritionReminder: false,
-            },()=> this.deleteTime(pillar))
+            },()=> this.deleteTime(pillar), this.PushNotificationIOS.cancel('4'))
           : this.setState({
               nutritionReminder: !this.state.nutritionReminder,
               showTimer: true,
