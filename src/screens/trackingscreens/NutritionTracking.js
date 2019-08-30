@@ -130,7 +130,7 @@ const NutritionTracking = () => {
                   fontWeight: '600',
                 }}
               >
-                Did I implement MIND diet principles?
+                Did I implement MINDful diet principles?
               </Text>
               <RadioForm
                 radio_props={[
@@ -156,7 +156,7 @@ const NutritionTracking = () => {
                   fontWeight: '600',
                 }}
               >
-                Did I practice MIND Meal Meditation?
+                Did I practice MINDful Meal Meditation?
               </Text>
               <ListItem onPress={toggleBreakfastMeditation}>
                 <CheckBox
