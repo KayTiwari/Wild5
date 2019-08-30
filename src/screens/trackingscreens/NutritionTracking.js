@@ -143,6 +143,7 @@ const NutritionTracking = () => {
                 buttonColor={nutritionColor}
                 selectedButtonColor={nutritionColor}
                 animation={true}
+                labelStyle={{fontSize: 20, color: '#000'}}
                 onPress={value => setImplementedMINDDietPrinciples(value)}
               />
             </View>
