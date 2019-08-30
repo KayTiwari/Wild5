@@ -5,7 +5,8 @@ import {
   ImageBackground,
   Dimensions,
   ScrollView,
-  Platform
+  Platform,
+  KeyboardAvoidingView
 } from 'react-native';
 import {Text, Spinner} from 'native-base';
 import ForgotModal from '../modals/NewForgotModal';
@@ -64,6 +65,7 @@ const NewLoginScreen = props => {
   };
 
   return (
+    <KeyboardAvoidingView style={{flex: 1}} keyboardVerticalOffset={Platform.OS === 'android' ? -500 : 0} behavior={ Platform.OS === 'ios' ? "padding" : null} enabled>
     <ScrollView>
       <View style={{backgroundColor: 'gray', height: screenheight}}>
         {modal ? <ForgotModal isVisible={modal} /> : null}
@@ -122,8 +124,8 @@ const NewLoginScreen = props => {
               shake={true}
               inputContainerStyle={{
                 backgroundColor: 'white',
-                borderLeftColor: 'white',
-                borderRightColor: 'white',
+                borderLeftColor: Platform.OS === 'ios' ? 'white' : null,
+                borderRightColor: Platform.OS === 'ios' ? 'white' : null,
                 borderBottomWidth: 0,
                 borderWidth: 1,
               }}
@@ -145,10 +147,7 @@ const NewLoginScreen = props => {
         {loading && !error ? (
           <View
             style={{
-              position: 'absolute',
-              top: '47%',
               width: '50%',
-              marginBottom: 0,
               alignSelf: 'center',
             }}
           >
@@ -230,6 +229,7 @@ const NewLoginScreen = props => {
         </Text>
       </View>
     </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 

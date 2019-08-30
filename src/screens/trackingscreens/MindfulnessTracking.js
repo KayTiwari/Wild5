@@ -45,7 +45,7 @@ const MindfulnessTracking = () => {
   }, [type]);
 
   return (
-    <KeyboardAvoidingView style={{flex: 1}} behavior="padding" enabled>
+    <KeyboardAvoidingView style={{flex: 1}} behavior={Platform.OS === "ios" ? "padding" : null} enabled>
       <TrackingScreen
         backgroundImage={mindTrackingImage}
         color={mindfulnessColor}
@@ -111,7 +111,9 @@ const MindfulnessTracking = () => {
         <View style={{height: 100}}>
           <View style={{alignItems: 'center', marginTop: 10}}>
             <Picker
-              style={{marginLeft: 5, marginRight: 5}}
+              style={{
+                width:(Platform.OS === 'ios') ? undefined : '90%',
+                marginLeft: 5, marginRight: 5}}
               selectedValue={type}
               onValueChange={type => setType(type)}
               mode="dropdown"

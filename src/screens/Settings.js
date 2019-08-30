@@ -8,6 +8,11 @@ import appConfig from '../../app.json';
 import TimePicker from '../components/common/TimePicker';
 import {Actions} from 'react-native-router-flux';
 import firebase from 'react-native-firebase';
+import {  exerciseColor,
+  mindfulnessColor,
+  nutritionColor,
+  sleepColor,
+  socialColor} from '../components/common/colors';
 
 type Props = {};
 class Settings extends Component<Props> {
@@ -272,10 +277,9 @@ class Settings extends Component<Props> {
               <View style={{marginTop: 15}}>
                 <Text style={{fontSize: 20, color: '#000'}}>Exercise</Text>
                 <ToggleSwitch
-                  // label='Exercise'
                   labelStyle={{color: '#000', fontWeight: '900'}}
                   size="large"
-                  onColor="#73BA3F"
+                  onColor={exerciseColor}
                   offColor="#d5eac5"
                   isOn={this.state.exerciseReminder}
                   onToggle={this.toggleSwitch('exercise')}
@@ -284,10 +288,9 @@ class Settings extends Component<Props> {
               <View>
                 <Text style={{fontSize: 20, color: '#000'}}>Mindfulness</Text>
                 <ToggleSwitch
-                  // label='Mindfulness'
                   labelStyle={{color: '#000', fontWeight: '900'}}
                   size="large"
-                  onColor="#0AB2E8"
+                  onColor={mindfulnessColor}
                   offColor="#cef0fa"
                   isOn={this.state.mindfulnessReminder}
                   onToggle={this.toggleSwitch('mind')}
@@ -296,10 +299,9 @@ class Settings extends Component<Props> {
               <View>
                 <Text style={{fontSize: 20, color: '#000'}}>Sleep</Text>
                 <ToggleSwitch
-                  // label='Sleep'
                   labelStyle={{color: '#000', fontWeight: '900'}}
                   size="large"
-                  onColor="#B72B90"
+                  onColor={sleepColor}
                   offColor="#f1d5e9"
                   isOn={this.state.sleepReminder}
                   onToggle={this.toggleSwitch('sleep')}
@@ -308,10 +310,9 @@ class Settings extends Component<Props> {
               <View>
                 <Text style={{fontSize: 20, color: '#000'}}>Social</Text>
                 <ToggleSwitch
-                  // label='Social'
                   labelStyle={{color: '#000', fontWeight: '900'}}
                   size="large"
-                  onColor="#E93422"
+                  onColor={socialColor}
                   offColor="#fbd6d3"
                   isOn={this.state.socialReminder}
                   onToggle={this.toggleSwitch('social')}
@@ -320,10 +321,9 @@ class Settings extends Component<Props> {
               <View>
                 <Text style={{fontSize: 20, color: '#000'}}>Nutrition</Text>
                 <ToggleSwitch
-                  // label='Nutrition'
                   labelStyle={{color: '#000', fontWeight: '900'}}
                   size="large"
-                  onColor="#C6411F"
+                  onColor={nutritionColor}
                   offColor="#f4d9d2"
                   isOn={this.state.nutritionReminder}
                   onToggle={this.toggleSwitch('nutrition')}
