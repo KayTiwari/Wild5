@@ -86,7 +86,6 @@ const RegisterPage = () => {
         dob,
         goals
       });
-    Actions.landing();
   });
 
   onRegisterFail = err => {
