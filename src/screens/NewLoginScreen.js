@@ -1,236 +1,103 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import {
   View,
-  Image,
-  ImageBackground,
-  Dimensions,
-  ScrollView,
+  Text,
   Platform,
-  KeyboardAvoidingView
-} from 'react-native';
-import {Text, Spinner} from 'native-base';
-import ForgotModal from '../modals/NewForgotModal';
-import firebase from 'react-native-firebase';
-import {withAuthProvider} from '../context/authcontext';
+  KeyboardAvoidingView,
+  Image,
+  TouchableOpacity,
+  SafeAreaView,
+  StyleSheet,
+  Modal
+} from "react-native";
+import { withAuthProvider } from "../context/authcontext";
 import {Actions} from 'react-native-router-flux';
-import abstractimg from '../images/abstract2.jpeg';
-import wild5title from '../images/wild5_logo.png';
-import {Input, Button} from 'react-native-elements';
-
-const screenheight = Dimensions.get('window').height;
+import KS30 from "../images/KS30_login.png";
+import Register from './RegisterPage'
+import LoginModal from '../components/LoginModal'
 
 const NewLoginScreen = props => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [modal, setModal] = useState(false);
   const [raised, setRaised] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [viewModal, setViewModal] = useState("")
 
-  LoginPress = () => {
-    setLoading(true);
-    setError('');
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        this.onLoginSuccess();
-      })
-      .catch(err => {
-        this.onLoginFail(err);
-      });
-  };
-
-  onLoginSuccess = () => {
-    props.getUser();
-  };
-
-  onLoginFail = err => {
-    console.log(err.message);
-    if (err.message === 'The email address is badly formatted') {
-      setError('Invalid Email Address');
-    } else if (
-      err.message ===
-      'There is no user record corresponding to this identifier. The user may have been deleted.'
-    ) {
-      setError('Email address not registered yet!');
-    } else if (
-      err.message ===
-      'The password is invalid or the user does not have a password.'
-    ) {
-      setError('Wrong Password');
-    } else {
-      setError(err.message);
+  showModal = (view) => {
+    return ()=> {
+    setViewModal(view)
+    setModal(true)
     }
-  };
+    }
 
   return (
-    <KeyboardAvoidingView style={{flex: 1}} keyboardVerticalOffset={Platform.OS === 'android' ? -500 : 0} behavior={ Platform.OS === 'ios' ? "padding" : null} enabled>
-    <ScrollView>
-      <View style={{backgroundColor: 'gray', height: screenheight}}>
-        {modal ? <ForgotModal isVisible={modal} /> : null}
-        <ImageBackground
-          source={abstractimg}
-          style={{
-            flex: 1,
-            resizeMode: 'cover',
-            height: screenheight,
-            width: '100%',
-          }}
-        >
-          <View style={{width: '80%', alignSelf: 'center', marginTop: '10%'}}>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : null}
+      enabled
+    >
+      <View style={{ flex: 1 }}>
+      <SafeAreaView style={{flex: 1}}>
+      <Modal
+      transparent={true}
+      visible={modal}
+      >
+      { viewModal === "Register" ?
+        <Register /> :
+        viewModal === "Login" ?
+        <Login /> : null
+      }
+      </Modal>
+        <View style={{ alignSelf: "center", marginTop: "5%", marginBottom:'10%' }}>
+          <Image source={KS30} style={{ alignSelf: "center" }} />
+          <View style={{ height: 200, width: 400, display: 'flex', justifyContent:'center', alignSelf:'center', marginTop: '10%' }}>
             <Image
-              source={wild5title}
-              style={{
-                resizeMode: 'contain',
-                width: '100%',
-                marginTop: '15%',
-              }}
+              style={{ flex: 1, height: undefined, width: undefined }}
+              source={require("../images/water_rocks.jpg")}
+              resizeMode="contain"
             />
           </View>
-
-          <View
-            style={{
-              backgroundColor: 'white',
-              height: '40%',
-              width: '80%',
-              padding: 30,
-              borderRadius: 5,
-              position: 'absolute',
-              top: '35%',
-              shadowColor: 'black',
-              shadowOffset: {width: 4, height: 4},
-              shadowOpacity: 0.5,
-              shadowRadius: 6,
-              alignSelf: 'center',
-            }}
-          >
-            <Input
-              placeholder="Email"
-              onChangeText={text => setEmail(text)}
-              spellCheck={false}
-              keyboardType={'email-address'}
-              autoCapitalize={'none'}
-              textContentType={'emailAddress'}
-              shake={true}
-            />
-            <Input
-              placeholder="Password"
-              onChangeText={text => setPassword(text)}
-              spellCheck={false}
-              textContentType={'password'}
-              autoCapitalize={'none'}
-              secureTextEntry={true}
-              shake={true}
-              inputContainerStyle={{
-                backgroundColor: 'white',
-                borderLeftColor: Platform.OS === 'ios' ? 'white' : null,
-                borderRightColor: Platform.OS === 'ios' ? 'white' : null,
-                borderBottomWidth: 0,
-                borderWidth: 1,
-              }}
-            />
+        </View>
+        <View style={{width: '50%', backgroundColor: "#52669c", alignSelf:'center', height: 50, justifyContent:'center'}}>
+          <Text style={{alignSelf:'center', fontSize:20, color: '#fff', paddingRight:5, paddingLeft: 5}}>Let's Get Started</Text>
           </View>
-        </ImageBackground>
-        <Text
-          style={{
-            position: 'absolute',
-            top: '50%',
-            width: '50%',
-            marginBottom: 0,
-            alignSelf: 'center',
-            color: 'red',
-          }}
-        >
-          {error}
-        </Text>
-        {loading && !error ? (
-          <View
-            style={{
-              width: '50%',
-              alignSelf: 'center',
-            }}
-          >
-            <Spinner />
+          <View style={{flexDirection: 'row', display: 'flex', justifyContent: 'space-around'}}>
+            <TouchableOpacity style={styles.buttons} onPress={showModal("Register")}>
+              <Text style={styles.buttonText}>Register</Text>
+            </TouchableOpacity>
+            <View style={styles.imageView}>
+            <Image source={require("../images/wild5star.png")}
+            style={{ flex: 1, height: undefined, width: undefined }}
+            />
+            </View>
+            <TouchableOpacity style={styles.buttons} onPress={showModal("Login")}>
+              <Text style={styles.buttonText}>Login</Text>
+            </TouchableOpacity>
           </View>
-        ) : null}
-        <View
-          style={{
-            position: 'absolute',
-            top: '55%',
-            width: '50%',
-            marginTop: 0,
-            alignSelf: 'center',
-          }}
-        >
-          <Button
-            title="Login"
-            type="outline"
-            raised={raised}
-            onPress={() => this.LoginPress()}
-          />
-        </View>
-        <View
-          style={{
-            position: 'absolute',
-            top: '62%',
-            width: '50%',
-            alignSelf: 'center',
-          }}
-        >
-          <Button
-            title="Register"
-            type="outline"
-            raised={raised}
-            onPress={() => Actions.registerpage()}
-          />
-        </View>
-
-        <View
-          style={{
-            position: 'absolute',
-            top: '70%',
-            width: '50%',
-            alignSelf: 'center',
-          }}
-        >
-          <Button
-            title="Forgot password?"
-            onPress={() => setModal(prevState => !prevState)}
-            type="clear"
-            titleStyle={{fontSize: 15}}
-          />
-        </View>
+          </SafeAreaView>
       </View>
-
-      <View style={{backgroundColor: '#333'}}>
-        <Text
-          style={{
-            color: 'white',
-            fontSize: 15,
-            fontWeight: '600',
-            textAlign: 'center',
-            marginTop: '10%',
-          }}
-        >
-          App made on React Native by the Wild Card Team.
-        </Text>
-        <Text
-          style={{
-            color: 'white',
-            fontSize: 15,
-            fontWeight: '600',
-            textAlign: 'center',
-            marginBottom: '5%',
-          }}
-        >
-          Wild5 and all its resource materials are a product of the works by
-          Rakesh and Saundra Jain MD.
-        </Text>
-      </View>
-    </ScrollView>
     </KeyboardAvoidingView>
   );
 };
 
 export default withAuthProvider(NewLoginScreen);
+
+const styles = StyleSheet.create({
+  buttons: {
+    width: '25%',
+    justifyContent: 'center'
+  },
+  buttonText: {
+    letterSpacing: 1,
+    fontWeight: '900',
+    color: '#52669c', 
+    fontSize: 18, 
+    alignSelf: 'center'
+  },
+  imageView:{
+    height: 50,
+    width: 50,
+  }
+})

@@ -77,7 +77,7 @@ const Routercomponent = () => {
         <Scene key="herostats" component={HeroTotalStats} backTitle={'Stats'} />
         <Scene key="exstats" component={ExerciseStats} backTitle={'Stats'} />
         <Scene key="mindstats" component={MindfulStats} backTitle={'Stats'} />
-        <Scene key="sleepstats" component={SleepStats} backTitle={'Stats'} />
+        <Scene key="sleepstats" component={SleepStats} backTitle={'Stats'} initial/>
         <Scene key="socialstats" component={SocialStats} backTitle={'Stats'} />
         <Scene key="nutristats" component={NutriStats} backTitle={'Stats'} />
         <Scene

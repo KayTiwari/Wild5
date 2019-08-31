@@ -96,14 +96,6 @@ const RegisterPage = () => {
   return !showDisclaimer ? (
     <ScrollView bounces={false} style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
-        <ImageBackground
-          source={abstractimg}
-          style={{
-            height: screenheight * 1.5,
-            width: "100%",
-            resizeMode: "cover"
-          }}
-        >
           <View
             style={{
               height: screenheight * 1.2,
@@ -293,7 +285,6 @@ const RegisterPage = () => {
               </Button>
             </View>
           </View>
-        </ImageBackground>
       </View>
     </ScrollView>
   ) : (
