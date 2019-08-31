@@ -9,7 +9,6 @@ export default function Landing() {
   return (
     <View style={{flex: 1}}>
       <SafeAreaView style={{flex: 1}}>
-        <ScrollView bounces={false}>
           <Image
             source={KS30title}
             style={{
@@ -32,7 +31,6 @@ export default function Landing() {
               alignSelf: 'center',
             }}
           />
-        </ScrollView>
       </SafeAreaView>
       <Navbar homedisable />
     </View>
