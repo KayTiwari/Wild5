@@ -41,12 +41,6 @@ class PushNotificationsIOS {
     });
   };
 
-  // PushNotification.localNotificationSchedule({
-  //... You can use all the options from localNotifications
-  // message: "My Notification Message", // (required)
-  // repeatType: 'day',
-  //});
-
   scheduleNotif = (pillar, date) => {
     // AlertIOS.alert('schedulerunning')
     this.lastId++;
@@ -60,26 +54,33 @@ class PushNotificationsIOS {
     };
 
     if (pillar === "exercise") {
+      console.log(date)
+      config.id = '0'
       config.repeatType = "day"
       config.date = new Date(date)
       config.message = "Remember to Exercise Daily Following the FID Practices";
     } else if (pillar === "mind") {
+      config.id = '1'
       config.repeatType = "day"
       config.date = new Date(date);
       config.message = "Remember to Mindfully Meditate at Least 10 Minutes a Day";
     } else if (pillar === "sleep") {
+      config.id = '2'
       config.repeatType = "day"
       config.date = new Date(date);
       config.message = "Remember to Implement 4 or more of the 6 Sleep Hygiene Practices";
     } else if (pillar === "social") {
+      config.id = '3'
       config.repeatType = "day"
       config.date = new Date(date);
       config.message = "Remember to Socially Connect with at Least 2 People Today";
     } else if (pillar === "nutrition") {
+      config.id = '4'
       config.repeatType = "day"
       config.date = new Date(date);
       config.message = "Remember to Log Your Meals, Snacks, and Beevrages Including Alcohol";
     } else if (pillar === "sleepquest"){
+      config.id = '5'
       config.repeatType = "day"
       config.date = new Date(date);
       config.message = "Time to wind down before your bedtime"
@@ -87,6 +88,11 @@ class PushNotificationsIOS {
     PushNotification.localNotificationSchedule(config);
     console.log(config)
   };
+
+  cancel = id => {
+    console.log(id)
+    PushNotification.cancelLocalNotifications({id: id})
+  }
 
   render() {
     return (

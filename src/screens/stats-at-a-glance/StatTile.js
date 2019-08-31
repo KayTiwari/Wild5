@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {TouchableOpacity, Text, StyleSheet, Dimensions} from 'react-native';
+import {TouchableOpacity, Text, StyleSheet, Dimensions, Platform} from 'react-native';
 import {ProgressRing} from '../../components/charts/ProgressRing';
 
 const {width} = Dimensions.get('window');
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
+    color: Platform.OS === 'android' ? '#000' : null,
     fontSize: 18,
     fontWeight: 'bold',
   },

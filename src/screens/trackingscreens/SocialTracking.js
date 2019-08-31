@@ -7,6 +7,7 @@ import {Actions} from 'react-native-router-flux';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
 import {TrackingScreen} from './TrackingScreen';
 import RadioForm from "react-native-simple-radio-button";
+import {socialColor} from '../../components/common/colors'
 
 const CALLED_FRIEND = 'calledFriend';
 const MET_FRIEND_IN_PERSON = 'metFriendInPerson';
@@ -58,11 +59,11 @@ class SocialTracking extends Component {
     return (
       <TrackingScreen
         backgroundImage={{uri: 'social-tracking-bg'}}
-        color="#ee3322"
+        color={socialColor}
         activityTitle="Social Connectedness"
         onSave={this.submitForm}
       >
-      <View style={{backgroundColor:"#EB3422", width: '85%', alignSelf: 'center', height: 90, marginTop: 10 }}>
+      <View style={{backgroundColor:socialColor, width: '85%', alignSelf: 'center', height: 90, marginTop: 10 }}>
           <Text style={{fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '700'}}>
             Program Expectations
           </Text>
@@ -83,11 +84,11 @@ class SocialTracking extends Component {
                 { label: "Yes", value: "1" },
                 { label: "No", value: "0" }
               ]}
-              initial={1}
+              initial={false}
               formHorizontal={false}
               labelHorizontal={true}
-              buttonColor={"#EB3422"}
-              selectedButtonColor={"#EB3422"}
+              buttonColor={socialColor}
+              selectedButtonColor={socialColor}
               labelStyle={{fontSize: 20, color: '#000'}}
               animation={true}
               onPress={value => {
@@ -143,7 +144,7 @@ const styles = StyleSheet.create({
 function CheckBoxItem({onPress, children, ...checkboxProps}) {
   return (
     <ListItem onPress={onPress}>
-      <CheckBox {...checkboxProps} onPress={onPress} color="#EE3322" />
+      <CheckBox {...checkboxProps} onPress={onPress} color={socialColor} />
       <Body>
         <Text>{children}</Text>
       </Body>

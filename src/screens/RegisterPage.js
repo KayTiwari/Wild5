@@ -41,11 +41,23 @@ const RegisterPage = () => {
     setChosenDate(newDate);
   };
 
+  showDisclaimerScreen = () => {
+    if (email === "" && password === "") {
+      setError("Please enter email and password")
+  } else if (email === ""){
+    setError("Please enter an email")
+  } else if (password === ""){
+    setError("Please enter a password")
+  } else {
+    setShowDisclaimer(true)
+  }
+}
+
   registerPress = () => {
     setLoading(true);
     setAcceptDisclaimer(true);
     setError("");
-    if (email !== "") {
+    if (email !== "" && password !== "") {
       firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
@@ -56,8 +68,7 @@ const RegisterPage = () => {
           this.onRegisterFail(err);
         });
     } else {
-      setError("Please enter a valid email");
-      setLoading(false);
+      setError("something went wrong")
     }
   };
 
@@ -75,7 +86,6 @@ const RegisterPage = () => {
         dob,
         goals
       });
-    Actions.landing();
   });
 
   onRegisterFail = err => {
@@ -261,7 +271,7 @@ const RegisterPage = () => {
               </View>
             </View>
 
-            <Text style={{ fontSize: 30, color: "red" }}>{error}</Text>
+            <Text style={{ fontSize: 30, color: "red", alignSelf: 'center' }}>{error}</Text>
 
             {loading ? (
               <View style={{ alignSelf: "center" }}>
@@ -277,7 +287,7 @@ const RegisterPage = () => {
                 type="outline"
                 large
                 raised={raised}
-                onPress={() => setShowDisclaimer(true)}
+                onPress={() => showDisclaimerScreen()}
               >
                 <Text>Register</Text>
               </Button>

@@ -29,7 +29,7 @@ const HeroIntro = () => {
               textAlign: "center"
             }}
           >
-            The HERO scale is your way to measure and track your wellness goals.
+            The HERO Wellness scale is your way to measure and track your wellness goals.
           </Text>
         </View>
         <View>
@@ -41,7 +41,7 @@ const HeroIntro = () => {
               textAlign: "center"
             }}
           >
-            Let's Check Your HERO Score For This Week
+            Let's Check Your HERO Wellness Score For This Week
           </Text>
         </View>
 

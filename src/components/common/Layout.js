@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View, SafeAreaView, ScrollView, Text, StyleSheet} from 'react-native';
+import {View, SafeAreaView, ScrollView, Text, StyleSheet, Platform} from 'react-native';
 import Navbar from '../Navbar';
 
 export function Layout(props) {
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
+    color: Platform.OS === 'android' ? '#000' : null,
     fontSize: 36,
     marginTop: '10%',
     fontWeight: '900',

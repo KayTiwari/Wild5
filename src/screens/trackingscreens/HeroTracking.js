@@ -42,7 +42,7 @@ const [heroDaily, setHeroDaily] = React.useState("")
       <TrackingScreen 
       backgroundImage={heroBackground}
       color="#333"
-      activityTitle="Hero Score"
+      activityTitle="Hero Exercises"
       onSave={submitForm}
       >
       <SafeAreaView style={{flex: 1}}>

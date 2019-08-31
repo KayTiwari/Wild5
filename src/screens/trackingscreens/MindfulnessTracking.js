@@ -7,6 +7,7 @@ import {TrackingScreen} from './TrackingScreen';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
 import {Actions} from 'react-native-router-flux';
 import mindTrackingImage from '../../images/mindfultracking1.jpg';
+import {mindfulnessColor} from '../../components/common/colors'
 
 const types = [
   'Mindfulness',
@@ -44,16 +45,16 @@ const MindfulnessTracking = () => {
   }, [type]);
 
   return (
-    <KeyboardAvoidingView style={{flex: 1}} behavior="padding" enabled>
+    <KeyboardAvoidingView style={{flex: 1}} behavior={Platform.OS === "ios" ? "padding" : null} enabled>
       <TrackingScreen
         backgroundImage={mindTrackingImage}
-        color="#81cfe0"
+        color={mindfulnessColor}
         activityTitle="Mindfulness"
         onSave={submitForm}
       >
         <View
           style={{
-            backgroundColor: '#0AB1E7',
+            backgroundColor: mindfulnessColor,
             width: '85%',
             alignSelf: 'center',
             height: 90,
@@ -97,9 +98,10 @@ const MindfulnessTracking = () => {
                 {label: 'Yes', value: true},
                 {label: 'No', value: false},
               ]}
+              initial={false}
               formHorizontal={false}
               labelHorizontal={true}
-              buttonColor={'#4682b4'}
+              buttonColor={mindfulnessColor}
               animation={true}
               onPress={value => setDidMeditateToday(value)}
             />
@@ -109,7 +111,9 @@ const MindfulnessTracking = () => {
         <View style={{height: 100}}>
           <View style={{alignItems: 'center', marginTop: 10}}>
             <Picker
-              style={{marginLeft: 5, marginRight: 5}}
+              style={{
+                width:(Platform.OS === 'ios') ? undefined : '90%',
+                marginLeft: 5, marginRight: 5}}
               selectedValue={type}
               onValueChange={type => setType(type)}
               mode="dropdown"
