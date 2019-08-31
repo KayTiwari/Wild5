@@ -1,5 +1,5 @@
 import React from 'react';
-import {Scene, Router, Actions} from 'react-native-router-flux';
+import {Scene, Router, Actions, ActionConst} from 'react-native-router-flux';
 import Landing from './screens/Landing';
 import EducationWellnessRoadMap from './screens/NewRoadMap';
 import ExerciseTracking from './screens/trackingscreens/ExerciseTracking';
@@ -35,7 +35,7 @@ const Routercomponent = () => {
   return (
     <Router>
       <Scene key="root">
-        <Scene key="newlogin" component={NewLogin} header={null} />
+        <Scene key="newlogin" component={NewLogin} header={null} drawerLockMode='locked-closed' gesturesEnabled={false}/>
         <Scene
           key="registerpage"
           component={RegisterPage}
