@@ -35,20 +35,12 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Allow access for taking pictures of food</string>
-	<key>NSContactsUsageDescription</key>
-	<string>Permission needed for accessing Contacts</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSMainNibFile</key>
 	<string>LaunchScreen</string>
 	<key>NSMainNibFile~iphone</key>
 	<string>LaunchScreen</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Accessing Photos for reviewing your food photos</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Need permission to store photos on your device</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto_medium.ttf</string>
