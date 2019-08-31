@@ -1,9 +1,12 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Button} from 'react-native';
 import {Text, Icon} from 'native-base';
+import {Actions} from 'react-native-router-flux';
 import countBy from 'lodash/countBy';
 import {withAuthProvider} from '../../context/authcontext';
 import {objectMax} from '../../utils/object';
+import {compose} from '../../utils/array';
+import {emptyState} from './EmptyState';
 
 function MindfulStats(props) {
   const favoriteMeditation = React.useMemo(() => {
@@ -59,4 +62,16 @@ function MindfulStats(props) {
   );
 }
 
-export default withAuthProvider(MindfulStats);
+export default compose(
+  withAuthProvider,
+  emptyState(
+    <Button
+      onPress={() => Actions.mindfulnesstracking()}
+      title="Add Mindfulness Data"
+    />,
+    props =>
+      Object.values(props.princData).filter(day =>
+        day.hasOwnProperty('mindfulness')
+      ).length === 0
+  )
+)(MindfulStats);

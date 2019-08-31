@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
-import {View, Dimensions} from 'react-native';
+import {View, Dimensions, Button} from 'react-native';
 import {Text, Icon} from 'native-base';
+import {Actions} from 'react-native-router-flux';
 import mapValues from 'lodash/mapValues';
 import {withAuthProvider} from '../../context/authcontext';
 import BarGraph from '../../components/charts/SocialGraph';
+import {compose} from '../../utils/array';
+import {emptyState} from './EmptyState';
 
 //graph of all practices + scores
 
@@ -11,7 +14,10 @@ const screenheight = Dimensions.get('window').height;
 
 class SocialStats extends Component {
   state = {
-    best: 'None',
+    calledFriend: 0,
+    metFriendInPerson: 0,
+    calledFamily: 0,
+    metFamilyInPerson: 0,
   };
 
   componentWillMount() {
@@ -31,11 +37,15 @@ class SocialStats extends Component {
   }
 
   calculateStats = () => {
-    const data = Object.values(this.props.princData).map(day => day.social);
+    const data = Object.values(this.props.princData)
+      .filter(day => day.hasOwnProperty('social'))
+      .map(day => day.social);
+
     this.renderGraph(data);
   };
 
   renderGraph = data => {
+    console.log(data);
     const stats = data.reduce(
       (totals, activities) => {
         return mapValues(
@@ -149,4 +159,12 @@ class SocialStats extends Component {
   }
 }
 
-export default withAuthProvider(SocialStats);
+export default compose(
+  withAuthProvider,
+  emptyState(
+    <Button onPress={() => Actions.socialtracking()} title="Add Social Data" />,
+    props =>
+      Object.values(props.princData).filter(day => day.hasOwnProperty('social'))
+        .length === 0
+  )
+)(SocialStats);

@@ -1,16 +1,24 @@
 import React, {Component} from 'react';
-import {View, Dimensions, ScrollView} from 'react-native';
+import {View, Dimensions, ScrollView, Button} from 'react-native';
 import {Text, Icon} from 'native-base';
+import {Actions} from 'react-native-router-flux';
 import {withAuthProvider} from '../../context/authcontext';
 import BarGraph from '../../components/charts/NutriGraph';
+import {compose} from '../../utils/array';
+import {emptyState} from './EmptyState';
 
 //graph of all practices + scores
 
 const screenheight = Dimensions.get('window').height;
 
-class SleepStats extends Component {
+class NutritionStats extends Component {
   state = {
-    best: 'None',
+    logmeals: 0,
+    MIND: 0,
+    breakfast: 0,
+    lunch: 0,
+    dinner: 0,
+    total: 0,
   };
 
   componentWillMount() {
@@ -30,7 +38,10 @@ class SleepStats extends Component {
   }
 
   calculateStats = () => {
-    let data = Object.values(this.props.princData);
+    let data = Object.values(this.props.princData).filter(day =>
+      day.hasOwnProperty('nutrition')
+    );
+
     this.renderGraph(data);
   };
 
@@ -188,4 +199,16 @@ class SleepStats extends Component {
   }
 }
 
-export default withAuthProvider(SleepStats);
+export default compose(
+  withAuthProvider,
+  emptyState(
+    <Button
+      onPress={() => Actions.nutritiontracking()}
+      title="Add Nutrition Data"
+    />,
+    props =>
+      Object.values(props.princData).filter(day =>
+        day.hasOwnProperty('nutrition')
+      ).length === 0
+  )
+)(NutritionStats);
