@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   View,
   Dimensions,
@@ -36,16 +36,32 @@ const RegisterPage = () => {
   const [dob, setDob] = useState("");
   const [goals, setGoals] = useState("");
   const [raised, setRaised] = useState(true);
+  const [date, setInitialDate] = useState(new Date())
 
   setDate = newDate => {
     setChosenDate(newDate);
   };
 
+  showDisclaimerScreen = () => {
+    if (email === "" && password === "") {
+      setError("Please enter email and password")
+  } else if (email === ""){
+    setError("Please enter an email")
+  } else if (password === ""){
+    setError("Please enter a password")
+  } else {
+    setError("")
+    setShowDisclaimer(true)
+  }
+}
+
+
+
   registerPress = () => {
-    setLoading(true);
     setAcceptDisclaimer(true);
+    setLoading(true);
     setError("");
-    if (email !== "") {
+    if (email !== "" && password !== "") {
       firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
@@ -56,8 +72,7 @@ const RegisterPage = () => {
           this.onRegisterFail(err);
         });
     } else {
-      setError("Please enter a valid email");
-      setLoading(false);
+      setError("something went wrong")
     }
   };
 
@@ -73,9 +88,9 @@ const RegisterPage = () => {
         accepteddisclaimer: acceptDisclaimer,
         fullName,
         dob,
-        goals
+        goals,
+        date: date.toString()
       });
-    Actions.landing();
   });
 
   onRegisterFail = err => {
@@ -261,9 +276,9 @@ const RegisterPage = () => {
               </View>
             </View>
 
-            <Text style={{ fontSize: 30, color: "red" }}>{error}</Text>
+            <Text style={{ fontSize: 30, color: "red", alignSelf: 'center', textAlign:'center' }}>{error}</Text>
 
-            {loading ? (
+            {loading && !error ? (
               <View style={{ alignSelf: "center" }}>
                 <Spinner />
               </View>
@@ -277,7 +292,7 @@ const RegisterPage = () => {
                 type="outline"
                 large
                 raised={raised}
-                onPress={() => setShowDisclaimer(true)}
+                onPress={() => showDisclaimerScreen()}
               >
                 <Text>Register</Text>
               </Button>
@@ -289,7 +304,7 @@ const RegisterPage = () => {
   ) : (
     <SafeAreaView style={{ flex: 1 }}>
       <Disclaimer />
-      {loading ? <Spinner /> : null}
+      {loading && !error ? <Spinner /> : error ? <View style={{ alignSelf: "center" }}><Text style={{fontSize: 20, color: "red", alignSelf: 'center' }}>{error}</Text></View> : null}
       <View
         style={{
           flexDirection: "row",

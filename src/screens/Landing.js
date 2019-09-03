@@ -9,7 +9,6 @@ export default function Landing() {
   return (
     <View style={{flex: 1}}>
       <SafeAreaView style={{flex: 1}}>
-        <ScrollView bounces={false}>
           <Image
             source={KS30title}
             style={{
@@ -22,13 +21,12 @@ export default function Landing() {
           <View style={{marginTop: '2%', flex: 1}}>
             <Navigation />
           </View>
-        </ScrollView>
-        <Image
+          <Image
             source={wild5title}
             style={{
               width: '80%',
+              marginTop: '25%',
               resizeMode: 'contain',
-              marginTop: '5%',
               marginBottom: '2%',
               alignSelf: 'center',
             }}

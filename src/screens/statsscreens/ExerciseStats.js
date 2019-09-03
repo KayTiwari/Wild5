@@ -1,9 +1,12 @@
 import React from 'react';
-import {View, Dimensions} from 'react-native';
+import {View, Dimensions, Button} from 'react-native';
 import {Text, Icon} from 'native-base';
+import {Actions} from 'react-native-router-flux';
 import countBy from 'lodash/countBy';
 import {withAuthProvider} from '../../context/authcontext';
 import {objectMax} from '../../utils/object';
+import {emptyState} from './EmptyState';
+import {compose} from '../../utils/array';
 
 const screenheight = Dimensions.get('window').height;
 
@@ -133,4 +136,16 @@ function ExerciseStats(props) {
   );
 }
 
-export default withAuthProvider(ExerciseStats);
+export default compose(
+  withAuthProvider,
+  emptyState(
+    <Button
+      onPress={() => Actions.exercisetracking()}
+      title="Add Exercise Data"
+    />,
+    props =>
+      Object.values(props.princData).filter(day =>
+        day.hasOwnProperty('exercise')
+      ).length === 0
+  )
+)(ExerciseStats);

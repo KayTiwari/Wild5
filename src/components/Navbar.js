@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import {
   Container,
   Footer,
@@ -26,10 +26,10 @@ class Navbar extends Component {
     return (
       <View>
           <Footer>
-            <FooterTab>
+            <FooterTab style={{backgroundColor: Platform.OS === "android" ? "#fff" : null}}>
               <Button disabled={this.props.homedisable} onPress={this.homePress.bind(this)}>
-                <Icon name={"ios-home"} />
-                <Text>Track</Text>
+                <Icon name={"ios-home"} style={styles.buttons}/>
+                <Text style={styles.buttons}>Track</Text>
               </Button>
               {/* <Button disabled={this.props.learndisable} onPress={() => Actions.edroadmap()}>
                 <Icon name={"ribbon"} />
@@ -40,28 +40,28 @@ class Navbar extends Component {
               <Text>Kickstart</Text>
             </Button> */}
             <Button onPress={() => Actions.herointro()}>
-                <Icon name={"sunny"} />
-                <Text>HERO</Text>
+                <Icon name={"sunny"} style={styles.buttons}/>
+                <Text style={styles.buttons}>HERO</Text>
               </Button>
             {/* <Button disabled={this.props.questdisable} onPress={() => Actions.quests()}>
                 <Icon name={"flame"} />
                 <Text>Quest</Text>
               </Button> */}
               <Button disabled={this.props.statsdisable} onPress={() => Actions.statistics()}>
-                <Icon name={"stats"} />
-                <Text>Stats</Text>
+                <Icon name={"stats"} style={styles.buttons}/>
+                <Text style={styles.buttons}>Stats</Text>
               </Button>
               {/* <Button onPress={() => Actions.help()}>
         <Icon name={'md-help'} />
           <Text>Help</Text>
         </Button> */}
               <Button disabled={this.props.faqdisable} onPress={() => Actions.about()}>
-                <Icon name={"chatbubbles"} />
-                <Text style={{}}>About</Text>
+                <Icon name={"chatbubbles"} style={styles.buttons}/>
+                <Text style={styles.buttons}>About</Text>
               </Button>
               <Button onPress={() => Actions.settings()}>
-                <Icon name={"ios-settings"} />
-                <Text style={{ fontSize: 10 }}>Settings</Text>
+                <Icon name={"ios-settings"} style={styles.buttons}/>
+                <Text style={styles.settings}>Settings</Text>
               </Button>
             </FooterTab>
           </Footer>
@@ -71,3 +71,12 @@ class Navbar extends Component {
 }
 
 export default Navbar;
+
+const styles = StyleSheet.create({
+  buttons: {
+    color: "#041D5D" },
+settings: {
+  color: "#041D5D",
+fontSize: 10
+}
+})

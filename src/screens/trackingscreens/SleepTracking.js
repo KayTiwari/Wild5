@@ -7,6 +7,7 @@ import {Actions} from 'react-native-router-flux';
 import sleepTrackingImage from '../../images/sleeptracking.jpg';
 import {TrackingScreen} from './TrackingScreen';
 import {scopeRefByUserAndDate} from '../../utils/firebase';
+import {sleepColor} from '../../components/common/colors'
 
 const SleepTracking = () => {
   const [
@@ -70,13 +71,13 @@ const SleepTracking = () => {
     <Container>
       <TrackingScreen
         backgroundImage={sleepTrackingImage}
-        color="#b92e91"
+        color={sleepColor}
         activityTitle="Sleep"
         onSave={submitForm}
       >
         <View
           style={{
-            backgroundColor: '#b92e91',
+            backgroundColor: sleepColor,
             width: '85%',
             alignSelf: 'center',
             height: 90,
@@ -113,11 +114,11 @@ const SleepTracking = () => {
               {label: 'Yes', value: true},
               {label: 'No', value: false},
             ]}
-            initial={0}
+            initial={false}
             formHorizontal={false}
             labelHorizontal={true}
-            buttonColor={'#b92e91'}
-            selectedButtonColor={'#b92e91'}
+            buttonColor={sleepColor}
+            selectedButtonColor={sleepColor}
             labelStyle={{fontSize: 20, color: '#000'}}
             animation={true}
             onPress={value => setDidImplementSleepPractices(value)}
@@ -137,7 +138,7 @@ const SleepTracking = () => {
           </Text>
           <ListItem onPress={toggleNoElectronics}>
             <CheckBox
-              color="#b92e91"
+              color={sleepColor}
               checked={noElectronics}
               onPress={toggleNoElectronics}
             />
@@ -148,7 +149,7 @@ const SleepTracking = () => {
           <ListItem onPress={toggleSleepMask}>
             <CheckBox
               onPress={toggleSleepMask}
-              color="#b92e91"
+              color={sleepColor}
               checked={sleepMask}
             />
             <Body>
@@ -158,7 +159,7 @@ const SleepTracking = () => {
           <ListItem onPress={toggleRegularTime}>
             <CheckBox
               onPress={toggleRegularTime}
-              color="#b92e91"
+              color={sleepColor}
               checked={regularTime}
             />
             <Body>
@@ -168,7 +169,7 @@ const SleepTracking = () => {
           <ListItem onPress={toggleNoNapping}>
             <CheckBox
               onPress={toggleNoNapping}
-              color="#b92e91"
+              color={sleepColor}
               checked={noNapping}
             />
             <Body>
@@ -178,7 +179,7 @@ const SleepTracking = () => {
           <ListItem onPress={toggleWarmBath}>
             <CheckBox
               onPress={toggleWarmBath}
-              color="#b92e91"
+              color={sleepColor}
               checked={warmBath}
             />
             <Body>
@@ -188,7 +189,7 @@ const SleepTracking = () => {
           <ListItem onPress={toggleNoCaffeine}>
             <CheckBox
               onPress={toggleNoCaffeine}
-              color="#b92e91"
+              color={sleepColor}
               checked={noCaffeine}
             />
             <Body>
