@@ -7,6 +7,8 @@ import Navbar from '../../components/Navbar';
 import HEROlogo from '../../images/herologo.png';
 import AnimateNumber from 'react-native-animate-number';
 import Star from '../../images/wild5star.png';
+import { scopeRefByUserAndDate } from '../../utils/firebase'
+
 
 const screenheight = Dimensions.get('window').height;
 class HeroScore extends Component {
@@ -14,33 +16,11 @@ class HeroScore extends Component {
     total: 0,
   };
 
-  componentWillMount() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var res = user.email.split('.');
-      var userEm = res[0].toString();
-      this.setState({
-        user: userEm,
-      });
-    } else {
-      console.log('noperz');
-    }
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      '-' +
-      (today.getMonth() + 1) +
-      '-' +
-      today.getDate();
-    var dateTime = date;
-    this.setState({
-      date: dateTime,
-    });
-  }
 
   componentDidMount() {
+    const heroRef = scopeRefByUserAndDate('HERO')
     var database = firebase.database();
-    var ref = database.ref(`HERO/${this.state.user}/${this.state.date}`);
+    var ref = database.ref(heroRef);
     ref.on('value', this.gotData, this.errData);
   }
 

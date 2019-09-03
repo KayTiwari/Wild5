@@ -59,11 +59,12 @@ export function Navigation(props) {
   const renderItem = React.useCallback((item, index) => {
     return (
       <TouchableOpacity
+      activeOpacity={!props.hero ? 1 : 0.7}
         key={index}
         style={styles.touchable}
-        onPress={item.action}
+        onPress={!props.hero ? null : item.action}
       >
-        <LinearGradient style={styles.item} colors={item.background}>
+        <LinearGradient style={styles.item} colors={props.hero ? item.background : ["white", "#ffffff00"]}>
           {item.title === 'HERO Exercises' ? (
             <Image
               source={item.icon}
@@ -85,6 +86,15 @@ export function Navigation(props) {
           {items.map(renderItem)}
         </View>
       ))}
+      {!props.hero ? <TouchableOpacity style={[styles.touchable, styles.touchableHERO]} onPress={()=> Actions.herointro()}>
+            <LinearGradient style={styles.item} colors={['#041D5D', '#082774']}>
+            <Image
+              source={HEROlogo}
+              style={{width: '100%', height: 65, resizeMode: 'contain'}}
+            />
+          <Text style={styles.title}>Hero Wellness Survey</Text>
+        </LinearGradient>
+      </TouchableOpacity> : null}
     </View>
   );
 }
@@ -120,4 +130,7 @@ const styles = StyleSheet.create({
   },
   icon: {color: 'white', fontSize: 60},
   title: {color: 'white', fontSize: 18},
+  touchableHERO: {
+    alignSelf: 'center'
+  }
 });

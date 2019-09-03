@@ -4,6 +4,7 @@ import { Text, Button, Icon } from "native-base";
 import { Actions } from "react-native-router-flux";
 import firebase from 'react-native-firebase';
 import { Slider } from "react-native-elements";
+import { scopeRefByUserAndDate } from '../../utils/firebase'
 
 const screenheight = Dimensions.get("window").height;
 class HeroOpt extends Component {
@@ -11,36 +12,14 @@ class HeroOpt extends Component {
     optval: 0
   };
 
-  componentDidMount() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var res = user.email.split(".");
-      var userEm = res[0].toString();
-      this.setState({
-        user: userEm
-      });
-    } else {
-      console.log("noperz");
-    }
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
-    var dateTime = date;
-    this.setState({
-      date: dateTime
-    });
-  }
+ 
 
   submit() {
-    console.log(this.state);
     const { optval, user, date } = this.state;
+    const heroRef = scopeRefByUserAndDate('HERO')
     firebase
       .database()
-      .ref(`HERO/${user}/${date}`)
+      .ref(heroRef)
       .update({
         optval
       });
