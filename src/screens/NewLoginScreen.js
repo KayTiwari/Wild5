@@ -147,8 +147,11 @@ const NewLoginScreen = props => {
         {loading && !error ? (
           <View
             style={{
-              width: '50%',
-              alignSelf: 'center',
+              position: "absolute",
+                top: "47%",
+                width: "50%",
+                marginBottom: 0,
+                alignSelf: "center"
             }}
           >
             <Spinner />

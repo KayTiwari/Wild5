@@ -66,7 +66,7 @@ class SocialStats extends Component {
 
   render() {
     const total = this.props.princData && this.props.princData.length;
-
+    const {calledFriend,metFriendInPerson,calledFamily,metFamilyInPerson} = this.state
     return (
       <View style={{height: screenheight, backgroundColor: 'white'}}>
         <View>
@@ -81,37 +81,10 @@ class SocialStats extends Component {
             Social Connectedness Reflection
           </Text>
         </View>
-
-        {this.state.calledFamily ||
-        this.state.metFamilyInPerson ||
-        this.state.calledFriend ||
-        this.state.metFriendInPerson ? (
-          <View>
-            <BarGraph
-              calledfamily={this.state.calledFamily}
-              calledfriend={this.state.calledFriend}
-              metfriend={this.state.metFriendInPerson}
-              metfamily={this.state.metFamilyInPerson}
-            />
-          </View>
-        ) : (
-          <Text>No graph data to show :S</Text>
-        )}
-
-        <View>
-          <Text
-            style={{
-              marginTop: '5%',
-              fontSize: 20,
-              fontWeight: '600',
-              textAlign: 'center',
-            }}
-          >
-            Points out of: {total}
-          </Text>
+         <View>
           <Icon
             name="bonfire"
-            style={{textAlign: 'center', marginTop: '10%'}}
+            style={{ fontSize: 100,textAlign: 'center', marginTop: '10%'}}
           />
           <Text
             style={{
@@ -121,7 +94,7 @@ class SocialStats extends Component {
               textAlign: 'center',
             }}
           >
-            Called Friend: {this.state.calledFriend}
+            Called Friend: {calledFriend !== 0 ? Math.round(100 - calledFriend * 100 / 30) : 0} %
           </Text>
           <Text
             style={{
@@ -131,7 +104,7 @@ class SocialStats extends Component {
               textAlign: 'center',
             }}
           >
-            Met Friend in Person: {this.state.metFriendInPerson}
+            Met Friend in Person: {metFriendInPerson !== 0 ? Math.round( 100 - metFriendInPerson * 100 / 30) : 0} %
           </Text>
           <Text
             style={{
@@ -141,7 +114,7 @@ class SocialStats extends Component {
               textAlign: 'center',
             }}
           >
-            Called Family {this.state.calledFamily}
+            Called Family {calledFamily !== 0 ? Math.round(100 - calledFamily * 100 / 30) : 0} %
           </Text>
           <Text
             style={{
@@ -151,7 +124,7 @@ class SocialStats extends Component {
               textAlign: 'center',
             }}
           >
-            Met Family in Person: {this.state.metFamilyInPerson}
+            Met Family in Person: {metFamilyInPerson !== 0 ? Math.round(100 - metFamilyInPerson * 100 / 30) : 0} %
           </Text>
         </View>
       </View>

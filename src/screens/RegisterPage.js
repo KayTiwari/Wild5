@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   View,
   Dimensions,
@@ -36,6 +36,7 @@ const RegisterPage = () => {
   const [dob, setDob] = useState("");
   const [goals, setGoals] = useState("");
   const [raised, setRaised] = useState(true);
+  const [date, setInitialDate] = useState(new Date())
 
   setDate = newDate => {
     setChosenDate(newDate);
@@ -49,13 +50,16 @@ const RegisterPage = () => {
   } else if (password === ""){
     setError("Please enter a password")
   } else {
+    setError("")
     setShowDisclaimer(true)
   }
 }
 
+
+
   registerPress = () => {
-    setLoading(true);
     setAcceptDisclaimer(true);
+    setLoading(true);
     setError("");
     if (email !== "" && password !== "") {
       firebase
@@ -84,7 +88,8 @@ const RegisterPage = () => {
         accepteddisclaimer: acceptDisclaimer,
         fullName,
         dob,
-        goals
+        goals,
+        date: date.toString()
       });
   });
 
@@ -271,9 +276,9 @@ const RegisterPage = () => {
               </View>
             </View>
 
-            <Text style={{ fontSize: 30, color: "red", alignSelf: 'center' }}>{error}</Text>
+            <Text style={{ fontSize: 30, color: "red", alignSelf: 'center', textAlign:'center' }}>{error}</Text>
 
-            {loading ? (
+            {loading && !error ? (
               <View style={{ alignSelf: "center" }}>
                 <Spinner />
               </View>
@@ -299,7 +304,7 @@ const RegisterPage = () => {
   ) : (
     <SafeAreaView style={{ flex: 1 }}>
       <Disclaimer />
-      {loading ? <Spinner /> : null}
+      {loading && !error ? <Spinner /> : error ? <View style={{ alignSelf: "center" }}><Text style={{fontSize: 20, color: "red", alignSelf: 'center' }}>{error}</Text></View> : null}
       <View
         style={{
           flexDirection: "row",
