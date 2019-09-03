@@ -148,10 +148,10 @@ const NewLoginScreen = props => {
           <View
             style={{
               position: "absolute",
-                top: "47%",
-                width: "50%",
-                marginBottom: 0,
-                alignSelf: "center"
+              top: "47%",
+              width: "50%",
+              marginBottom: 0,
+              alignSelf: "center"
             }}
           >
             <Spinner />
