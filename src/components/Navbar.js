@@ -74,11 +74,9 @@ export default Navbar;
 
 const styles = StyleSheet.create({
   buttons: {
-    color: Platform.OS === 'android' ? "#333"
-: null  },
+    color: "#041D5D" },
 settings: {
-  color: Platform.OS === 'android' ? "#333"
-: null,
+  color: "#041D5D",
 fontSize: 10
 }
 })

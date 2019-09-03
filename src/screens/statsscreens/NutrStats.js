@@ -89,7 +89,7 @@ class NutritionStats extends Component {
           <Text
             style={{
               marginTop: '10%',
-              fontSize: 25,
+              fontSize: 28,
               fontWeight: '600',
               textAlign: 'center',
             }}
@@ -97,39 +97,10 @@ class NutritionStats extends Component {
             Nutrition Analysis
           </Text>
         </View>
-
-        {this.state.logmeals ||
-        this.state.MIND ||
-        this.state.breakfast ||
-        this.state.lunch ||
-        this.state.dinner ? (
-          <View>
-            <BarGraph
-              logmeals={this.state.logmeals}
-              MIND={this.state.MIND}
-              breakfast={this.state.breakfast}
-              lunch={this.state.lunch}
-              dinner={this.state.dinner}
-            />
-          </View>
-        ) : (
-          <Text>No graph data to show :S</Text>
-        )}
-
         <View>
-          <Text
-            style={{
-              marginTop: '5%',
-              fontSize: 20,
-              fontWeight: '600',
-              textAlign: 'center',
-            }}
-          >
-            Points out of: {this.state.total}
-          </Text>
           <Icon
             name="restaurant"
-            style={{textAlign: 'center', marginTop: '10%'}}
+            style={{fontSize: 100, textAlign: 'center', marginTop: '10%'}}
           />
           <ScrollView bounces={true}>
             <Text
@@ -140,7 +111,7 @@ class NutritionStats extends Component {
                 textAlign: 'center',
               }}
             >
-              Logged Meals: {this.state.logmeals}
+              Logged Meals: {this.state.logmeals !== 0 ? Math.round(100 - this.state.logmeals * 100 / 30) : 0} %
             </Text>
             <Text
               style={{
@@ -150,18 +121,21 @@ class NutritionStats extends Component {
                 textAlign: 'center',
               }}
             >
-              Practiced MIND Diet Principles: {this.state.MIND}
+              Practiced MIND Diet Principles: {this.state.MIND !== 0 ? Math.round(100 - this.state.MIND * 100 / 30): 0} %
             </Text>
+            <View style={{alignSelf: 'center',width:'90%', borderBottomWidth: 2,
+                borderColor: '#000'}}>
             <Text
               style={{
-                marginTop: '5%',
-                fontSize: 30,
+                marginTop: '10%',
+                fontSize: 20,
                 fontWeight: '600',
                 textAlign: 'center',
               }}
             >
               Practiced MINDful Meal Meditation
             </Text>
+            </View>
             <Text
               style={{
                 marginTop: '5%',
@@ -170,7 +144,7 @@ class NutritionStats extends Component {
                 textAlign: 'center',
               }}
             >
-              Breakfast: {this.state.breakfast}
+              Breakfast: {this.state.breakfast !== 0 ? Math.round(100 - this.state.breakfast * 100 / 30) : 0} %
             </Text>
             <Text
               style={{
@@ -180,7 +154,7 @@ class NutritionStats extends Component {
                 textAlign: 'center',
               }}
             >
-              Lunch: {this.state.lunch}
+              Lunch: {this.state.lunch !== 0 ? Math.round(100 - this.state.lunch * 100 / 30) : 0} %
             </Text>
             <Text
               style={{
@@ -190,7 +164,7 @@ class NutritionStats extends Component {
                 textAlign: 'center',
               }}
             >
-              Dinner: {this.state.dinner}
+              Dinner: {this.state.dinner !== 0 ? Math.round(100 - this.state.dinner* 100 / 30) : 0} %
             </Text>
           </ScrollView>
         </View>
