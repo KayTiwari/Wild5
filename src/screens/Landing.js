@@ -8,12 +8,14 @@ import HEROlogo from '../images/herologo.png';
 import LinearGradient from 'react-native-linear-gradient';
 import firebase from 'react-native-firebase'
 import {format} from 'date-fns'
+import { spliceString } from '../utils/dateSplice'
 
 
 const {width} = Dimensions.get('window');
 
 export default function Landing() {
   const [hero, setHero] = useState(false)
+  const [hero2, setHero2] = useState(false)
   const [date, setDate] = useState(new Date())
   const [heroData, setHeroData] = useState([])
 
@@ -34,10 +36,7 @@ checkHeroData = () => {
       const data = Object.keys(snapshot.val())
       console.log(data)
       return data.forEach(survey => {
-        console.log(survey, date)
-        if(date === survey){
-          return setHero(true)
-        }
+        return spliceString(date, survey) ? setHero(true) : null
       });
     }
   })
@@ -57,7 +56,7 @@ checkHeroData = () => {
             }}
           />
           <View style={{marginTop: '2%', flex: 1}}>
-            <Navigation hero={hero} />
+            <Navigation hero={hero} hero2={hero2}/>
           </View>
           <Image
             source={wild5title}
@@ -88,6 +87,7 @@ checkHeroData = () => {
           <View style={{marginTop: '2%', flex: 1}}>
             <Navigation hero={hero} />
           </View>
+          <View style={{justifyContent: 'flex-end'}}>
           <Image
             source={wild5title}
             style={{
@@ -98,9 +98,10 @@ checkHeroData = () => {
               alignSelf: 'center',
             }}
           />
+          </View>
       </SafeAreaView>
       <Navbar homedisable />
-    </View>  
+    </View> 
   );
 }
 
