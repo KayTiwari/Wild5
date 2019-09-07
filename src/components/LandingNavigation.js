@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
   TouchableOpacity,
   StyleSheet,
@@ -56,6 +56,15 @@ const navigationItems = [
 ];
 
 export function Navigation(props) {
+
+  const[bothTrue, setBothTrue] = useState(false)
+
+  useEffect(() => {
+    if(props.hero && props.hero2){
+      setBothTrue(true)
+    }
+  }, [])
+
   const renderItem = React.useCallback((item, index) => {
     return (
       <TouchableOpacity
@@ -84,14 +93,14 @@ export function Navigation(props) {
 
   return (
     <View style={styles.container}>
-      {props.hero
+      {props.hero && !bothTrue
         ? chunk(navigationItems, 2).map((items, index) => (
             <View key={index} style={styles.row}>
               {items.map(renderItem)}
             </View>
           ))
-        : null}
-      {!props.hero ? (
+        : 
+      !props.hero ? (
         <>
           <Text style={styles.titleHEROMain}>Take Your HERO Wellness Survey</Text>
           <TouchableOpacity
@@ -107,7 +116,29 @@ export function Navigation(props) {
             </LinearGradient>
           </TouchableOpacity>
         </>
-      ) : null}
+      ) : 
+      props.hero && props.hero2 ?
+      <>
+      {chunk(navigationItems, 2).map((items, index) => (
+        <View key={index} style={styles.row}>
+          {items.map(renderItem)}
+        </View>
+      ))}
+      {/* <Text style={styles.titleHEROMain}>Take Your HERO Wellness Survey</Text> */}
+      <TouchableOpacity
+        style={[styles.touchableHERO, styles.touchableHERO]}
+        onPress={() => Actions.herointro()}
+      >
+        <LinearGradient style={styles.itemHERO} colors={["#041D5D", "#082774"]}>
+          <Image
+            source={HEROlogo}
+            style={{ width: "100%", height: 65, resizeMode: "contain" }}
+          />
+          <Text style={styles.titleHERO}>Hero Wellness{"\n"} Survey</Text>
+        </LinearGradient>
+      </TouchableOpacity>
+      </>
+    : null}
     </View>
   );
 }

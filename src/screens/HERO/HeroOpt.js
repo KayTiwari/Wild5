@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { View, Dimensions } from "react-native";
 import { Text, Button, Icon } from "native-base";
 import { Actions } from "react-native-router-flux";
@@ -7,27 +7,24 @@ import { Slider } from "react-native-elements";
 import { scopeRefByUserAndDate } from '../../utils/firebase'
 
 const screenheight = Dimensions.get("window").height;
-class HeroOpt extends Component {
-  state = {
-    optval: 0
-  };
-
+const HeroOpt = () => {
  
 
-  submit() {
-    const { optval, user, date } = this.state;
+ const [optimismValue, setOptimismValue] = useState(0)
+
+  submit = () => {
     const heroRef = scopeRefByUserAndDate('HERO')
     firebase
       .database()
       .ref(heroRef)
       .update({
-        optval
+        optimismValue
       });
     Actions.heroment();
   }
 
   feeling = () => {
-    if (this.state.optval === 0) {
+    if (optimismValue === 0) {
       return (
         <Text
           style={{
@@ -41,7 +38,7 @@ class HeroOpt extends Component {
           Not at all Optimistic
         </Text>
       );
-    } else if (this.state.optval >= 1 && this.state.optval <= 3) {
+    } else if (optimismValue >= 1 && optimismValue <= 3) {
       return (
         <Text
           style={{
@@ -55,7 +52,7 @@ class HeroOpt extends Component {
           Mildly Optimistic
         </Text>
       );
-    } else if (this.state.optval >= 4 && this.state.optval <= 6) {
+    } else if (optimismValue >= 4 && optimismValue <= 6) {
       return (
         <Text
           style={{
@@ -69,7 +66,7 @@ class HeroOpt extends Component {
           Moderately Optimistic
         </Text>
       );
-    } else if (this.state.optval >= 7 && this.state.optval <= 9) {
+    } else if (optimismValue >= 7 && optimismValue <= 9) {
       return (
         <Text
           style={{
@@ -83,7 +80,7 @@ class HeroOpt extends Component {
           Highly Optimistic
         </Text>
       );
-    } else if (this.state.optval === 10) {
+    } else if (optimismValue === 10) {
       return (
         <Text
           style={{
@@ -100,7 +97,7 @@ class HeroOpt extends Component {
     }
   };
 
-  render() {
+
     return (
       <View style={{ backgroundColor: "white", height: screenheight }}>
         <View>
@@ -139,11 +136,11 @@ class HeroOpt extends Component {
           }}
         >
           <Slider
-            value={this.state.value}
+            value={optimismValue}
             step={1}
             minimumValue={0}
             maximumValue={10}
-            onValueChange={value => this.setState({ optval: value })}
+            onValueChange={value => setOptimismValue(value)}
           />
           <Text
             style={{
@@ -153,12 +150,12 @@ class HeroOpt extends Component {
               marginTop: "10%"
             }}
           >
-            Value: {this.state.optval}
+            Value: {optimismValue}
           </Text>
-          {this.feeling()}
+          {feeling()}
 
           <View style={{ alignSelf: "center", marginTop: "20%" }}>
-            <Button onPress={() => this.submit()} dark rounded large>
+            <Button onPress={() => submit()} dark rounded large>
               <Text>Next</Text>
               <Icon name="arrow-forward" />
             </Button>
@@ -167,6 +164,6 @@ class HeroOpt extends Component {
       </View>
     );
   }
-}
+
 
 export { HeroOpt };

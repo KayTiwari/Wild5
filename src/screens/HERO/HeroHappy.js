@@ -1,33 +1,44 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Dimensions } from "react-native";
 import { Text, Button, Icon } from "native-base";
 import { Actions } from "react-native-router-flux";
 import firebase from 'react-native-firebase';
 import { Slider } from "react-native-elements";
 import { scopeRefByUserAndDate } from '../../utils/firebase'
+import { scopeRefByUserHero } from '../../utils/heroRef'
+import {format} from 'date-fns';
 
 const screenheight = Dimensions.get("window").height;
-class HeroHappy extends Component {
-  state = {
-    happyval: 0
-  };
+const HeroHappy = () => {
+  
+const [happyValue, setHappyValue] = useState(0)
+const [date, setDate] =  useState(format(new Date(), 'YYYY-MM-DD'))
+const [surveyDate, setInitialSurveyDate] =  useState(format(new Date(), 'YYYY-MM-DD-HH-mm'))
 
+
+useEffect(()=>{
+  const heroRefInitial = scopeRefByUserHero('HERO')
+  firebase.database().ref(heroRefInitial).once('value', (snapshot)=>{
+    if(snapshot.val() === null){
+      firebase.database().ref(heroRefInitial).set(surveyDate)
+    }
+  })
+},[])
   
 
-  submit() {
-    const { happyval, user, date } = this.state;
+  submit = () => {
     const heroRef = scopeRefByUserAndDate('HERO')
     firebase
       .database()
       .ref(heroRef)
       .update({
-        happyval
+        happyValue
       });
     Actions.heroenth();
   }
 
   feeling = () => {
-    if (this.state.happyval === 0) {
+    if (happyValue === 0) {
       return (
         <Text
           style={{
@@ -41,7 +52,7 @@ class HeroHappy extends Component {
           Not at all Happy
         </Text>
       );
-    } else if (this.state.happyval >= 1 && this.state.happyval <= 3) {
+    } else if (happyValue >= 1 && happyValue <= 3) {
       return (
         <Text
           style={{
@@ -55,7 +66,7 @@ class HeroHappy extends Component {
           Mildly Happy
         </Text>
       );
-    } else if (this.state.happyval >= 4 && this.state.happyval <= 6) {
+    } else if (happyValue >= 4 && happyValue <= 6) {
       return (
         <Text
           style={{
@@ -69,7 +80,7 @@ class HeroHappy extends Component {
           Moderately Happy
         </Text>
       );
-    } else if (this.state.happyval >= 7 && this.state.happyval <= 9) {
+    } else if (happyValue >= 7 && happyValue <= 9) {
       return (
         <Text
           style={{
@@ -83,7 +94,7 @@ class HeroHappy extends Component {
           Highly Happy
         </Text>
       );
-    } else if (this.state.happyval === 10) {
+    } else if (happyValue === 10) {
       return (
         <Text
           style={{
@@ -100,7 +111,7 @@ class HeroHappy extends Component {
     }
   };
 
-  render() {
+
     return (
       <View style={{ backgroundColor: "white", height: screenheight }}>
         <View>
@@ -139,11 +150,11 @@ class HeroHappy extends Component {
           }}
         >
           <Slider
-            value={this.state.value}
+            value={happyValue}
             step={1}
             minimumValue={0}
             maximumValue={10}
-            onValueChange={value => this.setState({ happyval: value })}
+            onValueChange={value => setHappyValue(value)}
           />
           <Text
             style={{
@@ -153,12 +164,12 @@ class HeroHappy extends Component {
               marginTop: "10%"
             }}
           >
-            Value: {this.state.happyval}
+            Value: {happyValue}
           </Text>
-          {this.feeling()}
+          {feeling()}
 
           <View style={{ alignSelf: "center", marginTop: "20%" }}>
-            <Button onPress={() => this.submit()} dark rounded large>
+            <Button onPress={() => submit()} dark rounded large>
               <Text>Next</Text>
               <Icon name="arrow-forward" />
             </Button>
@@ -167,6 +178,6 @@ class HeroHappy extends Component {
       </View>
     );
   }
-}
+
 
 export { HeroHappy };

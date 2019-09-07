@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { View, Dimensions } from "react-native";
 import { Text, Button, Icon } from "native-base";
 import { Actions } from "react-native-router-flux";
@@ -7,26 +7,23 @@ import { Slider } from "react-native-elements";
 import { scopeRefByUserAndDate } from '../../utils/firebase'
 
 const screenheight = Dimensions.get("window").height;
-class HeroMent extends Component {
-  state = {
-    mentval: 0
-  };
-
+const HeroMent = () => {
+ 
+const [mentalWellValue, setMentalWellValue] = useState(0)
   
-  submit() {
-    const { mentval, user, date } = this.state;
+  submit = () => {
     const heroRef = scopeRefByUserAndDate('HERO')
     firebase
       .database()
       .ref(heroRef)
       .update({
-        mentval
+        mentalWellValue
       });
     Actions.heroscore();
   }
 
   feeling = () => {
-    if (this.state.mentval === 0) {
+    if (mentalWellValue === 0) {
       return (
         <Text
           style={{
@@ -40,7 +37,7 @@ class HeroMent extends Component {
           Not at all Good
         </Text>
       );
-    } else if (this.state.mentval >= 1 && this.state.mentval <= 3) {
+    } else if (mentalWellValue >= 1 && mentalWellValue <= 3) {
       return (
         <Text
           style={{
@@ -54,7 +51,7 @@ class HeroMent extends Component {
           Mildly Good
         </Text>
       );
-    } else if (this.state.mentval >= 4 && this.state.mentval <= 6) {
+    } else if (mentalWellValue >= 4 && mentalWellValue <= 6) {
       return (
         <Text
           style={{
@@ -68,7 +65,7 @@ class HeroMent extends Component {
           Moderately Good
         </Text>
       );
-    } else if (this.state.mentval >= 7 && this.state.mentval <= 9) {
+    } else if (mentalWellValue >= 7 && mentalWellValue <= 9) {
       return (
         <Text
           style={{
@@ -82,7 +79,7 @@ class HeroMent extends Component {
           Highly Good
         </Text>
       );
-    } else if (this.state.mentval === 10) {
+    } else if (mentalWellValue === 10) {
       return (
         <Text
           style={{
@@ -99,7 +96,6 @@ class HeroMent extends Component {
     }
   };
 
-  render() {
     return (
       <View style={{ backgroundColor: "white", height: screenheight }}>
         <View>
@@ -140,11 +136,11 @@ class HeroMent extends Component {
           }}
         >
           <Slider
-            value={this.state.value}
+            value={mentalWellValue}
             step={1}
             minimumValue={0}
             maximumValue={10}
-            onValueChange={value => this.setState({ mentval: value })}
+            onValueChange={value => setMentalWellValue(value)}
           />
           <Text
             style={{
@@ -154,12 +150,12 @@ class HeroMent extends Component {
               marginTop: "10%"
             }}
           >
-            Value: {this.state.mentval}
+            Value: {mentalWellValue}
           </Text>
-          {this.feeling()}
+          {feeling()}
 
           <View style={{ alignSelf: "center", marginTop: "20%" }}>
-            <Button onPress={() => this.submit()} dark rounded large>
+            <Button onPress={() => submit()} dark rounded large>
               <Text>Next</Text>
               <Icon name="arrow-forward" />
             </Button>
@@ -168,6 +164,6 @@ class HeroMent extends Component {
       </View>
     );
   }
-}
+
 
 export { HeroMent };

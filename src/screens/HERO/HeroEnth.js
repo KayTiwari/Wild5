@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { View, Dimensions } from "react-native";
 import { Text, Button, Icon } from "native-base";
 import { Actions } from "react-native-router-flux";
@@ -7,26 +7,24 @@ import { Slider } from "react-native-elements";
 import { scopeRefByUserAndDate } from '../../utils/firebase'
 
 const screenheight = Dimensions.get("window").height;
-class HeroEnth extends Component {
-  state = {
-    enthval: 0
-  };
+const HeroEnth = () => {
+  
+  const [enthusiasmValue, setEnthusiasmValue] = useState(0)
 
 
-  submit() {
-    const { enthval, user, date } = this.state;
+  submit = () => {
     const heroRef = scopeRefByUserAndDate('HERO')
     firebase
       .database()
       .ref(heroRef)
       .update({
-        enthval
+        enthusiasmValue
       });
     Actions.herores();
   }
 
   feeling = () => {
-    if (this.state.enthval === 0) {
+    if (enthusiasmValue === 0) {
       return (
         <Text
           style={{
@@ -40,7 +38,7 @@ class HeroEnth extends Component {
           Not at all Enthusiastic
         </Text>
       );
-    } else if (this.state.enthval >= 1 && this.state.enthval <= 3) {
+    } else if (enthusiasmValue >= 1 && enthusiasmValue <= 3) {
       return (
         <Text
           style={{
@@ -54,7 +52,7 @@ class HeroEnth extends Component {
           Mildly Enthusiastic
         </Text>
       );
-    } else if (this.state.enthval >= 4 && this.state.enthval <= 6) {
+    } else if (enthusiasmValue >= 4 && enthusiasmValue <= 6) {
       return (
         <Text
           style={{
@@ -68,7 +66,7 @@ class HeroEnth extends Component {
           Moderately Enthusiastic
         </Text>
       );
-    } else if (this.state.enthval >= 7 && this.state.enthval <= 9) {
+    } else if (enthusiasmValue >= 7 && enthusiasmValue <= 9) {
       return (
         <Text
           style={{
@@ -82,7 +80,7 @@ class HeroEnth extends Component {
           Highly Enthusiastic
         </Text>
       );
-    } else if (this.state.enthval === 10) {
+    } else if (enthusiasmValue === 10) {
       return (
         <Text
           style={{
@@ -99,7 +97,6 @@ class HeroEnth extends Component {
     }
   };
 
-  render() {
     return (
       <View style={{ backgroundColor: "white", height: screenheight }}>
         <View>
@@ -138,11 +135,11 @@ class HeroEnth extends Component {
           }}
         >
           <Slider
-            value={this.state.value}
+            value={enthusiasmValue}
             step={1}
             minimumValue={0}
             maximumValue={10}
-            onValueChange={value => this.setState({ enthval: value })}
+            onValueChange={value => setEnthusiasmValue(value)}
           />
           <Text
             style={{
@@ -152,12 +149,12 @@ class HeroEnth extends Component {
               marginTop: "10%"
             }}
           >
-            Value: {this.state.enthval}
+            Value: {enthusiasmValue}
           </Text>
-          {this.feeling()}
+          {feeling()}
 
           <View style={{ alignSelf: "center", marginTop: "20%" }}>
-            <Button onPress={() => this.submit()} dark rounded large>
+            <Button onPress={() => submit()} dark rounded large>
               <Text>Next</Text>
               <Icon name="arrow-forward" />
             </Button>
@@ -166,6 +163,6 @@ class HeroEnth extends Component {
       </View>
     );
   }
-}
+
 
 export { HeroEnth };
