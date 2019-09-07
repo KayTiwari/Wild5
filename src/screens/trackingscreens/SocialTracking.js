@@ -65,7 +65,7 @@ class SocialTracking extends Component {
       >
       <View style={{backgroundColor:socialColor, width: '85%', alignSelf: 'center', height: 90, marginTop: 10 }}>
           <Text style={{fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '700'}}>
-            Program Expectations
+            Practices
           </Text>
           <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
             Meet or call a minimum of two friends or family each day for 30
@@ -97,7 +97,7 @@ class SocialTracking extends Component {
             />
           </View>
         <Text style={styles.subtitle} numberOfLines={1}>
-          What social contacts did you make?
+          What social contacts did I make?
         </Text>
 
         <CheckBoxItem
