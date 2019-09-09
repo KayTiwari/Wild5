@@ -375,7 +375,7 @@ class Settings extends Component<Props> {
           </View>
           {/* </View> */}
         </View>
-        <Navbar />
+        <Navbar settingsdisable/>
       </>
     );
   }

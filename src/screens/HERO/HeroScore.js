@@ -8,12 +8,15 @@ import HEROlogo from "../../images/herologo.png";
 import AnimateNumber from "react-native-animate-number";
 import Star from "../../images/wild5star_100_100.png";
 import { scopeRefByUserAndDate } from "../../utils/firebase";
+import { scopeRefByUserHero } from '../../utils/heroRef'
+import {format} from 'date-fns';
 
 const screenheight = Dimensions.get("window").height;
 const HeroScore = () => {
 
   const [data, setData] = useState(null)
   const [totalScore, setTotalScore] = useState(0)
+  const [surveyDate, setInitialSurveyDate] =  useState(format(new Date(), 'YYYY-MM-DD-HH-mm'))
 
   useEffect(()=> {
     const heroRef = scopeRefByUserAndDate("HERO");
@@ -23,6 +26,12 @@ const HeroScore = () => {
       if(snapshot.val() !== null){
         gotData(snapshot.val())
     }});
+    const heroRefInitial = scopeRefByUserHero('HERO')
+    firebase.database().ref(heroRefInitial).once('value', (snapshot)=>{
+      if(snapshot.val() === null){
+        firebase.database().ref(heroRefInitial).set(surveyDate)
+      }
+    })
   },[])
     
   
@@ -167,7 +176,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 15,
     fontWeight: "600",
-    marginTop: "-10%"
   },
   mainText: {
     textAlign: "center",

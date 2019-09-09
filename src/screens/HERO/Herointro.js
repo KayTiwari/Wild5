@@ -3,16 +3,17 @@ import { View, Dimensions, Image, ImageBackground } from "react-native";
 import { Text, Button, Icon } from "native-base";
 import { Actions } from "react-native-router-flux";
 import HEROlogo from "../../images/herologo.png";
-import background from "../../images/herobackground.jpeg";
+import Navbar from '../../components/Navbar'
+// import background from "../../images/herobackground.jpeg";
 
 const screenheight = Dimensions.get("window").height;
 const HeroIntro = () => {
   return (
-    <View style={{ backgroundColor: "white", height: screenheight }}>
-      <ImageBackground
+    <View style={{ backgroundColor: "white", flex:1 }}>
+      {/* <ImageBackground
         source={background}
         style={{ width: "100%", height: "100%" }}
-      >
+      > */}
         <View style={{ width: "80%", alignSelf: "center", marginTop: "10%" }}>
           <Image
             source={HEROlogo}
@@ -20,11 +21,11 @@ const HeroIntro = () => {
           />
         </View>
 
-        <View>
+        <View style={{width: '90%', alignSelf:'center'}}>
           <Text
             style={{
-              marginTop: "15%",
-              fontSize: 20,
+              marginTop: "7%",
+              fontSize: 24,
               fontWeight: "600",
               textAlign: "center"
             }}
@@ -36,16 +37,16 @@ const HeroIntro = () => {
           <Text
             style={{
               marginTop: "15%",
-              fontSize: 25,
+              fontSize: 20,
               fontWeight: "600",
               textAlign: "center"
             }}
           >
-            Let's Check Your HERO Wellness Score For This Week
+            Check Your HERO Wellness Score For This Week
           </Text>
         </View>
 
-        <View style={{ alignSelf: "center", marginTop: "20%" }}>
+        <View style={{ alignSelf: "center", marginTop: "10%" }}>
           <Button
             onPress={() => Actions.herohappy()}
             rounded
@@ -57,7 +58,10 @@ const HeroIntro = () => {
             <Icon name="arrow-forward" />
           </Button>
         </View>
-      </ImageBackground>
+        <View style={{flex:1, justifyContent:'flex-end'}}>
+          <Navbar herodisable/>
+        </View>
+      {/* </ImageBackground> */}
     </View>
   );
 };

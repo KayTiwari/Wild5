@@ -1,4 +1,5 @@
 import React from 'react';
+import {View} from 'react-native'
 import {Scene, Router, Actions, ActionConst} from 'react-native-router-flux';
 import Landing from './screens/Landing';
 import EducationWellnessRoadMap from './screens/NewRoadMap';
@@ -126,8 +127,8 @@ const Routercomponent = () => {
         <Scene
           key="herointro"
           component={Herointro}
-          backTitle="Back"
-          title="Today's HERO"
+          renderBackButton={()=><View/>}
+          hideNavBar
         />
         <Scene
           key="herohappy"

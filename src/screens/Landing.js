@@ -19,6 +19,8 @@ import firebase from "react-native-firebase";
 import { format } from "date-fns";
 import { spliceString } from "../utils/dateSplice";
 import { scopeRefByUserHero } from "../utils/heroRef";
+import InitialHero from '../components/common/InitialHero';
+import LandingView from '../components/common/LandingView'
 
 const { width } = Dimensions.get("window");
 
@@ -26,7 +28,6 @@ export default function Landing() {
   const [hero, setHero] = useState(false);
   const [hero2, setHero2] = useState(false);
   const [initialSurveydate, setInitialSurveyDate] = useState("");
-  const [heroData, setHeroData] = useState([]);
 
   useEffect(() => {
     checkHeroData();
@@ -70,64 +71,11 @@ export default function Landing() {
   };
 
   return !hero || hero2 ? (
-    <View style={{ flex: 1 }}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <ScrollView bounces={false}>
-          <Image
-            source={KS30title}
-            style={{
-              width: "80%",
-              resizeMode: "contain",
-              marginTop: "3%",
-              alignSelf: "center"
-            }}
-          />
-          <View style={{ marginTop: "2%", flex: 1 }}>
-            <Navigation hero={hero} hero2={hero2} />
-          </View>
-          <Image
-            source={wild5title}
-            style={{
-              width: "80%",
-              marginTop: "25%",
-              resizeMode: "contain",
-              marginBottom: "2%",
-              alignSelf: "center"
-            }}
-          />
-        </ScrollView>
-      </SafeAreaView>
-      <Navbar homedisable />
-    </View>
+    <LandingView hero={hero} hero2={hero2}/>
   ) : (
-    <View style={{ flex: 1 }}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <Image
-          source={KS30title}
-          style={{
-            width: "80%",
-            resizeMode: "contain",
-            marginTop: "3%",
-            alignSelf: "center"
-          }}
-        />
-        <View style={{ marginTop: "2%", flex: 1 }}>
-          <Navigation hero={hero} hero2={hero2} />
-        </View>
-
-        <Image
-          source={wild5title}
-          style={{
-            width: "80%",
-            marginTop: "25%",
-            resizeMode: "contain",
-            marginBottom: "2%",
-            alignSelf: "center"
-          }}
-        />
-      </SafeAreaView>
-      <Navbar homedisable />
-    </View>
+   <>
+   <InitialHero hero={hero} hero2={hero2}/>
+   </>
   );
 }
 

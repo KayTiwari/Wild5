@@ -5,7 +5,6 @@ import { Actions } from "react-native-router-flux";
 import firebase from 'react-native-firebase';
 import { Slider } from "react-native-elements";
 import { scopeRefByUserAndDate } from '../../utils/firebase'
-import { scopeRefByUserHero } from '../../utils/heroRef'
 import {format} from 'date-fns';
 
 const screenheight = Dimensions.get("window").height;
@@ -13,17 +12,10 @@ const HeroHappy = () => {
   
 const [happyValue, setHappyValue] = useState(0)
 const [date, setDate] =  useState(format(new Date(), 'YYYY-MM-DD'))
-const [surveyDate, setInitialSurveyDate] =  useState(format(new Date(), 'YYYY-MM-DD-HH-mm'))
 
 
-useEffect(()=>{
-  const heroRefInitial = scopeRefByUserHero('HERO')
-  firebase.database().ref(heroRefInitial).once('value', (snapshot)=>{
-    if(snapshot.val() === null){
-      firebase.database().ref(heroRefInitial).set(surveyDate)
-    }
-  })
-},[])
+
+
   
 
   submit = () => {
