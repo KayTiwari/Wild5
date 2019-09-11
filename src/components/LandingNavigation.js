@@ -56,6 +56,7 @@ const navigationItems = [
 ];
 
 export function Navigation(props) {
+  console.log(props)
 
   const[bothTrue, setBothTrue] = useState(false)
 

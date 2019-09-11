@@ -7,6 +7,7 @@ import Navbar from "../Navbar"
 
 
 export default InitialHero = (props) => {
+  console.log(props)
     return (
     <View style={{ flex: 1, backgroundColor:'#fff' }}>
     <SafeAreaView style={{ flex: 1, backgroundColor:'#fff' }}>
