@@ -23,7 +23,7 @@ export default InitialHero = (props) => {
       <View style={{ marginTop: "2%", flex: 1 }}>
         <Navigation hero={props.hero} hero2={props.hero2} />
       </View>
-        <View style={{flex:1, justifyContent:'flex-end'}}>
+      <View style={{flex:1, justifyContent:'flex-end'}}>
       <Image
         source={wild5title}
         style={{
