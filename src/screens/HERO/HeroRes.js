@@ -1,55 +1,33 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { View, Dimensions } from "react-native";
 import { Text, Button, Icon } from "native-base";
 import { Actions } from "react-native-router-flux";
 import firebase from 'react-native-firebase';
 import { Slider } from "react-native-elements";
 import Navbar from "../../components/Navbar";
+import { scopeRefByUserAndDate } from '../../utils/firebase'
 
 const screenheight = Dimensions.get("window").height;
-class HeroRes extends Component {
+const HeroRes = () => {
   state = {
     resval: 0
   };
 
-  componentDidMount() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var res = user.email.split(".");
-      var userEm = res[0].toString();
-      this.setState({
-        user: userEm
-      });
-    } else {
-      console.log("noperz");
-    }
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
-    var dateTime = date;
-    this.setState({
-      date: dateTime
-    });
-  }
+const [resilienceValue, setResilienceValue] = useState(0)
 
-  submit() {
-    console.log(this.state);
-    const { resval, user, date } = this.state;
+  submit = () => {
+    const heroRef = scopeRefByUserAndDate('HERO')
     firebase
       .database()
-      .ref(`HERO/${user}/${date}`)
+      .ref(heroRef)
       .update({
-        resval
+        resilienceValue
       });
     Actions.heroopt();
   }
 
   feeling = () => {
-    if (this.state.resval === 0) {
+    if (resilienceValue === 0) {
       return (
         <Text
           style={{
@@ -63,7 +41,7 @@ class HeroRes extends Component {
           Not at all Resilient
         </Text>
       );
-    } else if (this.state.resval >= 1 && this.state.resval <= 3) {
+    } else if (resilienceValue >= 1 && resilienceValue <= 3) {
       return (
         <Text
           style={{
@@ -77,7 +55,7 @@ class HeroRes extends Component {
           Mildly Resilient
         </Text>
       );
-    } else if (this.state.resval >= 4 && this.state.resval <= 6) {
+    } else if (resilienceValue >= 4 && resilienceValue <= 6) {
       return (
         <Text
           style={{
@@ -91,7 +69,7 @@ class HeroRes extends Component {
           Moderately Resilient
         </Text>
       );
-    } else if (this.state.resval >= 7 && this.state.resval <= 9) {
+    } else if (resilienceValue >= 7 && resilienceValue <= 9) {
       return (
         <Text
           style={{
@@ -105,7 +83,7 @@ class HeroRes extends Component {
           Highly Resilient
         </Text>
       );
-    } else if (this.state.resval === 10) {
+    } else if (resilienceValue === 10) {
       return (
         <Text
           style={{
@@ -122,7 +100,7 @@ class HeroRes extends Component {
     }
   };
 
-  render() {
+
     return (
       <View style={{ backgroundColor: "white", height: screenheight }}>
         <View>
@@ -161,11 +139,11 @@ class HeroRes extends Component {
           }}
         >
           <Slider
-            value={this.state.value}
+            value={resilienceValue}
             step={1}
             minimumValue={0}
             maximumValue={10}
-            onValueChange={value => this.setState({ resval: value })}
+            onValueChange={value => setResilienceValue(value)}
           />
           <Text
             style={{
@@ -175,12 +153,12 @@ class HeroRes extends Component {
               marginTop: "10%"
             }}
           >
-            Value: {this.state.resval}
+            Value: {resilienceValue}
           </Text>
-          {this.feeling()}
+          {feeling()}
 
           <View style={{ alignSelf: "center", marginTop: "20%" }}>
-            <Button onPress={() => this.submit()} dark rounded large>
+            <Button onPress={() => submit()} dark rounded large>
               <Text>Next</Text>
               <Icon name="arrow-forward" />
             </Button>
@@ -189,6 +167,6 @@ class HeroRes extends Component {
       </View>
     );
   }
-}
+
 
 export { HeroRes };

@@ -1,19 +1,19 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   View,
   Dimensions,
   ImageBackground,
   ScrollView,
-  SafeAreaView
+  SafeAreaView,
+  TouchableOpacity,
+  Text
 } from "react-native";
 import {
-  Text,
   Item,
   Icon,
   Input,
   Form,
   Textarea,
-  Button,
   Spinner
 } from "native-base";
 import DatePicker from "react-native-datepicker";
@@ -36,6 +36,7 @@ const RegisterPage = () => {
   const [dob, setDob] = useState("");
   const [goals, setGoals] = useState("");
   const [raised, setRaised] = useState(true);
+  const [date, setInitialDate] = useState(new Date());
 
   setDate = newDate => {
     setChosenDate(newDate);
@@ -43,19 +44,20 @@ const RegisterPage = () => {
 
   showDisclaimerScreen = () => {
     if (email === "" && password === "") {
-      setError("Please enter email and password")
-  } else if (email === ""){
-    setError("Please enter an email")
-  } else if (password === ""){
-    setError("Please enter a password")
-  } else {
-    setShowDisclaimer(true)
-  }
-}
+      setError("Please enter email and password");
+    } else if (email === "") {
+      setError("Please enter an email");
+    } else if (password === "") {
+      setError("Please enter a password");
+    } else {
+      setError("");
+      setShowDisclaimer(true);
+    }
+  };
 
   registerPress = () => {
-    setLoading(true);
     setAcceptDisclaimer(true);
+    setLoading(true);
     setError("");
     if (email !== "" && password !== "") {
       firebase
@@ -68,14 +70,12 @@ const RegisterPage = () => {
           this.onRegisterFail(err);
         });
     } else {
-      setError("something went wrong")
+      setError("something went wrong");
     }
   };
 
   const onRegisterSuccess = useCallback(async () => {
-    const registrationRef = scopeRefByUser(
-      "UserInfo"
-    );
+    const registrationRef = scopeRefByUser("UserInfo");
 
     await firebase
       .database()
@@ -84,7 +84,8 @@ const RegisterPage = () => {
         accepteddisclaimer: acceptDisclaimer,
         fullName,
         dob,
-        goals
+        goals,
+        date: date.toString()
       });
   });
 
@@ -263,26 +264,28 @@ const RegisterPage = () => {
               </View>
             </View>
 
-            <Text style={{ fontSize: 30, color: "red", alignSelf: 'center' }}>{error}</Text>
+            <Text
+              style={{
+                fontSize: 30,
+                color: "red",
+                alignSelf: "center",
+                textAlign: "center"
+              }}
+            >
+              {error}
+            </Text>
 
-            {loading ? (
+            {loading && !error ? (
               <View style={{ alignSelf: "center" }}>
                 <Spinner />
               </View>
             ) : null}
 
             <View style={{ alignSelf: "center", marginTop: "5%" }}>
-              <Button
-                style={{ zIndex: 1000 }}
-                title="Register"
-                info
-                type="outline"
-                large
-                raised={raised}
-                onPress={() => showDisclaimerScreen()}
-              >
-                <Text>Register</Text>
-              </Button>
+             <TouchableOpacity style={{height: 70, width:150, backgroundColor:"#041D5D", borderRadius:7, justifyContent:'center'}} onPress={() => showDisclaimerScreen()}>
+               <Text style={{fontSize:24, color:"#fff", alignSelf:'center'}}>Register</Text>
+             </TouchableOpacity>
+
             </View>
           </View>
       </View>
@@ -290,40 +293,35 @@ const RegisterPage = () => {
   ) : (
     <SafeAreaView style={{ flex: 1 }}>
       <Disclaimer />
-      {loading ? <Spinner /> : null}
+      {loading && !error ? (
+        <Spinner />
+      ) : error ? (
+        <View style={{ alignSelf: "center" }}>
+          <Text style={{ fontSize: 20, color: "red", alignSelf: "center" }}>
+            {error}
+          </Text>
+        </View>
+      ) : null}
       <View
         style={{
           flexDirection: "row",
           height: 100,
           justifyContent: "space-around",
-          alignContent: "center"
+          alignContent: "center",
+          backgroundColor: "#fff",
+          borderColor: "#041D5D",
+          borderTopWidth: 2
         }}
       >
         <View style={{ alignSelf: "center" }}>
-          <Button
-            style={{ zIndex: 1000 }}
-            title="Accept"
-            info
-            type="outline"
-            large
-            raised={raised}
-            onPress={() => this.registerPress()}
-          >
-            <Text>Accept</Text>
-          </Button>
+        <TouchableOpacity style={{height: 70, width:150, backgroundColor:"#041D5D", borderRadius:7, justifyContent:'center'}} onPress={()=> this.registerPress()}>
+               <Text style={{fontSize:24, color:"#fff", alignSelf:'center'}}>Accept</Text>
+             </TouchableOpacity>
         </View>
         <View style={{ alignSelf: "center" }}>
-          <Button
-            style={{ zIndex: 1000 }}
-            title="Decline"
-            info
-            type="outline"
-            large
-            raised={raised}
-            onPress={() => Actions.newlogin()}
-          >
-            <Text>Decline</Text>
-          </Button>
+        <TouchableOpacity style={{height: 70, width:150, backgroundColor:"#041D5D", borderRadius:7, justifyContent:'center'}} onPress={() => Actions.newlogin()}>
+               <Text style={{fontSize:24, color:"#fff", alignSelf:'center'}}>Decline</Text>
+             </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

@@ -13,11 +13,11 @@
 		0E415DB1228CC4F700C78F98 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		0E415DB2228CC4F700C78F98 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		0E415DB3228CC4F800C78F98 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		0E82D5C122A6216D00AA1EB9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		19BC9DA624D6457E90D8AA74 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89A81B8E10194D52B98D4AD1 /* Zocial.ttf */; };
+		2397E01623163D8A00F2C0EC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2397E01523163D8A00F2C0EC /* Launch Screen.storyboard */; };
 		23EA9336230CEB720084AE2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23EA9335230CEB720084AE2D /* GoogleService-Info.plist */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -76,11 +76,11 @@
 		13B07F961A680F5B00A75B9A /* wild5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wild5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = wild5/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = wild5/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = wild5/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = wild5/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = wild5/main.m; sourceTree = "<group>"; };
 		19DD33A738924ACD87E3E6B1 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		2397E01523163D8A00F2C0EC /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		23EA9335230CEB720084AE2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* wild5-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wild5-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* wild5-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "wild5-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,8 +200,8 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				2397E01523163D8A00F2C0EC /* Launch Screen.storyboard */,
 			);
 			name = wild5;
 			sourceTree = "<group>";
@@ -488,12 +488,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				0E82D5C122A6216D00AA1EB9 /* LaunchScreen.xib in Resources */,
 				55F24AA0ABB049239793DB20 /* Roboto_medium.ttf in Resources */,
 				724BFA054F96410D8BD56C86 /* Roboto.ttf in Resources */,
 				0B9FF6A87C0747C184DDA9A2 /* rubicon-icon-font.ttf in Resources */,
 				23EA9336230CEB720084AE2D /* GoogleService-Info.plist in Resources */,
 				54CE70C4D28547069D28D38E /* FontAwesome5_Regular.ttf in Resources */,
+				2397E01623163D8A00F2C0EC /* Launch Screen.storyboard in Resources */,
 				63302D22CA83421988396036 /* Fontisto.ttf in Resources */,
 				03E72D9E622E41248A1779C7 /* Ionicons.ttf in Resources */,
 				BAC14A07ED5A4C2D99C2647B /* MaterialCommunityIcons.ttf in Resources */,
@@ -636,18 +636,6 @@
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13B07FB21A68108700A75B9A /* Base */,
-			);
-			name = LaunchScreen.xib;
-			path = wild5;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {

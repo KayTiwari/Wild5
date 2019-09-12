@@ -1,5 +1,6 @@
 import React from 'react';
-import {Scene, Router, Actions} from 'react-native-router-flux';
+import {View} from 'react-native'
+import {Scene, Router, Actions, ActionConst} from 'react-native-router-flux';
 import Landing from './screens/Landing';
 import EducationWellnessRoadMap from './screens/NewRoadMap';
 import ExerciseTracking from './screens/trackingscreens/ExerciseTracking';
@@ -35,7 +36,7 @@ const Routercomponent = () => {
   return (
     <Router>
       <Scene key="root">
-        <Scene key="newlogin" component={NewLogin} header={null} />
+        <Scene key="newlogin" component={NewLogin} header={null} drawerLockMode='locked-closed' gesturesEnabled={false}/>
         <Scene
           key="registerpage"
           component={RegisterPage}
@@ -90,7 +91,6 @@ const Routercomponent = () => {
         <Scene
           key="exercisetracking"
           backTitle="Back"
-          onBack={() => Actions.landing()}
           title="Exercise Tracking"
           component={ExerciseTracking}
         />
@@ -99,41 +99,36 @@ const Routercomponent = () => {
           backTitle="Back"
           title="Mindfulness Tracking"
           component={MindfulnessTracking}
-          onBack={() => Actions.landing()}
         />
         <Scene
           key="sleeptracking"
           backTitle="Back"
-          onBack={() => Actions.landing()}
           title="Sleep Tracking"
           component={SleepTracking}
         />
         <Scene
           key="socialtracking"
           backTitle="Back"
-          onBack={() => Actions.landing()}
           title="Social Tracking"
           component={SocialTracking}
         />
         <Scene
           key="nutritiontracking"
           backTitle="Back"
-          onBack={() => Actions.landing()}
           title="Nutrition Tracking"
           component={NutritionTracking}
         />
         <Scene
           key="herotracking"
           backTitle="Back"
-          onBack={() => Actions.landing()}
           title="HERO Tracking"
           component={HeroTracking}
         />
         <Scene
           key="herointro"
           component={Herointro}
-          backTitle="Back"
-          title="Today's HERO"
+          renderBackButton={()=><View/>}
+          hideNavBar
         />
         <Scene
           key="herohappy"

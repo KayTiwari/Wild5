@@ -1,16 +1,24 @@
 import React, {Component} from 'react';
-import {View, Dimensions, ScrollView} from 'react-native';
+import {View, Dimensions, ScrollView, Button} from 'react-native';
 import {Text, Icon} from 'native-base';
+import {Actions} from 'react-native-router-flux';
 import {withAuthProvider} from '../../context/authcontext';
 import BarGraph from '../../components/charts/NutriGraph';
+import {compose} from '../../utils/array';
+import {emptyState} from './EmptyState';
 
 //graph of all practices + scores
 
 const screenheight = Dimensions.get('window').height;
 
-class SleepStats extends Component {
+class NutritionStats extends Component {
   state = {
-    best: 'None',
+    logmeals: 0,
+    MIND: 0,
+    breakfast: 0,
+    lunch: 0,
+    dinner: 0,
+    total: 0,
   };
 
   componentWillMount() {
@@ -30,7 +38,10 @@ class SleepStats extends Component {
   }
 
   calculateStats = () => {
-    let data = Object.values(this.props.princData);
+    let data = Object.values(this.props.princData).filter(day =>
+      day.hasOwnProperty('nutrition')
+    );
+
     this.renderGraph(data);
   };
 
@@ -78,7 +89,7 @@ class SleepStats extends Component {
           <Text
             style={{
               marginTop: '10%',
-              fontSize: 25,
+              fontSize: 28,
               fontWeight: '600',
               textAlign: 'center',
             }}
@@ -86,39 +97,10 @@ class SleepStats extends Component {
             Nutrition Analysis
           </Text>
         </View>
-
-        {this.state.logmeals ||
-        this.state.MIND ||
-        this.state.breakfast ||
-        this.state.lunch ||
-        this.state.dinner ? (
-          <View>
-            <BarGraph
-              logmeals={this.state.logmeals}
-              MIND={this.state.MIND}
-              breakfast={this.state.breakfast}
-              lunch={this.state.lunch}
-              dinner={this.state.dinner}
-            />
-          </View>
-        ) : (
-          <Text>No graph data to show :S</Text>
-        )}
-
         <View>
-          <Text
-            style={{
-              marginTop: '5%',
-              fontSize: 20,
-              fontWeight: '600',
-              textAlign: 'center',
-            }}
-          >
-            Points out of: {this.state.total}
-          </Text>
           <Icon
             name="restaurant"
-            style={{textAlign: 'center', marginTop: '10%'}}
+            style={{fontSize: 100, textAlign: 'center', marginTop: '10%'}}
           />
           <ScrollView bounces={true}>
             <Text
@@ -129,7 +111,7 @@ class SleepStats extends Component {
                 textAlign: 'center',
               }}
             >
-              Logged Meals: {this.state.logmeals}
+              Logged Meals: {this.state.logmeals !== 0 ? Math.round(100 - this.state.logmeals * 100 / 30) : 0} %
             </Text>
             <Text
               style={{
@@ -139,18 +121,21 @@ class SleepStats extends Component {
                 textAlign: 'center',
               }}
             >
-              Practiced MIND Diet Principles: {this.state.MIND}
+              Practiced MIND Diet Principles: {this.state.MIND !== 0 ? Math.round(100 - this.state.MIND * 100 / 30): 0} %
             </Text>
+            <View style={{alignSelf: 'center',width:'90%', borderBottomWidth: 2,
+                borderColor: '#000'}}>
             <Text
               style={{
-                marginTop: '5%',
-                fontSize: 30,
+                marginTop: '10%',
+                fontSize: 20,
                 fontWeight: '600',
                 textAlign: 'center',
               }}
             >
               Practiced MINDful Meal Meditation
             </Text>
+            </View>
             <Text
               style={{
                 marginTop: '5%',
@@ -159,7 +144,7 @@ class SleepStats extends Component {
                 textAlign: 'center',
               }}
             >
-              Breakfast: {this.state.breakfast}
+              Breakfast: {this.state.breakfast !== 0 ? Math.round(100 - this.state.breakfast * 100 / 30) : 0} %
             </Text>
             <Text
               style={{
@@ -169,7 +154,7 @@ class SleepStats extends Component {
                 textAlign: 'center',
               }}
             >
-              Lunch: {this.state.lunch}
+              Lunch: {this.state.lunch !== 0 ? Math.round(100 - this.state.lunch * 100 / 30) : 0} %
             </Text>
             <Text
               style={{
@@ -179,7 +164,7 @@ class SleepStats extends Component {
                 textAlign: 'center',
               }}
             >
-              Dinner: {this.state.dinner}
+              Dinner: {this.state.dinner !== 0 ? Math.round(100 - this.state.dinner* 100 / 30) : 0} %
             </Text>
           </ScrollView>
         </View>
@@ -188,4 +173,16 @@ class SleepStats extends Component {
   }
 }
 
-export default withAuthProvider(SleepStats);
+export default compose(
+  withAuthProvider,
+  emptyState(
+    <Button
+      onPress={() => Actions.nutritiontracking()}
+      title="Add Nutrition Data"
+    />,
+    props =>
+      Object.values(props.princData).filter(day =>
+        day.hasOwnProperty('nutrition')
+      ).length === 0
+  )
+)(NutritionStats);
