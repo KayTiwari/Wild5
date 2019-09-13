@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   SafeAreaView,
   StyleSheet,
-  Modal
+  Modal,
+  ActivityIndicator
 } from "react-native";
 import { withAuthProvider } from "../context/authcontext";
 import {Actions} from 'react-native-router-flux';
@@ -26,18 +27,20 @@ const NewLoginScreen = props => {
   const [viewModal, setViewModal] = useState("")
 
   showModal = (view) => {
-    return ()=> {
+    console.log(view)
     setViewModal(view)
     setModal(true)
-    }
-    }
+    
+  }
+
+
+    // useEffect(()=>{
+    //   
+
+    // },[viewModal])
 
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      behavior={Platform.OS === "ios" ? "padding" : null}
-      enabled
-    >
+    
       <View style={{ flex: 1 }}>
       <SafeAreaView style={{flex: 1}}>
       <Modal
@@ -45,9 +48,9 @@ const NewLoginScreen = props => {
       visible={modal}
       >
       { viewModal === "Register" ?
-        <Register /> :
+        <Register closeModal={() => setModal(false)} /> :
         viewModal === "Login" ?
-        <Login /> : null
+        <LoginModal/> : null
       }
       </Modal>
         <View style={{ alignSelf: "center", marginTop: "5%", marginBottom:'10%' }}>
@@ -63,8 +66,8 @@ const NewLoginScreen = props => {
         <View style={{width: '50%', backgroundColor: "#52669c", alignSelf:'center', height: 50, justifyContent:'center'}}>
           <Text style={{alignSelf:'center', fontSize:20, color: '#fff', paddingRight:5, paddingLeft: 5}}>Let's Get Started</Text>
           </View>
-          <View style={{flexDirection: 'row', display: 'flex', justifyContent: 'space-around'}}>
-            <TouchableOpacity style={styles.buttons} onPress={showModal("Register")}>
+          <View style={{flexDirection: 'row', display: 'flex', justifyContent: 'space-around', marginTop:'20%'}}>
+            <TouchableOpacity style={styles.buttons} onPress={()=>showModal("Register")}>
               <Text style={styles.buttonText}>Register</Text>
             </TouchableOpacity>
             <View style={styles.imageView}>
@@ -72,13 +75,13 @@ const NewLoginScreen = props => {
             style={{ flex: 1, height: undefined, width: undefined }}
             />
             </View>
-            <TouchableOpacity style={styles.buttons} onPress={showModal("Login")}>
+            <TouchableOpacity style={styles.buttons} onPress={()=>showModal("Login")}>
               <Text style={styles.buttonText}>Login</Text>
             </TouchableOpacity>
           </View>
           </SafeAreaView>
       </View>
-    </KeyboardAvoidingView>
+    
   );
 };
 
@@ -86,8 +89,9 @@ export default withAuthProvider(NewLoginScreen);
 
 const styles = StyleSheet.create({
   buttons: {
+    height: '60%',
     width: '25%',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   buttonText: {
     letterSpacing: 1,
@@ -97,7 +101,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   imageView:{
-    height: 50,
-    width: 50,
+    height: 60,
+    width: 60,
   }
 })

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
   TouchableOpacity,
   StyleSheet,
@@ -56,15 +56,15 @@ const navigationItems = [
 ];
 
 export function Navigation(props) {
-  console.log(props)
+  console.log(props);
 
-  const[bothTrue, setBothTrue] = useState(false)
+  const [bothTrue, setBothTrue] = useState(false);
 
   useEffect(() => {
-    if(props.hero && props.hero2){
-      setBothTrue(true)
+    if (props.hero && props.hero2) {
+      setBothTrue(true);
     }
-  }, [])
+  }, []);
 
   const renderItem = React.useCallback((item, index) => {
     return (
@@ -94,21 +94,25 @@ export function Navigation(props) {
 
   return (
     <View style={styles.container}>
-      {props.hero && !bothTrue
-        ? chunk(navigationItems, 2).map((items, index) => (
-            <View key={index} style={styles.row}>
-              {items.map(renderItem)}
-            </View>
-          ))
-        : 
-      !props.hero ? (
+      {props.hero && !bothTrue ? (
+        chunk(navigationItems, 2).map((items, index) => (
+          <View key={index} style={styles.row}>
+            {items.map(renderItem)}
+          </View>
+        ))
+      ) : !props.hero ? (
         <>
-          <Text style={styles.titleHEROMain}>Take Your HERO Wellness Survey</Text>
+          <Text style={styles.titleHEROMain}>
+            Take Your HERO Wellness Survey
+          </Text>
           <TouchableOpacity
             style={[styles.touchableHERO, styles.touchableHERO]}
             onPress={() => Actions.herointro()}
           >
-            <LinearGradient style={styles.itemHERO} colors={["#041D5D", "#082774"]}>
+            <LinearGradient
+              style={styles.itemHERO}
+              colors={["#041D5D", "#082774"]}
+            >
               <Image
                 source={HEROlogo}
                 style={{ width: "100%", height: 65, resizeMode: "contain" }}
@@ -117,29 +121,31 @@ export function Navigation(props) {
             </LinearGradient>
           </TouchableOpacity>
         </>
-      ) : 
-      props.hero && props.hero2 ?
-      <>
-      {chunk(navigationItems, 2).map((items, index) => (
-        <View key={index} style={styles.row}>
-          {items.map(renderItem)}
-        </View>
-      ))}
-      {/* <Text style={styles.titleHEROMain}>Take Your HERO Wellness Survey</Text> */}
-      <TouchableOpacity
-        style={[styles.touchableHERO, styles.touchableHERO]}
-        onPress={() => Actions.herointro()}
-      >
-        <LinearGradient style={styles.itemHERO} colors={["#041D5D", "#082774"]}>
-          <Image
-            source={HEROlogo}
-            style={{ width: "100%", height: 65, resizeMode: "contain" }}
-          />
-          <Text style={styles.titleHERO}>Hero Wellness{"\n"} Survey</Text>
-        </LinearGradient>
-      </TouchableOpacity>
-      </>
-    : null}
+      ) : props.hero && props.hero2 ? (
+        <>
+          {chunk(navigationItems, 2).map((items, index) => (
+            <View key={index} style={styles.row}>
+              {items.map(renderItem)}
+            </View>
+          ))}
+          {/* <Text style={styles.titleHEROMain}>Take Your HERO Wellness Survey</Text> */}
+          <TouchableOpacity
+            style={[styles.touchableHERO]}
+            onPress={() => Actions.herointro()}
+          >
+            <LinearGradient
+              style={styles.itemHERO}
+              colors={["#041D5D", "#082774"]}
+            >
+              <Image
+                source={HEROlogo}
+                style={{ width: "100%", height: 120, resizeMode: "cover" }}
+              />
+              <Text style={styles.titleHERO}>Hero Wellness{"\n"} Survey</Text>
+            </LinearGradient>
+          </TouchableOpacity>
+        </>
+      ) : null}
     </View>
   );
 }
@@ -168,9 +174,10 @@ const styles = StyleSheet.create({
     elevation: 5
   },
   touchableHERO: {
+    height: 300,
     backgroundColor: "transparent",
     marginBottom: 10,
-    width:  width,
+    width: width,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -186,22 +193,26 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     height: 110
-  },itemHERO: {
+  },
+  itemHERO: {
     alignItems: "center",
     borderRadius: 5,
     padding: 10,
-    height: 120
+    height: 250,
+    width: 300
   },
   icon: { color: "white", fontSize: 60 },
-  title: { color: "white", fontSize: 18 },titleHERO: { color: "white", fontSize: 18, textAlign: 'center' },
+  title: { color: "white", fontSize: 18 },
+  titleHERO: { color: "white", fontSize: 18, textAlign: "center" },
   touchableHERO: {
     alignSelf: "center"
-  },titleHEROMain:{
+  },
+  titleHEROMain: {
     color: "#041D5D",
     fontSize: 24,
-    alignSelf: 'center',
-    fontWeight: '800',
-    textAlign: 'center',
-    marginBottom: '15%'
+    alignSelf: "center",
+    fontWeight: "800",
+    textAlign: "center",
+    marginBottom: "15%"
   }
 });

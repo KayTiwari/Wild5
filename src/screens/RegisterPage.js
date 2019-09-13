@@ -6,7 +6,9 @@ import {
   ScrollView,
   SafeAreaView,
   TouchableOpacity,
-  Text
+  Text,
+  ActivityIndicator,
+  KeyboardAvoidingView
 } from "react-native";
 import {
   Item,
@@ -14,7 +16,6 @@ import {
   Input,
   Form,
   Textarea,
-  Spinner
 } from "native-base";
 import DatePicker from "react-native-datepicker";
 import firebase from "react-native-firebase";
@@ -24,7 +25,7 @@ import { scopeRefByUser } from "../utils/registration";
 import abstractimg from "../images/abstract2.jpeg";
 import Disclaimer from "../components/common/Disclaimer";
 const screenheight = Dimensions.get("window").height;
-const RegisterPage = () => {
+const RegisterPage = (props) => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -95,20 +96,25 @@ const RegisterPage = () => {
   };
 
   return !showDisclaimer ? (
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : null}
+      enabled
+    >
+    <SafeAreaView style={{ flex: 1 }}>
     <ScrollView bounces={false} style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
           <View
             style={{
-              height: screenheight * 1.2,
+              flex:1,
               backgroundColor: "white",
-              marginLeft: "5%",
-              marginRight: "5%",
-              marginTop: "5%",
+              margin:'7%',
               borderRadius: 20,
               shadowColor: "black",
               shadowOffset: { width: 4, height: 4 },
               shadowOpacity: 0.8,
-              shadowRadius: 6
+              shadowRadius: 6,
+              paddingBottom:'15%'
             }}
           >
             <View>
@@ -277,7 +283,7 @@ const RegisterPage = () => {
 
             {loading && !error ? (
               <View style={{ alignSelf: "center" }}>
-                <Spinner />
+                <ActivityIndicator size="large" color="#041D5D"/>
               </View>
             ) : null}
 
@@ -290,11 +296,13 @@ const RegisterPage = () => {
           </View>
       </View>
     </ScrollView>
+    </SafeAreaView>
+    </KeyboardAvoidingView>
   ) : (
     <SafeAreaView style={{ flex: 1 }}>
       <Disclaimer />
       {loading && !error ? (
-        <Spinner />
+        <ActivityIndicator size="large" color="#041D5D"/>
       ) : error ? (
         <View style={{ alignSelf: "center" }}>
           <Text style={{ fontSize: 20, color: "red", alignSelf: "center" }}>
@@ -320,7 +328,7 @@ const RegisterPage = () => {
         </View>
         <View style={{ alignSelf: "center" }}>
         <TouchableOpacity style={{height: 70, width:150, backgroundColor:"#041D5D", borderRadius:7, justifyContent:'center'}} onPress={() => Actions.newlogin()}>
-               <Text style={{fontSize:24, color:"#fff", alignSelf:'center'}}>Decline</Text>
+               <Text style={{fontSize:24, color:"#fff", alignSelf:'center'}} onPress={props.closeModal}>Decline</Text>
              </TouchableOpacity>
         </View>
       </View>
