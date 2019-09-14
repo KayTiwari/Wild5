@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Dimensions } from "react-native";
+import { View, Dimensions, TouchableOpacity } from "react-native";
 import { Text, Button, Icon } from "native-base";
 import { Actions } from "react-native-router-flux";
 import firebase from 'react-native-firebase';
@@ -155,13 +155,12 @@ const [mentalWellValue, setMentalWellValue] = useState(0)
           {feeling()}
 
           <View style={{ alignSelf: "center", marginTop: "20%" }}>
-            <Button onPress={() => submit()} dark rounded large>
-              <Text>Next</Text>
-              <Icon name="arrow-forward" />
-            </Button>
+          <TouchableOpacity style={{alignSelf: "center", height: 60, width: 120, borderRadius:28, backgroundColor: "#041D5D", borderWidth: 1, borderColor:'black', justifyContent:'center', flexDirection:'row'}} onPress={() => submit()}>
+            <Text style={{color:"#fff", fontSize: 24, fontWeight:800, alignSelf:'center'}}>Next</Text>
+            </TouchableOpacity>
+          </View>
           </View>
         </View>
-      </View>
     );
   }
 

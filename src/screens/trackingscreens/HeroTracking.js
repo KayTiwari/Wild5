@@ -9,7 +9,7 @@ import { TrackingScreen } from './TrackingScreen'
 import { scopeRefByUserAndDate } from '../../utils/firebase'
 import { Actions } from 'react-native-router-flux'
 
-const radio_props = [{ label: "Yes", value: "1" }, { label: "No", value: "0" }];
+const radio_props = [{ label: "Yes", value: 1 }, { label: "No", value: 0 }];
 
 const HeroTracking = () => {
 

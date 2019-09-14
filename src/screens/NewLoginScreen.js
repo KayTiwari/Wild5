@@ -9,7 +9,7 @@ import {
   SafeAreaView,
   StyleSheet,
   Modal,
-  ActivityIndicator
+  TouchableWithoutFeedback
 } from "react-native";
 import { withAuthProvider } from "../context/authcontext";
 import {Actions} from 'react-native-router-flux';
@@ -33,26 +33,26 @@ const NewLoginScreen = props => {
     
   }
 
-
-    // useEffect(()=>{
-    //   
-
-    // },[viewModal])
-
   return (
     
       <View style={{ flex: 1 }}>
       <SafeAreaView style={{flex: 1}}>
+      
       <Modal
       transparent={true}
       visible={modal}
+      onRequestClose={()=> setModal(false)}
       >
+      
       { viewModal === "Register" ?
-        <Register closeModal={() => setModal(false)} /> :
+      
+        <Register closeModal={() => setModal(false)} />
+         :
         viewModal === "Login" ?
         <LoginModal/> : null
       }
       </Modal>
+      
         <View style={{ alignSelf: "center", marginTop: "5%", marginBottom:'10%' }}>
           <Image source={KS30} style={{ alignSelf: "center" }} />
           <View style={{ height: 200, width: 400, display: 'flex', justifyContent:'center', alignSelf:'center', marginTop: '10%' }}>

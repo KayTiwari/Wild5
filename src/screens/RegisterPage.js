@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Text,
   ActivityIndicator,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
 } from "react-native";
 import {
   Item,
@@ -291,7 +291,9 @@ const RegisterPage = (props) => {
              <TouchableOpacity style={{height: 70, width:150, backgroundColor:"#041D5D", borderRadius:7, justifyContent:'center'}} onPress={() => showDisclaimerScreen()}>
                <Text style={{fontSize:24, color:"#fff", alignSelf:'center'}}>Register</Text>
              </TouchableOpacity>
-
+             <TouchableOpacity style={{marginTop: 15}} onPress={props.closeModal}>
+               <Text style={{fontSize:24, color:"#041D5D", alignSelf:'center'}}>Cancel</Text>
+             </TouchableOpacity>
             </View>
           </View>
       </View>

@@ -29,48 +29,45 @@ export default function Landing() {
   const [hero2, setHero2] = useState(false);
   const [initialSurveydate, setInitialSurveyDate] = useState("");
 
-  // useEffect(() => {
-  //   checkHeroData();
-  //   (async () => {
-  //     await firebase
-  //       .auth()
-  //       .signInWithEmailAndPassword("bill@bill.com", "1234567");
-  //   })();
-  // }, []);
+  useEffect(() => {
+    checkHeroData();
+  }, []);
 
-  // useEffect(() => {
-  //   const date = format(new Date(), "YYYY-MM-DD-HH-mm");
-  //   const user = firebase.auth().currentUser;
-  //   const [scopedUser] = user.email.split(".");
-  //   console.log(scopedUser);
-  //   firebase
-  //     .database()
-  //     .ref(`HERO/${scopedUser}`)
-  //     .once("value", snap => {
-  //       if (snap.val() !== null && initialSurveydate !== "") {
-  //         const data = [Object.keys(snap.val())].sort();
-  //         const dateDiff = spliceString(initialSurveydate, date);
-  //         console.log(dateDiff);
-  //         if (dateDiff) {
-  //           return setHero2(true);
-  //         } else setHero2(false);
-  //       }
-  //     });
-  // }, [initialSurveydate]);
+  useEffect(() => {
+    const date = format(new Date(), "YYYY-MM-DD-HH-mm");
+    const user = firebase.auth().currentUser;
+    console.log(user)
+    const [scopedUser] = user.email.split(".") || undefined;
+    console.log(scopedUser);
+    firebase
+      .database()
+      .ref(`HERO/${scopedUser}`)
+      .once("value", snap => {
+        if (snap.val() !== null && initialSurveydate !== "") {
+          const data = [Object.keys(snap.val())].sort();
+          const dateDiff = spliceString(initialSurveydate, date);
+          console.log(dateDiff);
+          if (dateDiff) {
+            return setHero2(true);
+          } else setHero2(false);
+        }
+      });
+    
+  }, [initialSurveydate]);
 
-  // checkHeroData = () => {
-  //   const heroRef = scopeRefByUserHero("HERO");
-  //   console.log(heroRef);
-  //   firebase
-  //     .database()
-  //     .ref(heroRef)
-  //     .once("value", snapshot => {
-  //       if (snapshot.val() !== null) {
-  //         setInitialSurveyDate(snapshot.val());
-  //         setHero(true);
-  //       }
-  //     });
-  // };
+  checkHeroData = () => {
+    const heroRef = scopeRefByUserHero("HERO");
+    console.log(heroRef);
+    firebase
+      .database()
+      .ref(heroRef)
+      .once("value", snapshot => {
+        if (snapshot.val() !== null) {
+          setInitialSurveyDate(snapshot.val());
+          setHero(true);
+        }
+      });
+  };
 
   return !hero || hero2 ? (
     <LandingView hero={hero} hero2={hero2} />

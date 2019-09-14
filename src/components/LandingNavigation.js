@@ -56,7 +56,6 @@ const navigationItems = [
 ];
 
 export function Navigation(props) {
-  console.log(props);
 
   const [bothTrue, setBothTrue] = useState(false);
 
@@ -106,7 +105,7 @@ export function Navigation(props) {
             Take Your HERO Wellness Survey
           </Text>
           <TouchableOpacity
-            style={[styles.touchableHERO, styles.touchableHERO]}
+            style={styles.touchableHERO}
             onPress={() => Actions.herointro()}
           >
             <LinearGradient
@@ -137,10 +136,12 @@ export function Navigation(props) {
               style={styles.itemHERO}
               colors={["#041D5D", "#082774"]}
             >
+            <View style={{height: 300, width:'100%', alignSelf:'center'}}>
               <Image
                 source={HEROlogo}
-                style={{ width: "100%", height: 120, resizeMode: "cover" }}
+                style={{ width: "100%", height: '100%', resizeMode: "contain", marginTop:'10%' }}
               />
+              </View>
               <Text style={styles.titleHERO}>Hero Wellness{"\n"} Survey</Text>
             </LinearGradient>
           </TouchableOpacity>
@@ -174,6 +175,7 @@ const styles = StyleSheet.create({
     elevation: 5
   },
   touchableHERO: {
+    justifyContent:'center',
     height: 300,
     backgroundColor: "transparent",
     marginBottom: 10,
@@ -203,7 +205,7 @@ const styles = StyleSheet.create({
   },
   icon: { color: "white", fontSize: 60 },
   title: { color: "white", fontSize: 18 },
-  titleHERO: { color: "white", fontSize: 18, textAlign: "center" },
+  titleHERO: { color: "white", fontSize: 28, textAlign: "center" },
   touchableHERO: {
     alignSelf: "center"
   },

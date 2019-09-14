@@ -44,7 +44,6 @@ const HeroIntro = () => {
         <View style={{marginTop:'15%'}}>
           <TouchableOpacity style={{alignSelf: "center", height: 60, width: 120, borderRadius:28, backgroundColor: "#041D5D", borderWidth: 1, borderColor:'black', justifyContent:'center', flexDirection:'row'}} onPress={() => Actions.herohappy()}>
             <Text style={{color:"#fff", fontSize: 24, fontWeight:800, alignSelf:'center'}}>Start</Text>
-            <Icon name="arrow-forward" style={{alignSelf:'center', fontSize:24, margin:2, color:'#fff'}}/>
             </TouchableOpacity>
         </View>
         <View style={{flex:1, justifyContent:'flex-end'}}>
