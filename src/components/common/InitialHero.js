@@ -9,32 +9,32 @@ import Navbar from "../Navbar"
 export default InitialHero = (props) => {
   console.log(props)
     return (
-    <View style={{ flex: 1, backgroundColor:'#fff' }}>
-    <SafeAreaView style={{ flex: 1, backgroundColor:'#fff' }}>
-      <Image
-        source={KS30title}
-        style={{
-          width: "80%",
-          resizeMode: "contain",
-          marginTop: "3%",
-          alignSelf: "center"
-        }}
-      />
-      <View style={{ marginTop: "2%", flex: 1 }}>
-      <Text>InitialHERO</Text>
-        <Navigation hero={props.hero} hero2={props.hero2} />
-      </View>
-      <Image
-        source={wild5title}
-        style={{
-          width: "80%",
-          resizeMode: "contain",
-          marginBottom: "2%",
-          alignSelf: "center"
-        }}
-      />
-    </SafeAreaView>
-    <Navbar homedisable />
-  </View>
+        <View style={{ flex: 1, backgroundColor:'#fff' }}>
+      <SafeAreaView style={{ flex: 1 }}>
+          <Image
+            source={KS30title}
+            style={{
+              width: "80%",
+              resizeMode: "contain",
+              marginTop: "3%",
+              alignSelf: "center"
+            }}
+          />
+          <View style={{ marginTop: "2%", flex: 1 }}>
+            <Navigation hero={props.hero} hero2={props.hero2} />
+          </View>
+          <Image
+            source={wild5title}
+            style={{
+              width: "80%",
+              marginTop: "25%",
+              resizeMode: "contain",
+              marginBottom: "2%",
+              alignSelf: "center"
+            }}
+          />
+      </SafeAreaView>
+      <Navbar homedisable />
+    </View>
     )
 }

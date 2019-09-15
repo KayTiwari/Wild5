@@ -19,8 +19,9 @@ import firebase from "react-native-firebase";
 import { format } from "date-fns";
 import { spliceString } from "../utils/dateSplice";
 import { scopeRefByUserHero } from "../utils/heroRef";
-import InitialHero from "../components/common/InitialHero";
+import InitialHero from "../components/common/HeroSurvey";
 import LandingView from "../components/common/LandingView";
+import HeroSurvey from '../components/common/InitialHero'
 
 const { width } = Dimensions.get("window");
 
@@ -72,11 +73,12 @@ export default function Landing() {
   return !hero || hero2 ? (
     <LandingView hero={hero} hero2={hero2} />
   ) : (
-    <>
-      <InitialHero hero={hero} hero2={hero2} />
-    </>
+    
+      <HeroSurvey hero={hero} hero2={hero2} />
+    
   );
 }
+
 
 const styles = StyleSheet.create({
   icon: { color: "white", fontSize: 60 },

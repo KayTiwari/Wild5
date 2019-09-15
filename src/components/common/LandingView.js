@@ -22,7 +22,6 @@ export default LandingView = (props) => {
             }}
           />
           <View style={{ marginTop: "2%", flex: 1 }}>
-          <Text>LandingView</Text>
             <Navigation hero={props.hero} hero2={props.hero2} />
           </View>
           <Image
