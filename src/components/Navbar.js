@@ -39,9 +39,9 @@ class Navbar extends Component {
             <Icon name={"rocket"} />
               <Text>Kickstart</Text>
             </Button> */}
-            <Button disabled={this.props.herodisable} onPress={() => Actions.herointro()}>
-                <Icon name={"sunny"} style={styles.buttons}/>
-                <Text style={styles.buttons}>HERO</Text>
+            <Button disabled={this.props.herodisable} onPress={() => Actions.feedback()}>
+                <Icon name={"clipboard"} style={styles.buttons}/>
+                <Text style={{fontSize:9, color:'#fff'}}>Feedback</Text>
               </Button>
             {/* <Button disabled={this.props.questdisable} onPress={() => Actions.quests()}>
                 <Icon name={"flame"} />

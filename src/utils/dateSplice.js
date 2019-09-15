@@ -19,6 +19,6 @@ export function spliceString (str, str2){
 
      
       
-        return [0,2,8,12,16,20,24,28,32,34,38,42,46,50,54,58].includes(Math.abs(minute2 - minute))
+        return [7,14,21,28,30].includes(Math.abs(day2 - day))
        
   }

@@ -31,6 +31,7 @@ import MindfulStats from './screens/statsscreens/MindfulStats';
 import SleepStats from './screens/statsscreens/SleepStats';
 import SocialStats from './screens/statsscreens/SocialStats';
 import NutriStats from './screens/statsscreens/NutrStats';
+import Feedback from './screens/accountmenu/Feedback'
 
 const Routercomponent = () => {
   return (
@@ -162,6 +163,7 @@ const Routercomponent = () => {
           title="Mental Wellness"
         />
         <Scene key="heroscore" component={HeroScore} header={null} />
+        <Scene key="feedback" component={Feedback} header={null} />
       </Scene>
     </Router>
   );
