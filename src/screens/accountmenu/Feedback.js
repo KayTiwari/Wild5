@@ -4,6 +4,7 @@ import RadioForm from "react-native-simple-radio-button";
 import firebase from "react-native-firebase";
 import {format} from 'date-fns';
 import {Actions} from 'react-native-router-flux'
+import Navbar from '../../components/Navbar'
 
 const Feedback = () => {
   const [model, setPhoneModel] = useState("");
@@ -44,7 +45,7 @@ const Feedback = () => {
     enabled
   >
     <View style={{ flex: 1, backgroundColor:'#fff' }}>
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{flex: 1}}>
         <View
           style={{
             height: "10%",
@@ -101,7 +102,8 @@ const Feedback = () => {
             <Text style={{alignSelf:'center', fontSize:20, fontWeight:700, color:'#fff'}}>Submit</Text>
             </TouchableOpacity>
         </View>
-      </SafeAreaView>
+        </SafeAreaView>
+        <Navbar />
     </View>
     </KeyboardAvoidingView>
   );
