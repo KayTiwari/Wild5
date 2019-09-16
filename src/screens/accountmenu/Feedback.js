@@ -103,7 +103,7 @@ const Feedback = () => {
             </TouchableOpacity>
         </View>
         </SafeAreaView>
-        <Navbar />
+        <Navbar feedbackdisable/>
     </View>
     </KeyboardAvoidingView>
   );

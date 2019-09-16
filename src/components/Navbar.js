@@ -39,7 +39,7 @@ class Navbar extends Component {
             <Icon name={"rocket"} />
               <Text>Kickstart</Text>
             </Button> */}
-            <Button disabled={this.props.herodisable} onPress={() => Actions.feedback()}>
+            <Button disabled={this.props.feedbackdisable} onPress={() => Actions.feedback()}>
                 <Icon name={"clipboard"} style={styles.buttons}/>
                 <Text style={{fontSize:9, color:'#fff'}}>Feedback</Text>
               </Button>
