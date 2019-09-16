@@ -62,7 +62,7 @@ const LoginModal = () => {
           <View
             style={{
               backgroundColor:'#fff',
-              height: '40%',
+              height: 300,
               marginLeft: "5%",
               marginRight: "5%",
               marginTop: "5%",

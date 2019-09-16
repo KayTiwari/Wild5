@@ -49,7 +49,6 @@ const Routercomponent = () => {
           component={Landing}
           title="Welcome to Wellness"
           header={null}
-          initial
         />
         <Scene
           key="edroadmap"
