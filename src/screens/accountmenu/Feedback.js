@@ -68,7 +68,7 @@ const Feedback = () => {
           </Text>
         </View>
         <View style={{marginTop:'10%'}}>
-        <Text style={{alignSelf:'center', fontSize:20, marginBottom:5, fontWeight:700}}>Select Model</Text>
+        <Text style={{alignSelf:'center', fontSize:20, marginBottom:5, fontWeight:700}}>Phone Model</Text>
         <Picker
           selectedValue={model}
           style={{ height: 100, width: "100%" }}
