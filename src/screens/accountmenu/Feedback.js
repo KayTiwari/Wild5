@@ -39,12 +39,13 @@ const Feedback = () => {
   }
 
   return (
-    <KeyboardAvoidingView
+   
+    <View style={{ flex: 1, backgroundColor:'#fff' }}>
+     <KeyboardAvoidingView
     style={{ flex: 1 }}
     behavior={Platform.OS === "ios" ? "padding" : null}
     enabled
   >
-    <View style={{ flex: 1, backgroundColor:'#fff' }}>
       <SafeAreaView style={{flex: 1}}>
         <View
           style={{
@@ -103,9 +104,10 @@ const Feedback = () => {
             </TouchableOpacity>
         </View>
         </SafeAreaView>
+        </KeyboardAvoidingView>
         <Navbar feedbackdisable/>
     </View>
-    </KeyboardAvoidingView>
+    
   );
 };
 
