@@ -1,6 +1,9 @@
 package com.wild5;
 import android.app.Application;
 import com.facebook.react.ReactApplication;
+import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import com.rollbar.RollbarReactNative;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 import io.invertase.firebase.database.RNFirebaseDatabasePackage;
@@ -11,14 +14,13 @@ import com.oblador.vectoricons.VectorIconsPackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
-// import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-// import java.util.Arrays;
 import java.util.List;
 import android.util.Log;
 import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
+import com.rollbar.RollbarReactNative;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -54,6 +56,7 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+    RollbarReactNative.init(this, BuildConfig.ROLLBAR_CLIENT_ITEM, "production");
   }
 
 }

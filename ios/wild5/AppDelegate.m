@@ -13,12 +13,18 @@
 #import <React/RCTPushNotificationManager.h>
 #import <UserNotifications/UserNotifications.h>
 #import <Firebase.h>
+#import <RollbarReactNative/RollbarReactNative.h>
+#import "ReactNativeConfig.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   [FIRApp configure];
+  
+  NSString *rollbarAccessToken = [ReactNativeConfig envFor:@"ROLLBAR_CLIENT_ITEM"];
+  [RollbarReactNative initWithAccessToken:rollbarAccessToken];
+  
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"wild5"
