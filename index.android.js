@@ -4,6 +4,18 @@ import App from './src/App';
 import {setJSExceptionHandler} from 'react-native-exception-handler';
 import {rollbar} from './src/utils/rollbar';
 
+rollbar.rollbar.configure({
+  payload: {
+    client: {
+      javascript: {
+        source_map_enabled: true,
+        code_version: '1.0-alpha.3.android',
+        environment: 'production',
+      },
+    },
+  },
+});
+
 setJSExceptionHandler((error, isFatal) => {
   if (isFatal) {
     rollbar.critical(error);
