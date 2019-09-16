@@ -24,7 +24,7 @@ const [heroDaily, setHeroDaily] = React.useState("")
     .update({
       HeroDailyScore: heroDaily
     }).then(()=>Alert.alert(
-      'Data submitted Successfully',
+      'Success!', 'Your Hero exercises for today have been recorded.',
       '',
       [
         {
