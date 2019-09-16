@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, SafeAreaView, Picker, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, SafeAreaView, Picker, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, Keyboard } from "react-native";
 import RadioForm from "react-native-simple-radio-button";
 import firebase from "react-native-firebase";
 import {format} from 'date-fns';
@@ -8,6 +8,23 @@ import {Actions} from 'react-native-router-flux'
 const Feedback = () => {
   const [model, setPhoneModel] = useState("");
   const [text, setTextValue] = useState("")
+
+  useEffect(()=> {
+    Keyboard.addListener(
+        'keyboardDidShow')
+
+        Keyboard.addListener(
+            'keyboardDidHide')
+
+      return () =>{
+        Keyboard.removeListener(
+            'keyboardDidShow')
+    
+            Keyboard.removeListener(
+                'keyboardDidHide')
+
+      }
+  },[])
 
   onSubmit= () => {
     const date = format(new Date(), 'YYYY-MM-DD');
@@ -56,7 +73,7 @@ const Feedback = () => {
           itemStyle={{height: 100}}
           onValueChange={itemValue => setPhoneModel(itemValue)}
         >
-        <Picker.Item label="" value="" />
+        <Picker.Item label="Select A Model" value="" />
           <Picker.Item label="iPhone 7" value="iPhone 7" />
           <Picker.Item label="iPhone 7 Plus" value="iPhone 7 Plus" />
           <Picker.Item label="iPhone 8" value="iPhone 8" />
@@ -78,6 +95,7 @@ const Feedback = () => {
             numberOfLines = {8}
             placeholder="Type your comments here..."
             onChangeText={value => setTextValue(value)}
+            onSubmitEditing={Keyboard.dismiss}
             />
             <TouchableOpacity style={{height:50, width:"90%", backgroundColor:"#041D5D", justifyContent:'center', marginTop:10, borderRadius:9}} onPress={()=> onSubmit()}>
             <Text style={{alignSelf:'center', fontSize:20, fontWeight:700, color:'#fff'}}>Submit</Text>
