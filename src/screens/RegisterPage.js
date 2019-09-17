@@ -29,7 +29,6 @@ const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [acceptDisclaimer, setAcceptDisclaimer] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [chosenDate, setChosenDate] = useState(new Date());
   const [fullName, setFullName] = useState("");
@@ -58,7 +57,6 @@ const RegisterPage = () => {
 
 
   registerPress = () => {
-    setAcceptDisclaimer(true);
     setLoading(true);
     setError("");
     if (email !== "" && password !== "") {
@@ -85,13 +83,13 @@ const RegisterPage = () => {
       .database()
       .ref(registrationRef)
       .update({
-        accepteddisclaimer: acceptDisclaimer,
+        accepteddisclaimer: true,
         fullName,
         dob,
         goals,
         date: date.toString()
       });
-  });
+  }, [fullName, dob, goals, date]);
 
   onRegisterFail = err => {
     setError(err.message);
@@ -321,7 +319,7 @@ const RegisterPage = () => {
             type="outline"
             large
             raised={raised}
-            onPress={() => this.registerPress()}
+            onPress={() => registerPress()}
           >
             <Text>Accept</Text>
           </Button>
