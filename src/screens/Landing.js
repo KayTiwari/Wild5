@@ -25,9 +25,9 @@ import PushNotificationIOS from '../components/common/PushNotificationsIOS'
 
 const { width } = Dimensions.get("window");
 
- function Landing(props) {
-  const [hero, setHero] = useState(true);
-  const [hero2, setHero2] = useState(true);
+function Landing(props) {
+  const [hero, setHero] = useState(false);
+  const [hero2, setHero2] = useState(false);
   const [initialSurveydate, setInitialSurveyDate] = useState("");
 
   useEffect(() => {

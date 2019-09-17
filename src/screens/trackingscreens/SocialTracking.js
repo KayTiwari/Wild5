@@ -20,6 +20,7 @@ class SocialTracking extends Component {
     [MET_FRIEND_IN_PERSON]: false,
     [CALLED_FAMILY]: false,
     [MET_FAMILY_IN_PERSON]: false,
+    didSociallyConnect: false,
   };
 
   toggleCheckbox = stateKey => {
@@ -32,6 +33,7 @@ class SocialTracking extends Component {
       [MET_FRIEND_IN_PERSON]: metFriendInPerson,
       [CALLED_FAMILY]: calledFamily,
       [MET_FAMILY_IN_PERSON]: metFamilyInPerson,
+      didSociallyConnect,
     } = this.state;
 
     const socialRef = scopeRefByUserAndDate('Surveys', 'social');
@@ -40,6 +42,7 @@ class SocialTracking extends Component {
       .database()
       .ref(socialRef)
       .update({
+        didSociallyConnect,
         calledFriend,
         metFriendInPerson,
         calledFamily,
@@ -49,53 +52,69 @@ class SocialTracking extends Component {
     // Add error handling here...
 
     Alert.alert(
-      'Success!',
-      'Your social interactions for today have been recorded.',
-      [{text: 'OK', onPress: Actions.landing}]
+      "Success!",
+      "Your social interactions for today have been recorded.",
+      [{text: "OK", onPress: Actions.landing}]
     );
   };
 
   render() {
     return (
       <TrackingScreen
-        backgroundImage={{uri: 'social-tracking-bg'}}
+        backgroundImage={{uri: "social-tracking-bg"}}
         color={socialColor}
         activityTitle="Social Connectedness"
         onSave={this.submitForm}
       >
-      <View style={{backgroundColor:socialColor, width: '85%', alignSelf: 'center', height: 90, marginTop: 10 }}>
-          <Text style={{fontSize: 20, color: 'white', alignSelf: 'center', fontWeight: '700'}}>
+        <View
+          style={{
+            backgroundColor: socialColor,
+            width: "85%",
+            alignSelf: "center",
+            height: 90,
+            marginTop: 10,
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 20,
+              color: "white",
+              alignSelf: "center",
+              fontWeight: "700",
+            }}
+          >
             Practices
           </Text>
-          <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
+          <Text style={{fontSize: 18, color: "white", textAlign: "center"}}>
             Meet or call a minimum of two friends or family each day for 30
             days.
           </Text>
-          </View>
-          <View style={{alignItems:'center', marginTop: 10}}>
-            <Text style={{
-                marginBottom: "5%",
-                fontSize: 20,
-                textAlign: "center",
-                fontWeight: "600"
-              }}>Did I Socially Connect With at Least 2 People Today</Text>
-            <RadioForm
-              radio_props={[
-                { label: "Yes", value: "1" },
-                { label: "No", value: "0" }
-              ]}
-              initial={false}
-              formHorizontal={false}
-              labelHorizontal={true}
-              buttonColor={socialColor}
-              selectedButtonColor={socialColor}
-              labelStyle={{fontSize: 20, color: '#000'}}
-              animation={true}
-              onPress={value => {
-                this.setState({ socialDaily: value });
-              }}
-            />
-          </View>
+        </View>
+        <View style={{alignItems: "center", marginTop: 10}}>
+          <Text
+            style={{
+              marginBottom: "5%",
+              fontSize: 20,
+              textAlign: "center",
+              fontWeight: "600",
+            }}
+          >
+            Did I Socially Connect With at Least 2 People Today
+          </Text>
+          <RadioForm
+            radio_props={[{label: "Yes", value: 1}, {label: "No", value: 0}]}
+            initial={false}
+            formHorizontal={false}
+            labelHorizontal={true}
+            buttonColor={socialColor}
+            selectedButtonColor={socialColor}
+            labelStyle={{fontSize: 20, color: "#000"}}
+            animation={true}
+            onPress={value => {
+              this.setState({didSociallyConnect: Boolean(value)});
+            }}
+          />
+        </View>
         <Text style={styles.subtitle} numberOfLines={1}>
           What social contacts did you make?
         </Text>
