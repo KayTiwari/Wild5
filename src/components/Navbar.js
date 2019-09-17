@@ -26,7 +26,7 @@ class Navbar extends Component {
     return (
       <View>
           <Footer>
-            <FooterTab style={{backgroundColor: Platform.OS === "android" ? "#fff" : null}}>
+            <FooterTab style={{backgroundColor: "#041D5D"}}>
               <Button disabled={this.props.homedisable} onPress={this.homePress.bind(this)}>
                 <Icon name={"ios-home"} style={styles.buttons}/>
                 <Text style={styles.buttons}>Track</Text>
@@ -39,9 +39,9 @@ class Navbar extends Component {
             <Icon name={"rocket"} />
               <Text>Kickstart</Text>
             </Button> */}
-            <Button onPress={() => Actions.herointro()}>
-                <Icon name={"sunny"} style={styles.buttons}/>
-                <Text style={styles.buttons}>HERO</Text>
+            <Button disabled={this.props.feedbackdisable} onPress={() => Actions.feedback()}>
+                <Icon name={"clipboard"} style={styles.buttons}/>
+                <Text style={{fontSize:9, color:'#fff'}}>Feedback</Text>
               </Button>
             {/* <Button disabled={this.props.questdisable} onPress={() => Actions.quests()}>
                 <Icon name={"flame"} />
@@ -59,7 +59,7 @@ class Navbar extends Component {
                 <Icon name={"chatbubbles"} style={styles.buttons}/>
                 <Text style={styles.buttons}>About</Text>
               </Button>
-              <Button onPress={() => Actions.settings()}>
+              <Button disabled={this.props.settingsdisable} onPress={() => Actions.settings()}>
                 <Icon name={"ios-settings"} style={styles.buttons}/>
                 <Text style={styles.settings}>Settings</Text>
               </Button>
@@ -74,9 +74,9 @@ export default Navbar;
 
 const styles = StyleSheet.create({
   buttons: {
-    color: "#041D5D" },
+    color: "#fff" },
 settings: {
-  color: "#041D5D",
+  color: "#fff",
 fontSize: 10
 }
 })

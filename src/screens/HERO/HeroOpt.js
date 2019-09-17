@@ -1,54 +1,30 @@
-import React, { Component } from "react";
-import { View, Dimensions } from "react-native";
-import { Text, Button, Icon } from "native-base";
+import React, { useState } from "react";
+import { View, Dimensions, TouchableOpacity } from "react-native";
+import { Text } from "native-base";
 import { Actions } from "react-native-router-flux";
 import firebase from 'react-native-firebase';
 import { Slider } from "react-native-elements";
+import { scopeRefByUserAndDate } from '../../utils/firebase'
 
 const screenheight = Dimensions.get("window").height;
-class HeroOpt extends Component {
-  state = {
-    optval: 0
-  };
+const HeroOpt = () => {
+ 
 
-  componentDidMount() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var res = user.email.split(".");
-      var userEm = res[0].toString();
-      this.setState({
-        user: userEm
-      });
-    } else {
-      console.log("noperz");
-    }
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
-    var dateTime = date;
-    this.setState({
-      date: dateTime
-    });
-  }
+ const [optimismValue, setOptimismValue] = useState(0)
 
-  submit() {
-    console.log(this.state);
-    const { optval, user, date } = this.state;
+  submit = () => {
+    const heroRef = scopeRefByUserAndDate('HERO')
     firebase
       .database()
-      .ref(`HERO/${user}/${date}`)
+      .ref(heroRef)
       .update({
-        optval
+        optimismValue
       });
     Actions.heroment();
   }
 
   feeling = () => {
-    if (this.state.optval === 0) {
+    if (optimismValue === 0) {
       return (
         <Text
           style={{
@@ -62,7 +38,7 @@ class HeroOpt extends Component {
           Not at all Optimistic
         </Text>
       );
-    } else if (this.state.optval >= 1 && this.state.optval <= 3) {
+    } else if (optimismValue >= 1 && optimismValue <= 3) {
       return (
         <Text
           style={{
@@ -76,7 +52,7 @@ class HeroOpt extends Component {
           Mildly Optimistic
         </Text>
       );
-    } else if (this.state.optval >= 4 && this.state.optval <= 6) {
+    } else if (optimismValue >= 4 && optimismValue <= 6) {
       return (
         <Text
           style={{
@@ -90,7 +66,7 @@ class HeroOpt extends Component {
           Moderately Optimistic
         </Text>
       );
-    } else if (this.state.optval >= 7 && this.state.optval <= 9) {
+    } else if (optimismValue >= 7 && optimismValue <= 9) {
       return (
         <Text
           style={{
@@ -104,7 +80,7 @@ class HeroOpt extends Component {
           Highly Optimistic
         </Text>
       );
-    } else if (this.state.optval === 10) {
+    } else if (optimismValue === 10) {
       return (
         <Text
           style={{
@@ -121,7 +97,7 @@ class HeroOpt extends Component {
     }
   };
 
-  render() {
+
     return (
       <View style={{ backgroundColor: "white", height: screenheight }}>
         <View>
@@ -160,11 +136,11 @@ class HeroOpt extends Component {
           }}
         >
           <Slider
-            value={this.state.value}
+            value={optimismValue}
             step={1}
             minimumValue={0}
             maximumValue={10}
-            onValueChange={value => this.setState({ optval: value })}
+            onValueChange={value => setOptimismValue(value)}
           />
           <Text
             style={{
@@ -174,20 +150,19 @@ class HeroOpt extends Component {
               marginTop: "10%"
             }}
           >
-            Value: {this.state.optval}
+            Value: {optimismValue}
           </Text>
-          {this.feeling()}
+          {feeling()}
 
           <View style={{ alignSelf: "center", marginTop: "20%" }}>
-            <Button onPress={() => this.submit()} dark rounded large>
-              <Text>Next</Text>
-              <Icon name="arrow-forward" />
-            </Button>
+          <TouchableOpacity style={{alignSelf: "center", height: 60, width: 120, borderRadius:28, backgroundColor: "#041D5D", borderWidth: 1, borderColor:'black', justifyContent:'center', flexDirection:'row'}} onPress={() => submit()}>
+            <Text style={{color:"#fff", fontSize: 24, fontWeight:800, alignSelf:'center'}}>Next</Text>
+            </TouchableOpacity>
+          </View>
           </View>
         </View>
-      </View>
     );
   }
-}
+
 
 export { HeroOpt };

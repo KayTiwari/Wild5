@@ -1,132 +1,118 @@
-import React, {Component} from 'react';
-import {View, Dimensions, Image, ImageBackground} from 'react-native';
-import {Text, Spinner} from 'native-base';
-import {Actions} from 'react-native-router-flux';
-import firebase from 'react-native-firebase';
-import Navbar from '../../components/Navbar';
-import HEROlogo from '../../images/herologo.png';
-import AnimateNumber from 'react-native-animate-number';
-import Star from '../../images/wild5star.png';
+import React, { useState, useEffect } from "react";
+import { View, Dimensions, Image, StyleSheet, ImageBackground } from "react-native";
+import { Text, Spinner } from "native-base";
+import { Actions } from "react-native-router-flux";
+import firebase from "react-native-firebase";
+import Navbar from "../../components/Navbar";
+import HEROlogo from "../../images/herologo.png";
+import AnimateNumber from "react-native-animate-number";
+import Star from "../../images/wild5star_100_100.png";
+import { scopeRefByUserAndDate } from "../../utils/firebase";
+import { scopeRefByUserHero } from '../../utils/heroRef'
+import {format} from 'date-fns';
 
-const screenheight = Dimensions.get('window').height;
-class HeroScore extends Component {
-  state = {
-    total: 0,
-  };
+const screenheight = Dimensions.get("window").height;
+const HeroScore = () => {
 
-  componentWillMount() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var res = user.email.split('.');
-      var userEm = res[0].toString();
-      this.setState({
-        user: userEm,
-      });
-    } else {
-      console.log('noperz');
-    }
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      '-' +
-      (today.getMonth() + 1) +
-      '-' +
-      today.getDate();
-    var dateTime = date;
-    this.setState({
-      date: dateTime,
-    });
-  }
+  const [data, setData] = useState(null)
+  const [totalScore, setTotalScore] = useState(0)
+  const [surveyDate, setInitialSurveyDate] =  useState(format(new Date(), 'YYYY-MM-DD-HH-mm'))
 
-  componentDidMount() {
+  useEffect(()=> {
+    const heroRef = scopeRefByUserAndDate("HERO");
     var database = firebase.database();
-    var ref = database.ref(`HERO/${this.state.user}/${this.state.date}`);
-    ref.on('value', this.gotData, this.errData);
-  }
+    var ref = database.ref(heroRef);
+    ref.once("value", snapshot => {
+      if(snapshot.val() !== null){
+        gotData(snapshot.val())
+    }});
+    const heroRefInitial = scopeRefByUserHero('HERO')
+    firebase.database().ref(heroRefInitial).once('value', (snapshot)=>{
+      if(snapshot.val() === null){
+        firebase.database().ref(heroRefInitial).set(surveyDate)
+      }
+    })
+  },[])
+    
+  
 
   gotData = data => {
-    let newData = data.val();
-    console.log(newData);
-    this.returnTotal(newData);
-    this.setState({
-      data: newData,
-    });
+    console.log(data);
+    returnTotal(data);
+    setData(data);
   };
 
   returnTotal = data => {
-    let total =
-      data.happyval + data.enthval + data.mentval + data.optval + data.resval;
-    this.setState({
-      total,
-    });
+    let total = data.happyValue + data.enthusiasmValue + data.mentalWellValue + data.optimismValue + data.resilienceValue;
+    setTotalScore(total);
   };
 
   totalReview = () => {
-    if (this.state.total === 0) {
+    if (totalScore === 0) {
       return (
         <Text
           style={{
             fontSize: 30,
-            fontWeight: '600',
-            textAlign: 'center',
-            marginTop: '0%',
-            color: '#2e3131',
+            fontWeight: "600",
+            textAlign: "center",
+            marginTop: "0%",
+            color: "#2e3131"
           }}
         >
           Keep it Going!
         </Text>
       );
-    } else if (this.state.total >= 10 && this.state.total <= 20) {
+    } else if (totalScore >= 10 && totalScore <= 20) {
       return (
         <Text
           style={{
             fontSize: 30,
-            fontWeight: '600',
-            textAlign: 'center',
-            marginTop: '0%',
-            color: '#e47833',
+            fontWeight: "600",
+            textAlign: "center",
+            marginTop: "0%",
+            color: "#e47833"
           }}
         >
           Great Start!
         </Text>
       );
-    } else if (this.state.total >= 20 && this.state.total <= 30) {
+    } else if (totalScore >= 20 && totalScore <= 30) {
       return (
         <Text
           style={{
             fontSize: 30,
-            fontWeight: '600',
-            textAlign: 'center',
-            marginTop: '0%',
-            color: '#f62459',
+            fontWeight: "600",
+            textAlign: "center",
+            marginTop: "0%",
+            color: "#f62459"
           }}
         >
           Amazing Work!
         </Text>
       );
-    } else if (this.state.total >= 40 && this.state.total <= 49) {
+    } else if (totalScore >= 40 && totalScore <= 49) {
       return (
         <Text
           style={{
             fontSize: 30,
-            fontWeight: '600',
-            textAlign: 'center',
-            marginTop: '0%',
-            color: '#1e8bc3',
+            fontWeight: "600",
+            textAlign: "center",
+            marginTop: "0%",
+            color: "#1e8bc3"
           }}
         >
           Outstanding work!
         </Text>
       );
-    } else if (this.state.total === 50) {
+    } else if (totalScore === 50) {
       return (
         <Text
           style={{
             fontSize: 30,
-            fontWeight: '600',
-            textAlign: 'center',
-            marginTop: '0%',
-            color: '#a537fd',
+            fontWeight: "600",
+            textAlign: "center",
+            marginTop: "0%",
+            color: "#a537fd"
           }}
         >
           Exceptional Work!
@@ -135,79 +121,45 @@ class HeroScore extends Component {
     }
   };
 
-  render() {
+
     return (
       <View
-        style={{
-          flex: 1,
-          justifyContent: 'space-between',
-          height: screenheight,
-          backgroundColor: 'white',
-        }}
+        style={styles.containerView}
       >
-        <View style={{width: '80%', alignSelf: 'center', marginTop: '15%'}}>
+        <View style={{ width: "80%", alignSelf: "center", marginTop: "15%" }}>
           <Image
             source={HEROlogo}
-            style={{width: '100%', resizeMode: 'contain'}}
+            style={{ width: "100%", resizeMode: "contain" }}
           />
         </View>
 
         <View>
-          <Text
-            style={{
-              textAlign: 'center',
-              fontSize: 30,
-              fontWeight: '600',
-              marginTop: '0%',
-            }}
-          >
-            Your HERO Score For This Week
-          </Text>
+          <Text style={styles.mainText}>Your HERO Score For This Week</Text>
         </View>
 
         <View>
-          <Text
-            style={{
-              textAlign: 'center',
-              fontSize: 15,
-              fontWeight: '600',
-              marginTop: '-10%',
-            }}
-          >
-            TOTAL SCORE: 0 - 50
-          </Text>
-          <Text
-            style={{
-              textAlign: 'center',
-              fontSize: 15,
-              fontWeight: '600',
-              marginTop: '-10%',
-            }}
-          >
+          <Text style={styles.subTitleText}>TOTAL SCORE: 0 - 50</Text>
+          <Text style={styles.subTitleText}>
             Higher scores indicate higher levels of wellness
           </Text>
         </View>
 
-        <View>
+        <View style={{height: "25%", width: '50%', alignSelf:'center', alignItems:'center'}}>
+          <ImageBackground source={Star} style={{alignSelf:'center',height: '100%', width:'100%', justifyContent:'center', margin:0, padding: 0}} imageStyle={{resizeMode:'contain'}}>
           <Text
-            style={{
-              textAlign: 'center',
-              fontSize: 30,
-              fontWeight: '600',
-              marginTop: '0%',
-              marginBottom: '0%',
-            }}
+            style={styles.scoreText}
           >
             <AnimateNumber
-              value={this.state.total}
+              value={totalScore}
               formatter={val => {
                 return parseFloat(val).toFixed(0);
               }}
             />
           </Text>
+          </ImageBackground>
         </View>
 
-        <View>{this.state.total ? this.totalReview() : <Spinner />}</View>
+        <View>{totalScore ? totalReview() : <Spinner />}</View>
 
         <View>
           <Navbar />
@@ -215,6 +167,34 @@ class HeroScore extends Component {
       </View>
     );
   }
-}
 
-export {HeroScore};
+
+export { HeroScore };
+
+const styles = StyleSheet.create({
+  subTitleText: {
+    textAlign: "center",
+    fontSize: 15,
+    fontWeight: "600",
+  },
+  mainText: {
+    textAlign: "center",
+    fontSize: 30,
+    fontWeight: "600",
+    marginTop: "0%"
+  },
+  containerView: {
+    flex: 1,
+    justifyContent: "space-between",
+    height: screenheight,
+    backgroundColor: "white"
+  },
+  scoreText: {
+    alignSelf:'center',
+    textAlign: "center",
+    fontSize: 48,
+    fontWeight: "600",
+    marginTop: 5,
+    marginBottom: "0%",
+  }
+});
