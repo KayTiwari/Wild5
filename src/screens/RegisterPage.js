@@ -30,7 +30,6 @@ const RegisterPage = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [acceptDisclaimer, setAcceptDisclaimer] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [chosenDate, setChosenDate] = useState(new Date());
   const [fullName, setFullName] = useState("");
@@ -57,7 +56,6 @@ const RegisterPage = (props) => {
   };
 
   registerPress = () => {
-    setAcceptDisclaimer(true);
     setLoading(true);
     setError("");
     if (email !== "" && password !== "") {
@@ -82,13 +80,13 @@ const RegisterPage = (props) => {
       .database()
       .ref(registrationRef)
       .update({
-        accepteddisclaimer: acceptDisclaimer,
+        accepteddisclaimer: true,
         fullName,
         dob,
         goals,
         date: date.toString()
       });
-  });
+  }, [fullName, dob, goals, date]);
 
   onRegisterFail = err => {
     setError(err.message);
@@ -324,9 +322,9 @@ const RegisterPage = (props) => {
         }}
       >
         <View style={{ alignSelf: "center" }}>
-        <TouchableOpacity style={{height: 70, width:150, backgroundColor:"#041D5D", borderRadius:7, justifyContent:'center'}} onPress={()=> this.registerPress()}>
-               <Text style={{fontSize:24, color:"#fff", alignSelf:'center'}}>Accept</Text>
-             </TouchableOpacity>
+        <TouchableOpacity style={{height: 70, width:150, backgroundColor:"#041D5D", borderRadius:7, justifyContent:'center'}} onPress={()=> registerPress()}>
+           <Text style={{fontSize:24, color:"#fff", alignSelf:'center'}}>Accept</Text>
+        </TouchableOpacity>
         </View>
         <View style={{ alignSelf: "center" }}>
         <TouchableOpacity style={{height: 70, width:150, backgroundColor:"#041D5D", borderRadius:7, justifyContent:'center'}} onPress={() => Actions.newlogin()}>
