@@ -32,6 +32,12 @@ export default class AuthProvider extends Component {
     this.unsubscribe();
   }
 
+  setHeroCompleted = () => {
+    this.setState({
+      heroCompleted: true
+    })
+  }
+
   getUser = () => {
     var user = firebase.auth().currentUser;
     if (user) {

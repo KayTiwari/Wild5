@@ -1,17 +1,18 @@
 import React, {useState} from 'react'
-import { View, Text, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView } from 'react-native'
+import { View, Text, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView , Alert} from 'react-native'
 import {Icon, Input } from 'native-base'
 import firebase from 'react-native-firebase'
 import {withAuthProvider} from '../context/authcontext'
 
 
-const LoginModal = () => {
+const LoginModal = (props) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [raised, setRaised] = useState(true);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [forgotPW, setForgotPW] = useState(false)
 
 
   LoginPress = () => {
@@ -21,17 +22,40 @@ const LoginModal = () => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        this.onLoginSuccess();
+        console.log("logged in")
       })
       .catch(err => {
         this.onLoginFail(err);
       });
   };
 
+  closeModal = () => {
+    return props.closeModal()
+  }
 
-  onLoginSuccess = () => {
-    props.getUser();
+  forgotPress = () => {
+    setLoading(true)
+    firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        Alert.alert(
+          'Success, Password Reset! Check Your Email',''
+          ,
+          [
+            {
+              text: 'ok',
+              onPress: ()=> closeModal(),
+              style: 'ok',
+            }
+          ],
+        )
+      })
+      .catch((err) => {
+        setError(err)
+      });
   };
+
 
   onLoginFail = err => {
     console.log(err.message);
@@ -62,7 +86,7 @@ const LoginModal = () => {
           <View
             style={{
               backgroundColor:'#fff',
-              height: 300,
+              height: !forgotPW && !loading ? 320 : !forgotPW && loading ? 410  : forgotPW && loading ? 250 : 200,
               marginLeft: "5%",
               marginRight: "5%",
               marginTop: "5%",
@@ -84,7 +108,7 @@ const LoginModal = () => {
               shake={true}
             />
           </View>
-          <View style={{alignSelf:'center', marginTop:'10%',height: 50, width:'80%', borderBottomWidth:2, borderColor: '#041D5D'}}>
+         {!forgotPW ? <View style={{alignSelf:'center', marginTop:'10%',height: 50, width:'80%', borderBottomWidth:2, borderColor: '#041D5D'}}>
           <Input
               placeholder="Password"
               onChangeText={text => setPassword(text)}
@@ -101,12 +125,17 @@ const LoginModal = () => {
                 borderWidth: 1,
               }}
             />
-          </View>
+          </View> : null}
           {loading ? <View style={{alignSelf:'center', paddingTop:10}}><ActivityIndicator size="large" color="#041D5D"/></View> : null}
           <View style={{alignSelf:'center', width:'90%', marginTop:'5%'}}>
-            <TouchableOpacity style={{height: 70, width: "80%", borderRadius:10, backgroundColor:'#041D5D', alignSelf:'center', justifyContent:'center'}} onPress={()=> LoginPress()}>
-              <Text style={{alignSelf: 'center', color:'#fff', fontSize:26, fontWeight:800}}>Login</Text>
-            </TouchableOpacity></View>
+            {!forgotPW ? <TouchableOpacity style={{height: 70, width: "80%", borderRadius:10, backgroundColor:'#041D5D', alignSelf:'center', justifyContent:'center'}} onPress={()=> LoginPress()}>
+              <Text style={{alignSelf: 'center', color:'#fff', fontSize:26, fontWeight:"800"}}>Login</Text>
+            </TouchableOpacity> : <TouchableOpacity style={{height: 70, width: "80%", borderRadius:10, backgroundColor:'#041D5D', alignSelf:'center', justifyContent:'center'}} onPress={()=> forgotPress()}>
+              <Text style={{alignSelf: 'center', color:'#fff', fontSize:26, fontWeight:"800"}}>Reset Password</Text>
+            </TouchableOpacity>}</View>
+            {!forgotPW ? <TouchableOpacity style={{alignSelf:'center', marginTop: 10}} onPress={()=> setForgotPW(true)}>
+              <Text style={{color:'#041D5D'}}>Forgot Password?</Text>
+            </TouchableOpacity> : null}
           </View>
           </View>
           </KeyboardAvoidingView>

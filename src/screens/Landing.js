@@ -19,27 +19,26 @@ import firebase from "react-native-firebase";
 import { format } from "date-fns";
 import { spliceString } from "../utils/dateSplice";
 import { scopeRefByUserHero } from "../utils/heroRef";
-import InitialHero from "../components/common/HeroSurvey";
 import LandingView from "../components/common/LandingView";
 import HeroSurvey from '../components/common/InitialHero'
+import PushNotificationIOS from '../components/common/PushNotificationsIOS'
 
 const { width } = Dimensions.get("window");
 
-export default function Landing() {
-  const [hero, setHero] = useState(false);
-  const [hero2, setHero2] = useState(false);
+ function Landing(props) {
+  const [hero, setHero] = useState(true);
+  const [hero2, setHero2] = useState(true);
   const [initialSurveydate, setInitialSurveyDate] = useState("");
 
   useEffect(() => {
+    this.PushNotificationIOS = new PushNotificationIOS(onNotif)
     checkHeroData();
   }, []);
 
   useEffect(() => {
     const date = format(new Date(), "YYYY-MM-DD-HH-mm");
     const user = firebase.auth().currentUser;
-    console.log(user)
     const [scopedUser] = user.email.split(".") || undefined;
-    console.log(scopedUser);
     firebase
       .database()
       .ref(`HERO/${scopedUser}`)
@@ -47,10 +46,19 @@ export default function Landing() {
         if (snap.val() !== null && initialSurveydate !== "") {
           const data = [Object.keys(snap.val())].sort();
           const dateDiff = spliceString(initialSurveydate, date);
+          console.log(data.length)
           console.log(dateDiff);
           if (dateDiff) {
-            return setHero2(true);
-          } else setHero2(false);
+            return (
+            setHero2(true),
+            this.PushNotificationIOS.scheduleNotif("HERO")
+            )
+          } else {
+            if([8,9,10,11,12,13].includes(dateDiff) && data.length === 1 || [15,16,17,18,19,20].includes(dateDiff) && [1,2].includes(data.length) || [22,23,24,25,26,27].includes(dateDiff) && [1,2,3].includes(data.length) || [29,31].includes(dateDiff) && [1,2,3,4].includes(data.length)){
+              setHero2(true);
+            } else setHero2(false),
+            this.PushNotificationIOS.cancel('6');
+          } 
         }
       });
     
@@ -70,6 +78,12 @@ export default function Landing() {
       });
   };
 
+  onNotif = notif => {
+    console.log(notif);
+    Alert.alert(notif.title, notif.message);
+  };
+
+
   return !hero || hero2 ? (
     <LandingView hero={hero} hero2={hero2} />
   ) : (
@@ -80,27 +94,4 @@ export default function Landing() {
 }
 
 
-const styles = StyleSheet.create({
-  icon: { color: "white", fontSize: 60 },
-  title: { color: "white", fontSize: 18 },
-  touchable: {
-    backgroundColor: "transparent",
-    marginBottom: 10,
-    width: (1 / 2) * width - 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
-    elevation: 5
-  },
-  item: {
-    alignItems: "center",
-    borderRadius: 5,
-    padding: 10,
-    height: 110
-  }
-});
+export default Landing

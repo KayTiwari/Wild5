@@ -27,7 +27,6 @@ const NewLoginScreen = props => {
   const [viewModal, setViewModal] = useState("")
 
   showModal = (view) => {
-    console.log(view)
     setViewModal(view)
     setModal(true)
     
@@ -49,7 +48,7 @@ const NewLoginScreen = props => {
         <Register closeModal={() => setModal(false)} />
          :
         viewModal === "Login" ?
-        <LoginModal/> : null
+        <LoginModal closeModal={()=>setModal(false)}/> : null
       }
       </Modal>
       

@@ -9,6 +9,7 @@ import Navbar from '../../components/Navbar'
 const Feedback = () => {
   const [model, setPhoneModel] = useState("");
   const [text, setTextValue] = useState("")
+  const [error, setError] = useState("")
 
   useEffect(()=> {
     Keyboard.addListener(
@@ -33,9 +34,17 @@ const Feedback = () => {
         model: model,
         feedBackText: text
     }
+    if(model === "" && text === ""){
+      setError("Please Input Your Feedback")
+    } else if (model === ""){
+      setError("Please Select Phone Model")
+    } else if( text === ""){
+      setError("Please fill out your feedback")
+    } else {
       firebase.database().ref(`Feedback/${date}`).push().set(feedBack, ()=> Alert.alert('Success!', 'Feedback Submitted, Thank you!', [
         {text: 'OK', onPress: Actions.landing()},
       ]))
+    }
   }
 
   return (
@@ -91,7 +100,7 @@ const Feedback = () => {
         </Picker>
         </View>
         <View style={{flex:1, alignItems:'center', marginTop:5}}>
-            <Text style={{alignSelf:'center', fontSize:20, marginBottom:10, fontWeight:700}}>What Can We Do Better?</Text>
+            <Text style={{alignSelf:'center', fontSize:20, marginBottom:10, fontWeight:'700'}}>What Can We Do Better?</Text>
             <TextInput style={{height:'60%',width:'90%', borderWidth:1, borderColor:'black', fontSize:22}}
             multiline = {true}
             numberOfLines = {8}
@@ -99,8 +108,9 @@ const Feedback = () => {
             onChangeText={value => setTextValue(value)}
             onSubmitEditing={Keyboard.dismiss}
             />
+            {error ? <Text style={{color: 'red', fontWeight:'700'}}>{error}</Text> : null}
             <TouchableOpacity style={{height:50, width:"90%", backgroundColor:"#041D5D", justifyContent:'center', marginTop:10, borderRadius:9}} onPress={()=> onSubmit()}>
-            <Text style={{alignSelf:'center', fontSize:20, fontWeight:700, color:'#fff'}}>Submit</Text>
+            <Text style={{alignSelf:'center', fontSize:20, fontWeight:'700', color:'#fff'}}>Submit</Text>
             </TouchableOpacity>
         </View>
         </SafeAreaView>

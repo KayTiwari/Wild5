@@ -9,16 +9,10 @@ export function spliceString (str, str2){
       const day2 = Number(str2.slice(8,10))
       const hour2 = Number(str2.slice(11,13))
       const minute2 = Number(str2.slice(14,16))
-      console.log(minute2)
-      console.log(minute)
-      console.log("minute" + (Math.abs(minute2 - minute)))
-      console.log("hour" + (hour2 - hour))
-      console.log("day" + (day2 - day))
-      console.log("month" + (month2 - month))
-      console.log("year" + (year2 - year))
+  
 
-     
-      
-        return [7,14,21,28,30].includes(Math.abs(day2 - day))
+         if([7,14,21,28,30].includes(Math.abs(day2 - day))){
+          return true
+        } else return Math.abs(day2 - day)
        
   }
