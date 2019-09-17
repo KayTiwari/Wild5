@@ -52,11 +52,11 @@ export function Statistics(props) {
         <View style={{marginBottom: 10}}>
           <View style={styles.tiles}>
             <Exercise data={exerciseData} />
-            <Social data={socialData} />
+            <Mindfulness data={mindfulnessData} />
           </View>
           <View style={styles.tiles}>
-            <Mindfulness data={mindfulnessData} />
             <Sleep data={sleepData} />
+            <Social data={socialData} />
           </View>
           <View style={styles.tiles}>
             <Nutrition data={nutritionData} />
