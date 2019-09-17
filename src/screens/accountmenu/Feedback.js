@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, SafeAreaView, Picker, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, Keyboard } from "react-native";
+import { View, Text, SafeAreaView, Picker, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback } from "react-native";
 import RadioForm from "react-native-simple-radio-button";
 import firebase from "react-native-firebase";
 import {format} from 'date-fns';
@@ -11,26 +11,13 @@ const Feedback = () => {
   const [text, setTextValue] = useState("")
   const [error, setError] = useState("")
 
-  useEffect(()=> {
-    Keyboard.addListener(
-        'keyboardDidShow')
-
-        Keyboard.addListener(
-            'keyboardDidHide')
-
-      return () =>{
-        Keyboard.removeListener(
-            'keyboardDidShow')
-    
-            Keyboard.removeListener(
-                'keyboardDidHide')
-
-      }
-  },[])
 
   onSubmit= () => {
+    Keyboard.dismiss()
     const date = format(new Date(), 'YYYY-MM-DD');
+    const user = firebase.auth().currentUser.email
     const feedBack = {
+        user,
         model: model,
         feedBackText: text
     }
@@ -48,7 +35,7 @@ const Feedback = () => {
   }
 
   return (
-   
+    <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
     <View style={{ flex: 1, backgroundColor:'#fff' }}>
      <KeyboardAvoidingView
     style={{ flex: 1 }}
@@ -117,6 +104,7 @@ const Feedback = () => {
         </KeyboardAvoidingView>
         <Navbar feedbackdisable/>
     </View>
+    </TouchableWithoutFeedback>
     
   );
 };

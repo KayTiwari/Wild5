@@ -48,7 +48,7 @@ function Landing(props) {
           const dateDiff = spliceString(initialSurveydate, date);
           console.log(data.length)
           console.log(dateDiff);
-          if (dateDiff) {
+          if (dateDiff === true) {
             return (
             setHero2(true),
             this.PushNotificationIOS.scheduleNotif("HERO")

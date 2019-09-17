@@ -7,7 +7,7 @@ export function Exercise(props) {
   const goalMetTotal = React.useMemo(
     () =>
       Object.values(props.data).reduce(
-        (daysCompleted, {didFollowFID}) => daysCompleted + Number(didFollowFID),
+        (daysCompleted, {didFollowFID = false}) => daysCompleted + Number(didFollowFID),
         0
       ),
     [props.data]

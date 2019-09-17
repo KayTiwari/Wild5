@@ -38,7 +38,7 @@ function ExerciseTracking() {
 
   const submitForm = React.useCallback(async () => {
     const exerciseRef = scopeRefByUserAndDate('Surveys', 'exercise');
-
+    console.log(didFollowFID)
     await firebase
       .database()
       .ref(exerciseRef)
@@ -54,7 +54,7 @@ function ExerciseTracking() {
     Alert.alert("Success!", "Your exercises for today have been recorded.", [
       {text: "OK", onPress: Actions.landing()},
     ]);
-  }, [type, duration, intensity]);
+  }, [type, duration, intensity, didFollowFID]);
 
   return (
     <KeyboardAvoidingView style={{flex: 1}} behavior="padding" enabled>
@@ -99,13 +99,13 @@ function ExerciseTracking() {
             Did I Exercise Today Following the FID Practices?
           </Text>
           <RadioForm
-            radio_props={[{label: "Yes", value: 1}, {label: "No", value: 0}]}
+            radio_props={[{label: "Yes", value: true}, {label: "No", value: false}]}
             initial={false}
             formHorizontal={true}
             buttonColor={exerciseColor}
             selectedButtonColor={exerciseColor}
             animation={true}
-            onPress={value => setDidFollowFID(Boolean(value))}
+            onPress={value => setDidFollowFID(value)}
             radioStyle={{marginRight: 20}}
           />
         </View>
@@ -177,7 +177,7 @@ function ExerciseTracking() {
             {label: "Moderate", value: EXERCISE_INTENSITY.MODERATE},
             {label: "High", value: EXERCISE_INTENSITY.HIGH},
           ]}
-          initial={0}
+          initial={false}
           formHorizontal={false}
           labelHorizontal={true}
           buttonColor={exerciseColor}
