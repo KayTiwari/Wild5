@@ -1,54 +1,29 @@
-import React, { Component } from "react";
-import { View, Dimensions } from "react-native";
+import React, { useState } from "react";
+import { View, Dimensions, TouchableOpacity } from "react-native";
 import { Text, Button, Icon } from "native-base";
 import { Actions } from "react-native-router-flux";
 import firebase from 'react-native-firebase';
 import { Slider } from "react-native-elements";
+import { scopeRefByUserAndDate } from '../../utils/firebase'
 
 const screenheight = Dimensions.get("window").height;
-class HeroMent extends Component {
-  state = {
-    mentval: 0
-  };
-
-  componentDidMount() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var res = user.email.split(".");
-      var userEm = res[0].toString();
-      this.setState({
-        user: userEm
-      });
-    } else {
-      console.log("noperz");
-    }
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
-    var dateTime = date;
-    this.setState({
-      date: dateTime
-    });
-  }
-
-  submit() {
-    console.log(this.state);
-    const { mentval, user, date } = this.state;
+const HeroMent = () => {
+ 
+const [mentalWellValue, setMentalWellValue] = useState(0)
+  
+  submit = () => {
+    const heroRef = scopeRefByUserAndDate('HERO')
     firebase
       .database()
-      .ref(`HERO/${user}/${date}`)
+      .ref(heroRef)
       .update({
-        mentval
+        mentalWellValue
       });
     Actions.heroscore();
   }
 
   feeling = () => {
-    if (this.state.mentval === 0) {
+    if (mentalWellValue === 0) {
       return (
         <Text
           style={{
@@ -62,7 +37,7 @@ class HeroMent extends Component {
           Not at all Good
         </Text>
       );
-    } else if (this.state.mentval >= 1 && this.state.mentval <= 3) {
+    } else if (mentalWellValue >= 1 && mentalWellValue <= 3) {
       return (
         <Text
           style={{
@@ -76,7 +51,7 @@ class HeroMent extends Component {
           Mildly Good
         </Text>
       );
-    } else if (this.state.mentval >= 4 && this.state.mentval <= 6) {
+    } else if (mentalWellValue >= 4 && mentalWellValue <= 6) {
       return (
         <Text
           style={{
@@ -90,7 +65,7 @@ class HeroMent extends Component {
           Moderately Good
         </Text>
       );
-    } else if (this.state.mentval >= 7 && this.state.mentval <= 9) {
+    } else if (mentalWellValue >= 7 && mentalWellValue <= 9) {
       return (
         <Text
           style={{
@@ -104,7 +79,7 @@ class HeroMent extends Component {
           Highly Good
         </Text>
       );
-    } else if (this.state.mentval === 10) {
+    } else if (mentalWellValue === 10) {
       return (
         <Text
           style={{
@@ -121,7 +96,6 @@ class HeroMent extends Component {
     }
   };
 
-  render() {
     return (
       <View style={{ backgroundColor: "white", height: screenheight }}>
         <View>
@@ -162,11 +136,11 @@ class HeroMent extends Component {
           }}
         >
           <Slider
-            value={this.state.value}
+            value={mentalWellValue}
             step={1}
             minimumValue={0}
             maximumValue={10}
-            onValueChange={value => this.setState({ mentval: value })}
+            onValueChange={value => setMentalWellValue(value)}
           />
           <Text
             style={{
@@ -176,20 +150,19 @@ class HeroMent extends Component {
               marginTop: "10%"
             }}
           >
-            Value: {this.state.mentval}
+            Value: {mentalWellValue}
           </Text>
-          {this.feeling()}
+          {feeling()}
 
           <View style={{ alignSelf: "center", marginTop: "20%" }}>
-            <Button onPress={() => this.submit()} dark rounded large>
-              <Text>Next</Text>
-              <Icon name="arrow-forward" />
-            </Button>
+          <TouchableOpacity style={{alignSelf: "center", height: 60, width: 120, borderRadius:28, backgroundColor: "#041D5D", borderWidth: 1, borderColor:'black', justifyContent:'center', flexDirection:'row'}} onPress={() => submit()}>
+            <Text style={{color:"#fff", fontSize: 24, fontWeight:800, alignSelf:'center'}}>Next</Text>
+            </TouchableOpacity>
+          </View>
           </View>
         </View>
-      </View>
     );
   }
-}
+
 
 export { HeroMent };

@@ -6,8 +6,8 @@ import {StatTile} from './StatTile';
 export function Exercise(props) {
   const goalMetTotal = React.useMemo(
     () =>
-      Object.keys(props.data).reduce(
-        (stats, date) => (props.data[date].duration >= 30 ? ++stats : stats),
+      Object.values(props.data).reduce(
+        (daysCompleted, {didFollowFID}) => daysCompleted + Number(didFollowFID),
         0
       ),
     [props.data]

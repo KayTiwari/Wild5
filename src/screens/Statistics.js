@@ -8,6 +8,7 @@ import {Mindfulness} from './stats-at-a-glance/Mindfulness';
 import {Sleep} from './stats-at-a-glance/Sleep';
 import {Nutrition} from './stats-at-a-glance/Nutrition';
 import {Layout} from '../components/common/Layout';
+import {Hero} from './stats-at-a-glance/HERO'
 
 export function Statistics(props) {
   const [loading, setLoading] = React.useState(false);
@@ -21,6 +22,7 @@ export function Statistics(props) {
     if (Boolean(props.princData)) {
       setLoading(false);
     }
+    console.log(heroDailyData)
   }, [props.princData]);
 
   const {
@@ -29,11 +31,14 @@ export function Statistics(props) {
     mindfulnessData,
     sleepData,
     nutritionData,
+    heroDailyData
   } = React.useMemo(() => {
-    return ['exercise', 'social', 'mindfulness', 'sleep', 'nutrition'].reduce(
+    return ['exercise', 'social', 'mindfulness', 'sleep', 'nutrition', 'heroDaily'].reduce(
       (dataMap, type) => ({
+        
         ...dataMap,
         [`${type}Data`]: extractRelevantData(props.princData, type),
+        
       }),
       {}
     );
@@ -47,14 +52,15 @@ export function Statistics(props) {
         <View style={{marginBottom: 10}}>
           <View style={styles.tiles}>
             <Exercise data={exerciseData} />
+            <Mindfulness data={mindfulnessData} />
+          </View>
+          <View style={styles.tiles}>
+            <Sleep data={sleepData} />
             <Social data={socialData} />
           </View>
           <View style={styles.tiles}>
-            <Mindfulness data={mindfulnessData} />
-            <Sleep data={sleepData} />
-          </View>
-          <View style={styles.tiles}>
             <Nutrition data={nutritionData} />
+            <Hero data={heroDailyData}/>  
           </View>
         </View>
       )}
@@ -91,6 +97,7 @@ Statistics.defaultProps = {
 
 function extractRelevantData(princData, type) {
   return Object.keys(princData).reduce(
+  
     (data, date) => ({...data, [date]: princData[date][type] || {}}),
     {}
   );
