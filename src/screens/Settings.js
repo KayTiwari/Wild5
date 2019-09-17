@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {View, Text, Dimensions, TouchableOpacity, Platform, TimePickerAndroid} from 'react-native';
-import {Container, Icon} from 'native-base';
+import {View, Text, TouchableOpacity, Platform, TimePickerAndroid } from 'react-native';
+import {Icon} from 'native-base';
 import Navbar from '../components/Navbar';
 import ToggleSwitch from 'toggle-switch-react-native';
 import PushNotificationIOS from '../components/common/PushNotificationsIOS';
@@ -256,8 +256,8 @@ class Settings extends Component<Props> {
 
   render() {
     return (
-      <>
-        <View style={{flex: 1, backgroundColor: '#fff'}}>
+      <View style={{flex: 1, backgroundColor: '#fff'}}>
+        <View style={{flex: 1}}>
           {this.state.showTimer && Platform.OS === 'ios' ? this.showTimePicker() : null}
           <View style={{marginTop: Platform.OS === 'ios' ? '12%' : '5%', marginLeft: '5%'}}>
             <View style={{alignSelf: 'center'}}>
@@ -364,19 +364,19 @@ class Settings extends Component<Props> {
               style={{
                 height: 60,
                 width: 100,
-                backgroundColor: '#000',
+                backgroundColor: '#041D5D',
                 justifyContent: 'center',
                 borderRadius: 7,
               }}
               onPress={() => firebase.auth().signOut()}
             >
-              <Text style={{color: '#fff', alignSelf: 'center'}}>Logout</Text>
+              <Text style={{color: '#fff', alignSelf: 'center', fontSize:18}}>Logout</Text>
             </TouchableOpacity>
           </View>
           {/* </View> */}
         </View>
-        <Navbar />
-      </>
+        <Navbar settingsdisable/>
+        </View>
     );
   }
 }

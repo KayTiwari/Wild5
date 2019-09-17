@@ -1,4 +1,5 @@
 import React from 'react';
+import {View} from 'react-native'
 import {Scene, Router, Actions, ActionConst} from 'react-native-router-flux';
 import Landing from './screens/Landing';
 import EducationWellnessRoadMap from './screens/NewRoadMap';
@@ -30,6 +31,7 @@ import MindfulStats from './screens/statsscreens/MindfulStats';
 import SleepStats from './screens/statsscreens/SleepStats';
 import SocialStats from './screens/statsscreens/SocialStats';
 import NutriStats from './screens/statsscreens/NutrStats';
+import Feedback from './screens/accountmenu/Feedback'
 
 const Routercomponent = () => {
   return (
@@ -126,8 +128,8 @@ const Routercomponent = () => {
         <Scene
           key="herointro"
           component={Herointro}
-          backTitle="Back"
-          title="Today's HERO"
+          renderBackButton={()=><View/>}
+          hideNavBar
         />
         <Scene
           key="herohappy"
@@ -160,6 +162,7 @@ const Routercomponent = () => {
           title="Mental Wellness"
         />
         <Scene key="heroscore" component={HeroScore} header={null} />
+        <Scene key="feedback" component={Feedback} header={null} />
       </Scene>
     </Router>
   );

@@ -28,7 +28,14 @@ export default class AuthProvider extends Component {
   }
 
   componentWillUnmount() {
+    console.log("unmounting")
     this.unsubscribe();
+  }
+
+  setHeroCompleted = () => {
+    this.setState({
+      heroCompleted: true
+    })
   }
 
   getUser = () => {

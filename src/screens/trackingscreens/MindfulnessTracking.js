@@ -68,7 +68,7 @@ const MindfulnessTracking = () => {
               fontWeight: '700',
             }}
           >
-            Program Expectations
+            Practices
           </Text>
           <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
             Practice mindfulness for at least 10 minutes each day for 30 days.
