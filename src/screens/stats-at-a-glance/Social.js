@@ -16,7 +16,7 @@ export function Social(props) {
         );
 
         // The day is considered completed if you made at least 2 connections
-        const dayIsCompleted = sum(todaysConnections) >= 2;
+        const dayIsCompleted = sum(todaysConnections) >= 0;
 
         // If the day is completed, add it to the total
         return daysCompleted + (dayIsCompleted ? 1 : 0);

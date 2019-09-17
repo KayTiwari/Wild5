@@ -12,9 +12,5 @@ export const aboutData= [
     },{
         title: "Authors",
         content: "Resource materials created by Saundra (MD) and Rakesh Jain MD. App created on React Native by Bill Violette, Kasey Cowley and Abhi Tiwari."
-    },
-    {
-        title: "FAQ",
-        content: "Q: How do I use this app? A: Use this app daily as supplemental instruction to the Wild5 Wellness book."
     }
 ]

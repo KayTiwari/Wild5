@@ -37,6 +37,7 @@ class SleepStats extends Component{
     }
 
     renderGraph = data => {
+        console.log(data)
         let total = data.length;
         let caff = 0;
         let elec = 0;

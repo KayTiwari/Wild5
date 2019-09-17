@@ -81,7 +81,7 @@ const NutritionTracking = () => {
                   fontWeight: '700',
                 }}
               >
-                Program Expectations
+                Practices
               </Text>
               <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
                 Log your daily meals/snacks/beverages/alcohol each day for 30

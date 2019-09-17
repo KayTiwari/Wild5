@@ -91,7 +91,7 @@ const SleepTracking = () => {
               fontWeight: '700',
             }}
           >
-            Program Expectations
+            Practices
           </Text>
           <Text style={{fontSize: 18, color: 'white', textAlign: 'center'}}>
             Implement 4 or more of the 6 sleep hygiene practices each day for 30
