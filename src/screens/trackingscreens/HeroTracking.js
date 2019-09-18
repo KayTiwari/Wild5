@@ -8,8 +8,6 @@ import {
   Alert,
 } from "react-native";
 import RadioForm from "react-native-simple-radio-button";
-// import heroTrackImg from "../../images/herologo.png";
-import heroTrackImg from "../../images/hero_logo_track.png";
 import heroBackground from "../../images/herobackground.jpeg";
 import firebase from "react-native-firebase";
 import {TrackingScreen} from "./TrackingScreen";
@@ -54,21 +52,22 @@ const HeroTracking = () => {
       <SafeAreaView style={{flex: 1}}>
         <View
           style={{
-            height: "30%",
-            width: "90%",
+            height: "40%",
+            width: "100%",
             alignSelf: "center",
             marginTop: 15,
           }}
         >
           <Image
-            source={heroTrackImg}
-            style={{height: 95, width: "100%", alignSelf: "center"}}
+            source={require("../../images/hero_logo_track.png")}
+            style={{flex: 1,height: undefined, width: undefined}}
+            resizeMode="contain"
           />
         </View>
         <View
           style={{
-            height: "35%",
-            width: "80%",
+           height: 300,
+           width:'100%',
             alignItems: "center",
             alignSelf: "center",
             marginTop: 30,
