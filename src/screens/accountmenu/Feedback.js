@@ -1,75 +1,62 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, SafeAreaView, Picker, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback, Platform } from "react-native";
-import RadioForm from "react-native-simple-radio-button";
+import React, {useState, useEffect} from "react";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Picker,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+  KeyboardAvoidingView,
+  Keyboard,
+  TouchableWithoutFeedback,
+  Platform,
+} from "react-native";
 import firebase from "react-native-firebase";
-import {format} from 'date-fns';
-import {Actions} from 'react-native-router-flux'
-import Navbar from '../../components/Navbar'
+import {format} from "date-fns";
+import {Actions} from "react-native-router-flux";
+import Navbar from "../../components/Navbar";
 
 const Feedback = () => {
   const [model, setPhoneModel] = useState("");
-  const [text, setTextValue] = useState("")
-  const [error, setError] = useState("")
+  const [text, setTextValue] = useState("");
+  const [error, setError] = useState("");
 
-
-  onSubmit= () => {
-    Keyboard.dismiss()
-    const date = format(new Date(), 'YYYY-MM-DD');
-    const user = firebase.auth().currentUser.email
+  onSubmit = () => {
+    Keyboard.dismiss();
+    const date = format(new Date(), "YYYY-MM-DD");
+    const user = firebase.auth().currentUser.email;
     const feedBack = {
-        user,
-        model: model,
-        feedBackText: text
-    }
-    if(model === "" && text === "" && Platform.OS === 'ios'){
-      setError("Please Input Your Feedback")
-    } else if (model === "" && Platform.OS === 'ios'){
-      setError("Please Select Phone Model")
-    } else if( text === ""){
-      setError("Please fill out your feedback")
+      user,
+      model: model,
+      feedBackText: text,
+    };
+    if (model === "" && text === "" && Platform.OS === "ios") {
+      setError("Please Input Your Feedback");
+    } else if (model === "" && Platform.OS === "ios") {
+      setError("Please Select Phone Model");
+    } else if (text === "") {
+      setError("Please fill out your feedback");
     } else {
-      firebase.database().ref(`Feedback/${date}`).push().set(feedBack, ()=> Alert.alert('Success!', 'Feedback Submitted, Thank you!', [
-        {text: 'OK', onPress: Actions.landing()},
-      ]))
+      firebase
+        .database()
+        .ref(`Feedback/${date}`)
+        .push()
+        .set(feedBack, () =>
+          Alert.alert("Success!", "Feedback Submitted, Thank you!", [
+            {text: "OK", onPress: Actions.landing()},
+          ])
+        );
     }
-  }
+  };
 
   return (
-    <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
-    <View style={{ flex: 1, backgroundColor:'#fff' }}>
-     <KeyboardAvoidingView
-    style={{ flex: 1 }}
-    behavior={Platform.OS === "ios" ? "padding" : null}
-    enabled
-  >
-      <SafeAreaView style={{flex: 1}}>
-        <View
-          style={{
-            height: "10%",
-            width: "100%",
-            backgroundColor: "#041D5D",
-            justifyContent: "center"
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 22,
-              color: "#fff",
-              alignSelf: "center",
-              fontWeight: 800,
-              letterSpacing: 5
-            }}
-          >
-            Feedback
-          </Text>
-        </View>
-       {Platform.OS === 'ios' ? <View style={{marginTop:'10%'}}>
-        <Text style={{alignSelf:'center', fontSize:20, marginBottom:5, fontWeight:700}}>Phone Model</Text>
-        <Picker
-          selectedValue={model}
-          style={{ height: 100, width: "100%" }}
-          itemStyle={{height: 100}}
-          onValueChange={itemValue => setPhoneModel(itemValue)}
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={{flex: 1, backgroundColor: "#fff"}}>
+        <KeyboardAvoidingView
+          style={{flex: 1}}
+          behavior={Platform.OS === "ios" ? "padding" : null}
+          enabled
         >
           <SafeAreaView style={{flex: 1}}>
             <View

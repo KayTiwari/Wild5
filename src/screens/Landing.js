@@ -1,18 +1,17 @@
 import React, {useState, useEffect} from "react";
 import {ActivityIndicator, View} from "react-native";
 import firebase from "react-native-firebase";
-import { format } from "date-fns";
-import { spliceString } from "../utils/dateSplice";
-import { scopeRefByUserHero } from "../utils/heroRef";
+import {format} from "date-fns";
+import {spliceString} from "../utils/dateSplice";
+import {scopeRefByUserHero} from "../utils/heroRef";
 import LandingView from "../components/common/LandingView";
-import HeroSurvey from '../components/common/InitialHero'
-
+import HeroSurvey from "../components/common/InitialHero";
 
 function Landing(props) {
   const [hero, setHero] = useState(false);
   const [hero2, setHero2] = useState(false);
   const [initialSurveydate, setInitialSurveyDate] = useState("");
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     checkHeroData();
@@ -59,7 +58,6 @@ function Landing(props) {
           setLoading(false);
         }
       });
-    
   }, [initialSurveydate]);
 
   checkHeroData = () => {

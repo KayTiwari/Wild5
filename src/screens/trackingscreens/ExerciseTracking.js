@@ -1,37 +1,37 @@
-import React from 'react';
-import {Alert, View, KeyboardAvoidingView} from 'react-native';
-import RadioForm from 'react-native-simple-radio-button';
-import {Text, Item, Label, Input, Picker, Form} from 'native-base';
-import Slider from '@react-native-community/slider';
-import firebase from 'react-native-firebase';
-import {Actions} from 'react-native-router-flux';
-import exbackground from '../../images/exercise-background.jpg';
-import {TrackingScreen} from './TrackingScreen';
-import {withAuthProvider} from '../../context/authcontext';
-import {scopeRefByUserAndDate} from '../../utils/firebase';
-import {exerciseColor} from '../../components/common/colors'
+import React from "react";
+import {Alert, View, KeyboardAvoidingView} from "react-native";
+import RadioForm from "react-native-simple-radio-button";
+import {Text, Item, Label, Input, Picker, Form} from "native-base";
+import Slider from "@react-native-community/slider";
+import firebase from "react-native-firebase";
+import {Actions} from "react-native-router-flux";
+import exbackground from "../../images/exercise-background.jpg";
+import {TrackingScreen} from "./TrackingScreen";
+import {withAuthProvider} from "../../context/authcontext";
+import {scopeRefByUserAndDate} from "../../utils/firebase";
+import {exerciseColor} from "../../components/common/colors";
 
 const exerciseTypes = [
-  'Walking',
-  'Jogging',
-  'Biking',
-  'Playing Sports',
-  'Swimming',
-  'Weight Lifting',
-  'Aerobics',
-  'Water Aerobics',
-  'Other',
+  "Walking",
+  "Jogging",
+  "Biking",
+  "Playing Sports",
+  "Swimming",
+  "Weight Lifting",
+  "Aerobics",
+  "Water Aerobics",
+  "Other",
 ];
 
 export const EXERCISE_INTENSITY = {
-  LOW: 'low',
-  MODERATE: 'moderate',
-  HIGH: 'high',
+  LOW: "low",
+  MODERATE: "moderate",
+  HIGH: "high",
 };
 
 function ExerciseTracking() {
-  const [type, setType] = React.useState('');
-  const [otherType, setOtherType] = React.useState('');
+  const [type, setType] = React.useState("");
+  const [otherType, setOtherType] = React.useState("");
   const [duration, setDuration] = React.useState(0);
   const [intensity, setIntensity] = React.useState("");
   const [didFollowFID, setDidFollowFID] = React.useState(false);
@@ -99,7 +99,10 @@ function ExerciseTracking() {
             Did I Exercise Today Following the FID Practices?
           </Text>
           <RadioForm
-            radio_props={[{label: "Yes", value: true}, {label: "No", value: false}]}
+            radio_props={[
+              {label: "Yes", value: true},
+              {label: "No", value: false},
+            ]}
             initial={false}
             formHorizontal={true}
             buttonColor={exerciseColor}
