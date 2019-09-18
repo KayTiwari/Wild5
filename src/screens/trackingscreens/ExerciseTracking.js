@@ -37,8 +37,8 @@ function ExerciseTracking() {
   const [didFollowFID, setDidFollowFID] = React.useState(false);
 
   const submitForm = React.useCallback(async () => {
-    const exerciseRef = scopeRefByUserAndDate('Surveys', 'exercise');
-    console.log(didFollowFID)
+    const exerciseRef = scopeRefByUserAndDate("Surveys", "exercise");
+
     await firebase
       .database()
       .ref(exerciseRef)

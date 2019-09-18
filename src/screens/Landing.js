@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
- ActivityIndicator
-} from "react-native";
+import React, {useState, useEffect} from "react";
+import {ActivityIndicator, View} from "react-native";
 import firebase from "react-native-firebase";
 import { format } from "date-fns";
 import { spliceString } from "../utils/dateSplice";
@@ -24,7 +22,9 @@ function Landing(props) {
     const date = format(new Date(), "YYYY-MM-DD-HH-mm");
     const user = firebase.auth().currentUser;
     const [scopedUser] = user.email.split(".") || undefined;
-    setLoading(true)
+
+    setLoading(true);
+
     firebase
       .database()
       .ref(`HERO/${scopedUser}`)
@@ -32,20 +32,31 @@ function Landing(props) {
         if (snap.val() !== null && initialSurveydate !== "") {
           const data = [Object.keys(snap.val())].sort();
           const dateDiff = spliceString(initialSurveydate, date);
-          console.log(data.length)
-          console.log(dateDiff);
+
           if (dateDiff === true) {
-            return (
-              setLoading(false),
-            setHero2(true)  
-             )
+            setLoading(false);
+            setHero2(true);
+            return;
           } else {
-            if([8,9,10,11,12,13].includes(dateDiff) && data.length === 1 || [15,16,17,18,19,20].includes(dateDiff) && [1,2].includes(data.length) || [22,23,24,25,26,27].includes(dateDiff) && [1,2,3].includes(data.length) || [29,31].includes(dateDiff) && [1,2,3,4].includes(data.length)){
-              setLoading(false),
-              setHero2(true)
-            } else setHero2(false),
-            setLoading(false)
-          } 
+            if (
+              ([8, 9, 10, 11, 12, 13].includes(dateDiff) &&
+                data.length === 1) ||
+              ([15, 16, 17, 18, 19, 20].includes(dateDiff) &&
+                [1, 2].includes(data.length)) ||
+              ([22, 23, 24, 25, 26, 27].includes(dateDiff) &&
+                [1, 2, 3].includes(data.length)) ||
+              ([29, 31].includes(dateDiff) &&
+                [1, 2, 3, 4].includes(data.length))
+            ) {
+              setLoading(false);
+              setHero2(true);
+            } else {
+              setHero2(false);
+              setLoading(false);
+            }
+          }
+        } else {
+          setLoading(false);
         }
       });
     
@@ -70,15 +81,25 @@ function Landing(props) {
     Alert.alert(notif.title, notif.message);
   };
 
-
   return !hero || hero2 ? (
-    !loading ? <LandingView hero={hero} hero2={hero2} /> : <ActivityIndicator size="small" color="#041D5D"/>
+    !loading ? (
+      <LandingView hero={hero} hero2={hero2} />
+    ) : (
+      <LoadingIndicator />
+    )
+  ) : !loading ? (
+    <HeroSurvey hero={hero} hero2={hero2} />
   ) : (
-    !loading ?
-      <HeroSurvey hero={hero} hero2={hero2} /> : <ActivityIndicator size="small" color="#041D5D"/>
-    
+    <LoadingIndicator />
   );
 }
 
+export default Landing;
 
-export default Landing
+function LoadingIndicator() {
+  return (
+    <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
+      <ActivityIndicator size="small" color="#041D5D" />
+    </View>
+  );
+}
