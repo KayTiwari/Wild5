@@ -1,37 +1,22 @@
 import React, { useState, useEffect } from "react";
 import {
-  View,
-  ScrollView,
-  SafeAreaView,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  Text,
-  Dimensions
+ ActivityIndicator
 } from "react-native";
-import KS30title from "../images/KS30_578_113.png";
-import wild5title from "../images/wild5_logo_resized4.png";
-import Navbar from "../components/Navbar";
-import Navigation from "../components/LandingNavigation";
-import HEROlogo from "../images/herologo.png";
-import LinearGradient from "react-native-linear-gradient";
 import firebase from "react-native-firebase";
 import { format } from "date-fns";
 import { spliceString } from "../utils/dateSplice";
 import { scopeRefByUserHero } from "../utils/heroRef";
 import LandingView from "../components/common/LandingView";
 import HeroSurvey from '../components/common/InitialHero'
-import PushNotificationIOS from '../components/common/PushNotificationsIOS'
 
-const { width } = Dimensions.get("window");
 
 function Landing(props) {
   const [hero, setHero] = useState(false);
   const [hero2, setHero2] = useState(false);
   const [initialSurveydate, setInitialSurveyDate] = useState("");
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    this.PushNotificationIOS = new PushNotificationIOS(onNotif)
     checkHeroData();
   }, []);
 
@@ -39,6 +24,7 @@ function Landing(props) {
     const date = format(new Date(), "YYYY-MM-DD-HH-mm");
     const user = firebase.auth().currentUser;
     const [scopedUser] = user.email.split(".") || undefined;
+    setLoading(true)
     firebase
       .database()
       .ref(`HERO/${scopedUser}`)
@@ -48,16 +34,17 @@ function Landing(props) {
           const dateDiff = spliceString(initialSurveydate, date);
           console.log(data.length)
           console.log(dateDiff);
-          if (dateDiff) {
+          if (dateDiff === true) {
             return (
-            setHero2(true),
-            this.PushNotificationIOS.scheduleNotif("HERO")
-            )
+              setLoading(false),
+            setHero2(true)  
+             )
           } else {
             if([8,9,10,11,12,13].includes(dateDiff) && data.length === 1 || [15,16,17,18,19,20].includes(dateDiff) && [1,2].includes(data.length) || [22,23,24,25,26,27].includes(dateDiff) && [1,2,3].includes(data.length) || [29,31].includes(dateDiff) && [1,2,3,4].includes(data.length)){
-              setHero2(true);
+              setLoading(false),
+              setHero2(true)
             } else setHero2(false),
-            this.PushNotificationIOS.cancel('6');
+            setLoading(false)
           } 
         }
       });
@@ -85,10 +72,10 @@ function Landing(props) {
 
 
   return !hero || hero2 ? (
-    <LandingView hero={hero} hero2={hero2} />
+    !loading ? <LandingView hero={hero} hero2={hero2} /> : <ActivityIndicator size="small" color="#041D5D"/>
   ) : (
-    
-      <HeroSurvey hero={hero} hero2={hero2} />
+    !loading ?
+      <HeroSurvey hero={hero} hero2={hero2} /> : <ActivityIndicator size="small" color="#041D5D"/>
     
   );
 }

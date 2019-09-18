@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, SafeAreaView, Picker, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, Keyboard } from "react-native";
+import { View, Text, SafeAreaView, Picker, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback, Platform } from "react-native";
 import RadioForm from "react-native-simple-radio-button";
 import firebase from "react-native-firebase";
 import {format} from 'date-fns';
@@ -11,32 +11,19 @@ const Feedback = () => {
   const [text, setTextValue] = useState("")
   const [error, setError] = useState("")
 
-  useEffect(()=> {
-    Keyboard.addListener(
-        'keyboardDidShow')
-
-        Keyboard.addListener(
-            'keyboardDidHide')
-
-      return () =>{
-        Keyboard.removeListener(
-            'keyboardDidShow')
-    
-            Keyboard.removeListener(
-                'keyboardDidHide')
-
-      }
-  },[])
 
   onSubmit= () => {
+    Keyboard.dismiss()
     const date = format(new Date(), 'YYYY-MM-DD');
+    const user = firebase.auth().currentUser.email
     const feedBack = {
+        user,
         model: model,
         feedBackText: text
     }
-    if(model === "" && text === ""){
+    if(model === "" && text === "" && Platform.OS === 'ios'){
       setError("Please Input Your Feedback")
-    } else if (model === ""){
+    } else if (model === "" && Platform.OS === 'ios'){
       setError("Please Select Phone Model")
     } else if( text === ""){
       setError("Please fill out your feedback")
@@ -48,7 +35,7 @@ const Feedback = () => {
   }
 
   return (
-   
+    <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
     <View style={{ flex: 1, backgroundColor:'#fff' }}>
      <KeyboardAvoidingView
     style={{ flex: 1 }}
@@ -76,7 +63,7 @@ const Feedback = () => {
             Feedback
           </Text>
         </View>
-        <View style={{marginTop:'10%'}}>
+       {Platform.OS === 'ios' ? <View style={{marginTop:'10%'}}>
         <Text style={{alignSelf:'center', fontSize:20, marginBottom:5, fontWeight:700}}>Phone Model</Text>
         <Picker
           selectedValue={model}
@@ -98,7 +85,7 @@ const Feedback = () => {
           <Picker.Item label="iPhone 11 Pro Max" value="iPhone 11 Pro Max" />
           <Picker.Item label="Other" value="Other" />
         </Picker>
-        </View>
+        </View> : null}
         <View style={{flex:1, alignItems:'center', marginTop:5}}>
             <Text style={{alignSelf:'center', fontSize:20, marginBottom:10, fontWeight:'700'}}>What Can We Do Better?</Text>
             <TextInput style={{height:'60%',width:'90%', borderWidth:1, borderColor:'black', fontSize:22}}
@@ -117,6 +104,7 @@ const Feedback = () => {
         </KeyboardAvoidingView>
         <Navbar feedbackdisable/>
     </View>
+    </TouchableWithoutFeedback>
     
   );
 };
