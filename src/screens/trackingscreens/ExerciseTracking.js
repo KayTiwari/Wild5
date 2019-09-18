@@ -1,43 +1,43 @@
-import React from 'react';
-import {Alert, View, KeyboardAvoidingView} from 'react-native';
-import RadioForm from 'react-native-simple-radio-button';
-import {Text, Item, Label, Input, Picker, Form} from 'native-base';
-import Slider from '@react-native-community/slider';
-import firebase from 'react-native-firebase';
-import {Actions} from 'react-native-router-flux';
-import exbackground from '../../images/exercise-background.jpg';
-import {TrackingScreen} from './TrackingScreen';
-import {withAuthProvider} from '../../context/authcontext';
-import {scopeRefByUserAndDate} from '../../utils/firebase';
-import {exerciseColor} from '../../components/common/colors'
+import React from "react";
+import {Alert, View, KeyboardAvoidingView} from "react-native";
+import RadioForm from "react-native-simple-radio-button";
+import {Text, Item, Label, Input, Picker, Form} from "native-base";
+import Slider from "@react-native-community/slider";
+import firebase from "react-native-firebase";
+import {Actions} from "react-native-router-flux";
+import exbackground from "../../images/exercise-background.jpg";
+import {TrackingScreen} from "./TrackingScreen";
+import {withAuthProvider} from "../../context/authcontext";
+import {scopeRefByUserAndDate} from "../../utils/firebase";
+import {exerciseColor} from "../../components/common/colors";
 
 const exerciseTypes = [
-  'Walking',
-  'Jogging',
-  'Biking',
-  'Playing Sports',
-  'Swimming',
-  'Weight Lifting',
-  'Aerobics',
-  'Water Aerobics',
-  'Other',
+  "Walking",
+  "Jogging",
+  "Biking",
+  "Playing Sports",
+  "Swimming",
+  "Weight Lifting",
+  "Aerobics",
+  "Water Aerobics",
+  "Other",
 ];
 
 export const EXERCISE_INTENSITY = {
-  LOW: 'low',
-  MODERATE: 'moderate',
-  HIGH: 'high',
+  LOW: "low",
+  MODERATE: "moderate",
+  HIGH: "high",
 };
 
 function ExerciseTracking() {
-  const [type, setType] = React.useState('');
-  const [otherType, setOtherType] = React.useState('');
+  const [type, setType] = React.useState("");
+  const [otherType, setOtherType] = React.useState("");
   const [duration, setDuration] = React.useState(0);
   const [intensity, setIntensity] = React.useState("");
   const [didFollowFID, setDidFollowFID] = React.useState(false);
 
   const submitForm = React.useCallback(async () => {
-    const exerciseRef = scopeRefByUserAndDate('Surveys', 'exercise');
+    const exerciseRef = scopeRefByUserAndDate("Surveys", "exercise");
 
     await firebase
       .database()
@@ -54,7 +54,7 @@ function ExerciseTracking() {
     Alert.alert("Success!", "Your exercises for today have been recorded.", [
       {text: "OK", onPress: Actions.landing()},
     ]);
-  }, [type, duration, intensity]);
+  }, [type, duration, intensity, didFollowFID]);
 
   return (
     <KeyboardAvoidingView style={{flex: 1}} behavior="padding" enabled>
@@ -99,13 +99,16 @@ function ExerciseTracking() {
             Did I Exercise Today Following the FID Practices?
           </Text>
           <RadioForm
-            radio_props={[{label: "Yes", value: 1}, {label: "No", value: 0}]}
+            radio_props={[
+              {label: "Yes", value: true},
+              {label: "No", value: false},
+            ]}
             initial={false}
             formHorizontal={true}
             buttonColor={exerciseColor}
             selectedButtonColor={exerciseColor}
             animation={true}
-            onPress={value => setDidFollowFID(Boolean(value))}
+            onPress={value => setDidFollowFID(value)}
             radioStyle={{marginRight: 20}}
           />
         </View>
@@ -177,7 +180,7 @@ function ExerciseTracking() {
             {label: "Moderate", value: EXERCISE_INTENSITY.MODERATE},
             {label: "High", value: EXERCISE_INTENSITY.HIGH},
           ]}
-          initial={0}
+          initial={false}
           formHorizontal={false}
           labelHorizontal={true}
           buttonColor={exerciseColor}

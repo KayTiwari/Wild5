@@ -9,7 +9,7 @@ export function Sleep(props) {
   const goalMetTotal = React.useMemo(
     () =>
       Object.values(props.data).reduce(
-        (daysCompleted, {didImplementSleepPractices}) => {
+        (daysCompleted, {didImplementSleepPractices = false}) => {
           // If the day is completed, add it to the total
           return daysCompleted + Number(didImplementSleepPractices);
         },
