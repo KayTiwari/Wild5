@@ -120,6 +120,7 @@ const NutritionTracking = () => {
                 alignSelf: 'center',
                 marginTop: '10%',
                 alignItems: 'center',
+                height:90
               }}
             >
               <Text
@@ -130,9 +131,9 @@ const NutritionTracking = () => {
                   fontWeight: '600',
                 }}
               >
-                Did I implement MINDful diet principles?
+                Did I implement mind diet principles?
               </Text>
-              <RadioForm
+              {/* <RadioForm
                 radio_props={[
                   {label: 'Yes', value: true},
                   {label: 'No', value: false},
@@ -145,7 +146,7 @@ const NutritionTracking = () => {
                 animation={true}
                 labelStyle={{fontSize: 20, color: '#000'}}
                 onPress={value => setImplementedMINDDietPrinciples(value)}
-              />
+              /> */}
             </View>
 
             <View style={{marginTop: '10%'}}>
