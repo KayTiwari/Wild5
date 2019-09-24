@@ -26,14 +26,6 @@ export default LandingView = (props) => {
           <View style={{ marginTop: "2%", flex: 1 }}>
             <Navigation hero={props.hero} hero2={props.hero2} />
           </View>
-          <View style={{height: 100, width: '100%'}}>
-            <ProgressRing 
-             value={100}
-             radius={tileSize / 2 - 20}
-             progressColor={'#041D5D'}
-            />
-            </View>
-            <Text>HELLO</Text>
           <Image
             source={wild5title}
             style={{
