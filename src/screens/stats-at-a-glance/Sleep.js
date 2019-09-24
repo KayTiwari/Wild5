@@ -8,19 +8,13 @@ const sum = arr => arr.reduce((total, num) => total + num, 0);
 export function Sleep(props) {
   const goalMetTotal = React.useMemo(
     () =>
-      Object.values(props.data).reduce((daysCompleted, practices) => {
-        // Convert the number of completed connections to an array of numbers
-        // Example: {calledFriend: true, metWithFriend: false} -> [1, 0]
-        const todaysPractices = Object.values(practices).map(didImplement =>
-          Number(didImplement)
-        );
-
-        // The day is considered completed if they implemented at least 4 practices
-        const dayIsCompleted = sum(todaysPractices) >= 4;
-
-        // If the day is completed, add it to the total
-        return daysCompleted + (dayIsCompleted ? 1 : 0);
-      }, 0),
+      Object.values(props.data).reduce(
+        (daysCompleted, {didImplementSleepPractices = false}) => {
+          // If the day is completed, add it to the total
+          return daysCompleted + Number(didImplementSleepPractices);
+        },
+        0
+      ),
     [props.data]
   );
 

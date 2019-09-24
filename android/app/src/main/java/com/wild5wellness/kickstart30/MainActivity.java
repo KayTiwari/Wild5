@@ -1,4 +1,4 @@
-package com.wild5;
+package com.wild5wellness.kickstart30;
 
 import com.facebook.react.ReactActivity;
 

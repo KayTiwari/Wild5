@@ -1,4 +1,4 @@
-package com.wild5;
+package com.wild5wellness.kickstart30;
 import android.app.Application;
 import com.facebook.react.ReactApplication;
 import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;

@@ -8,17 +8,9 @@ const sum = arr => arr.reduce((total, num) => total + num, 0);
 export function Nutrition(props) {
   const goalMetTotal = React.useMemo(
     () =>
-      Object.values(props.data).reduce(
-        (total, {loggedNutritionToday, implementedMINDDietPrinciples}) => {
-          return (
-            total +
-            Number(
-              Boolean(loggedNutritionToday && implementedMINDDietPrinciples)
-            )
-          );
-        },
-        0
-      ),
+      Object.values(props.data).reduce((total, {loggedNutritionToday}) => {
+        return total + Number(Boolean(loggedNutritionToday));
+      }, 0),
     [props.data]
   );
 

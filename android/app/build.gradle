@@ -113,7 +113,7 @@ android {
         }
     }
     defaultConfig {
-        applicationId "com.wild5"
+        applicationId "com.wild5wellness.kickstart30"
         minSdkVersion rootProject.ext.minSdkVersion
         missingDimensionStrategy 'react-native-camera', 'general'
         targetSdkVersion rootProject.ext.targetSdkVersion
