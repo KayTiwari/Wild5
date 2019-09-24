@@ -1,11 +1,13 @@
 import React from 'react'
-import {View, SafeAreaView, Image, ScrollView, Text} from 'react-native'
+import {View, SafeAreaView, Image, ScrollView, Dimensions, Text} from 'react-native'
 import KS30title from "../../images/KS30_578_113.png";
 import wild5title from "../../images/wild5_logo_resized4.png";
 import Navigation from "../LandingNavigation"
 import Navbar from "../Navbar"
+import {ProgressRing} from '../../components/charts/ProgressRing'
 
-
+const {width} = Dimensions.get('window')
+const tileSize = width / 2 - 15;
 export default LandingView = (props) => {
   console.log(props)
     return (
