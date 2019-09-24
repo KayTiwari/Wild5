@@ -78,7 +78,7 @@ class PushNotificationsIOS {
       Platform.OS === 'android' ?  config.id = '4' : config.userInfo = {id: '4'}
       config.repeatType = "day"
       config.date = new Date(date);
-      config.message = "Remember to Log Your Meals, Snacks, and Beevrages Including Alcohol";
+      config.message = "Remember to Log Your Meals, Snacks, and Beverages Including Alcohol";
     } else if (pillar === "sleepquest"){
       Platform.OS === 'android' ?  config.id = '5' : config.userInfo = {id: '5'}
       config.repeatType = "day"
