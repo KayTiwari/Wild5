@@ -1,5 +1,5 @@
 // import React, { Component } from 'react'
-import { Text, View, AlertIOS } from "react-native";
+import { Text, View, Platform } from "react-native";
 import PushNotification from "react-native-push-notification";
 
 
@@ -55,37 +55,37 @@ class PushNotificationsIOS {
 
     if (pillar === "exercise") {
       console.log(date)
-      config.id = '0'
+      Platform.OS === 'android' ?  config.id = '0' : config.userInfo = {id: '0'}
       config.repeatType = "day"
       config.date = new Date(date)
       config.message = "Remember to Exercise Daily Following the FID Practices";
     } else if (pillar === "mind") {
-      config.id = '1'
+      Platform.OS === 'android' ?  config.id = '1' : config.userInfo = {id: '1'}
       config.repeatType = "day"
       config.date = new Date(date);
       config.message = "Remember to Mindfully Meditate at Least 10 Minutes a Day";
     } else if (pillar === "sleep") {
-      config.id = '2'
+      Platform.OS === 'android' ?  config.id = '2' : config.userInfo = {id: '2'}
       config.repeatType = "day"
       config.date = new Date(date);
       config.message = "Remember to Implement 4 or more of the 6 Sleep Hygiene Practices";
     } else if (pillar === "social") {
-      config.id = '3'
+      Platform.OS === 'android' ?  config.id = '3' : config.userInfo = {id: '3'}
       config.repeatType = "day"
       config.date = new Date(date);
       config.message = "Remember to Socially Connect with at Least 2 People Today";
     } else if (pillar === "nutrition") {
-      config.id = '4'
+      Platform.OS === 'android' ?  config.id = '4' : config.userInfo = {id: '4'}
       config.repeatType = "day"
       config.date = new Date(date);
-      config.message = "Remember to Log Your Meals, Snacks, and Beevrages Including Alcohol";
+      config.message = "Remember to Log Your Meals, Snacks, and Beverages Including Alcohol";
     } else if (pillar === "sleepquest"){
-      config.id = '5'
+      Platform.OS === 'android' ?  config.id = '5' : config.userInfo = {id: '5'}
       config.repeatType = "day"
       config.date = new Date(date);
       config.message = "Time to wind down before your bedtime"
     } else if (pillar === "HERO"){
-      config.id = '6'
+      Platform.OS === 'android' ?  config.id = '6' : config.userInfo = {id: '6'}
       config.repeatType = 'day'
       config.date = new Date(Date.now() + 5 * 1000)
       config.message = "Fill out your HERO Wellness Survey"

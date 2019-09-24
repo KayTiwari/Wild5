@@ -72,7 +72,7 @@ const Feedback = () => {
                   fontSize: 22,
                   color: "#fff",
                   alignSelf: "center",
-                  fontWeight: 800,
+                  fontWeight: '800',
                   letterSpacing: 5,
                 }}
               >
@@ -86,7 +86,7 @@ const Feedback = () => {
                     alignSelf: "center",
                     fontSize: 20,
                     marginBottom: 5,
-                    fontWeight: 700,
+                    fontWeight: '700',
                   }}
                 >
                   Phone Model

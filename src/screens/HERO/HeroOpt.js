@@ -156,7 +156,7 @@ const HeroOpt = () => {
 
           <View style={{ alignSelf: "center", marginTop: "20%" }}>
           <TouchableOpacity style={{alignSelf: "center", height: 60, width: 120, borderRadius:28, backgroundColor: "#041D5D", borderWidth: 1, borderColor:'black', justifyContent:'center', flexDirection:'row'}} onPress={() => submit()}>
-            <Text style={{color:"#fff", fontSize: 24, fontWeight:800, alignSelf:'center'}}>Next</Text>
+            <Text style={{color:"#fff", fontSize: 24, fontWeight:'800', alignSelf:'center'}}>Next</Text>
             </TouchableOpacity>
           </View>
           </View>
